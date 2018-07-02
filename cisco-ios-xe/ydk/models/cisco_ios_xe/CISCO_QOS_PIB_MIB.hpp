@@ -31,52 +31,52 @@ class CISCOQOSPIBMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Qosdevicepibincarnationtable; //type: CISCOQOSPIBMIB::Qosdevicepibincarnationtable
-        class Qosdeviceattributetable; //type: CISCOQOSPIBMIB::Qosdeviceattributetable
-        class Qosinterfacetypetable; //type: CISCOQOSPIBMIB::Qosinterfacetypetable
-        class Qosdiffservmappingtable; //type: CISCOQOSPIBMIB::Qosdiffservmappingtable
-        class Qoscostodscptable; //type: CISCOQOSPIBMIB::Qoscostodscptable
-        class Qosunmatchedpolicytable; //type: CISCOQOSPIBMIB::Qosunmatchedpolicytable
-        class Qospolicertable; //type: CISCOQOSPIBMIB::Qospolicertable
-        class Qosaggregatetable; //type: CISCOQOSPIBMIB::Qosaggregatetable
-        class Qosmacclassificationtable; //type: CISCOQOSPIBMIB::Qosmacclassificationtable
-        class Qosipacetable; //type: CISCOQOSPIBMIB::Qosipacetable
-        class Qosipacldefinitiontable; //type: CISCOQOSPIBMIB::Qosipacldefinitiontable
-        class Qosipaclactiontable; //type: CISCOQOSPIBMIB::Qosipaclactiontable
-        class Qosifschedulingpreferencestable; //type: CISCOQOSPIBMIB::Qosifschedulingpreferencestable
-        class Qosifdroppreferencetable; //type: CISCOQOSPIBMIB::Qosifdroppreferencetable
-        class Qosifdscpassignmenttable; //type: CISCOQOSPIBMIB::Qosifdscpassignmenttable
-        class Qosifredtable; //type: CISCOQOSPIBMIB::Qosifredtable
-        class Qosiftaildroptable; //type: CISCOQOSPIBMIB::Qosiftaildroptable
-        class Qosifweightstable; //type: CISCOQOSPIBMIB::Qosifweightstable
+        class QosDevicePibIncarnationTable; //type: CISCOQOSPIBMIB::QosDevicePibIncarnationTable
+        class QosDeviceAttributeTable; //type: CISCOQOSPIBMIB::QosDeviceAttributeTable
+        class QosInterfaceTypeTable; //type: CISCOQOSPIBMIB::QosInterfaceTypeTable
+        class QosDiffServMappingTable; //type: CISCOQOSPIBMIB::QosDiffServMappingTable
+        class QosCosToDscpTable; //type: CISCOQOSPIBMIB::QosCosToDscpTable
+        class QosUnmatchedPolicyTable; //type: CISCOQOSPIBMIB::QosUnmatchedPolicyTable
+        class QosPolicerTable; //type: CISCOQOSPIBMIB::QosPolicerTable
+        class QosAggregateTable; //type: CISCOQOSPIBMIB::QosAggregateTable
+        class QosMacClassificationTable; //type: CISCOQOSPIBMIB::QosMacClassificationTable
+        class QosIpAceTable; //type: CISCOQOSPIBMIB::QosIpAceTable
+        class QosIpAclDefinitionTable; //type: CISCOQOSPIBMIB::QosIpAclDefinitionTable
+        class QosIpAclActionTable; //type: CISCOQOSPIBMIB::QosIpAclActionTable
+        class QosIfSchedulingPreferencesTable; //type: CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable
+        class QosIfDropPreferenceTable; //type: CISCOQOSPIBMIB::QosIfDropPreferenceTable
+        class QosIfDscpAssignmentTable; //type: CISCOQOSPIBMIB::QosIfDscpAssignmentTable
+        class QosIfRedTable; //type: CISCOQOSPIBMIB::QosIfRedTable
+        class QosIfTailDropTable; //type: CISCOQOSPIBMIB::QosIfTailDropTable
+        class QosIfWeightsTable; //type: CISCOQOSPIBMIB::QosIfWeightsTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdevicepibincarnationtable> qosdevicepibincarnationtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdeviceattributetable> qosdeviceattributetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosinterfacetypetable> qosinterfacetypetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdiffservmappingtable> qosdiffservmappingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qoscostodscptable> qoscostodscptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosunmatchedpolicytable> qosunmatchedpolicytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qospolicertable> qospolicertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosaggregatetable> qosaggregatetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosmacclassificationtable> qosmacclassificationtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacetable> qosipacetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacldefinitiontable> qosipacldefinitiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipaclactiontable> qosipaclactiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifschedulingpreferencestable> qosifschedulingpreferencestable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdroppreferencetable> qosifdroppreferencetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdscpassignmenttable> qosifdscpassignmenttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifredtable> qosifredtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosiftaildroptable> qosiftaildroptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifweightstable> qosifweightstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosDevicePibIncarnationTable> qosdevicepibincarnationtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosDeviceAttributeTable> qosdeviceattributetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosInterfaceTypeTable> qosinterfacetypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosDiffServMappingTable> qosdiffservmappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosCosToDscpTable> qoscostodscptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosUnmatchedPolicyTable> qosunmatchedpolicytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosPolicerTable> qospolicertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosAggregateTable> qosaggregatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosMacClassificationTable> qosmacclassificationtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIpAceTable> qosipacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIpAclDefinitionTable> qosipacldefinitiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIpAclActionTable> qosipaclactiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable> qosifschedulingpreferencestable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIfDropPreferenceTable> qosifdroppreferencetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIfDscpAssignmentTable> qosifdscpassignmenttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIfRedTable> qosifredtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIfTailDropTable> qosiftaildroptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::QosIfWeightsTable> qosifweightstable;
         
 }; // CISCOQOSPIBMIB
 
 
-class CISCOQOSPIBMIB::Qosdevicepibincarnationtable : public ydk::Entity
+class CISCOQOSPIBMIB::QosDevicePibIncarnationTable : public ydk::Entity
 {
     public:
-        Qosdevicepibincarnationtable();
-        ~Qosdevicepibincarnationtable();
+        QosDevicePibIncarnationTable();
+        ~QosDevicePibIncarnationTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -89,18 +89,18 @@ class CISCOQOSPIBMIB::Qosdevicepibincarnationtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosdevicepibincarnationentry; //type: CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
+        class QosDevicePibIncarnationEntry; //type: CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry> > qosdevicepibincarnationentry;
+        ydk::YList qosdevicepibincarnationentry;
         
-}; // CISCOQOSPIBMIB::Qosdevicepibincarnationtable
+}; // CISCOQOSPIBMIB::QosDevicePibIncarnationTable
 
 
-class CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry : public ydk::Entity
 {
     public:
-        Qosdevicepibincarnationentry();
-        ~Qosdevicepibincarnationentry();
+        QosDevicePibIncarnationEntry();
+        ~QosDevicePibIncarnationEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,14 +118,14 @@ class CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
         ydk::YLeaf qosdevicepibincarnation; //type: binary
         ydk::YLeaf qosdevicepibttl; //type: uint32
 
-}; // CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry
+}; // CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry
 
 
-class CISCOQOSPIBMIB::Qosdeviceattributetable : public ydk::Entity
+class CISCOQOSPIBMIB::QosDeviceAttributeTable : public ydk::Entity
 {
     public:
-        Qosdeviceattributetable();
-        ~Qosdeviceattributetable();
+        QosDeviceAttributeTable();
+        ~QosDeviceAttributeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -138,18 +138,18 @@ class CISCOQOSPIBMIB::Qosdeviceattributetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosdeviceattributeentry; //type: CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry
+        class QosDeviceAttributeEntry; //type: CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry> > qosdeviceattributeentry;
+        ydk::YList qosdeviceattributeentry;
         
-}; // CISCOQOSPIBMIB::Qosdeviceattributetable
+}; // CISCOQOSPIBMIB::QosDeviceAttributeTable
 
 
-class CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry : public ydk::Entity
 {
     public:
-        Qosdeviceattributeentry();
-        ~Qosdeviceattributeentry();
+        QosDeviceAttributeEntry();
+        ~QosDeviceAttributeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -167,16 +167,16 @@ class CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry : public 
         ydk::YLeaf qosdeviceprimarypdp; //type: string
         ydk::YLeaf qosdevicesecondarypdp; //type: string
         ydk::YLeaf qosdevicemaxmessagesize; //type: uint32
-        ydk::YLeaf qosdevicecapabilities; //type: Qosdevicecapabilities
+        ydk::YLeaf qosdevicecapabilities; //type: QosDeviceCapabilities
 
-}; // CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry
+}; // CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry
 
 
-class CISCOQOSPIBMIB::Qosinterfacetypetable : public ydk::Entity
+class CISCOQOSPIBMIB::QosInterfaceTypeTable : public ydk::Entity
 {
     public:
-        Qosinterfacetypetable();
-        ~Qosinterfacetypetable();
+        QosInterfaceTypeTable();
+        ~QosInterfaceTypeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -189,18 +189,18 @@ class CISCOQOSPIBMIB::Qosinterfacetypetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosinterfacetypeentry; //type: CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry
+        class QosInterfaceTypeEntry; //type: CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry> > qosinterfacetypeentry;
+        ydk::YList qosinterfacetypeentry;
         
-}; // CISCOQOSPIBMIB::Qosinterfacetypetable
+}; // CISCOQOSPIBMIB::QosInterfaceTypeTable
 
 
-class CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry : public ydk::Entity
 {
     public:
-        Qosinterfacetypeentry();
-        ~Qosinterfacetypeentry();
+        QosInterfaceTypeEntry();
+        ~QosInterfaceTypeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -218,14 +218,14 @@ class CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry : public ydk:
         ydk::YLeaf qosinterfacetyperoles; //type: binary
         ydk::YLeaf qosinterfacetypecapabilities; //type: QosInterfaceTypeCapabilities
 
-}; // CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry
+}; // CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry
 
 
-class CISCOQOSPIBMIB::Qosdiffservmappingtable : public ydk::Entity
+class CISCOQOSPIBMIB::QosDiffServMappingTable : public ydk::Entity
 {
     public:
-        Qosdiffservmappingtable();
-        ~Qosdiffservmappingtable();
+        QosDiffServMappingTable();
+        ~QosDiffServMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,18 +238,18 @@ class CISCOQOSPIBMIB::Qosdiffservmappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosdiffservmappingentry; //type: CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry
+        class QosDiffServMappingEntry; //type: CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry> > qosdiffservmappingentry;
+        ydk::YList qosdiffservmappingentry;
         
-}; // CISCOQOSPIBMIB::Qosdiffservmappingtable
+}; // CISCOQOSPIBMIB::QosDiffServMappingTable
 
 
-class CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry : public ydk::Entity
 {
     public:
-        Qosdiffservmappingentry();
-        ~Qosdiffservmappingentry();
+        QosDiffServMappingEntry();
+        ~QosDiffServMappingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -266,14 +266,14 @@ class CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry : public 
         ydk::YLeaf qosmarkeddscp; //type: int32
         ydk::YLeaf qosl2cos; //type: int32
 
-}; // CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry
+}; // CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry
 
 
-class CISCOQOSPIBMIB::Qoscostodscptable : public ydk::Entity
+class CISCOQOSPIBMIB::QosCosToDscpTable : public ydk::Entity
 {
     public:
-        Qoscostodscptable();
-        ~Qoscostodscptable();
+        QosCosToDscpTable();
+        ~QosCosToDscpTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -286,18 +286,18 @@ class CISCOQOSPIBMIB::Qoscostodscptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qoscostodscpentry; //type: CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry
+        class QosCosToDscpEntry; //type: CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry> > qoscostodscpentry;
+        ydk::YList qoscostodscpentry;
         
-}; // CISCOQOSPIBMIB::Qoscostodscptable
+}; // CISCOQOSPIBMIB::QosCosToDscpTable
 
 
-class CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry : public ydk::Entity
 {
     public:
-        Qoscostodscpentry();
-        ~Qoscostodscpentry();
+        QosCosToDscpEntry();
+        ~QosCosToDscpEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -313,14 +313,14 @@ class CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry : public ydk::Entity
         ydk::YLeaf qoscostodscpcos; //type: int32
         ydk::YLeaf qoscostodscpdscp; //type: int32
 
-}; // CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry
+}; // CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry
 
 
-class CISCOQOSPIBMIB::Qosunmatchedpolicytable : public ydk::Entity
+class CISCOQOSPIBMIB::QosUnmatchedPolicyTable : public ydk::Entity
 {
     public:
-        Qosunmatchedpolicytable();
-        ~Qosunmatchedpolicytable();
+        QosUnmatchedPolicyTable();
+        ~QosUnmatchedPolicyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -333,18 +333,18 @@ class CISCOQOSPIBMIB::Qosunmatchedpolicytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosunmatchedpolicyentry; //type: CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
+        class QosUnmatchedPolicyEntry; //type: CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry> > qosunmatchedpolicyentry;
+        ydk::YList qosunmatchedpolicyentry;
         
-}; // CISCOQOSPIBMIB::Qosunmatchedpolicytable
+}; // CISCOQOSPIBMIB::QosUnmatchedPolicyTable
 
 
-class CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry : public ydk::Entity
 {
     public:
-        Qosunmatchedpolicyentry();
-        ~Qosunmatchedpolicyentry();
+        QosUnmatchedPolicyEntry();
+        ~QosUnmatchedPolicyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -359,21 +359,21 @@ class CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry : public 
 
         ydk::YLeaf qosunmatchedpolicyid; //type: uint32
         ydk::YLeaf qosunmatchedpolicyrole; //type: binary
-        ydk::YLeaf qosunmatchedpolicydirection; //type: Qosunmatchedpolicydirection
+        ydk::YLeaf qosunmatchedpolicydirection; //type: QosUnmatchedPolicyDirection
         ydk::YLeaf qosunmatchedpolicydscp; //type: int32
         ydk::YLeaf qosunmatchedpolicydscptrusted; //type: boolean
         ydk::YLeaf qosunmatchpolmicroflowpolicerid; //type: uint32
         ydk::YLeaf qosunmatchedpolicyaggregateid; //type: uint32
-        class Qosunmatchedpolicydirection;
+        class QosUnmatchedPolicyDirection;
 
-}; // CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry
+}; // CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry
 
 
-class CISCOQOSPIBMIB::Qospolicertable : public ydk::Entity
+class CISCOQOSPIBMIB::QosPolicerTable : public ydk::Entity
 {
     public:
-        Qospolicertable();
-        ~Qospolicertable();
+        QosPolicerTable();
+        ~QosPolicerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -386,18 +386,18 @@ class CISCOQOSPIBMIB::Qospolicertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qospolicerentry; //type: CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry
+        class QosPolicerEntry; //type: CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry> > qospolicerentry;
+        ydk::YList qospolicerentry;
         
-}; // CISCOQOSPIBMIB::Qospolicertable
+}; // CISCOQOSPIBMIB::QosPolicerTable
 
 
-class CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry : public ydk::Entity
 {
     public:
-        Qospolicerentry();
-        ~Qospolicerentry();
+        QosPolicerEntry();
+        ~QosPolicerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -414,17 +414,17 @@ class CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry : public ydk::Entity
         ydk::YLeaf qospolicerrate; //type: uint32
         ydk::YLeaf qospolicernormalburst; //type: uint32
         ydk::YLeaf qospolicerexcessburst; //type: uint32
-        ydk::YLeaf qospoliceraction; //type: Qospoliceraction
-        class Qospoliceraction;
+        ydk::YLeaf qospoliceraction; //type: QosPolicerAction
+        class QosPolicerAction;
 
-}; // CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry
+}; // CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry
 
 
-class CISCOQOSPIBMIB::Qosaggregatetable : public ydk::Entity
+class CISCOQOSPIBMIB::QosAggregateTable : public ydk::Entity
 {
     public:
-        Qosaggregatetable();
-        ~Qosaggregatetable();
+        QosAggregateTable();
+        ~QosAggregateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -437,18 +437,18 @@ class CISCOQOSPIBMIB::Qosaggregatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosaggregateentry; //type: CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry
+        class QosAggregateEntry; //type: CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry> > qosaggregateentry;
+        ydk::YList qosaggregateentry;
         
-}; // CISCOQOSPIBMIB::Qosaggregatetable
+}; // CISCOQOSPIBMIB::QosAggregateTable
 
 
-class CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry : public ydk::Entity
 {
     public:
-        Qosaggregateentry();
-        ~Qosaggregateentry();
+        QosAggregateEntry();
+        ~QosAggregateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -464,14 +464,14 @@ class CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry : public ydk::Entity
         ydk::YLeaf qosaggregateid; //type: uint32
         ydk::YLeaf qosaggregatepolicerid; //type: uint32
 
-}; // CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry
+}; // CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry
 
 
-class CISCOQOSPIBMIB::Qosmacclassificationtable : public ydk::Entity
+class CISCOQOSPIBMIB::QosMacClassificationTable : public ydk::Entity
 {
     public:
-        Qosmacclassificationtable();
-        ~Qosmacclassificationtable();
+        QosMacClassificationTable();
+        ~QosMacClassificationTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -484,18 +484,18 @@ class CISCOQOSPIBMIB::Qosmacclassificationtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosmacclassificationentry; //type: CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry
+        class QosMacClassificationEntry; //type: CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry> > qosmacclassificationentry;
+        ydk::YList qosmacclassificationentry;
         
-}; // CISCOQOSPIBMIB::Qosmacclassificationtable
+}; // CISCOQOSPIBMIB::QosMacClassificationTable
 
 
-class CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry : public ydk::Entity
 {
     public:
-        Qosmacclassificationentry();
-        ~Qosmacclassificationentry();
+        QosMacClassificationEntry();
+        ~QosMacClassificationEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -513,14 +513,14 @@ class CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry : pub
         ydk::YLeaf qosdstmacaddress; //type: string
         ydk::YLeaf qosdstmaccos; //type: int32
 
-}; // CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry
+}; // CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry
 
 
-class CISCOQOSPIBMIB::Qosipacetable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIpAceTable : public ydk::Entity
 {
     public:
-        Qosipacetable();
-        ~Qosipacetable();
+        QosIpAceTable();
+        ~QosIpAceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -533,18 +533,18 @@ class CISCOQOSPIBMIB::Qosipacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosipaceentry; //type: CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry
+        class QosIpAceEntry; //type: CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry> > qosipaceentry;
+        ydk::YList qosipaceentry;
         
-}; // CISCOQOSPIBMIB::Qosipacetable
+}; // CISCOQOSPIBMIB::QosIpAceTable
 
 
-class CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry : public ydk::Entity
 {
     public:
-        Qosipaceentry();
-        ~Qosipaceentry();
+        QosIpAceEntry();
+        ~QosIpAceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -571,14 +571,14 @@ class CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry : public ydk::Entity
         ydk::YLeaf qosipacesrcl4portmax; //type: int32
         ydk::YLeaf qosipacepermit; //type: boolean
 
-}; // CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry
+}; // CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry
 
 
-class CISCOQOSPIBMIB::Qosipacldefinitiontable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIpAclDefinitionTable : public ydk::Entity
 {
     public:
-        Qosipacldefinitiontable();
-        ~Qosipacldefinitiontable();
+        QosIpAclDefinitionTable();
+        ~QosIpAclDefinitionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -591,18 +591,18 @@ class CISCOQOSPIBMIB::Qosipacldefinitiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosipacldefinitionentry; //type: CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry
+        class QosIpAclDefinitionEntry; //type: CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry> > qosipacldefinitionentry;
+        ydk::YList qosipacldefinitionentry;
         
-}; // CISCOQOSPIBMIB::Qosipacldefinitiontable
+}; // CISCOQOSPIBMIB::QosIpAclDefinitionTable
 
 
-class CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry : public ydk::Entity
 {
     public:
-        Qosipacldefinitionentry();
-        ~Qosipacldefinitionentry();
+        QosIpAclDefinitionEntry();
+        ~QosIpAclDefinitionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -620,14 +620,14 @@ class CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry : public 
         ydk::YLeaf qosipaceorder; //type: uint32
         ydk::YLeaf qosipacldefaceid; //type: uint32
 
-}; // CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry
+}; // CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry
 
 
-class CISCOQOSPIBMIB::Qosipaclactiontable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIpAclActionTable : public ydk::Entity
 {
     public:
-        Qosipaclactiontable();
-        ~Qosipaclactiontable();
+        QosIpAclActionTable();
+        ~QosIpAclActionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -640,18 +640,18 @@ class CISCOQOSPIBMIB::Qosipaclactiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosipaclactionentry; //type: CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry
+        class QosIpAclActionEntry; //type: CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry> > qosipaclactionentry;
+        ydk::YList qosipaclactionentry;
         
-}; // CISCOQOSPIBMIB::Qosipaclactiontable
+}; // CISCOQOSPIBMIB::QosIpAclActionTable
 
 
-class CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry : public ydk::Entity
 {
     public:
-        Qosipaclactionentry();
-        ~Qosipaclactionentry();
+        QosIpAclActionEntry();
+        ~QosIpAclActionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -667,22 +667,22 @@ class CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry : public ydk::Ent
         ydk::YLeaf qosipaclactionid; //type: uint32
         ydk::YLeaf qosipaclactaclid; //type: uint32
         ydk::YLeaf qosipaclinterfaceroles; //type: binary
-        ydk::YLeaf qosipaclinterfacedirection; //type: Qosipaclinterfacedirection
+        ydk::YLeaf qosipaclinterfacedirection; //type: QosIpAclInterfaceDirection
         ydk::YLeaf qosipaclorder; //type: uint32
         ydk::YLeaf qosipacldscp; //type: int32
         ydk::YLeaf qosipacldscptrusted; //type: boolean
         ydk::YLeaf qosipaclmicroflowpolicerid; //type: uint32
         ydk::YLeaf qosipaclaggregateid; //type: uint32
-        class Qosipaclinterfacedirection;
+        class QosIpAclInterfaceDirection;
 
-}; // CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry
+}; // CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry
 
 
-class CISCOQOSPIBMIB::Qosifschedulingpreferencestable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable : public ydk::Entity
 {
     public:
-        Qosifschedulingpreferencestable();
-        ~Qosifschedulingpreferencestable();
+        QosIfSchedulingPreferencesTable();
+        ~QosIfSchedulingPreferencesTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -695,18 +695,18 @@ class CISCOQOSPIBMIB::Qosifschedulingpreferencestable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosifschedulingpreferenceentry; //type: CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry
+        class QosIfSchedulingPreferenceEntry; //type: CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry> > qosifschedulingpreferenceentry;
+        ydk::YList qosifschedulingpreferenceentry;
         
-}; // CISCOQOSPIBMIB::Qosifschedulingpreferencestable
+}; // CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable
 
 
-class CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry : public ydk::Entity
 {
     public:
-        Qosifschedulingpreferenceentry();
-        ~Qosifschedulingpreferenceentry();
+        QosIfSchedulingPreferenceEntry();
+        ~QosIfSchedulingPreferenceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -722,18 +722,18 @@ class CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreference
         ydk::YLeaf qosifschedulingpreferenceid; //type: uint32
         ydk::YLeaf qosifschedulingroles; //type: binary
         ydk::YLeaf qosifschedulingpreference; //type: int32
-        ydk::YLeaf qosifschedulingdiscipline; //type: Qosifschedulingdiscipline
+        ydk::YLeaf qosifschedulingdiscipline; //type: QosIfSchedulingDiscipline
         ydk::YLeaf qosifschedulingqueuetype; //type: QosInterfaceQueueType
-        class Qosifschedulingdiscipline;
+        class QosIfSchedulingDiscipline;
 
-}; // CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry
+}; // CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry
 
 
-class CISCOQOSPIBMIB::Qosifdroppreferencetable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfDropPreferenceTable : public ydk::Entity
 {
     public:
-        Qosifdroppreferencetable();
-        ~Qosifdroppreferencetable();
+        QosIfDropPreferenceTable();
+        ~QosIfDropPreferenceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -746,18 +746,18 @@ class CISCOQOSPIBMIB::Qosifdroppreferencetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosifdroppreferenceentry; //type: CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry
+        class QosIfDropPreferenceEntry; //type: CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry> > qosifdroppreferenceentry;
+        ydk::YList qosifdroppreferenceentry;
         
-}; // CISCOQOSPIBMIB::Qosifdroppreferencetable
+}; // CISCOQOSPIBMIB::QosIfDropPreferenceTable
 
 
-class CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry : public ydk::Entity
 {
     public:
-        Qosifdroppreferenceentry();
-        ~Qosifdroppreferenceentry();
+        QosIfDropPreferenceEntry();
+        ~QosIfDropPreferenceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -773,17 +773,17 @@ class CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry : publi
         ydk::YLeaf qosifdroppreferenceid; //type: uint32
         ydk::YLeaf qosifdroproles; //type: binary
         ydk::YLeaf qosifdroppreference; //type: int32
-        ydk::YLeaf qosifdropdiscipline; //type: Qosifdropdiscipline
-        class Qosifdropdiscipline;
+        ydk::YLeaf qosifdropdiscipline; //type: QosIfDropDiscipline
+        class QosIfDropDiscipline;
 
-}; // CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry
+}; // CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry
 
 
-class CISCOQOSPIBMIB::Qosifdscpassignmenttable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfDscpAssignmentTable : public ydk::Entity
 {
     public:
-        Qosifdscpassignmenttable();
-        ~Qosifdscpassignmenttable();
+        QosIfDscpAssignmentTable();
+        ~QosIfDscpAssignmentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -796,18 +796,18 @@ class CISCOQOSPIBMIB::Qosifdscpassignmenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosifdscpassignmententry; //type: CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry
+        class QosIfDscpAssignmentEntry; //type: CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry> > qosifdscpassignmententry;
+        ydk::YList qosifdscpassignmententry;
         
-}; // CISCOQOSPIBMIB::Qosifdscpassignmenttable
+}; // CISCOQOSPIBMIB::QosIfDscpAssignmentTable
 
 
-class CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry : public ydk::Entity
 {
     public:
-        Qosifdscpassignmententry();
-        ~Qosifdscpassignmententry();
+        QosIfDscpAssignmentEntry();
+        ~QosIfDscpAssignmentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -827,14 +827,14 @@ class CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry : publi
         ydk::YLeaf qosifqueue; //type: int32
         ydk::YLeaf qosifthresholdset; //type: int32
 
-}; // CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry
+}; // CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry
 
 
-class CISCOQOSPIBMIB::Qosifredtable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfRedTable : public ydk::Entity
 {
     public:
-        Qosifredtable();
-        ~Qosifredtable();
+        QosIfRedTable();
+        ~QosIfRedTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -847,18 +847,18 @@ class CISCOQOSPIBMIB::Qosifredtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosifredentry; //type: CISCOQOSPIBMIB::Qosifredtable::Qosifredentry
+        class QosIfRedEntry; //type: CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifredtable::Qosifredentry> > qosifredentry;
+        ydk::YList qosifredentry;
         
-}; // CISCOQOSPIBMIB::Qosifredtable
+}; // CISCOQOSPIBMIB::QosIfRedTable
 
 
-class CISCOQOSPIBMIB::Qosifredtable::Qosifredentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry : public ydk::Entity
 {
     public:
-        Qosifredentry();
-        ~Qosifredentry();
+        QosIfRedEntry();
+        ~QosIfRedEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -878,14 +878,14 @@ class CISCOQOSPIBMIB::Qosifredtable::Qosifredentry : public ydk::Entity
         ydk::YLeaf qosifredthresholdsetlower; //type: int32
         ydk::YLeaf qosifredthresholdsetupper; //type: int32
 
-}; // CISCOQOSPIBMIB::Qosifredtable::Qosifredentry
+}; // CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry
 
 
-class CISCOQOSPIBMIB::Qosiftaildroptable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfTailDropTable : public ydk::Entity
 {
     public:
-        Qosiftaildroptable();
-        ~Qosiftaildroptable();
+        QosIfTailDropTable();
+        ~QosIfTailDropTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -898,18 +898,18 @@ class CISCOQOSPIBMIB::Qosiftaildroptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosiftaildropentry; //type: CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry
+        class QosIfTailDropEntry; //type: CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry> > qosiftaildropentry;
+        ydk::YList qosiftaildropentry;
         
-}; // CISCOQOSPIBMIB::Qosiftaildroptable
+}; // CISCOQOSPIBMIB::QosIfTailDropTable
 
 
-class CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry : public ydk::Entity
 {
     public:
-        Qosiftaildropentry();
-        ~Qosiftaildropentry();
+        QosIfTailDropEntry();
+        ~QosIfTailDropEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -928,14 +928,14 @@ class CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry : public ydk::Entit
         ydk::YLeaf qosiftaildropthresholdset; //type: int32
         ydk::YLeaf qosiftaildropthresholdsetvalue; //type: int32
 
-}; // CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry
+}; // CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry
 
 
-class CISCOQOSPIBMIB::Qosifweightstable : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfWeightsTable : public ydk::Entity
 {
     public:
-        Qosifweightstable();
-        ~Qosifweightstable();
+        QosIfWeightsTable();
+        ~QosIfWeightsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -948,18 +948,18 @@ class CISCOQOSPIBMIB::Qosifweightstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Qosifweightsentry; //type: CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry
+        class QosIfWeightsEntry; //type: CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_QOS_PIB_MIB::CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry> > qosifweightsentry;
+        ydk::YList qosifweightsentry;
         
-}; // CISCOQOSPIBMIB::Qosifweightstable
+}; // CISCOQOSPIBMIB::QosIfWeightsTable
 
 
-class CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry : public ydk::Entity
+class CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry : public ydk::Entity
 {
     public:
-        Qosifweightsentry();
-        ~Qosifweightsentry();
+        QosIfWeightsEntry();
+        ~QosIfWeightsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -979,7 +979,7 @@ class CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry : public ydk::Entity
         ydk::YLeaf qosifweightsdrainsize; //type: uint32
         ydk::YLeaf qosifweightsqueuesize; //type: uint32
 
-}; // CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry
+}; // CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry
 
 class QueueRange : public ydk::Enum
 {
@@ -992,17 +992,6 @@ class QueueRange : public ydk::Enum
         static const ydk::Enum::YLeaf sixteenQ;
         static const ydk::Enum::YLeaf thirtyTwoQ;
         static const ydk::Enum::YLeaf sixtyFourQ;
-
-};
-
-class ThresholdSetRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf zeroT;
-        static const ydk::Enum::YLeaf oneT;
-        static const ydk::Enum::YLeaf twoT;
-        static const ydk::Enum::YLeaf fourT;
-        static const ydk::Enum::YLeaf eightT;
 
 };
 
@@ -1057,7 +1046,18 @@ class QosInterfaceQueueType : public ydk::Enum
 
 };
 
-class CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry::Qosunmatchedpolicydirection : public ydk::Enum
+class ThresholdSetRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf zeroT;
+        static const ydk::Enum::YLeaf oneT;
+        static const ydk::Enum::YLeaf twoT;
+        static const ydk::Enum::YLeaf fourT;
+        static const ydk::Enum::YLeaf eightT;
+
+};
+
+class CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::QosUnmatchedPolicyDirection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf in;
@@ -1065,7 +1065,7 @@ class CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry::Qosunmat
 
 };
 
-class CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry::Qospoliceraction : public ydk::Enum
+class CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::QosPolicerAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf drop;
@@ -1074,7 +1074,7 @@ class CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry::Qospoliceraction : publi
 
 };
 
-class CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry::Qosipaclinterfacedirection : public ydk::Enum
+class CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::QosIpAclInterfaceDirection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf in;
@@ -1082,7 +1082,7 @@ class CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry::Qosipaclinterfac
 
 };
 
-class CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry::Qosifschedulingdiscipline : public ydk::Enum
+class CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry::QosIfSchedulingDiscipline : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf weightedFairQueueing;
@@ -1096,7 +1096,7 @@ class CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreference
 
 };
 
-class CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry::Qosifdropdiscipline : public ydk::Enum
+class CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::QosIfDropDiscipline : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf qosIfDropWRED;

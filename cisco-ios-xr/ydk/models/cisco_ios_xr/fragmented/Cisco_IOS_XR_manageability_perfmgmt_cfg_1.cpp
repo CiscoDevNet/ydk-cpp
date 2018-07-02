@@ -21,7 +21,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::I
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "init-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "init-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::~InitMsgsRcvd()
@@ -30,6 +30,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::~
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -168,7 +169,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsg
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "label-release-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-release-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::~LabelReleaseMsgsSent()
@@ -177,6 +178,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -315,7 +317,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::I
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "init-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "init-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::~InitMsgsSent()
@@ -324,6 +326,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::~
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -462,7 +465,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsg
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "label-mapping-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-mapping-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::~LabelMappingMsgsRcvd()
@@ -471,6 +474,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -609,7 +613,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRc
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "keepalive-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::~KeepaliveMsgsRcvd()
@@ -618,6 +622,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRc
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -756,7 +761,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsg
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "label-mapping-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-mapping-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::~LabelMappingMsgsSent()
@@ -765,6 +770,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -903,7 +909,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSe
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "keepalive-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::~KeepaliveMsgsSent()
@@ -912,6 +918,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSe
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -1050,7 +1057,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "address-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::~AddressMsgsRcvd()
@@ -1059,6 +1066,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -1197,7 +1205,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "address-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::~AddressMsgsSent()
@@ -1206,6 +1214,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -1340,7 +1349,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterface()
 {
     basic_counter_interface_templates->parent = this;
 
-    yang_name = "basic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::~BasicCounterInterface()
@@ -1349,6 +1358,7 @@ PerfMgmt::Threshold::BasicCounterInterface::~BasicCounterInterface()
 
 bool PerfMgmt::Threshold::BasicCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_counter_interface_templates !=  nullptr && basic_counter_interface_templates->has_data());
 }
 
@@ -1423,9 +1433,11 @@ bool PerfMgmt::Threshold::BasicCounterInterface::has_leaf_or_child_of_name(const
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplates()
+    :
+    basic_counter_interface_template(this, {"template_name"})
 {
 
-    yang_name = "basic-counter-interface-templates"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface-templates"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::~BasicCounterInterfaceTemplates()
@@ -1434,7 +1446,8 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::~Bas
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::has_data() const
 {
-    for (std::size_t index=0; index<basic_counter_interface_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<basic_counter_interface_template.len(); index++)
     {
         if(basic_counter_interface_template[index]->has_data())
             return true;
@@ -1444,7 +1457,7 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<basic_counter_interface_template.size(); index++)
+    for (std::size_t index=0; index<basic_counter_interface_template.len(); index++)
     {
         if(basic_counter_interface_template[index]->has_operation())
             return true;
@@ -1481,7 +1494,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::BasicCounterInterface::BasicCounter
     {
         auto c = std::make_shared<PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate>();
         c->parent = this;
-        basic_counter_interface_template.push_back(c);
+        basic_counter_interface_template.append(c);
         return c;
     }
 
@@ -1493,7 +1506,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : basic_counter_interface_template)
+    for (auto c : basic_counter_interface_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1525,20 +1538,20 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     sample_interval{YType::uint32, "sample-interval"},
     reg_exp_group{YType::str, "reg-exp-group"},
     vrf_group{YType::str, "vrf-group"}
-    	,
+        ,
     in_octets(nullptr) // presence node
-	,out_octets(nullptr) // presence node
-	,output_queue_drops(nullptr) // presence node
-	,input_total_errors(nullptr) // presence node
-	,output_total_drops(nullptr) // presence node
-	,out_packets(nullptr) // presence node
-	,output_total_errors(nullptr) // presence node
-	,in_packets(nullptr) // presence node
-	,input_queue_drops(nullptr) // presence node
-	,input_total_drops(nullptr) // presence node
+    , out_octets(nullptr) // presence node
+    , output_queue_drops(nullptr) // presence node
+    , input_total_errors(nullptr) // presence node
+    , output_total_drops(nullptr) // presence node
+    , out_packets(nullptr) // presence node
+    , output_total_errors(nullptr) // presence node
+    , in_packets(nullptr) // presence node
+    , input_queue_drops(nullptr) // presence node
+    , input_total_drops(nullptr) // presence node
 {
 
-    yang_name = "basic-counter-interface-template"; yang_parent_name = "basic-counter-interface-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface-template"; yang_parent_name = "basic-counter-interface-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::~BasicCounterInterfaceTemplate()
@@ -1547,6 +1560,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| reg_exp_group.is_set
@@ -1592,7 +1606,8 @@ std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTem
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "basic-counter-interface-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "basic-counter-interface-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -1826,7 +1841,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "in-octets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::~InOctets()
@@ -1835,6 +1850,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -1973,7 +1989,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "out-octets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::~OutOctets()
@@ -1982,6 +1998,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -2120,7 +2137,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-queue-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-queue-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::~OutputQueueDrops()
@@ -2129,6 +2146,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -2267,7 +2285,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-total-errors"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-total-errors"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::~InputTotalErrors()
@@ -2276,6 +2294,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -2414,7 +2433,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-total-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-total-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::~OutputTotalDrops()
@@ -2423,6 +2442,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -2561,7 +2581,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "out-packets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-packets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::~OutPackets()
@@ -2570,6 +2590,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -2708,7 +2729,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-total-errors"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-total-errors"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::~OutputTotalErrors()
@@ -2717,6 +2738,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -2855,7 +2877,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "in-packets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-packets"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::~InPackets()
@@ -2864,6 +2886,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -3002,7 +3025,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-queue-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-queue-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::~InputQueueDrops()
@@ -3011,6 +3034,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -3149,7 +3173,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-total-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-total-drops"; yang_parent_name = "basic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::~InputTotalDrops()
@@ -3158,6 +3182,7 @@ PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::Basi
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -3292,7 +3317,7 @@ PerfMgmt::Threshold::Bgp::Bgp()
 {
     bgp_templates->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Bgp::~Bgp()
@@ -3301,6 +3326,7 @@ PerfMgmt::Threshold::Bgp::~Bgp()
 
 bool PerfMgmt::Threshold::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp_templates !=  nullptr && bgp_templates->has_data());
 }
 
@@ -3375,9 +3401,11 @@ bool PerfMgmt::Threshold::Bgp::has_leaf_or_child_of_name(const std::string & nam
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplates()
+    :
+    bgp_template(this, {"template_name"})
 {
 
-    yang_name = "bgp-templates"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-templates"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::~BgpTemplates()
@@ -3386,7 +3414,8 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::~BgpTemplates()
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::has_data() const
 {
-    for (std::size_t index=0; index<bgp_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_template.len(); index++)
     {
         if(bgp_template[index]->has_data())
             return true;
@@ -3396,7 +3425,7 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::has_data() const
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_template.size(); index++)
+    for (std::size_t index=0; index<bgp_template.len(); index++)
     {
         if(bgp_template[index]->has_operation())
             return true;
@@ -3433,7 +3462,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::Bgp::BgpTemplates::get_child_by_nam
     {
         auto c = std::make_shared<PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate>();
         c->parent = this;
-        bgp_template.push_back(c);
+        bgp_template.append(c);
         return c;
     }
 
@@ -3445,7 +3474,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_template)
+    for (auto c : bgp_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3475,18 +3504,18 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::BgpTemplate()
     :
     template_name{YType::str, "template-name"},
     sample_interval{YType::uint32, "sample-interval"}
-    	,
+        ,
     output_update_messages(nullptr) // presence node
-	,errors_received(nullptr) // presence node
-	,conn_established(nullptr) // presence node
-	,output_messages(nullptr) // presence node
-	,conn_dropped(nullptr) // presence node
-	,input_update_messages(nullptr) // presence node
-	,errors_sent(nullptr) // presence node
-	,input_messages(nullptr) // presence node
+    , errors_received(nullptr) // presence node
+    , conn_established(nullptr) // presence node
+    , output_messages(nullptr) // presence node
+    , conn_dropped(nullptr) // presence node
+    , input_update_messages(nullptr) // presence node
+    , errors_sent(nullptr) // presence node
+    , input_messages(nullptr) // presence node
 {
 
-    yang_name = "bgp-template"; yang_parent_name = "bgp-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-template"; yang_parent_name = "bgp-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::~BgpTemplate()
@@ -3495,6 +3524,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::~BgpTemplate()
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| (output_update_messages !=  nullptr && output_update_messages->has_data())
@@ -3532,7 +3562,8 @@ std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_absolute_pa
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "bgp-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -3716,7 +3747,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::Outpu
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-update-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-update-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::~OutputUpdateMessages()
@@ -3725,6 +3756,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::~Outp
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -3863,7 +3895,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::ErrorsRecei
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "errors-received"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "errors-received"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::~ErrorsReceived()
@@ -3872,6 +3904,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::~ErrorsRece
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -4010,7 +4043,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::ConnEstabl
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "conn-established"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conn-established"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::~ConnEstablished()
@@ -4019,6 +4052,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::~ConnEstab
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -4157,7 +4191,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::OutputMessa
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::~OutputMessages()
@@ -4166,6 +4200,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::~OutputMess
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -4304,7 +4339,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::ConnDropped()
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "conn-dropped"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conn-dropped"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::~ConnDropped()
@@ -4313,6 +4348,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::~ConnDropped()
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -4451,7 +4487,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::InputU
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-update-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-update-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::~InputUpdateMessages()
@@ -4460,6 +4496,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::~Input
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -4598,7 +4635,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::ErrorsSent()
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "errors-sent"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "errors-sent"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::~ErrorsSent()
@@ -4607,6 +4644,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::~ErrorsSent()
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -4745,7 +4783,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::InputMessage
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-messages"; yang_parent_name = "bgp-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::~InputMessages()
@@ -4754,6 +4792,7 @@ PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::~InputMessag
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -4888,7 +4927,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2Protocol()
 {
     ospfv2_protocol_templates->parent = this;
 
-    yang_name = "ospfv2-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::~Ospfv2Protocol()
@@ -4897,6 +4936,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::~Ospfv2Protocol()
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospfv2_protocol_templates !=  nullptr && ospfv2_protocol_templates->has_data());
 }
 
@@ -4971,9 +5011,11 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::has_leaf_or_child_of_name(const std::s
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplates()
+    :
+    ospfv2_protocol_template(this, {"template_name"})
 {
 
-    yang_name = "ospfv2-protocol-templates"; yang_parent_name = "ospfv2-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol-templates"; yang_parent_name = "ospfv2-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::~Ospfv2ProtocolTemplates()
@@ -4982,7 +5024,8 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::~Ospfv2ProtocolTem
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_protocol_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_protocol_template.len(); index++)
     {
         if(ospfv2_protocol_template[index]->has_data())
             return true;
@@ -4992,7 +5035,7 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::has_data() co
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_protocol_template.size(); index++)
+    for (std::size_t index=0; index<ospfv2_protocol_template.len(); index++)
     {
         if(ospfv2_protocol_template[index]->has_operation())
             return true;
@@ -5029,7 +5072,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTempl
     {
         auto c = std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate>();
         c->parent = this;
-        ospfv2_protocol_template.push_back(c);
+        ospfv2_protocol_template.append(c);
         return c;
     }
 
@@ -5041,7 +5084,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_protocol_template)
+    for (auto c : ospfv2_protocol_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5071,31 +5114,31 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     :
     template_name{YType::str, "template-name"},
     sample_interval{YType::uint32, "sample-interval"}
-    	,
+        ,
     checksum_errors(nullptr) // presence node
-	,input_lsa_acks_lsa(nullptr) // presence node
-	,output_db_ds_lsa(nullptr) // presence node
-	,input_db_ds_lsa(nullptr) // presence node
-	,input_lsa_updates(nullptr) // presence node
-	,output_db_ds(nullptr) // presence node
-	,output_lsa_updates_lsa(nullptr) // presence node
-	,input_db_ds(nullptr) // presence node
-	,input_lsa_updates_lsa(nullptr) // presence node
-	,output_packets(nullptr) // presence node
-	,input_packets(nullptr) // presence node
-	,output_hello_packets(nullptr) // presence node
-	,input_hello_packets(nullptr) // presence node
-	,output_ls_requests(nullptr) // presence node
-	,output_lsa_acks_lsa(nullptr) // presence node
-	,output_lsa_acks(nullptr) // presence node
-	,input_lsa_acks(nullptr) // presence node
-	,output_lsa_updates(nullptr) // presence node
-	,output_ls_requests_lsa(nullptr) // presence node
-	,input_ls_requests_lsa(nullptr) // presence node
-	,input_ls_requests(nullptr) // presence node
+    , input_lsa_acks_lsa(nullptr) // presence node
+    , output_db_ds_lsa(nullptr) // presence node
+    , input_db_ds_lsa(nullptr) // presence node
+    , input_lsa_updates(nullptr) // presence node
+    , output_db_ds(nullptr) // presence node
+    , output_lsa_updates_lsa(nullptr) // presence node
+    , input_db_ds(nullptr) // presence node
+    , input_lsa_updates_lsa(nullptr) // presence node
+    , output_packets(nullptr) // presence node
+    , input_packets(nullptr) // presence node
+    , output_hello_packets(nullptr) // presence node
+    , input_hello_packets(nullptr) // presence node
+    , output_ls_requests(nullptr) // presence node
+    , output_lsa_acks_lsa(nullptr) // presence node
+    , output_lsa_acks(nullptr) // presence node
+    , input_lsa_acks(nullptr) // presence node
+    , output_lsa_updates(nullptr) // presence node
+    , output_ls_requests_lsa(nullptr) // presence node
+    , input_ls_requests_lsa(nullptr) // presence node
+    , input_ls_requests(nullptr) // presence node
 {
 
-    yang_name = "ospfv2-protocol-template"; yang_parent_name = "ospfv2-protocol-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol-template"; yang_parent_name = "ospfv2-protocol-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::~Ospfv2ProtocolTemplate()
@@ -5104,6 +5147,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| (checksum_errors !=  nullptr && checksum_errors->has_data())
@@ -5167,7 +5211,8 @@ std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-protocol-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "ospfv2-protocol-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -5533,7 +5578,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "checksum-errors"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "checksum-errors"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::~ChecksumErrors()
@@ -5542,6 +5587,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -5680,7 +5726,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-acks-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-acks-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::~InputLsaAcksLsa()
@@ -5689,6 +5735,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -5827,7 +5874,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-db-ds-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-db-ds-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::~OutputDbDsLsa()
@@ -5836,6 +5883,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -5974,7 +6022,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-db-ds-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-db-ds-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::~InputDbDsLsa()
@@ -5983,6 +6031,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -6121,7 +6170,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-updates"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-updates"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::~InputLsaUpdates()
@@ -6130,6 +6179,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -6268,7 +6318,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-db-ds"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-db-ds"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::~OutputDbDs()
@@ -6277,6 +6327,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -6415,7 +6466,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-updates-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-updates-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::~OutputLsaUpdatesLsa()
@@ -6424,6 +6475,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -6562,7 +6614,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-db-ds"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-db-ds"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::~InputDbDs()
@@ -6571,6 +6623,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -6709,7 +6762,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-updates-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-updates-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::~InputLsaUpdatesLsa()
@@ -6718,6 +6771,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -6856,7 +6910,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::~OutputPackets()
@@ -6865,6 +6919,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -7003,7 +7058,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::~InputPackets()
@@ -7012,6 +7067,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -7150,7 +7206,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-hello-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-hello-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::~OutputHelloPackets()
@@ -7159,6 +7215,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -7297,7 +7354,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-hello-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-hello-packets"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::~InputHelloPackets()
@@ -7306,6 +7363,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -7444,7 +7502,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-ls-requests"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-ls-requests"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::~OutputLsRequests()
@@ -7453,6 +7511,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -7591,7 +7650,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-acks-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-acks-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::~OutputLsaAcksLsa()
@@ -7600,6 +7659,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -7738,7 +7798,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-acks"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-acks"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::~OutputLsaAcks()
@@ -7747,6 +7807,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -7885,7 +7946,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-acks"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-acks"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::~InputLsaAcks()
@@ -7894,6 +7955,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -8032,7 +8094,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-updates"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-updates"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::~OutputLsaUpdates()
@@ -8041,6 +8103,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -8179,7 +8242,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-ls-requests-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-ls-requests-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::~OutputLsRequestsLsa()
@@ -8188,6 +8251,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -8326,7 +8390,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-ls-requests-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-ls-requests-lsa"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::~InputLsRequestsLsa()
@@ -8335,6 +8399,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -8473,7 +8538,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-ls-requests"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-ls-requests"; yang_parent_name = "ospfv2-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::~InputLsRequests()
@@ -8482,6 +8547,7 @@ PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -8616,7 +8682,7 @@ PerfMgmt::Threshold::CpuNode::CpuNode()
 {
     cpu_node_templates->parent = this;
 
-    yang_name = "cpu-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::CpuNode::~CpuNode()
@@ -8625,6 +8691,7 @@ PerfMgmt::Threshold::CpuNode::~CpuNode()
 
 bool PerfMgmt::Threshold::CpuNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (cpu_node_templates !=  nullptr && cpu_node_templates->has_data());
 }
 
@@ -8699,9 +8766,11 @@ bool PerfMgmt::Threshold::CpuNode::has_leaf_or_child_of_name(const std::string &
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplates()
+    :
+    cpu_node_template(this, {"template_name"})
 {
 
-    yang_name = "cpu-node-templates"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-node-templates"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::~CpuNodeTemplates()
@@ -8710,7 +8779,8 @@ PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::~CpuNodeTemplates()
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::has_data() const
 {
-    for (std::size_t index=0; index<cpu_node_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpu_node_template.len(); index++)
     {
         if(cpu_node_template[index]->has_data())
             return true;
@@ -8720,7 +8790,7 @@ bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::has_data() const
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<cpu_node_template.size(); index++)
+    for (std::size_t index=0; index<cpu_node_template.len(); index++)
     {
         if(cpu_node_template[index]->has_operation())
             return true;
@@ -8757,7 +8827,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_chil
     {
         auto c = std::make_shared<PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate>();
         c->parent = this;
-        cpu_node_template.push_back(c);
+        cpu_node_template.append(c);
         return c;
     }
 
@@ -8769,7 +8839,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::Cpu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpu_node_template)
+    for (auto c : cpu_node_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8799,12 +8869,12 @@ PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::CpuNodeTemplate
     :
     template_name{YType::str, "template-name"},
     sample_interval{YType::uint32, "sample-interval"}
-    	,
+        ,
     average_cpu_used(nullptr) // presence node
-	,no_processes(nullptr) // presence node
+    , no_processes(nullptr) // presence node
 {
 
-    yang_name = "cpu-node-template"; yang_parent_name = "cpu-node-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-node-template"; yang_parent_name = "cpu-node-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::~CpuNodeTemplate()
@@ -8813,6 +8883,7 @@ PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::~CpuNodeTemplat
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| (average_cpu_used !=  nullptr && average_cpu_used->has_data())
@@ -8838,7 +8909,8 @@ std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get
 std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpu-node-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "cpu-node-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -8938,7 +9010,7 @@ PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed:
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "average-cpu-used"; yang_parent_name = "cpu-node-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "average-cpu-used"; yang_parent_name = "cpu-node-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::~AverageCpuUsed()
@@ -8947,6 +9019,7 @@ PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed:
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -9085,7 +9158,7 @@ PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::No
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "no-processes"; yang_parent_name = "cpu-node-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-processes"; yang_parent_name = "cpu-node-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::~NoProcesses()
@@ -9094,6 +9167,7 @@ PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::~N
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -9228,7 +9302,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterface()
 {
     data_rate_interface_templates->parent = this;
 
-    yang_name = "data-rate-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::DataRateInterface::~DataRateInterface()
@@ -9237,6 +9311,7 @@ PerfMgmt::Threshold::DataRateInterface::~DataRateInterface()
 
 bool PerfMgmt::Threshold::DataRateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (data_rate_interface_templates !=  nullptr && data_rate_interface_templates->has_data());
 }
 
@@ -9311,9 +9386,11 @@ bool PerfMgmt::Threshold::DataRateInterface::has_leaf_or_child_of_name(const std
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplates()
+    :
+    data_rate_interface_template(this, {"template_name"})
 {
 
-    yang_name = "data-rate-interface-templates"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface-templates"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::~DataRateInterfaceTemplates()
@@ -9322,7 +9399,8 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::~DataRateInt
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::has_data() const
 {
-    for (std::size_t index=0; index<data_rate_interface_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_rate_interface_template.len(); index++)
     {
         if(data_rate_interface_template[index]->has_data())
             return true;
@@ -9332,7 +9410,7 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::has_dat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<data_rate_interface_template.size(); index++)
+    for (std::size_t index=0; index<data_rate_interface_template.len(); index++)
     {
         if(data_rate_interface_template[index]->has_operation())
             return true;
@@ -9369,7 +9447,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::DataRateInterface::DataRateInterfac
     {
         auto c = std::make_shared<PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate>();
         c->parent = this;
-        data_rate_interface_template.push_back(c);
+        data_rate_interface_template.append(c);
         return c;
     }
 
@@ -9381,7 +9459,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_rate_interface_template)
+    for (auto c : data_rate_interface_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9413,19 +9491,19 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     sample_interval{YType::uint32, "sample-interval"},
     reg_exp_group{YType::str, "reg-exp-group"},
     vrf_group{YType::str, "vrf-group"}
-    	,
+        ,
     input_data_rate(nullptr) // presence node
-	,bandwidth(nullptr) // presence node
-	,output_packet_rate(nullptr) // presence node
-	,input_peak_pkts(nullptr) // presence node
-	,output_peak_rate(nullptr) // presence node
-	,output_data_rate(nullptr) // presence node
-	,input_packet_rate(nullptr) // presence node
-	,output_peak_pkts(nullptr) // presence node
-	,input_peak_rate(nullptr) // presence node
+    , bandwidth(nullptr) // presence node
+    , output_packet_rate(nullptr) // presence node
+    , input_peak_pkts(nullptr) // presence node
+    , output_peak_rate(nullptr) // presence node
+    , output_data_rate(nullptr) // presence node
+    , input_packet_rate(nullptr) // presence node
+    , output_peak_pkts(nullptr) // presence node
+    , input_peak_rate(nullptr) // presence node
 {
 
-    yang_name = "data-rate-interface-template"; yang_parent_name = "data-rate-interface-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface-template"; yang_parent_name = "data-rate-interface-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::~DataRateInterfaceTemplate()
@@ -9434,6 +9512,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| reg_exp_group.is_set
@@ -9477,7 +9556,8 @@ std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data-rate-interface-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "data-rate-interface-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -9697,7 +9777,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-data-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-data-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::~InputDataRate()
@@ -9706,6 +9786,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -9844,7 +9925,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::~Bandwidth()
@@ -9853,6 +9934,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -9991,7 +10073,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-packet-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-packet-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::~OutputPacketRate()
@@ -10000,6 +10082,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -10138,7 +10221,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-peak-pkts"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-peak-pkts"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::~InputPeakPkts()
@@ -10147,6 +10230,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -10285,7 +10369,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-peak-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-peak-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::~OutputPeakRate()
@@ -10294,6 +10378,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -10432,7 +10517,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-data-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-data-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::~OutputDataRate()
@@ -10441,6 +10526,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -10579,7 +10665,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-packet-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-packet-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::~InputPacketRate()
@@ -10588,6 +10674,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -10726,7 +10813,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-peak-pkts"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-peak-pkts"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::~OutputPeakPkts()
@@ -10735,6 +10822,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -10873,7 +10961,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-peak-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-peak-rate"; yang_parent_name = "data-rate-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::~InputPeakRate()
@@ -10882,6 +10970,7 @@ PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInte
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -11016,7 +11105,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNode()
 {
     process_node_templates->parent = this;
 
-    yang_name = "process-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::ProcessNode::~ProcessNode()
@@ -11025,6 +11114,7 @@ PerfMgmt::Threshold::ProcessNode::~ProcessNode()
 
 bool PerfMgmt::Threshold::ProcessNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (process_node_templates !=  nullptr && process_node_templates->has_data());
 }
 
@@ -11099,9 +11189,11 @@ bool PerfMgmt::Threshold::ProcessNode::has_leaf_or_child_of_name(const std::stri
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplates()
+    :
+    process_node_template(this, {"template_name"})
 {
 
-    yang_name = "process-node-templates"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-node-templates"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::~ProcessNodeTemplates()
@@ -11110,7 +11202,8 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::~ProcessNodeTemplates()
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::has_data() const
 {
-    for (std::size_t index=0; index<process_node_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process_node_template.len(); index++)
     {
         if(process_node_template[index]->has_data())
             return true;
@@ -11120,7 +11213,7 @@ bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::has_data() const
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<process_node_template.size(); index++)
+    for (std::size_t index=0; index<process_node_template.len(); index++)
     {
         if(process_node_template[index]->has_operation())
             return true;
@@ -11157,7 +11250,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::
     {
         auto c = std::make_shared<PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate>();
         c->parent = this;
-        process_node_template.push_back(c);
+        process_node_template.append(c);
         return c;
     }
 
@@ -11169,7 +11262,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process_node_template)
+    for (auto c : process_node_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11199,13 +11292,13 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::Pro
     :
     template_name{YType::str, "template-name"},
     sample_interval{YType::uint32, "sample-interval"}
-    	,
+        ,
     average_cpu_used(nullptr) // presence node
-	,peak_memory(nullptr) // presence node
-	,no_threads(nullptr) // presence node
+    , peak_memory(nullptr) // presence node
+    , no_threads(nullptr) // presence node
 {
 
-    yang_name = "process-node-template"; yang_parent_name = "process-node-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-node-template"; yang_parent_name = "process-node-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::~ProcessNodeTemplate()
@@ -11214,6 +11307,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::~Pr
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| (average_cpu_used !=  nullptr && average_cpu_used->has_data())
@@ -11241,7 +11335,8 @@ std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeT
 std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process-node-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "process-node-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -11355,7 +11450,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::Ave
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "average-cpu-used"; yang_parent_name = "process-node-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "average-cpu-used"; yang_parent_name = "process-node-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::~AverageCpuUsed()
@@ -11364,6 +11459,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::Ave
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -11502,7 +11598,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::Pea
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "peak-memory"; yang_parent_name = "process-node-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peak-memory"; yang_parent_name = "process-node-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::~PeakMemory()
@@ -11511,6 +11607,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::Pea
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -11649,7 +11746,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoT
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "no-threads"; yang_parent_name = "process-node-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-threads"; yang_parent_name = "process-node-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::~NoThreads()
@@ -11658,6 +11755,7 @@ PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoT
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -11792,7 +11890,7 @@ PerfMgmt::Threshold::MemoryNode::MemoryNode()
 {
     memory_node_templates->parent = this;
 
-    yang_name = "memory-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::MemoryNode::~MemoryNode()
@@ -11801,6 +11899,7 @@ PerfMgmt::Threshold::MemoryNode::~MemoryNode()
 
 bool PerfMgmt::Threshold::MemoryNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (memory_node_templates !=  nullptr && memory_node_templates->has_data());
 }
 
@@ -11875,9 +11974,11 @@ bool PerfMgmt::Threshold::MemoryNode::has_leaf_or_child_of_name(const std::strin
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplates()
+    :
+    memory_node_template(this, {"template_name"})
 {
 
-    yang_name = "memory-node-templates"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-node-templates"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::~MemoryNodeTemplates()
@@ -11886,7 +11987,8 @@ PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::~MemoryNodeTemplates()
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::has_data() const
 {
-    for (std::size_t index=0; index<memory_node_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<memory_node_template.len(); index++)
     {
         if(memory_node_template[index]->has_data())
             return true;
@@ -11896,7 +11998,7 @@ bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::has_data() const
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<memory_node_template.size(); index++)
+    for (std::size_t index=0; index<memory_node_template.len(); index++)
     {
         if(memory_node_template[index]->has_operation())
             return true;
@@ -11933,7 +12035,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::ge
     {
         auto c = std::make_shared<PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate>();
         c->parent = this;
-        memory_node_template.push_back(c);
+        memory_node_template.append(c);
         return c;
     }
 
@@ -11945,7 +12047,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : memory_node_template)
+    for (auto c : memory_node_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11975,12 +12077,12 @@ PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::Memory
     :
     template_name{YType::str, "template-name"},
     sample_interval{YType::uint32, "sample-interval"}
-    	,
+        ,
     peak_memory(nullptr) // presence node
-	,curr_memory(nullptr) // presence node
+    , curr_memory(nullptr) // presence node
 {
 
-    yang_name = "memory-node-template"; yang_parent_name = "memory-node-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-node-template"; yang_parent_name = "memory-node-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::~MemoryNodeTemplate()
@@ -11989,6 +12091,7 @@ PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::~Memor
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| (peak_memory !=  nullptr && peak_memory->has_data())
@@ -12014,7 +12117,8 @@ std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemp
 std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "memory-node-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "memory-node-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -12114,7 +12218,7 @@ PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMe
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "peak-memory"; yang_parent_name = "memory-node-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peak-memory"; yang_parent_name = "memory-node-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::~PeakMemory()
@@ -12123,6 +12227,7 @@ PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMe
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -12261,7 +12366,7 @@ PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMe
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "curr-memory"; yang_parent_name = "memory-node-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "curr-memory"; yang_parent_name = "memory-node-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::~CurrMemory()
@@ -12270,6 +12375,7 @@ PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMe
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -12404,7 +12510,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3Protocol()
 {
     ospfv3_protocol_templates->parent = this;
 
-    yang_name = "ospfv3-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::~Ospfv3Protocol()
@@ -12413,6 +12519,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::~Ospfv3Protocol()
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospfv3_protocol_templates !=  nullptr && ospfv3_protocol_templates->has_data());
 }
 
@@ -12487,9 +12594,11 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::has_leaf_or_child_of_name(const std::s
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplates()
+    :
+    ospfv3_protocol_template(this, {"template_name"})
 {
 
-    yang_name = "ospfv3-protocol-templates"; yang_parent_name = "ospfv3-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol-templates"; yang_parent_name = "ospfv3-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::~Ospfv3ProtocolTemplates()
@@ -12498,7 +12607,8 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::~Ospfv3ProtocolTem
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::has_data() const
 {
-    for (std::size_t index=0; index<ospfv3_protocol_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv3_protocol_template.len(); index++)
     {
         if(ospfv3_protocol_template[index]->has_data())
             return true;
@@ -12508,7 +12618,7 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::has_data() co
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv3_protocol_template.size(); index++)
+    for (std::size_t index=0; index<ospfv3_protocol_template.len(); index++)
     {
         if(ospfv3_protocol_template[index]->has_operation())
             return true;
@@ -12545,7 +12655,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTempl
     {
         auto c = std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate>();
         c->parent = this;
-        ospfv3_protocol_template.push_back(c);
+        ospfv3_protocol_template.append(c);
         return c;
     }
 
@@ -12557,7 +12667,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv3_protocol_template)
+    for (auto c : ospfv3_protocol_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12587,30 +12697,30 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     :
     template_name{YType::str, "template-name"},
     sample_interval{YType::uint32, "sample-interval"}
-    	,
+        ,
     input_lsa_acks_lsa(nullptr) // presence node
-	,output_db_ds_lsa(nullptr) // presence node
-	,input_db_ds_lsa(nullptr) // presence node
-	,input_lsa_updates(nullptr) // presence node
-	,output_db_ds(nullptr) // presence node
-	,output_lsa_updates_lsa(nullptr) // presence node
-	,input_db_ds(nullptr) // presence node
-	,input_lsa_updates_lsa(nullptr) // presence node
-	,output_packets(nullptr) // presence node
-	,input_packets(nullptr) // presence node
-	,output_hello_packets(nullptr) // presence node
-	,input_hello_packets(nullptr) // presence node
-	,output_ls_requests(nullptr) // presence node
-	,output_lsa_acks_lsa(nullptr) // presence node
-	,output_lsa_acks(nullptr) // presence node
-	,input_lsa_acks(nullptr) // presence node
-	,output_lsa_updates(nullptr) // presence node
-	,output_ls_requests_lsa(nullptr) // presence node
-	,input_ls_requests_lsa(nullptr) // presence node
-	,input_ls_requests(nullptr) // presence node
+    , output_db_ds_lsa(nullptr) // presence node
+    , input_db_ds_lsa(nullptr) // presence node
+    , input_lsa_updates(nullptr) // presence node
+    , output_db_ds(nullptr) // presence node
+    , output_lsa_updates_lsa(nullptr) // presence node
+    , input_db_ds(nullptr) // presence node
+    , input_lsa_updates_lsa(nullptr) // presence node
+    , output_packets(nullptr) // presence node
+    , input_packets(nullptr) // presence node
+    , output_hello_packets(nullptr) // presence node
+    , input_hello_packets(nullptr) // presence node
+    , output_ls_requests(nullptr) // presence node
+    , output_lsa_acks_lsa(nullptr) // presence node
+    , output_lsa_acks(nullptr) // presence node
+    , input_lsa_acks(nullptr) // presence node
+    , output_lsa_updates(nullptr) // presence node
+    , output_ls_requests_lsa(nullptr) // presence node
+    , input_ls_requests_lsa(nullptr) // presence node
+    , input_ls_requests(nullptr) // presence node
 {
 
-    yang_name = "ospfv3-protocol-template"; yang_parent_name = "ospfv3-protocol-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol-template"; yang_parent_name = "ospfv3-protocol-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::~Ospfv3ProtocolTemplate()
@@ -12619,6 +12729,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| (input_lsa_acks_lsa !=  nullptr && input_lsa_acks_lsa->has_data())
@@ -12680,7 +12791,8 @@ std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-protocol-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "ospfv3-protocol-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -13032,7 +13144,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-acks-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-acks-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::~InputLsaAcksLsa()
@@ -13041,6 +13153,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13179,7 +13292,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-db-ds-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-db-ds-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::~OutputDbDsLsa()
@@ -13188,6 +13301,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13326,7 +13440,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-db-ds-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-db-ds-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::~InputDbDsLsa()
@@ -13335,6 +13449,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13473,7 +13588,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-updates"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-updates"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::~InputLsaUpdates()
@@ -13482,6 +13597,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13620,7 +13736,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-db-ds"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-db-ds"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::~OutputDbDs()
@@ -13629,6 +13745,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13767,7 +13884,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-updates-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-updates-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::~OutputLsaUpdatesLsa()
@@ -13776,6 +13893,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13914,7 +14032,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-db-ds"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-db-ds"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::~InputDbDs()
@@ -13923,6 +14041,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14061,7 +14180,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-updates-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-updates-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::~InputLsaUpdatesLsa()
@@ -14070,6 +14189,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14208,7 +14328,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::~OutputPackets()
@@ -14217,6 +14337,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14355,7 +14476,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::~InputPackets()
@@ -14364,6 +14485,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14502,7 +14624,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-hello-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-hello-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::~OutputHelloPackets()
@@ -14511,6 +14633,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14649,7 +14772,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-hello-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-hello-packets"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::~InputHelloPackets()
@@ -14658,6 +14781,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14796,7 +14920,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-ls-requests"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-ls-requests"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::~OutputLsRequests()
@@ -14805,6 +14929,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14943,7 +15068,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-acks-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-acks-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::~OutputLsaAcksLsa()
@@ -14952,6 +15077,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15090,7 +15216,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-acks"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-acks"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::~OutputLsaAcks()
@@ -15099,6 +15225,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15237,7 +15364,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-lsa-acks"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-lsa-acks"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::~InputLsaAcks()
@@ -15246,6 +15373,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15384,7 +15512,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-lsa-updates"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-lsa-updates"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::~OutputLsaUpdates()
@@ -15393,6 +15521,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15531,7 +15660,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-ls-requests-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-ls-requests-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::~OutputLsRequestsLsa()
@@ -15540,6 +15669,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15678,7 +15808,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-ls-requests-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-ls-requests-lsa"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::~InputLsRequestsLsa()
@@ -15687,6 +15817,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15825,7 +15956,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-ls-requests"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-ls-requests"; yang_parent_name = "ospfv3-protocol-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::~InputLsRequests()
@@ -15834,6 +15965,7 @@ PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemp
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set

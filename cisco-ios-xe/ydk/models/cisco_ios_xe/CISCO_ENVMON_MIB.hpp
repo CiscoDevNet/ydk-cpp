@@ -31,28 +31,28 @@ class CISCOENVMONMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoenvmonobjects; //type: CISCOENVMONMIB::Ciscoenvmonobjects
-        class Ciscoenvmonmibnotificationenables; //type: CISCOENVMONMIB::Ciscoenvmonmibnotificationenables
-        class Ciscoenvmonvoltagestatustable; //type: CISCOENVMONMIB::Ciscoenvmonvoltagestatustable
-        class Ciscoenvmontemperaturestatustable; //type: CISCOENVMONMIB::Ciscoenvmontemperaturestatustable
-        class Ciscoenvmonfanstatustable; //type: CISCOENVMONMIB::Ciscoenvmonfanstatustable
-        class Ciscoenvmonsupplystatustable; //type: CISCOENVMONMIB::Ciscoenvmonsupplystatustable
+        class CiscoEnvMonObjects; //type: CISCOENVMONMIB::CiscoEnvMonObjects
+        class CiscoEnvMonMIBNotificationEnables; //type: CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables
+        class CiscoEnvMonVoltageStatusTable; //type: CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable
+        class CiscoEnvMonTemperatureStatusTable; //type: CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable
+        class CiscoEnvMonFanStatusTable; //type: CISCOENVMONMIB::CiscoEnvMonFanStatusTable
+        class CiscoEnvMonSupplyStatusTable; //type: CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonobjects> ciscoenvmonobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonmibnotificationenables> ciscoenvmonmibnotificationenables;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonvoltagestatustable> ciscoenvmonvoltagestatustable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmontemperaturestatustable> ciscoenvmontemperaturestatustable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonfanstatustable> ciscoenvmonfanstatustable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonsupplystatustable> ciscoenvmonsupplystatustable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::CiscoEnvMonObjects> ciscoenvmonobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables> ciscoenvmonmibnotificationenables;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable> ciscoenvmonvoltagestatustable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable> ciscoenvmontemperaturestatustable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::CiscoEnvMonFanStatusTable> ciscoenvmonfanstatustable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable> ciscoenvmonsupplystatustable;
         
 }; // CISCOENVMONMIB
 
 
-class CISCOENVMONMIB::Ciscoenvmonobjects : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonObjects : public ydk::Entity
 {
     public:
-        Ciscoenvmonobjects();
-        ~Ciscoenvmonobjects();
+        CiscoEnvMonObjects();
+        ~CiscoEnvMonObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -65,18 +65,18 @@ class CISCOENVMONMIB::Ciscoenvmonobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ciscoenvmonpresent; //type: Ciscoenvmonpresent
-        ydk::YLeaf ciscoenvmonalarmcontacts; //type: Ciscoenvmonalarmcontacts
-        class Ciscoenvmonpresent;
+        ydk::YLeaf ciscoenvmonpresent; //type: CiscoEnvMonPresent
+        ydk::YLeaf ciscoenvmonalarmcontacts; //type: CiscoEnvMonAlarmContacts
+        class CiscoEnvMonPresent;
 
-}; // CISCOENVMONMIB::Ciscoenvmonobjects
+}; // CISCOENVMONMIB::CiscoEnvMonObjects
 
 
-class CISCOENVMONMIB::Ciscoenvmonmibnotificationenables : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables : public ydk::Entity
 {
     public:
-        Ciscoenvmonmibnotificationenables();
-        ~Ciscoenvmonmibnotificationenables();
+        CiscoEnvMonMIBNotificationEnables();
+        ~CiscoEnvMonMIBNotificationEnables();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,14 +96,14 @@ class CISCOENVMONMIB::Ciscoenvmonmibnotificationenables : public ydk::Entity
         ydk::YLeaf ciscoenvmonenableredundantsupplynotification; //type: boolean
         ydk::YLeaf ciscoenvmonenablestatchangenotif; //type: boolean
 
-}; // CISCOENVMONMIB::Ciscoenvmonmibnotificationenables
+}; // CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables
 
 
-class CISCOENVMONMIB::Ciscoenvmonvoltagestatustable : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable : public ydk::Entity
 {
     public:
-        Ciscoenvmonvoltagestatustable();
-        ~Ciscoenvmonvoltagestatustable();
+        CiscoEnvMonVoltageStatusTable();
+        ~CiscoEnvMonVoltageStatusTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -116,18 +116,18 @@ class CISCOENVMONMIB::Ciscoenvmonvoltagestatustable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoenvmonvoltagestatusentry; //type: CISCOENVMONMIB::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry
+        class CiscoEnvMonVoltageStatusEntry; //type: CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry> > ciscoenvmonvoltagestatusentry;
+        ydk::YList ciscoenvmonvoltagestatusentry;
         
-}; // CISCOENVMONMIB::Ciscoenvmonvoltagestatustable
+}; // CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable
 
 
-class CISCOENVMONMIB::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry : public ydk::Entity
 {
     public:
-        Ciscoenvmonvoltagestatusentry();
-        ~Ciscoenvmonvoltagestatusentry();
+        CiscoEnvMonVoltageStatusEntry();
+        ~CiscoEnvMonVoltageStatusEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -148,14 +148,14 @@ class CISCOENVMONMIB::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusent
         ydk::YLeaf ciscoenvmonvoltagelastshutdown; //type: int32
         ydk::YLeaf ciscoenvmonvoltagestate; //type: CiscoEnvMonState
 
-}; // CISCOENVMONMIB::Ciscoenvmonvoltagestatustable::Ciscoenvmonvoltagestatusentry
+}; // CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry
 
 
-class CISCOENVMONMIB::Ciscoenvmontemperaturestatustable : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable : public ydk::Entity
 {
     public:
-        Ciscoenvmontemperaturestatustable();
-        ~Ciscoenvmontemperaturestatustable();
+        CiscoEnvMonTemperatureStatusTable();
+        ~CiscoEnvMonTemperatureStatusTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -168,18 +168,18 @@ class CISCOENVMONMIB::Ciscoenvmontemperaturestatustable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoenvmontemperaturestatusentry; //type: CISCOENVMONMIB::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry
+        class CiscoEnvMonTemperatureStatusEntry; //type: CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry> > ciscoenvmontemperaturestatusentry;
+        ydk::YList ciscoenvmontemperaturestatusentry;
         
-}; // CISCOENVMONMIB::Ciscoenvmontemperaturestatustable
+}; // CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable
 
 
-class CISCOENVMONMIB::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry : public ydk::Entity
 {
     public:
-        Ciscoenvmontemperaturestatusentry();
-        ~Ciscoenvmontemperaturestatusentry();
+        CiscoEnvMonTemperatureStatusEntry();
+        ~CiscoEnvMonTemperatureStatusEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -199,14 +199,14 @@ class CISCOENVMONMIB::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperatures
         ydk::YLeaf ciscoenvmontemperaturelastshutdown; //type: int32
         ydk::YLeaf ciscoenvmontemperaturestate; //type: CiscoEnvMonState
 
-}; // CISCOENVMONMIB::Ciscoenvmontemperaturestatustable::Ciscoenvmontemperaturestatusentry
+}; // CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry
 
 
-class CISCOENVMONMIB::Ciscoenvmonfanstatustable : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonFanStatusTable : public ydk::Entity
 {
     public:
-        Ciscoenvmonfanstatustable();
-        ~Ciscoenvmonfanstatustable();
+        CiscoEnvMonFanStatusTable();
+        ~CiscoEnvMonFanStatusTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -219,18 +219,18 @@ class CISCOENVMONMIB::Ciscoenvmonfanstatustable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoenvmonfanstatusentry; //type: CISCOENVMONMIB::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry
+        class CiscoEnvMonFanStatusEntry; //type: CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry> > ciscoenvmonfanstatusentry;
+        ydk::YList ciscoenvmonfanstatusentry;
         
-}; // CISCOENVMONMIB::Ciscoenvmonfanstatustable
+}; // CISCOENVMONMIB::CiscoEnvMonFanStatusTable
 
 
-class CISCOENVMONMIB::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry : public ydk::Entity
 {
     public:
-        Ciscoenvmonfanstatusentry();
-        ~Ciscoenvmonfanstatusentry();
+        CiscoEnvMonFanStatusEntry();
+        ~CiscoEnvMonFanStatusEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -247,14 +247,14 @@ class CISCOENVMONMIB::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry : pub
         ydk::YLeaf ciscoenvmonfanstatusdescr; //type: string
         ydk::YLeaf ciscoenvmonfanstate; //type: CiscoEnvMonState
 
-}; // CISCOENVMONMIB::Ciscoenvmonfanstatustable::Ciscoenvmonfanstatusentry
+}; // CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry
 
 
-class CISCOENVMONMIB::Ciscoenvmonsupplystatustable : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable : public ydk::Entity
 {
     public:
-        Ciscoenvmonsupplystatustable();
-        ~Ciscoenvmonsupplystatustable();
+        CiscoEnvMonSupplyStatusTable();
+        ~CiscoEnvMonSupplyStatusTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -267,18 +267,18 @@ class CISCOENVMONMIB::Ciscoenvmonsupplystatustable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoenvmonsupplystatusentry; //type: CISCOENVMONMIB::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry
+        class CiscoEnvMonSupplyStatusEntry; //type: CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENVMON_MIB::CISCOENVMONMIB::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry> > ciscoenvmonsupplystatusentry;
+        ydk::YList ciscoenvmonsupplystatusentry;
         
-}; // CISCOENVMONMIB::Ciscoenvmonsupplystatustable
+}; // CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable
 
 
-class CISCOENVMONMIB::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry : public ydk::Entity
+class CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry : public ydk::Entity
 {
     public:
-        Ciscoenvmonsupplystatusentry();
-        ~Ciscoenvmonsupplystatusentry();
+        CiscoEnvMonSupplyStatusEntry();
+        ~CiscoEnvMonSupplyStatusEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -294,10 +294,10 @@ class CISCOENVMONMIB::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry
         ydk::YLeaf ciscoenvmonsupplystatusindex; //type: int32
         ydk::YLeaf ciscoenvmonsupplystatusdescr; //type: string
         ydk::YLeaf ciscoenvmonsupplystate; //type: CiscoEnvMonState
-        ydk::YLeaf ciscoenvmonsupplysource; //type: Ciscoenvmonsupplysource
-        class Ciscoenvmonsupplysource;
+        ydk::YLeaf ciscoenvmonsupplysource; //type: CiscoEnvMonSupplySource
+        class CiscoEnvMonSupplySource;
 
-}; // CISCOENVMONMIB::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry
+}; // CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry
 
 class CiscoEnvMonState : public ydk::Enum
 {
@@ -311,7 +311,7 @@ class CiscoEnvMonState : public ydk::Enum
 
 };
 
-class CISCOENVMONMIB::Ciscoenvmonobjects::Ciscoenvmonpresent : public ydk::Enum
+class CISCOENVMONMIB::CiscoEnvMonObjects::CiscoEnvMonPresent : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf oldAgs;
@@ -330,7 +330,7 @@ class CISCOENVMONMIB::Ciscoenvmonobjects::Ciscoenvmonpresent : public ydk::Enum
 
 };
 
-class CISCOENVMONMIB::Ciscoenvmonsupplystatustable::Ciscoenvmonsupplystatusentry::Ciscoenvmonsupplysource : public ydk::Enum
+class CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry::CiscoEnvMonSupplySource : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;

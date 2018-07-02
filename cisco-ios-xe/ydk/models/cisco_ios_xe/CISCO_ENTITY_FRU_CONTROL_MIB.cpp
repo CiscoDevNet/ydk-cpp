@@ -13,24 +13,24 @@ namespace CISCO_ENTITY_FRU_CONTROL_MIB {
 
 CISCOENTITYFRUCONTROLMIB::CISCOENTITYFRUCONTROLMIB()
     :
-    cefcfrupower(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupower>())
-	,cefcmibnotificationenables(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables>())
-	,cefcfrupowersupplygrouptable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable>())
-	,cefcfrupowerstatustable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable>())
-	,cefcfrupowersupplyvaluetable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable>())
-	,cefcmoduletable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmoduletable>())
-	,cefcintellimoduletable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable>())
-	,cefcmodulelocalswitchingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable>())
-	,cefcfantraystatustable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable>())
-	,cefcphysicaltable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable>())
-	,cefcpowersupplyinputtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable>())
-	,cefcpowersupplyoutputtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable>())
-	,cefcchassiscoolingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable>())
-	,cefcfancoolingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable>())
-	,cefcmodulecoolingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable>())
-	,cefcfancoolingcaptable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable>())
-	,cefcconnectorratingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable>())
-	,cefcmodulepowerconsumptiontable(std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable>())
+    cefcfrupower(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPower>())
+    , cefcmibnotificationenables(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables>())
+    , cefcfrupowersupplygrouptable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable>())
+    , cefcfrupowerstatustable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable>())
+    , cefcfrupowersupplyvaluetable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable>())
+    , cefcmoduletable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleTable>())
+    , cefcintellimoduletable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable>())
+    , cefcmodulelocalswitchingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable>())
+    , cefcfantraystatustable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable>())
+    , cefcphysicaltable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable>())
+    , cefcpowersupplyinputtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable>())
+    , cefcpowersupplyoutputtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable>())
+    , cefcchassiscoolingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable>())
+    , cefcfancoolingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable>())
+    , cefcmodulecoolingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable>())
+    , cefcfancoolingcaptable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable>())
+    , cefcconnectorratingtable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable>())
+    , cefcmodulepowerconsumptiontable(std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable>())
 {
     cefcfrupower->parent = this;
     cefcmibnotificationenables->parent = this;
@@ -51,7 +51,7 @@ CISCOENTITYFRUCONTROLMIB::CISCOENTITYFRUCONTROLMIB()
     cefcconnectorratingtable->parent = this;
     cefcmodulepowerconsumptiontable->parent = this;
 
-    yang_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOENTITYFRUCONTROLMIB::~CISCOENTITYFRUCONTROLMIB()
@@ -60,6 +60,7 @@ CISCOENTITYFRUCONTROLMIB::~CISCOENTITYFRUCONTROLMIB()
 
 bool CISCOENTITYFRUCONTROLMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cefcfrupower !=  nullptr && cefcfrupower->has_data())
 	|| (cefcmibnotificationenables !=  nullptr && cefcmibnotificationenables->has_data())
 	|| (cefcfrupowersupplygrouptable !=  nullptr && cefcfrupowersupplygrouptable->has_data())
@@ -125,7 +126,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcfrupower == nullptr)
         {
-            cefcfrupower = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupower>();
+            cefcfrupower = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPower>();
         }
         return cefcfrupower;
     }
@@ -134,7 +135,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcmibnotificationenables == nullptr)
         {
-            cefcmibnotificationenables = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables>();
+            cefcmibnotificationenables = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables>();
         }
         return cefcmibnotificationenables;
     }
@@ -143,7 +144,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcfrupowersupplygrouptable == nullptr)
         {
-            cefcfrupowersupplygrouptable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable>();
+            cefcfrupowersupplygrouptable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable>();
         }
         return cefcfrupowersupplygrouptable;
     }
@@ -152,7 +153,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcfrupowerstatustable == nullptr)
         {
-            cefcfrupowerstatustable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable>();
+            cefcfrupowerstatustable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable>();
         }
         return cefcfrupowerstatustable;
     }
@@ -161,7 +162,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcfrupowersupplyvaluetable == nullptr)
         {
-            cefcfrupowersupplyvaluetable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable>();
+            cefcfrupowersupplyvaluetable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable>();
         }
         return cefcfrupowersupplyvaluetable;
     }
@@ -170,7 +171,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcmoduletable == nullptr)
         {
-            cefcmoduletable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmoduletable>();
+            cefcmoduletable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleTable>();
         }
         return cefcmoduletable;
     }
@@ -179,7 +180,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcintellimoduletable == nullptr)
         {
-            cefcintellimoduletable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable>();
+            cefcintellimoduletable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable>();
         }
         return cefcintellimoduletable;
     }
@@ -188,7 +189,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcmodulelocalswitchingtable == nullptr)
         {
-            cefcmodulelocalswitchingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable>();
+            cefcmodulelocalswitchingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable>();
         }
         return cefcmodulelocalswitchingtable;
     }
@@ -197,7 +198,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcfantraystatustable == nullptr)
         {
-            cefcfantraystatustable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable>();
+            cefcfantraystatustable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable>();
         }
         return cefcfantraystatustable;
     }
@@ -206,7 +207,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcphysicaltable == nullptr)
         {
-            cefcphysicaltable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable>();
+            cefcphysicaltable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable>();
         }
         return cefcphysicaltable;
     }
@@ -215,7 +216,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcpowersupplyinputtable == nullptr)
         {
-            cefcpowersupplyinputtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable>();
+            cefcpowersupplyinputtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable>();
         }
         return cefcpowersupplyinputtable;
     }
@@ -224,7 +225,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcpowersupplyoutputtable == nullptr)
         {
-            cefcpowersupplyoutputtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable>();
+            cefcpowersupplyoutputtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable>();
         }
         return cefcpowersupplyoutputtable;
     }
@@ -233,7 +234,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcchassiscoolingtable == nullptr)
         {
-            cefcchassiscoolingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable>();
+            cefcchassiscoolingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable>();
         }
         return cefcchassiscoolingtable;
     }
@@ -242,7 +243,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcfancoolingtable == nullptr)
         {
-            cefcfancoolingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable>();
+            cefcfancoolingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable>();
         }
         return cefcfancoolingtable;
     }
@@ -251,7 +252,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcmodulecoolingtable == nullptr)
         {
-            cefcmodulecoolingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable>();
+            cefcmodulecoolingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable>();
         }
         return cefcmodulecoolingtable;
     }
@@ -260,7 +261,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcfancoolingcaptable == nullptr)
         {
-            cefcfancoolingcaptable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable>();
+            cefcfancoolingcaptable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable>();
         }
         return cefcfancoolingcaptable;
     }
@@ -269,7 +270,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcconnectorratingtable == nullptr)
         {
-            cefcconnectorratingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable>();
+            cefcconnectorratingtable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable>();
         }
         return cefcconnectorratingtable;
     }
@@ -278,7 +279,7 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     {
         if(cefcmodulepowerconsumptiontable == nullptr)
         {
-            cefcmodulepowerconsumptiontable = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable>();
+            cefcmodulepowerconsumptiontable = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable>();
         }
         return cefcmodulepowerconsumptiontable;
     }
@@ -423,47 +424,48 @@ bool CISCOENTITYFRUCONTROLMIB::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupower::Cefcfrupower()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPower::CefcFRUPower()
     :
     cefcmaxdefaultinlinepower{YType::int32, "cefcMaxDefaultInLinePower"},
     cefcmaxdefaulthighinlinepower{YType::uint32, "cefcMaxDefaultHighInLinePower"}
 {
 
-    yang_name = "cefcFRUPower"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFRUPower"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupower::~Cefcfrupower()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPower::~CefcFRUPower()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupower::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPower::has_data() const
 {
+    if (is_presence_container) return true;
     return cefcmaxdefaultinlinepower.is_set
 	|| cefcmaxdefaulthighinlinepower.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupower::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPower::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cefcmaxdefaultinlinepower.yfilter)
 	|| ydk::is_set(cefcmaxdefaulthighinlinepower.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupower::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupower::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcFRUPower";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfrupower::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -474,19 +476,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfru
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfrupower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfrupower::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefcMaxDefaultInLinePower")
     {
@@ -502,7 +504,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupower::set_value(const std::string & value
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupower::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPower::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cefcMaxDefaultInLinePower")
     {
@@ -514,54 +516,55 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupower::set_filter(const std::string & valu
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupower::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPower::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcMaxDefaultInLinePower" || name == "cefcMaxDefaultHighInLinePower")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::Cefcmibnotificationenables()
+CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::CefcMIBNotificationEnables()
     :
     cefcmibenablestatusnotification{YType::boolean, "cefcMIBEnableStatusNotification"},
     cefcenablepsoutputchangenotif{YType::boolean, "cefcEnablePSOutputChangeNotif"}
 {
 
-    yang_name = "cefcMIBNotificationEnables"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcMIBNotificationEnables"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::~Cefcmibnotificationenables()
+CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::~CefcMIBNotificationEnables()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::has_data() const
 {
+    if (is_presence_container) return true;
     return cefcmibenablestatusnotification.is_set
 	|| cefcenablepsoutputchangenotif.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cefcmibenablestatusnotification.yfilter)
 	|| ydk::is_set(cefcenablepsoutputchangenotif.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcMIBNotificationEnables";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -572,19 +575,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmib
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefcMIBEnableStatusNotification")
     {
@@ -600,7 +603,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::set_value(const std::
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cefcMIBEnableStatusNotification")
     {
@@ -612,26 +615,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::set_filter(const std:
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcMIBEnableStatusNotification" || name == "cefcEnablePSOutputChangeNotif")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygrouptable()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupTable()
+    :
+    cefcfrupowersupplygroupentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcFRUPowerSupplyGroupTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFRUPowerSupplyGroupTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::~Cefcfrupowersupplygrouptable()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::~CefcFRUPowerSupplyGroupTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.len(); index++)
     {
         if(cefcfrupowersupplygroupentry[index]->has_data())
             return true;
@@ -639,9 +645,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.len(); index++)
     {
         if(cefcfrupowersupplygroupentry[index]->has_operation())
             return true;
@@ -649,21 +655,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::has_operation() con
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcFRUPowerSupplyGroupTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -672,25 +678,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfru
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFRUPowerSupplyGroupEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry>();
         c->parent = this;
-        cefcfrupowersupplygroupentry.push_back(c);
+        cefcfrupowersupplygroupentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcfrupowersupplygroupentry)
+    for (auto c : cefcfrupowersupplygroupentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -701,22 +707,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfru
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcFRUPowerSupplyGroupEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcfrupowersupplygroupentry()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcFRUPowerSupplyGroupEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcpowerredundancymode{YType::enumeration, "cefcPowerRedundancyMode"},
@@ -728,15 +734,16 @@ CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupe
     cefctotaldrawninlinecurrent{YType::int32, "cefcTotalDrawnInlineCurrent"}
 {
 
-    yang_name = "cefcFRUPowerSupplyGroupEntry"; yang_parent_name = "cefcFRUPowerSupplyGroupTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFRUPowerSupplyGroupEntry"; yang_parent_name = "cefcFRUPowerSupplyGroupTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::~Cefcfrupowersupplygroupentry()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::~CefcFRUPowerSupplyGroupEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcpowerredundancymode.is_set
 	|| cefcpowerunits.is_set
@@ -747,7 +754,7 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplyg
 	|| cefctotaldrawninlinecurrent.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -760,21 +767,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplyg
 	|| ydk::is_set(cefctotaldrawninlinecurrent.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcFRUPowerSupplyGroupTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcFRUPowerSupplyGroupEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcFRUPowerSupplyGroupEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -791,19 +799,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfru
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -855,7 +863,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplyg
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -891,26 +899,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplyg
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcPowerRedundancyMode" || name == "cefcPowerUnits" || name == "cefcTotalAvailableCurrent" || name == "cefcTotalDrawnCurrent" || name == "cefcPowerRedundancyOperMode" || name == "cefcPowerNonRedundantReason" || name == "cefcTotalDrawnInlineCurrent")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatustable()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusTable()
+    :
+    cefcfrupowerstatusentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcFRUPowerStatusTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFRUPowerStatusTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::~Cefcfrupowerstatustable()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::~CefcFRUPowerStatusTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowerstatusentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcfrupowerstatusentry.len(); index++)
     {
         if(cefcfrupowerstatusentry[index]->has_data())
             return true;
@@ -918,9 +929,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowerstatusentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowerstatusentry.len(); index++)
     {
         if(cefcfrupowerstatusentry[index]->has_operation())
             return true;
@@ -928,21 +939,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcFRUPowerStatusTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -951,25 +962,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfru
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFRUPowerStatusEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry>();
         c->parent = this;
-        cefcfrupowerstatusentry.push_back(c);
+        cefcfrupowerstatusentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcfrupowerstatusentry)
+    for (auto c : cefcfrupowerstatusentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -980,22 +991,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfru
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcFRUPowerStatusEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::Cefcfrupowerstatusentry()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::CefcFRUPowerStatusEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcfrupoweradminstatus{YType::enumeration, "cefcFRUPowerAdminStatus"},
@@ -1005,15 +1016,16 @@ CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::Cefc
     cefcfrurealtimecurrent{YType::int32, "cefcFRURealTimeCurrent"}
 {
 
-    yang_name = "cefcFRUPowerStatusEntry"; yang_parent_name = "cefcFRUPowerStatusTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFRUPowerStatusEntry"; yang_parent_name = "cefcFRUPowerStatusTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::~Cefcfrupowerstatusentry()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::~CefcFRUPowerStatusEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcfrupoweradminstatus.is_set
 	|| cefcfrupoweroperstatus.is_set
@@ -1022,7 +1034,7 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry:
 	|| cefcfrurealtimecurrent.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1033,21 +1045,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry:
 	|| ydk::is_set(cefcfrurealtimecurrent.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcFRUPowerStatusTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcFRUPowerStatusEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcFRUPowerStatusEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1062,19 +1075,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfru
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1112,7 +1125,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry:
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1140,26 +1153,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry:
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcFRUPowerAdminStatus" || name == "cefcFRUPowerOperStatus" || name == "cefcFRUCurrent" || name == "cefcFRUPowerCapability" || name == "cefcFRURealTimeCurrent")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvaluetable()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueTable()
+    :
+    cefcfrupowersupplyvalueentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcFRUPowerSupplyValueTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFRUPowerSupplyValueTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::~Cefcfrupowersupplyvaluetable()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::~CefcFRUPowerSupplyValueTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.len(); index++)
     {
         if(cefcfrupowersupplyvalueentry[index]->has_data())
             return true;
@@ -1167,9 +1183,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.len(); index++)
     {
         if(cefcfrupowersupplyvalueentry[index]->has_operation())
             return true;
@@ -1177,21 +1193,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::has_operation() con
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcFRUPowerSupplyValueTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1200,25 +1216,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfru
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFRUPowerSupplyValueEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry>();
         c->parent = this;
-        cefcfrupowersupplyvalueentry.push_back(c);
+        cefcfrupowersupplyvalueentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcfrupowersupplyvalueentry)
+    for (auto c : cefcfrupowersupplyvalueentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1229,22 +1245,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfru
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcFRUPowerSupplyValueEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::Cefcfrupowersupplyvalueentry()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::CefcFRUPowerSupplyValueEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcfrutotalsystemcurrent{YType::int32, "cefcFRUTotalSystemCurrent"},
@@ -1253,15 +1269,16 @@ CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvaluee
     cefcfrudrawninlinecurrent{YType::int32, "cefcFRUDrawnInlineCurrent"}
 {
 
-    yang_name = "cefcFRUPowerSupplyValueEntry"; yang_parent_name = "cefcFRUPowerSupplyValueTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFRUPowerSupplyValueEntry"; yang_parent_name = "cefcFRUPowerSupplyValueTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::~Cefcfrupowersupplyvalueentry()
+CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::~CefcFRUPowerSupplyValueEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcfrutotalsystemcurrent.is_set
 	|| cefcfrudrawnsystemcurrent.is_set
@@ -1269,7 +1286,7 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyv
 	|| cefcfrudrawninlinecurrent.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1279,21 +1296,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyv
 	|| ydk::is_set(cefcfrudrawninlinecurrent.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcFRUPowerSupplyValueTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcFRUPowerSupplyValueEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcFRUPowerSupplyValueEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1307,19 +1325,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfru
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1353,7 +1371,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyv
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1377,26 +1395,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyv
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcFRUTotalSystemCurrent" || name == "cefcFRUDrawnSystemCurrent" || name == "cefcFRUTotalInlineCurrent" || name == "cefcFRUDrawnInlineCurrent")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduletable()
+CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleTable()
+    :
+    cefcmoduleentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcModuleTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModuleTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::~Cefcmoduletable()
+CISCOENTITYFRUCONTROLMIB::CefcModuleTable::~CefcModuleTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmoduleentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcmoduleentry.len(); index++)
     {
         if(cefcmoduleentry[index]->has_data())
             return true;
@@ -1404,9 +1425,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmoduleentry.size(); index++)
+    for (std::size_t index=0; index<cefcmoduleentry.len(); index++)
     {
         if(cefcmoduleentry[index]->has_operation())
             return true;
@@ -1414,21 +1435,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcModuleTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1437,25 +1458,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModuleEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry>();
         c->parent = this;
-        cefcmoduleentry.push_back(c);
+        cefcmoduleentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcmoduleentry)
+    for (auto c : cefcmoduleentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1466,22 +1487,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmod
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcModuleEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::Cefcmoduleentry()
+CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::CefcModuleEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcmoduleadminstatus{YType::enumeration, "cefcModuleAdminStatus"},
@@ -1494,15 +1515,16 @@ CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::Cefcmoduleentry()
     cefcmoduleuptime{YType::uint32, "cefcModuleUpTime"}
 {
 
-    yang_name = "cefcModuleEntry"; yang_parent_name = "cefcModuleTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModuleEntry"; yang_parent_name = "cefcModuleTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::~Cefcmoduleentry()
+CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::~CefcModuleEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcmoduleadminstatus.is_set
 	|| cefcmoduleoperstatus.is_set
@@ -1514,7 +1536,7 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::has_data() cons
 	|| cefcmoduleuptime.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1528,21 +1550,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::has_operation()
 	|| ydk::is_set(cefcmoduleuptime.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcModuleTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcModuleEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcModuleEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1560,19 +1583,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1630,7 +1653,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::set_value(const
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1670,26 +1693,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::set_filter(cons
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcModuleAdminStatus" || name == "cefcModuleOperStatus" || name == "cefcModuleResetReason" || name == "cefcModuleStatusLastChangeTime" || name == "cefcModuleLastClearConfigTime" || name == "cefcModuleResetReasonDescription" || name == "cefcModuleStateChangeReasonDescr" || name == "cefcModuleUpTime")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduletable()
+CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleTable()
+    :
+    cefcintellimoduleentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcIntelliModuleTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcIntelliModuleTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::~Cefcintellimoduletable()
+CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::~CefcIntelliModuleTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcintellimoduleentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcintellimoduleentry.len(); index++)
     {
         if(cefcintellimoduleentry[index]->has_data())
             return true;
@@ -1697,9 +1723,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcintellimoduleentry.size(); index++)
+    for (std::size_t index=0; index<cefcintellimoduleentry.len(); index++)
     {
         if(cefcintellimoduleentry[index]->has_operation())
             return true;
@@ -1707,21 +1733,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcIntelliModuleTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1730,25 +1756,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcint
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcIntelliModuleEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry>();
         c->parent = this;
-        cefcintellimoduleentry.push_back(c);
+        cefcintellimoduleentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcintellimoduleentry)
+    for (auto c : cefcintellimoduleentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1759,43 +1785,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcint
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcIntelliModuleEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::Cefcintellimoduleentry()
+CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::CefcIntelliModuleEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcintellimoduleipaddrtype{YType::enumeration, "cefcIntelliModuleIPAddrType"},
     cefcintellimoduleipaddr{YType::str, "cefcIntelliModuleIPAddr"}
 {
 
-    yang_name = "cefcIntelliModuleEntry"; yang_parent_name = "cefcIntelliModuleTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcIntelliModuleEntry"; yang_parent_name = "cefcIntelliModuleTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::~Cefcintellimoduleentry()
+CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::~CefcIntelliModuleEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcintellimoduleipaddrtype.is_set
 	|| cefcintellimoduleipaddr.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1803,21 +1830,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::h
 	|| ydk::is_set(cefcintellimoduleipaddr.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcIntelliModuleTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcIntelliModuleEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcIntelliModuleEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1829,19 +1857,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcint
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1863,7 +1891,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::s
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1879,26 +1907,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::s
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcIntelliModuleIPAddrType" || name == "cefcIntelliModuleIPAddr")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingtable()
+CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingTable()
+    :
+    cefcmodulelocalswitchingentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcModuleLocalSwitchingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModuleLocalSwitchingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::~Cefcmodulelocalswitchingtable()
+CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::~CefcModuleLocalSwitchingTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.len(); index++)
     {
         if(cefcmodulelocalswitchingentry[index]->has_data())
             return true;
@@ -1906,9 +1937,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.len(); index++)
     {
         if(cefcmodulelocalswitchingentry[index]->has_operation())
             return true;
@@ -1916,21 +1947,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::has_operation() co
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcModuleLocalSwitchingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1939,25 +1970,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModuleLocalSwitchingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry>();
         c->parent = this;
-        cefcmodulelocalswitchingentry.push_back(c);
+        cefcmodulelocalswitchingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcmodulelocalswitchingentry)
+    for (auto c : cefcmodulelocalswitchingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1968,62 +1999,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmod
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcModuleLocalSwitchingEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingentry()
+CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::CefcModuleLocalSwitchingEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcmodulelocalswitchingmode{YType::enumeration, "cefcModuleLocalSwitchingMode"}
 {
 
-    yang_name = "cefcModuleLocalSwitchingEntry"; yang_parent_name = "cefcModuleLocalSwitchingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModuleLocalSwitchingEntry"; yang_parent_name = "cefcModuleLocalSwitchingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::~Cefcmodulelocalswitchingentry()
+CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::~CefcModuleLocalSwitchingEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcmodulelocalswitchingmode.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
 	|| ydk::is_set(cefcmodulelocalswitchingmode.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcModuleLocalSwitchingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcModuleLocalSwitchingEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcModuleLocalSwitchingEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2034,19 +2067,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2062,7 +2095,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswi
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2074,26 +2107,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswi
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcModuleLocalSwitchingMode")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatustable()
+CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusTable()
+    :
+    cefcfantraystatusentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcFanTrayStatusTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFanTrayStatusTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::~Cefcfantraystatustable()
+CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::~CefcFanTrayStatusTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfantraystatusentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcfantraystatusentry.len(); index++)
     {
         if(cefcfantraystatusentry[index]->has_data())
             return true;
@@ -2101,9 +2137,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfantraystatusentry.size(); index++)
+    for (std::size_t index=0; index<cefcfantraystatusentry.len(); index++)
     {
         if(cefcfantraystatusentry[index]->has_operation())
             return true;
@@ -2111,21 +2147,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcFanTrayStatusTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2134,25 +2170,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFanTrayStatusEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry>();
         c->parent = this;
-        cefcfantraystatusentry.push_back(c);
+        cefcfantraystatusentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcfantraystatusentry)
+    for (auto c : cefcfantraystatusentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2163,62 +2199,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfan
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcFanTrayStatusEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantraystatusentry()
+CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::CefcFanTrayStatusEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcfantrayoperstatus{YType::enumeration, "cefcFanTrayOperStatus"}
 {
 
-    yang_name = "cefcFanTrayStatusEntry"; yang_parent_name = "cefcFanTrayStatusTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFanTrayStatusEntry"; yang_parent_name = "cefcFanTrayStatusTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::~Cefcfantraystatusentry()
+CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::~CefcFanTrayStatusEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcfantrayoperstatus.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
 	|| ydk::is_set(cefcfantrayoperstatus.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcFanTrayStatusTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcFanTrayStatusEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcFanTrayStatusEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2229,19 +2267,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2257,7 +2295,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::s
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2269,26 +2307,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::s
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcFanTrayOperStatus")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicaltable()
+CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalTable()
+    :
+    cefcphysicalentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcPhysicalTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcPhysicalTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::~Cefcphysicaltable()
+CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::~CefcPhysicalTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcphysicalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcphysicalentry.len(); index++)
     {
         if(cefcphysicalentry[index]->has_data())
             return true;
@@ -2296,9 +2337,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcphysicalentry.size(); index++)
+    for (std::size_t index=0; index<cefcphysicalentry.len(); index++)
     {
         if(cefcphysicalentry[index]->has_operation())
             return true;
@@ -2306,21 +2347,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcPhysicalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2329,25 +2370,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcphy
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcPhysicalEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry>();
         c->parent = this;
-        cefcphysicalentry.push_back(c);
+        cefcphysicalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcphysicalentry)
+    for (auto c : cefcphysicalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2358,62 +2399,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcphy
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcPhysicalEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalentry()
+CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysicalEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcphysicalstatus{YType::enumeration, "cefcPhysicalStatus"}
 {
 
-    yang_name = "cefcPhysicalEntry"; yang_parent_name = "cefcPhysicalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcPhysicalEntry"; yang_parent_name = "cefcPhysicalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::~Cefcphysicalentry()
+CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::~CefcPhysicalEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcphysicalstatus.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
 	|| ydk::is_set(cefcphysicalstatus.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcPhysicalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcPhysicalEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcPhysicalEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2424,19 +2467,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcphy
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2452,7 +2495,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::set_value(c
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2464,26 +2507,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::set_filter(
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcPhysicalStatus")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputtable()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputTable()
+    :
+    cefcpowersupplyinputentry(this, {"entphysicalindex", "cefcpowersupplyinputindex"})
 {
 
-    yang_name = "cefcPowerSupplyInputTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcPowerSupplyInputTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::~Cefcpowersupplyinputtable()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::~CefcPowerSupplyInputTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyinputentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcpowersupplyinputentry.len(); index++)
     {
         if(cefcpowersupplyinputentry[index]->has_data())
             return true;
@@ -2491,9 +2537,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyinputentry.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyinputentry.len(); index++)
     {
         if(cefcpowersupplyinputentry[index]->has_operation())
             return true;
@@ -2501,21 +2547,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcPowerSupplyInputTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2524,25 +2570,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcPowerSupplyInputEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry>();
         c->parent = this;
-        cefcpowersupplyinputentry.push_back(c);
+        cefcpowersupplyinputentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcpowersupplyinputentry)
+    for (auto c : cefcpowersupplyinputentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2553,43 +2599,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcpow
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcPowerSupplyInputEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputentry()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcpowersupplyinputindex{YType::uint32, "cefcPowerSupplyInputIndex"},
     cefcpowersupplyinputtype{YType::enumeration, "cefcPowerSupplyInputType"}
 {
 
-    yang_name = "cefcPowerSupplyInputEntry"; yang_parent_name = "cefcPowerSupplyInputTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcPowerSupplyInputEntry"; yang_parent_name = "cefcPowerSupplyInputTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::~Cefcpowersupplyinputentry()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::~CefcPowerSupplyInputEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcpowersupplyinputindex.is_set
 	|| cefcpowersupplyinputtype.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -2597,21 +2644,23 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputen
 	|| ydk::is_set(cefcpowersupplyinputtype.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcPowerSupplyInputTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcPowerSupplyInputEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefcPowerSupplyInputIndex='" <<cefcpowersupplyinputindex <<"']";
+    path_buffer << "cefcPowerSupplyInputEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cefcpowersupplyinputindex, "cefcPowerSupplyInputIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2623,19 +2672,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2657,7 +2706,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputen
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2673,26 +2722,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputen
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcPowerSupplyInputIndex" || name == "cefcPowerSupplyInputType")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputtable()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputTable()
+    :
+    cefcpowersupplyoutputentry(this, {"entphysicalindex", "cefcpsoutputmodeindex"})
 {
 
-    yang_name = "cefcPowerSupplyOutputTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcPowerSupplyOutputTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::~Cefcpowersupplyoutputtable()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::~CefcPowerSupplyOutputTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyoutputentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcpowersupplyoutputentry.len(); index++)
     {
         if(cefcpowersupplyoutputentry[index]->has_data())
             return true;
@@ -2700,9 +2752,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyoutputentry.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyoutputentry.len(); index++)
     {
         if(cefcpowersupplyoutputentry[index]->has_operation())
             return true;
@@ -2710,21 +2762,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcPowerSupplyOutputTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2733,25 +2785,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcPowerSupplyOutputEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry>();
         c->parent = this;
-        cefcpowersupplyoutputentry.push_back(c);
+        cefcpowersupplyoutputentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcpowersupplyoutputentry)
+    for (auto c : cefcpowersupplyoutputentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2762,22 +2814,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcpow
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcPowerSupplyOutputEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::Cefcpowersupplyoutputentry()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::CefcPowerSupplyOutputEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcpsoutputmodeindex{YType::uint32, "cefcPSOutputModeIndex"},
@@ -2785,22 +2837,23 @@ CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry
     cefcpsoutputmodeinoperation{YType::boolean, "cefcPSOutputModeInOperation"}
 {
 
-    yang_name = "cefcPowerSupplyOutputEntry"; yang_parent_name = "cefcPowerSupplyOutputTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcPowerSupplyOutputEntry"; yang_parent_name = "cefcPowerSupplyOutputTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::~Cefcpowersupplyoutputentry()
+CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::~CefcPowerSupplyOutputEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcpsoutputmodeindex.is_set
 	|| cefcpsoutputmodecurrent.is_set
 	|| cefcpsoutputmodeinoperation.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -2809,21 +2862,23 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutput
 	|| ydk::is_set(cefcpsoutputmodeinoperation.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcPowerSupplyOutputTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcPowerSupplyOutputEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefcPSOutputModeIndex='" <<cefcpsoutputmodeindex <<"']";
+    path_buffer << "cefcPowerSupplyOutputEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cefcpsoutputmodeindex, "cefcPSOutputModeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2836,19 +2891,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcpow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2876,7 +2931,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutput
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2896,26 +2951,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutput
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcPSOutputModeIndex" || name == "cefcPSOutputModeCurrent" || name == "cefcPSOutputModeInOperation")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingtable()
+CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingTable()
+    :
+    cefcchassiscoolingentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcChassisCoolingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcChassisCoolingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::~Cefcchassiscoolingtable()
+CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::~CefcChassisCoolingTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcchassiscoolingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcchassiscoolingentry.len(); index++)
     {
         if(cefcchassiscoolingentry[index]->has_data())
             return true;
@@ -2923,9 +2981,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcchassiscoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcchassiscoolingentry.len(); index++)
     {
         if(cefcchassiscoolingentry[index]->has_operation())
             return true;
@@ -2933,21 +2991,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcChassisCoolingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2956,25 +3014,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefccha
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcChassisCoolingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry>();
         c->parent = this;
-        cefcchassiscoolingentry.push_back(c);
+        cefcchassiscoolingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcchassiscoolingentry)
+    for (auto c : cefcchassiscoolingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2985,43 +3043,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefccha
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcChassisCoolingEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::Cefcchassiscoolingentry()
+CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::CefcChassisCoolingEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcchassisperslotcoolingcap{YType::uint32, "cefcChassisPerSlotCoolingCap"},
     cefcchassisperslotcoolingunit{YType::enumeration, "cefcChassisPerSlotCoolingUnit"}
 {
 
-    yang_name = "cefcChassisCoolingEntry"; yang_parent_name = "cefcChassisCoolingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcChassisCoolingEntry"; yang_parent_name = "cefcChassisCoolingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::~Cefcchassiscoolingentry()
+CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::~CefcChassisCoolingEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcchassisperslotcoolingcap.is_set
 	|| cefcchassisperslotcoolingunit.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3029,21 +3088,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry:
 	|| ydk::is_set(cefcchassisperslotcoolingunit.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcChassisCoolingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcChassisCoolingEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcChassisCoolingEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3055,19 +3115,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefccha
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3089,7 +3149,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry:
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3105,26 +3165,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry:
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcChassisPerSlotCoolingCap" || name == "cefcChassisPerSlotCoolingUnit")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingtable()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingTable()
+    :
+    cefcfancoolingentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcFanCoolingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFanCoolingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::~Cefcfancoolingtable()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::~CefcFanCoolingTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfancoolingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcfancoolingentry.len(); index++)
     {
         if(cefcfancoolingentry[index]->has_data())
             return true;
@@ -3132,9 +3195,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfancoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingentry.len(); index++)
     {
         if(cefcfancoolingentry[index]->has_operation())
             return true;
@@ -3142,21 +3205,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcFanCoolingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3165,25 +3228,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFanCoolingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry>();
         c->parent = this;
-        cefcfancoolingentry.push_back(c);
+        cefcfancoolingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcfancoolingentry)
+    for (auto c : cefcfancoolingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3194,43 +3257,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfan
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcFanCoolingEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::Cefcfancoolingentry()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::CefcFanCoolingEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcfancoolingcapacity{YType::uint32, "cefcFanCoolingCapacity"},
     cefcfancoolingcapacityunit{YType::enumeration, "cefcFanCoolingCapacityUnit"}
 {
 
-    yang_name = "cefcFanCoolingEntry"; yang_parent_name = "cefcFanCoolingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFanCoolingEntry"; yang_parent_name = "cefcFanCoolingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::~Cefcfancoolingentry()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::~CefcFanCoolingEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcfancoolingcapacity.is_set
 	|| cefcfancoolingcapacityunit.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3238,21 +3302,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::has_ope
 	|| ydk::is_set(cefcfancoolingcapacityunit.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcFanCoolingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcFanCoolingEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcFanCoolingEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3264,19 +3329,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3298,7 +3363,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::set_val
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3314,26 +3379,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::set_fil
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcFanCoolingCapacity" || name == "cefcFanCoolingCapacityUnit")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingtable()
+CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingTable()
+    :
+    cefcmodulecoolingentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcModuleCoolingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModuleCoolingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::~Cefcmodulecoolingtable()
+CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::~CefcModuleCoolingTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulecoolingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcmodulecoolingentry.len(); index++)
     {
         if(cefcmodulecoolingentry[index]->has_data())
             return true;
@@ -3341,9 +3409,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulecoolingentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulecoolingentry.len(); index++)
     {
         if(cefcmodulecoolingentry[index]->has_operation())
             return true;
@@ -3351,21 +3419,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcModuleCoolingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3374,25 +3442,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModuleCoolingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry>();
         c->parent = this;
-        cefcmodulecoolingentry.push_back(c);
+        cefcmodulecoolingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcmodulecoolingentry)
+    for (auto c : cefcmodulecoolingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3403,43 +3471,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmod
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcModuleCoolingEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::Cefcmodulecoolingentry()
+CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::CefcModuleCoolingEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcmodulecooling{YType::uint32, "cefcModuleCooling"},
     cefcmodulecoolingunit{YType::enumeration, "cefcModuleCoolingUnit"}
 {
 
-    yang_name = "cefcModuleCoolingEntry"; yang_parent_name = "cefcModuleCoolingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModuleCoolingEntry"; yang_parent_name = "cefcModuleCoolingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::~Cefcmodulecoolingentry()
+CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::~CefcModuleCoolingEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcmodulecooling.is_set
 	|| cefcmodulecoolingunit.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3447,21 +3516,22 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::h
 	|| ydk::is_set(cefcmodulecoolingunit.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcModuleCoolingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcModuleCoolingEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcModuleCoolingEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3473,19 +3543,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3507,7 +3577,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::s
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3523,26 +3593,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::s
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcModuleCooling" || name == "cefcModuleCoolingUnit")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcaptable()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapTable()
+    :
+    cefcfancoolingcapentry(this, {"entphysicalindex", "cefcfancoolingcapindex"})
 {
 
-    yang_name = "cefcFanCoolingCapTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFanCoolingCapTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::~Cefcfancoolingcaptable()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::~CefcFanCoolingCapTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfancoolingcapentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcfancoolingcapentry.len(); index++)
     {
         if(cefcfancoolingcapentry[index]->has_data())
             return true;
@@ -3550,9 +3623,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfancoolingcapentry.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingcapentry.len(); index++)
     {
         if(cefcfancoolingcapentry[index]->has_operation())
             return true;
@@ -3560,21 +3633,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcFanCoolingCapTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3583,25 +3656,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFanCoolingCapEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry>();
         c->parent = this;
-        cefcfancoolingcapentry.push_back(c);
+        cefcfancoolingcapentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcfancoolingcapentry)
+    for (auto c : cefcfancoolingcapentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3612,22 +3685,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfan
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcFanCoolingCapEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::Cefcfancoolingcapentry()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::CefcFanCoolingCapEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcfancoolingcapindex{YType::uint32, "cefcFanCoolingCapIndex"},
@@ -3637,15 +3710,16 @@ CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::Cefcfa
     cefcfancoolingcapcapacityunit{YType::enumeration, "cefcFanCoolingCapCapacityUnit"}
 {
 
-    yang_name = "cefcFanCoolingCapEntry"; yang_parent_name = "cefcFanCoolingCapTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcFanCoolingCapEntry"; yang_parent_name = "cefcFanCoolingCapTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::~Cefcfancoolingcapentry()
+CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::~CefcFanCoolingCapEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcfancoolingcapindex.is_set
 	|| cefcfancoolingcapmodedescr.is_set
@@ -3654,7 +3728,7 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::h
 	|| cefcfancoolingcapcapacityunit.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3665,21 +3739,23 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::h
 	|| ydk::is_set(cefcfancoolingcapcapacityunit.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcFanCoolingCapTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcFanCoolingCapEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefcFanCoolingCapIndex='" <<cefcfancoolingcapindex <<"']";
+    path_buffer << "cefcFanCoolingCapEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cefcfancoolingcapindex, "cefcFanCoolingCapIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3694,19 +3770,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcfan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3746,7 +3822,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::s
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3774,26 +3850,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::s
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcFanCoolingCapIndex" || name == "cefcFanCoolingCapModeDescr" || name == "cefcFanCoolingCapCapacity" || name == "cefcFanCoolingCapCurrent" || name == "cefcFanCoolingCapCapacityUnit")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingtable()
+CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingTable()
+    :
+    cefcconnectorratingentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcConnectorRatingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcConnectorRatingTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::~Cefcconnectorratingtable()
+CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::~CefcConnectorRatingTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcconnectorratingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcconnectorratingentry.len(); index++)
     {
         if(cefcconnectorratingentry[index]->has_data())
             return true;
@@ -3801,9 +3880,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcconnectorratingentry.size(); index++)
+    for (std::size_t index=0; index<cefcconnectorratingentry.len(); index++)
     {
         if(cefcconnectorratingentry[index]->has_operation())
             return true;
@@ -3811,21 +3890,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcConnectorRatingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3834,25 +3913,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefccon
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcConnectorRatingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry>();
         c->parent = this;
-        cefcconnectorratingentry.push_back(c);
+        cefcconnectorratingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcconnectorratingentry)
+    for (auto c : cefcconnectorratingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3863,62 +3942,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefccon
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcConnectorRatingEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::Cefcconnectorratingentry()
+CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::CefcConnectorRatingEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcconnectorrating{YType::int32, "cefcConnectorRating"}
 {
 
-    yang_name = "cefcConnectorRatingEntry"; yang_parent_name = "cefcConnectorRatingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcConnectorRatingEntry"; yang_parent_name = "cefcConnectorRatingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::~Cefcconnectorratingentry()
+CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::~CefcConnectorRatingEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcconnectorrating.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
 	|| ydk::is_set(cefcconnectorrating.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcConnectorRatingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcConnectorRatingEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcConnectorRatingEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3929,19 +4010,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefccon
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3957,7 +4038,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentr
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3969,26 +4050,29 @@ void CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentr
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcConnectorRating")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptiontable()
+CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionTable()
+    :
+    cefcmodulepowerconsumptionentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefcModulePowerConsumptionTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModulePowerConsumptionTable"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::~Cefcmodulepowerconsumptiontable()
+CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::~CefcModulePowerConsumptionTable()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.len(); index++)
     {
         if(cefcmodulepowerconsumptionentry[index]->has_data())
             return true;
@@ -3996,9 +4080,9 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::has_data() const
     return false;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.size(); index++)
+    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.len(); index++)
     {
         if(cefcmodulepowerconsumptionentry[index]->has_operation())
             return true;
@@ -4006,21 +4090,21 @@ bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::has_operation() 
     return is_set(yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefcModulePowerConsumptionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4029,25 +4113,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModulePowerConsumptionEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry>();
+        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry>();
         c->parent = this;
-        cefcmodulepowerconsumptionentry.push_back(c);
+        cefcmodulepowerconsumptionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcmodulepowerconsumptionentry)
+    for (auto c : cefcmodulepowerconsumptionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4058,62 +4142,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmod
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefcModulePowerConsumptionEntry")
         return true;
     return false;
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::Cefcmodulepowerconsumptionentry()
+CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::CefcModulePowerConsumptionEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefcmodulepowerconsumption{YType::int32, "cefcModulePowerConsumption"}
 {
 
-    yang_name = "cefcModulePowerConsumptionEntry"; yang_parent_name = "cefcModulePowerConsumptionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefcModulePowerConsumptionEntry"; yang_parent_name = "cefcModulePowerConsumptionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::~Cefcmodulepowerconsumptionentry()
+CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::~CefcModulePowerConsumptionEntry()
 {
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::has_data() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefcmodulepowerconsumption.is_set;
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::has_operation() const
+bool CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
 	|| ydk::is_set(cefcmodulepowerconsumption.yfilter);
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::get_absolute_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENTITY-FRU-CONTROL-MIB:CISCO-ENTITY-FRU-CONTROL-MIB/cefcModulePowerConsumptionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::get_segment_path() const
+std::string CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefcModulePowerConsumptionEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefcModulePowerConsumptionEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4124,19 +4210,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::Cefcmod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -4152,7 +4238,7 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerc
     }
 }
 
-void CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -4164,44 +4250,26 @@ void CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerc
     }
 }
 
-bool CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefcModulePowerConsumption")
         return true;
     return false;
 }
 
-const Enum::YLeaf PowerRedundancyType::notsupported {1, "notsupported"};
-const Enum::YLeaf PowerRedundancyType::redundant {2, "redundant"};
-const Enum::YLeaf PowerRedundancyType::combined {3, "combined"};
-const Enum::YLeaf PowerRedundancyType::nonRedundant {4, "nonRedundant"};
-const Enum::YLeaf PowerRedundancyType::psRedundant {5, "psRedundant"};
-const Enum::YLeaf PowerRedundancyType::inPwrSrcRedundant {6, "inPwrSrcRedundant"};
-const Enum::YLeaf PowerRedundancyType::psRedundantSingleInput {7, "psRedundantSingleInput"};
+const Enum::YLeaf ModuleAdminType::enabled {1, "enabled"};
+const Enum::YLeaf ModuleAdminType::disabled {2, "disabled"};
+const Enum::YLeaf ModuleAdminType::reset {3, "reset"};
+const Enum::YLeaf ModuleAdminType::outOfServiceAdmin {4, "outOfServiceAdmin"};
+
+const Enum::YLeaf FRUCoolingUnit::cfm {1, "cfm"};
+const Enum::YLeaf FRUCoolingUnit::watts {2, "watts"};
 
 const Enum::YLeaf PowerAdminType::on {1, "on"};
 const Enum::YLeaf PowerAdminType::off {2, "off"};
 const Enum::YLeaf PowerAdminType::inlineAuto {3, "inlineAuto"};
 const Enum::YLeaf PowerAdminType::inlineOn {4, "inlineOn"};
 const Enum::YLeaf PowerAdminType::powerCycle {5, "powerCycle"};
-
-const Enum::YLeaf PowerOperType::offEnvOther {1, "offEnvOther"};
-const Enum::YLeaf PowerOperType::on {2, "on"};
-const Enum::YLeaf PowerOperType::offAdmin {3, "offAdmin"};
-const Enum::YLeaf PowerOperType::offDenied {4, "offDenied"};
-const Enum::YLeaf PowerOperType::offEnvPower {5, "offEnvPower"};
-const Enum::YLeaf PowerOperType::offEnvTemp {6, "offEnvTemp"};
-const Enum::YLeaf PowerOperType::offEnvFan {7, "offEnvFan"};
-const Enum::YLeaf PowerOperType::failed {8, "failed"};
-const Enum::YLeaf PowerOperType::onButFanFail {9, "onButFanFail"};
-const Enum::YLeaf PowerOperType::offCooling {10, "offCooling"};
-const Enum::YLeaf PowerOperType::offConnectorRating {11, "offConnectorRating"};
-const Enum::YLeaf PowerOperType::onButInlinePowerFail {12, "onButInlinePowerFail"};
-
-const Enum::YLeaf ModuleAdminType::enabled {1, "enabled"};
-const Enum::YLeaf ModuleAdminType::disabled {2, "disabled"};
-const Enum::YLeaf ModuleAdminType::reset {3, "reset"};
-const Enum::YLeaf ModuleAdminType::outOfServiceAdmin {4, "outOfServiceAdmin"};
 
 const Enum::YLeaf ModuleOperType::unknown {1, "unknown"};
 const Enum::YLeaf ModuleOperType::ok {2, "ok"};
@@ -4255,33 +4323,51 @@ const Enum::YLeaf ModuleResetReasonType::standbyCdHealthierReset {21, "standbyCd
 const Enum::YLeaf ModuleResetReasonType::nonNativeConfigClearReset {22, "nonNativeConfigClearReset"};
 const Enum::YLeaf ModuleResetReasonType::memoryProtectionErrorReset {23, "memoryProtectionErrorReset"};
 
-const Enum::YLeaf FRUCoolingUnit::cfm {1, "cfm"};
-const Enum::YLeaf FRUCoolingUnit::watts {2, "watts"};
+const Enum::YLeaf PowerRedundancyType::notsupported {1, "notsupported"};
+const Enum::YLeaf PowerRedundancyType::redundant {2, "redundant"};
+const Enum::YLeaf PowerRedundancyType::combined {3, "combined"};
+const Enum::YLeaf PowerRedundancyType::nonRedundant {4, "nonRedundant"};
+const Enum::YLeaf PowerRedundancyType::psRedundant {5, "psRedundant"};
+const Enum::YLeaf PowerRedundancyType::inPwrSrcRedundant {6, "inPwrSrcRedundant"};
+const Enum::YLeaf PowerRedundancyType::psRedundantSingleInput {7, "psRedundantSingleInput"};
 
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::unknown {2, "unknown"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::singleSupply {3, "singleSupply"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::mismatchedSupplies {4, "mismatchedSupplies"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::supplyError {5, "supplyError"};
+const Enum::YLeaf PowerOperType::offEnvOther {1, "offEnvOther"};
+const Enum::YLeaf PowerOperType::on {2, "on"};
+const Enum::YLeaf PowerOperType::offAdmin {3, "offAdmin"};
+const Enum::YLeaf PowerOperType::offDenied {4, "offDenied"};
+const Enum::YLeaf PowerOperType::offEnvPower {5, "offEnvPower"};
+const Enum::YLeaf PowerOperType::offEnvTemp {6, "offEnvTemp"};
+const Enum::YLeaf PowerOperType::offEnvFan {7, "offEnvFan"};
+const Enum::YLeaf PowerOperType::failed {8, "failed"};
+const Enum::YLeaf PowerOperType::onButFanFail {9, "onButFanFail"};
+const Enum::YLeaf PowerOperType::offCooling {10, "offCooling"};
+const Enum::YLeaf PowerOperType::offConnectorRating {11, "offConnectorRating"};
+const Enum::YLeaf PowerOperType::onButInlinePowerFail {12, "onButInlinePowerFail"};
 
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingmode::enabled {1, "enabled"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingmode::disabled {2, "disabled"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason::unknown {2, "unknown"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason::singleSupply {3, "singleSupply"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason::mismatchedSupplies {4, "mismatchedSupplies"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason::supplyError {5, "supplyError"};
 
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::unknown {1, "unknown"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::up {2, "up"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::down {3, "down"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::warning {4, "warning"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::CefcModuleLocalSwitchingMode::enabled {1, "enabled"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::CefcModuleLocalSwitchingMode::disabled {2, "disabled"};
 
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::other {1, "other"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::supported {2, "supported"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::unsupported {3, "unsupported"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::incompatible {4, "incompatible"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::CefcFanTrayOperStatus::unknown {1, "unknown"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::CefcFanTrayOperStatus::up {2, "up"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::CefcFanTrayOperStatus::down {3, "down"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::CefcFanTrayOperStatus::warning {4, "warning"};
 
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::unknown {1, "unknown"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::acLow {2, "acLow"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::acHigh {3, "acHigh"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::dcLow {4, "dcLow"};
-const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::dcHigh {5, "dcHigh"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysicalStatus::other {1, "other"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysicalStatus::supported {2, "supported"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysicalStatus::unsupported {3, "unsupported"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysicalStatus::incompatible {4, "incompatible"};
+
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputType::unknown {1, "unknown"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputType::acLow {2, "acLow"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputType::acHigh {3, "acHigh"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputType::dcLow {4, "dcLow"};
+const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputType::dcHigh {5, "dcHigh"};
 
 
 }

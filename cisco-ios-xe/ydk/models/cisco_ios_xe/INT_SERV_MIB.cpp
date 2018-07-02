@@ -13,15 +13,15 @@ namespace INT_SERV_MIB {
 
 INTSERVMIB::INTSERVMIB()
     :
-    intsrvgenobjects(std::make_shared<INTSERVMIB::Intsrvgenobjects>())
-	,intsrvifattribtable(std::make_shared<INTSERVMIB::Intsrvifattribtable>())
-	,intsrvflowtable(std::make_shared<INTSERVMIB::Intsrvflowtable>())
+    intsrvgenobjects(std::make_shared<INTSERVMIB::IntSrvGenObjects>())
+    , intsrvifattribtable(std::make_shared<INTSERVMIB::IntSrvIfAttribTable>())
+    , intsrvflowtable(std::make_shared<INTSERVMIB::IntSrvFlowTable>())
 {
     intsrvgenobjects->parent = this;
     intsrvifattribtable->parent = this;
     intsrvflowtable->parent = this;
 
-    yang_name = "INT-SERV-MIB"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "INT-SERV-MIB"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 INTSERVMIB::~INTSERVMIB()
@@ -30,6 +30,7 @@ INTSERVMIB::~INTSERVMIB()
 
 bool INTSERVMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_data())
 	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_data())
 	|| (intsrvflowtable !=  nullptr && intsrvflowtable->has_data());
@@ -65,7 +66,7 @@ std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_
     {
         if(intsrvgenobjects == nullptr)
         {
-            intsrvgenobjects = std::make_shared<INTSERVMIB::Intsrvgenobjects>();
+            intsrvgenobjects = std::make_shared<INTSERVMIB::IntSrvGenObjects>();
         }
         return intsrvgenobjects;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_
     {
         if(intsrvifattribtable == nullptr)
         {
-            intsrvifattribtable = std::make_shared<INTSERVMIB::Intsrvifattribtable>();
+            intsrvifattribtable = std::make_shared<INTSERVMIB::IntSrvIfAttribTable>();
         }
         return intsrvifattribtable;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_
     {
         if(intsrvflowtable == nullptr)
         {
-            intsrvflowtable = std::make_shared<INTSERVMIB::Intsrvflowtable>();
+            intsrvflowtable = std::make_shared<INTSERVMIB::IntSrvFlowTable>();
         }
         return intsrvflowtable;
     }
@@ -153,44 +154,45 @@ bool INTSERVMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-INTSERVMIB::Intsrvgenobjects::Intsrvgenobjects()
+INTSERVMIB::IntSrvGenObjects::IntSrvGenObjects()
     :
     intsrvflownewindex{YType::int32, "intSrvFlowNewIndex"}
 {
 
-    yang_name = "intSrvGenObjects"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intSrvGenObjects"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-INTSERVMIB::Intsrvgenobjects::~Intsrvgenobjects()
+INTSERVMIB::IntSrvGenObjects::~IntSrvGenObjects()
 {
 }
 
-bool INTSERVMIB::Intsrvgenobjects::has_data() const
+bool INTSERVMIB::IntSrvGenObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return intsrvflownewindex.is_set;
 }
 
-bool INTSERVMIB::Intsrvgenobjects::has_operation() const
+bool INTSERVMIB::IntSrvGenObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(intsrvflownewindex.yfilter);
 }
 
-std::string INTSERVMIB::Intsrvgenobjects::get_absolute_path() const
+std::string INTSERVMIB::IntSrvGenObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "INT-SERV-MIB:INT-SERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string INTSERVMIB::Intsrvgenobjects::get_segment_path() const
+std::string INTSERVMIB::IntSrvGenObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "intSrvGenObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvgenobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvGenObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -200,19 +202,19 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvgenobjects::get
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::Intsrvgenobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> INTSERVMIB::IntSrvGenObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvgenobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvGenObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void INTSERVMIB::Intsrvgenobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void INTSERVMIB::IntSrvGenObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "intSrvFlowNewIndex")
     {
@@ -222,7 +224,7 @@ void INTSERVMIB::Intsrvgenobjects::set_value(const std::string & value_path, con
     }
 }
 
-void INTSERVMIB::Intsrvgenobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void INTSERVMIB::IntSrvGenObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "intSrvFlowNewIndex")
     {
@@ -230,26 +232,29 @@ void INTSERVMIB::Intsrvgenobjects::set_filter(const std::string & value_path, YF
     }
 }
 
-bool INTSERVMIB::Intsrvgenobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool INTSERVMIB::IntSrvGenObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "intSrvFlowNewIndex")
         return true;
     return false;
 }
 
-INTSERVMIB::Intsrvifattribtable::Intsrvifattribtable()
+INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribTable()
+    :
+    intsrvifattribentry(this, {"ifindex"})
 {
 
-    yang_name = "intSrvIfAttribTable"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intSrvIfAttribTable"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-INTSERVMIB::Intsrvifattribtable::~Intsrvifattribtable()
+INTSERVMIB::IntSrvIfAttribTable::~IntSrvIfAttribTable()
 {
 }
 
-bool INTSERVMIB::Intsrvifattribtable::has_data() const
+bool INTSERVMIB::IntSrvIfAttribTable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<intsrvifattribentry.len(); index++)
     {
         if(intsrvifattribentry[index]->has_data())
             return true;
@@ -257,9 +262,9 @@ bool INTSERVMIB::Intsrvifattribtable::has_data() const
     return false;
 }
 
-bool INTSERVMIB::Intsrvifattribtable::has_operation() const
+bool INTSERVMIB::IntSrvIfAttribTable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
+    for (std::size_t index=0; index<intsrvifattribentry.len(); index++)
     {
         if(intsrvifattribentry[index]->has_operation())
             return true;
@@ -267,21 +272,21 @@ bool INTSERVMIB::Intsrvifattribtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string INTSERVMIB::Intsrvifattribtable::get_absolute_path() const
+std::string INTSERVMIB::IntSrvIfAttribTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "INT-SERV-MIB:INT-SERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string INTSERVMIB::Intsrvifattribtable::get_segment_path() const
+std::string INTSERVMIB::IntSrvIfAttribTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "intSrvIfAttribTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvifattribtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvIfAttribTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -290,25 +295,25 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvifattribtable::
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::Intsrvifattribtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> INTSERVMIB::IntSrvIfAttribTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intSrvIfAttribEntry")
     {
-        auto c = std::make_shared<INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry>();
+        auto c = std::make_shared<INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry>();
         c->parent = this;
-        intsrvifattribentry.push_back(c);
+        intsrvifattribentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvifattribtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvIfAttribTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : intsrvifattribentry)
+    for (auto c : intsrvifattribentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -319,22 +324,22 @@ std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvifattribtable::
     return children;
 }
 
-void INTSERVMIB::Intsrvifattribtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void INTSERVMIB::IntSrvIfAttribTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void INTSERVMIB::Intsrvifattribtable::set_filter(const std::string & value_path, YFilter yfilter)
+void INTSERVMIB::IntSrvIfAttribTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool INTSERVMIB::Intsrvifattribtable::has_leaf_or_child_of_name(const std::string & name) const
+bool INTSERVMIB::IntSrvIfAttribTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "intSrvIfAttribEntry")
         return true;
     return false;
 }
 
-INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::Intsrvifattribentry()
+INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::IntSrvIfAttribEntry()
     :
     ifindex{YType::str, "ifIndex"},
     intsrvifattriballocatedbits{YType::int32, "intSrvIfAttribAllocatedBits"},
@@ -345,15 +350,16 @@ INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::Intsrvifattribentry()
     intsrvifattribstatus{YType::enumeration, "intSrvIfAttribStatus"}
 {
 
-    yang_name = "intSrvIfAttribEntry"; yang_parent_name = "intSrvIfAttribTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intSrvIfAttribEntry"; yang_parent_name = "intSrvIfAttribTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::~Intsrvifattribentry()
+INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::~IntSrvIfAttribEntry()
 {
 }
 
-bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_data() const
+bool INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| intsrvifattriballocatedbits.is_set
 	|| intsrvifattribmaxallocatedbits.is_set
@@ -363,7 +369,7 @@ bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_data() const
 	|| intsrvifattribstatus.is_set;
 }
 
-bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_operation() const
+bool INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -375,21 +381,22 @@ bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_operation() const
 	|| ydk::is_set(intsrvifattribstatus.yfilter);
 }
 
-std::string INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::get_absolute_path() const
+std::string INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "INT-SERV-MIB:INT-SERV-MIB/intSrvIfAttribTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::get_segment_path() const
+std::string INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "intSrvIfAttribEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "intSrvIfAttribEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -405,19 +412,19 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvifattribtable::
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -463,7 +470,7 @@ void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_value(const std::
     }
 }
 
-void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_filter(const std::string & value_path, YFilter yfilter)
+void INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -495,26 +502,29 @@ void INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::set_filter(const std:
     }
 }
 
-bool INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry::has_leaf_or_child_of_name(const std::string & name) const
+bool INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "intSrvIfAttribAllocatedBits" || name == "intSrvIfAttribMaxAllocatedBits" || name == "intSrvIfAttribAllocatedBuffer" || name == "intSrvIfAttribFlows" || name == "intSrvIfAttribPropagationDelay" || name == "intSrvIfAttribStatus")
         return true;
     return false;
 }
 
-INTSERVMIB::Intsrvflowtable::Intsrvflowtable()
+INTSERVMIB::IntSrvFlowTable::IntSrvFlowTable()
+    :
+    intsrvflowentry(this, {"intsrvflownumber"})
 {
 
-    yang_name = "intSrvFlowTable"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intSrvFlowTable"; yang_parent_name = "INT-SERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-INTSERVMIB::Intsrvflowtable::~Intsrvflowtable()
+INTSERVMIB::IntSrvFlowTable::~IntSrvFlowTable()
 {
 }
 
-bool INTSERVMIB::Intsrvflowtable::has_data() const
+bool INTSERVMIB::IntSrvFlowTable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<intsrvflowentry.len(); index++)
     {
         if(intsrvflowentry[index]->has_data())
             return true;
@@ -522,9 +532,9 @@ bool INTSERVMIB::Intsrvflowtable::has_data() const
     return false;
 }
 
-bool INTSERVMIB::Intsrvflowtable::has_operation() const
+bool INTSERVMIB::IntSrvFlowTable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
+    for (std::size_t index=0; index<intsrvflowentry.len(); index++)
     {
         if(intsrvflowentry[index]->has_operation())
             return true;
@@ -532,21 +542,21 @@ bool INTSERVMIB::Intsrvflowtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string INTSERVMIB::Intsrvflowtable::get_absolute_path() const
+std::string INTSERVMIB::IntSrvFlowTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "INT-SERV-MIB:INT-SERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string INTSERVMIB::Intsrvflowtable::get_segment_path() const
+std::string INTSERVMIB::IntSrvFlowTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "intSrvFlowTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvFlowTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -555,25 +565,25 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::get_
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> INTSERVMIB::IntSrvFlowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intSrvFlowEntry")
     {
-        auto c = std::make_shared<INTSERVMIB::Intsrvflowtable::Intsrvflowentry>();
+        auto c = std::make_shared<INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry>();
         c->parent = this;
-        intsrvflowentry.push_back(c);
+        intsrvflowentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvFlowTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : intsrvflowentry)
+    for (auto c : intsrvflowentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -584,22 +594,22 @@ std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::get_
     return children;
 }
 
-void INTSERVMIB::Intsrvflowtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void INTSERVMIB::IntSrvFlowTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void INTSERVMIB::Intsrvflowtable::set_filter(const std::string & value_path, YFilter yfilter)
+void INTSERVMIB::IntSrvFlowTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool INTSERVMIB::Intsrvflowtable::has_leaf_or_child_of_name(const std::string & name) const
+bool INTSERVMIB::IntSrvFlowTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "intSrvFlowEntry")
         return true;
     return false;
 }
 
-INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowentry()
+INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowEntry()
     :
     intsrvflownumber{YType::int32, "intSrvFlowNumber"},
     intsrvflowtype{YType::int32, "intSrvFlowType"},
@@ -628,15 +638,16 @@ INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowentry()
     intsrvflowstatus{YType::enumeration, "intSrvFlowStatus"}
 {
 
-    yang_name = "intSrvFlowEntry"; yang_parent_name = "intSrvFlowTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intSrvFlowEntry"; yang_parent_name = "intSrvFlowTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-INTSERVMIB::Intsrvflowtable::Intsrvflowentry::~Intsrvflowentry()
+INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::~IntSrvFlowEntry()
 {
 }
 
-bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_data() const
+bool INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return intsrvflownumber.is_set
 	|| intsrvflowtype.is_set
 	|| intsrvflowowner.is_set
@@ -664,7 +675,7 @@ bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_data() const
 	|| intsrvflowstatus.is_set;
 }
 
-bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_operation() const
+bool INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(intsrvflownumber.yfilter)
@@ -694,21 +705,22 @@ bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_operation() const
 	|| ydk::is_set(intsrvflowstatus.yfilter);
 }
 
-std::string INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_absolute_path() const
+std::string INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "INT-SERV-MIB:INT-SERV-MIB/intSrvFlowTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_segment_path() const
+std::string INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "intSrvFlowEntry" <<"[intSrvFlowNumber='" <<intsrvflownumber <<"']";
+    path_buffer << "intSrvFlowEntry";
+    ADD_KEY_TOKEN(intsrvflownumber, "intSrvFlowNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -742,19 +754,19 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::Intsrvflowtable::Ints
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::Intsrvflowtable::Intsrvflowentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "intSrvFlowNumber")
     {
@@ -908,7 +920,7 @@ void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_value(const std::string &
     }
 }
 
-void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_filter(const std::string & value_path, YFilter yfilter)
+void INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "intSrvFlowNumber")
     {
@@ -1012,7 +1024,7 @@ void INTSERVMIB::Intsrvflowtable::Intsrvflowentry::set_filter(const std::string 
     }
 }
 
-bool INTSERVMIB::Intsrvflowtable::Intsrvflowentry::has_leaf_or_child_of_name(const std::string & name) const
+bool INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "intSrvFlowNumber" || name == "intSrvFlowType" || name == "intSrvFlowOwner" || name == "intSrvFlowDestAddr" || name == "intSrvFlowSenderAddr" || name == "intSrvFlowDestAddrLength" || name == "intSrvFlowSenderAddrLength" || name == "intSrvFlowProtocol" || name == "intSrvFlowDestPort" || name == "intSrvFlowPort" || name == "intSrvFlowFlowId" || name == "intSrvFlowInterface" || name == "intSrvFlowIfAddr" || name == "intSrvFlowRate" || name == "intSrvFlowBurst" || name == "intSrvFlowWeight" || name == "intSrvFlowQueue" || name == "intSrvFlowMinTU" || name == "intSrvFlowMaxTU" || name == "intSrvFlowBestEffort" || name == "intSrvFlowPoliced" || name == "intSrvFlowDiscard" || name == "intSrvFlowService" || name == "intSrvFlowOrder" || name == "intSrvFlowStatus")
         return true;
@@ -1023,9 +1035,9 @@ const Enum::YLeaf QosService::bestEffort {1, "bestEffort"};
 const Enum::YLeaf QosService::guaranteedDelay {2, "guaranteedDelay"};
 const Enum::YLeaf QosService::controlledLoad {5, "controlledLoad"};
 
-const Enum::YLeaf INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner::other {1, "other"};
-const Enum::YLeaf INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner::rsvp {2, "rsvp"};
-const Enum::YLeaf INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner::management {3, "management"};
+const Enum::YLeaf INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowOwner::other {1, "other"};
+const Enum::YLeaf INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowOwner::rsvp {2, "rsvp"};
+const Enum::YLeaf INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowOwner::management {3, "management"};
 
 
 }

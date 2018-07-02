@@ -60,7 +60,7 @@ class Ipv4Network::Nodes : public ydk::Entity
 
         class Node; //type: Ipv4Network::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ipv4Network::Nodes
 
@@ -135,7 +135,7 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs
 
@@ -184,7 +184,7 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs : public ydk::E
 
         class Brief; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief> > brief;
+        ydk::YList brief;
         
 }; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs
 
@@ -232,7 +232,7 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details : public ydk::
 
         class Detail; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail> > detail;
+        ydk::YList detail;
         
 }; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details
 
@@ -293,8 +293,8 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail : publ
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime> caps_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime> fwd_en_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime> fwd_dis_utime;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup> > multicast_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress> > secondary_address;
+        ydk::YList multicast_group;
+        ydk::YList secondary_address;
         
 }; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail
 
@@ -343,9 +343,9 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Multi
         class Outbound; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Outbound
         class Common; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Common
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Inbound> > inbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Outbound> > outbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Common> > common;
+        ydk::YList inbound;
+        ydk::YList outbound;
+        ydk::YList common;
         
 }; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl
 
@@ -431,7 +431,7 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Helpe
 
         class AddressArray; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::AddressArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::AddressArray> > address_array;
+        ydk::YList address_array;
         
 }; // Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress
 
@@ -1007,7 +1007,7 @@ class Ipv4Network::Interfaces : public ydk::Entity
 
         class Interface; //type: Ipv4Network::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ipv4Network::Interfaces
 
@@ -1055,7 +1055,7 @@ class Ipv4Network::Interfaces::Interface::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Network::Interfaces::Interface::Vrfs
 
@@ -1141,8 +1141,8 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime> caps_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime> fwd_en_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime> fwd_dis_utime;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup> > multicast_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress> > secondary_address;
+        ydk::YList multicast_group;
+        ydk::YList secondary_address;
         
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail
 
@@ -1191,9 +1191,9 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl : public y
         class Outbound; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound
         class Common; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound> > inbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound> > outbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common> > common;
+        ydk::YList inbound;
+        ydk::YList outbound;
+        ydk::YList common;
         
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl
 
@@ -1279,7 +1279,7 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress : pub
 
         class AddressArray; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_io_oper::Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray> > address_array;
+        ydk::YList address_array;
         
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress
 

@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_oper_6.hpp"
-#include "Cisco_IOS_XR_mpls_ldp_oper_7.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_oper_8.hpp"
+#include "Cisco_IOS_XR_mpls_ldp_oper_7.hpp"
 
 using namespace ydk;
 
@@ -16,12 +16,12 @@ namespace Cisco_IOS_XR_mpls_ldp_oper {
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::Mpls()
     :
     mpls_outgoing_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo>())
-	,remote_lfa(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa>())
+    , remote_lfa(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa>())
 {
     mpls_outgoing_info->parent = this;
     remote_lfa->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::~Mpls()
@@ -30,6 +30,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_data())
 	|| (remote_lfa !=  nullptr && remote_lfa->has_data());
 }
@@ -120,12 +121,12 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
     out_label_owner{YType::enumeration, "out-label-owner"},
     is_from_graceful_restartable_neighbor{YType::boolean, "is-from-graceful-restartable-neighbor"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     nexthop_peer_ldp_ident(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent>())
 {
     nexthop_peer_ldp_ident->parent = this;
 
-    yang_name = "mpls-outgoing-info"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-outgoing-info"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::~MplsOutgoingInfo()
@@ -134,6 +135,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return out_label.is_set
 	|| out_label_rsn.is_set
 	|| out_label_type.is_set
@@ -285,7 +287,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
     ldp_id{YType::str, "ldp-id"}
 {
 
-    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::~NexthopPeerLdpIdent()
@@ -294,6 +296,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| ldp_id.is_set;
@@ -386,12 +389,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::RemoteLfa()
     :
     has_remote_lfa_bkup{YType::boolean, "has-remote-lfa-bkup"}
-    	,
+        ,
     mpls_outgoing_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo>())
 {
     mpls_outgoing_info->parent = this;
 
-    yang_name = "remote-lfa"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-lfa"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::~RemoteLfa()
@@ -400,6 +403,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::has_data() const
 {
+    if (is_presence_container) return true;
     return has_remote_lfa_bkup.is_set
 	|| (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_data());
 }
@@ -480,9 +484,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::MplsOutgoingInfo()
+    :
+    stack(this, {})
 {
 
-    yang_name = "mpls-outgoing-info"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-outgoing-info"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::~MplsOutgoingInfo()
@@ -491,7 +497,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::has_data() const
 {
-    for (std::size_t index=0; index<stack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stack.len(); index++)
     {
         if(stack[index]->has_data())
             return true;
@@ -501,7 +508,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::has_operation() const
 {
-    for (std::size_t index=0; index<stack.size(); index++)
+    for (std::size_t index=0; index<stack.len(); index++)
     {
         if(stack[index]->has_operation())
             return true;
@@ -531,7 +538,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack>();
         c->parent = this;
-        stack.push_back(c);
+        stack.append(c);
         return c;
     }
 
@@ -543,7 +550,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stack)
+    for (auto c : stack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -577,12 +584,12 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
     out_label_owner{YType::enumeration, "out-label-owner"},
     is_from_graceful_restartable_neighbor{YType::boolean, "is-from-graceful-restartable-neighbor"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     nexthop_peer_ldp_ident(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent>())
 {
     nexthop_peer_ldp_ident->parent = this;
 
-    yang_name = "stack"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stack"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::~Stack()
@@ -591,6 +598,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::has_data() const
 {
+    if (is_presence_container) return true;
     return out_label.is_set
 	|| out_label_rsn.is_set
 	|| out_label_type.is_set
@@ -742,7 +750,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
     ldp_id{YType::str, "ldp-id"}
 {
 
-    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent::~NexthopPeerLdpIdent()
@@ -751,6 +759,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| ldp_id.is_set;
@@ -843,10 +852,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::Forwardings::Forwarding::Paths::
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::BindingsAdvertiseSpec()
     :
     allocation_acl(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl>())
+    , advt_acl(this, {})
 {
     allocation_acl->parent = this;
 
-    yang_name = "bindings-advertise-spec"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bindings-advertise-spec"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::~BindingsAdvertiseSpec()
@@ -855,7 +865,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::~BindingsAdver
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::has_data() const
 {
-    for (std::size_t index=0; index<advt_acl.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<advt_acl.len(); index++)
     {
         if(advt_acl[index]->has_data())
             return true;
@@ -865,7 +876,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::has_data(
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::has_operation() const
 {
-    for (std::size_t index=0; index<advt_acl.size(); index++)
+    for (std::size_t index=0; index<advt_acl.len(); index++)
     {
         if(advt_acl[index]->has_operation())
             return true;
@@ -905,7 +916,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdver
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl>();
         c->parent = this;
-        advt_acl.push_back(c);
+        advt_acl.append(c);
         return c;
     }
 
@@ -922,7 +933,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : advt_acl)
+    for (auto c : advt_acl.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -955,7 +966,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl:
     is_host_route_only{YType::boolean, "is-host-route-only"}
 {
 
-    yang_name = "allocation-acl"; yang_parent_name = "bindings-advertise-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allocation-acl"; yang_parent_name = "bindings-advertise-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl::~AllocationAcl()
@@ -964,6 +975,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return has_acl.is_set
 	|| prefix_acl.is_set
 	|| is_host_route_only.is_set;
@@ -1059,7 +1071,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::AdvtA
     peer_acl{YType::str, "peer-acl"}
 {
 
-    yang_name = "advt-acl"; yang_parent_name = "bindings-advertise-spec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advt-acl"; yang_parent_name = "bindings-advertise-spec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::~AdvtAcl()
@@ -1068,6 +1080,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::~Advt
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_acl.is_set
 	|| peer_acl.is_set;
 }
@@ -1150,14 +1163,14 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::ForwardingSummary(
     fsht{YType::uint16, "fsht"},
     intfs{YType::uint16, "intfs"},
     lbls{YType::uint16, "lbls"}
-    	,
+        ,
     vrf(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Vrf>())
-	,rws(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws>())
+    , rws(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws>())
 {
     vrf->parent = this;
     rws->parent = this;
 
-    yang_name = "forwarding-summary"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding-summary"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::~ForwardingSummary()
@@ -1166,6 +1179,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::~ForwardingSummary
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return is_lsd_bound.is_set
 	|| fsht.is_set
 	|| intfs.is_set
@@ -1306,7 +1320,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Vrf::~Vrf()
@@ -1315,6 +1329,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -1394,12 +1409,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Vrf::has_leaf
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Rws()
     :
     pfxs(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs>())
-	,nhs(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Nhs>())
+    , nhs(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Nhs>())
 {
     pfxs->parent = this;
     nhs->parent = this;
 
-    yang_name = "rws"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rws"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::~Rws()
@@ -1408,6 +1423,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::~Rws()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::has_data() const
 {
+    if (is_presence_container) return true;
     return (pfxs !=  nullptr && pfxs->has_data())
 	|| (nhs !=  nullptr && nhs->has_data());
 }
@@ -1495,16 +1511,16 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::Pfxs()
     total_pfxs{YType::uint16, "total-pfxs"},
     ecmp_pfxs{YType::uint16, "ecmp-pfxs"},
     protected_pfxs{YType::uint16, "protected-pfxs"}
-    	,
+        ,
     labeled_pfxs_aggr(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr>())
-	,labeled_pfxs_primary(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary>())
-	,labeled_pfxs_backup(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup>())
+    , labeled_pfxs_primary(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary>())
+    , labeled_pfxs_backup(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup>())
 {
     labeled_pfxs_aggr->parent = this;
     labeled_pfxs_primary->parent = this;
     labeled_pfxs_backup->parent = this;
 
-    yang_name = "pfxs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfxs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::~Pfxs()
@@ -1513,6 +1529,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::~Pfxs()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_pfxs.is_set
 	|| ecmp_pfxs.is_set
 	|| protected_pfxs.is_set
@@ -1657,7 +1674,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::Labeled
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr::~LabeledPfxsAggr()
@@ -1666,6 +1683,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::Labeled
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -1762,7 +1780,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::Labeled
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary::~LabeledPfxsPrimary()
@@ -1771,6 +1789,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::Labeled
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -1867,7 +1886,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::Labeled
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup::~LabeledPfxsBackup()
@@ -1876,6 +1895,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::Labeled
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -1975,7 +1995,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Nhs::Nhs()
     labeled_backup_paths{YType::uint32, "labeled-backup-paths"}
 {
 
-    yang_name = "nhs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nhs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Nhs::~Nhs()
@@ -1984,6 +2004,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Nhs::~Nhs()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Nhs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_paths.is_set
 	|| protected_paths.is_set
 	|| backup_paths.is_set
@@ -2113,9 +2134,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Afs::Af::ForwardingSummary::Rws::Nhs::has
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBriefs()
+    :
+    neighbor_brief(this, {})
 {
 
-    yang_name = "neighbor-briefs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-briefs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::~NeighborBriefs()
@@ -2124,7 +2147,8 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::~NeighborBriefs()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_brief.len(); index++)
     {
         if(neighbor_brief[index]->has_data())
             return true;
@@ -2134,7 +2158,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::has_data() const
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_brief.size(); index++)
+    for (std::size_t index=0; index<neighbor_brief.len(); index++)
     {
         if(neighbor_brief[index]->has_operation())
             return true;
@@ -2164,7 +2188,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::get_ch
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief>();
         c->parent = this;
-        neighbor_brief.push_back(c);
+        neighbor_brief.append(c);
         return c;
     }
 
@@ -2176,7 +2200,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_brief)
+    for (auto c : neighbor_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2209,12 +2233,13 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::NeighborBrief()
     is_graceful_restartable{YType::boolean, "is-graceful-restartable"},
     nsr_state{YType::enumeration, "nsr-state"},
     up_time_seconds{YType::uint32, "up-time-seconds"}
-    	,
+        ,
     vrf(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::Vrf>())
+    , nbr_br_af_info(this, {})
 {
     vrf->parent = this;
 
-    yang_name = "neighbor-brief"; yang_parent_name = "neighbor-briefs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-brief"; yang_parent_name = "neighbor-briefs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::~NeighborBrief()
@@ -2223,7 +2248,8 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::~NeighborBrief(
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::has_data() const
 {
-    for (std::size_t index=0; index<nbr_br_af_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nbr_br_af_info.len(); index++)
     {
         if(nbr_br_af_info[index]->has_data())
             return true;
@@ -2238,7 +2264,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::has_data()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::has_operation() const
 {
-    for (std::size_t index=0; index<nbr_br_af_info.size(); index++)
+    for (std::size_t index=0; index<nbr_br_af_info.len(); index++)
     {
         if(nbr_br_af_info[index]->has_operation())
             return true;
@@ -2288,7 +2314,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::Neighb
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo>();
         c->parent = this;
-        nbr_br_af_info.push_back(c);
+        nbr_br_af_info.append(c);
         return c;
     }
 
@@ -2305,7 +2331,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : nbr_br_af_info)
+    for (auto c : nbr_br_af_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2387,7 +2413,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "neighbor-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "neighbor-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::Vrf::~Vrf()
@@ -2396,6 +2422,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -2480,7 +2507,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::Nb
     num_of_nbr_lbl{YType::uint32, "num-of-nbr-lbl"}
 {
 
-    yang_name = "nbr-br-af-info"; yang_parent_name = "neighbor-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nbr-br-af-info"; yang_parent_name = "neighbor-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::~NbrBrAfInfo()
@@ -2489,6 +2516,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::~N
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| num_of_nbr_discovery.is_set
 	|| num_of_nbr_addresses.is_set
@@ -2597,7 +2625,7 @@ MplsLdp::Nodes::Node::DefaultVrf::BackoffParameters::BackoffParameters()
     maximum_seconds{YType::uint32, "maximum-seconds"}
 {
 
-    yang_name = "backoff-parameters"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backoff-parameters"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::BackoffParameters::~BackoffParameters()
@@ -2606,6 +2634,7 @@ MplsLdp::Nodes::Node::DefaultVrf::BackoffParameters::~BackoffParameters()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::BackoffParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return initial_seconds.is_set
 	|| maximum_seconds.is_set;
 }
@@ -2683,9 +2712,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::BackoffParameters::has_leaf_or_child_of_n
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Backoffs::Backoffs()
+    :
+    backoff(this, {})
 {
 
-    yang_name = "backoffs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backoffs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Backoffs::~Backoffs()
@@ -2694,7 +2725,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Backoffs::~Backoffs()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Backoffs::has_data() const
 {
-    for (std::size_t index=0; index<backoff.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<backoff.len(); index++)
     {
         if(backoff[index]->has_data())
             return true;
@@ -2704,7 +2736,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Backoffs::has_data() const
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Backoffs::has_operation() const
 {
-    for (std::size_t index=0; index<backoff.size(); index++)
+    for (std::size_t index=0; index<backoff.len(); index++)
     {
         if(backoff[index]->has_operation())
             return true;
@@ -2734,7 +2766,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Backoffs::get_child_by
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Backoffs::Backoff>();
         c->parent = this;
-        backoff.push_back(c);
+        backoff.append(c);
         return c;
     }
 
@@ -2746,7 +2778,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : backoff)
+    for (auto c : backoff.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2780,7 +2812,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Backoffs::Backoff::Backoff()
     waiting_seconds{YType::uint32, "waiting-seconds"}
 {
 
-    yang_name = "backoff"; yang_parent_name = "backoffs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backoff"; yang_parent_name = "backoffs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Backoffs::Backoff::~Backoff()
@@ -2789,6 +2821,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Backoffs::Backoff::~Backoff()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Backoffs::Backoff::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| backoff_seconds.is_set
@@ -2894,14 +2927,14 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Backoffs::Backoff::has_leaf_or_child_of_n
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::Nsr()
     :
     nsr_pending(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending>())
-	,ha_summary(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary>())
-	,ha_statistics(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics>())
+    , ha_summary(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary>())
+    , ha_statistics(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics>())
 {
     nsr_pending->parent = this;
     ha_summary->parent = this;
     ha_statistics->parent = this;
 
-    yang_name = "nsr"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nsr"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::~Nsr()
@@ -2910,6 +2943,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::~Nsr()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::has_data() const
 {
+    if (is_presence_container) return true;
     return (nsr_pending !=  nullptr && nsr_pending->has_data())
 	|| (ha_summary !=  nullptr && ha_summary->has_data())
 	|| (ha_statistics !=  nullptr && ha_statistics->has_data());
@@ -3014,7 +3048,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::NsrPending()
 {
     ha_neighbors->parent = this;
 
-    yang_name = "nsr-pending"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nsr-pending"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::~NsrPending()
@@ -3023,6 +3057,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::~NsrPending()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::has_data() const
 {
+    if (is_presence_container) return true;
     return (ha_neighbors !=  nullptr && ha_neighbors->has_data());
 }
 
@@ -3090,9 +3125,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::has_leaf_or_child_of_nam
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbors()
+    :
+    ha_neighbor(this, {})
 {
 
-    yang_name = "ha-neighbors"; yang_parent_name = "nsr-pending"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-neighbors"; yang_parent_name = "nsr-pending"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::~HaNeighbors()
@@ -3101,7 +3138,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::~HaNeighbors()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<ha_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ha_neighbor.len(); index++)
     {
         if(ha_neighbor[index]->has_data())
             return true;
@@ -3111,7 +3149,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::has_data() 
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<ha_neighbor.size(); index++)
+    for (std::size_t index=0; index<ha_neighbor.len(); index++)
     {
         if(ha_neighbor[index]->has_operation())
             return true;
@@ -3141,7 +3179,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNei
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor>();
         c->parent = this;
-        ha_neighbor.push_back(c);
+        ha_neighbor.append(c);
         return c;
     }
 
@@ -3153,7 +3191,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ha_neighbor)
+    for (auto c : ha_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3187,14 +3225,14 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::HaNe
     lbl_spc_id{YType::uint16, "lbl-spc-id"},
     nsr_sync_state{YType::int32, "nsr-sync-state"},
     num_msg{YType::uint32, "num-msg"}
-    	,
+        ,
     init_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo>())
-	,steady_state_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo>())
+    , steady_state_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo>())
 {
     init_sync_info->parent = this;
     steady_state_sync_info->parent = this;
 
-    yang_name = "ha-neighbor"; yang_parent_name = "ha-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-neighbor"; yang_parent_name = "ha-neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::~HaNeighbor()
@@ -3203,6 +3241,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::~HaN
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| lsr_id_xr.is_set
@@ -3376,7 +3415,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::Init
     num_app_bytes{YType::uint32, "num-app-bytes"}
 {
 
-    yang_name = "init-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "init-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo::~InitSyncInfo()
@@ -3385,6 +3424,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::Init
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return init_sync_start.is_set
 	|| init_sync_end.is_set
 	|| num_addr.is_set
@@ -3562,7 +3602,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::Stea
     num_stdby_adj_leave{YType::uint32, "num-stdby-adj-leave"}
 {
 
-    yang_name = "steady-state-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "steady-state-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::~SteadyStateSyncInfo()
@@ -3571,6 +3611,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::Stea
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return num_cap_sent.is_set
 	|| num_cap_rcvd.is_set
 	|| rem_lbl_wd.is_set
@@ -3702,12 +3743,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::NsrPending::HaNeighbors::HaNeighbor:
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::HaSummary()
     :
     vrf(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Vrf>())
-	,sessions(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Sessions>())
+    , sessions(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Sessions>())
 {
     vrf->parent = this;
     sessions->parent = this;
 
-    yang_name = "ha-summary"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-summary"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::~HaSummary()
@@ -3716,6 +3757,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::~HaSummary()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data())
 	|| (sessions !=  nullptr && sessions->has_data());
 }
@@ -3804,7 +3846,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Vrf::~Vrf()
@@ -3813,6 +3855,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -3903,7 +3946,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Sessions::Sessions()
     nsr_state_tcp_phase2{YType::uint32, "nsr-state-tcp-phase2"}
 {
 
-    yang_name = "sessions"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Sessions::~Sessions()
@@ -3912,6 +3955,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Sessions::~Sessions()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Sessions::has_data() const
 {
+    if (is_presence_container) return true;
     return total.is_set
 	|| nsr_eligible.is_set
 	|| nsr_state_none.is_set
@@ -4095,12 +4139,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaSummary::Sessions::has_leaf_or_chi
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaStatistics()
     :
     ha_global(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal>())
-	,ha_neighbors(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors>())
+    , ha_neighbors(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors>())
 {
     ha_global->parent = this;
     ha_neighbors->parent = this;
 
-    yang_name = "ha-statistics"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-statistics"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::~HaStatistics()
@@ -4109,6 +4153,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::~HaStatistics()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (ha_global !=  nullptr && ha_global->has_data())
 	|| (ha_neighbors !=  nullptr && ha_neighbors->has_data());
 }
@@ -4197,7 +4242,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::HaGlobal()
 {
     init_sync->parent = this;
 
-    yang_name = "ha-global"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-global"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::~HaGlobal()
@@ -4206,6 +4251,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::~HaGlobal()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return (init_sync !=  nullptr && init_sync->has_data());
 }
 
@@ -4298,7 +4344,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::InitSync::InitSyn
     ipc_exceeded_mtu_msg_cnt{YType::uint32, "ipc-exceeded-mtu-msg-cnt"}
 {
 
-    yang_name = "init-sync"; yang_parent_name = "ha-global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "init-sync"; yang_parent_name = "ha-global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::InitSync::~InitSync()
@@ -4307,6 +4353,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::InitSync::~InitSy
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::InitSync::has_data() const
 {
+    if (is_presence_container) return true;
     return nsr_cfged.is_set
 	|| nsr_synced.is_set
 	|| init_sync_start.is_set
@@ -4644,9 +4691,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaGlobal::InitSync::ha
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbors()
+    :
+    ha_neighbor(this, {})
 {
 
-    yang_name = "ha-neighbors"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-neighbors"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::~HaNeighbors()
@@ -4655,7 +4704,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::~HaNeighbors()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<ha_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ha_neighbor.len(); index++)
     {
         if(ha_neighbor[index]->has_data())
             return true;
@@ -4665,7 +4715,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::has_data(
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<ha_neighbor.size(); index++)
+    for (std::size_t index=0; index<ha_neighbor.len(); index++)
     {
         if(ha_neighbor[index]->has_operation())
             return true;
@@ -4695,7 +4745,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaN
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor>();
         c->parent = this;
-        ha_neighbor.push_back(c);
+        ha_neighbor.append(c);
         return c;
     }
 
@@ -4707,7 +4757,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ha_neighbor)
+    for (auto c : ha_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4741,14 +4791,14 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::Ha
     lbl_spc_id{YType::uint16, "lbl-spc-id"},
     nsr_sync_state{YType::int32, "nsr-sync-state"},
     num_msg{YType::uint32, "num-msg"}
-    	,
+        ,
     init_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo>())
-	,steady_state_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo>())
+    , steady_state_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo>())
 {
     init_sync_info->parent = this;
     steady_state_sync_info->parent = this;
 
-    yang_name = "ha-neighbor"; yang_parent_name = "ha-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-neighbor"; yang_parent_name = "ha-neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::~HaNeighbor()
@@ -4757,6 +4807,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::~H
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| lsr_id_xr.is_set
@@ -4930,7 +4981,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::In
     num_app_bytes{YType::uint32, "num-app-bytes"}
 {
 
-    yang_name = "init-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "init-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::~InitSyncInfo()
@@ -4939,6 +4990,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::In
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return init_sync_start.is_set
 	|| init_sync_end.is_set
 	|| num_addr.is_set
@@ -5116,7 +5168,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::St
     num_stdby_adj_leave{YType::uint32, "num-stdby-adj-leave"}
 {
 
-    yang_name = "steady-state-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "steady-state-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::~SteadyStateSyncInfo()
@@ -5125,6 +5177,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::St
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return num_cap_sent.is_set
 	|| num_cap_rcvd.is_set
 	|| rem_lbl_wd.is_set
@@ -5279,12 +5332,13 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::Parameters()
     igp_sync_delay_time_on_restart{YType::uint32, "igp-sync-delay-time-on-restart"},
     global_discovery_quick_start_disabled{YType::boolean, "global-discovery-quick-start-disabled"},
     discovery_quick_start_disabled_on_interfaces{YType::boolean, "discovery-quick-start-disabled-on-interfaces"}
-    	,
+        ,
     graceful_restart_information(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Parameters::GracefulRestartInformation>())
+    , address_family_parameter(this, {})
 {
     graceful_restart_information->parent = this;
 
-    yang_name = "parameters"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parameters"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Parameters::~Parameters()
@@ -5293,7 +5347,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::~Parameters()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Parameters::has_data() const
 {
-    for (std::size_t index=0; index<address_family_parameter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_family_parameter.len(); index++)
     {
         if(address_family_parameter[index]->has_data())
             return true;
@@ -5327,7 +5382,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Parameters::has_data() const
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Parameters::has_operation() const
 {
-    for (std::size_t index=0; index<address_family_parameter.size(); index++)
+    for (std::size_t index=0; index<address_family_parameter.len(); index++)
     {
         if(address_family_parameter[index]->has_operation())
             return true;
@@ -5415,7 +5470,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Parameters::get_child_
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter>();
         c->parent = this;
-        address_family_parameter.push_back(c);
+        address_family_parameter.append(c);
         return c;
     }
 
@@ -5432,7 +5487,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : address_family_parameter)
+    for (auto c : address_family_parameter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5705,7 +5760,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::GracefulRestartInformation::Gracef
     graceful_restart_forwarding_state_hold_time{YType::uint32, "graceful-restart-forwarding-state-hold-time"}
 {
 
-    yang_name = "graceful-restart-information"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-restart-information"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Parameters::GracefulRestartInformation::~GracefulRestartInformation()
@@ -5714,6 +5769,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::GracefulRestartInformation::~Grace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Parameters::GracefulRestartInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return is_graceful_restart_configured.is_set
 	|| graceful_restart_reconnect_timeout.is_set
 	|| graceful_restart_forwarding_state_hold_time.is_set;
@@ -5810,12 +5866,12 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::AddressFam
     label_imp_null_override_acl{YType::str, "label-imp-null-override-acl"},
     is_accepting_targeted_hellos{YType::boolean, "is-accepting-targeted-hellos"},
     targeted_hello_acl{YType::str, "targeted-hello-acl"}
-    	,
+        ,
     discovery_transport_address(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress>())
 {
     discovery_transport_address->parent = this;
 
-    yang_name = "address-family-parameter"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-parameter"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::~AddressFamilyParameter()
@@ -5824,6 +5880,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::~AddressFa
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| null_label.is_set
 	|| label_imp_null_override_acl.is_set
@@ -5963,7 +6020,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::DiscoveryT
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "discovery-transport-address"; yang_parent_name = "address-family-parameter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discovery-transport-address"; yang_parent_name = "address-family-parameter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress::~DiscoveryTransportAddress()
@@ -5972,6 +6029,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::DiscoveryT
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -6077,12 +6135,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Parameters::AddressFamilyParameter::Disco
 MplsLdp::Nodes::Node::DefaultVrf::Issu::Issu()
     :
     ha_summary(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary>())
-	,ha_statistics(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics>())
+    , ha_statistics(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics>())
 {
     ha_summary->parent = this;
     ha_statistics->parent = this;
 
-    yang_name = "issu"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "issu"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::~Issu()
@@ -6091,6 +6149,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::~Issu()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::has_data() const
 {
+    if (is_presence_container) return true;
     return (ha_summary !=  nullptr && ha_summary->has_data())
 	|| (ha_statistics !=  nullptr && ha_statistics->has_data());
 }
@@ -6176,12 +6235,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Issu::has_leaf_or_child_of_name(const std
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::HaSummary()
     :
     vrf(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Vrf>())
-	,sessions(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Sessions>())
+    , sessions(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Sessions>())
 {
     vrf->parent = this;
     sessions->parent = this;
 
-    yang_name = "ha-summary"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-summary"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::~HaSummary()
@@ -6190,6 +6249,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::~HaSummary()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data())
 	|| (sessions !=  nullptr && sessions->has_data());
 }
@@ -6278,7 +6338,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Vrf::~Vrf()
@@ -6287,6 +6347,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -6377,7 +6438,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Sessions::Sessions()
     nsr_state_tcp_phase2{YType::uint32, "nsr-state-tcp-phase2"}
 {
 
-    yang_name = "sessions"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "ha-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Sessions::~Sessions()
@@ -6386,6 +6447,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Sessions::~Sessions()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Sessions::has_data() const
 {
+    if (is_presence_container) return true;
     return total.is_set
 	|| nsr_eligible.is_set
 	|| nsr_state_none.is_set
@@ -6569,12 +6631,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaSummary::Sessions::has_leaf_or_ch
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaStatistics()
     :
     ha_global(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal>())
-	,ha_neighbors(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors>())
+    , ha_neighbors(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors>())
 {
     ha_global->parent = this;
     ha_neighbors->parent = this;
 
-    yang_name = "ha-statistics"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-statistics"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::~HaStatistics()
@@ -6583,6 +6645,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::~HaStatistics()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (ha_global !=  nullptr && ha_global->has_data())
 	|| (ha_neighbors !=  nullptr && ha_neighbors->has_data());
 }
@@ -6671,7 +6734,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::HaGlobal()
 {
     init_sync->parent = this;
 
-    yang_name = "ha-global"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-global"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::~HaGlobal()
@@ -6680,6 +6743,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::~HaGlobal()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return (init_sync !=  nullptr && init_sync->has_data());
 }
 
@@ -6772,7 +6836,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::InitSync::InitSy
     ipc_exceeded_mtu_msg_cnt{YType::uint32, "ipc-exceeded-mtu-msg-cnt"}
 {
 
-    yang_name = "init-sync"; yang_parent_name = "ha-global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "init-sync"; yang_parent_name = "ha-global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::InitSync::~InitSync()
@@ -6781,6 +6845,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::InitSync::~InitS
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::InitSync::has_data() const
 {
+    if (is_presence_container) return true;
     return nsr_cfged.is_set
 	|| nsr_synced.is_set
 	|| init_sync_start.is_set
@@ -7118,9 +7183,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaGlobal::InitSync::h
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbors()
+    :
+    ha_neighbor(this, {})
 {
 
-    yang_name = "ha-neighbors"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-neighbors"; yang_parent_name = "ha-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::~HaNeighbors()
@@ -7129,7 +7196,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::~HaNeighbors(
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<ha_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ha_neighbor.len(); index++)
     {
         if(ha_neighbor[index]->has_data())
             return true;
@@ -7139,7 +7207,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::has_data
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<ha_neighbor.size(); index++)
+    for (std::size_t index=0; index<ha_neighbor.len(); index++)
     {
         if(ha_neighbor[index]->has_operation())
             return true;
@@ -7169,7 +7237,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::Ha
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor>();
         c->parent = this;
-        ha_neighbor.push_back(c);
+        ha_neighbor.append(c);
         return c;
     }
 
@@ -7181,7 +7249,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ha_neighbor)
+    for (auto c : ha_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7215,14 +7283,14 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::H
     lbl_spc_id{YType::uint16, "lbl-spc-id"},
     nsr_sync_state{YType::int32, "nsr-sync-state"},
     num_msg{YType::uint32, "num-msg"}
-    	,
+        ,
     init_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo>())
-	,steady_state_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo>())
+    , steady_state_sync_info(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo>())
 {
     init_sync_info->parent = this;
     steady_state_sync_info->parent = this;
 
-    yang_name = "ha-neighbor"; yang_parent_name = "ha-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ha-neighbor"; yang_parent_name = "ha-neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::~HaNeighbor()
@@ -7231,6 +7299,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::~
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| lsr_id_xr.is_set
@@ -7404,7 +7473,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::I
     num_app_bytes{YType::uint32, "num-app-bytes"}
 {
 
-    yang_name = "init-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "init-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::~InitSyncInfo()
@@ -7413,6 +7482,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::I
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return init_sync_start.is_set
 	|| init_sync_end.is_set
 	|| num_addr.is_set
@@ -7590,7 +7660,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::S
     num_stdby_adj_leave{YType::uint32, "num-stdby-adj-leave"}
 {
 
-    yang_name = "steady-state-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "steady-state-sync-info"; yang_parent_name = "ha-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::~SteadyStateSyncInfo()
@@ -7599,6 +7669,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::S
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return num_cap_sent.is_set
 	|| num_cap_rcvd.is_set
 	|| rem_lbl_wd.is_set
@@ -7728,9 +7799,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Issu::HaStatistics::HaNeighbors::HaNeighb
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapabilities()
+    :
+    neighbor_capability(this, {})
 {
 
-    yang_name = "neighbor-capabilities"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-capabilities"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::~NeighborCapabilities()
@@ -7739,7 +7812,8 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::~NeighborCapabilities()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_capability.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_capability.len(); index++)
     {
         if(neighbor_capability[index]->has_data())
             return true;
@@ -7749,7 +7823,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::has_data() const
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_capability.size(); index++)
+    for (std::size_t index=0; index<neighbor_capability.len(); index++)
     {
         if(neighbor_capability[index]->has_operation())
             return true;
@@ -7779,7 +7853,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability>();
         c->parent = this;
-        neighbor_capability.push_back(c);
+        neighbor_capability.append(c);
         return c;
     }
 
@@ -7791,7 +7865,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_capability)
+    for (auto c : neighbor_capability.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7821,9 +7895,12 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Neig
     :
     lsr_id{YType::str, "lsr-id"},
     label_space_id{YType::uint32, "label-space-id"}
+        ,
+    sent(this, {})
+    , received(this, {})
 {
 
-    yang_name = "neighbor-capability"; yang_parent_name = "neighbor-capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-capability"; yang_parent_name = "neighbor-capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::~NeighborCapability()
@@ -7832,12 +7909,13 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::~Nei
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::has_data() const
 {
-    for (std::size_t index=0; index<sent.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sent.len(); index++)
     {
         if(sent[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<received.size(); index++)
+    for (std::size_t index=0; index<received.len(); index++)
     {
         if(received[index]->has_data())
             return true;
@@ -7848,12 +7926,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::has_operation() const
 {
-    for (std::size_t index=0; index<sent.size(); index++)
+    for (std::size_t index=0; index<sent.len(); index++)
     {
         if(sent[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<received.size(); index++)
+    for (std::size_t index=0; index<received.len(); index++)
     {
         if(received[index]->has_operation())
             return true;
@@ -7887,7 +7965,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Sent>();
         c->parent = this;
-        sent.push_back(c);
+        sent.append(c);
         return c;
     }
 
@@ -7895,7 +7973,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Received>();
         c->parent = this;
-        received.push_back(c);
+        received.append(c);
         return c;
     }
 
@@ -7907,7 +7985,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sent)
+    for (auto c : sent.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7916,7 +7994,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : received)
+    for (auto c : received.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7970,7 +8048,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Sent
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "sent"; yang_parent_name = "neighbor-capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sent"; yang_parent_name = "neighbor-capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Sent::~Sent()
@@ -7979,6 +8057,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Sent
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Sent::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| description.is_set
 	|| capability_data_length.is_set
@@ -8089,7 +8168,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Rece
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "received"; yang_parent_name = "neighbor-capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received"; yang_parent_name = "neighbor-capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Received::~Received()
@@ -8098,6 +8177,7 @@ MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Rece
 
 bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| description.is_set
 	|| capability_data_length.is_set
@@ -8201,9 +8281,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::NeighborCapabilities::NeighborCapability:
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbors()
+    :
+    neighbor(this, {})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::~Neighbors()
@@ -8212,7 +8294,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::~Neighbors()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -8222,7 +8305,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::has_data() const
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -8252,7 +8335,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::get_child_b
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -8264,7 +8347,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8294,16 +8377,20 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::Neighbor()
     :
     lsr_id{YType::str, "lsr-id"},
     label_space_id{YType::uint32, "label-space-id"}
-    	,
+        ,
     protocol_information(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation>())
-	,tcp_information(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation>())
-	,detailed_information(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation>())
+    , tcp_information(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation>())
+    , detailed_information(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation>())
+    , ldp_nbr_bound_ipv4_address_info(this, {})
+    , ldp_nbr_bound_ipv6_address_info(this, {})
+    , ldp_nbr_ipv4_adj_info(this, {})
+    , ldp_nbr_ipv6_adj_info(this, {})
 {
     protocol_information->parent = this;
     tcp_information->parent = this;
     detailed_information->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::~Neighbor()
@@ -8312,22 +8399,23 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::~Neighbor()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::has_data() const
 {
-    for (std::size_t index=0; index<ldp_nbr_bound_ipv4_address_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ldp_nbr_bound_ipv4_address_info.len(); index++)
     {
         if(ldp_nbr_bound_ipv4_address_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ldp_nbr_bound_ipv6_address_info.size(); index++)
+    for (std::size_t index=0; index<ldp_nbr_bound_ipv6_address_info.len(); index++)
     {
         if(ldp_nbr_bound_ipv6_address_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ldp_nbr_ipv4_adj_info.size(); index++)
+    for (std::size_t index=0; index<ldp_nbr_ipv4_adj_info.len(); index++)
     {
         if(ldp_nbr_ipv4_adj_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ldp_nbr_ipv6_adj_info.size(); index++)
+    for (std::size_t index=0; index<ldp_nbr_ipv6_adj_info.len(); index++)
     {
         if(ldp_nbr_ipv6_adj_info[index]->has_data())
             return true;
@@ -8341,22 +8429,22 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::has_data() const
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::has_operation() const
 {
-    for (std::size_t index=0; index<ldp_nbr_bound_ipv4_address_info.size(); index++)
+    for (std::size_t index=0; index<ldp_nbr_bound_ipv4_address_info.len(); index++)
     {
         if(ldp_nbr_bound_ipv4_address_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ldp_nbr_bound_ipv6_address_info.size(); index++)
+    for (std::size_t index=0; index<ldp_nbr_bound_ipv6_address_info.len(); index++)
     {
         if(ldp_nbr_bound_ipv6_address_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ldp_nbr_ipv4_adj_info.size(); index++)
+    for (std::size_t index=0; index<ldp_nbr_ipv4_adj_info.len(); index++)
     {
         if(ldp_nbr_ipv4_adj_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ldp_nbr_ipv6_adj_info.size(); index++)
+    for (std::size_t index=0; index<ldp_nbr_ipv6_adj_info.len(); index++)
     {
         if(ldp_nbr_ipv6_adj_info[index]->has_operation())
             return true;
@@ -8420,7 +8508,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::g
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInfo>();
         c->parent = this;
-        ldp_nbr_bound_ipv4_address_info.push_back(c);
+        ldp_nbr_bound_ipv4_address_info.append(c);
         return c;
     }
 
@@ -8428,7 +8516,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::g
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInfo>();
         c->parent = this;
-        ldp_nbr_bound_ipv6_address_info.push_back(c);
+        ldp_nbr_bound_ipv6_address_info.append(c);
         return c;
     }
 
@@ -8436,7 +8524,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::g
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo>();
         c->parent = this;
-        ldp_nbr_ipv4_adj_info.push_back(c);
+        ldp_nbr_ipv4_adj_info.append(c);
         return c;
     }
 
@@ -8444,7 +8532,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::g
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo>();
         c->parent = this;
-        ldp_nbr_ipv6_adj_info.push_back(c);
+        ldp_nbr_ipv6_adj_info.append(c);
         return c;
     }
 
@@ -8471,7 +8559,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : ldp_nbr_bound_ipv4_address_info)
+    for (auto c : ldp_nbr_bound_ipv4_address_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8480,7 +8568,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : ldp_nbr_bound_ipv6_address_info)
+    for (auto c : ldp_nbr_bound_ipv6_address_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8489,7 +8577,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : ldp_nbr_ipv4_adj_info)
+    for (auto c : ldp_nbr_ipv4_adj_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8498,7 +8586,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : ldp_nbr_ipv6_adj_info)
+    for (auto c : ldp_nbr_ipv6_adj_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8552,12 +8640,12 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::Prot
     ta_pies_rcvd{YType::uint32, "ta-pies-rcvd"},
     ta_up_time_seconds{YType::uint32, "ta-up-time-seconds"},
     downstream_on_demand{YType::boolean, "downstream-on-demand"}
-    	,
+        ,
     ta_graceful_restart_adjacency(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency>())
 {
     ta_graceful_restart_adjacency->parent = this;
 
-    yang_name = "protocol-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::~ProtocolInformation()
@@ -8566,6 +8654,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::~Pro
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return ta_holdtime.is_set
 	|| ta_state.is_set
 	|| ta_pies_sent.is_set
@@ -8717,7 +8806,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGr
     recovery_time{YType::uint32, "recovery-time"}
 {
 
-    yang_name = "ta-graceful-restart-adjacency"; yang_parent_name = "protocol-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ta-graceful-restart-adjacency"; yang_parent_name = "protocol-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency::~TaGracefulRestartAdjacency()
@@ -8726,6 +8815,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGr
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency::has_data() const
 {
+    if (is_presence_container) return true;
     return is_graceful_restartable.is_set
 	|| reconnect_timeout.is_set
 	|| recovery_time.is_set;
@@ -8820,14 +8910,14 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::TcpInform
     foreign_port{YType::uint16, "foreign-port"},
     local_port{YType::uint16, "local-port"},
     is_md5_on{YType::boolean, "is-md5-on"}
-    	,
+        ,
     foreign_host(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::ForeignHost>())
-	,local_host(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::LocalHost>())
+    , local_host(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::LocalHost>())
 {
     foreign_host->parent = this;
     local_host->parent = this;
 
-    yang_name = "tcp-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::~TcpInformation()
@@ -8836,6 +8926,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::~TcpInfor
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return foreign_port.is_set
 	|| local_port.is_set
 	|| is_md5_on.is_set
@@ -8965,7 +9056,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::ForeignHo
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "foreign-host"; yang_parent_name = "tcp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-host"; yang_parent_name = "tcp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::ForeignHost::~ForeignHost()
@@ -8974,6 +9065,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::ForeignHo
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::ForeignHost::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -9084,7 +9176,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::LocalHost
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "local-host"; yang_parent_name = "tcp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-host"; yang_parent_name = "tcp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::LocalHost::~LocalHost()
@@ -9093,6 +9185,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::LocalHost
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::TcpInformation::LocalHost::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -9221,12 +9314,15 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Deta
     nsr_last_sync_nack_reason{YType::enumeration, "nsr-last-sync-nack-reason"},
     bgp_advertisement_state{YType::enumeration, "bgp-advertisement-state"},
     advertise_bgp_prefixes{YType::boolean, "advertise-bgp-prefixes"}
-    	,
+        ,
     capabilities(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities>())
+    , client(this, {})
+    , ipv4_duplicate_address(this, {})
+    , ipv6_duplicate_address(this, {})
 {
     capabilities->parent = this;
 
-    yang_name = "detailed-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detailed-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::~DetailedInformation()
@@ -9235,17 +9331,18 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::~Det
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_duplicate_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_duplicate_address.len(); index++)
     {
         if(ipv4_duplicate_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_duplicate_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_duplicate_address.len(); index++)
     {
         if(ipv6_duplicate_address[index]->has_data())
             return true;
@@ -9279,17 +9376,17 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_duplicate_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_duplicate_address.len(); index++)
     {
         if(ipv4_duplicate_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_duplicate_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_duplicate_address.len(); index++)
     {
         if(ipv6_duplicate_address[index]->has_operation())
             return true;
@@ -9377,7 +9474,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::D
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -9385,7 +9482,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::D
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4DuplicateAddress>();
         c->parent = this;
-        ipv4_duplicate_address.push_back(c);
+        ipv4_duplicate_address.append(c);
         return c;
     }
 
@@ -9393,7 +9490,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::D
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6DuplicateAddress>();
         c->parent = this;
-        ipv6_duplicate_address.push_back(c);
+        ipv6_duplicate_address.append(c);
         return c;
     }
 
@@ -9410,7 +9507,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9419,7 +9516,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : ipv4_duplicate_address)
+    for (auto c : ipv4_duplicate_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9428,7 +9525,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : ipv6_duplicate_address)
+    for (auto c : ipv6_duplicate_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9695,9 +9792,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation:
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Capabilities()
+    :
+    sent(this, {})
+    , received(this, {})
 {
 
-    yang_name = "capabilities"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capabilities"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::~Capabilities()
@@ -9706,12 +9806,13 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capa
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<sent.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sent.len(); index++)
     {
         if(sent[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<received.size(); index++)
+    for (std::size_t index=0; index<received.len(); index++)
     {
         if(received[index]->has_data())
             return true;
@@ -9721,12 +9822,12 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation:
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<sent.size(); index++)
+    for (std::size_t index=0; index<sent.len(); index++)
     {
         if(sent[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<received.size(); index++)
+    for (std::size_t index=0; index<received.len(); index++)
     {
         if(received[index]->has_operation())
             return true;
@@ -9756,7 +9857,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::D
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Sent>();
         c->parent = this;
-        sent.push_back(c);
+        sent.append(c);
         return c;
     }
 
@@ -9764,7 +9865,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::D
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Received>();
         c->parent = this;
-        received.push_back(c);
+        received.append(c);
         return c;
     }
 
@@ -9776,7 +9877,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sent)
+    for (auto c : sent.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9785,7 +9886,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     }
 
     count = 0;
-    for (auto const & c : received)
+    for (auto c : received.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9819,7 +9920,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capa
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "sent"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sent"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Sent::~Sent()
@@ -9828,6 +9929,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capa
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Sent::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| description.is_set
 	|| capability_data_length.is_set
@@ -9938,7 +10040,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capa
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "received"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Received::~Received()
@@ -9947,6 +10049,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capa
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Capabilities::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| description.is_set
 	|| capability_data_length.is_set
@@ -10054,7 +10157,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Clie
     name{YType::str, "name"}
 {
 
-    yang_name = "client"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Client::~Client()
@@ -10063,6 +10166,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Clie
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -10132,7 +10236,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4
 {
     address->parent = this;
 
-    yang_name = "ipv4-duplicate-address"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-duplicate-address"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4DuplicateAddress::~Ipv4DuplicateAddress()
@@ -10141,6 +10245,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4DuplicateAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -10215,7 +10320,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "address"; yang_parent_name = "ipv4-duplicate-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv4-duplicate-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4DuplicateAddress::Address::~Address()
@@ -10224,6 +10329,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv4DuplicateAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -10332,7 +10438,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6
 {
     address->parent = this;
 
-    yang_name = "ipv6-duplicate-address"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-duplicate-address"; yang_parent_name = "detailed-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6DuplicateAddress::~Ipv6DuplicateAddress()
@@ -10341,6 +10447,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6DuplicateAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -10415,7 +10522,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6-duplicate-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6-duplicate-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6DuplicateAddress::Address::~Address()
@@ -10424,6 +10531,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::DetailedInformation::Ipv6DuplicateAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -10532,7 +10640,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInf
 {
     address->parent = this;
 
-    yang_name = "ldp-nbr-bound-ipv4-address-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-nbr-bound-ipv4-address-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInfo::~LdpNbrBoundIpv4AddressInfo()
@@ -10541,6 +10649,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInf
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -10615,7 +10724,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInf
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "address"; yang_parent_name = "ldp-nbr-bound-ipv4-address-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ldp-nbr-bound-ipv4-address-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInfo::Address::~Address()
@@ -10624,6 +10733,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInf
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInfo::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -10732,7 +10842,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInf
 {
     address->parent = this;
 
-    yang_name = "ldp-nbr-bound-ipv6-address-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-nbr-bound-ipv6-address-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInfo::~LdpNbrBoundIpv6AddressInfo()
@@ -10741,6 +10851,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInf
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -10815,7 +10926,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInf
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "address"; yang_parent_name = "ldp-nbr-bound-ipv6-address-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ldp-nbr-bound-ipv6-address-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInfo::Address::~Address()
@@ -10824,6 +10935,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInf
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInfo::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -10932,7 +11044,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::LdpNbr
 {
     adjacency_group->parent = this;
 
-    yang_name = "ldp-nbr-ipv4-adj-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-nbr-ipv4-adj-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::~LdpNbrIpv4AdjInfo()
@@ -10941,6 +11053,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::~LdpNb
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (adjacency_group !=  nullptr && adjacency_group->has_data());
 }
 
@@ -11010,14 +11123,14 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::h
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::AdjacencyGroup()
     :
     hello_type{YType::enumeration, "hello-type"}
-    	,
+        ,
     link_hello_data(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData>())
-	,target_hello_data(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData>())
+    , target_hello_data(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData>())
 {
     link_hello_data->parent = this;
     target_hello_data->parent = this;
 
-    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv4-adj-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv4-adj-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::~AdjacencyGroup()
@@ -11026,6 +11139,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_type.is_set
 	|| (link_hello_data !=  nullptr && link_hello_data->has_data())
 	|| (target_hello_data !=  nullptr && target_hello_data->has_data());
@@ -11127,7 +11241,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::~LinkHelloData()
@@ -11136,6 +11250,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_name.is_set;
 }
@@ -11215,14 +11330,14 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::A
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetHelloData()
     :
     state{YType::enumeration, "state"}
-    	,
+        ,
     local_address(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>())
-	,target_address(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
+    , target_address(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
 {
     local_address->parent = this;
     target_address->parent = this;
 
-    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::~TargetHelloData()
@@ -11231,6 +11346,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| (local_address !=  nullptr && local_address->has_data())
 	|| (target_address !=  nullptr && target_address->has_data());
@@ -11334,7 +11450,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::~LocalAddress()
@@ -11343,6 +11459,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -11453,7 +11570,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::~TargetAddress()
@@ -11462,6 +11579,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -11570,7 +11688,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::LdpNbr
 {
     adjacency_group->parent = this;
 
-    yang_name = "ldp-nbr-ipv6-adj-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-nbr-ipv6-adj-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::~LdpNbrIpv6AdjInfo()
@@ -11579,6 +11697,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::~LdpNb
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (adjacency_group !=  nullptr && adjacency_group->has_data());
 }
 
@@ -11648,14 +11767,14 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::h
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::AdjacencyGroup()
     :
     hello_type{YType::enumeration, "hello-type"}
-    	,
+        ,
     link_hello_data(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData>())
-	,target_hello_data(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData>())
+    , target_hello_data(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData>())
 {
     link_hello_data->parent = this;
     target_hello_data->parent = this;
 
-    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv6-adj-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv6-adj-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::~AdjacencyGroup()
@@ -11664,6 +11783,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_type.is_set
 	|| (link_hello_data !=  nullptr && link_hello_data->has_data())
 	|| (target_hello_data !=  nullptr && target_hello_data->has_data());
@@ -11765,7 +11885,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::~LinkHelloData()
@@ -11774,6 +11894,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_name.is_set;
 }
@@ -11853,14 +11974,14 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::A
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetHelloData()
     :
     state{YType::enumeration, "state"}
-    	,
+        ,
     local_address(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>())
-	,target_address(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
+    , target_address(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
 {
     local_address->parent = this;
     target_address->parent = this;
 
-    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::~TargetHelloData()
@@ -11869,6 +11990,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| (local_address !=  nullptr && local_address->has_data())
 	|| (target_address !=  nullptr && target_address->has_data());
@@ -11972,7 +12094,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::~LocalAddress()
@@ -11981,6 +12103,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -12091,7 +12214,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::~TargetAddress()
@@ -12100,6 +12223,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjace
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -12209,7 +12333,7 @@ MplsLdp::Nodes::Node::DefaultVrf::LdpId::LdpId()
     ldp_id{YType::str, "ldp-id"}
 {
 
-    yang_name = "ldp-id"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-id"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::LdpId::~LdpId()
@@ -12218,6 +12342,7 @@ MplsLdp::Nodes::Node::DefaultVrf::LdpId::~LdpId()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::LdpId::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| ldp_id.is_set;
@@ -12308,9 +12433,11 @@ bool MplsLdp::Nodes::Node::DefaultVrf::LdpId::has_leaf_or_child_of_name(const st
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistics()
+    :
+    statistic(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Statistics::~Statistics()
@@ -12319,7 +12446,8 @@ MplsLdp::Nodes::Node::DefaultVrf::Statistics::~Statistics()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -12329,7 +12457,7 @@ bool MplsLdp::Nodes::Node::DefaultVrf::Statistics::has_data() const
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -12359,7 +12487,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::DefaultVrf::Statistics::get_child_
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -12371,7 +12499,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DefaultVrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12402,14 +12530,14 @@ MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::Statistic()
     lsr_id{YType::str, "lsr-id"},
     label_space_id{YType::uint32, "label-space-id"},
     iccp_enabled{YType::boolean, "iccp-enabled"}
-    	,
+        ,
     message_out(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageOut>())
-	,message_in(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageIn>())
+    , message_in(std::make_shared<MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageIn>())
 {
     message_out->parent = this;
     message_in->parent = this;
 
-    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::~Statistic()
@@ -12418,6 +12546,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::~Statistic()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| iccp_enabled.is_set
@@ -12558,7 +12687,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageOut::MessageOut(
     iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
 {
 
-    yang_name = "message-out"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-out"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageOut::~MessageOut()
@@ -12567,6 +12696,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageOut::~MessageOut
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageOut::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| init_count.is_set
 	|| address_count.is_set
@@ -12831,7 +12961,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageIn::MessageIn()
     iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
 {
 
-    yang_name = "message-in"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-in"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageIn::~MessageIn()
@@ -12840,6 +12970,7 @@ MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageIn::~MessageIn()
 
 bool MplsLdp::Nodes::Node::DefaultVrf::Statistics::Statistic::MessageIn::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| init_count.is_set
 	|| address_count.is_set
@@ -13091,14 +13222,14 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::ForwardingSummaryAll()
     fsht{YType::uint16, "fsht"},
     intfs{YType::uint16, "intfs"},
     lbls{YType::uint16, "lbls"}
-    	,
+        ,
     vrf(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Vrf>())
-	,rws(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws>())
+    , rws(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws>())
 {
     vrf->parent = this;
     rws->parent = this;
 
-    yang_name = "forwarding-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::~ForwardingSummaryAll()
@@ -13107,6 +13238,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::~ForwardingSummaryAll()
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::has_data() const
 {
+    if (is_presence_container) return true;
     return is_lsd_bound.is_set
 	|| fsht.is_set
 	|| intfs.is_set
@@ -13247,7 +13379,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "forwarding-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "forwarding-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Vrf::~Vrf()
@@ -13256,6 +13388,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -13335,12 +13468,12 @@ bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Vrf::has_leaf_or_child_of_name(
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Rws()
     :
     pfxs(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs>())
-	,nhs(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Nhs>())
+    , nhs(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Nhs>())
 {
     pfxs->parent = this;
     nhs->parent = this;
 
-    yang_name = "rws"; yang_parent_name = "forwarding-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rws"; yang_parent_name = "forwarding-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::~Rws()
@@ -13349,6 +13482,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::~Rws()
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::has_data() const
 {
+    if (is_presence_container) return true;
     return (pfxs !=  nullptr && pfxs->has_data())
 	|| (nhs !=  nullptr && nhs->has_data());
 }
@@ -13436,16 +13570,16 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::Pfxs()
     total_pfxs{YType::uint16, "total-pfxs"},
     ecmp_pfxs{YType::uint16, "ecmp-pfxs"},
     protected_pfxs{YType::uint16, "protected-pfxs"}
-    	,
+        ,
     labeled_pfxs_aggr(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsAggr>())
-	,labeled_pfxs_primary(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsPrimary>())
-	,labeled_pfxs_backup(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsBackup>())
+    , labeled_pfxs_primary(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsPrimary>())
+    , labeled_pfxs_backup(std::make_shared<MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsBackup>())
 {
     labeled_pfxs_aggr->parent = this;
     labeled_pfxs_primary->parent = this;
     labeled_pfxs_backup->parent = this;
 
-    yang_name = "pfxs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfxs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::~Pfxs()
@@ -13454,6 +13588,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::~Pfxs()
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_pfxs.is_set
 	|| ecmp_pfxs.is_set
 	|| protected_pfxs.is_set
@@ -13598,7 +13733,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsAggr::LabeledP
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsAggr::~LabeledPfxsAggr()
@@ -13607,6 +13742,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsAggr::~Labeled
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsAggr::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -13703,7 +13839,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsPrimary::Label
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsPrimary::~LabeledPfxsPrimary()
@@ -13712,6 +13848,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsPrimary::~Labe
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsPrimary::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -13808,7 +13945,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsBackup::Labele
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsBackup::~LabeledPfxsBackup()
@@ -13817,6 +13954,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsBackup::~Label
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Pfxs::LabeledPfxsBackup::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -13916,7 +14054,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Nhs::Nhs()
     labeled_backup_paths{YType::uint32, "labeled-backup-paths"}
 {
 
-    yang_name = "nhs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nhs"; yang_parent_name = "rws"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Nhs::~Nhs()
@@ -13925,6 +14063,7 @@ MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Nhs::~Nhs()
 
 bool MplsLdp::Nodes::Node::ForwardingSummaryAll::Rws::Nhs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_paths.is_set
 	|| protected_paths.is_set
 	|| backup_paths.is_set
@@ -14065,12 +14204,13 @@ MplsLdp::Nodes::Node::BindingsSummaryAll::BindingsSummaryAll()
     binding_local_oor{YType::uint32, "binding-local-oor"},
     lowest_allocated_label{YType::uint32, "lowest-allocated-label"},
     highest_allocated_label{YType::uint32, "highest-allocated-label"}
-    	,
+        ,
     vrf(std::make_shared<MplsLdp::Nodes::Node::BindingsSummaryAll::Vrf>())
+    , bind_af(this, {})
 {
     vrf->parent = this;
 
-    yang_name = "bindings-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bindings-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::BindingsSummaryAll::~BindingsSummaryAll()
@@ -14079,7 +14219,8 @@ MplsLdp::Nodes::Node::BindingsSummaryAll::~BindingsSummaryAll()
 
 bool MplsLdp::Nodes::Node::BindingsSummaryAll::has_data() const
 {
-    for (std::size_t index=0; index<bind_af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bind_af.len(); index++)
     {
         if(bind_af[index]->has_data())
             return true;
@@ -14099,7 +14240,7 @@ bool MplsLdp::Nodes::Node::BindingsSummaryAll::has_data() const
 
 bool MplsLdp::Nodes::Node::BindingsSummaryAll::has_operation() const
 {
-    for (std::size_t index=0; index<bind_af.size(); index++)
+    for (std::size_t index=0; index<bind_af.len(); index++)
     {
         if(bind_af[index]->has_operation())
             return true;
@@ -14159,7 +14300,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::BindingsSummaryAll::get_child_by_n
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::BindingsSummaryAll::BindAf>();
         c->parent = this;
-        bind_af.push_back(c);
+        bind_af.append(c);
         return c;
     }
 
@@ -14176,7 +14317,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::BindingsSum
     }
 
     count = 0;
-    for (auto const & c : bind_af)
+    for (auto c : bind_af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14308,7 +14449,7 @@ MplsLdp::Nodes::Node::BindingsSummaryAll::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "bindings-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "bindings-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::BindingsSummaryAll::Vrf::~Vrf()
@@ -14317,6 +14458,7 @@ MplsLdp::Nodes::Node::BindingsSummaryAll::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::BindingsSummaryAll::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -14403,7 +14545,7 @@ MplsLdp::Nodes::Node::BindingsSummaryAll::BindAf::BindAf()
     binding_remote{YType::uint32, "binding-remote"}
 {
 
-    yang_name = "bind-af"; yang_parent_name = "bindings-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bind-af"; yang_parent_name = "bindings-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::BindingsSummaryAll::BindAf::~BindAf()
@@ -14412,6 +14554,7 @@ MplsLdp::Nodes::Node::BindingsSummaryAll::BindAf::~BindAf()
 
 bool MplsLdp::Nodes::Node::BindingsSummaryAll::BindAf::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| last_lib_update.is_set
 	|| lib_minimum_revision_sent_all.is_set
@@ -14541,9 +14684,11 @@ bool MplsLdp::Nodes::Node::BindingsSummaryAll::BindAf::has_leaf_or_child_of_name
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntries()
+    :
+    ato_mdb_table_entry(this, {})
 {
 
-    yang_name = "ato-mdb-table-entries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ato-mdb-table-entries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::~AtoMdbTableEntries()
@@ -14552,7 +14697,8 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::~AtoMdbTableEntries()
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::has_data() const
 {
-    for (std::size_t index=0; index<ato_mdb_table_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ato_mdb_table_entry.len(); index++)
     {
         if(ato_mdb_table_entry[index]->has_data())
             return true;
@@ -14562,7 +14708,7 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::has_data() const
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::has_operation() const
 {
-    for (std::size_t index=0; index<ato_mdb_table_entry.size(); index++)
+    for (std::size_t index=0; index<ato_mdb_table_entry.len(); index++)
     {
         if(ato_mdb_table_entry[index]->has_operation())
             return true;
@@ -14592,7 +14738,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::AtoMdbTableEntries::get_child_by_n
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry>();
         c->parent = this;
-        ato_mdb_table_entry.push_back(c);
+        ato_mdb_table_entry.append(c);
         return c;
     }
 
@@ -14604,7 +14750,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::AtoMdbTable
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ato_mdb_table_entry)
+    for (auto c : ato_mdb_table_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14633,29 +14779,29 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::has_leaf_or_child_of_name(const s
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::AtoMdbTableEntry()
     :
     peer_id{YType::str, "peer-id"},
-    fe_ctype{YType::int32, "fe-ctype"},
-    pw_id{YType::int32, "pw-id"},
-    agi_type{YType::int32, "agi-type"},
-    agi{YType::int32, "agi"},
-    saii_type{YType::int32, "saii-type"},
+    fe_ctype{YType::uint32, "fe-ctype"},
+    pw_id{YType::uint32, "pw-id"},
+    agi_type{YType::uint32, "agi-type"},
+    agi{YType::uint32, "agi"},
+    saii_type{YType::uint32, "saii-type"},
     saii_local_id{YType::str, "saii-local-id"},
-    saii_global_id{YType::int32, "saii-global-id"},
+    saii_global_id{YType::uint32, "saii-global-id"},
     saii_prefix{YType::str, "saii-prefix"},
-    saii_ac_id{YType::int32, "saii-ac-id"},
-    taii_type{YType::int32, "taii-type"},
+    saii_ac_id{YType::uint32, "saii-ac-id"},
+    taii_type{YType::uint32, "taii-type"},
     taii_local_id{YType::str, "taii-local-id"},
-    taii_global_id{YType::int32, "taii-global-id"},
+    taii_global_id{YType::uint32, "taii-global-id"},
     taii_prefix{YType::str, "taii-prefix"},
-    taii_ac_id{YType::int32, "taii-ac-id"},
+    taii_ac_id{YType::uint32, "taii-ac-id"},
     peer_id_xr{YType::str, "peer-id-xr"},
     mapping_tlv_count{YType::uint32, "mapping-tlv-count"},
     notification_tlv_count{YType::uint32, "notification-tlv-count"}
-    	,
+        ,
     fec_info(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo>())
 {
     fec_info->parent = this;
 
-    yang_name = "ato-mdb-table-entry"; yang_parent_name = "ato-mdb-table-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ato-mdb-table-entry"; yang_parent_name = "ato-mdb-table-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::~AtoMdbTableEntry()
@@ -14664,6 +14810,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::~AtoMdbTableEntry()
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_id.is_set
 	|| fe_ctype.is_set
 	|| pw_id.is_set
@@ -14967,16 +15114,16 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::has_leaf_or_chi
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::FecInfo()
     :
     fe_ctype{YType::enumeration, "fe-ctype"}
-    	,
+        ,
     fec128(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec128>())
-	,fec129(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129>())
-	,fec130(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130>())
+    , fec129(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129>())
+    , fec130(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130>())
 {
     fec128->parent = this;
     fec129->parent = this;
     fec130->parent = this;
 
-    yang_name = "fec-info"; yang_parent_name = "ato-mdb-table-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fec-info"; yang_parent_name = "ato-mdb-table-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::~FecInfo()
@@ -14985,6 +15132,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::~FecInfo()
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return fe_ctype.is_set
 	|| (fec128 !=  nullptr && fec128->has_data())
 	|| (fec129 !=  nullptr && fec129->has_data())
@@ -15101,7 +15249,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec128::Fec
     pseudowire_id{YType::uint32, "pseudowire-id"}
 {
 
-    yang_name = "fec128"; yang_parent_name = "fec-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fec128"; yang_parent_name = "fec-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec128::~Fec128()
@@ -15110,6 +15258,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec128::~Fe
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec128::has_data() const
 {
+    if (is_presence_container) return true;
     return pseudowire_id.is_set;
 }
 
@@ -15176,14 +15325,14 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec128
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Fec129()
     :
     agi(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi>())
-	,saii(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii>())
-	,taii(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii>())
+    , saii(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii>())
+    , taii(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii>())
 {
     agi->parent = this;
     saii->parent = this;
     taii->parent = this;
 
-    yang_name = "fec129"; yang_parent_name = "fec-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fec129"; yang_parent_name = "fec-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::~Fec129()
@@ -15192,6 +15341,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::~Fe
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::has_data() const
 {
+    if (is_presence_container) return true;
     return (agi !=  nullptr && agi->has_data())
 	|| (saii !=  nullptr && saii->has_data())
 	|| (taii !=  nullptr && taii->has_data());
@@ -15293,12 +15443,12 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi::Agi()
     :
     agi_type{YType::enumeration, "agi-type"}
-    	,
+        ,
     agi1(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi::Agi1>())
 {
     agi1->parent = this;
 
-    yang_name = "agi"; yang_parent_name = "fec129"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "agi"; yang_parent_name = "fec129"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi::~Agi()
@@ -15307,6 +15457,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi::has_data() const
 {
+    if (is_presence_container) return true;
     return agi_type.is_set
 	|| (agi1 !=  nullptr && agi1->has_data());
 }
@@ -15391,7 +15542,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi
     rd{YType::uint64, "rd"}
 {
 
-    yang_name = "agi1"; yang_parent_name = "agi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "agi1"; yang_parent_name = "agi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi::Agi1::~Agi1()
@@ -15400,6 +15551,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Agi::Agi1::has_data() const
 {
+    if (is_presence_container) return true;
     return rd.is_set;
 }
 
@@ -15466,14 +15618,14 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Saii()
     :
     aii_type{YType::enumeration, "aii-type"}
-    	,
+        ,
     aii1(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1>())
-	,aii2(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2>())
+    , aii2(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2>())
 {
     aii1->parent = this;
     aii2->parent = this;
 
-    yang_name = "saii"; yang_parent_name = "fec129"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "saii"; yang_parent_name = "fec129"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::~Saii()
@@ -15482,6 +15634,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Sai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::has_data() const
 {
+    if (is_presence_container) return true;
     return aii_type.is_set
 	|| (aii1 !=  nullptr && aii1->has_data())
 	|| (aii2 !=  nullptr && aii2->has_data());
@@ -15582,7 +15735,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Sai
     local_id{YType::str, "local-id"}
 {
 
-    yang_name = "aii1"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aii1"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1::~Aii1()
@@ -15591,6 +15744,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Sai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1::has_data() const
 {
+    if (is_presence_container) return true;
     return local_id.is_set;
 }
 
@@ -15661,7 +15815,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Sai
     ac_id{YType::uint32, "ac-id"}
 {
 
-    yang_name = "aii2"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aii2"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2::~Aii2()
@@ -15670,6 +15824,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Sai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2::has_data() const
 {
+    if (is_presence_container) return true;
     return gobal_id.is_set
 	|| prefix.is_set
 	|| ac_id.is_set;
@@ -15762,14 +15917,14 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Taii()
     :
     aii_type{YType::enumeration, "aii-type"}
-    	,
+        ,
     aii1(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1>())
-	,aii2(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2>())
+    , aii2(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2>())
 {
     aii1->parent = this;
     aii2->parent = this;
 
-    yang_name = "taii"; yang_parent_name = "fec129"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "taii"; yang_parent_name = "fec129"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::~Taii()
@@ -15778,6 +15933,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Tai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::has_data() const
 {
+    if (is_presence_container) return true;
     return aii_type.is_set
 	|| (aii1 !=  nullptr && aii1->has_data())
 	|| (aii2 !=  nullptr && aii2->has_data());
@@ -15878,7 +16034,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Tai
     local_id{YType::str, "local-id"}
 {
 
-    yang_name = "aii1"; yang_parent_name = "taii"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aii1"; yang_parent_name = "taii"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1::~Aii1()
@@ -15887,6 +16043,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Tai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1::has_data() const
 {
+    if (is_presence_container) return true;
     return local_id.is_set;
 }
 
@@ -15957,7 +16114,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Tai
     ac_id{YType::uint32, "ac-id"}
 {
 
-    yang_name = "aii2"; yang_parent_name = "taii"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aii2"; yang_parent_name = "taii"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2::~Aii2()
@@ -15966,6 +16123,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Tai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2::has_data() const
 {
+    if (is_presence_container) return true;
     return gobal_id.is_set
 	|| prefix.is_set
 	|| ac_id.is_set;
@@ -16058,12 +16216,12 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Fec130()
     :
     agi(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi>())
-	,saii(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii>())
+    , saii(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii>())
 {
     agi->parent = this;
     saii->parent = this;
 
-    yang_name = "fec130"; yang_parent_name = "fec-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fec130"; yang_parent_name = "fec-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::~Fec130()
@@ -16072,6 +16230,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::~Fe
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::has_data() const
 {
+    if (is_presence_container) return true;
     return (agi !=  nullptr && agi->has_data())
 	|| (saii !=  nullptr && saii->has_data());
 }
@@ -16157,12 +16316,12 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi()
     :
     agi_type{YType::enumeration, "agi-type"}
-    	,
+        ,
     agi1(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1>())
 {
     agi1->parent = this;
 
-    yang_name = "agi"; yang_parent_name = "fec130"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "agi"; yang_parent_name = "fec130"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::~Agi()
@@ -16171,6 +16330,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::has_data() const
 {
+    if (is_presence_container) return true;
     return agi_type.is_set
 	|| (agi1 !=  nullptr && agi1->has_data());
 }
@@ -16255,7 +16415,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi
     rd{YType::uint64, "rd"}
 {
 
-    yang_name = "agi1"; yang_parent_name = "agi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "agi1"; yang_parent_name = "agi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1::~Agi1()
@@ -16264,6 +16424,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1::has_data() const
 {
+    if (is_presence_container) return true;
     return rd.is_set;
 }
 
@@ -16330,14 +16491,14 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Saii()
     :
     aii_type{YType::enumeration, "aii-type"}
-    	,
+        ,
     aii1(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1>())
-	,aii2(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2>())
+    , aii2(std::make_shared<MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2>())
 {
     aii1->parent = this;
     aii2->parent = this;
 
-    yang_name = "saii"; yang_parent_name = "fec130"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "saii"; yang_parent_name = "fec130"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::~Saii()
@@ -16346,6 +16507,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Sai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::has_data() const
 {
+    if (is_presence_container) return true;
     return aii_type.is_set
 	|| (aii1 !=  nullptr && aii1->has_data())
 	|| (aii2 !=  nullptr && aii2->has_data());
@@ -16446,7 +16608,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Sai
     local_id{YType::str, "local-id"}
 {
 
-    yang_name = "aii1"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aii1"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1::~Aii1()
@@ -16455,6 +16617,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Sai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1::has_data() const
 {
+    if (is_presence_container) return true;
     return local_id.is_set;
 }
 
@@ -16525,7 +16688,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Sai
     ac_id{YType::uint32, "ac-id"}
 {
 
-    yang_name = "aii2"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aii2"; yang_parent_name = "saii"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2::~Aii2()
@@ -16534,6 +16697,7 @@ MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Sai
 
 bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2::has_data() const
 {
+    if (is_presence_container) return true;
     return gobal_id.is_set
 	|| prefix.is_set
 	|| ac_id.is_set;
@@ -16626,12 +16790,12 @@ bool MplsLdp::Nodes::Node::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130
 MplsLdp::Nodes::Node::NsrSummaryAll::NsrSummaryAll()
     :
     vrf(std::make_shared<MplsLdp::Nodes::Node::NsrSummaryAll::Vrf>())
-	,sessions(std::make_shared<MplsLdp::Nodes::Node::NsrSummaryAll::Sessions>())
+    , sessions(std::make_shared<MplsLdp::Nodes::Node::NsrSummaryAll::Sessions>())
 {
     vrf->parent = this;
     sessions->parent = this;
 
-    yang_name = "nsr-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nsr-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::NsrSummaryAll::~NsrSummaryAll()
@@ -16640,6 +16804,7 @@ MplsLdp::Nodes::Node::NsrSummaryAll::~NsrSummaryAll()
 
 bool MplsLdp::Nodes::Node::NsrSummaryAll::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data())
 	|| (sessions !=  nullptr && sessions->has_data());
 }
@@ -16728,7 +16893,7 @@ MplsLdp::Nodes::Node::NsrSummaryAll::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "nsr-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "nsr-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::NsrSummaryAll::Vrf::~Vrf()
@@ -16737,6 +16902,7 @@ MplsLdp::Nodes::Node::NsrSummaryAll::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::NsrSummaryAll::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -16827,7 +16993,7 @@ MplsLdp::Nodes::Node::NsrSummaryAll::Sessions::Sessions()
     nsr_state_tcp_phase2{YType::uint32, "nsr-state-tcp-phase2"}
 {
 
-    yang_name = "sessions"; yang_parent_name = "nsr-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "nsr-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::NsrSummaryAll::Sessions::~Sessions()
@@ -16836,6 +17002,7 @@ MplsLdp::Nodes::Node::NsrSummaryAll::Sessions::~Sessions()
 
 bool MplsLdp::Nodes::Node::NsrSummaryAll::Sessions::has_data() const
 {
+    if (is_presence_container) return true;
     return total.is_set
 	|| nsr_eligible.is_set
 	|| nsr_state_none.is_set
@@ -17043,12 +17210,12 @@ MplsLdp::Nodes::Node::Summary::Summary()
     is_bound_with_nsr_mate{YType::boolean, "is-bound-with-nsr-mate"},
     is_nsr_configured{YType::boolean, "is-nsr-configured"},
     is_mldp_registered{YType::boolean, "is-mldp-registered"}
-    	,
+        ,
     common(std::make_shared<MplsLdp::Nodes::Node::Summary::Common>())
 {
     common->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Summary::~Summary()
@@ -17057,6 +17224,7 @@ MplsLdp::Nodes::Node::Summary::~Summary()
 
 bool MplsLdp::Nodes::Node::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return number_of_vrf.is_set
 	|| number_of_vrf_oper.is_set
 	|| number_of_interfaces.is_set
@@ -17474,7 +17642,7 @@ MplsLdp::Nodes::Node::Summary::Common::Common()
     number_of_remote_bindings_ipv6{YType::uint32, "number-of-remote-bindings-ipv6"}
 {
 
-    yang_name = "common"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Summary::Common::~Common()
@@ -17483,6 +17651,7 @@ MplsLdp::Nodes::Node::Summary::Common::~Common()
 
 bool MplsLdp::Nodes::Node::Summary::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return address_families.is_set
 	|| number_of_ipv4af.is_set
 	|| number_of_ipv6af.is_set
@@ -17820,9 +17989,11 @@ bool MplsLdp::Nodes::Node::Summary::Common::has_leaf_or_child_of_name(const std:
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::~Vrfs()
@@ -17831,7 +18002,8 @@ MplsLdp::Nodes::Node::Vrfs::~Vrfs()
 
 bool MplsLdp::Nodes::Node::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -17841,7 +18013,7 @@ bool MplsLdp::Nodes::Node::Vrfs::has_data() const
 
 bool MplsLdp::Nodes::Node::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -17871,7 +18043,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::get_child_by_name(const std:
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -17883,7 +18055,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17912,21 +18084,21 @@ bool MplsLdp::Nodes::Node::Vrfs::has_leaf_or_child_of_name(const std::string & n
 MplsLdp::Nodes::Node::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     graceful_restart(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart>())
-	,capabilities(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities>())
-	,summary(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Summary>())
-	,afs(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs>())
-	,neighbor_briefs(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::NeighborBriefs>())
-	,backoff_parameters(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::BackoffParameters>())
-	,backoffs(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Backoffs>())
-	,nsr(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Nsr>())
-	,parameters(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Parameters>())
-	,issu(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Issu>())
-	,neighbor_capabilities(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::NeighborCapabilities>())
-	,neighbors(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors>())
-	,ldp_id(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId>())
-	,statistics(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics>())
+    , capabilities(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities>())
+    , summary(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Summary>())
+    , afs(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs>())
+    , neighbor_briefs(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::NeighborBriefs>())
+    , backoff_parameters(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::BackoffParameters>())
+    , backoffs(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Backoffs>())
+    , nsr(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Nsr>())
+    , parameters(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Parameters>())
+    , issu(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Issu>())
+    , neighbor_capabilities(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::NeighborCapabilities>())
+    , neighbors(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors>())
+    , ldp_id(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId>())
+    , statistics(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics>())
 {
     graceful_restart->parent = this;
     capabilities->parent = this;
@@ -17943,7 +18115,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Vrf()
     ldp_id->parent = this;
     statistics->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::~Vrf()
@@ -17952,6 +18124,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (graceful_restart !=  nullptr && graceful_restart->has_data())
 	|| (capabilities !=  nullptr && capabilities->has_data())
@@ -17992,7 +18165,8 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::has_operation() const
 std::string MplsLdp::Nodes::Node::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -18243,12 +18417,13 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestart()
     :
     is_forwarding_state_hold_timer_running{YType::boolean, "is-forwarding-state-hold-timer-running"},
     forwarding_state_hold_timer_remaining_seconds{YType::uint32, "forwarding-state-hold-timer-remaining-seconds"}
-    	,
+        ,
     vrf(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::Vrf_>())
+    , graceful_restartable_neighbor(this, {})
 {
     vrf->parent = this;
 
-    yang_name = "graceful-restart"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-restart"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::~GracefulRestart()
@@ -18257,7 +18432,8 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::~GracefulRestart()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::has_data() const
 {
-    for (std::size_t index=0; index<graceful_restartable_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<graceful_restartable_neighbor.len(); index++)
     {
         if(graceful_restartable_neighbor[index]->has_data())
             return true;
@@ -18269,7 +18445,7 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::has_data() const
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::has_operation() const
 {
-    for (std::size_t index=0; index<graceful_restartable_neighbor.size(); index++)
+    for (std::size_t index=0; index<graceful_restartable_neighbor.len(); index++)
     {
         if(graceful_restartable_neighbor[index]->has_operation())
             return true;
@@ -18313,7 +18489,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::get_ch
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor>();
         c->parent = this;
-        graceful_restartable_neighbor.push_back(c);
+        graceful_restartable_neighbor.append(c);
         return c;
     }
 
@@ -18330,7 +18506,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::
     }
 
     count = 0;
-    for (auto const & c : graceful_restartable_neighbor)
+    for (auto c : graceful_restartable_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18382,7 +18558,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::Vrf_::Vrf_()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::Vrf_::~Vrf_()
@@ -18391,6 +18567,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::Vrf_::~Vrf_()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::Vrf_::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -18478,12 +18655,14 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::G
     down_nbr_flap_count{YType::uint8, "down-nbr-flap-count"},
     down_nbr_flags{YType::uint32, "down-nbr-flags"},
     down_nbr_down_reason{YType::uint32, "down-nbr-down-reason"}
-    	,
+        ,
     gr_peer(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer>())
+    , down_nbr_interface(this, {})
+    , down_nbr_address(this, {})
 {
     gr_peer->parent = this;
 
-    yang_name = "graceful-restartable-neighbor"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-restartable-neighbor"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::~GracefulRestartableNeighbor()
@@ -18492,12 +18671,13 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::~
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::has_data() const
 {
-    for (std::size_t index=0; index<down_nbr_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<down_nbr_interface.len(); index++)
     {
         if(down_nbr_interface[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<down_nbr_address.size(); index++)
+    for (std::size_t index=0; index<down_nbr_address.len(); index++)
     {
         if(down_nbr_address[index]->has_data())
             return true;
@@ -18516,12 +18696,12 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighb
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::has_operation() const
 {
-    for (std::size_t index=0; index<down_nbr_interface.size(); index++)
+    for (std::size_t index=0; index<down_nbr_interface.len(); index++)
     {
         if(down_nbr_interface[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<down_nbr_address.size(); index++)
+    for (std::size_t index=0; index<down_nbr_address.len(); index++)
     {
         if(down_nbr_address[index]->has_operation())
             return true;
@@ -18579,7 +18759,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::Gracef
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface>();
         c->parent = this;
-        down_nbr_interface.push_back(c);
+        down_nbr_interface.append(c);
         return c;
     }
 
@@ -18587,7 +18767,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::Gracef
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress>();
         c->parent = this;
-        down_nbr_address.push_back(c);
+        down_nbr_address.append(c);
         return c;
     }
 
@@ -18604,7 +18784,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::
     }
 
     count = 0;
-    for (auto const & c : down_nbr_interface)
+    for (auto c : down_nbr_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18613,7 +18793,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::
     }
 
     count = 0;
-    for (auto const & c : down_nbr_address)
+    for (auto c : down_nbr_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18736,7 +18916,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::G
     ldp_id{YType::str, "ldp-id"}
 {
 
-    yang_name = "gr-peer"; yang_parent_name = "graceful-restartable-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gr-peer"; yang_parent_name = "graceful-restartable-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer::~GrPeer()
@@ -18745,6 +18925,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::G
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| ldp_id.is_set;
@@ -18840,7 +19021,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::D
     interface_handle{YType::str, "interface-handle"}
 {
 
-    yang_name = "down-nbr-interface"; yang_parent_name = "graceful-restartable-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "down-nbr-interface"; yang_parent_name = "graceful-restartable-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface::~DownNbrInterface()
@@ -18849,6 +19030,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::D
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| interface_handle.is_set;
 }
@@ -18933,7 +19115,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::D
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "down-nbr-address"; yang_parent_name = "graceful-restartable-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "down-nbr-address"; yang_parent_name = "graceful-restartable-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress::~DownNbrAddress()
@@ -18942,6 +19124,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::D
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -19045,9 +19228,11 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighb
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capabilities()
+    :
+    capability(this, {"capability_type"})
 {
 
-    yang_name = "capabilities"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capabilities"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::~Capabilities()
@@ -19056,7 +19241,8 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::~Capabilities()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<capability.len(); index++)
     {
         if(capability[index]->has_data())
             return true;
@@ -19066,7 +19252,7 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::has_data() const
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    for (std::size_t index=0; index<capability.len(); index++)
     {
         if(capability[index]->has_operation())
             return true;
@@ -19096,7 +19282,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::get_child
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability>();
         c->parent = this;
-        capability.push_back(c);
+        capability.append(c);
         return c;
     }
 
@@ -19108,7 +19294,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : capability)
+    for (auto c : capability.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19136,14 +19322,14 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::has_leaf_or_child_of_name(co
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::Capability()
     :
-    capability_type{YType::int32, "capability-type"},
+    capability_type{YType::uint32, "capability-type"},
     capability_owner{YType::str, "capability-owner"}
-    	,
+        ,
     capability(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::Capability_>())
 {
     capability->parent = this;
 
-    yang_name = "capability"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capability"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::~Capability()
@@ -19152,6 +19338,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::~Capability()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::has_data() const
 {
+    if (is_presence_container) return true;
     return capability_type.is_set
 	|| capability_owner.is_set
 	|| (capability !=  nullptr && capability->has_data());
@@ -19168,7 +19355,8 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::has_operation() 
 std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "capability" <<"[capability-type='" <<capability_type <<"']";
+    path_buffer << "capability";
+    ADD_KEY_TOKEN(capability_type, "capability-type");
     return path_buffer.str();
 }
 
@@ -19252,7 +19440,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::Capability_::Capabili
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "capability"; yang_parent_name = "capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capability"; yang_parent_name = "capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::Capability_::~Capability_()
@@ -19261,6 +19449,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::Capability_::~Capabil
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::Capability_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| description.is_set
 	|| capability_data_length.is_set
@@ -19366,12 +19555,12 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Capabilities::Capability::Capability_::has
 MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Summary()
     :
     vrf(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Vrf_>())
-	,common(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Common>())
+    , common(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Common>())
 {
     vrf->parent = this;
     common->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::~Summary()
@@ -19380,6 +19569,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::~Summary()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data())
 	|| (common !=  nullptr && common->has_data());
 }
@@ -19468,7 +19658,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Vrf_::Vrf_()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Vrf_::~Vrf_()
@@ -19477,6 +19667,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Vrf_::~Vrf_()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Vrf_::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }
@@ -19579,7 +19770,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Common::Common()
     number_of_remote_bindings_ipv6{YType::uint32, "number-of-remote-bindings-ipv6"}
 {
 
-    yang_name = "common"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Common::~Common()
@@ -19588,6 +19779,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Common::~Common()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return address_families.is_set
 	|| number_of_ipv4af.is_set
 	|| number_of_ipv6af.is_set
@@ -19925,9 +20117,11 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Summary::Common::has_leaf_or_child_of_name
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Afs()
+    :
+    af(this, {"af_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::~Afs()
@@ -19936,7 +20130,8 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::~Afs()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -19946,7 +20141,7 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::has_data() const
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -19976,7 +20171,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::get_child_by_name(
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -19988,7 +20183,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20017,17 +20212,17 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::has_leaf_or_child_of_name(const std::
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Af()
     :
     af_name{YType::enumeration, "af-name"}
-    	,
+        ,
     interface_summary(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::InterfaceSummary>())
-	,bindings(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings>())
-	,igp(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp>())
-	,bindings_summary(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary>())
-	,interfaces(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Interfaces>())
-	,discovery(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Discovery>())
-	,bindings_summary_all(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll>())
-	,forwardings(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Forwardings>())
-	,bindings_advertise_spec(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec>())
-	,forwarding_summary(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::ForwardingSummary>())
+    , bindings(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings>())
+    , igp(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp>())
+    , bindings_summary(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary>())
+    , interfaces(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Interfaces>())
+    , discovery(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Discovery>())
+    , bindings_summary_all(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll>())
+    , forwardings(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Forwardings>())
+    , bindings_advertise_spec(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec>())
+    , forwarding_summary(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::ForwardingSummary>())
 {
     interface_summary->parent = this;
     bindings->parent = this;
@@ -20040,7 +20235,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Af()
     bindings_advertise_spec->parent = this;
     forwarding_summary->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::~Af()
@@ -20049,6 +20244,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::~Af()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| (interface_summary !=  nullptr && interface_summary->has_data())
 	|| (bindings !=  nullptr && bindings->has_data())
@@ -20081,7 +20277,8 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::has_operation() const
 std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -20284,7 +20481,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::InterfaceSummary::InterfaceSummary()
     auto_config_forward_reference_interfaces{YType::uint32, "auto-config-forward-reference-interfaces"}
 {
 
-    yang_name = "interface-summary"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-summary"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::InterfaceSummary::~InterfaceSummary()
@@ -20293,6 +20490,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::InterfaceSummary::~InterfaceSummary()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::InterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return known_ip_interface_count.is_set
 	|| known_ip_interface_ldp_enabled.is_set
 	|| ldp_configured_attached_interface.is_set
@@ -20448,9 +20646,11 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::InterfaceSummary::has_leaf_or_chi
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Bindings()
+    :
+    binding(this, {"prefix"})
 {
 
-    yang_name = "bindings"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bindings"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::~Bindings()
@@ -20459,7 +20659,8 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::~Bindings()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -20469,7 +20670,7 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::has_data() const
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -20499,7 +20700,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::get_
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -20511,7 +20712,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;

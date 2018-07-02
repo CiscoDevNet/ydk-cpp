@@ -14,12 +14,12 @@ namespace openconfig_routing_policy {
 RoutingPolicy::RoutingPolicy()
     :
     defined_sets(std::make_shared<RoutingPolicy::DefinedSets>())
-	,policy_definitions(std::make_shared<RoutingPolicy::PolicyDefinitions>())
+    , policy_definitions(std::make_shared<RoutingPolicy::PolicyDefinitions>())
 {
     defined_sets->parent = this;
     policy_definitions->parent = this;
 
-    yang_name = "routing-policy"; yang_parent_name = "openconfig-routing-policy"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-policy"; yang_parent_name = "openconfig-routing-policy"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingPolicy::~RoutingPolicy()
@@ -28,6 +28,7 @@ RoutingPolicy::~RoutingPolicy()
 
 bool RoutingPolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (defined_sets !=  nullptr && defined_sets->has_data())
 	|| (policy_definitions !=  nullptr && policy_definitions->has_data());
 }
@@ -138,16 +139,16 @@ bool RoutingPolicy::has_leaf_or_child_of_name(const std::string & name) const
 RoutingPolicy::DefinedSets::DefinedSets()
     :
     prefix_sets(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets>())
-	,neighbor_sets(std::make_shared<RoutingPolicy::DefinedSets::NeighborSets>())
-	,tag_sets(std::make_shared<RoutingPolicy::DefinedSets::TagSets>())
-	,bgp_defined_sets(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets>())
+    , neighbor_sets(std::make_shared<RoutingPolicy::DefinedSets::NeighborSets>())
+    , tag_sets(std::make_shared<RoutingPolicy::DefinedSets::TagSets>())
+    , bgp_defined_sets(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets>())
 {
     prefix_sets->parent = this;
     neighbor_sets->parent = this;
     tag_sets->parent = this;
     bgp_defined_sets->parent = this;
 
-    yang_name = "defined-sets"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "defined-sets"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::~DefinedSets()
@@ -156,6 +157,7 @@ RoutingPolicy::DefinedSets::~DefinedSets()
 
 bool RoutingPolicy::DefinedSets::has_data() const
 {
+    if (is_presence_container) return true;
     return (prefix_sets !=  nullptr && prefix_sets->has_data())
 	|| (neighbor_sets !=  nullptr && neighbor_sets->has_data())
 	|| (tag_sets !=  nullptr && tag_sets->has_data())
@@ -278,9 +280,11 @@ bool RoutingPolicy::DefinedSets::has_leaf_or_child_of_name(const std::string & n
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSets()
+    :
+    prefix_set(this, {"prefix_set_name"})
 {
 
-    yang_name = "prefix-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::~PrefixSets()
@@ -289,7 +293,8 @@ RoutingPolicy::DefinedSets::PrefixSets::~PrefixSets()
 
 bool RoutingPolicy::DefinedSets::PrefixSets::has_data() const
 {
-    for (std::size_t index=0; index<prefix_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_set.len(); index++)
     {
         if(prefix_set[index]->has_data())
             return true;
@@ -299,7 +304,7 @@ bool RoutingPolicy::DefinedSets::PrefixSets::has_data() const
 
 bool RoutingPolicy::DefinedSets::PrefixSets::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_set.size(); index++)
+    for (std::size_t index=0; index<prefix_set.len(); index++)
     {
         if(prefix_set[index]->has_operation())
             return true;
@@ -336,7 +341,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::get_child_by_nam
     {
         auto c = std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet>();
         c->parent = this;
-        prefix_set.push_back(c);
+        prefix_set.append(c);
         return c;
     }
 
@@ -348,7 +353,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::Prefi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_set)
+    for (auto c : prefix_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -377,16 +382,16 @@ bool RoutingPolicy::DefinedSets::PrefixSets::has_leaf_or_child_of_name(const std
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::PrefixSet()
     :
     prefix_set_name{YType::str, "prefix-set-name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Config>())
-	,state(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State>())
-	,prefixes(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes>())
+    , state(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State>())
+    , prefixes(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes>())
 {
     config->parent = this;
     state->parent = this;
     prefixes->parent = this;
 
-    yang_name = "prefix-set"; yang_parent_name = "prefix-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-set"; yang_parent_name = "prefix-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::~PrefixSet()
@@ -395,6 +400,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::~PrefixSet()
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_set_name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -420,7 +426,8 @@ std::string RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::get_absolute_path
 std::string RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-set" <<"[prefix-set-name='" <<prefix_set_name <<"']";
+    path_buffer << "prefix-set";
+    ADD_KEY_TOKEN(prefix_set_name, "prefix-set-name");
     return path_buffer.str();
 }
 
@@ -518,7 +525,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Config::Config()
     prefix_set_name{YType::str, "prefix-set-name"}
 {
 
-    yang_name = "config"; yang_parent_name = "prefix-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "prefix-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Config::~Config()
@@ -527,6 +534,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Config::~Config()
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_set_name.is_set;
 }
 
@@ -595,7 +603,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State::State()
     prefix_set_name{YType::str, "prefix-set-name"}
 {
 
-    yang_name = "state"; yang_parent_name = "prefix-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "prefix-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State::~State()
@@ -604,6 +612,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State::~State()
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_set_name.is_set;
 }
 
@@ -668,9 +677,11 @@ bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::State::has_leaf_or_child
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefixes()
+    :
+    prefix(this, {"ip_prefix", "masklength_range"})
 {
 
-    yang_name = "prefixes"; yang_parent_name = "prefix-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefixes"; yang_parent_name = "prefix-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::~Prefixes()
@@ -679,7 +690,8 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::~Prefixes()
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::has_data() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_data())
             return true;
@@ -689,7 +701,7 @@ bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::has_data() con
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_operation())
             return true;
@@ -719,7 +731,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefi
     {
         auto c = std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix>();
         c->parent = this;
-        prefix.push_back(c);
+        prefix.append(c);
         return c;
     }
 
@@ -731,7 +743,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::Prefi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix)
+    for (auto c : prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -761,14 +773,14 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::Prefix()
     :
     ip_prefix{YType::str, "ip-prefix"},
     masklength_range{YType::str, "masklength-range"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::Config>())
-	,state(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State>())
+    , state(std::make_shared<RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::~Prefix()
@@ -777,6 +789,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::~Prefix()
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_prefix.is_set
 	|| masklength_range.is_set
 	|| (config !=  nullptr && config->has_data())
@@ -795,7 +808,9 @@ bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::has_op
 std::string RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix" <<"[ip-prefix='" <<ip_prefix <<"']" <<"[masklength-range='" <<masklength_range <<"']";
+    path_buffer << "prefix";
+    ADD_KEY_TOKEN(ip_prefix, "ip-prefix");
+    ADD_KEY_TOKEN(masklength_range, "masklength-range");
     return path_buffer.str();
 }
 
@@ -891,7 +906,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::Config::Con
     masklength_range{YType::str, "masklength-range"}
 {
 
-    yang_name = "config"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::Config::~Config()
@@ -900,6 +915,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::Config::~Co
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_prefix.is_set
 	|| masklength_range.is_set;
 }
@@ -982,7 +998,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State::Stat
     masklength_range{YType::str, "masklength-range"}
 {
 
-    yang_name = "state"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State::~State()
@@ -991,6 +1007,7 @@ RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State::~Sta
 
 bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_prefix.is_set
 	|| masklength_range.is_set;
 }
@@ -1068,9 +1085,11 @@ bool RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::Prefixes::Prefix::State:
 }
 
 RoutingPolicy::DefinedSets::NeighborSets::NeighborSets()
+    :
+    neighbor_set(this, {"neighbor_set_name"})
 {
 
-    yang_name = "neighbor-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::NeighborSets::~NeighborSets()
@@ -1079,7 +1098,8 @@ RoutingPolicy::DefinedSets::NeighborSets::~NeighborSets()
 
 bool RoutingPolicy::DefinedSets::NeighborSets::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_set.len(); index++)
     {
         if(neighbor_set[index]->has_data())
             return true;
@@ -1089,7 +1109,7 @@ bool RoutingPolicy::DefinedSets::NeighborSets::has_data() const
 
 bool RoutingPolicy::DefinedSets::NeighborSets::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_set.size(); index++)
+    for (std::size_t index=0; index<neighbor_set.len(); index++)
     {
         if(neighbor_set[index]->has_operation())
             return true;
@@ -1126,7 +1146,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::NeighborSets::get_child_by_n
     {
         auto c = std::make_shared<RoutingPolicy::DefinedSets::NeighborSets::NeighborSet>();
         c->parent = this;
-        neighbor_set.push_back(c);
+        neighbor_set.append(c);
         return c;
     }
 
@@ -1138,7 +1158,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::Neigh
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_set)
+    for (auto c : neighbor_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1167,14 +1187,14 @@ bool RoutingPolicy::DefinedSets::NeighborSets::has_leaf_or_child_of_name(const s
 RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::NeighborSet()
     :
     neighbor_set_name{YType::str, "neighbor-set-name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::Config>())
-	,state(std::make_shared<RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State>())
+    , state(std::make_shared<RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "neighbor-set"; yang_parent_name = "neighbor-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-set"; yang_parent_name = "neighbor-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::~NeighborSet()
@@ -1183,6 +1203,7 @@ RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::~NeighborSet()
 
 bool RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_set_name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -1206,7 +1227,8 @@ std::string RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::get_absolute_
 std::string RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor-set" <<"[neighbor-set-name='" <<neighbor_set_name <<"']";
+    path_buffer << "neighbor-set";
+    ADD_KEY_TOKEN(neighbor_set_name, "neighbor-set-name");
     return path_buffer.str();
 }
 
@@ -1291,7 +1313,7 @@ RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::Config::Config()
     address{YType::str, "address"}
 {
 
-    yang_name = "config"; yang_parent_name = "neighbor-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "neighbor-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::Config::~Config()
@@ -1300,6 +1322,7 @@ RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::Config::~Config()
 
 bool RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -1390,7 +1413,7 @@ RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State::State()
     address{YType::str, "address"}
 {
 
-    yang_name = "state"; yang_parent_name = "neighbor-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "neighbor-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State::~State()
@@ -1399,6 +1422,7 @@ RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State::~State()
 
 bool RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -1484,9 +1508,11 @@ bool RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::State::has_leaf_or_c
 }
 
 RoutingPolicy::DefinedSets::TagSets::TagSets()
+    :
+    tag_set(this, {"tag_set_name"})
 {
 
-    yang_name = "tag-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tag-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::TagSets::~TagSets()
@@ -1495,7 +1521,8 @@ RoutingPolicy::DefinedSets::TagSets::~TagSets()
 
 bool RoutingPolicy::DefinedSets::TagSets::has_data() const
 {
-    for (std::size_t index=0; index<tag_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tag_set.len(); index++)
     {
         if(tag_set[index]->has_data())
             return true;
@@ -1505,7 +1532,7 @@ bool RoutingPolicy::DefinedSets::TagSets::has_data() const
 
 bool RoutingPolicy::DefinedSets::TagSets::has_operation() const
 {
-    for (std::size_t index=0; index<tag_set.size(); index++)
+    for (std::size_t index=0; index<tag_set.len(); index++)
     {
         if(tag_set[index]->has_operation())
             return true;
@@ -1542,7 +1569,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::TagSets::get_child_by_name(c
     {
         auto c = std::make_shared<RoutingPolicy::DefinedSets::TagSets::TagSet>();
         c->parent = this;
-        tag_set.push_back(c);
+        tag_set.append(c);
         return c;
     }
 
@@ -1554,7 +1581,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::TagSe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tag_set)
+    for (auto c : tag_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1583,14 +1610,14 @@ bool RoutingPolicy::DefinedSets::TagSets::has_leaf_or_child_of_name(const std::s
 RoutingPolicy::DefinedSets::TagSets::TagSet::TagSet()
     :
     tag_set_name{YType::str, "tag-set-name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::DefinedSets::TagSets::TagSet::Config>())
-	,state(std::make_shared<RoutingPolicy::DefinedSets::TagSets::TagSet::State>())
+    , state(std::make_shared<RoutingPolicy::DefinedSets::TagSets::TagSet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "tag-set"; yang_parent_name = "tag-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tag-set"; yang_parent_name = "tag-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::TagSets::TagSet::~TagSet()
@@ -1599,6 +1626,7 @@ RoutingPolicy::DefinedSets::TagSets::TagSet::~TagSet()
 
 bool RoutingPolicy::DefinedSets::TagSets::TagSet::has_data() const
 {
+    if (is_presence_container) return true;
     return tag_set_name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -1622,7 +1650,8 @@ std::string RoutingPolicy::DefinedSets::TagSets::TagSet::get_absolute_path() con
 std::string RoutingPolicy::DefinedSets::TagSets::TagSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tag-set" <<"[tag-set-name='" <<tag_set_name <<"']";
+    path_buffer << "tag-set";
+    ADD_KEY_TOKEN(tag_set_name, "tag-set-name");
     return path_buffer.str();
 }
 
@@ -1707,7 +1736,7 @@ RoutingPolicy::DefinedSets::TagSets::TagSet::Config::Config()
     tag_value{YType::str, "tag-value"}
 {
 
-    yang_name = "config"; yang_parent_name = "tag-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "tag-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::TagSets::TagSet::Config::~Config()
@@ -1716,6 +1745,7 @@ RoutingPolicy::DefinedSets::TagSets::TagSet::Config::~Config()
 
 bool RoutingPolicy::DefinedSets::TagSets::TagSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : tag_value.getYLeafs())
     {
         if(leaf.is_set)
@@ -1806,7 +1836,7 @@ RoutingPolicy::DefinedSets::TagSets::TagSet::State::State()
     tag_value{YType::str, "tag-value"}
 {
 
-    yang_name = "state"; yang_parent_name = "tag-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "tag-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::TagSets::TagSet::State::~State()
@@ -1815,6 +1845,7 @@ RoutingPolicy::DefinedSets::TagSets::TagSet::State::~State()
 
 bool RoutingPolicy::DefinedSets::TagSets::TagSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : tag_value.getYLeafs())
     {
         if(leaf.is_set)
@@ -1902,14 +1933,14 @@ bool RoutingPolicy::DefinedSets::TagSets::TagSet::State::has_leaf_or_child_of_na
 RoutingPolicy::DefinedSets::BgpDefinedSets::BgpDefinedSets()
     :
     community_sets(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets>())
-	,ext_community_sets(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets>())
-	,as_path_sets(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets>())
+    , ext_community_sets(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets>())
+    , as_path_sets(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets>())
 {
     community_sets->parent = this;
     ext_community_sets->parent = this;
     as_path_sets->parent = this;
 
-    yang_name = "bgp-defined-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-defined-sets"; yang_parent_name = "defined-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::~BgpDefinedSets()
@@ -1918,6 +1949,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::~BgpDefinedSets()
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::has_data() const
 {
+    if (is_presence_container) return true;
     return (community_sets !=  nullptr && community_sets->has_data())
 	|| (ext_community_sets !=  nullptr && ext_community_sets->has_data())
 	|| (as_path_sets !=  nullptr && as_path_sets->has_data());
@@ -2024,9 +2056,11 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::has_leaf_or_child_of_name(const
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySets()
+    :
+    community_set(this, {"community_set_name"})
 {
 
-    yang_name = "community-sets"; yang_parent_name = "bgp-defined-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "community-sets"; yang_parent_name = "bgp-defined-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::~CommunitySets()
@@ -2035,7 +2069,8 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::~CommunitySets()
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::has_data() const
 {
-    for (std::size_t index=0; index<community_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community_set.len(); index++)
     {
         if(community_set[index]->has_data())
             return true;
@@ -2045,7 +2080,7 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::has_data() const
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::has_operation() const
 {
-    for (std::size_t index=0; index<community_set.size(); index++)
+    for (std::size_t index=0; index<community_set.len(); index++)
     {
         if(community_set[index]->has_operation())
             return true;
@@ -2082,7 +2117,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySet
     {
         auto c = std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet>();
         c->parent = this;
-        community_set.push_back(c);
+        community_set.append(c);
         return c;
     }
 
@@ -2094,7 +2129,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : community_set)
+    for (auto c : community_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2123,14 +2158,14 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::has_leaf_or_chil
 RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::CommunitySet()
     :
     community_set_name{YType::str, "community-set-name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config>())
-	,state(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State>())
+    , state(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "community-set"; yang_parent_name = "community-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "community-set"; yang_parent_name = "community-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::~CommunitySet()
@@ -2139,6 +2174,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::~Commun
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::has_data() const
 {
+    if (is_presence_container) return true;
     return community_set_name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2162,7 +2198,8 @@ std::string RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::Community
 std::string RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "community-set" <<"[community-set-name='" <<community_set_name <<"']";
+    path_buffer << "community-set";
+    ADD_KEY_TOKEN(community_set_name, "community-set-name");
     return path_buffer.str();
 }
 
@@ -2247,7 +2284,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config:
     community_member{YType::str, "community-member"}
 {
 
-    yang_name = "config"; yang_parent_name = "community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config::~Config()
@@ -2256,6 +2293,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config:
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : community_member.getYLeafs())
     {
         if(leaf.is_set)
@@ -2346,7 +2384,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State::
     community_member{YType::str, "community-member"}
 {
 
-    yang_name = "state"; yang_parent_name = "community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State::~State()
@@ -2355,6 +2393,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State::
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : community_member.getYLeafs())
     {
         if(leaf.is_set)
@@ -2440,9 +2479,11 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::St
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySets()
+    :
+    ext_community_set(this, {"ext_community_set_name"})
 {
 
-    yang_name = "ext-community-sets"; yang_parent_name = "bgp-defined-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ext-community-sets"; yang_parent_name = "bgp-defined-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::~ExtCommunitySets()
@@ -2451,7 +2492,8 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::~ExtCommunitySets(
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::has_data() const
 {
-    for (std::size_t index=0; index<ext_community_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community_set.len(); index++)
     {
         if(ext_community_set[index]->has_data())
             return true;
@@ -2461,7 +2503,7 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::has_data() co
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community_set.size(); index++)
+    for (std::size_t index=0; index<ext_community_set.len(); index++)
     {
         if(ext_community_set[index]->has_operation())
             return true;
@@ -2498,7 +2540,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunity
     {
         auto c = std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet>();
         c->parent = this;
-        ext_community_set.push_back(c);
+        ext_community_set.append(c);
         return c;
     }
 
@@ -2510,7 +2552,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community_set)
+    for (auto c : ext_community_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2539,14 +2581,14 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::has_leaf_or_c
 RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::ExtCommunitySet()
     :
     ext_community_set_name{YType::str, "ext-community-set-name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::Config>())
-	,state(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::State>())
+    , state(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "ext-community-set"; yang_parent_name = "ext-community-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ext-community-set"; yang_parent_name = "ext-community-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::~ExtCommunitySet()
@@ -2555,6 +2597,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::~
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::has_data() const
 {
+    if (is_presence_container) return true;
     return ext_community_set_name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2578,7 +2621,8 @@ std::string RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCom
 std::string RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ext-community-set" <<"[ext-community-set-name='" <<ext_community_set_name <<"']";
+    path_buffer << "ext-community-set";
+    ADD_KEY_TOKEN(ext_community_set_name, "ext-community-set-name");
     return path_buffer.str();
 }
 
@@ -2663,7 +2707,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::C
     ext_community_member{YType::str, "ext-community-member"}
 {
 
-    yang_name = "config"; yang_parent_name = "ext-community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ext-community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::Config::~Config()
@@ -2672,6 +2716,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::C
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ext_community_member.getYLeafs())
     {
         if(leaf.is_set)
@@ -2762,7 +2807,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::S
     ext_community_member{YType::str, "ext-community-member"}
 {
 
-    yang_name = "state"; yang_parent_name = "ext-community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ext-community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::State::~State()
@@ -2771,6 +2816,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::S
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : ext_community_member.getYLeafs())
     {
         if(leaf.is_set)
@@ -2856,9 +2902,11 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunityS
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSets()
+    :
+    as_path_set(this, {"as_path_set_name"})
 {
 
-    yang_name = "as-path-sets"; yang_parent_name = "bgp-defined-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "as-path-sets"; yang_parent_name = "bgp-defined-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::~AsPathSets()
@@ -2867,7 +2915,8 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::~AsPathSets()
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::has_data() const
 {
-    for (std::size_t index=0; index<as_path_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as_path_set.len(); index++)
     {
         if(as_path_set[index]->has_data())
             return true;
@@ -2877,7 +2926,7 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::has_data() const
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::has_operation() const
 {
-    for (std::size_t index=0; index<as_path_set.size(); index++)
+    for (std::size_t index=0; index<as_path_set.len(); index++)
     {
         if(as_path_set[index]->has_operation())
             return true;
@@ -2914,7 +2963,7 @@ std::shared_ptr<Entity> RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::
     {
         auto c = std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet>();
         c->parent = this;
-        as_path_set.push_back(c);
+        as_path_set.append(c);
         return c;
     }
 
@@ -2926,7 +2975,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::DefinedSets::BgpDe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_path_set)
+    for (auto c : as_path_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2955,14 +3004,14 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::has_leaf_or_child_o
 RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::AsPathSet()
     :
     as_path_set_name{YType::str, "as-path-set-name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::Config>())
-	,state(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State>())
+    , state(std::make_shared<RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "as-path-set"; yang_parent_name = "as-path-sets"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "as-path-set"; yang_parent_name = "as-path-sets"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::~AsPathSet()
@@ -2971,6 +3020,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::~AsPathSet()
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::has_data() const
 {
+    if (is_presence_container) return true;
     return as_path_set_name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2994,7 +3044,8 @@ std::string RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::g
 std::string RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-path-set" <<"[as-path-set-name='" <<as_path_set_name <<"']";
+    path_buffer << "as-path-set";
+    ADD_KEY_TOKEN(as_path_set_name, "as-path-set-name");
     return path_buffer.str();
 }
 
@@ -3079,7 +3130,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::Config::Confi
     as_path_set_member{YType::str, "as-path-set-member"}
 {
 
-    yang_name = "config"; yang_parent_name = "as-path-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "as-path-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::Config::~Config()
@@ -3088,6 +3139,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::Config::~Conf
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : as_path_set_member.getYLeafs())
     {
         if(leaf.is_set)
@@ -3178,7 +3230,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State::State(
     as_path_set_member{YType::str, "as-path-set-member"}
 {
 
-    yang_name = "state"; yang_parent_name = "as-path-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "as-path-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State::~State()
@@ -3187,6 +3239,7 @@ RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State::~State
 
 bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : as_path_set_member.getYLeafs())
     {
         if(leaf.is_set)
@@ -3272,9 +3325,11 @@ bool RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::State::h
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinitions()
+    :
+    policy_definition(this, {"name"})
 {
 
-    yang_name = "policy-definitions"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-definitions"; yang_parent_name = "routing-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::PolicyDefinitions::~PolicyDefinitions()
@@ -3283,7 +3338,8 @@ RoutingPolicy::PolicyDefinitions::~PolicyDefinitions()
 
 bool RoutingPolicy::PolicyDefinitions::has_data() const
 {
-    for (std::size_t index=0; index<policy_definition.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_definition.len(); index++)
     {
         if(policy_definition[index]->has_data())
             return true;
@@ -3293,7 +3349,7 @@ bool RoutingPolicy::PolicyDefinitions::has_data() const
 
 bool RoutingPolicy::PolicyDefinitions::has_operation() const
 {
-    for (std::size_t index=0; index<policy_definition.size(); index++)
+    for (std::size_t index=0; index<policy_definition.len(); index++)
     {
         if(policy_definition[index]->has_operation())
             return true;
@@ -3330,7 +3386,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::get_child_by_name(cons
     {
         auto c = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition>();
         c->parent = this;
-        policy_definition.push_back(c);
+        policy_definition.append(c);
         return c;
     }
 
@@ -3342,7 +3398,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_definition)
+    for (auto c : policy_definition.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3371,16 +3427,16 @@ bool RoutingPolicy::PolicyDefinitions::has_leaf_or_child_of_name(const std::stri
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::PolicyDefinition()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::State>())
-	,statements(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::State>())
+    , statements(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements>())
 {
     config->parent = this;
     state->parent = this;
     statements->parent = this;
 
-    yang_name = "policy-definition"; yang_parent_name = "policy-definitions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-definition"; yang_parent_name = "policy-definitions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::~PolicyDefinition()
@@ -3389,6 +3445,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::~PolicyDefinition()
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -3414,7 +3471,8 @@ std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::get_absolute_pat
 std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-definition" <<"[name='" <<name <<"']";
+    path_buffer << "policy-definition";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3512,7 +3570,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Config::Config()
     name{YType::str, "name"}
 {
 
-    yang_name = "config"; yang_parent_name = "policy-definition"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "policy-definition"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Config::~Config()
@@ -3521,6 +3579,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Config::~Config()
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -3589,7 +3648,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::State::State()
     name{YType::str, "name"}
 {
 
-    yang_name = "state"; yang_parent_name = "policy-definition"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "policy-definition"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::State::~State()
@@ -3598,6 +3657,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::State::~State()
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -3662,9 +3722,11 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::State::has_leaf_or_chil
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statements()
+    :
+    statement(this, {"name"})
 {
 
-    yang_name = "statements"; yang_parent_name = "policy-definition"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statements"; yang_parent_name = "policy-definition"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::~Statements()
@@ -3673,7 +3735,8 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::~Statements()
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::has_data() const
 {
-    for (std::size_t index=0; index<statement.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statement.len(); index++)
     {
         if(statement[index]->has_data())
             return true;
@@ -3683,7 +3746,7 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::has_data() 
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::has_operation() const
 {
-    for (std::size_t index=0; index<statement.size(); index++)
+    for (std::size_t index=0; index<statement.len(); index++)
     {
         if(statement[index]->has_operation())
             return true;
@@ -3713,7 +3776,7 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
     {
         auto c = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement>();
         c->parent = this;
-        statement.push_back(c);
+        statement.append(c);
         return c;
     }
 
@@ -3725,7 +3788,7 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statement)
+    for (auto c : statement.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3754,18 +3817,18 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::has_leaf_or
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Statement()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::State>())
-	,conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions>())
-	,actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::State>())
+    , conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions>())
+    , actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions>())
 {
     config->parent = this;
     state->parent = this;
     conditions->parent = this;
     actions->parent = this;
 
-    yang_name = "statement"; yang_parent_name = "statements"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statement"; yang_parent_name = "statements"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::~Statement()
@@ -3774,6 +3837,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::~Stat
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -3794,7 +3858,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statement" <<"[name='" <<name <<"']";
+    path_buffer << "statement";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3906,7 +3971,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Confi
     name{YType::str, "name"}
 {
 
-    yang_name = "config"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Config::~Config()
@@ -3915,6 +3980,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Confi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -3983,7 +4049,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::State
     name{YType::str, "name"}
 {
 
-    yang_name = "state"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::State::~State()
@@ -3992,6 +4058,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::State
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -4058,14 +4125,14 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::Conditions()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::State>())
-	,match_interface(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface>())
-	,match_prefix_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet>())
-	,match_neighbor_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet>())
-	,match_tag_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet>())
-	,igp_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions>())
-	,bgp_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>())
-	,isis_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::State>())
+    , match_interface(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface>())
+    , match_prefix_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet>())
+    , match_neighbor_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet>())
+    , match_tag_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet>())
+    , igp_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions>())
+    , isis_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions>())
+    , bgp_conditions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>())
 {
     config->parent = this;
     state->parent = this;
@@ -4074,10 +4141,10 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_neighbor_set->parent = this;
     match_tag_set->parent = this;
     igp_conditions->parent = this;
-    bgp_conditions->parent = this;
     isis_conditions->parent = this;
+    bgp_conditions->parent = this;
 
-    yang_name = "conditions"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conditions"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::~Conditions()
@@ -4086,6 +4153,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (match_interface !=  nullptr && match_interface->has_data())
@@ -4093,8 +4161,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| (match_neighbor_set !=  nullptr && match_neighbor_set->has_data())
 	|| (match_tag_set !=  nullptr && match_tag_set->has_data())
 	|| (igp_conditions !=  nullptr && igp_conditions->has_data())
-	|| (bgp_conditions !=  nullptr && bgp_conditions->has_data())
-	|| (isis_conditions !=  nullptr && isis_conditions->has_data());
+	|| (isis_conditions !=  nullptr && isis_conditions->has_data())
+	|| (bgp_conditions !=  nullptr && bgp_conditions->has_data());
 }
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::has_operation() const
@@ -4107,8 +4175,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| (match_neighbor_set !=  nullptr && match_neighbor_set->has_operation())
 	|| (match_tag_set !=  nullptr && match_tag_set->has_operation())
 	|| (igp_conditions !=  nullptr && igp_conditions->has_operation())
-	|| (bgp_conditions !=  nullptr && bgp_conditions->has_operation())
-	|| (isis_conditions !=  nullptr && isis_conditions->has_operation());
+	|| (isis_conditions !=  nullptr && isis_conditions->has_operation())
+	|| (bgp_conditions !=  nullptr && bgp_conditions->has_operation());
 }
 
 std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::get_segment_path() const
@@ -4192,15 +4260,6 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
         return igp_conditions;
     }
 
-    if(child_yang_name == "openconfig-bgp-policy:bgp-conditions")
-    {
-        if(bgp_conditions == nullptr)
-        {
-            bgp_conditions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>();
-        }
-        return bgp_conditions;
-    }
-
     if(child_yang_name == "openconfig-isis-policy:isis-conditions")
     {
         if(isis_conditions == nullptr)
@@ -4208,6 +4267,15 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
             isis_conditions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions>();
         }
         return isis_conditions;
+    }
+
+    if(child_yang_name == "openconfig-bgp-policy:bgp-conditions")
+    {
+        if(bgp_conditions == nullptr)
+        {
+            bgp_conditions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions>();
+        }
+        return bgp_conditions;
     }
 
     return nullptr;
@@ -4252,14 +4320,14 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
         children["igp-conditions"] = igp_conditions;
     }
 
-    if(bgp_conditions != nullptr)
-    {
-        children["openconfig-bgp-policy:bgp-conditions"] = bgp_conditions;
-    }
-
     if(isis_conditions != nullptr)
     {
         children["openconfig-isis-policy:isis-conditions"] = isis_conditions;
+    }
+
+    if(bgp_conditions != nullptr)
+    {
+        children["openconfig-bgp-policy:bgp-conditions"] = bgp_conditions;
     }
 
     return children;
@@ -4275,7 +4343,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "state" || name == "match-interface" || name == "match-prefix-set" || name == "match-neighbor-set" || name == "match-tag-set" || name == "igp-conditions" || name == "bgp-conditions" || name == "isis-conditions")
+    if(name == "config" || name == "state" || name == "match-interface" || name == "match-prefix-set" || name == "match-neighbor-set" || name == "match-tag-set" || name == "igp-conditions" || name == "isis-conditions" || name == "bgp-conditions")
         return true;
     return false;
 }
@@ -4286,7 +4354,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     install_protocol_eq{YType::identityref, "install-protocol-eq"}
 {
 
-    yang_name = "config"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::Config::~Config()
@@ -4295,6 +4363,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return call_policy.is_set
 	|| install_protocol_eq.is_set;
 }
@@ -4377,7 +4446,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     install_protocol_eq{YType::identityref, "install-protocol-eq"}
 {
 
-    yang_name = "state"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::State::~State()
@@ -4386,6 +4455,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::State::has_data() const
 {
+    if (is_presence_container) return true;
     return call_policy.is_set
 	|| install_protocol_eq.is_set;
 }
@@ -4465,12 +4535,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::MatchInterface()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "match-interface"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-interface"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::~MatchInterface()
@@ -4479,6 +4549,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -4567,7 +4638,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "config"; yang_parent_name = "match-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "match-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::Config::~Config()
@@ -4576,6 +4647,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -4658,7 +4730,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "state"; yang_parent_name = "match-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "match-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::State::~State()
@@ -4667,6 +4739,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchInterface::State::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -4746,12 +4819,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::MatchPrefixSet()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "match-prefix-set"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-prefix-set"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::~MatchPrefixSet()
@@ -4760,6 +4833,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -4848,7 +4922,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "config"; yang_parent_name = "match-prefix-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "match-prefix-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::Config::~Config()
@@ -4857,6 +4931,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_set.is_set
 	|| match_set_options.is_set;
 }
@@ -4939,7 +5014,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "state"; yang_parent_name = "match-prefix-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "match-prefix-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::State::~State()
@@ -4948,6 +5023,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_set.is_set
 	|| match_set_options.is_set;
 }
@@ -5027,12 +5103,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::MatchNeighborSet()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "match-neighbor-set"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-neighbor-set"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::~MatchNeighborSet()
@@ -5041,6 +5117,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -5129,7 +5206,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "config"; yang_parent_name = "match-neighbor-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "match-neighbor-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::Config::~Config()
@@ -5138,6 +5215,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_set.is_set
 	|| match_set_options.is_set;
 }
@@ -5220,7 +5298,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "state"; yang_parent_name = "match-neighbor-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "match-neighbor-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::State::~State()
@@ -5229,6 +5307,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_set.is_set
 	|| match_set_options.is_set;
 }
@@ -5308,12 +5387,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::MatchTagSet()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "match-tag-set"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-tag-set"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::~MatchTagSet()
@@ -5322,6 +5401,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -5410,7 +5490,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "config"; yang_parent_name = "match-tag-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "match-tag-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::Config::~Config()
@@ -5419,6 +5499,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return tag_set.is_set
 	|| match_set_options.is_set;
 }
@@ -5501,7 +5582,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "state"; yang_parent_name = "match-tag-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "match-tag-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::State::~State()
@@ -5510,6 +5591,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return tag_set.is_set
 	|| match_set_options.is_set;
 }
@@ -5589,7 +5671,7 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions::IgpConditions()
 {
 
-    yang_name = "igp-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions::~IgpConditions()
@@ -5598,6 +5680,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5647,15 +5730,271 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::IsisConditions()
+    :
+    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>())
+{
+    config->parent = this;
+    state->parent = this;
+
+    yang_name = "isis-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::~IsisConditions()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_data() const
+{
+    if (is_presence_container) return true;
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig-isis-policy:isis-conditions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::Config()
+    :
+    level_eq{YType::uint8, "level-eq"}
+{
+
+    yang_name = "config"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::~Config()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_data() const
+{
+    if (is_presence_container) return true;
+    return level_eq.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level_eq.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq = value;
+        level_eq.value_namespace = name_space;
+        level_eq.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level-eq")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::State()
+    :
+    level_eq{YType::uint8, "level-eq"}
+{
+
+    yang_name = "state"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::~State()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return level_eq.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level_eq.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq = value;
+        level_eq.value_namespace = name_space;
+        level_eq.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level-eq")
+    {
+        level_eq.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level-eq")
+        return true;
+    return false;
+}
+
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::BgpConditions()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::State>())
-	,community_count(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount>())
-	,as_path_length(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength>())
-	,match_community_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet>())
-	,match_ext_community_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet>())
-	,match_as_path_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::State>())
+    , community_count(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount>())
+    , as_path_length(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength>())
+    , match_community_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet>())
+    , match_ext_community_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet>())
+    , match_as_path_set(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet>())
 {
     config->parent = this;
     state->parent = this;
@@ -5665,7 +6004,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_ext_community_set->parent = this;
     match_as_path_set->parent = this;
 
-    yang_name = "bgp-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::~BgpConditions()
@@ -5674,6 +6013,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (community_count !=  nullptr && community_count->has_data())
@@ -5846,7 +6186,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "config"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::Config::~Config()
@@ -5855,6 +6195,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : next_hop_in.getYLeafs())
     {
         if(leaf.is_set)
@@ -6010,7 +6351,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "state"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::State::~State()
@@ -6019,6 +6360,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : next_hop_in.getYLeafs())
     {
         if(leaf.is_set)
@@ -6167,12 +6509,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::CommunityCount()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "community-count"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community-count"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::~CommunityCount()
@@ -6181,6 +6523,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -6269,7 +6612,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "config"; yang_parent_name = "community-count"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "community-count"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::Config::~Config()
@@ -6278,6 +6621,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set;
 }
@@ -6360,7 +6704,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "state"; yang_parent_name = "community-count"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "community-count"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::State::~State()
@@ -6369,6 +6713,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::CommunityCount::State::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set;
 }
@@ -6448,12 +6793,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::AsPathLength()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "as-path-length"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-path-length"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::~AsPathLength()
@@ -6462,6 +6807,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -6550,7 +6896,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "config"; yang_parent_name = "as-path-length"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "as-path-length"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::Config::~Config()
@@ -6559,6 +6905,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set;
 }
@@ -6641,7 +6988,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "state"; yang_parent_name = "as-path-length"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "as-path-length"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::State::~State()
@@ -6650,6 +6997,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::AsPathLength::State::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set;
 }
@@ -6729,12 +7077,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::MatchCommunitySet()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "match-community-set"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-community-set"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::~MatchCommunitySet()
@@ -6743,6 +7091,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -6831,7 +7180,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "config"; yang_parent_name = "match-community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "match-community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::Config::~Config()
@@ -6840,6 +7189,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return community_set.is_set
 	|| match_set_options.is_set;
 }
@@ -6922,7 +7272,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "state"; yang_parent_name = "match-community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "match-community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::State::~State()
@@ -6931,6 +7281,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return community_set.is_set
 	|| match_set_options.is_set;
 }
@@ -7010,12 +7361,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::MatchExtCommunitySet()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "match-ext-community-set"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-ext-community-set"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::~MatchExtCommunitySet()
@@ -7024,6 +7375,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -7112,7 +7464,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "config"; yang_parent_name = "match-ext-community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "match-ext-community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::Config::~Config()
@@ -7121,6 +7473,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ext_community_set.is_set
 	|| match_set_options.is_set;
 }
@@ -7203,7 +7556,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "state"; yang_parent_name = "match-ext-community-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "match-ext-community-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::State::~State()
@@ -7212,6 +7565,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ext_community_set.is_set
 	|| match_set_options.is_set;
 }
@@ -7291,12 +7645,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::MatchAsPathSet()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "match-as-path-set"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match-as-path-set"; yang_parent_name = "bgp-conditions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::~MatchAsPathSet()
@@ -7305,6 +7659,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -7393,7 +7748,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "config"; yang_parent_name = "match-as-path-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "match-as-path-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::Config::~Config()
@@ -7402,6 +7757,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return as_path_set.is_set
 	|| match_set_options.is_set;
 }
@@ -7484,7 +7840,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
     match_set_options{YType::enumeration, "match-set-options"}
 {
 
-    yang_name = "state"; yang_parent_name = "match-as-path-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "match-as-path-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::State::~State()
@@ -7493,6 +7849,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Condi
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return as_path_set.is_set
 	|| match_set_options.is_set;
 }
@@ -7569,274 +7926,21 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::IsisConditions()
-    :
-    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>())
-{
-    config->parent = this;
-    state->parent = this;
-
-    yang_name = "isis-conditions"; yang_parent_name = "conditions"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::~IsisConditions()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_operation() const
-{
-    return is_set(yfilter)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "openconfig-isis-policy:isis-conditions";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config" || name == "state")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::Config()
-    :
-    level_eq{YType::uint8, "level-eq"}
-{
-
-    yang_name = "config"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::~Config()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_data() const
-{
-    return level_eq.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level_eq.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq = value;
-        level_eq.value_namespace = name_space;
-        level_eq.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level-eq")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::State()
-    :
-    level_eq{YType::uint8, "level-eq"}
-{
-
-    yang_name = "state"; yang_parent_name = "isis-conditions"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::~State()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_data() const
-{
-    return level_eq.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level_eq.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level_eq.is_set || is_set(level_eq.yfilter)) leaf_name_data.push_back(level_eq.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq = value;
-        level_eq.value_namespace = name_space;
-        level_eq.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level-eq")
-    {
-        level_eq.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level-eq")
-        return true;
-    return false;
-}
-
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Actions()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State>())
-	,igp_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions>())
-	,bgp_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>())
-	,isis_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State>())
+    , igp_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions>())
+    , isis_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions>())
+    , bgp_actions(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>())
 {
     config->parent = this;
     state->parent = this;
     igp_actions->parent = this;
-    bgp_actions->parent = this;
     isis_actions->parent = this;
+    bgp_actions->parent = this;
 
-    yang_name = "actions"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actions"; yang_parent_name = "statement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::~Actions()
@@ -7845,11 +7949,12 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (igp_actions !=  nullptr && igp_actions->has_data())
-	|| (bgp_actions !=  nullptr && bgp_actions->has_data())
-	|| (isis_actions !=  nullptr && isis_actions->has_data());
+	|| (isis_actions !=  nullptr && isis_actions->has_data())
+	|| (bgp_actions !=  nullptr && bgp_actions->has_data());
 }
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::has_operation() const
@@ -7858,8 +7963,8 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation())
 	|| (igp_actions !=  nullptr && igp_actions->has_operation())
-	|| (bgp_actions !=  nullptr && bgp_actions->has_operation())
-	|| (isis_actions !=  nullptr && isis_actions->has_operation());
+	|| (isis_actions !=  nullptr && isis_actions->has_operation())
+	|| (bgp_actions !=  nullptr && bgp_actions->has_operation());
 }
 
 std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::get_segment_path() const
@@ -7907,15 +8012,6 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
         return igp_actions;
     }
 
-    if(child_yang_name == "openconfig-bgp-policy:bgp-actions")
-    {
-        if(bgp_actions == nullptr)
-        {
-            bgp_actions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>();
-        }
-        return bgp_actions;
-    }
-
     if(child_yang_name == "openconfig-isis-policy:isis-actions")
     {
         if(isis_actions == nullptr)
@@ -7923,6 +8019,15 @@ std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Stat
             isis_actions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions>();
         }
         return isis_actions;
+    }
+
+    if(child_yang_name == "openconfig-bgp-policy:bgp-actions")
+    {
+        if(bgp_actions == nullptr)
+        {
+            bgp_actions = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions>();
+        }
+        return bgp_actions;
     }
 
     return nullptr;
@@ -7947,14 +8052,14 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions:
         children["igp-actions"] = igp_actions;
     }
 
-    if(bgp_actions != nullptr)
-    {
-        children["openconfig-bgp-policy:bgp-actions"] = bgp_actions;
-    }
-
     if(isis_actions != nullptr)
     {
         children["openconfig-isis-policy:isis-actions"] = isis_actions;
+    }
+
+    if(bgp_actions != nullptr)
+    {
+        children["openconfig-bgp-policy:bgp-actions"] = bgp_actions;
     }
 
     return children;
@@ -7970,7 +8075,7 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "state" || name == "igp-actions" || name == "bgp-actions" || name == "isis-actions")
+    if(name == "config" || name == "state" || name == "igp-actions" || name == "isis-actions" || name == "bgp-actions")
         return true;
     return false;
 }
@@ -7981,7 +8086,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     reject_route{YType::empty, "reject-route"}
 {
 
-    yang_name = "config"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Config::~Config()
@@ -7990,6 +8095,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return accept_route.is_set
 	|| reject_route.is_set;
 }
@@ -8072,7 +8178,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     reject_route{YType::empty, "reject-route"}
 {
 
-    yang_name = "state"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State::~State()
@@ -8081,6 +8187,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State::has_data() const
 {
+    if (is_presence_container) return true;
     return accept_route.is_set
 	|| reject_route.is_set;
 }
@@ -8160,12 +8267,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::IgpActions()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "igp-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::~IgpActions()
@@ -8174,6 +8281,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -8261,7 +8369,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     set_tag{YType::str, "set-tag"}
 {
 
-    yang_name = "config"; yang_parent_name = "igp-actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "igp-actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::Config::~Config()
@@ -8270,6 +8378,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return set_tag.is_set;
 }
 
@@ -8338,7 +8447,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     set_tag{YType::str, "set-tag"}
 {
 
-    yang_name = "state"; yang_parent_name = "igp-actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "igp-actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::State::~State()
@@ -8347,6 +8456,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::State::has_data() const
 {
+    if (is_presence_container) return true;
     return set_tag.is_set;
 }
 
@@ -8410,13 +8520,325 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
     return false;
 }
 
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::IsisActions()
+    :
+    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>())
+{
+    config->parent = this;
+    state->parent = this;
+
+    yang_name = "isis-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::~IsisActions()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_data() const
+{
+    if (is_presence_container) return true;
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig-isis-policy:isis-actions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::Config()
+    :
+    set_level{YType::uint8, "set-level"},
+    set_metric_type{YType::uint8, "set-metric-type"},
+    set_metric{YType::uint32, "set-metric"}
+{
+
+    yang_name = "config"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::~Config()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_data() const
+{
+    if (is_presence_container) return true;
+    return set_level.is_set
+	|| set_metric_type.is_set
+	|| set_metric.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_level.yfilter)
+	|| ydk::is_set(set_metric_type.yfilter)
+	|| ydk::is_set(set_metric.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
+    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
+    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-level")
+    {
+        set_level = value;
+        set_level.value_namespace = name_space;
+        set_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type = value;
+        set_metric_type.value_namespace = name_space;
+        set_metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric = value;
+        set_metric.value_namespace = name_space;
+        set_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-level")
+    {
+        set_level.yfilter = yfilter;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type.yfilter = yfilter;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
+        return true;
+    return false;
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::State()
+    :
+    set_level{YType::uint8, "set-level"},
+    set_metric_type{YType::uint8, "set-metric-type"},
+    set_metric{YType::uint32, "set-metric"}
+{
+
+    yang_name = "state"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::~State()
+{
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return set_level.is_set
+	|| set_metric_type.is_set
+	|| set_metric.is_set;
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_level.yfilter)
+	|| ydk::is_set(set_metric_type.yfilter)
+	|| ydk::is_set(set_metric.yfilter);
+}
+
+std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
+    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
+    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-level")
+    {
+        set_level = value;
+        set_level.value_namespace = name_space;
+        set_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type = value;
+        set_metric_type.value_namespace = name_space;
+        set_metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric = value;
+        set_metric.value_namespace = name_space;
+        set_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-level")
+    {
+        set_level.yfilter = yfilter;
+    }
+    if(value_path == "set-metric-type")
+    {
+        set_metric_type.yfilter = yfilter;
+    }
+    if(value_path == "set-metric")
+    {
+        set_metric.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
+        return true;
+    return false;
+}
+
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::BgpActions()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::State>())
-	,set_as_path_prepend(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend>())
-	,set_community(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity>())
-	,set_ext_community(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::State>())
+    , set_as_path_prepend(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend>())
+    , set_community(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity>())
+    , set_ext_community(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity>())
 {
     config->parent = this;
     state->parent = this;
@@ -8424,7 +8846,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     set_community->parent = this;
     set_ext_community->parent = this;
 
-    yang_name = "bgp-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::~BgpActions()
@@ -8433,6 +8855,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (set_as_path_prepend !=  nullptr && set_as_path_prepend->has_data())
@@ -8571,7 +8994,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     set_med{YType::str, "set-med"}
 {
 
-    yang_name = "config"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::Config::~Config()
@@ -8580,6 +9003,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return set_route_origin.is_set
 	|| set_local_pref.is_set
 	|| set_next_hop.is_set
@@ -8690,7 +9114,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     set_med{YType::str, "set-med"}
 {
 
-    yang_name = "state"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::State::~State()
@@ -8699,6 +9123,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::State::has_data() const
 {
+    if (is_presence_container) return true;
     return set_route_origin.is_set
 	|| set_local_pref.is_set
 	|| set_next_hop.is_set
@@ -8804,12 +9229,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::SetAsPathPrepend()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "set-as-path-prepend"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set-as-path-prepend"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::~SetAsPathPrepend()
@@ -8818,6 +9243,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -8905,7 +9331,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     repeat_n{YType::uint8, "repeat-n"}
 {
 
-    yang_name = "config"; yang_parent_name = "set-as-path-prepend"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "set-as-path-prepend"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::Config::~Config()
@@ -8914,6 +9340,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return repeat_n.is_set;
 }
 
@@ -8982,7 +9409,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     repeat_n{YType::uint8, "repeat-n"}
 {
 
-    yang_name = "state"; yang_parent_name = "set-as-path-prepend"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "set-as-path-prepend"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::State::~State()
@@ -8991,6 +9418,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend::State::has_data() const
 {
+    if (is_presence_container) return true;
     return repeat_n.is_set;
 }
 
@@ -9057,16 +9485,16 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::SetCommunity()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::State>())
-	,inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline>())
-	,reference(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::State>())
+    , inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline>())
+    , reference(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference>())
 {
     config->parent = this;
     state->parent = this;
     inline_->parent = this;
     reference->parent = this;
 
-    yang_name = "set-community"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set-community"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::~SetCommunity()
@@ -9075,6 +9503,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (inline_ !=  nullptr && inline_->has_data())
@@ -9195,7 +9624,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     options{YType::enumeration, "options"}
 {
 
-    yang_name = "config"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Config::~Config()
@@ -9204,6 +9633,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| options.is_set;
 }
@@ -9286,7 +9716,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     options{YType::enumeration, "options"}
 {
 
-    yang_name = "state"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::State::~State()
@@ -9295,6 +9725,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::State::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| options.is_set;
 }
@@ -9374,12 +9805,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Inline()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "inline"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inline"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::~Inline()
@@ -9388,6 +9819,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -9475,7 +9907,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     communities{YType::str, "communities"}
 {
 
-    yang_name = "config"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::~Config()
@@ -9484,6 +9916,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : communities.getYLeafs())
     {
         if(leaf.is_set)
@@ -9561,7 +9994,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     communities{YType::str, "communities"}
 {
 
-    yang_name = "state"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::~State()
@@ -9570,6 +10003,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Inline::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : communities.getYLeafs())
     {
         if(leaf.is_set)
@@ -9645,12 +10079,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::Reference()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "reference"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "set-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::~Reference()
@@ -9659,6 +10093,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -9746,7 +10181,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     community_set_ref{YType::str, "community-set-ref"}
 {
 
-    yang_name = "config"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::Config::~Config()
@@ -9755,6 +10190,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return community_set_ref.is_set;
 }
 
@@ -9823,7 +10259,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     community_set_ref{YType::str, "community-set-ref"}
 {
 
-    yang_name = "state"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::State::~State()
@@ -9832,6 +10268,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity::Reference::State::has_data() const
 {
+    if (is_presence_container) return true;
     return community_set_ref.is_set;
 }
 
@@ -9898,16 +10335,16 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::SetExtCommunity()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::State>())
-	,inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline>())
-	,reference(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::State>())
+    , inline_(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline>())
+    , reference(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference>())
 {
     config->parent = this;
     state->parent = this;
     inline_->parent = this;
     reference->parent = this;
 
-    yang_name = "set-ext-community"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set-ext-community"; yang_parent_name = "bgp-actions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::~SetExtCommunity()
@@ -9916,6 +10353,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (inline_ !=  nullptr && inline_->has_data())
@@ -10036,7 +10474,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     options{YType::enumeration, "options"}
 {
 
-    yang_name = "config"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Config::~Config()
@@ -10045,6 +10483,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| options.is_set;
 }
@@ -10127,7 +10566,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     options{YType::enumeration, "options"}
 {
 
-    yang_name = "state"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::State::~State()
@@ -10136,6 +10575,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::State::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| options.is_set;
 }
@@ -10215,12 +10655,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Inline()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "inline"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inline"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::~Inline()
@@ -10229,6 +10669,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -10316,7 +10757,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     communities{YType::str, "communities"}
 {
 
-    yang_name = "config"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::~Config()
@@ -10325,6 +10766,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : communities.getYLeafs())
     {
         if(leaf.is_set)
@@ -10402,7 +10844,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     communities{YType::str, "communities"}
 {
 
-    yang_name = "state"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::~State()
@@ -10411,6 +10853,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Inline::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : communities.getYLeafs())
     {
         if(leaf.is_set)
@@ -10486,12 +10929,12 @@ bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::Reference()
     :
     config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State>())
+    , state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "reference"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "set-ext-community"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::~Reference()
@@ -10500,6 +10943,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -10587,7 +11031,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     ext_community_set_ref{YType::str, "ext-community-set-ref"}
 {
 
-    yang_name = "config"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::Config::~Config()
@@ -10596,6 +11040,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ext_community_set_ref.is_set;
 }
 
@@ -10664,7 +11109,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
     ext_community_set_ref{YType::str, "ext-community-set-ref"}
 {
 
-    yang_name = "state"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State::~State()
@@ -10673,6 +11118,7 @@ RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actio
 
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ext_community_set_ref.is_set;
 }
 
@@ -10732,315 +11178,6 @@ void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::
 bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ext-community-set-ref")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::IsisActions()
-    :
-    config(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>())
-	,state(std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>())
-{
-    config->parent = this;
-    state->parent = this;
-
-    yang_name = "isis-actions"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::~IsisActions()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_operation() const
-{
-    return is_set(yfilter)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "openconfig-isis-policy:isis-actions";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config" || name == "state")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::Config()
-    :
-    set_level{YType::uint8, "set-level"},
-    set_metric_type{YType::uint8, "set-metric-type"},
-    set_metric{YType::uint32, "set-metric"}
-{
-
-    yang_name = "config"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::~Config()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_data() const
-{
-    return set_level.is_set
-	|| set_metric_type.is_set
-	|| set_metric.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_level.yfilter)
-	|| ydk::is_set(set_metric_type.yfilter)
-	|| ydk::is_set(set_metric.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
-    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
-    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-level")
-    {
-        set_level = value;
-        set_level.value_namespace = name_space;
-        set_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type = value;
-        set_metric_type.value_namespace = name_space;
-        set_metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric = value;
-        set_metric.value_namespace = name_space;
-        set_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-level")
-    {
-        set_level.yfilter = yfilter;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type.yfilter = yfilter;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
-        return true;
-    return false;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::State()
-    :
-    set_level{YType::uint8, "set-level"},
-    set_metric_type{YType::uint8, "set-metric-type"},
-    set_metric{YType::uint32, "set-metric"}
-{
-
-    yang_name = "state"; yang_parent_name = "isis-actions"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::~State()
-{
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_data() const
-{
-    return set_level.is_set
-	|| set_metric_type.is_set
-	|| set_metric.is_set;
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_level.yfilter)
-	|| ydk::is_set(set_metric_type.yfilter)
-	|| ydk::is_set(set_metric.yfilter);
-}
-
-std::string RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_level.is_set || is_set(set_level.yfilter)) leaf_name_data.push_back(set_level.get_name_leafdata());
-    if (set_metric_type.is_set || is_set(set_metric_type.yfilter)) leaf_name_data.push_back(set_metric_type.get_name_leafdata());
-    if (set_metric.is_set || is_set(set_metric.yfilter)) leaf_name_data.push_back(set_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-level")
-    {
-        set_level = value;
-        set_level.value_namespace = name_space;
-        set_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type = value;
-        set_metric_type.value_namespace = name_space;
-        set_metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric = value;
-        set_metric.value_namespace = name_space;
-        set_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-level")
-    {
-        set_level.yfilter = yfilter;
-    }
-    if(value_path == "set-metric-type")
-    {
-        set_metric_type.yfilter = yfilter;
-    }
-    if(value_path == "set-metric")
-    {
-        set_metric.yfilter = yfilter;
-    }
-}
-
-bool RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-level" || name == "set-metric-type" || name == "set-metric")
         return true;
     return false;
 }

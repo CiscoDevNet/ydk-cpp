@@ -14,11 +14,11 @@ namespace Cisco_IOS_XR_ipv4_igmp_cfg {
 Igmp::Igmp()
     :
     vrfs(std::make_shared<Igmp::Vrfs>())
-	,default_context(nullptr) // presence node
+    , default_context(nullptr) // presence node
 {
     vrfs->parent = this;
 
-    yang_name = "igmp"; yang_parent_name = "Cisco-IOS-XR-ipv4-igmp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "igmp"; yang_parent_name = "Cisco-IOS-XR-ipv4-igmp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Igmp::~Igmp()
@@ -27,6 +27,7 @@ Igmp::~Igmp()
 
 bool Igmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (default_context !=  nullptr && default_context->has_data());
 }
@@ -135,9 +136,11 @@ bool Igmp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Igmp::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Vrfs::~Vrfs()
@@ -146,7 +149,8 @@ Igmp::Vrfs::~Vrfs()
 
 bool Igmp::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -156,7 +160,7 @@ bool Igmp::Vrfs::has_data() const
 
 bool Igmp::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -193,7 +197,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -205,7 +209,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -236,12 +240,12 @@ Igmp::Vrfs::Vrf::Vrf()
     vrf_name{YType::str, "vrf-name"},
     ssmdns_query_group{YType::empty, "ssmdns-query-group"},
     robustness{YType::uint32, "robustness"}
-    	,
+        ,
     traffic(std::make_shared<Igmp::Vrfs::Vrf::Traffic>())
-	,inheritable_defaults(std::make_shared<Igmp::Vrfs::Vrf::InheritableDefaults>())
-	,ssm_access_groups(std::make_shared<Igmp::Vrfs::Vrf::SsmAccessGroups>())
-	,maximum(std::make_shared<Igmp::Vrfs::Vrf::Maximum>())
-	,interfaces(std::make_shared<Igmp::Vrfs::Vrf::Interfaces>())
+    , inheritable_defaults(std::make_shared<Igmp::Vrfs::Vrf::InheritableDefaults>())
+    , ssm_access_groups(std::make_shared<Igmp::Vrfs::Vrf::SsmAccessGroups>())
+    , maximum(std::make_shared<Igmp::Vrfs::Vrf::Maximum>())
+    , interfaces(std::make_shared<Igmp::Vrfs::Vrf::Interfaces>())
 {
     traffic->parent = this;
     inheritable_defaults->parent = this;
@@ -249,7 +253,7 @@ Igmp::Vrfs::Vrf::Vrf()
     maximum->parent = this;
     interfaces->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::Vrfs::Vrf::~Vrf()
@@ -258,6 +262,7 @@ Igmp::Vrfs::Vrf::~Vrf()
 
 bool Igmp::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| ssmdns_query_group.is_set
 	|| robustness.is_set
@@ -291,7 +296,8 @@ std::string Igmp::Vrfs::Vrf::get_absolute_path() const
 std::string Igmp::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -439,7 +445,7 @@ Igmp::Vrfs::Vrf::Traffic::Traffic()
     profile{YType::str, "profile"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Traffic::~Traffic()
@@ -448,6 +454,7 @@ Igmp::Vrfs::Vrf::Traffic::~Traffic()
 
 bool Igmp::Vrfs::Vrf::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set;
 }
 
@@ -519,12 +526,12 @@ Igmp::Vrfs::Vrf::InheritableDefaults::InheritableDefaults()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
 
-    yang_name = "inheritable-defaults"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inheritable-defaults"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::InheritableDefaults::~InheritableDefaults()
@@ -533,6 +540,7 @@ Igmp::Vrfs::Vrf::InheritableDefaults::~InheritableDefaults()
 
 bool Igmp::Vrfs::Vrf::InheritableDefaults::has_data() const
 {
+    if (is_presence_container) return true;
     return query_timeout.is_set
 	|| access_group.is_set
 	|| query_max_response_time.is_set
@@ -700,7 +708,7 @@ Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::MaximumGroup
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -709,6 +717,7 @@ Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::~MaximumGrou
 
 bool Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -804,7 +813,7 @@ Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::ExplicitTracking()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
@@ -813,6 +822,7 @@ Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
 
 bool Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }
@@ -890,9 +900,11 @@ bool Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_leaf_or_child_o
 }
 
 Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroups()
+    :
+    ssm_access_group(this, {"source_address"})
 {
 
-    yang_name = "ssm-access-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-access-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::SsmAccessGroups::~SsmAccessGroups()
@@ -901,7 +913,8 @@ Igmp::Vrfs::Vrf::SsmAccessGroups::~SsmAccessGroups()
 
 bool Igmp::Vrfs::Vrf::SsmAccessGroups::has_data() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_data())
             return true;
@@ -911,7 +924,7 @@ bool Igmp::Vrfs::Vrf::SsmAccessGroups::has_data() const
 
 bool Igmp::Vrfs::Vrf::SsmAccessGroups::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_operation())
             return true;
@@ -941,7 +954,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(cons
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
-        ssm_access_group.push_back(c);
+        ssm_access_group.append(c);
         return c;
     }
 
@@ -953,7 +966,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_access_group)
+    for (auto c : ssm_access_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -985,7 +998,7 @@ Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
@@ -994,6 +1007,7 @@ Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
 
 bool Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| access_list_name.is_set;
 }
@@ -1008,7 +1022,8 @@ bool Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_operation() const
 std::string Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssm-access-group" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "ssm-access-group";
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -1075,7 +1090,7 @@ Igmp::Vrfs::Vrf::Maximum::Maximum()
     maximum_groups{YType::uint32, "maximum-groups"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Maximum::~Maximum()
@@ -1084,6 +1099,7 @@ Igmp::Vrfs::Vrf::Maximum::~Maximum()
 
 bool Igmp::Vrfs::Vrf::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set;
 }
 
@@ -1148,9 +1164,11 @@ bool Igmp::Vrfs::Vrf::Maximum::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::~Interfaces()
@@ -1159,7 +1177,8 @@ Igmp::Vrfs::Vrf::Interfaces::~Interfaces()
 
 bool Igmp::Vrfs::Vrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1169,7 +1188,7 @@ bool Igmp::Vrfs::Vrf::Interfaces::has_data() const
 
 bool Igmp::Vrfs::Vrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1199,7 +1218,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::get_child_by_name(const std
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1211,7 +1230,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1246,15 +1265,15 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::Interface()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     join_groups(nullptr) // presence node
-	,static_group_group_addresses(std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses>())
-	,maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , static_group_group_addresses(std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses>())
+    , maximum_groups_per_interface_oor(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
     static_group_group_addresses->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::~Interface()
@@ -1263,6 +1282,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::~Interface()
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| query_timeout.is_set
 	|| access_group.is_set
@@ -1295,7 +1315,8 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1469,9 +1490,12 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroups()
+    :
+    join_group(this, {"group_address"})
+    , join_group_source_address(this, {"group_address", "source_address"})
 {
 
-    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::~JoinGroups()
@@ -1480,12 +1504,13 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::~JoinGroups()
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_data() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_data())
             return true;
@@ -1495,12 +1520,12 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_data() const
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_operation() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_operation())
             return true;
@@ -1530,7 +1555,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
-        join_group.push_back(c);
+        join_group.append(c);
         return c;
     }
 
@@ -1538,7 +1563,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
-        join_group_source_address.push_back(c);
+        join_group_source_address.append(c);
         return c;
     }
 
@@ -1550,7 +1575,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : join_group)
+    for (auto c : join_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1559,7 +1584,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     }
 
     count = 0;
-    for (auto const & c : join_group_source_address)
+    for (auto c : join_group_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1591,7 +1616,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
@@ -1600,6 +1625,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| mode.is_set;
 }
@@ -1614,7 +1640,8 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_operatio
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "join-group";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -1683,7 +1710,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::Join
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::~JoinGroupSourceAddress()
@@ -1692,6 +1719,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::~Joi
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| mode.is_set;
@@ -1708,7 +1736,9 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress:
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "join-group-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -1782,9 +1812,16 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress:
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
+    :
+    static_group_group_address(this, {"group_address"})
+    , static_group_group_address_source_address(this, {"group_address", "source_address"})
+    , static_group_group_address_source_address_source_address_mask(this, {"group_address", "source_address", "source_address_mask"})
+    , static_group_group_address_group_address_mask(this, {"group_address", "group_address_mask"})
+    , static_group_group_address_group_address_mask_source_address(this, {"group_address", "group_address_mask", "source_address"})
+    , static_group_group_address_group_address_mask_source_address_source_address_mask(this, {"group_address", "group_address_mask", "source_address", "source_address_mask"})
 {
 
-    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::~StaticGroupGroupAddresses()
@@ -1793,32 +1830,33 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::~StaticGroupG
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_data() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_data())
             return true;
@@ -1828,32 +1866,32 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_data
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_operation())
             return true;
@@ -1883,7 +1921,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
-        static_group_group_address.push_back(c);
+        static_group_group_address.append(c);
         return c;
     }
 
@@ -1891,7 +1929,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
-        static_group_group_address_source_address.push_back(c);
+        static_group_group_address_source_address.append(c);
         return c;
     }
 
@@ -1899,7 +1937,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_source_address_source_address_mask.push_back(c);
+        static_group_group_address_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -1907,7 +1945,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask.push_back(c);
+        static_group_group_address_group_address_mask.append(c);
         return c;
     }
 
@@ -1915,7 +1953,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address.push_back(c);
+        static_group_group_address_group_address_mask_source_address.append(c);
         return c;
     }
 
@@ -1923,7 +1961,7 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroup
     {
         auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -1935,7 +1973,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_group_group_address)
+    for (auto c : static_group_group_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1944,7 +1982,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address)
+    for (auto c : static_group_group_address_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1953,7 +1991,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address_source_address_mask)
+    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1962,7 +2000,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask)
+    for (auto c : static_group_group_address_group_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1971,7 +2009,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address)
+    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1980,7 +2018,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
+    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2014,7 +2052,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::~StaticGroupGroupAddress()
@@ -2023,6 +2061,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_count.is_set
 	|| source_count.is_set
@@ -2041,7 +2080,8 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "static-group-group-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -2134,7 +2174,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::~StaticGroupGroupAddressSourceAddress()
@@ -2143,6 +2183,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| group_count.is_set
@@ -2163,7 +2204,9 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -2268,7 +2311,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::~StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -2277,6 +2320,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| source_address_mask.is_set
@@ -2299,7 +2343,10 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -2414,7 +2461,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::~StaticGroupGroupAddressGroupAddressMask()
@@ -2423,6 +2470,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| group_count.is_set
@@ -2443,7 +2491,9 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
     return path_buffer.str();
 }
 
@@ -2548,7 +2598,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::~StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -2557,6 +2607,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -2579,7 +2630,10 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -2696,7 +2750,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::~StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -2705,6 +2759,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -2729,7 +2784,11 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -2853,7 +2912,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::MaximumGro
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -2862,6 +2921,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~MaximumGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -2957,7 +3017,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::ExplicitTracking()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::~ExplicitTracking()
@@ -2966,6 +3026,7 @@ Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::~ExplicitTracking()
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }
@@ -3046,15 +3107,15 @@ Igmp::DefaultContext::DefaultContext()
     :
     ssmdns_query_group{YType::empty, "ssmdns-query-group"},
     robustness{YType::uint32, "robustness"}
-    	,
+        ,
     nsf(std::make_shared<Igmp::DefaultContext::Nsf>())
-	,unicast_qos_adjust(std::make_shared<Igmp::DefaultContext::UnicastQosAdjust>())
-	,accounting(std::make_shared<Igmp::DefaultContext::Accounting>())
-	,traffic(std::make_shared<Igmp::DefaultContext::Traffic>())
-	,inheritable_defaults(std::make_shared<Igmp::DefaultContext::InheritableDefaults>())
-	,ssm_access_groups(std::make_shared<Igmp::DefaultContext::SsmAccessGroups>())
-	,maximum(std::make_shared<Igmp::DefaultContext::Maximum>())
-	,interfaces(std::make_shared<Igmp::DefaultContext::Interfaces>())
+    , unicast_qos_adjust(std::make_shared<Igmp::DefaultContext::UnicastQosAdjust>())
+    , accounting(std::make_shared<Igmp::DefaultContext::Accounting>())
+    , traffic(std::make_shared<Igmp::DefaultContext::Traffic>())
+    , inheritable_defaults(std::make_shared<Igmp::DefaultContext::InheritableDefaults>())
+    , ssm_access_groups(std::make_shared<Igmp::DefaultContext::SsmAccessGroups>())
+    , maximum(std::make_shared<Igmp::DefaultContext::Maximum>())
+    , interfaces(std::make_shared<Igmp::DefaultContext::Interfaces>())
 {
     nsf->parent = this;
     unicast_qos_adjust->parent = this;
@@ -3065,7 +3126,7 @@ Igmp::DefaultContext::DefaultContext()
     maximum->parent = this;
     interfaces->parent = this;
 
-    yang_name = "default-context"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-context"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Igmp::DefaultContext::~DefaultContext()
@@ -3074,6 +3135,7 @@ Igmp::DefaultContext::~DefaultContext()
 
 bool Igmp::DefaultContext::has_data() const
 {
+    if (is_presence_container) return true;
     return ssmdns_query_group.is_set
 	|| robustness.is_set
 	|| (nsf !=  nullptr && nsf->has_data())
@@ -3290,7 +3352,7 @@ Igmp::DefaultContext::Nsf::Nsf()
     lifetime{YType::uint32, "lifetime"}
 {
 
-    yang_name = "nsf"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsf"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::Nsf::~Nsf()
@@ -3299,6 +3361,7 @@ Igmp::DefaultContext::Nsf::~Nsf()
 
 bool Igmp::DefaultContext::Nsf::has_data() const
 {
+    if (is_presence_container) return true;
     return lifetime.is_set;
 }
 
@@ -3376,7 +3439,7 @@ Igmp::DefaultContext::UnicastQosAdjust::UnicastQosAdjust()
     hold_off{YType::uint32, "hold-off"}
 {
 
-    yang_name = "unicast-qos-adjust"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unicast-qos-adjust"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::UnicastQosAdjust::~UnicastQosAdjust()
@@ -3385,6 +3448,7 @@ Igmp::DefaultContext::UnicastQosAdjust::~UnicastQosAdjust()
 
 bool Igmp::DefaultContext::UnicastQosAdjust::has_data() const
 {
+    if (is_presence_container) return true;
     return download_interval.is_set
 	|| adjustment_delay.is_set
 	|| hold_off.is_set;
@@ -3486,7 +3550,7 @@ Igmp::DefaultContext::Accounting::Accounting()
     max_history{YType::uint32, "max-history"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::Accounting::~Accounting()
@@ -3495,6 +3559,7 @@ Igmp::DefaultContext::Accounting::~Accounting()
 
 bool Igmp::DefaultContext::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return max_history.is_set;
 }
 
@@ -3570,7 +3635,7 @@ Igmp::DefaultContext::Traffic::Traffic()
     profile{YType::str, "profile"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::Traffic::~Traffic()
@@ -3579,6 +3644,7 @@ Igmp::DefaultContext::Traffic::~Traffic()
 
 bool Igmp::DefaultContext::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set;
 }
 
@@ -3657,12 +3723,12 @@ Igmp::DefaultContext::InheritableDefaults::InheritableDefaults()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
 
-    yang_name = "inheritable-defaults"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inheritable-defaults"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::InheritableDefaults::~InheritableDefaults()
@@ -3671,6 +3737,7 @@ Igmp::DefaultContext::InheritableDefaults::~InheritableDefaults()
 
 bool Igmp::DefaultContext::InheritableDefaults::has_data() const
 {
+    if (is_presence_container) return true;
     return query_timeout.is_set
 	|| access_group.is_set
 	|| query_max_response_time.is_set
@@ -3845,7 +3912,7 @@ Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::Maximum
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -3854,6 +3921,7 @@ Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::~Maximu
 
 bool Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -3956,7 +4024,7 @@ Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::ExplicitTracking()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
@@ -3965,6 +4033,7 @@ Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
 
 bool Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }
@@ -4049,9 +4118,11 @@ bool Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::has_leaf_or_ch
 }
 
 Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroups()
+    :
+    ssm_access_group(this, {"source_address"})
 {
 
-    yang_name = "ssm-access-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-access-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::SsmAccessGroups::~SsmAccessGroups()
@@ -4060,7 +4131,8 @@ Igmp::DefaultContext::SsmAccessGroups::~SsmAccessGroups()
 
 bool Igmp::DefaultContext::SsmAccessGroups::has_data() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_data())
             return true;
@@ -4070,7 +4142,7 @@ bool Igmp::DefaultContext::SsmAccessGroups::has_data() const
 
 bool Igmp::DefaultContext::SsmAccessGroups::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_operation())
             return true;
@@ -4107,7 +4179,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::SsmAccessGroups::get_child_by_name
     {
         auto c = std::make_shared<Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
-        ssm_access_group.push_back(c);
+        ssm_access_group.append(c);
         return c;
     }
 
@@ -4119,7 +4191,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::SsmAccessGr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_access_group)
+    for (auto c : ssm_access_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4151,7 +4223,7 @@ Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
@@ -4160,6 +4232,7 @@ Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
 
 bool Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| access_list_name.is_set;
 }
@@ -4181,7 +4254,8 @@ std::string Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_absolute_
 std::string Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssm-access-group" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "ssm-access-group";
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -4248,7 +4322,7 @@ Igmp::DefaultContext::Maximum::Maximum()
     maximum_groups{YType::uint32, "maximum-groups"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::Maximum::~Maximum()
@@ -4257,6 +4331,7 @@ Igmp::DefaultContext::Maximum::~Maximum()
 
 bool Igmp::DefaultContext::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set;
 }
 
@@ -4328,9 +4403,11 @@ bool Igmp::DefaultContext::Maximum::has_leaf_or_child_of_name(const std::string 
 }
 
 Igmp::DefaultContext::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::Interfaces::~Interfaces()
@@ -4339,7 +4416,8 @@ Igmp::DefaultContext::Interfaces::~Interfaces()
 
 bool Igmp::DefaultContext::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -4349,7 +4427,7 @@ bool Igmp::DefaultContext::Interfaces::has_data() const
 
 bool Igmp::DefaultContext::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -4386,7 +4464,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::get_child_by_name(cons
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -4398,7 +4476,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4433,15 +4511,15 @@ Igmp::DefaultContext::Interfaces::Interface::Interface()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     join_groups(nullptr) // presence node
-	,static_group_group_addresses(std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses>())
-	,maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , static_group_group_addresses(std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses>())
+    , maximum_groups_per_interface_oor(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
     static_group_group_addresses->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::~Interface()
@@ -4450,6 +4528,7 @@ Igmp::DefaultContext::Interfaces::Interface::~Interface()
 
 bool Igmp::DefaultContext::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| query_timeout.is_set
 	|| access_group.is_set
@@ -4489,7 +4568,8 @@ std::string Igmp::DefaultContext::Interfaces::Interface::get_absolute_path() con
 std::string Igmp::DefaultContext::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4663,9 +4743,12 @@ bool Igmp::DefaultContext::Interfaces::Interface::has_leaf_or_child_of_name(cons
 }
 
 Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroups()
+    :
+    join_group(this, {"group_address"})
+    , join_group_source_address(this, {"group_address", "source_address"})
 {
 
-    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::JoinGroups::~JoinGroups()
@@ -4674,12 +4757,13 @@ Igmp::DefaultContext::Interfaces::Interface::JoinGroups::~JoinGroups()
 
 bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::has_data() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_data())
             return true;
@@ -4689,12 +4773,12 @@ bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::has_data() const
 
 bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::has_operation() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_operation())
             return true;
@@ -4724,7 +4808,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups:
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
-        join_group.push_back(c);
+        join_group.append(c);
         return c;
     }
 
@@ -4732,7 +4816,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups:
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
-        join_group_source_address.push_back(c);
+        join_group_source_address.append(c);
         return c;
     }
 
@@ -4744,7 +4828,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : join_group)
+    for (auto c : join_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4753,7 +4837,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     }
 
     count = 0;
-    for (auto const & c : join_group_source_address)
+    for (auto c : join_group_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4785,7 +4869,7 @@ Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
@@ -4794,6 +4878,7 @@ Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
 
 bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| mode.is_set;
 }
@@ -4808,7 +4893,8 @@ bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_ope
 std::string Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "join-group";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -4877,7 +4963,7 @@ Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress:
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::~JoinGroupSourceAddress()
@@ -4886,6 +4972,7 @@ Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress:
 
 bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| mode.is_set;
@@ -4902,7 +4989,9 @@ bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAdd
 std::string Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "join-group-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -4976,9 +5065,16 @@ bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAdd
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
+    :
+    static_group_group_address(this, {"group_address"})
+    , static_group_group_address_source_address(this, {"group_address", "source_address"})
+    , static_group_group_address_source_address_source_address_mask(this, {"group_address", "source_address", "source_address_mask"})
+    , static_group_group_address_group_address_mask(this, {"group_address", "group_address_mask"})
+    , static_group_group_address_group_address_mask_source_address(this, {"group_address", "group_address_mask", "source_address"})
+    , static_group_group_address_group_address_mask_source_address_source_address_mask(this, {"group_address", "group_address_mask", "source_address", "source_address_mask"})
 {
 
-    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::~StaticGroupGroupAddresses()
@@ -4987,32 +5083,33 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::~StaticG
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_data() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_data())
             return true;
@@ -5022,32 +5119,32 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_operation())
             return true;
@@ -5077,7 +5174,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
-        static_group_group_address.push_back(c);
+        static_group_group_address.append(c);
         return c;
     }
 
@@ -5085,7 +5182,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
-        static_group_group_address_source_address.push_back(c);
+        static_group_group_address_source_address.append(c);
         return c;
     }
 
@@ -5093,7 +5190,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_source_address_source_address_mask.push_back(c);
+        static_group_group_address_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -5101,7 +5198,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask.push_back(c);
+        static_group_group_address_group_address_mask.append(c);
         return c;
     }
 
@@ -5109,7 +5206,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address.push_back(c);
+        static_group_group_address_group_address_mask_source_address.append(c);
         return c;
     }
 
@@ -5117,7 +5214,7 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroup
     {
         auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -5129,7 +5226,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_group_group_address)
+    for (auto c : static_group_group_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5138,7 +5235,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address)
+    for (auto c : static_group_group_address_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5147,7 +5244,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address_source_address_mask)
+    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5156,7 +5253,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask)
+    for (auto c : static_group_group_address_group_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5165,7 +5262,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address)
+    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5174,7 +5271,7 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
+    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5208,7 +5305,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::~StaticGroupGroupAddress()
@@ -5217,6 +5314,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_count.is_set
 	|| source_count.is_set
@@ -5235,7 +5333,8 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "static-group-group-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -5328,7 +5427,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::~StaticGroupGroupAddressSourceAddress()
@@ -5337,6 +5436,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| group_count.is_set
@@ -5357,7 +5457,9 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -5462,7 +5564,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::~StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -5471,6 +5573,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| source_address_mask.is_set
@@ -5493,7 +5596,10 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -5608,7 +5714,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::~StaticGroupGroupAddressGroupAddressMask()
@@ -5617,6 +5723,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| group_count.is_set
@@ -5637,7 +5744,9 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
     return path_buffer.str();
 }
 
@@ -5742,7 +5851,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::~StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -5751,6 +5860,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -5773,7 +5883,10 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -5890,7 +6003,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::~StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -5899,6 +6012,7 @@ Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -5923,7 +6037,11 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -6047,7 +6165,7 @@ Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::Maxim
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -6056,6 +6174,7 @@ Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~Maxi
 
 bool Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -6151,7 +6270,7 @@ Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::ExplicitTracking(
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::~ExplicitTracking()
@@ -6160,6 +6279,7 @@ Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::~ExplicitTracking
 
 bool Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }
@@ -6248,12 +6368,12 @@ Amt::Amt()
     maximum_v6_routes{YType::uint32, "maximum-v6-routes"},
     amtqqic{YType::uint32, "amtqqic"},
     amtmtu{YType::uint32, "amtmtu"}
-    	,
+        ,
     relay_adv_add(nullptr) // presence node
-	,relay_anycast_prefix(nullptr) // presence node
+    , relay_anycast_prefix(nullptr) // presence node
 {
 
-    yang_name = "amt"; yang_parent_name = "Cisco-IOS-XR-ipv4-igmp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "amt"; yang_parent_name = "Cisco-IOS-XR-ipv4-igmp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Amt::~Amt()
@@ -6262,6 +6382,7 @@ Amt::~Amt()
 
 bool Amt::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_v4_route_gateway.is_set
 	|| gateway_filter.is_set
 	|| maximum_v4_routes.is_set
@@ -6505,7 +6626,7 @@ Amt::RelayAdvAdd::RelayAdvAdd()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "relay-adv-add"; yang_parent_name = "amt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "relay-adv-add"; yang_parent_name = "amt"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Amt::RelayAdvAdd::~RelayAdvAdd()
@@ -6514,6 +6635,7 @@ Amt::RelayAdvAdd::~RelayAdvAdd()
 
 bool Amt::RelayAdvAdd::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface.is_set;
 }
@@ -6603,7 +6725,7 @@ Amt::RelayAnycastPrefix::RelayAnycastPrefix()
     prefix_length{YType::uint32, "prefix-length"}
 {
 
-    yang_name = "relay-anycast-prefix"; yang_parent_name = "amt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "relay-anycast-prefix"; yang_parent_name = "amt"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Amt::RelayAnycastPrefix::~RelayAnycastPrefix()
@@ -6612,6 +6734,7 @@ Amt::RelayAnycastPrefix::~RelayAnycastPrefix()
 
 bool Amt::RelayAnycastPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set;
 }
@@ -6698,11 +6821,11 @@ bool Amt::RelayAnycastPrefix::has_leaf_or_child_of_name(const std::string & name
 Mld::Mld()
     :
     vrfs(std::make_shared<Mld::Vrfs>())
-	,default_context(nullptr) // presence node
+    , default_context(nullptr) // presence node
 {
     vrfs->parent = this;
 
-    yang_name = "mld"; yang_parent_name = "Cisco-IOS-XR-ipv4-igmp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mld"; yang_parent_name = "Cisco-IOS-XR-ipv4-igmp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Mld::~Mld()
@@ -6711,6 +6834,7 @@ Mld::~Mld()
 
 bool Mld::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (default_context !=  nullptr && default_context->has_data());
 }
@@ -6819,9 +6943,11 @@ bool Mld::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Mld::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Vrfs::~Vrfs()
@@ -6830,7 +6956,8 @@ Mld::Vrfs::~Vrfs()
 
 bool Mld::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -6840,7 +6967,7 @@ bool Mld::Vrfs::has_data() const
 
 bool Mld::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -6877,7 +7004,7 @@ std::shared_ptr<Entity> Mld::Vrfs::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -6889,7 +7016,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6920,12 +7047,12 @@ Mld::Vrfs::Vrf::Vrf()
     vrf_name{YType::str, "vrf-name"},
     ssmdns_query_group{YType::empty, "ssmdns-query-group"},
     robustness{YType::uint32, "robustness"}
-    	,
+        ,
     traffic(std::make_shared<Mld::Vrfs::Vrf::Traffic>())
-	,inheritable_defaults(std::make_shared<Mld::Vrfs::Vrf::InheritableDefaults>())
-	,ssm_access_groups(std::make_shared<Mld::Vrfs::Vrf::SsmAccessGroups>())
-	,maximum(std::make_shared<Mld::Vrfs::Vrf::Maximum>())
-	,interfaces(std::make_shared<Mld::Vrfs::Vrf::Interfaces>())
+    , inheritable_defaults(std::make_shared<Mld::Vrfs::Vrf::InheritableDefaults>())
+    , ssm_access_groups(std::make_shared<Mld::Vrfs::Vrf::SsmAccessGroups>())
+    , maximum(std::make_shared<Mld::Vrfs::Vrf::Maximum>())
+    , interfaces(std::make_shared<Mld::Vrfs::Vrf::Interfaces>())
 {
     traffic->parent = this;
     inheritable_defaults->parent = this;
@@ -6933,7 +7060,7 @@ Mld::Vrfs::Vrf::Vrf()
     maximum->parent = this;
     interfaces->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Vrfs::Vrf::~Vrf()
@@ -6942,6 +7069,7 @@ Mld::Vrfs::Vrf::~Vrf()
 
 bool Mld::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| ssmdns_query_group.is_set
 	|| robustness.is_set
@@ -6975,7 +7103,8 @@ std::string Mld::Vrfs::Vrf::get_absolute_path() const
 std::string Mld::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -7123,7 +7252,7 @@ Mld::Vrfs::Vrf::Traffic::Traffic()
     profile{YType::str, "profile"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Traffic::~Traffic()
@@ -7132,6 +7261,7 @@ Mld::Vrfs::Vrf::Traffic::~Traffic()
 
 bool Mld::Vrfs::Vrf::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set;
 }
 
@@ -7203,12 +7333,12 @@ Mld::Vrfs::Vrf::InheritableDefaults::InheritableDefaults()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
 
-    yang_name = "inheritable-defaults"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inheritable-defaults"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::InheritableDefaults::~InheritableDefaults()
@@ -7217,6 +7347,7 @@ Mld::Vrfs::Vrf::InheritableDefaults::~InheritableDefaults()
 
 bool Mld::Vrfs::Vrf::InheritableDefaults::has_data() const
 {
+    if (is_presence_container) return true;
     return query_timeout.is_set
 	|| access_group.is_set
 	|| query_max_response_time.is_set
@@ -7384,7 +7515,7 @@ Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::MaximumGroups
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -7393,6 +7524,7 @@ Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::~MaximumGroup
 
 bool Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -7488,7 +7620,7 @@ Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::ExplicitTracking()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
@@ -7497,6 +7629,7 @@ Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
 
 bool Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }
@@ -7574,9 +7707,11 @@ bool Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_leaf_or_child_of
 }
 
 Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroups()
+    :
+    ssm_access_group(this, {"source_address"})
 {
 
-    yang_name = "ssm-access-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-access-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::SsmAccessGroups::~SsmAccessGroups()
@@ -7585,7 +7720,8 @@ Mld::Vrfs::Vrf::SsmAccessGroups::~SsmAccessGroups()
 
 bool Mld::Vrfs::Vrf::SsmAccessGroups::has_data() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_data())
             return true;
@@ -7595,7 +7731,7 @@ bool Mld::Vrfs::Vrf::SsmAccessGroups::has_data() const
 
 bool Mld::Vrfs::Vrf::SsmAccessGroups::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_operation())
             return true;
@@ -7625,7 +7761,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(const
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
-        ssm_access_group.push_back(c);
+        ssm_access_group.append(c);
         return c;
     }
 
@@ -7637,7 +7773,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_access_group)
+    for (auto c : ssm_access_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7669,7 +7805,7 @@ Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
@@ -7678,6 +7814,7 @@ Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
 
 bool Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| access_list_name.is_set;
 }
@@ -7692,7 +7829,8 @@ bool Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_operation() const
 std::string Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssm-access-group" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "ssm-access-group";
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -7759,7 +7897,7 @@ Mld::Vrfs::Vrf::Maximum::Maximum()
     maximum_groups{YType::uint32, "maximum-groups"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Maximum::~Maximum()
@@ -7768,6 +7906,7 @@ Mld::Vrfs::Vrf::Maximum::~Maximum()
 
 bool Mld::Vrfs::Vrf::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set;
 }
 
@@ -7832,9 +7971,11 @@ bool Mld::Vrfs::Vrf::Maximum::has_leaf_or_child_of_name(const std::string & name
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::~Interfaces()
@@ -7843,7 +7984,8 @@ Mld::Vrfs::Vrf::Interfaces::~Interfaces()
 
 bool Mld::Vrfs::Vrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -7853,7 +7995,7 @@ bool Mld::Vrfs::Vrf::Interfaces::has_data() const
 
 bool Mld::Vrfs::Vrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -7883,7 +8025,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -7895,7 +8037,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7930,15 +8072,15 @@ Mld::Vrfs::Vrf::Interfaces::Interface::Interface()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     join_groups(nullptr) // presence node
-	,static_group_group_addresses(std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses>())
-	,maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , static_group_group_addresses(std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses>())
+    , maximum_groups_per_interface_oor(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
     static_group_group_addresses->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::~Interface()
@@ -7947,6 +8089,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::~Interface()
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| query_timeout.is_set
 	|| access_group.is_set
@@ -7979,7 +8122,8 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8153,9 +8297,12 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std:
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroups()
+    :
+    join_group(this, {"group_address"})
+    , join_group_source_address(this, {"group_address", "source_address"})
 {
 
-    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::~JoinGroups()
@@ -8164,12 +8311,13 @@ Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::~JoinGroups()
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_data() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_data())
             return true;
@@ -8179,12 +8327,12 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_data() const
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_operation() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_operation())
             return true;
@@ -8214,7 +8362,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_c
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
-        join_group.push_back(c);
+        join_group.append(c);
         return c;
     }
 
@@ -8222,7 +8370,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_c
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
-        join_group_source_address.push_back(c);
+        join_group_source_address.append(c);
         return c;
     }
 
@@ -8234,7 +8382,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : join_group)
+    for (auto c : join_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8243,7 +8391,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     }
 
     count = 0;
-    for (auto const & c : join_group_source_address)
+    for (auto c : join_group_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8275,7 +8423,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
@@ -8284,6 +8432,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| mode.is_set;
 }
@@ -8298,7 +8447,8 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_operation
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "join-group";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -8367,7 +8517,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::JoinG
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::~JoinGroupSourceAddress()
@@ -8376,6 +8526,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::~Join
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| mode.is_set;
@@ -8392,7 +8543,9 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "join-group-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -8466,9 +8619,16 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
+    :
+    static_group_group_address(this, {"group_address"})
+    , static_group_group_address_source_address(this, {"group_address", "source_address"})
+    , static_group_group_address_source_address_source_address_mask(this, {"group_address", "source_address", "source_address_mask"})
+    , static_group_group_address_group_address_mask(this, {"group_address", "group_address_mask"})
+    , static_group_group_address_group_address_mask_source_address(this, {"group_address", "group_address_mask", "source_address"})
+    , static_group_group_address_group_address_mask_source_address_source_address_mask(this, {"group_address", "group_address_mask", "source_address", "source_address_mask"})
 {
 
-    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::~StaticGroupGroupAddresses()
@@ -8477,32 +8637,33 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::~StaticGroupGr
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_data() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_data())
             return true;
@@ -8512,32 +8673,32 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_data(
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_operation())
             return true;
@@ -8567,7 +8728,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
-        static_group_group_address.push_back(c);
+        static_group_group_address.append(c);
         return c;
     }
 
@@ -8575,7 +8736,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
-        static_group_group_address_source_address.push_back(c);
+        static_group_group_address_source_address.append(c);
         return c;
     }
 
@@ -8583,7 +8744,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_source_address_source_address_mask.push_back(c);
+        static_group_group_address_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -8591,7 +8752,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask.push_back(c);
+        static_group_group_address_group_address_mask.append(c);
         return c;
     }
 
@@ -8599,7 +8760,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address.push_back(c);
+        static_group_group_address_group_address_mask_source_address.append(c);
         return c;
     }
 
@@ -8607,7 +8768,7 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupA
     {
         auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -8619,7 +8780,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_group_group_address)
+    for (auto c : static_group_group_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8628,7 +8789,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address)
+    for (auto c : static_group_group_address_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8637,7 +8798,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address_source_address_mask)
+    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8646,7 +8807,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask)
+    for (auto c : static_group_group_address_group_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8655,7 +8816,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address)
+    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8664,7 +8825,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
+    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8698,7 +8859,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::~StaticGroupGroupAddress()
@@ -8707,6 +8868,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_count.is_set
 	|| source_count.is_set
@@ -8725,7 +8887,8 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "static-group-group-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -8818,7 +8981,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::~StaticGroupGroupAddressSourceAddress()
@@ -8827,6 +8990,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| group_count.is_set
@@ -8847,7 +9011,9 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -8952,7 +9118,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::~StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -8961,6 +9127,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| source_address_mask.is_set
@@ -8983,7 +9150,10 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -9098,7 +9268,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::~StaticGroupGroupAddressGroupAddressMask()
@@ -9107,6 +9277,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| group_count.is_set
@@ -9127,7 +9298,9 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
     return path_buffer.str();
 }
 
@@ -9232,7 +9405,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::~StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -9241,6 +9414,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -9263,7 +9437,10 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -9380,7 +9557,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::~StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -9389,6 +9566,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -9413,7 +9591,11 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -9537,7 +9719,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::MaximumGrou
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -9546,6 +9728,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~MaximumGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -9641,7 +9824,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::ExplicitTracking()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::~ExplicitTracking()
@@ -9650,6 +9833,7 @@ Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::~ExplicitTracking()
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }
@@ -9730,15 +9914,15 @@ Mld::DefaultContext::DefaultContext()
     :
     ssmdns_query_group{YType::empty, "ssmdns-query-group"},
     robustness{YType::uint32, "robustness"}
-    	,
+        ,
     nsf(std::make_shared<Mld::DefaultContext::Nsf>())
-	,unicast_qos_adjust(std::make_shared<Mld::DefaultContext::UnicastQosAdjust>())
-	,accounting(std::make_shared<Mld::DefaultContext::Accounting>())
-	,traffic(std::make_shared<Mld::DefaultContext::Traffic>())
-	,inheritable_defaults(std::make_shared<Mld::DefaultContext::InheritableDefaults>())
-	,ssm_access_groups(std::make_shared<Mld::DefaultContext::SsmAccessGroups>())
-	,maximum(std::make_shared<Mld::DefaultContext::Maximum>())
-	,interfaces(std::make_shared<Mld::DefaultContext::Interfaces>())
+    , unicast_qos_adjust(std::make_shared<Mld::DefaultContext::UnicastQosAdjust>())
+    , accounting(std::make_shared<Mld::DefaultContext::Accounting>())
+    , traffic(std::make_shared<Mld::DefaultContext::Traffic>())
+    , inheritable_defaults(std::make_shared<Mld::DefaultContext::InheritableDefaults>())
+    , ssm_access_groups(std::make_shared<Mld::DefaultContext::SsmAccessGroups>())
+    , maximum(std::make_shared<Mld::DefaultContext::Maximum>())
+    , interfaces(std::make_shared<Mld::DefaultContext::Interfaces>())
 {
     nsf->parent = this;
     unicast_qos_adjust->parent = this;
@@ -9749,7 +9933,7 @@ Mld::DefaultContext::DefaultContext()
     maximum->parent = this;
     interfaces->parent = this;
 
-    yang_name = "default-context"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-context"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Mld::DefaultContext::~DefaultContext()
@@ -9758,6 +9942,7 @@ Mld::DefaultContext::~DefaultContext()
 
 bool Mld::DefaultContext::has_data() const
 {
+    if (is_presence_container) return true;
     return ssmdns_query_group.is_set
 	|| robustness.is_set
 	|| (nsf !=  nullptr && nsf->has_data())
@@ -9974,7 +10159,7 @@ Mld::DefaultContext::Nsf::Nsf()
     lifetime{YType::uint32, "lifetime"}
 {
 
-    yang_name = "nsf"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsf"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::Nsf::~Nsf()
@@ -9983,6 +10168,7 @@ Mld::DefaultContext::Nsf::~Nsf()
 
 bool Mld::DefaultContext::Nsf::has_data() const
 {
+    if (is_presence_container) return true;
     return lifetime.is_set;
 }
 
@@ -10060,7 +10246,7 @@ Mld::DefaultContext::UnicastQosAdjust::UnicastQosAdjust()
     hold_off{YType::uint32, "hold-off"}
 {
 
-    yang_name = "unicast-qos-adjust"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unicast-qos-adjust"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::UnicastQosAdjust::~UnicastQosAdjust()
@@ -10069,6 +10255,7 @@ Mld::DefaultContext::UnicastQosAdjust::~UnicastQosAdjust()
 
 bool Mld::DefaultContext::UnicastQosAdjust::has_data() const
 {
+    if (is_presence_container) return true;
     return download_interval.is_set
 	|| adjustment_delay.is_set
 	|| hold_off.is_set;
@@ -10170,7 +10357,7 @@ Mld::DefaultContext::Accounting::Accounting()
     max_history{YType::uint32, "max-history"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::Accounting::~Accounting()
@@ -10179,6 +10366,7 @@ Mld::DefaultContext::Accounting::~Accounting()
 
 bool Mld::DefaultContext::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return max_history.is_set;
 }
 
@@ -10254,7 +10442,7 @@ Mld::DefaultContext::Traffic::Traffic()
     profile{YType::str, "profile"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::Traffic::~Traffic()
@@ -10263,6 +10451,7 @@ Mld::DefaultContext::Traffic::~Traffic()
 
 bool Mld::DefaultContext::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set;
 }
 
@@ -10341,12 +10530,12 @@ Mld::DefaultContext::InheritableDefaults::InheritableDefaults()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
 
-    yang_name = "inheritable-defaults"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inheritable-defaults"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::InheritableDefaults::~InheritableDefaults()
@@ -10355,6 +10544,7 @@ Mld::DefaultContext::InheritableDefaults::~InheritableDefaults()
 
 bool Mld::DefaultContext::InheritableDefaults::has_data() const
 {
+    if (is_presence_container) return true;
     return query_timeout.is_set
 	|| access_group.is_set
 	|| query_max_response_time.is_set
@@ -10529,7 +10719,7 @@ Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::MaximumG
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -10538,6 +10728,7 @@ Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::~Maximum
 
 bool Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -10640,7 +10831,7 @@ Mld::DefaultContext::InheritableDefaults::ExplicitTracking::ExplicitTracking()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-tracking"; yang_parent_name = "inheritable-defaults"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Mld::DefaultContext::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
@@ -10649,6 +10840,7 @@ Mld::DefaultContext::InheritableDefaults::ExplicitTracking::~ExplicitTracking()
 
 bool Mld::DefaultContext::InheritableDefaults::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }
@@ -10733,9 +10925,11 @@ bool Mld::DefaultContext::InheritableDefaults::ExplicitTracking::has_leaf_or_chi
 }
 
 Mld::DefaultContext::SsmAccessGroups::SsmAccessGroups()
+    :
+    ssm_access_group(this, {"source_address"})
 {
 
-    yang_name = "ssm-access-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-access-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::SsmAccessGroups::~SsmAccessGroups()
@@ -10744,7 +10938,8 @@ Mld::DefaultContext::SsmAccessGroups::~SsmAccessGroups()
 
 bool Mld::DefaultContext::SsmAccessGroups::has_data() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_data())
             return true;
@@ -10754,7 +10949,7 @@ bool Mld::DefaultContext::SsmAccessGroups::has_data() const
 
 bool Mld::DefaultContext::SsmAccessGroups::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_access_group.size(); index++)
+    for (std::size_t index=0; index<ssm_access_group.len(); index++)
     {
         if(ssm_access_group[index]->has_operation())
             return true;
@@ -10791,7 +10986,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::SsmAccessGroups::get_child_by_name(
     {
         auto c = std::make_shared<Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
         c->parent = this;
-        ssm_access_group.push_back(c);
+        ssm_access_group.append(c);
         return c;
     }
 
@@ -10803,7 +10998,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::SsmAccessGro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_access_group)
+    for (auto c : ssm_access_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10835,7 +11030,7 @@ Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-access-group"; yang_parent_name = "ssm-access-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
@@ -10844,6 +11039,7 @@ Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::~SsmAccessGroup()
 
 bool Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| access_list_name.is_set;
 }
@@ -10865,7 +11061,8 @@ std::string Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_absolute_p
 std::string Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssm-access-group" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "ssm-access-group";
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -10932,7 +11129,7 @@ Mld::DefaultContext::Maximum::Maximum()
     maximum_groups{YType::uint32, "maximum-groups"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::Maximum::~Maximum()
@@ -10941,6 +11138,7 @@ Mld::DefaultContext::Maximum::~Maximum()
 
 bool Mld::DefaultContext::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set;
 }
 
@@ -11012,9 +11210,11 @@ bool Mld::DefaultContext::Maximum::has_leaf_or_child_of_name(const std::string &
 }
 
 Mld::DefaultContext::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::Interfaces::~Interfaces()
@@ -11023,7 +11223,8 @@ Mld::DefaultContext::Interfaces::~Interfaces()
 
 bool Mld::DefaultContext::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -11033,7 +11234,7 @@ bool Mld::DefaultContext::Interfaces::has_data() const
 
 bool Mld::DefaultContext::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -11070,7 +11271,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::get_child_by_name(const
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -11082,7 +11283,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11117,15 +11318,15 @@ Mld::DefaultContext::Interfaces::Interface::Interface()
     version{YType::uint32, "version"},
     router_enable{YType::boolean, "router-enable"},
     query_interval{YType::uint32, "query-interval"}
-    	,
+        ,
     join_groups(nullptr) // presence node
-	,static_group_group_addresses(std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses>())
-	,maximum_groups_per_interface_oor(nullptr) // presence node
-	,explicit_tracking(nullptr) // presence node
+    , static_group_group_addresses(std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses>())
+    , maximum_groups_per_interface_oor(nullptr) // presence node
+    , explicit_tracking(nullptr) // presence node
 {
     static_group_group_addresses->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::~Interface()
@@ -11134,6 +11335,7 @@ Mld::DefaultContext::Interfaces::Interface::~Interface()
 
 bool Mld::DefaultContext::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| query_timeout.is_set
 	|| access_group.is_set
@@ -11173,7 +11375,8 @@ std::string Mld::DefaultContext::Interfaces::Interface::get_absolute_path() cons
 std::string Mld::DefaultContext::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11347,9 +11550,12 @@ bool Mld::DefaultContext::Interfaces::Interface::has_leaf_or_child_of_name(const
 }
 
 Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroups()
+    :
+    join_group(this, {"group_address"})
+    , join_group_source_address(this, {"group_address", "source_address"})
 {
 
-    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-groups"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::DefaultContext::Interfaces::Interface::JoinGroups::~JoinGroups()
@@ -11358,12 +11564,13 @@ Mld::DefaultContext::Interfaces::Interface::JoinGroups::~JoinGroups()
 
 bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::has_data() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_data())
             return true;
@@ -11373,12 +11580,12 @@ bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::has_data() const
 
 bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::has_operation() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<join_group_source_address.size(); index++)
+    for (std::size_t index=0; index<join_group_source_address.len(); index++)
     {
         if(join_group_source_address[index]->has_operation())
             return true;
@@ -11408,7 +11615,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
         c->parent = this;
-        join_group.push_back(c);
+        join_group.append(c);
         return c;
     }
 
@@ -11416,7 +11623,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
         c->parent = this;
-        join_group_source_address.push_back(c);
+        join_group_source_address.append(c);
         return c;
     }
 
@@ -11428,7 +11635,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : join_group)
+    for (auto c : join_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11437,7 +11644,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     }
 
     count = 0;
-    for (auto const & c : join_group_source_address)
+    for (auto c : join_group_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11469,7 +11676,7 @@ Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
@@ -11478,6 +11685,7 @@ Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::~JoinGroup()
 
 bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| mode.is_set;
 }
@@ -11492,7 +11700,8 @@ bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_oper
 std::string Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "join-group";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -11561,7 +11770,7 @@ Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group-source-address"; yang_parent_name = "join-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::~JoinGroupSourceAddress()
@@ -11570,6 +11779,7 @@ Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::
 
 bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| mode.is_set;
@@ -11586,7 +11796,9 @@ bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddr
 std::string Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "join-group-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -11660,9 +11872,16 @@ bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddr
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
+    :
+    static_group_group_address(this, {"group_address"})
+    , static_group_group_address_source_address(this, {"group_address", "source_address"})
+    , static_group_group_address_source_address_source_address_mask(this, {"group_address", "source_address", "source_address_mask"})
+    , static_group_group_address_group_address_mask(this, {"group_address", "group_address_mask"})
+    , static_group_group_address_group_address_mask_source_address(this, {"group_address", "group_address_mask", "source_address"})
+    , static_group_group_address_group_address_mask_source_address_source_address_mask(this, {"group_address", "group_address_mask", "source_address", "source_address_mask"})
 {
 
-    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::~StaticGroupGroupAddresses()
@@ -11671,32 +11890,33 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::~StaticGr
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_data() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_data())
             return true;
@@ -11706,32 +11926,32 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<static_group_group_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address.len(); index++)
     {
         if(static_group_group_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address.len(); index++)
     {
         if(static_group_group_address_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.size(); index++)
+    for (std::size_t index=0; index<static_group_group_address_group_address_mask_source_address_source_address_mask.len(); index++)
     {
         if(static_group_group_address_group_address_mask_source_address_source_address_mask[index]->has_operation())
             return true;
@@ -11761,7 +11981,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
         c->parent = this;
-        static_group_group_address.push_back(c);
+        static_group_group_address.append(c);
         return c;
     }
 
@@ -11769,7 +11989,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
         c->parent = this;
-        static_group_group_address_source_address.push_back(c);
+        static_group_group_address_source_address.append(c);
         return c;
     }
 
@@ -11777,7 +11997,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_source_address_source_address_mask.push_back(c);
+        static_group_group_address_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -11785,7 +12005,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask.push_back(c);
+        static_group_group_address_group_address_mask.append(c);
         return c;
     }
 
@@ -11793,7 +12013,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address.push_back(c);
+        static_group_group_address_group_address_mask_source_address.append(c);
         return c;
     }
 
@@ -11801,7 +12021,7 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupG
     {
         auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
         c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.push_back(c);
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
         return c;
     }
 
@@ -11813,7 +12033,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_group_group_address)
+    for (auto c : static_group_group_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11822,7 +12042,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address)
+    for (auto c : static_group_group_address_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11831,7 +12051,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_source_address_source_address_mask)
+    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11840,7 +12060,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask)
+    for (auto c : static_group_group_address_group_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11849,7 +12069,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address)
+    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11858,7 +12078,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     }
 
     count = 0;
-    for (auto const & c : static_group_group_address_group_address_mask_source_address_source_address_mask)
+    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11892,7 +12112,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::~StaticGroupGroupAddress()
@@ -11901,6 +12121,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_count.is_set
 	|| source_count.is_set
@@ -11919,7 +12140,8 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address" <<"[group-address='" <<group_address <<"']";
+    path_buffer << "static-group-group-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
     return path_buffer.str();
 }
 
@@ -12012,7 +12234,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::~StaticGroupGroupAddressSourceAddress()
@@ -12021,6 +12243,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| group_count.is_set
@@ -12041,7 +12264,9 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -12146,7 +12371,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::~StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -12155,6 +12380,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| source_address.is_set
 	|| source_address_mask.is_set
@@ -12177,7 +12403,10 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -12292,7 +12521,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::~StaticGroupGroupAddressGroupAddressMask()
@@ -12301,6 +12530,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| group_count.is_set
@@ -12321,7 +12551,9 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
     return path_buffer.str();
 }
 
@@ -12426,7 +12658,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::~StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -12435,6 +12667,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -12457,7 +12690,10 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -12574,7 +12810,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
     suppress_report{YType::boolean, "suppress-report"}
 {
 
-    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group-group-address-group-address-mask-source-address-source-address-mask"; yang_parent_name = "static-group-group-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::~StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -12583,6 +12819,7 @@ Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_address_mask.is_set
 	|| source_address.is_set
@@ -12607,7 +12844,11 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask" <<"[group-address='" <<group_address <<"']" <<"[group-address-mask='" <<group_address_mask <<"']" <<"[source-address='" <<source_address <<"']" <<"[source-address-mask='" <<source_address_mask <<"']";
+    path_buffer << "static-group-group-address-group-address-mask-source-address-source-address-mask";
+    ADD_KEY_TOKEN(group_address, "group-address");
+    ADD_KEY_TOKEN(group_address_mask, "group-address-mask");
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_address_mask, "source-address-mask");
     return path_buffer.str();
 }
 
@@ -12731,7 +12972,7 @@ Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::Maximu
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-groups-per-interface-oor"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~MaximumGroupsPerInterfaceOor()
@@ -12740,6 +12981,7 @@ Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::~Maxim
 
 bool Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_groups.is_set
 	|| warning_threshold.is_set
 	|| access_list_name.is_set;
@@ -12835,7 +13077,7 @@ Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::ExplicitTracking()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-tracking"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::~ExplicitTracking()
@@ -12844,6 +13086,7 @@ Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::~ExplicitTracking(
 
 bool Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| access_list_name.is_set;
 }

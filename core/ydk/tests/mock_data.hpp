@@ -44,8 +44,8 @@ static std::unordered_map<std::string, ydk::path::Capability> test_openconfig_lo
     {"urn:ietf:params:xml:ns:yang:ietf-interfaces", {"ietf-interfaces", ""}},
     {"http://cisco.com/ns/yang/ydk", {"ydk", ""}},
     {"http://cisco.com/ns/yang/ydktest-sanity", {"ydktest-sanity", ""}},
-    {"http://cisco.com/ns/yang/ydktest-action", {"ydktest-sanity-action", ""}}
-
+    {"http://cisco.com/ns/yang/ydktest-action", {"ydktest-sanity-action", ""}},
+    {"http://cisco.com/ns/yang/ydktest-types", {"ydktest-types", ""}}
 };
 
 
@@ -115,7 +115,7 @@ static std::vector<ydk::path::Capability> test_openconfig {
     {"ietf-interfaces", ""},
     {"ydk", ""},
     {"ydktest-sanity", ""},
-    {"ydktest-sanity-action", ""}
-
+    {"ydktest-sanity-action", ""},
+    {"ydktest-types", ""}
 };
 

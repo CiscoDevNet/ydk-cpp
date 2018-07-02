@@ -582,9 +582,9 @@ class Native::ServiceInsertion : public ydk::Entity
         class ServiceNodeGroup; //type: Native::ServiceInsertion::ServiceNodeGroup
         class Swap; //type: Native::ServiceInsertion::Swap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion::AppnavControllerGroup> > appnav_controller_group;
+        ydk::YList appnav_controller_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion::ServiceContext> service_context;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion::ServiceNodeGroup> > service_node_group;
+        ydk::YList service_node_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion::Swap> swap;
         
 }; // Native::ServiceInsertion
@@ -633,7 +633,7 @@ class Native::ServiceInsertion::ServiceContext : public ydk::Entity
 
         class Waas; //type: Native::ServiceInsertion::ServiceContext::Waas
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion::ServiceContext::Waas> > waas;
+        ydk::YList waas;
         
 }; // Native::ServiceInsertion::ServiceContext
 
@@ -1274,7 +1274,7 @@ class Native::DeviceTracking : public ydk::Entity
         class Policy; //type: Native::DeviceTracking::Policy
         class Tracking; //type: Native::DeviceTracking::Tracking
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceTracking::Policy> > policy;
+        ydk::YList policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceTracking::Tracking> tracking; // presence node
         
 }; // Native::DeviceTracking
@@ -1731,10 +1731,10 @@ class Native::Line : public ydk::Entity
         class Console; //type: Native::Line::Console
         class Vty; //type: Native::Line::Vty
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::LineList> > line_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Aux> > aux;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Console> > console;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Vty> > vty;
+        ydk::YList line_list;
+        ydk::YList aux;
+        ydk::YList console;
+        ydk::YList vty;
         
 }; // Native::Line
 
@@ -1759,7 +1759,7 @@ class Native::Line::LineList : public ydk::Entity
         ydk::YLeaf first_number; //type: uint8
         ydk::YLeaf last_number; //type: uint16
         ydk::YLeaf no_activation_character; //type: boolean
-        ydk::YLeaf activation_character; //type: one of uint8, string
+        ydk::YLeaf activation_character; //type: one of string, uint8
         ydk::YLeaf data_character_bits; //type: uint8
         ydk::YLeaf domain_lookup; //type: empty
         ydk::YLeaf editing; //type: empty
@@ -1907,7 +1907,7 @@ class Native::Line::LineList::AccessClass : public ydk::Entity
 
         class AcccessList; //type: Native::Line::LineList::AccessClass::AcccessList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::LineList::AccessClass::AcccessList> > acccess_list;
+        ydk::YList acccess_list;
         
 }; // Native::Line::LineList::AccessClass
 
@@ -2337,7 +2337,7 @@ class Native::Line::LineList::Ipv6::AccessClass : public ydk::Entity
 
         class AccessClass_; //type: Native::Line::LineList::Ipv6::AccessClass::AccessClass_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::LineList::Ipv6::AccessClass::AccessClass_> > access_class;
+        ydk::YList access_class;
         
 }; // Native::Line::LineList::Ipv6::AccessClass
 
@@ -2813,7 +2813,7 @@ class Native::Line::Aux : public ydk::Entity
 
         ydk::YLeaf first; //type: First
         ydk::YLeaf no_activation_character; //type: boolean
-        ydk::YLeaf activation_character; //type: one of uint8, string
+        ydk::YLeaf activation_character; //type: one of string, uint8
         ydk::YLeaf data_character_bits; //type: uint8
         ydk::YLeaf domain_lookup; //type: empty
         ydk::YLeaf editing; //type: empty
@@ -2962,7 +2962,7 @@ class Native::Line::Aux::AccessClass : public ydk::Entity
 
         class AcccessList; //type: Native::Line::Aux::AccessClass::AcccessList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Aux::AccessClass::AcccessList> > acccess_list;
+        ydk::YList acccess_list;
         
 }; // Native::Line::Aux::AccessClass
 
@@ -3392,7 +3392,7 @@ class Native::Line::Aux::Ipv6::AccessClass : public ydk::Entity
 
         class AccessClass_; //type: Native::Line::Aux::Ipv6::AccessClass::AccessClass_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Aux::Ipv6::AccessClass::AccessClass_> > access_class;
+        ydk::YList access_class;
         
 }; // Native::Line::Aux::Ipv6::AccessClass
 

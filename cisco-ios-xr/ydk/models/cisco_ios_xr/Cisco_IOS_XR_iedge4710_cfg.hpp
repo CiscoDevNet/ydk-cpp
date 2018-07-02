@@ -202,7 +202,7 @@ class SubscriberFeaturette : public ydk::Entity
 
         class FeaturetteName; //type: SubscriberFeaturette::FeaturetteName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_cfg::SubscriberFeaturette::FeaturetteName> > featurette_name;
+        ydk::YList featurette_name;
         
 }; // SubscriberFeaturette
 
@@ -225,7 +225,7 @@ class SubscriberFeaturette::FeaturetteName : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf featurette; //type: string
-        ydk::YLeaf enable; //type: int32
+        ydk::YLeaf enable; //type: uint32
 
 }; // SubscriberFeaturette::FeaturetteName
 
@@ -250,35 +250,9 @@ class IedgeLicenseManager : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Node; //type: IedgeLicenseManager::Node
+        ydk::YLeaf session_limit; //type: uint32
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_cfg::IedgeLicenseManager::Node> > node;
-        
 }; // IedgeLicenseManager
-
-
-class IedgeLicenseManager::Node : public ydk::Entity
-{
-    public:
-        Node();
-        ~Node();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf node_name; //type: string
-        ydk::YLeaf session_limit; //type: int32
-        ydk::YLeaf session_threshold; //type: int32
-
-}; // IedgeLicenseManager::Node
 
 class SubManager : public ydk::Entity
 {
@@ -303,7 +277,7 @@ class SubManager : public ydk::Entity
 
         class Location; //type: SubManager::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_iedge4710_cfg::SubManager::Location> > location;
+        ydk::YList location;
         
 }; // SubManager
 
@@ -350,7 +324,7 @@ class SubManager::Location::Trace : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf trace_level; //type: int32
+        ydk::YLeaf trace_level; //type: uint32
 
 }; // SubManager::Location::Trace
 

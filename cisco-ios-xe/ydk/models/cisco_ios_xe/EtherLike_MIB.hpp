@@ -12,41 +12,41 @@
 namespace cisco_ios_xe {
 namespace EtherLike_MIB {
 
-class Dot3Testtdr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3ErrorInitError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot3Testtdr();
-        ~Dot3Testtdr();
+        Dot3ErrorInitError();
+        ~Dot3ErrorInitError();
 
 
-}; // Dot3Testtdr
+}; // Dot3ErrorInitError
 
-class Dot3Testloopback : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3TestTdr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot3Testloopback();
-        ~Dot3Testloopback();
+        Dot3TestTdr();
+        ~Dot3TestTdr();
 
 
-}; // Dot3Testloopback
+}; // Dot3TestTdr
 
-class Dot3Erroriniterror : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3ErrorLoopbackError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot3Erroriniterror();
-        ~Dot3Erroriniterror();
+        Dot3ErrorLoopbackError();
+        ~Dot3ErrorLoopbackError();
 
 
-}; // Dot3Erroriniterror
+}; // Dot3ErrorLoopbackError
 
-class Dot3Errorloopbackerror : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot3TestLoopBack : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot3Errorloopbackerror();
-        ~Dot3Errorloopbackerror();
+        Dot3TestLoopBack();
+        ~Dot3TestLoopBack();
 
 
-}; // Dot3Errorloopbackerror
+}; // Dot3TestLoopBack
 
 class EtherLikeMIB : public ydk::Entity
 {
@@ -69,26 +69,26 @@ class EtherLikeMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Dot3Statstable; //type: EtherLikeMIB::Dot3Statstable
-        class Dot3Colltable; //type: EtherLikeMIB::Dot3Colltable
-        class Dot3Controltable; //type: EtherLikeMIB::Dot3Controltable
-        class Dot3Pausetable; //type: EtherLikeMIB::Dot3Pausetable
-        class Dot3Hcstatstable; //type: EtherLikeMIB::Dot3Hcstatstable
+        class Dot3StatsTable; //type: EtherLikeMIB::Dot3StatsTable
+        class Dot3CollTable; //type: EtherLikeMIB::Dot3CollTable
+        class Dot3ControlTable; //type: EtherLikeMIB::Dot3ControlTable
+        class Dot3PauseTable; //type: EtherLikeMIB::Dot3PauseTable
+        class Dot3HCStatsTable; //type: EtherLikeMIB::Dot3HCStatsTable
 
-        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Statstable> dot3statstable;
-        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Colltable> dot3colltable;
-        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Controltable> dot3controltable;
-        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Pausetable> dot3pausetable;
-        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Hcstatstable> dot3hcstatstable;
+        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3StatsTable> dot3statstable;
+        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3CollTable> dot3colltable;
+        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3ControlTable> dot3controltable;
+        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3PauseTable> dot3pausetable;
+        std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3HCStatsTable> dot3hcstatstable;
         
 }; // EtherLikeMIB
 
 
-class EtherLikeMIB::Dot3Statstable : public ydk::Entity
+class EtherLikeMIB::Dot3StatsTable : public ydk::Entity
 {
     public:
-        Dot3Statstable();
-        ~Dot3Statstable();
+        Dot3StatsTable();
+        ~Dot3StatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -101,18 +101,18 @@ class EtherLikeMIB::Dot3Statstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot3Statsentry; //type: EtherLikeMIB::Dot3Statstable::Dot3Statsentry
+        class Dot3StatsEntry; //type: EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Statstable::Dot3Statsentry> > dot3statsentry;
+        ydk::YList dot3statsentry;
         
-}; // EtherLikeMIB::Dot3Statstable
+}; // EtherLikeMIB::Dot3StatsTable
 
 
-class EtherLikeMIB::Dot3Statstable::Dot3Statsentry : public ydk::Entity
+class EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry : public ydk::Entity
 {
     public:
-        Dot3Statsentry();
-        ~Dot3Statsentry();
+        Dot3StatsEntry();
+        ~Dot3StatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -140,20 +140,20 @@ class EtherLikeMIB::Dot3Statstable::Dot3Statsentry : public ydk::Entity
         ydk::YLeaf dot3statsinternalmacreceiveerrors; //type: uint32
         ydk::YLeaf dot3statsetherchipset; //type: string
         ydk::YLeaf dot3statssymbolerrors; //type: uint32
-        ydk::YLeaf dot3statsduplexstatus; //type: Dot3Statsduplexstatus
+        ydk::YLeaf dot3statsduplexstatus; //type: Dot3StatsDuplexStatus
         ydk::YLeaf dot3statsratecontrolability; //type: boolean
-        ydk::YLeaf dot3statsratecontrolstatus; //type: Dot3Statsratecontrolstatus
-        class Dot3Statsduplexstatus;
-        class Dot3Statsratecontrolstatus;
+        ydk::YLeaf dot3statsratecontrolstatus; //type: Dot3StatsRateControlStatus
+        class Dot3StatsDuplexStatus;
+        class Dot3StatsRateControlStatus;
 
-}; // EtherLikeMIB::Dot3Statstable::Dot3Statsentry
+}; // EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry
 
 
-class EtherLikeMIB::Dot3Colltable : public ydk::Entity
+class EtherLikeMIB::Dot3CollTable : public ydk::Entity
 {
     public:
-        Dot3Colltable();
-        ~Dot3Colltable();
+        Dot3CollTable();
+        ~Dot3CollTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,18 +166,18 @@ class EtherLikeMIB::Dot3Colltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot3Collentry; //type: EtherLikeMIB::Dot3Colltable::Dot3Collentry
+        class Dot3CollEntry; //type: EtherLikeMIB::Dot3CollTable::Dot3CollEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Colltable::Dot3Collentry> > dot3collentry;
+        ydk::YList dot3collentry;
         
-}; // EtherLikeMIB::Dot3Colltable
+}; // EtherLikeMIB::Dot3CollTable
 
 
-class EtherLikeMIB::Dot3Colltable::Dot3Collentry : public ydk::Entity
+class EtherLikeMIB::Dot3CollTable::Dot3CollEntry : public ydk::Entity
 {
     public:
-        Dot3Collentry();
-        ~Dot3Collentry();
+        Dot3CollEntry();
+        ~Dot3CollEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -190,19 +190,19 @@ class EtherLikeMIB::Dot3Colltable::Dot3Collentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf dot3collcount; //type: int32
         ydk::YLeaf dot3collfrequencies; //type: uint32
 
-}; // EtherLikeMIB::Dot3Colltable::Dot3Collentry
+}; // EtherLikeMIB::Dot3CollTable::Dot3CollEntry
 
 
-class EtherLikeMIB::Dot3Controltable : public ydk::Entity
+class EtherLikeMIB::Dot3ControlTable : public ydk::Entity
 {
     public:
-        Dot3Controltable();
-        ~Dot3Controltable();
+        Dot3ControlTable();
+        ~Dot3ControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -215,18 +215,18 @@ class EtherLikeMIB::Dot3Controltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot3Controlentry; //type: EtherLikeMIB::Dot3Controltable::Dot3Controlentry
+        class Dot3ControlEntry; //type: EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Controltable::Dot3Controlentry> > dot3controlentry;
+        ydk::YList dot3controlentry;
         
-}; // EtherLikeMIB::Dot3Controltable
+}; // EtherLikeMIB::Dot3ControlTable
 
 
-class EtherLikeMIB::Dot3Controltable::Dot3Controlentry : public ydk::Entity
+class EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry : public ydk::Entity
 {
     public:
-        Dot3Controlentry();
-        ~Dot3Controlentry();
+        Dot3ControlEntry();
+        ~Dot3ControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -239,20 +239,20 @@ class EtherLikeMIB::Dot3Controltable::Dot3Controlentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Statstable::Dot3Statsentry::dot3statsindex)
+        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::dot3statsindex)
         ydk::YLeaf dot3statsindex;
-        ydk::YLeaf dot3controlfunctionssupported; //type: Dot3Controlfunctionssupported
+        ydk::YLeaf dot3controlfunctionssupported; //type: Dot3ControlFunctionsSupported
         ydk::YLeaf dot3controlinunknownopcodes; //type: uint32
         ydk::YLeaf dot3hccontrolinunknownopcodes; //type: uint64
 
-}; // EtherLikeMIB::Dot3Controltable::Dot3Controlentry
+}; // EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry
 
 
-class EtherLikeMIB::Dot3Pausetable : public ydk::Entity
+class EtherLikeMIB::Dot3PauseTable : public ydk::Entity
 {
     public:
-        Dot3Pausetable();
-        ~Dot3Pausetable();
+        Dot3PauseTable();
+        ~Dot3PauseTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -265,18 +265,18 @@ class EtherLikeMIB::Dot3Pausetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot3Pauseentry; //type: EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry
+        class Dot3PauseEntry; //type: EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry> > dot3pauseentry;
+        ydk::YList dot3pauseentry;
         
-}; // EtherLikeMIB::Dot3Pausetable
+}; // EtherLikeMIB::Dot3PauseTable
 
 
-class EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry : public ydk::Entity
+class EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry : public ydk::Entity
 {
     public:
-        Dot3Pauseentry();
-        ~Dot3Pauseentry();
+        Dot3PauseEntry();
+        ~Dot3PauseEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -289,25 +289,25 @@ class EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Statstable::Dot3Statsentry::dot3statsindex)
+        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::dot3statsindex)
         ydk::YLeaf dot3statsindex;
-        ydk::YLeaf dot3pauseadminmode; //type: Dot3Pauseadminmode
-        ydk::YLeaf dot3pauseopermode; //type: Dot3Pauseopermode
+        ydk::YLeaf dot3pauseadminmode; //type: Dot3PauseAdminMode
+        ydk::YLeaf dot3pauseopermode; //type: Dot3PauseOperMode
         ydk::YLeaf dot3inpauseframes; //type: uint32
         ydk::YLeaf dot3outpauseframes; //type: uint32
         ydk::YLeaf dot3hcinpauseframes; //type: uint64
         ydk::YLeaf dot3hcoutpauseframes; //type: uint64
-        class Dot3Pauseadminmode;
-        class Dot3Pauseopermode;
+        class Dot3PauseAdminMode;
+        class Dot3PauseOperMode;
 
-}; // EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry
+}; // EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry
 
 
-class EtherLikeMIB::Dot3Hcstatstable : public ydk::Entity
+class EtherLikeMIB::Dot3HCStatsTable : public ydk::Entity
 {
     public:
-        Dot3Hcstatstable();
-        ~Dot3Hcstatstable();
+        Dot3HCStatsTable();
+        ~Dot3HCStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -320,18 +320,18 @@ class EtherLikeMIB::Dot3Hcstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot3Hcstatsentry; //type: EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry
+        class Dot3HCStatsEntry; //type: EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry> > dot3hcstatsentry;
+        ydk::YList dot3hcstatsentry;
         
-}; // EtherLikeMIB::Dot3Hcstatstable
+}; // EtherLikeMIB::Dot3HCStatsTable
 
 
-class EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry : public ydk::Entity
+class EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry : public ydk::Entity
 {
     public:
-        Dot3Hcstatsentry();
-        ~Dot3Hcstatsentry();
+        Dot3HCStatsEntry();
+        ~Dot3HCStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -344,7 +344,7 @@ class EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3Statstable::Dot3Statsentry::dot3statsindex)
+        //type: int32 (refers to cisco_ios_xe::EtherLike_MIB::EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::dot3statsindex)
         ydk::YLeaf dot3statsindex;
         ydk::YLeaf dot3hcstatsalignmenterrors; //type: uint64
         ydk::YLeaf dot3hcstatsfcserrors; //type: uint64
@@ -353,9 +353,9 @@ class EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry : public ydk::Entity
         ydk::YLeaf dot3hcstatsinternalmacreceiveerrors; //type: uint64
         ydk::YLeaf dot3hcstatssymbolerrors; //type: uint64
 
-}; // EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry
+}; // EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry
 
-class EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus : public ydk::Enum
+class EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsDuplexStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -364,7 +364,7 @@ class EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus : publ
 
 };
 
-class EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus : public ydk::Enum
+class EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsRateControlStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf rateControlOff;
@@ -373,7 +373,7 @@ class EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus :
 
 };
 
-class EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode : public ydk::Enum
+class EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseAdminMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -383,7 +383,7 @@ class EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode : public 
 
 };
 
-class EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode : public ydk::Enum
+class EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseOperMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;

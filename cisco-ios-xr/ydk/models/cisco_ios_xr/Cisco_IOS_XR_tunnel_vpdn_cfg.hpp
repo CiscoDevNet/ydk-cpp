@@ -41,7 +41,7 @@ class Vpdn : public ydk::Entity
         class CallerId; //type: Vpdn::CallerId
         class VpdNgroups; //type: Vpdn::VpdNgroups
         class Loggings; //type: Vpdn::Loggings
-        class L2Tp; //type: Vpdn::L2Tp
+        class L2tp; //type: Vpdn::L2tp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::History> history;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Redundancy> redundancy;
@@ -50,7 +50,7 @@ class Vpdn : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::CallerId> caller_id;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups> vpd_ngroups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Loggings> loggings;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp> l2tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2tp> l2tp;
         
 }; // Vpdn
 
@@ -168,7 +168,7 @@ class Vpdn::Templates : public ydk::Entity
 
         class Template; //type: Vpdn::Templates::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Templates::Template> > template_;
+        ydk::YList template_;
         
 }; // Vpdn::Templates
 
@@ -314,7 +314,7 @@ class Vpdn::Templates::Template::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tos; //type: int32
+        ydk::YLeaf tos; //type: uint32
 
 }; // Vpdn::Templates::Template::Ip
 
@@ -382,7 +382,7 @@ class Vpdn::VpdNgroups : public ydk::Entity
 
         class VpdNgroup; //type: Vpdn::VpdNgroups::VpdNgroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::VpdNgroups::VpdNgroup> > vpd_ngroup;
+        ydk::YList vpd_ngroup;
         
 }; // Vpdn::VpdNgroups
 
@@ -484,7 +484,7 @@ class Vpdn::Loggings : public ydk::Entity
 
         class Logging; //type: Vpdn::Loggings::Logging
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::Loggings::Logging> > logging;
+        ydk::YList logging;
         
 }; // Vpdn::Loggings
 
@@ -511,11 +511,11 @@ class Vpdn::Loggings::Logging : public ydk::Entity
 }; // Vpdn::Loggings::Logging
 
 
-class Vpdn::L2Tp : public ydk::Entity
+class Vpdn::L2tp : public ydk::Entity
 {
     public:
-        L2Tp();
-        ~L2Tp();
+        L2tp();
+        ~L2tp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -530,14 +530,14 @@ class Vpdn::L2Tp : public ydk::Entity
 
         ydk::YLeaf tcp_mss_adjust; //type: uint32
         ydk::YLeaf reassembly; //type: empty
-        class SessionId; //type: Vpdn::L2Tp::SessionId
+        class SessionId; //type: Vpdn::L2tp::SessionId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp::SessionId> session_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2tp::SessionId> session_id;
         
-}; // Vpdn::L2Tp
+}; // Vpdn::L2tp
 
 
-class Vpdn::L2Tp::SessionId : public ydk::Entity
+class Vpdn::L2tp::SessionId : public ydk::Entity
 {
     public:
         SessionId();
@@ -554,14 +554,14 @@ class Vpdn::L2Tp::SessionId : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Space; //type: Vpdn::L2Tp::SessionId::Space
+        class Space; //type: Vpdn::L2tp::SessionId::Space
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2Tp::SessionId::Space> space;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_vpdn_cfg::Vpdn::L2tp::SessionId::Space> space;
         
-}; // Vpdn::L2Tp::SessionId
+}; // Vpdn::L2tp::SessionId
 
 
-class Vpdn::L2Tp::SessionId::Space : public ydk::Entity
+class Vpdn::L2tp::SessionId::Space : public ydk::Entity
 {
     public:
         Space();
@@ -580,7 +580,7 @@ class Vpdn::L2Tp::SessionId::Space : public ydk::Entity
 
         ydk::YLeaf hierarchy; //type: empty
 
-}; // Vpdn::L2Tp::SessionId::Space
+}; // Vpdn::L2tp::SessionId::Space
 
 class DfBit : public ydk::Enum
 {

@@ -14,12 +14,13 @@ namespace Cisco_IOS_XR_sysadmin_sm {
 Oper::Oper()
     :
     shelf_mgr(std::make_shared<Oper::ShelfMgr>())
-	,platform(std::make_shared<Oper::Platform>())
-	,chassis(std::make_shared<Oper::Chassis>())
-	,reload(std::make_shared<Oper::Reload>())
-	,reboot_history(std::make_shared<Oper::RebootHistory>())
-	,reload_vm(std::make_shared<Oper::ReloadVm>())
-	,macpool(std::make_shared<Oper::Macpool>())
+    , platform(std::make_shared<Oper::Platform>())
+    , chassis(std::make_shared<Oper::Chassis>())
+    , reload(std::make_shared<Oper::Reload>())
+    , reboot_history(std::make_shared<Oper::RebootHistory>())
+    , interface(this, {"ifname"})
+    , reload_vm(std::make_shared<Oper::ReloadVm>())
+    , macpool(std::make_shared<Oper::Macpool>())
 {
     shelf_mgr->parent = this;
     platform->parent = this;
@@ -29,7 +30,7 @@ Oper::Oper()
     reload_vm->parent = this;
     macpool->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "oper"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Oper::~Oper()
@@ -38,7 +39,8 @@ Oper::~Oper()
 
 bool Oper::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -54,7 +56,7 @@ bool Oper::has_data() const
 
 bool Oper::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -136,7 +138,7 @@ std::shared_ptr<Entity> Oper::get_child_by_name(const std::string & child_yang_n
     {
         auto c = std::make_shared<Oper::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -191,7 +193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::get_children() const
     }
 
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,9 +255,11 @@ bool Oper::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Oper::ShelfMgr::ShelfMgr()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "shelf_mgr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "shelf_mgr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::ShelfMgr::~ShelfMgr()
@@ -264,7 +268,8 @@ Oper::ShelfMgr::~ShelfMgr()
 
 bool Oper::ShelfMgr::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -274,7 +279,7 @@ bool Oper::ShelfMgr::has_data() const
 
 bool Oper::ShelfMgr::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -311,7 +316,7 @@ std::shared_ptr<Entity> Oper::ShelfMgr::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Oper::ShelfMgr::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -323,7 +328,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -352,9 +357,11 @@ bool Oper::ShelfMgr::has_leaf_or_child_of_name(const std::string & name) const
 Oper::ShelfMgr::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "shelf_mgr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "shelf_mgr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::ShelfMgr::Trace::~Trace()
@@ -363,7 +370,8 @@ Oper::ShelfMgr::Trace::~Trace()
 
 bool Oper::ShelfMgr::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -373,7 +381,7 @@ bool Oper::ShelfMgr::Trace::has_data() const
 
 bool Oper::ShelfMgr::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -392,7 +400,8 @@ std::string Oper::ShelfMgr::Trace::get_absolute_path() const
 std::string Oper::ShelfMgr::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -412,7 +421,7 @@ std::shared_ptr<Entity> Oper::ShelfMgr::Trace::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Oper::ShelfMgr::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -424,7 +433,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::Trace::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -463,9 +472,11 @@ bool Oper::ShelfMgr::Trace::has_leaf_or_child_of_name(const std::string & name) 
 Oper::ShelfMgr::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::ShelfMgr::Trace::Location::~Location()
@@ -474,7 +485,8 @@ Oper::ShelfMgr::Trace::Location::~Location()
 
 bool Oper::ShelfMgr::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -484,7 +496,7 @@ bool Oper::ShelfMgr::Trace::Location::has_data() const
 
 bool Oper::ShelfMgr::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -496,7 +508,8 @@ bool Oper::ShelfMgr::Trace::Location::has_operation() const
 std::string Oper::ShelfMgr::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -516,7 +529,7 @@ std::shared_ptr<Entity> Oper::ShelfMgr::Trace::Location::get_child_by_name(const
     {
         auto c = std::make_shared<Oper::ShelfMgr::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -528,7 +541,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::Trace::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -567,9 +580,11 @@ bool Oper::ShelfMgr::Trace::Location::has_leaf_or_child_of_name(const std::strin
 Oper::ShelfMgr::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::ShelfMgr::Trace::Location::AllOptions::~AllOptions()
@@ -578,7 +593,8 @@ Oper::ShelfMgr::Trace::Location::AllOptions::~AllOptions()
 
 bool Oper::ShelfMgr::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -588,7 +604,7 @@ bool Oper::ShelfMgr::Trace::Location::AllOptions::has_data() const
 
 bool Oper::ShelfMgr::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -600,7 +616,8 @@ bool Oper::ShelfMgr::Trace::Location::AllOptions::has_operation() const
 std::string Oper::ShelfMgr::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -620,7 +637,7 @@ std::shared_ptr<Entity> Oper::ShelfMgr::Trace::Location::AllOptions::get_child_b
     {
         auto c = std::make_shared<Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -632,7 +649,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::Trace::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -673,7 +690,7 @@ Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -682,6 +699,7 @@ Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -748,14 +766,14 @@ bool Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_child
 Oper::Platform::Platform()
     :
     summary(std::make_shared<Oper::Platform::Summary>())
-	,detail(std::make_shared<Oper::Platform::Detail>())
-	,slices(std::make_shared<Oper::Platform::Slices>())
+    , detail(std::make_shared<Oper::Platform::Detail>())
+    , slices(std::make_shared<Oper::Platform::Slices>())
 {
     summary->parent = this;
     detail->parent = this;
     slices->parent = this;
 
-    yang_name = "platform"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "platform"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Platform::~Platform()
@@ -764,6 +782,7 @@ Oper::Platform::~Platform()
 
 bool Oper::Platform::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (detail !=  nullptr && detail->has_data())
 	|| (slices !=  nullptr && slices->has_data());
@@ -870,9 +889,11 @@ bool Oper::Platform::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Oper::Platform::Summary::Summary()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "summary"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Platform::Summary::~Summary()
@@ -881,7 +902,8 @@ Oper::Platform::Summary::~Summary()
 
 bool Oper::Platform::Summary::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -891,7 +913,7 @@ bool Oper::Platform::Summary::has_data() const
 
 bool Oper::Platform::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -928,7 +950,7 @@ std::shared_ptr<Entity> Oper::Platform::Summary::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Oper::Platform::Summary::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -940,7 +962,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Summary::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -969,12 +991,12 @@ bool Oper::Platform::Summary::has_leaf_or_child_of_name(const std::string & name
 Oper::Platform::Summary::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     summary_data(std::make_shared<Oper::Platform::Summary::Location::SummaryData>())
 {
     summary_data->parent = this;
 
-    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Platform::Summary::Location::~Location()
@@ -983,6 +1005,7 @@ Oper::Platform::Summary::Location::~Location()
 
 bool Oper::Platform::Summary::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (summary_data !=  nullptr && summary_data->has_data());
 }
@@ -1004,7 +1027,8 @@ std::string Oper::Platform::Summary::Location::get_absolute_path() const
 std::string Oper::Platform::Summary::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1077,7 +1101,7 @@ Oper::Platform::Summary::Location::SummaryData::SummaryData()
     config_state{YType::str, "config_state"}
 {
 
-    yang_name = "summary-data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::Platform::Summary::Location::SummaryData::~SummaryData()
@@ -1086,6 +1110,7 @@ Oper::Platform::Summary::Location::SummaryData::~SummaryData()
 
 bool Oper::Platform::Summary::Location::SummaryData::has_data() const
 {
+    if (is_presence_container) return true;
     return card_type.is_set
 	|| hw_state.is_set
 	|| sw_state.is_set
@@ -1189,9 +1214,11 @@ bool Oper::Platform::Summary::Location::SummaryData::has_leaf_or_child_of_name(c
 }
 
 Oper::Platform::Detail::Detail()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Platform::Detail::~Detail()
@@ -1200,7 +1227,8 @@ Oper::Platform::Detail::~Detail()
 
 bool Oper::Platform::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1210,7 +1238,7 @@ bool Oper::Platform::Detail::has_data() const
 
 bool Oper::Platform::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1247,7 +1275,7 @@ std::shared_ptr<Entity> Oper::Platform::Detail::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Oper::Platform::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1259,7 +1287,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Detail::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1288,12 +1316,12 @@ bool Oper::Platform::Detail::has_leaf_or_child_of_name(const std::string & name)
 Oper::Platform::Detail::Location::Location()
     :
     location{YType::str, "location"}
-    	,
+        ,
     detail_data(std::make_shared<Oper::Platform::Detail::Location::DetailData>())
 {
     detail_data->parent = this;
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Platform::Detail::Location::~Location()
@@ -1302,6 +1330,7 @@ Oper::Platform::Detail::Location::~Location()
 
 bool Oper::Platform::Detail::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (detail_data !=  nullptr && detail_data->has_data());
 }
@@ -1323,7 +1352,8 @@ std::string Oper::Platform::Detail::Location::get_absolute_path() const
 std::string Oper::Platform::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1401,7 +1431,7 @@ Oper::Platform::Detail::Location::DetailData::DetailData()
     last_ev_reason_str{YType::str, "last_ev_reason_str"}
 {
 
-    yang_name = "detail-data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-data"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::Platform::Detail::Location::DetailData::~DetailData()
@@ -1410,6 +1440,7 @@ Oper::Platform::Detail::Location::DetailData::~DetailData()
 
 bool Oper::Platform::Detail::Location::DetailData::has_data() const
 {
+    if (is_presence_container) return true;
     return pid.is_set
 	|| description.is_set
 	|| vid_sn.is_set
@@ -1578,9 +1609,11 @@ bool Oper::Platform::Detail::Location::DetailData::has_leaf_or_child_of_name(con
 }
 
 Oper::Platform::Slices::Slices()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "slices"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "slices"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Platform::Slices::~Slices()
@@ -1589,7 +1622,8 @@ Oper::Platform::Slices::~Slices()
 
 bool Oper::Platform::Slices::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1599,7 +1633,7 @@ bool Oper::Platform::Slices::has_data() const
 
 bool Oper::Platform::Slices::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1636,7 +1670,7 @@ std::shared_ptr<Entity> Oper::Platform::Slices::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Oper::Platform::Slices::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1648,7 +1682,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Slices::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1677,9 +1711,11 @@ bool Oper::Platform::Slices::has_leaf_or_child_of_name(const std::string & name)
 Oper::Platform::Slices::Location::Location()
     :
     location{YType::str, "location"}
+        ,
+    slice_values(this, {"slice_idx"})
 {
 
-    yang_name = "location"; yang_parent_name = "slices"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "slices"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Platform::Slices::Location::~Location()
@@ -1688,7 +1724,8 @@ Oper::Platform::Slices::Location::~Location()
 
 bool Oper::Platform::Slices::Location::has_data() const
 {
-    for (std::size_t index=0; index<slice_values.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slice_values.len(); index++)
     {
         if(slice_values[index]->has_data())
             return true;
@@ -1698,7 +1735,7 @@ bool Oper::Platform::Slices::Location::has_data() const
 
 bool Oper::Platform::Slices::Location::has_operation() const
 {
-    for (std::size_t index=0; index<slice_values.size(); index++)
+    for (std::size_t index=0; index<slice_values.len(); index++)
     {
         if(slice_values[index]->has_operation())
             return true;
@@ -1717,7 +1754,8 @@ std::string Oper::Platform::Slices::Location::get_absolute_path() const
 std::string Oper::Platform::Slices::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1737,7 +1775,7 @@ std::shared_ptr<Entity> Oper::Platform::Slices::Location::get_child_by_name(cons
     {
         auto c = std::make_shared<Oper::Platform::Slices::Location::SliceValues>();
         c->parent = this;
-        slice_values.push_back(c);
+        slice_values.append(c);
         return c;
     }
 
@@ -1749,7 +1787,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Slices::Location:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slice_values)
+    for (auto c : slice_values.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1788,12 +1826,12 @@ bool Oper::Platform::Slices::Location::has_leaf_or_child_of_name(const std::stri
 Oper::Platform::Slices::Location::SliceValues::SliceValues()
     :
     slice_idx{YType::uint32, "slice_idx"}
-    	,
+        ,
     slice(std::make_shared<Oper::Platform::Slices::Location::SliceValues::Slice>())
 {
     slice->parent = this;
 
-    yang_name = "slice_values"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slice_values"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::Platform::Slices::Location::SliceValues::~SliceValues()
@@ -1802,6 +1840,7 @@ Oper::Platform::Slices::Location::SliceValues::~SliceValues()
 
 bool Oper::Platform::Slices::Location::SliceValues::has_data() const
 {
+    if (is_presence_container) return true;
     return slice_idx.is_set
 	|| (slice !=  nullptr && slice->has_data());
 }
@@ -1816,7 +1855,8 @@ bool Oper::Platform::Slices::Location::SliceValues::has_operation() const
 std::string Oper::Platform::Slices::Location::SliceValues::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slice_values" <<"[slice_idx='" <<slice_idx <<"']";
+    path_buffer << "slice_values";
+    ADD_KEY_TOKEN(slice_idx, "slice_idx");
     return path_buffer.str();
 }
 
@@ -1888,7 +1928,7 @@ Oper::Platform::Slices::Location::SliceValues::Slice::Slice()
     oper_state{YType::str, "oper_state"}
 {
 
-    yang_name = "slice"; yang_parent_name = "slice_values"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slice"; yang_parent_name = "slice_values"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::Platform::Slices::Location::SliceValues::Slice::~Slice()
@@ -1897,6 +1937,7 @@ Oper::Platform::Slices::Location::SliceValues::Slice::~Slice()
 
 bool Oper::Platform::Slices::Location::SliceValues::Slice::has_data() const
 {
+    if (is_presence_container) return true;
     return slice_num.is_set
 	|| admin_state.is_set
 	|| oper_state.is_set;
@@ -1992,7 +2033,7 @@ Oper::Chassis::Chassis()
 {
     brief->parent = this;
 
-    yang_name = "chassis"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Chassis::~Chassis()
@@ -2001,6 +2042,7 @@ Oper::Chassis::~Chassis()
 
 bool Oper::Chassis::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief !=  nullptr && brief->has_data());
 }
 
@@ -2075,9 +2117,11 @@ bool Oper::Chassis::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Oper::Chassis::Brief::Brief()
+    :
+    chassis_serial(this, {"serial_number"})
 {
 
-    yang_name = "brief"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Chassis::Brief::~Brief()
@@ -2086,7 +2130,8 @@ Oper::Chassis::Brief::~Brief()
 
 bool Oper::Chassis::Brief::has_data() const
 {
-    for (std::size_t index=0; index<chassis_serial.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chassis_serial.len(); index++)
     {
         if(chassis_serial[index]->has_data())
             return true;
@@ -2096,7 +2141,7 @@ bool Oper::Chassis::Brief::has_data() const
 
 bool Oper::Chassis::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<chassis_serial.size(); index++)
+    for (std::size_t index=0; index<chassis_serial.len(); index++)
     {
         if(chassis_serial[index]->has_operation())
             return true;
@@ -2133,7 +2178,7 @@ std::shared_ptr<Entity> Oper::Chassis::Brief::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Oper::Chassis::Brief::ChassisSerial>();
         c->parent = this;
-        chassis_serial.push_back(c);
+        chassis_serial.append(c);
         return c;
     }
 
@@ -2145,7 +2190,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::Chassis::Brief::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chassis_serial)
+    for (auto c : chassis_serial.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2174,12 +2219,12 @@ bool Oper::Chassis::Brief::has_leaf_or_child_of_name(const std::string & name) c
 Oper::Chassis::Brief::ChassisSerial::ChassisSerial()
     :
     serial_number{YType::str, "serial_number"}
-    	,
+        ,
     brief_data(std::make_shared<Oper::Chassis::Brief::ChassisSerial::BriefData>())
 {
     brief_data->parent = this;
 
-    yang_name = "chassis_serial"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis_serial"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Chassis::Brief::ChassisSerial::~ChassisSerial()
@@ -2188,6 +2233,7 @@ Oper::Chassis::Brief::ChassisSerial::~ChassisSerial()
 
 bool Oper::Chassis::Brief::ChassisSerial::has_data() const
 {
+    if (is_presence_container) return true;
     return serial_number.is_set
 	|| (brief_data !=  nullptr && brief_data->has_data());
 }
@@ -2209,7 +2255,8 @@ std::string Oper::Chassis::Brief::ChassisSerial::get_absolute_path() const
 std::string Oper::Chassis::Brief::ChassisSerial::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "chassis_serial" <<"[serial_number='" <<serial_number <<"']";
+    path_buffer << "chassis_serial";
+    ADD_KEY_TOKEN(serial_number, "serial_number");
     return path_buffer.str();
 }
 
@@ -2283,7 +2330,7 @@ Oper::Chassis::Brief::ChassisSerial::BriefData::BriefData()
     ctrl_plane{YType::str, "ctrl_plane"}
 {
 
-    yang_name = "brief-data"; yang_parent_name = "chassis_serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-data"; yang_parent_name = "chassis_serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::Chassis::Brief::ChassisSerial::BriefData::~BriefData()
@@ -2292,6 +2339,7 @@ Oper::Chassis::Brief::ChassisSerial::BriefData::~BriefData()
 
 bool Oper::Chassis::Brief::ChassisSerial::BriefData::has_data() const
 {
+    if (is_presence_container) return true;
     return racknum.is_set
 	|| rack_type.is_set
 	|| rack_state.is_set
@@ -2413,7 +2461,7 @@ Oper::Reload::Reload()
 {
     rack->parent = this;
 
-    yang_name = "reload"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reload"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Reload::~Reload()
@@ -2422,6 +2470,7 @@ Oper::Reload::~Reload()
 
 bool Oper::Reload::has_data() const
 {
+    if (is_presence_container) return true;
     return (rack !=  nullptr && rack->has_data());
 }
 
@@ -2496,9 +2545,11 @@ bool Oper::Reload::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Oper::Reload::Rack::Rack()
+    :
+    racks(this, {"rack"})
 {
 
-    yang_name = "rack"; yang_parent_name = "reload"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "reload"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Reload::Rack::~Rack()
@@ -2507,7 +2558,8 @@ Oper::Reload::Rack::~Rack()
 
 bool Oper::Reload::Rack::has_data() const
 {
-    for (std::size_t index=0; index<racks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<racks.len(); index++)
     {
         if(racks[index]->has_data())
             return true;
@@ -2517,7 +2569,7 @@ bool Oper::Reload::Rack::has_data() const
 
 bool Oper::Reload::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<racks.size(); index++)
+    for (std::size_t index=0; index<racks.len(); index++)
     {
         if(racks[index]->has_operation())
             return true;
@@ -2554,7 +2606,7 @@ std::shared_ptr<Entity> Oper::Reload::Rack::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Oper::Reload::Rack::Racks>();
         c->parent = this;
-        racks.push_back(c);
+        racks.append(c);
         return c;
     }
 
@@ -2566,7 +2618,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::Reload::Rack::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : racks)
+    for (auto c : racks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2597,7 +2649,7 @@ Oper::Reload::Rack::Racks::Racks()
     rack{YType::str, "rack"}
 {
 
-    yang_name = "racks"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Reload::Rack::Racks::~Racks()
@@ -2606,6 +2658,7 @@ Oper::Reload::Rack::Racks::~Racks()
 
 bool Oper::Reload::Rack::Racks::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set;
 }
 
@@ -2625,7 +2678,8 @@ std::string Oper::Reload::Rack::Racks::get_absolute_path() const
 std::string Oper::Reload::Rack::Racks::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "racks" <<"[rack='" <<rack <<"']";
+    path_buffer << "racks";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
@@ -2679,14 +2733,14 @@ bool Oper::Reload::Rack::Racks::has_leaf_or_child_of_name(const std::string & na
 Oper::RebootHistory::RebootHistory()
     :
     card(std::make_shared<Oper::RebootHistory::Card>())
-	,admin_vm(std::make_shared<Oper::RebootHistory::AdminVm>())
-	,reverse(std::make_shared<Oper::RebootHistory::Reverse>())
+    , admin_vm(std::make_shared<Oper::RebootHistory::AdminVm>())
+    , reverse(std::make_shared<Oper::RebootHistory::Reverse>())
 {
     card->parent = this;
     admin_vm->parent = this;
     reverse->parent = this;
 
-    yang_name = "reboot-history"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reboot-history"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::~RebootHistory()
@@ -2695,6 +2749,7 @@ Oper::RebootHistory::~RebootHistory()
 
 bool Oper::RebootHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (card !=  nullptr && card->has_data())
 	|| (admin_vm !=  nullptr && admin_vm->has_data())
 	|| (reverse !=  nullptr && reverse->has_data());
@@ -2801,9 +2856,11 @@ bool Oper::RebootHistory::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Oper::RebootHistory::Card::Card()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "card"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "card"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::Card::~Card()
@@ -2812,7 +2869,8 @@ Oper::RebootHistory::Card::~Card()
 
 bool Oper::RebootHistory::Card::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2822,7 +2880,7 @@ bool Oper::RebootHistory::Card::has_data() const
 
 bool Oper::RebootHistory::Card::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2859,7 +2917,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::Card::get_child_by_name(const std::
     {
         auto c = std::make_shared<Oper::RebootHistory::Card::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2871,7 +2929,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Card::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2900,9 +2958,11 @@ bool Oper::RebootHistory::Card::has_leaf_or_child_of_name(const std::string & na
 Oper::RebootHistory::Card::Location::Location()
     :
     location{YType::str, "location"}
+        ,
+    events(this, {"event_idx"})
 {
 
-    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::Card::Location::~Location()
@@ -2911,7 +2971,8 @@ Oper::RebootHistory::Card::Location::~Location()
 
 bool Oper::RebootHistory::Card::Location::has_data() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_data())
             return true;
@@ -2921,7 +2982,7 @@ bool Oper::RebootHistory::Card::Location::has_data() const
 
 bool Oper::RebootHistory::Card::Location::has_operation() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_operation())
             return true;
@@ -2940,7 +3001,8 @@ std::string Oper::RebootHistory::Card::Location::get_absolute_path() const
 std::string Oper::RebootHistory::Card::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -2960,7 +3022,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::Card::Location::get_child_by_name(c
     {
         auto c = std::make_shared<Oper::RebootHistory::Card::Location::Events>();
         c->parent = this;
-        events.push_back(c);
+        events.append(c);
         return c;
     }
 
@@ -2972,7 +3034,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Card::Locati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events)
+    for (auto c : events.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3011,12 +3073,12 @@ bool Oper::RebootHistory::Card::Location::has_leaf_or_child_of_name(const std::s
 Oper::RebootHistory::Card::Location::Events::Events()
     :
     event_idx{YType::uint32, "event_idx"}
-    	,
+        ,
     event(std::make_shared<Oper::RebootHistory::Card::Location::Events::Event>())
 {
     event->parent = this;
 
-    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::Card::Location::Events::~Events()
@@ -3025,6 +3087,7 @@ Oper::RebootHistory::Card::Location::Events::~Events()
 
 bool Oper::RebootHistory::Card::Location::Events::has_data() const
 {
+    if (is_presence_container) return true;
     return event_idx.is_set
 	|| (event !=  nullptr && event->has_data());
 }
@@ -3039,7 +3102,8 @@ bool Oper::RebootHistory::Card::Location::Events::has_operation() const
 std::string Oper::RebootHistory::Card::Location::Events::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events" <<"[event_idx='" <<event_idx <<"']";
+    path_buffer << "events";
+    ADD_KEY_TOKEN(event_idx, "event_idx");
     return path_buffer.str();
 }
 
@@ -3113,7 +3177,7 @@ Oper::RebootHistory::Card::Location::Events::Event::Event()
     src_name{YType::str, "src_name"}
 {
 
-    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::Card::Location::Events::Event::~Event()
@@ -3122,6 +3186,7 @@ Oper::RebootHistory::Card::Location::Events::Event::~Event()
 
 bool Oper::RebootHistory::Card::Location::Events::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| reason_code.is_set
 	|| reason.is_set
@@ -3238,9 +3303,11 @@ bool Oper::RebootHistory::Card::Location::Events::Event::has_leaf_or_child_of_na
 }
 
 Oper::RebootHistory::AdminVm::AdminVm()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "admin-vm"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admin-vm"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::AdminVm::~AdminVm()
@@ -3249,7 +3316,8 @@ Oper::RebootHistory::AdminVm::~AdminVm()
 
 bool Oper::RebootHistory::AdminVm::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3259,7 +3327,7 @@ bool Oper::RebootHistory::AdminVm::has_data() const
 
 bool Oper::RebootHistory::AdminVm::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3296,7 +3364,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::AdminVm::get_child_by_name(const st
     {
         auto c = std::make_shared<Oper::RebootHistory::AdminVm::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3308,7 +3376,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::AdminVm::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3337,9 +3405,11 @@ bool Oper::RebootHistory::AdminVm::has_leaf_or_child_of_name(const std::string &
 Oper::RebootHistory::AdminVm::Location::Location()
     :
     location{YType::str, "location"}
+        ,
+    events(this, {"event_idx"})
 {
 
-    yang_name = "location"; yang_parent_name = "admin-vm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "admin-vm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::AdminVm::Location::~Location()
@@ -3348,7 +3418,8 @@ Oper::RebootHistory::AdminVm::Location::~Location()
 
 bool Oper::RebootHistory::AdminVm::Location::has_data() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_data())
             return true;
@@ -3358,7 +3429,7 @@ bool Oper::RebootHistory::AdminVm::Location::has_data() const
 
 bool Oper::RebootHistory::AdminVm::Location::has_operation() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_operation())
             return true;
@@ -3377,7 +3448,8 @@ std::string Oper::RebootHistory::AdminVm::Location::get_absolute_path() const
 std::string Oper::RebootHistory::AdminVm::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -3397,7 +3469,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::AdminVm::Location::get_child_by_nam
     {
         auto c = std::make_shared<Oper::RebootHistory::AdminVm::Location::Events>();
         c->parent = this;
-        events.push_back(c);
+        events.append(c);
         return c;
     }
 
@@ -3409,7 +3481,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::AdminVm::Loc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events)
+    for (auto c : events.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3448,12 +3520,12 @@ bool Oper::RebootHistory::AdminVm::Location::has_leaf_or_child_of_name(const std
 Oper::RebootHistory::AdminVm::Location::Events::Events()
     :
     event_idx{YType::uint32, "event_idx"}
-    	,
+        ,
     event(std::make_shared<Oper::RebootHistory::AdminVm::Location::Events::Event>())
 {
     event->parent = this;
 
-    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::AdminVm::Location::Events::~Events()
@@ -3462,6 +3534,7 @@ Oper::RebootHistory::AdminVm::Location::Events::~Events()
 
 bool Oper::RebootHistory::AdminVm::Location::Events::has_data() const
 {
+    if (is_presence_container) return true;
     return event_idx.is_set
 	|| (event !=  nullptr && event->has_data());
 }
@@ -3476,7 +3549,8 @@ bool Oper::RebootHistory::AdminVm::Location::Events::has_operation() const
 std::string Oper::RebootHistory::AdminVm::Location::Events::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events" <<"[event_idx='" <<event_idx <<"']";
+    path_buffer << "events";
+    ADD_KEY_TOKEN(event_idx, "event_idx");
     return path_buffer.str();
 }
 
@@ -3550,7 +3624,7 @@ Oper::RebootHistory::AdminVm::Location::Events::Event::Event()
     src_name{YType::str, "src_name"}
 {
 
-    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::AdminVm::Location::Events::Event::~Event()
@@ -3559,6 +3633,7 @@ Oper::RebootHistory::AdminVm::Location::Events::Event::~Event()
 
 bool Oper::RebootHistory::AdminVm::Location::Events::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| reason_code.is_set
 	|| reason.is_set
@@ -3677,12 +3752,12 @@ bool Oper::RebootHistory::AdminVm::Location::Events::Event::has_leaf_or_child_of
 Oper::RebootHistory::Reverse::Reverse()
     :
     card(std::make_shared<Oper::RebootHistory::Reverse::Card>())
-	,admin_vm(std::make_shared<Oper::RebootHistory::Reverse::AdminVm>())
+    , admin_vm(std::make_shared<Oper::RebootHistory::Reverse::AdminVm>())
 {
     card->parent = this;
     admin_vm->parent = this;
 
-    yang_name = "reverse"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reverse"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::Reverse::~Reverse()
@@ -3691,6 +3766,7 @@ Oper::RebootHistory::Reverse::~Reverse()
 
 bool Oper::RebootHistory::Reverse::has_data() const
 {
+    if (is_presence_container) return true;
     return (card !=  nullptr && card->has_data())
 	|| (admin_vm !=  nullptr && admin_vm->has_data());
 }
@@ -3781,9 +3857,11 @@ bool Oper::RebootHistory::Reverse::has_leaf_or_child_of_name(const std::string &
 }
 
 Oper::RebootHistory::Reverse::Card::Card()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "card"; yang_parent_name = "reverse"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "card"; yang_parent_name = "reverse"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::Reverse::Card::~Card()
@@ -3792,7 +3870,8 @@ Oper::RebootHistory::Reverse::Card::~Card()
 
 bool Oper::RebootHistory::Reverse::Card::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3802,7 +3881,7 @@ bool Oper::RebootHistory::Reverse::Card::has_data() const
 
 bool Oper::RebootHistory::Reverse::Card::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3839,7 +3918,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::Reverse::Card::get_child_by_name(co
     {
         auto c = std::make_shared<Oper::RebootHistory::Reverse::Card::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3851,7 +3930,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Car
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3880,9 +3959,11 @@ bool Oper::RebootHistory::Reverse::Card::has_leaf_or_child_of_name(const std::st
 Oper::RebootHistory::Reverse::Card::Location::Location()
     :
     location{YType::str, "location"}
+        ,
+    events(this, {"event_idx"})
 {
 
-    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::Reverse::Card::Location::~Location()
@@ -3891,7 +3972,8 @@ Oper::RebootHistory::Reverse::Card::Location::~Location()
 
 bool Oper::RebootHistory::Reverse::Card::Location::has_data() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_data())
             return true;
@@ -3901,7 +3983,7 @@ bool Oper::RebootHistory::Reverse::Card::Location::has_data() const
 
 bool Oper::RebootHistory::Reverse::Card::Location::has_operation() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_operation())
             return true;
@@ -3920,7 +4002,8 @@ std::string Oper::RebootHistory::Reverse::Card::Location::get_absolute_path() co
 std::string Oper::RebootHistory::Reverse::Card::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -3940,7 +4023,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::Reverse::Card::Location::get_child_
     {
         auto c = std::make_shared<Oper::RebootHistory::Reverse::Card::Location::Events>();
         c->parent = this;
-        events.push_back(c);
+        events.append(c);
         return c;
     }
 
@@ -3952,7 +4035,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Car
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events)
+    for (auto c : events.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3991,12 +4074,12 @@ bool Oper::RebootHistory::Reverse::Card::Location::has_leaf_or_child_of_name(con
 Oper::RebootHistory::Reverse::Card::Location::Events::Events()
     :
     event_idx{YType::uint32, "event_idx"}
-    	,
+        ,
     event(std::make_shared<Oper::RebootHistory::Reverse::Card::Location::Events::Event>())
 {
     event->parent = this;
 
-    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::Reverse::Card::Location::Events::~Events()
@@ -4005,6 +4088,7 @@ Oper::RebootHistory::Reverse::Card::Location::Events::~Events()
 
 bool Oper::RebootHistory::Reverse::Card::Location::Events::has_data() const
 {
+    if (is_presence_container) return true;
     return event_idx.is_set
 	|| (event !=  nullptr && event->has_data());
 }
@@ -4019,7 +4103,8 @@ bool Oper::RebootHistory::Reverse::Card::Location::Events::has_operation() const
 std::string Oper::RebootHistory::Reverse::Card::Location::Events::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events" <<"[event_idx='" <<event_idx <<"']";
+    path_buffer << "events";
+    ADD_KEY_TOKEN(event_idx, "event_idx");
     return path_buffer.str();
 }
 
@@ -4093,7 +4178,7 @@ Oper::RebootHistory::Reverse::Card::Location::Events::Event::Event()
     src_name{YType::str, "src_name"}
 {
 
-    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::Reverse::Card::Location::Events::Event::~Event()
@@ -4102,6 +4187,7 @@ Oper::RebootHistory::Reverse::Card::Location::Events::Event::~Event()
 
 bool Oper::RebootHistory::Reverse::Card::Location::Events::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| reason_code.is_set
 	|| reason.is_set
@@ -4218,9 +4304,11 @@ bool Oper::RebootHistory::Reverse::Card::Location::Events::Event::has_leaf_or_ch
 }
 
 Oper::RebootHistory::Reverse::AdminVm::AdminVm()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "admin-vm"; yang_parent_name = "reverse"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admin-vm"; yang_parent_name = "reverse"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::Reverse::AdminVm::~AdminVm()
@@ -4229,7 +4317,8 @@ Oper::RebootHistory::Reverse::AdminVm::~AdminVm()
 
 bool Oper::RebootHistory::Reverse::AdminVm::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4239,7 +4328,7 @@ bool Oper::RebootHistory::Reverse::AdminVm::has_data() const
 
 bool Oper::RebootHistory::Reverse::AdminVm::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4276,7 +4365,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::Reverse::AdminVm::get_child_by_name
     {
         auto c = std::make_shared<Oper::RebootHistory::Reverse::AdminVm::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4288,7 +4377,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Adm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4317,9 +4406,11 @@ bool Oper::RebootHistory::Reverse::AdminVm::has_leaf_or_child_of_name(const std:
 Oper::RebootHistory::Reverse::AdminVm::Location::Location()
     :
     location{YType::str, "location"}
+        ,
+    events(this, {"event_idx"})
 {
 
-    yang_name = "location"; yang_parent_name = "admin-vm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "admin-vm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::RebootHistory::Reverse::AdminVm::Location::~Location()
@@ -4328,7 +4419,8 @@ Oper::RebootHistory::Reverse::AdminVm::Location::~Location()
 
 bool Oper::RebootHistory::Reverse::AdminVm::Location::has_data() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_data())
             return true;
@@ -4338,7 +4430,7 @@ bool Oper::RebootHistory::Reverse::AdminVm::Location::has_data() const
 
 bool Oper::RebootHistory::Reverse::AdminVm::Location::has_operation() const
 {
-    for (std::size_t index=0; index<events.size(); index++)
+    for (std::size_t index=0; index<events.len(); index++)
     {
         if(events[index]->has_operation())
             return true;
@@ -4357,7 +4449,8 @@ std::string Oper::RebootHistory::Reverse::AdminVm::Location::get_absolute_path()
 std::string Oper::RebootHistory::Reverse::AdminVm::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -4377,7 +4470,7 @@ std::shared_ptr<Entity> Oper::RebootHistory::Reverse::AdminVm::Location::get_chi
     {
         auto c = std::make_shared<Oper::RebootHistory::Reverse::AdminVm::Location::Events>();
         c->parent = this;
-        events.push_back(c);
+        events.append(c);
         return c;
     }
 
@@ -4389,7 +4482,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Adm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : events)
+    for (auto c : events.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4428,12 +4521,12 @@ bool Oper::RebootHistory::Reverse::AdminVm::Location::has_leaf_or_child_of_name(
 Oper::RebootHistory::Reverse::AdminVm::Location::Events::Events()
     :
     event_idx{YType::uint32, "event_idx"}
-    	,
+        ,
     event(std::make_shared<Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event>())
 {
     event->parent = this;
 
-    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "events"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::Reverse::AdminVm::Location::Events::~Events()
@@ -4442,6 +4535,7 @@ Oper::RebootHistory::Reverse::AdminVm::Location::Events::~Events()
 
 bool Oper::RebootHistory::Reverse::AdminVm::Location::Events::has_data() const
 {
+    if (is_presence_container) return true;
     return event_idx.is_set
 	|| (event !=  nullptr && event->has_data());
 }
@@ -4456,7 +4550,8 @@ bool Oper::RebootHistory::Reverse::AdminVm::Location::Events::has_operation() co
 std::string Oper::RebootHistory::Reverse::AdminVm::Location::Events::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "events" <<"[event_idx='" <<event_idx <<"']";
+    path_buffer << "events";
+    ADD_KEY_TOKEN(event_idx, "event_idx");
     return path_buffer.str();
 }
 
@@ -4530,7 +4625,7 @@ Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::Event()
     src_name{YType::str, "src_name"}
 {
 
-    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "events"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::~Event()
@@ -4539,6 +4634,7 @@ Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::~Event()
 
 bool Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| reason_code.is_set
 	|| reason.is_set
@@ -4657,12 +4753,12 @@ bool Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::has_leaf_or
 Oper::Interface::Interface()
     :
     ifname{YType::str, "ifname"}
-    	,
+        ,
     interface_data(std::make_shared<Oper::Interface::InterfaceData>())
 {
     interface_data->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Interface::~Interface()
@@ -4671,6 +4767,7 @@ Oper::Interface::~Interface()
 
 bool Oper::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return ifname.is_set
 	|| (interface_data !=  nullptr && interface_data->has_data());
 }
@@ -4692,7 +4789,8 @@ std::string Oper::Interface::get_absolute_path() const
 std::string Oper::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[ifname='" <<ifname <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(ifname, "ifname");
     return path_buffer.str();
 }
 
@@ -4782,7 +4880,7 @@ Oper::Interface::InterfaceData::InterfaceData()
     intf_num{YType::uint32, "intf_num"}
 {
 
-    yang_name = "interface-data"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-data"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::Interface::InterfaceData::~InterfaceData()
@@ -4791,6 +4889,7 @@ Oper::Interface::InterfaceData::~InterfaceData()
 
 bool Oper::Interface::InterfaceData::has_data() const
 {
+    if (is_presence_container) return true;
     return mac.is_set
 	|| ipv4.is_set
 	|| flagstr.is_set
@@ -5115,9 +5214,11 @@ bool Oper::Interface::InterfaceData::has_leaf_or_child_of_name(const std::string
 }
 
 Oper::ReloadVm::ReloadVm()
+    :
+    location(this, {"location"})
 {
 
-    yang_name = "reload_vm"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reload_vm"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::ReloadVm::~ReloadVm()
@@ -5126,7 +5227,8 @@ Oper::ReloadVm::~ReloadVm()
 
 bool Oper::ReloadVm::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5136,7 +5238,7 @@ bool Oper::ReloadVm::has_data() const
 
 bool Oper::ReloadVm::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5173,7 +5275,7 @@ std::shared_ptr<Entity> Oper::ReloadVm::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Oper::ReloadVm::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5185,7 +5287,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::ReloadVm::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5216,7 +5318,7 @@ Oper::ReloadVm::Location::Location()
     location{YType::str, "location"}
 {
 
-    yang_name = "location"; yang_parent_name = "reload_vm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "reload_vm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::ReloadVm::Location::~Location()
@@ -5225,6 +5327,7 @@ Oper::ReloadVm::Location::~Location()
 
 bool Oper::ReloadVm::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -5244,7 +5347,8 @@ std::string Oper::ReloadVm::Location::get_absolute_path() const
 std::string Oper::ReloadVm::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -5301,7 +5405,7 @@ Oper::Macpool::Macpool()
 {
     brief->parent = this;
 
-    yang_name = "macpool"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "macpool"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Macpool::~Macpool()
@@ -5310,6 +5414,7 @@ Oper::Macpool::~Macpool()
 
 bool Oper::Macpool::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief !=  nullptr && brief->has_data());
 }
 
@@ -5384,9 +5489,11 @@ bool Oper::Macpool::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Oper::Macpool::Brief::Brief()
+    :
+    rack(this, {"serial_number"})
 {
 
-    yang_name = "brief"; yang_parent_name = "macpool"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "macpool"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Macpool::Brief::~Brief()
@@ -5395,7 +5502,8 @@ Oper::Macpool::Brief::~Brief()
 
 bool Oper::Macpool::Brief::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -5405,7 +5513,7 @@ bool Oper::Macpool::Brief::has_data() const
 
 bool Oper::Macpool::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -5442,7 +5550,7 @@ std::shared_ptr<Entity> Oper::Macpool::Brief::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Oper::Macpool::Brief::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -5454,7 +5562,7 @@ std::map<std::string, std::shared_ptr<Entity>> Oper::Macpool::Brief::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5483,12 +5591,12 @@ bool Oper::Macpool::Brief::has_leaf_or_child_of_name(const std::string & name) c
 Oper::Macpool::Brief::Rack::Rack()
     :
     serial_number{YType::str, "serial_number"}
-    	,
+        ,
     brief_data(std::make_shared<Oper::Macpool::Brief::Rack::BriefData>())
 {
     brief_data->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Oper::Macpool::Brief::Rack::~Rack()
@@ -5497,6 +5605,7 @@ Oper::Macpool::Brief::Rack::~Rack()
 
 bool Oper::Macpool::Brief::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return serial_number.is_set
 	|| (brief_data !=  nullptr && brief_data->has_data());
 }
@@ -5518,7 +5627,8 @@ std::string Oper::Macpool::Brief::Rack::get_absolute_path() const
 std::string Oper::Macpool::Brief::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[serial_number='" <<serial_number <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(serial_number, "serial_number");
     return path_buffer.str();
 }
 
@@ -5592,7 +5702,7 @@ Oper::Macpool::Brief::Rack::BriefData::BriefData()
     allocated_count{YType::uint32, "allocated_count"}
 {
 
-    yang_name = "brief-data"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-data"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Oper::Macpool::Brief::Rack::BriefData::~BriefData()
@@ -5601,6 +5711,7 @@ Oper::Macpool::Brief::Rack::BriefData::~BriefData()
 
 bool Oper::Macpool::Brief::Rack::BriefData::has_data() const
 {
+    if (is_presence_container) return true;
     return racknum.is_set
 	|| mac_base.is_set
 	|| mac_count.is_set
@@ -5719,16 +5830,16 @@ bool Oper::Macpool::Brief::Rack::BriefData::has_leaf_or_child_of_name(const std:
 Config::Config()
     :
     chassis(std::make_shared<Config::Chassis>())
-	,interface(std::make_shared<Config::Interface>())
-	,domain(std::make_shared<Config::Domain>())
-	,virtual_macaddr_range(std::make_shared<Config::VirtualMacaddrRange>())
+    , interface(std::make_shared<Config::Interface>())
+    , domain(std::make_shared<Config::Domain>())
+    , virtual_macaddr_range(std::make_shared<Config::VirtualMacaddrRange>())
 {
     chassis->parent = this;
     interface->parent = this;
     domain->parent = this;
     virtual_macaddr_range->parent = this;
 
-    yang_name = "config"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Config::~Config()
@@ -5737,6 +5848,7 @@ Config::~Config()
 
 bool Config::has_data() const
 {
+    if (is_presence_container) return true;
     return (chassis !=  nullptr && chassis->has_data())
 	|| (interface !=  nullptr && interface->has_data())
 	|| (domain !=  nullptr && domain->has_data())
@@ -5877,9 +5989,11 @@ bool Config::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Config::Chassis::Chassis()
+    :
+    serial(this, {"serial"})
 {
 
-    yang_name = "chassis"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Chassis::~Chassis()
@@ -5888,7 +6002,8 @@ Config::Chassis::~Chassis()
 
 bool Config::Chassis::has_data() const
 {
-    for (std::size_t index=0; index<serial.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<serial.len(); index++)
     {
         if(serial[index]->has_data())
             return true;
@@ -5898,7 +6013,7 @@ bool Config::Chassis::has_data() const
 
 bool Config::Chassis::has_operation() const
 {
-    for (std::size_t index=0; index<serial.size(); index++)
+    for (std::size_t index=0; index<serial.len(); index++)
     {
         if(serial[index]->has_operation())
             return true;
@@ -5935,7 +6050,7 @@ std::shared_ptr<Entity> Config::Chassis::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Config::Chassis::Serial>();
         c->parent = this;
-        serial.push_back(c);
+        serial.append(c);
         return c;
     }
 
@@ -5947,7 +6062,7 @@ std::map<std::string, std::shared_ptr<Entity>> Config::Chassis::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : serial)
+    for (auto c : serial.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5979,7 +6094,7 @@ Config::Chassis::Serial::Serial()
     rack{YType::str, "rack"}
 {
 
-    yang_name = "serial"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serial"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Chassis::Serial::~Serial()
@@ -5988,6 +6103,7 @@ Config::Chassis::Serial::~Serial()
 
 bool Config::Chassis::Serial::has_data() const
 {
+    if (is_presence_container) return true;
     return serial.is_set
 	|| rack.is_set;
 }
@@ -6009,7 +6125,8 @@ std::string Config::Chassis::Serial::get_absolute_path() const
 std::string Config::Chassis::Serial::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "serial" <<"[serial='" <<serial <<"']";
+    path_buffer << "serial";
+    ADD_KEY_TOKEN(serial, "serial");
     return path_buffer.str();
 }
 
@@ -6077,7 +6194,7 @@ Config::Interface::Interface()
 {
     mgmteth->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Interface::~Interface()
@@ -6086,6 +6203,7 @@ Config::Interface::~Interface()
 
 bool Config::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return (mgmteth !=  nullptr && mgmteth->has_data());
 }
 
@@ -6160,9 +6278,11 @@ bool Config::Interface::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Config::Interface::MgmtEth::MgmtEth()
+    :
+    locport(this, {"rack", "slot", "intf", "port"})
 {
 
-    yang_name = "MgmtEth"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "MgmtEth"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Interface::MgmtEth::~MgmtEth()
@@ -6171,7 +6291,8 @@ Config::Interface::MgmtEth::~MgmtEth()
 
 bool Config::Interface::MgmtEth::has_data() const
 {
-    for (std::size_t index=0; index<locport.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<locport.len(); index++)
     {
         if(locport[index]->has_data())
             return true;
@@ -6181,7 +6302,7 @@ bool Config::Interface::MgmtEth::has_data() const
 
 bool Config::Interface::MgmtEth::has_operation() const
 {
-    for (std::size_t index=0; index<locport.size(); index++)
+    for (std::size_t index=0; index<locport.len(); index++)
     {
         if(locport[index]->has_operation())
             return true;
@@ -6218,7 +6339,7 @@ std::shared_ptr<Entity> Config::Interface::MgmtEth::get_child_by_name(const std:
     {
         auto c = std::make_shared<Config::Interface::MgmtEth::Locport>();
         c->parent = this;
-        locport.push_back(c);
+        locport.append(c);
         return c;
     }
 
@@ -6230,7 +6351,7 @@ std::map<std::string, std::shared_ptr<Entity>> Config::Interface::MgmtEth::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : locport)
+    for (auto c : locport.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6265,14 +6386,14 @@ Config::Interface::MgmtEth::Locport::Locport()
     shutdown{YType::empty, "shutdown"},
     mtu{YType::uint32, "mtu"},
     default_gw{YType::str, "default-gw"}
-    	,
+        ,
     ipv4(std::make_shared<Config::Interface::MgmtEth::Locport::Ipv4>())
-	,arp(std::make_shared<Config::Interface::MgmtEth::Locport::Arp>())
+    , arp(std::make_shared<Config::Interface::MgmtEth::Locport::Arp>())
 {
     ipv4->parent = this;
     arp->parent = this;
 
-    yang_name = "locport"; yang_parent_name = "MgmtEth"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "locport"; yang_parent_name = "MgmtEth"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Interface::MgmtEth::Locport::~Locport()
@@ -6281,6 +6402,7 @@ Config::Interface::MgmtEth::Locport::~Locport()
 
 bool Config::Interface::MgmtEth::Locport::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| slot.is_set
 	|| intf.is_set
@@ -6316,7 +6438,11 @@ std::string Config::Interface::MgmtEth::Locport::get_absolute_path() const
 std::string Config::Interface::MgmtEth::Locport::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "locport" <<"[rack='" <<rack <<"']" <<"[slot='" <<slot <<"']" <<"[intf='" <<intf <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "locport";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(slot, "slot");
+    ADD_KEY_TOKEN(intf, "intf");
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -6466,7 +6592,7 @@ Config::Interface::MgmtEth::Locport::Ipv4::Ipv4()
     address{YType::str, "address"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "locport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "locport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Config::Interface::MgmtEth::Locport::Ipv4::~Ipv4()
@@ -6475,6 +6601,7 @@ Config::Interface::MgmtEth::Locport::Ipv4::~Ipv4()
 
 bool Config::Interface::MgmtEth::Locport::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6539,9 +6666,11 @@ bool Config::Interface::MgmtEth::Locport::Ipv4::has_leaf_or_child_of_name(const 
 }
 
 Config::Interface::MgmtEth::Locport::Arp::Arp()
+    :
+    ip(this, {"ip"})
 {
 
-    yang_name = "arp"; yang_parent_name = "locport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "locport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Config::Interface::MgmtEth::Locport::Arp::~Arp()
@@ -6550,7 +6679,8 @@ Config::Interface::MgmtEth::Locport::Arp::~Arp()
 
 bool Config::Interface::MgmtEth::Locport::Arp::has_data() const
 {
-    for (std::size_t index=0; index<ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ip.len(); index++)
     {
         if(ip[index]->has_data())
             return true;
@@ -6560,7 +6690,7 @@ bool Config::Interface::MgmtEth::Locport::Arp::has_data() const
 
 bool Config::Interface::MgmtEth::Locport::Arp::has_operation() const
 {
-    for (std::size_t index=0; index<ip.size(); index++)
+    for (std::size_t index=0; index<ip.len(); index++)
     {
         if(ip[index]->has_operation())
             return true;
@@ -6590,7 +6720,7 @@ std::shared_ptr<Entity> Config::Interface::MgmtEth::Locport::Arp::get_child_by_n
     {
         auto c = std::make_shared<Config::Interface::MgmtEth::Locport::Arp::Ip>();
         c->parent = this;
-        ip.push_back(c);
+        ip.append(c);
         return c;
     }
 
@@ -6602,7 +6732,7 @@ std::map<std::string, std::shared_ptr<Entity>> Config::Interface::MgmtEth::Locpo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ip)
+    for (auto c : ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6634,7 +6764,7 @@ Config::Interface::MgmtEth::Locport::Arp::Ip::Ip()
     mac{YType::str, "mac"}
 {
 
-    yang_name = "ip"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Config::Interface::MgmtEth::Locport::Arp::Ip::~Ip()
@@ -6643,6 +6773,7 @@ Config::Interface::MgmtEth::Locport::Arp::Ip::~Ip()
 
 bool Config::Interface::MgmtEth::Locport::Arp::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| mac.is_set;
 }
@@ -6657,7 +6788,8 @@ bool Config::Interface::MgmtEth::Locport::Arp::Ip::has_operation() const
 std::string Config::Interface::MgmtEth::Locport::Arp::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ip" <<"[ip='" <<ip <<"']";
+    path_buffer << "ip";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -6720,9 +6852,12 @@ bool Config::Interface::MgmtEth::Locport::Arp::Ip::has_leaf_or_child_of_name(con
 }
 
 Config::Domain::Domain()
+    :
+    name(this, {"name"})
+    , name_server(this, {"name_server"})
 {
 
-    yang_name = "domain"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domain"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Domain::~Domain()
@@ -6731,12 +6866,13 @@ Config::Domain::~Domain()
 
 bool Config::Domain::has_data() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<name_server.size(); index++)
+    for (std::size_t index=0; index<name_server.len(); index++)
     {
         if(name_server[index]->has_data())
             return true;
@@ -6746,12 +6882,12 @@ bool Config::Domain::has_data() const
 
 bool Config::Domain::has_operation() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<name_server.size(); index++)
+    for (std::size_t index=0; index<name_server.len(); index++)
     {
         if(name_server[index]->has_operation())
             return true;
@@ -6788,7 +6924,7 @@ std::shared_ptr<Entity> Config::Domain::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Config::Domain::Name>();
         c->parent = this;
-        name.push_back(c);
+        name.append(c);
         return c;
     }
 
@@ -6796,7 +6932,7 @@ std::shared_ptr<Entity> Config::Domain::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Config::Domain::NameServer>();
         c->parent = this;
-        name_server.push_back(c);
+        name_server.append(c);
         return c;
     }
 
@@ -6808,7 +6944,7 @@ std::map<std::string, std::shared_ptr<Entity>> Config::Domain::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : name)
+    for (auto c : name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6817,7 +6953,7 @@ std::map<std::string, std::shared_ptr<Entity>> Config::Domain::get_children() co
     }
 
     count = 0;
-    for (auto const & c : name_server)
+    for (auto c : name_server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6848,7 +6984,7 @@ Config::Domain::Name::Name()
     name{YType::str, "name"}
 {
 
-    yang_name = "name"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "name"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Domain::Name::~Name()
@@ -6857,6 +6993,7 @@ Config::Domain::Name::~Name()
 
 bool Config::Domain::Name::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -6876,7 +7013,8 @@ std::string Config::Domain::Name::get_absolute_path() const
 std::string Config::Domain::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name" <<"[name='" <<name <<"']";
+    path_buffer << "name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6932,7 +7070,7 @@ Config::Domain::NameServer::NameServer()
     name_server{YType::str, "name-server"}
 {
 
-    yang_name = "name-server"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "name-server"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Domain::NameServer::~NameServer()
@@ -6941,6 +7079,7 @@ Config::Domain::NameServer::~NameServer()
 
 bool Config::Domain::NameServer::has_data() const
 {
+    if (is_presence_container) return true;
     return name_server.is_set;
 }
 
@@ -6960,7 +7099,8 @@ std::string Config::Domain::NameServer::get_absolute_path() const
 std::string Config::Domain::NameServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name-server" <<"[name-server='" <<name_server <<"']";
+    path_buffer << "name-server";
+    ADD_KEY_TOKEN(name_server, "name-server");
     return path_buffer.str();
 }
 
@@ -7017,7 +7157,7 @@ Config::VirtualMacaddrRange::VirtualMacaddrRange()
     count{YType::uint32, "count"}
 {
 
-    yang_name = "virtual-macaddr-range"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "virtual-macaddr-range"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::VirtualMacaddrRange::~VirtualMacaddrRange()
@@ -7026,6 +7166,7 @@ Config::VirtualMacaddrRange::~VirtualMacaddrRange()
 
 bool Config::VirtualMacaddrRange::has_data() const
 {
+    if (is_presence_container) return true;
     return base.is_set
 	|| count.is_set;
 }
@@ -7112,7 +7253,7 @@ bool Config::VirtualMacaddrRange::has_leaf_or_child_of_name(const std::string & 
 Actions::Actions()
 {
 
-    yang_name = "actions"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "actions"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Actions::~Actions()
@@ -7121,6 +7262,7 @@ Actions::~Actions()
 
 bool Actions::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

@@ -17,7 +17,7 @@ EsAcl::EsAcl()
 {
     accesses->parent = this;
 
-    yang_name = "es-acl"; yang_parent_name = "Cisco-IOS-XR-es-acl-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "es-acl"; yang_parent_name = "Cisco-IOS-XR-es-acl-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EsAcl::~EsAcl()
@@ -26,6 +26,7 @@ EsAcl::~EsAcl()
 
 bool EsAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return (accesses !=  nullptr && accesses->has_data());
 }
 
@@ -118,9 +119,11 @@ bool EsAcl::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 EsAcl::Accesses::Accesses()
+    :
+    access(this, {"name"})
 {
 
-    yang_name = "accesses"; yang_parent_name = "es-acl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accesses"; yang_parent_name = "es-acl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Accesses::~Accesses()
@@ -129,7 +132,8 @@ EsAcl::Accesses::~Accesses()
 
 bool EsAcl::Accesses::has_data() const
 {
-    for (std::size_t index=0; index<access.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access.len(); index++)
     {
         if(access[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool EsAcl::Accesses::has_data() const
 
 bool EsAcl::Accesses::has_operation() const
 {
-    for (std::size_t index=0; index<access.size(); index++)
+    for (std::size_t index=0; index<access.len(); index++)
     {
         if(access[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> EsAcl::Accesses::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<EsAcl::Accesses::Access>();
         c->parent = this;
-        access.push_back(c);
+        access.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access)
+    for (auto c : access.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool EsAcl::Accesses::has_leaf_or_child_of_name(const std::string & name) const
 EsAcl::Accesses::Access::Access()
     :
     name{YType::str, "name"}
-    	,
+        ,
     access_list_entries(std::make_shared<EsAcl::Accesses::Access::AccessListEntries>())
 {
     access_list_entries->parent = this;
 
-    yang_name = "access"; yang_parent_name = "accesses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "accesses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Accesses::Access::~Access()
@@ -231,6 +235,7 @@ EsAcl::Accesses::Access::~Access()
 
 bool EsAcl::Accesses::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (access_list_entries !=  nullptr && access_list_entries->has_data());
 }
@@ -252,7 +257,8 @@ std::string EsAcl::Accesses::Access::get_absolute_path() const
 std::string EsAcl::Accesses::Access::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access" <<"[name='" <<name <<"']";
+    path_buffer << "access";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool EsAcl::Accesses::Access::has_leaf_or_child_of_name(const std::string & name
 }
 
 EsAcl::Accesses::Access::AccessListEntries::AccessListEntries()
+    :
+    access_list_entry(this, {"sequence_number"})
 {
 
-    yang_name = "access-list-entries"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-list-entries"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EsAcl::Accesses::Access::AccessListEntries::~AccessListEntries()
@@ -329,7 +337,8 @@ EsAcl::Accesses::Access::AccessListEntries::~AccessListEntries()
 
 bool EsAcl::Accesses::Access::AccessListEntries::has_data() const
 {
-    for (std::size_t index=0; index<access_list_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_list_entry.len(); index++)
     {
         if(access_list_entry[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool EsAcl::Accesses::Access::AccessListEntries::has_data() const
 
 bool EsAcl::Accesses::Access::AccessListEntries::has_operation() const
 {
-    for (std::size_t index=0; index<access_list_entry.size(); index++)
+    for (std::size_t index=0; index<access_list_entry.len(); index++)
     {
         if(access_list_entry[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::get_child_by
     {
         auto c = std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry>();
         c->parent = this;
-        access_list_entry.push_back(c);
+        access_list_entry.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessLi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_list_entry)
+    for (auto c : access_list_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -424,14 +433,14 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::AccessListEntry()
     capture{YType::boolean, "capture"},
     log_option{YType::uint8, "log-option"},
     sequence_str{YType::str, "sequence-str"}
-    	,
+        ,
     source_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork>())
-	,destination_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>())
+    , destination_network(std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>())
 {
     source_network->parent = this;
     destination_network->parent = this;
 
-    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::~AccessListEntry()
@@ -440,6 +449,7 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::~AccessListEntry()
 
 bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| grant.is_set
 	|| vlan1.is_set
@@ -484,7 +494,8 @@ bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::has_operation(
 std::string EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-list-entry" <<"[sequence-number='" <<sequence_number <<"']";
+    path_buffer << "access-list-entry";
+    ADD_KEY_TOKEN(sequence_number, "sequence-number");
     return path_buffer.str();
 }
 
@@ -723,7 +734,7 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::Sour
     source_wild_card_bits{YType::str, "source-wild-card-bits"}
 {
 
-    yang_name = "source-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::~SourceNetwork()
@@ -732,6 +743,7 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::~Sou
 
 bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| source_wild_card_bits.is_set;
 }
@@ -814,7 +826,7 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork:
     destination_wild_card_bits{YType::str, "destination-wild-card-bits"}
 {
 
-    yang_name = "destination-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::~DestinationNetwork()
@@ -823,6 +835,7 @@ EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork:
 
 bool EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_address.is_set
 	|| destination_wild_card_bits.is_set;
 }

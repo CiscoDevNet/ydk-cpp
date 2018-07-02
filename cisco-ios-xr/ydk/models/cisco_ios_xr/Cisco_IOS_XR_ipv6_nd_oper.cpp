@@ -17,7 +17,7 @@ Ipv6NodeDiscovery::Ipv6NodeDiscovery()
 {
     nodes->parent = this;
 
-    yang_name = "ipv6-node-discovery"; yang_parent_name = "Cisco-IOS-XR-ipv6-nd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-node-discovery"; yang_parent_name = "Cisco-IOS-XR-ipv6-nd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6NodeDiscovery::~Ipv6NodeDiscovery()
@@ -26,6 +26,7 @@ Ipv6NodeDiscovery::~Ipv6NodeDiscovery()
 
 bool Ipv6NodeDiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ipv6NodeDiscovery::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Ipv6NodeDiscovery::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ipv6-node-discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ipv6-node-discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6NodeDiscovery::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Ipv6NodeDiscovery::Nodes::~Nodes()
 
 bool Ipv6NodeDiscovery::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ipv6NodeDiscovery::Nodes::has_data() const
 
 bool Ipv6NodeDiscovery::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool Ipv6NodeDiscovery::Nodes::has_leaf_or_child_of_name(const std::string & nam
 Ipv6NodeDiscovery::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     neighbor_interfaces(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces>())
-	,neighbor_summary(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary>())
-	,bundle_nodes(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleNodes>())
-	,bundle_interfaces(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces>())
-	,interfaces(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::Interfaces>())
-	,nd_virtual_routers(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters>())
-	,slaac_interfaces(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces>())
+    , neighbor_summary(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary>())
+    , bundle_nodes(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleNodes>())
+    , bundle_interfaces(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces>())
+    , interfaces(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::Interfaces>())
+    , nd_virtual_routers(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters>())
+    , slaac_interfaces(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces>())
 {
     neighbor_interfaces->parent = this;
     neighbor_summary->parent = this;
@@ -234,7 +238,7 @@ Ipv6NodeDiscovery::Nodes::Node::Node()
     nd_virtual_routers->parent = this;
     slaac_interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::~Node()
@@ -243,6 +247,7 @@ Ipv6NodeDiscovery::Nodes::Node::~Node()
 
 bool Ipv6NodeDiscovery::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (neighbor_interfaces !=  nullptr && neighbor_interfaces->has_data())
 	|| (neighbor_summary !=  nullptr && neighbor_summary->has_data())
@@ -276,7 +281,8 @@ std::string Ipv6NodeDiscovery::Nodes::Node::get_absolute_path() const
 std::string Ipv6NodeDiscovery::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -426,9 +432,11 @@ bool Ipv6NodeDiscovery::Nodes::Node::has_leaf_or_child_of_name(const std::string
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterfaces()
+    :
+    neighbor_interface(this, {"interface_name"})
 {
 
-    yang_name = "neighbor-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::~NeighborInterfaces()
@@ -437,7 +445,8 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::~NeighborInterfaces()
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_interface.len(); index++)
     {
         if(neighbor_interface[index]->has_data())
             return true;
@@ -447,7 +456,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::has_data() const
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_interface.size(); index++)
+    for (std::size_t index=0; index<neighbor_interface.len(); index++)
     {
         if(neighbor_interface[index]->has_operation())
             return true;
@@ -477,7 +486,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::get_
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface>();
         c->parent = this;
-        neighbor_interface.push_back(c);
+        neighbor_interface.append(c);
         return c;
     }
 
@@ -489,7 +498,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_interface)
+    for (auto c : neighbor_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -518,12 +527,12 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::has_leaf_or_child_of_na
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::NeighborInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     host_addresses(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses>())
 {
     host_addresses->parent = this;
 
-    yang_name = "neighbor-interface"; yang_parent_name = "neighbor-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-interface"; yang_parent_name = "neighbor-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::~NeighborInterface()
@@ -532,6 +541,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::~Neighbor
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (host_addresses !=  nullptr && host_addresses->has_data());
 }
@@ -546,7 +556,8 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::has_
 std::string Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "neighbor-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -612,9 +623,11 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::has_
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddresses()
+    :
+    host_address(this, {"host_address"})
 {
 
-    yang_name = "host-addresses"; yang_parent_name = "neighbor-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-addresses"; yang_parent_name = "neighbor-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::~HostAddresses()
@@ -623,7 +636,8 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddre
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::has_data() const
 {
-    for (std::size_t index=0; index<host_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host_address.len(); index++)
     {
         if(host_address[index]->has_data())
             return true;
@@ -633,7 +647,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Host
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<host_address.size(); index++)
+    for (std::size_t index=0; index<host_address.len(); index++)
     {
         if(host_address[index]->has_operation())
             return true;
@@ -663,7 +677,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::Neig
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress>();
         c->parent = this;
-        host_address.push_back(c);
+        host_address.append(c);
         return c;
     }
 
@@ -675,7 +689,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host_address)
+    for (auto c : host_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -714,12 +728,12 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddre
     is_router{YType::boolean, "is-router"},
     serg_flags{YType::uint32, "serg-flags"},
     vrfid{YType::uint32, "vrfid"}
-    	,
+        ,
     last_reached_time(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::LastReachedTime>())
 {
     last_reached_time->parent = this;
 
-    yang_name = "host-address"; yang_parent_name = "host-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-address"; yang_parent_name = "host-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::~HostAddress()
@@ -728,6 +742,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddre
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return host_address.is_set
 	|| reachability_state.is_set
 	|| link_layer_address.is_set
@@ -762,7 +777,8 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Host
 std::string Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host-address" <<"[host-address='" <<host_address <<"']";
+    path_buffer << "host-address";
+    ADD_KEY_TOKEN(host_address, "host-address");
     return path_buffer.str();
 }
 
@@ -942,7 +958,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddre
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "last-reached-time"; yang_parent_name = "host-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-reached-time"; yang_parent_name = "host-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::LastReachedTime::~LastReachedTime()
@@ -951,6 +967,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddre
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress::LastReachedTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set;
 }
 
@@ -1017,16 +1034,16 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Host
 Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::NeighborSummary()
     :
     total_neighbor_entries{YType::uint32, "total-neighbor-entries"}
-    	,
+        ,
     multicast(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast>())
-	,static_(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static>())
-	,dynamic(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic>())
+    , static_(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static>())
+    , dynamic(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic>())
 {
     multicast->parent = this;
     static_->parent = this;
     dynamic->parent = this;
 
-    yang_name = "neighbor-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::~NeighborSummary()
@@ -1035,6 +1052,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::~NeighborSummary()
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return total_neighbor_entries.is_set
 	|| (multicast !=  nullptr && multicast->has_data())
 	|| (static_ !=  nullptr && static_->has_data())
@@ -1157,7 +1175,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast::Multicast()
     subtotal_neighbor_entries{YType::uint32, "subtotal-neighbor-entries"}
 {
 
-    yang_name = "multicast"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast::~Multicast()
@@ -1166,6 +1184,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast::~Multicast()
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete_entries.is_set
 	|| reachable_entries.is_set
 	|| stale_entries.is_set
@@ -1318,7 +1337,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static::Static()
     subtotal_neighbor_entries{YType::uint32, "subtotal-neighbor-entries"}
 {
 
-    yang_name = "static"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static::~Static()
@@ -1327,6 +1346,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static::~Static()
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete_entries.is_set
 	|| reachable_entries.is_set
 	|| stale_entries.is_set
@@ -1479,7 +1499,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic::Dynamic()
     subtotal_neighbor_entries{YType::uint32, "subtotal-neighbor-entries"}
 {
 
-    yang_name = "dynamic"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic::~Dynamic()
@@ -1488,6 +1508,7 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic::~Dynamic()
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete_entries.is_set
 	|| reachable_entries.is_set
 	|| stale_entries.is_set
@@ -1630,9 +1651,11 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic::has_leaf_or_child
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNodes()
+    :
+    bundle_node(this, {"node_name"})
 {
 
-    yang_name = "bundle-nodes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-nodes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleNodes::~BundleNodes()
@@ -1641,7 +1664,8 @@ Ipv6NodeDiscovery::Nodes::Node::BundleNodes::~BundleNodes()
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleNodes::has_data() const
 {
-    for (std::size_t index=0; index<bundle_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_node.len(); index++)
     {
         if(bundle_node[index]->has_data())
             return true;
@@ -1651,7 +1675,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleNodes::has_data() const
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleNodes::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_node.size(); index++)
+    for (std::size_t index=0; index<bundle_node.len(); index++)
     {
         if(bundle_node[index]->has_operation())
             return true;
@@ -1681,7 +1705,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::BundleNodes::get_child_b
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode>();
         c->parent = this;
-        bundle_node.push_back(c);
+        bundle_node.append(c);
         return c;
     }
 
@@ -1693,7 +1717,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::B
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_node)
+    for (auto c : bundle_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1730,12 +1754,12 @@ Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::BundleNode()
     state_changes{YType::uint32, "state-changes"},
     sent_packets{YType::uint32, "sent-packets"},
     received_packets{YType::uint32, "received-packets"}
-    	,
+        ,
     age(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::Age>())
 {
     age->parent = this;
 
-    yang_name = "bundle-node"; yang_parent_name = "bundle-nodes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-node"; yang_parent_name = "bundle-nodes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::~BundleNode()
@@ -1744,6 +1768,7 @@ Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::~BundleNode()
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| group_id.is_set
 	|| process_name.is_set
@@ -1774,7 +1799,8 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::has_operation() co
 std::string Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "bundle-node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1932,7 +1958,7 @@ Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::Age::Age()
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "age"; yang_parent_name = "bundle-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "age"; yang_parent_name = "bundle-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::Age::~Age()
@@ -1941,6 +1967,7 @@ Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::Age::~Age()
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::Age::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set;
 }
 
@@ -2005,9 +2032,11 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode::Age::has_leaf_or_c
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterfaces()
+    :
+    bundle_interface(this, {"interface_name"})
 {
 
-    yang_name = "bundle-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::~BundleInterfaces()
@@ -2016,7 +2045,8 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::~BundleInterfaces()
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<bundle_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
     {
         if(bundle_interface[index]->has_data())
             return true;
@@ -2026,7 +2056,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::has_data() const
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_interface.size(); index++)
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
     {
         if(bundle_interface[index]->has_operation())
             return true;
@@ -2056,7 +2086,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::get_ch
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface>();
         c->parent = this;
-        bundle_interface.push_back(c);
+        bundle_interface.append(c);
         return c;
     }
 
@@ -2068,7 +2098,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::B
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_interface)
+    for (auto c : bundle_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2108,14 +2138,16 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::BundleInterfa
     is_ipv6_enabled{YType::boolean, "is-ipv6-enabled"},
     is_mpls_enabled{YType::boolean, "is-mpls-enabled"},
     member_link{YType::uint32, "member-link"}
-    	,
+        ,
     nd_parameters(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::NdParameters>())
-	,local_address(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress>())
+    , local_address(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress>())
+    , global_address(this, {})
+    , member_node(this, {})
 {
     nd_parameters->parent = this;
     local_address->parent = this;
 
-    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::~BundleInterface()
@@ -2124,12 +2156,13 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::~BundleInterf
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::has_data() const
 {
-    for (std::size_t index=0; index<global_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_address.len(); index++)
     {
         if(global_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<member_node.size(); index++)
+    for (std::size_t index=0; index<member_node.len(); index++)
     {
         if(member_node[index]->has_data())
             return true;
@@ -2156,12 +2189,12 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::has_data
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::has_operation() const
 {
-    for (std::size_t index=0; index<global_address.size(); index++)
+    for (std::size_t index=0; index<global_address.len(); index++)
     {
         if(global_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<member_node.size(); index++)
+    for (std::size_t index=0; index<member_node.len(); index++)
     {
         if(member_node[index]->has_operation())
             return true;
@@ -2191,7 +2224,8 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::has_oper
 std::string Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bundle-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2241,7 +2275,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::Bundle
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress>();
         c->parent = this;
-        global_address.push_back(c);
+        global_address.append(c);
         return c;
     }
 
@@ -2249,7 +2283,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::Bundle
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::MemberNode>();
         c->parent = this;
-        member_node.push_back(c);
+        member_node.append(c);
         return c;
     }
 
@@ -2271,7 +2305,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::B
     }
 
     count = 0;
-    for (auto const & c : global_address)
+    for (auto c : global_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2280,7 +2314,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::B
     }
 
     count = 0;
-    for (auto const & c : member_node)
+    for (auto c : member_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2447,7 +2481,7 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::NdParameters:
     dropped_glean_req_count{YType::uint32, "dropped-glean-req-count"}
 {
 
-    yang_name = "nd-parameters"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd-parameters"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::NdParameters::~NdParameters()
@@ -2456,6 +2490,7 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::NdParameters:
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::NdParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return is_dad_enabled.is_set
 	|| dad_attempts.is_set
 	|| is_icm_pv6_redirect.is_set
@@ -2755,10 +2790,12 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::NdParame
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::LocalAddress()
     :
-    ipv6_address{YType::str, "ipv6-address"}
+    ipv6_address{YType::str, "ipv6-address"},
+    valid_lifetime{YType::uint32, "valid-lifetime"},
+    pref_lifetime{YType::uint32, "pref-lifetime"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::~LocalAddress()
@@ -2767,13 +2804,18 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress:
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::has_data() const
 {
-    return ipv6_address.is_set;
+    if (is_presence_container) return true;
+    return ipv6_address.is_set
+	|| valid_lifetime.is_set
+	|| pref_lifetime.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(valid_lifetime.yfilter)
+	|| ydk::is_set(pref_lifetime.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::get_segment_path() const
@@ -2788,6 +2830,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::B
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
+    if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2813,6 +2857,18 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAdd
         ipv6_address.value_namespace = name_space;
         ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime = value;
+        valid_lifetime.value_namespace = name_space;
+        valid_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime = value;
+        pref_lifetime.value_namespace = name_space;
+        pref_lifetime.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2821,21 +2877,31 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAdd
     {
         ipv6_address.yfilter = yfilter;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
         return true;
     return false;
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::GlobalAddress()
     :
-    ipv6_address{YType::str, "ipv6-address"}
+    ipv6_address{YType::str, "ipv6-address"},
+    valid_lifetime{YType::uint32, "valid-lifetime"},
+    pref_lifetime{YType::uint32, "pref-lifetime"}
 {
 
-    yang_name = "global-address"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-address"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::~GlobalAddress()
@@ -2844,13 +2910,18 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::has_data() const
 {
-    return ipv6_address.is_set;
+    if (is_presence_container) return true;
+    return ipv6_address.is_set
+	|| valid_lifetime.is_set
+	|| pref_lifetime.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(valid_lifetime.yfilter)
+	|| ydk::is_set(pref_lifetime.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::get_segment_path() const
@@ -2865,6 +2936,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::B
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
+    if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2890,6 +2963,18 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAd
         ipv6_address.value_namespace = name_space;
         ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime = value;
+        valid_lifetime.value_namespace = name_space;
+        valid_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime = value;
+        pref_lifetime.value_namespace = name_space;
+        pref_lifetime.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2898,11 +2983,19 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAd
     {
         ipv6_address.yfilter = yfilter;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
         return true;
     return false;
 }
@@ -2913,7 +3006,7 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::MemberNode::M
     total_links{YType::uint32, "total-links"}
 {
 
-    yang_name = "member-node"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-node"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::MemberNode::~MemberNode()
@@ -2922,6 +3015,7 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::MemberNode::~
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::MemberNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| total_links.is_set;
 }
@@ -2999,9 +3093,11 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::MemberNo
 }
 
 Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::Interfaces::~Interfaces()
@@ -3010,7 +3106,8 @@ Ipv6NodeDiscovery::Nodes::Node::Interfaces::~Interfaces()
 
 bool Ipv6NodeDiscovery::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3020,7 +3117,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::Interfaces::has_data() const
 
 bool Ipv6NodeDiscovery::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3050,7 +3147,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::Interfaces::get_child_by
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3062,7 +3159,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3112,7 +3209,7 @@ Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface::Interface()
     dropped_glean_req_count{YType::uint32, "dropped-glean-req-count"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface::~Interface()
@@ -3121,6 +3218,7 @@ Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| is_dad_enabled.is_set
 	|| dad_attempts.is_set
@@ -3171,7 +3269,8 @@ bool Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface::has_operation() cons
 std::string Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3432,9 +3531,11 @@ bool Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouters()
+    :
+    nd_virtual_router(this, {"interface_name"})
 {
 
-    yang_name = "nd-virtual-routers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd-virtual-routers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::~NdVirtualRouters()
@@ -3443,7 +3544,8 @@ Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::~NdVirtualRouters()
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::has_data() const
 {
-    for (std::size_t index=0; index<nd_virtual_router.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nd_virtual_router.len(); index++)
     {
         if(nd_virtual_router[index]->has_data())
             return true;
@@ -3453,7 +3555,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::has_data() const
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::has_operation() const
 {
-    for (std::size_t index=0; index<nd_virtual_router.size(); index++)
+    for (std::size_t index=0; index<nd_virtual_router.len(); index++)
     {
         if(nd_virtual_router[index]->has_operation())
             return true;
@@ -3483,7 +3585,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::get_ch
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter>();
         c->parent = this;
-        nd_virtual_router.push_back(c);
+        nd_virtual_router.append(c);
         return c;
     }
 
@@ -3495,7 +3597,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nd_virtual_router)
+    for (auto c : nd_virtual_router.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3529,12 +3631,13 @@ Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::NdVirtualRout
     state{YType::enumeration, "state"},
     flags{YType::enumeration, "flags"},
     vr_gl_addr_ct{YType::uint32, "vr-gl-addr-ct"}
-    	,
+        ,
     local_address(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress>())
+    , vr_global_address(this, {})
 {
     local_address->parent = this;
 
-    yang_name = "nd-virtual-router"; yang_parent_name = "nd-virtual-routers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd-virtual-router"; yang_parent_name = "nd-virtual-routers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::~NdVirtualRouter()
@@ -3543,7 +3646,8 @@ Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::~NdVirtualRou
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::has_data() const
 {
-    for (std::size_t index=0; index<vr_global_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vr_global_address.len(); index++)
     {
         if(vr_global_address[index]->has_data())
             return true;
@@ -3559,7 +3663,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::has_data
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::has_operation() const
 {
-    for (std::size_t index=0; index<vr_global_address.size(); index++)
+    for (std::size_t index=0; index<vr_global_address.len(); index++)
     {
         if(vr_global_address[index]->has_operation())
             return true;
@@ -3577,7 +3681,8 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::has_oper
 std::string Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nd-virtual-router" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "nd-virtual-router";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3611,7 +3716,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirt
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress>();
         c->parent = this;
-        vr_global_address.push_back(c);
+        vr_global_address.append(c);
         return c;
     }
 
@@ -3628,7 +3733,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::N
     }
 
     count = 0;
-    for (auto const & c : vr_global_address)
+    for (auto c : vr_global_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3716,10 +3821,12 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::has_leaf
 
 Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::LocalAddress()
     :
-    ipv6_address{YType::str, "ipv6-address"}
+    ipv6_address{YType::str, "ipv6-address"},
+    valid_lifetime{YType::uint32, "valid-lifetime"},
+    pref_lifetime{YType::uint32, "pref-lifetime"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "nd-virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "nd-virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::~LocalAddress()
@@ -3728,13 +3835,18 @@ Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress:
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::has_data() const
 {
-    return ipv6_address.is_set;
+    if (is_presence_container) return true;
+    return ipv6_address.is_set
+	|| valid_lifetime.is_set
+	|| pref_lifetime.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(valid_lifetime.yfilter)
+	|| ydk::is_set(pref_lifetime.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::get_segment_path() const
@@ -3749,6 +3861,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::N
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
+    if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3774,6 +3888,18 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAdd
         ipv6_address.value_namespace = name_space;
         ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime = value;
+        valid_lifetime.value_namespace = name_space;
+        valid_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime = value;
+        pref_lifetime.value_namespace = name_space;
+        pref_lifetime.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3782,21 +3908,31 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAdd
     {
         ipv6_address.yfilter = yfilter;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
         return true;
     return false;
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::VrGlobalAddress()
     :
-    ipv6_address{YType::str, "ipv6-address"}
+    ipv6_address{YType::str, "ipv6-address"},
+    valid_lifetime{YType::uint32, "valid-lifetime"},
+    pref_lifetime{YType::uint32, "pref-lifetime"}
 {
 
-    yang_name = "vr-global-address"; yang_parent_name = "nd-virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vr-global-address"; yang_parent_name = "nd-virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::~VrGlobalAddress()
@@ -3805,13 +3941,18 @@ Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddre
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::has_data() const
 {
-    return ipv6_address.is_set;
+    if (is_presence_container) return true;
+    return ipv6_address.is_set
+	|| valid_lifetime.is_set
+	|| pref_lifetime.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(valid_lifetime.yfilter)
+	|| ydk::is_set(pref_lifetime.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::get_segment_path() const
@@ -3826,6 +3967,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::N
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
+    if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3851,6 +3994,18 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobal
         ipv6_address.value_namespace = name_space;
         ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime = value;
+        valid_lifetime.value_namespace = name_space;
+        valid_lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime = value;
+        pref_lifetime.value_namespace = name_space;
+        pref_lifetime.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3859,19 +4014,29 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobal
     {
         ipv6_address.yfilter = yfilter;
     }
+    if(value_path == "valid-lifetime")
+    {
+        valid_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "pref-lifetime")
+    {
+        pref_lifetime.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
         return true;
     return false;
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterfaces()
+    :
+    slaac_interface(this, {"interface_name"})
 {
 
-    yang_name = "slaac-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slaac-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::~SlaacInterfaces()
@@ -3880,7 +4045,8 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::~SlaacInterfaces()
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<slaac_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slaac_interface.len(); index++)
     {
         if(slaac_interface[index]->has_data())
             return true;
@@ -3890,7 +4056,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::has_data() const
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<slaac_interface.size(); index++)
+    for (std::size_t index=0; index<slaac_interface.len(); index++)
     {
         if(slaac_interface[index]->has_operation())
             return true;
@@ -3920,7 +4086,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::get_chi
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface>();
         c->parent = this;
-        slaac_interface.push_back(c);
+        slaac_interface.append(c);
         return c;
     }
 
@@ -3932,7 +4098,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slaac_interface)
+    for (auto c : slaac_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3961,12 +4127,12 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::has_leaf_or_child_of_name(
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::SlaacInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     router_advert_detail(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail>())
 {
     router_advert_detail->parent = this;
 
-    yang_name = "slaac-interface"; yang_parent_name = "slaac-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slaac-interface"; yang_parent_name = "slaac-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::~SlaacInterface()
@@ -3975,6 +4141,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::~SlaacInterface
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (router_advert_detail !=  nullptr && router_advert_detail->has_data());
 }
@@ -3989,7 +4156,8 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::has_operat
 std::string Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slaac-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "slaac-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4057,9 +4225,11 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::has_leaf_o
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::RouterAdvertDetail()
     :
     idb{YType::str, "idb"}
+        ,
+    ra(this, {})
 {
 
-    yang_name = "router-advert-detail"; yang_parent_name = "slaac-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router-advert-detail"; yang_parent_name = "slaac-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::~RouterAdvertDetail()
@@ -4068,7 +4238,8 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::has_data() const
 {
-    for (std::size_t index=0; index<ra.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ra.len(); index++)
     {
         if(ra[index]->has_data())
             return true;
@@ -4078,7 +4249,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdve
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::has_operation() const
 {
-    for (std::size_t index=0; index<ra.size(); index++)
+    for (std::size_t index=0; index<ra.len(); index++)
     {
         if(ra[index]->has_operation())
             return true;
@@ -4110,7 +4281,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacIn
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra>();
         c->parent = this;
-        ra.push_back(c);
+        ra.append(c);
         return c;
     }
 
@@ -4122,7 +4293,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ra)
+    for (auto c : ra.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4171,16 +4342,17 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
     rib_protoid{YType::uint16, "rib-protoid"},
     default_router{YType::boolean, "default-router"},
     reachability{YType::uint32, "reachability"}
-    	,
+        ,
     elapsed_ra_time(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ElapsedRaTime>())
-	,reachable_time(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ReachableTime>())
-	,retrans_time(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::RetransTime>())
+    , reachable_time(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ReachableTime>())
+    , retrans_time(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::RetransTime>())
+    , prefix_q(this, {})
 {
     elapsed_ra_time->parent = this;
     reachable_time->parent = this;
     retrans_time->parent = this;
 
-    yang_name = "ra"; yang_parent_name = "router-advert-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ra"; yang_parent_name = "router-advert-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::~Ra()
@@ -4189,7 +4361,8 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::has_data() const
 {
-    for (std::size_t index=0; index<prefix_q.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_q.len(); index++)
     {
         if(prefix_q[index]->has_data())
             return true;
@@ -4212,7 +4385,7 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdve
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_q.size(); index++)
+    for (std::size_t index=0; index<prefix_q.len(); index++)
     {
         if(prefix_q[index]->has_operation())
             return true;
@@ -4294,7 +4467,7 @@ std::shared_ptr<Entity> Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacIn
     {
         auto c = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::PrefixQ>();
         c->parent = this;
-        prefix_q.push_back(c);
+        prefix_q.append(c);
         return c;
     }
 
@@ -4321,7 +4494,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6NodeDiscovery::Nodes::Node::S
     }
 
     count = 0;
-    for (auto const & c : prefix_q)
+    for (auto c : prefix_q.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4462,7 +4635,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "elapsed-ra-time"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "elapsed-ra-time"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ElapsedRaTime::~ElapsedRaTime()
@@ -4471,6 +4644,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ElapsedRaTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set;
 }
 
@@ -4539,7 +4713,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "reachable-time"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reachable-time"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ReachableTime::~ReachableTime()
@@ -4548,6 +4722,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ReachableTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set;
 }
 
@@ -4616,7 +4791,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "retrans-time"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "retrans-time"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::RetransTime::~RetransTime()
@@ -4625,6 +4800,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::RetransTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set;
 }
 
@@ -4699,7 +4875,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
     pfx_flags{YType::uint32, "pfx-flags"}
 {
 
-    yang_name = "prefix-q"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-q"; yang_parent_name = "ra"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::PrefixQ::~PrefixQ()
@@ -4708,6 +4884,7 @@ Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDet
 
 bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::PrefixQ::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_address.is_set
 	|| eui64.is_set
 	|| valid_life_time.is_set
@@ -4849,9 +5026,6 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdve
     return false;
 }
 
-const Enum::YLeaf Ipv6NdShVrFlags::no_flags {0, "no-flags"};
-const Enum::YLeaf Ipv6NdShVrFlags::final_ra {1, "final-ra"};
-
 const Enum::YLeaf Ipv6NdShVrState::deleted {0, "deleted"};
 const Enum::YLeaf Ipv6NdShVrState::standby {1, "standby"};
 const Enum::YLeaf Ipv6NdShVrState::active {2, "active"};
@@ -4859,10 +5033,6 @@ const Enum::YLeaf Ipv6NdShVrState::active {2, "active"};
 const Enum::YLeaf Ipv6NdBndlState::run {0, "run"};
 const Enum::YLeaf Ipv6NdBndlState::error {1, "error"};
 const Enum::YLeaf Ipv6NdBndlState::wait {2, "wait"};
-
-const Enum::YLeaf Ipv6NdNeighborOrigin::other {0, "other"};
-const Enum::YLeaf Ipv6NdNeighborOrigin::static_ {1, "static"};
-const Enum::YLeaf Ipv6NdNeighborOrigin::dynamic {2, "dynamic"};
 
 const Enum::YLeaf Ipv6NdMediaEncap::none {0, "none"};
 const Enum::YLeaf Ipv6NdMediaEncap::arpa {1, "arpa"};
@@ -4878,6 +5048,10 @@ const Enum::YLeaf Ipv6NdMediaEncap::dot1q {10, "dot1q"};
 const Enum::YLeaf Ipv6NdMediaEncap::fr {11, "fr"};
 const Enum::YLeaf Ipv6NdMediaEncap::gre {12, "gre"};
 
+const Enum::YLeaf Ipv6NdNeighborOrigin::other {0, "other"};
+const Enum::YLeaf Ipv6NdNeighborOrigin::static_ {1, "static"};
+const Enum::YLeaf Ipv6NdNeighborOrigin::dynamic {2, "dynamic"};
+
 const Enum::YLeaf Ipv6NdShState::incomplete {0, "incomplete"};
 const Enum::YLeaf Ipv6NdShState::reachable {1, "reachable"};
 const Enum::YLeaf Ipv6NdShState::stale {2, "stale"};
@@ -4885,6 +5059,9 @@ const Enum::YLeaf Ipv6NdShState::glean {3, "glean"};
 const Enum::YLeaf Ipv6NdShState::delay {4, "delay"};
 const Enum::YLeaf Ipv6NdShState::probe {5, "probe"};
 const Enum::YLeaf Ipv6NdShState::delete_ {6, "delete"};
+
+const Enum::YLeaf Ipv6NdShVrFlags::no_flags {0, "no-flags"};
+const Enum::YLeaf Ipv6NdShVrFlags::final_ra {1, "final-ra"};
 
 
 }

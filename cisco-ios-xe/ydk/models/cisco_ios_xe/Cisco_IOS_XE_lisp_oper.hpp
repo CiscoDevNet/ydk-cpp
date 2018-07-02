@@ -33,7 +33,7 @@ class LispState : public ydk::Entity
 
         class LispRouters; //type: LispState::LispRouters
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters> > lisp_routers;
+        ydk::YList lisp_routers;
         
 }; // LispState
 
@@ -62,9 +62,9 @@ class LispState::LispRouters : public ydk::Entity
         class Sessions; //type: LispState::LispRouters::Sessions
         class LocalRlocs; //type: LispState::LispRouters::LocalRlocs
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances> > instances;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Sessions> > sessions;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::LocalRlocs> > local_rlocs;
+        ydk::YList instances;
+        ydk::YList sessions;
+        ydk::YList local_rlocs;
         
 }; // LispState::LispRouters
 
@@ -92,9 +92,9 @@ class LispState::LispRouters::Instances : public ydk::Entity
         class MsEidMembership; //type: LispState::LispRouters::Instances::MsEidMembership
         class EtrEidMembership; //type: LispState::LispRouters::Instances::EtrEidMembership
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af> > af;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::MsEidMembership> > ms_eid_membership;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::EtrEidMembership> > etr_eid_membership;
+        ydk::YList af;
+        ydk::YList ms_eid_membership;
+        ydk::YList etr_eid_membership;
         
 }; // LispState::LispRouters::Instances
 
@@ -203,12 +203,12 @@ class LispState::LispRouters::Instances::Af : public ydk::Entity
         class ProxyEtrs; //type: LispState::LispRouters::Instances::Af::ProxyEtrs
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::Role> role;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MapCache> > map_cache;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::LocalDbase> > local_dbase;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MsRegistrations> > ms_registrations;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MapServers> > map_servers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MapResolvers> > map_resolvers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::ProxyEtrs> > proxy_etrs;
+        ydk::YList map_cache;
+        ydk::YList local_dbase;
+        ydk::YList ms_registrations;
+        ydk::YList map_servers;
+        ydk::YList map_resolvers;
+        ydk::YList proxy_etrs;
         
 }; // LispState::LispRouters::Instances::Af
 
@@ -271,7 +271,7 @@ class LispState::LispRouters::Instances::Af::MapCache : public ydk::Entity
         ydk::YLeaf is_active; //type: boolean
         class MapCacheRloc; //type: LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc> > map_cache_rloc;
+        ydk::YList map_cache_rloc;
         
 }; // LispState::LispRouters::Instances::Af::MapCache
 
@@ -351,7 +351,7 @@ class LispState::LispRouters::Instances::Af::LocalDbase : public ydk::Entity
         ydk::YLeaf is_reachable; //type: boolean
         class LocalDbaseRloc; //type: LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc> > local_dbase_rloc;
+        ydk::YList local_dbase_rloc;
         
 }; // LispState::LispRouters::Instances::Af::LocalDbase
 
@@ -437,7 +437,7 @@ class LispState::LispRouters::Instances::Af::MsRegistrations : public ydk::Entit
         class EtrRegistrations; //type: LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource> last_registration_source;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations> > etr_registrations;
+        ydk::YList etr_registrations;
         
 }; // LispState::LispRouters::Instances::Af::MsRegistrations
 
@@ -488,7 +488,7 @@ class LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations :
         ydk::YLeaf wants_map_notify; //type: boolean
         class MsRegistrationRloc; //type: LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lisp_oper::LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc> > ms_registration_rloc;
+        ydk::YList ms_registration_rloc;
         
 }; // LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations
 
@@ -752,14 +752,11 @@ class LispAddressFamilyType : public ydk::Enum
 
 };
 
-class LispIaftypeType : public ydk::Enum
+class LispRlocStateType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf iaf_ipv4;
-        static const ydk::Enum::YLeaf iaf_ipv6;
-        static const ydk::Enum::YLeaf iaf_mac;
-        static const ydk::Enum::YLeaf iaf_ar;
-        static const ydk::Enum::YLeaf iaf_rar;
+        static const ydk::Enum::YLeaf lisp_rloc_state_down;
+        static const ydk::Enum::YLeaf lisp_rloc_state_up;
 
 };
 
@@ -773,11 +770,14 @@ class LispMapReplyActionType : public ydk::Enum
 
 };
 
-class LispRlocStateType : public ydk::Enum
+class LispIaftypeType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf lisp_rloc_state_down;
-        static const ydk::Enum::YLeaf lisp_rloc_state_up;
+        static const ydk::Enum::YLeaf iaf_ipv4;
+        static const ydk::Enum::YLeaf iaf_ipv6;
+        static const ydk::Enum::YLeaf iaf_mac;
+        static const ydk::Enum::YLeaf iaf_ar;
+        static const ydk::Enum::YLeaf iaf_rar;
 
 };
 

@@ -14,10 +14,10 @@ namespace Cisco_IOS_XR_ha_eem_policy_oper {
 Eem::Eem()
     :
     dir_user(std::make_shared<Eem::DirUser>())
-	,env_variables(std::make_shared<Eem::EnvVariables>())
-	,refresh_time(std::make_shared<Eem::RefreshTime>())
-	,reg_policies(std::make_shared<Eem::RegPolicies>())
-	,avl_policies(std::make_shared<Eem::AvlPolicies>())
+    , env_variables(std::make_shared<Eem::EnvVariables>())
+    , refresh_time(std::make_shared<Eem::RefreshTime>())
+    , reg_policies(std::make_shared<Eem::RegPolicies>())
+    , avl_policies(std::make_shared<Eem::AvlPolicies>())
 {
     dir_user->parent = this;
     env_variables->parent = this;
@@ -25,7 +25,7 @@ Eem::Eem()
     reg_policies->parent = this;
     avl_policies->parent = this;
 
-    yang_name = "eem"; yang_parent_name = "Cisco-IOS-XR-ha-eem-policy-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "eem"; yang_parent_name = "Cisco-IOS-XR-ha-eem-policy-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Eem::~Eem()
@@ -34,6 +34,7 @@ Eem::~Eem()
 
 bool Eem::has_data() const
 {
+    if (is_presence_container) return true;
     return (dir_user !=  nullptr && dir_user->has_data())
 	|| (env_variables !=  nullptr && env_variables->has_data())
 	|| (refresh_time !=  nullptr && refresh_time->has_data())
@@ -192,12 +193,12 @@ bool Eem::has_leaf_or_child_of_name(const std::string & name) const
 Eem::DirUser::DirUser()
     :
     library(std::make_shared<Eem::DirUser::Library>())
-	,policy(std::make_shared<Eem::DirUser::Policy>())
+    , policy(std::make_shared<Eem::DirUser::Policy>())
 {
     library->parent = this;
     policy->parent = this;
 
-    yang_name = "dir-user"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dir-user"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::DirUser::~DirUser()
@@ -206,6 +207,7 @@ Eem::DirUser::~DirUser()
 
 bool Eem::DirUser::has_data() const
 {
+    if (is_presence_container) return true;
     return (library !=  nullptr && library->has_data())
 	|| (policy !=  nullptr && policy->has_data());
 }
@@ -301,7 +303,7 @@ Eem::DirUser::Library::Library()
     library{YType::str, "library"}
 {
 
-    yang_name = "library"; yang_parent_name = "dir-user"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "library"; yang_parent_name = "dir-user"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::DirUser::Library::~Library()
@@ -310,6 +312,7 @@ Eem::DirUser::Library::~Library()
 
 bool Eem::DirUser::Library::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set
 	|| library.is_set;
 }
@@ -399,7 +402,7 @@ Eem::DirUser::Policy::Policy()
     library{YType::str, "library"}
 {
 
-    yang_name = "policy"; yang_parent_name = "dir-user"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "dir-user"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::DirUser::Policy::~Policy()
@@ -408,6 +411,7 @@ Eem::DirUser::Policy::~Policy()
 
 bool Eem::DirUser::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set
 	|| library.is_set;
 }
@@ -492,9 +496,11 @@ bool Eem::DirUser::Policy::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Eem::EnvVariables::EnvVariables()
+    :
+    env_variable(this, {"name"})
 {
 
-    yang_name = "env-variables"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "env-variables"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::EnvVariables::~EnvVariables()
@@ -503,7 +509,8 @@ Eem::EnvVariables::~EnvVariables()
 
 bool Eem::EnvVariables::has_data() const
 {
-    for (std::size_t index=0; index<env_variable.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<env_variable.len(); index++)
     {
         if(env_variable[index]->has_data())
             return true;
@@ -513,7 +520,7 @@ bool Eem::EnvVariables::has_data() const
 
 bool Eem::EnvVariables::has_operation() const
 {
-    for (std::size_t index=0; index<env_variable.size(); index++)
+    for (std::size_t index=0; index<env_variable.len(); index++)
     {
         if(env_variable[index]->has_operation())
             return true;
@@ -550,7 +557,7 @@ std::shared_ptr<Entity> Eem::EnvVariables::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Eem::EnvVariables::EnvVariable>();
         c->parent = this;
-        env_variable.push_back(c);
+        env_variable.append(c);
         return c;
     }
 
@@ -562,7 +569,7 @@ std::map<std::string, std::shared_ptr<Entity>> Eem::EnvVariables::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : env_variable)
+    for (auto c : env_variable.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -595,7 +602,7 @@ Eem::EnvVariables::EnvVariable::EnvVariable()
     value_{YType::str, "value"}
 {
 
-    yang_name = "env-variable"; yang_parent_name = "env-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "env-variable"; yang_parent_name = "env-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::EnvVariables::EnvVariable::~EnvVariable()
@@ -604,6 +611,7 @@ Eem::EnvVariables::EnvVariable::~EnvVariable()
 
 bool Eem::EnvVariables::EnvVariable::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| name_xr.is_set
 	|| value_.is_set;
@@ -627,7 +635,8 @@ std::string Eem::EnvVariables::EnvVariable::get_absolute_path() const
 std::string Eem::EnvVariables::EnvVariable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "env-variable" <<"[name='" <<name <<"']";
+    path_buffer << "env-variable";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -705,7 +714,7 @@ Eem::RefreshTime::RefreshTime()
     refreshtime{YType::uint32, "refreshtime"}
 {
 
-    yang_name = "refresh-time"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "refresh-time"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::RefreshTime::~RefreshTime()
@@ -714,6 +723,7 @@ Eem::RefreshTime::~RefreshTime()
 
 bool Eem::RefreshTime::has_data() const
 {
+    if (is_presence_container) return true;
     return refreshtime.is_set;
 }
 
@@ -785,9 +795,11 @@ bool Eem::RefreshTime::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Eem::RegPolicies::RegPolicies()
+    :
+    reg_policy(this, {"name"})
 {
 
-    yang_name = "reg-policies"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reg-policies"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::RegPolicies::~RegPolicies()
@@ -796,7 +808,8 @@ Eem::RegPolicies::~RegPolicies()
 
 bool Eem::RegPolicies::has_data() const
 {
-    for (std::size_t index=0; index<reg_policy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg_policy.len(); index++)
     {
         if(reg_policy[index]->has_data())
             return true;
@@ -806,7 +819,7 @@ bool Eem::RegPolicies::has_data() const
 
 bool Eem::RegPolicies::has_operation() const
 {
-    for (std::size_t index=0; index<reg_policy.size(); index++)
+    for (std::size_t index=0; index<reg_policy.len(); index++)
     {
         if(reg_policy[index]->has_operation())
             return true;
@@ -843,7 +856,7 @@ std::shared_ptr<Entity> Eem::RegPolicies::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Eem::RegPolicies::RegPolicy>();
         c->parent = this;
-        reg_policy.push_back(c);
+        reg_policy.append(c);
         return c;
     }
 
@@ -855,7 +868,7 @@ std::map<std::string, std::shared_ptr<Entity>> Eem::RegPolicies::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reg_policy)
+    for (auto c : reg_policy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -895,7 +908,7 @@ Eem::RegPolicies::RegPolicy::RegPolicy()
     description{YType::str, "description"}
 {
 
-    yang_name = "reg-policy"; yang_parent_name = "reg-policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reg-policy"; yang_parent_name = "reg-policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::RegPolicies::RegPolicy::~RegPolicy()
@@ -904,6 +917,7 @@ Eem::RegPolicies::RegPolicy::~RegPolicy()
 
 bool Eem::RegPolicies::RegPolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| time_created.is_set
@@ -941,7 +955,8 @@ std::string Eem::RegPolicies::RegPolicy::get_absolute_path() const
 std::string Eem::RegPolicies::RegPolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reg-policy" <<"[name='" <<name <<"']";
+    path_buffer << "reg-policy";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1092,9 +1107,11 @@ bool Eem::RegPolicies::RegPolicy::has_leaf_or_child_of_name(const std::string & 
 }
 
 Eem::AvlPolicies::AvlPolicies()
+    :
+    avl_policy(this, {"name"})
 {
 
-    yang_name = "avl-policies"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "avl-policies"; yang_parent_name = "eem"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::AvlPolicies::~AvlPolicies()
@@ -1103,7 +1120,8 @@ Eem::AvlPolicies::~AvlPolicies()
 
 bool Eem::AvlPolicies::has_data() const
 {
-    for (std::size_t index=0; index<avl_policy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<avl_policy.len(); index++)
     {
         if(avl_policy[index]->has_data())
             return true;
@@ -1113,7 +1131,7 @@ bool Eem::AvlPolicies::has_data() const
 
 bool Eem::AvlPolicies::has_operation() const
 {
-    for (std::size_t index=0; index<avl_policy.size(); index++)
+    for (std::size_t index=0; index<avl_policy.len(); index++)
     {
         if(avl_policy[index]->has_operation())
             return true;
@@ -1150,7 +1168,7 @@ std::shared_ptr<Entity> Eem::AvlPolicies::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Eem::AvlPolicies::AvlPolicy>();
         c->parent = this;
-        avl_policy.push_back(c);
+        avl_policy.append(c);
         return c;
     }
 
@@ -1162,7 +1180,7 @@ std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : avl_policy)
+    for (auto c : avl_policy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1196,7 +1214,7 @@ Eem::AvlPolicies::AvlPolicy::AvlPolicy()
     policy_name{YType::str, "policy-name"}
 {
 
-    yang_name = "avl-policy"; yang_parent_name = "avl-policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "avl-policy"; yang_parent_name = "avl-policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eem::AvlPolicies::AvlPolicy::~AvlPolicy()
@@ -1205,6 +1223,7 @@ Eem::AvlPolicies::AvlPolicy::~AvlPolicy()
 
 bool Eem::AvlPolicies::AvlPolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| time_created.is_set
@@ -1230,7 +1249,8 @@ std::string Eem::AvlPolicies::AvlPolicy::get_absolute_path() const
 std::string Eem::AvlPolicies::AvlPolicy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "avl-policy" <<"[name='" <<name <<"']";
+    path_buffer << "avl-policy";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

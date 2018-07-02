@@ -33,7 +33,7 @@ class TcamDetails : public ydk::Entity
 
         class TcamDetail; //type: TcamDetails::TcamDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_tcam_oper::TcamDetails::TcamDetail> > tcam_detail;
+        ydk::YList tcam_detail;
         
 }; // TcamDetails
 

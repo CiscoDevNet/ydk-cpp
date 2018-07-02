@@ -17,7 +17,7 @@ Fpd::Fpd()
 {
     config->parent = this;
 
-    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-sysadmin-fpd-infra-cli-fpd"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-sysadmin-fpd-infra-cli-fpd"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Fpd::~Fpd()
@@ -26,6 +26,7 @@ Fpd::~Fpd()
 
 bool Fpd::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data());
 }
 
@@ -122,7 +123,7 @@ Fpd::Config::Config()
     auto_upgrade{YType::enumeration, "auto-upgrade"}
 {
 
-    yang_name = "config"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fpd::Config::~Config()
@@ -131,6 +132,7 @@ Fpd::Config::~Config()
 
 bool Fpd::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_upgrade.is_set;
 }
 

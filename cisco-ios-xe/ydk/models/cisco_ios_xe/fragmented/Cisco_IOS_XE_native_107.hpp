@@ -420,7 +420,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf : public 
 
         class Vrfs; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs> > vrfs;
+        ydk::YList vrfs;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf
 
@@ -631,7 +631,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vr
 
         class Vrfs; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs> > vrfs;
+        ydk::YList vrfs;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf
 
@@ -676,7 +676,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailab
 
         class Ipv4; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability
 
@@ -789,7 +789,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf : public ydk::Enti
 
         class Vrfs; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs> > vrfs;
+        ydk::YList vrfs;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf
 
@@ -866,7 +866,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global> global;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop> next_hop;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf> > bvrf;
+        ydk::YList bvrf;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6
 
@@ -914,7 +914,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default : public ydk
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global> global;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop> next_hop;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf> > dvrf;
+        ydk::YList dvrf;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default
 
@@ -957,18 +957,18 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf next_hop_address; //type: string
-        class Ipv6S; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S
+        class Ipv6s; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S> > ipv6s;
+        ydk::YList ipv6s;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop
 
 
-class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S : public ydk::Entity
+class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s : public ydk::Entity
 {
     public:
-        Ipv6S();
-        ~Ipv6S();
+        Ipv6s();
+        ~Ipv6s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -982,7 +982,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ip
 
         ydk::YLeaf ipv6; //type: string
 
-}; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S
+}; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s
 
 
 class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf : public ydk::Entity
@@ -1004,7 +1004,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf : publ
         ydk::YLeaf dvrf; //type: string
         class Dvrf0; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0> > dvrf0;
+        ydk::YList dvrf0;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf
 
@@ -1073,7 +1073,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop : pu
         ydk::YLeaf verify_availability; //type: string
         class NhIpv6; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6> > nh_ipv6;
+        ydk::YList nh_ipv6;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop
 
@@ -1122,7 +1122,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop : public ydk
         class Encapsulate; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate
         class VerifyAvailability; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6> > nha_ipv6;
+        ydk::YList nha_ipv6;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate> encapsulate;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability> verify_availability;
         
@@ -1148,7 +1148,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6 : p
         ydk::YLeaf nha_ipv6; //type: string
         class NhaIpv60; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60> > nha_ipv60;
+        ydk::YList nha_ipv60;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6
 
@@ -1214,7 +1214,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvail
 
         class VaIpv6; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6> > va_ipv6;
+        ydk::YList va_ipv6;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability
 
@@ -1260,7 +1260,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf : public ydk::E
         ydk::YLeaf bvrf; //type: string
         class Bvrf0; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0> > bvrf0;
+        ydk::YList bvrf0;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf
 
@@ -1575,7 +1575,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Adverti
 
         class BestRange; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange> > best_range;
+        ydk::YList best_range;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best
 
@@ -1621,7 +1621,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Adverti
 
         class AdvPath; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath> > adv_path;
+        ydk::YList adv_path;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange
 
@@ -2146,7 +2146,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length : public ydk::Ent
 
         class Lengths; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths> > lengths;
+        ydk::YList lengths;
         
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length
 
@@ -2475,7 +2475,7 @@ class Native::RouteTag::List : public ydk::Entity
 
         class RtName; //type: Native::RouteTag::List::RtName
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteTag::List::RtName> > rt_name;
+        ydk::YList rt_name;
         
 }; // Native::RouteTag::List
 
@@ -2527,7 +2527,7 @@ class Native::RouteTag::List::RtName::Deny : public ydk::Entity
 
         class Ipv4; //type: Native::RouteTag::List::RtName::Deny::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteTag::List::RtName::Deny::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::RouteTag::List::RtName::Deny
 
@@ -2572,7 +2572,7 @@ class Native::RouteTag::List::RtName::Permit : public ydk::Entity
 
         class Ipv4; //type: Native::RouteTag::List::RtName::Permit::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteTag::List::RtName::Permit::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::RouteTag::List::RtName::Permit
 
@@ -2617,7 +2617,7 @@ class Native::RouteTag::List::RtName::Seq : public ydk::Entity
 
         class SeqNum; //type: Native::RouteTag::List::RtName::Seq::SeqNum
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteTag::List::RtName::Seq::SeqNum> > seq_num;
+        ydk::YList seq_num;
         
 }; // Native::RouteTag::List::RtName::Seq
 
@@ -2735,7 +2735,7 @@ class Native::TableMap : public ydk::Entity
         ydk::YLeaf default_; //type: one of uint8, enumeration
         class Map; //type: Native::TableMap::Map
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::Map> > map;
+        ydk::YList map;
                 class Default_;
 
 }; // Native::TableMap
@@ -2852,9 +2852,9 @@ class Native::ObjectGroup : public ydk::Entity
         class Security; //type: Native::ObjectGroup::Security
         class Service; //type: Native::ObjectGroup::Service
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Network> > network;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Security> > security;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Service> > service;
+        ydk::YList network;
+        ydk::YList security;
+        ydk::YList service;
         
 }; // Native::ObjectGroup
 
@@ -2906,8 +2906,8 @@ class Native::ObjectGroup::Network::ObjModeConfigNetworkGroup : public ydk::Enti
         class Host; //type: Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host
         class Range; //type: Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress> > network_address;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host> > host;
+        ydk::YList network_address;
+        ydk::YList host;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range> range;
         
 }; // Native::ObjectGroup::Network::ObjModeConfigNetworkGroup
@@ -2951,7 +2951,7 @@ class Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
 
 }; // Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host
 
@@ -3152,7 +3152,7 @@ class Native::ObjectGroup::Service::Tcp : public ydk::Entity
 
         class TcpPortList; //type: Native::ObjectGroup::Service::Tcp::TcpPortList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Service::Tcp::TcpPortList> > tcp_port_list;
+        ydk::YList tcp_port_list;
         
 }; // Native::ObjectGroup::Service::Tcp
 
@@ -3199,7 +3199,7 @@ class Native::ObjectGroup::Service::TcpUdp : public ydk::Entity
 
         class UdpPortList; //type: Native::ObjectGroup::Service::TcpUdp::UdpPortList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Service::TcpUdp::UdpPortList> > udp_port_list;
+        ydk::YList udp_port_list;
         
 }; // Native::ObjectGroup::Service::TcpUdp
 
@@ -3246,7 +3246,7 @@ class Native::ObjectGroup::Service::Udp : public ydk::Entity
 
         class UdpPortList; //type: Native::ObjectGroup::Service::Udp::UdpPortList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ObjectGroup::Service::Udp::UdpPortList> > udp_port_list;
+        ydk::YList udp_port_list;
         
 }; // Native::ObjectGroup::Service::Udp
 
@@ -3302,8 +3302,8 @@ class Native::PseudowireClass : public ydk::Entity
         class Monitor; //type: Native::PseudowireClass::Monitor
         class PreferredPath; //type: Native::PseudowireClass::PreferredPath
         class ProtocolMpls; //type: Native::PseudowireClass::ProtocolMpls
-        class ProtocolL2Tpv2; //type: Native::PseudowireClass::ProtocolL2Tpv2
-        class ProtocolL2Tpv3; //type: Native::PseudowireClass::ProtocolL2Tpv3
+        class ProtocolL2tpv2; //type: Native::PseudowireClass::ProtocolL2tpv2
+        class ProtocolL2tpv3; //type: Native::PseudowireClass::ProtocolL2tpv3
         class Status; //type: Native::PseudowireClass::Status
         class Switching; //type: Native::PseudowireClass::Switching
 
@@ -3312,8 +3312,8 @@ class Native::PseudowireClass : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::Monitor> monitor;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::PreferredPath> preferred_path;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::ProtocolMpls> protocol_mpls;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::ProtocolL2Tpv2> protocol_l2tpv2;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::ProtocolL2Tpv3> protocol_l2tpv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::ProtocolL2tpv2> protocol_l2tpv2;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::ProtocolL2tpv3> protocol_l2tpv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::Status> status; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass::Switching> switching;
                 class Encapsulation;

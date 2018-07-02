@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_pm {
 
 Processes::Processes()
+    :
+    all_locations(this, {"location"})
 {
 
-    yang_name = "processes"; yang_parent_name = "Cisco-IOS-XR-sysadmin-pm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "processes"; yang_parent_name = "Cisco-IOS-XR-sysadmin-pm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Processes::~Processes()
@@ -23,7 +25,8 @@ Processes::~Processes()
 
 bool Processes::has_data() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Processes::has_data() const
 
 bool Processes::has_operation() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Processes::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Processes::AllLocations>();
         c->parent = this;
-        all_locations.push_back(c);
+        all_locations.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Processes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_locations)
+    for (auto c : all_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -131,9 +134,11 @@ Processes::AllLocations::AllLocations()
     location{YType::str, "location"},
     ip_addr{YType::str, "ip-addr"},
     pcbs{YType::uint32, "pcbs"}
+        ,
+    name(this, {"proc_name", "instance_id"})
 {
 
-    yang_name = "all-locations"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-locations"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Processes::AllLocations::~AllLocations()
@@ -142,7 +147,8 @@ Processes::AllLocations::~AllLocations()
 
 bool Processes::AllLocations::has_data() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_data())
             return true;
@@ -154,7 +160,7 @@ bool Processes::AllLocations::has_data() const
 
 bool Processes::AllLocations::has_operation() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_operation())
             return true;
@@ -175,7 +181,8 @@ std::string Processes::AllLocations::get_absolute_path() const
 std::string Processes::AllLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-locations" <<"[location='" <<location <<"']";
+    path_buffer << "all-locations";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -197,7 +204,7 @@ std::shared_ptr<Entity> Processes::AllLocations::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Processes::AllLocations::Name>();
         c->parent = this;
-        name.push_back(c);
+        name.append(c);
         return c;
     }
 
@@ -209,7 +216,7 @@ std::map<std::string, std::shared_ptr<Entity>> Processes::AllLocations::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : name)
+    for (auto c : name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -287,9 +294,11 @@ Processes::AllLocations::Name::Name()
     start_time{YType::str, "start-time"},
     ready_time{YType::str, "ready-time"},
     last_exit_time{YType::str, "last-exit-time"}
+        ,
+    services(this, {"service_name"})
 {
 
-    yang_name = "name"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "name"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Processes::AllLocations::Name::~Name()
@@ -298,7 +307,8 @@ Processes::AllLocations::Name::~Name()
 
 bool Processes::AllLocations::Name::has_data() const
 {
-    for (std::size_t index=0; index<services.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<services.len(); index++)
     {
         if(services[index]->has_data())
             return true;
@@ -327,7 +337,7 @@ bool Processes::AllLocations::Name::has_data() const
 
 bool Processes::AllLocations::Name::has_operation() const
 {
-    for (std::size_t index=0; index<services.size(); index++)
+    for (std::size_t index=0; index<services.len(); index++)
     {
         if(services[index]->has_operation())
             return true;
@@ -358,7 +368,9 @@ bool Processes::AllLocations::Name::has_operation() const
 std::string Processes::AllLocations::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name" <<"[proc-name='" <<proc_name <<"']" <<"[instance-id='" <<instance_id <<"']";
+    path_buffer << "name";
+    ADD_KEY_TOKEN(proc_name, "proc-name");
+    ADD_KEY_TOKEN(instance_id, "instance-id");
     return path_buffer.str();
 }
 
@@ -397,7 +409,7 @@ std::shared_ptr<Entity> Processes::AllLocations::Name::get_child_by_name(const s
     {
         auto c = std::make_shared<Processes::AllLocations::Name::Services>();
         c->parent = this;
-        services.push_back(c);
+        services.append(c);
         return c;
     }
 
@@ -409,7 +421,7 @@ std::map<std::string, std::shared_ptr<Entity>> Processes::AllLocations::Name::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : services)
+    for (auto c : services.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -652,7 +664,7 @@ Processes::AllLocations::Name::Services::Services()
     svc_haready_time{YType::str, "svc-haready-time"}
 {
 
-    yang_name = "services"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "services"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Processes::AllLocations::Name::Services::~Services()
@@ -661,6 +673,7 @@ Processes::AllLocations::Name::Services::~Services()
 
 bool Processes::AllLocations::Name::Services::has_data() const
 {
+    if (is_presence_container) return true;
     return service_name.is_set
 	|| scope.is_set
 	|| redundancy.is_set
@@ -697,7 +710,8 @@ bool Processes::AllLocations::Name::Services::has_operation() const
 std::string Processes::AllLocations::Name::Services::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "services" <<"[service-name='" <<service_name <<"']";
+    path_buffer << "services";
+    ADD_KEY_TOKEN(service_name, "service-name");
     return path_buffer.str();
 }
 
@@ -881,9 +895,11 @@ bool Processes::AllLocations::Name::Services::has_leaf_or_child_of_name(const st
 }
 
 ProcessManager::ProcessManager()
+    :
+    all_locations_info(this, {"location_info"})
 {
 
-    yang_name = "process-manager"; yang_parent_name = "Cisco-IOS-XR-sysadmin-pm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "process-manager"; yang_parent_name = "Cisco-IOS-XR-sysadmin-pm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ProcessManager::~ProcessManager()
@@ -892,7 +908,8 @@ ProcessManager::~ProcessManager()
 
 bool ProcessManager::has_data() const
 {
-    for (std::size_t index=0; index<all_locations_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_locations_info.len(); index++)
     {
         if(all_locations_info[index]->has_data())
             return true;
@@ -902,7 +919,7 @@ bool ProcessManager::has_data() const
 
 bool ProcessManager::has_operation() const
 {
-    for (std::size_t index=0; index<all_locations_info.size(); index++)
+    for (std::size_t index=0; index<all_locations_info.len(); index++)
     {
         if(all_locations_info[index]->has_operation())
             return true;
@@ -932,7 +949,7 @@ std::shared_ptr<Entity> ProcessManager::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<ProcessManager::AllLocationsInfo>();
         c->parent = this;
-        all_locations_info.push_back(c);
+        all_locations_info.append(c);
         return c;
     }
 
@@ -944,7 +961,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessManager::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_locations_info)
+    for (auto c : all_locations_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1007,7 +1024,7 @@ ProcessManager::AllLocationsInfo::AllLocationsInfo()
     wdmon_num_capi_connects{YType::uint32, "wdmon-num-capi-connects"}
 {
 
-    yang_name = "all-locations-info"; yang_parent_name = "process-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-locations-info"; yang_parent_name = "process-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessManager::AllLocationsInfo::~AllLocationsInfo()
@@ -1016,6 +1033,7 @@ ProcessManager::AllLocationsInfo::~AllLocationsInfo()
 
 bool ProcessManager::AllLocationsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return location_info.is_set
 	|| ip_addr_info.is_set
 	|| pm_start_time.is_set
@@ -1049,7 +1067,8 @@ std::string ProcessManager::AllLocationsInfo::get_absolute_path() const
 std::string ProcessManager::AllLocationsInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-locations-info" <<"[location-info='" <<location_info <<"']";
+    path_buffer << "all-locations-info";
+    ADD_KEY_TOKEN(location_info, "location-info");
     return path_buffer.str();
 }
 
@@ -1183,7 +1202,7 @@ Pm::Pm()
 {
     pm->parent = this;
 
-    yang_name = "pm"; yang_parent_name = "Cisco-IOS-XR-sysadmin-pm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pm"; yang_parent_name = "Cisco-IOS-XR-sysadmin-pm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Pm::~Pm()
@@ -1192,6 +1211,7 @@ Pm::~Pm()
 
 bool Pm::has_data() const
 {
+    if (is_presence_container) return true;
     return (pm !=  nullptr && pm->has_data());
 }
 
@@ -1284,9 +1304,11 @@ bool Pm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Pm::Pm_::Pm_()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "pm"; yang_parent_name = "pm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pm"; yang_parent_name = "pm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pm::Pm_::~Pm_()
@@ -1295,7 +1317,8 @@ Pm::Pm_::~Pm_()
 
 bool Pm::Pm_::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -1305,7 +1328,7 @@ bool Pm::Pm_::has_data() const
 
 bool Pm::Pm_::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -1342,7 +1365,7 @@ std::shared_ptr<Entity> Pm::Pm_::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<Pm::Pm_::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -1354,7 +1377,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pm::Pm_::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1383,9 +1406,11 @@ bool Pm::Pm_::has_leaf_or_child_of_name(const std::string & name) const
 Pm::Pm_::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "pm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "pm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pm::Pm_::Trace::~Trace()
@@ -1394,7 +1419,8 @@ Pm::Pm_::Trace::~Trace()
 
 bool Pm::Pm_::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1404,7 +1430,7 @@ bool Pm::Pm_::Trace::has_data() const
 
 bool Pm::Pm_::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1423,7 +1449,8 @@ std::string Pm::Pm_::Trace::get_absolute_path() const
 std::string Pm::Pm_::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -1443,7 +1470,7 @@ std::shared_ptr<Entity> Pm::Pm_::Trace::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Pm::Pm_::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1455,7 +1482,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pm::Pm_::Trace::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1494,9 +1521,11 @@ bool Pm::Pm_::Trace::has_leaf_or_child_of_name(const std::string & name) const
 Pm::Pm_::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pm::Pm_::Trace::Location::~Location()
@@ -1505,7 +1534,8 @@ Pm::Pm_::Trace::Location::~Location()
 
 bool Pm::Pm_::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -1515,7 +1545,7 @@ bool Pm::Pm_::Trace::Location::has_data() const
 
 bool Pm::Pm_::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -1527,7 +1557,8 @@ bool Pm::Pm_::Trace::Location::has_operation() const
 std::string Pm::Pm_::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -1547,7 +1578,7 @@ std::shared_ptr<Entity> Pm::Pm_::Trace::Location::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Pm::Pm_::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -1559,7 +1590,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pm::Pm_::Trace::Location::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1598,9 +1629,11 @@ bool Pm::Pm_::Trace::Location::has_leaf_or_child_of_name(const std::string & nam
 Pm::Pm_::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pm::Pm_::Trace::Location::AllOptions::~AllOptions()
@@ -1609,7 +1642,8 @@ Pm::Pm_::Trace::Location::AllOptions::~AllOptions()
 
 bool Pm::Pm_::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -1619,7 +1653,7 @@ bool Pm::Pm_::Trace::Location::AllOptions::has_data() const
 
 bool Pm::Pm_::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -1631,7 +1665,8 @@ bool Pm::Pm_::Trace::Location::AllOptions::has_operation() const
 std::string Pm::Pm_::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -1651,7 +1686,7 @@ std::shared_ptr<Entity> Pm::Pm_::Trace::Location::AllOptions::get_child_by_name(
     {
         auto c = std::make_shared<Pm::Pm_::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -1663,7 +1698,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pm::Pm_::Trace::Location::AllOpti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1704,7 +1739,7 @@ Pm::Pm_::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pm::Pm_::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -1713,6 +1748,7 @@ Pm::Pm_::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Pm::Pm_::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -1776,27 +1812,27 @@ bool Pm::Pm_::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_child_of_nam
     return false;
 }
 
-const Enum::YLeaf Startupmode::ON_BOOTUP {0, "ON-BOOTUP"};
-const Enum::YLeaf Startupmode::ON_SELECTION {1, "ON-SELECTION"};
-const Enum::YLeaf Startupmode::ON_DEMAND {2, "ON-DEMAND"};
+const Enum::YLeaf StartupMode::ON_BOOTUP {0, "ON-BOOTUP"};
+const Enum::YLeaf StartupMode::ON_SELECTION {1, "ON-SELECTION"};
+const Enum::YLeaf StartupMode::ON_DEMAND {2, "ON-DEMAND"};
 
-const Enum::YLeaf Processstate::IDLE {0, "IDLE"};
-const Enum::YLeaf Processstate::RUNNING {1, "RUNNING"};
-const Enum::YLeaf Processstate::STOPPING {2, "STOPPING"};
-const Enum::YLeaf Processstate::STOPPED {3, "STOPPED"};
-const Enum::YLeaf Processstate::DESELECTING {4, "DESELECTING"};
-const Enum::YLeaf Processstate::DESELECTED {5, "DESELECTED"};
+const Enum::YLeaf ServiceRole::NONE {0, "NONE"};
+const Enum::YLeaf ServiceRole::ACTIVE {1, "ACTIVE"};
+const Enum::YLeaf ServiceRole::STANDBY {2, "STANDBY"};
 
-const Enum::YLeaf Servicescope::SYSTEM {0, "SYSTEM"};
-const Enum::YLeaf Servicescope::RACK {1, "RACK"};
+const Enum::YLeaf ServiceState::SS_IDLE {0, "SS_IDLE"};
+const Enum::YLeaf ServiceState::SS_RUNNING {1, "SS_RUNNING"};
+const Enum::YLeaf ServiceState::SS_ACK_PENDING {2, "SS_ACK_PENDING"};
 
-const Enum::YLeaf Servicestate::SS_IDLE {0, "SS_IDLE"};
-const Enum::YLeaf Servicestate::SS_RUNNING {1, "SS_RUNNING"};
-const Enum::YLeaf Servicestate::SS_ACK_PENDING {2, "SS_ACK_PENDING"};
+const Enum::YLeaf ProcessState::IDLE {0, "IDLE"};
+const Enum::YLeaf ProcessState::RUNNING {1, "RUNNING"};
+const Enum::YLeaf ProcessState::STOPPING {2, "STOPPING"};
+const Enum::YLeaf ProcessState::STOPPED {3, "STOPPED"};
+const Enum::YLeaf ProcessState::DESELECTING {4, "DESELECTING"};
+const Enum::YLeaf ProcessState::DESELECTED {5, "DESELECTED"};
 
-const Enum::YLeaf Servicerole::NONE {0, "NONE"};
-const Enum::YLeaf Servicerole::ACTIVE {1, "ACTIVE"};
-const Enum::YLeaf Servicerole::STANDBY {2, "STANDBY"};
+const Enum::YLeaf ServiceScope::SYSTEM {0, "SYSTEM"};
+const Enum::YLeaf ServiceScope::RACK {1, "RACK"};
 
 
 }

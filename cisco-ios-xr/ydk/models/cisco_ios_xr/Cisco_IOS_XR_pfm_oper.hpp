@@ -57,18 +57,18 @@ class PlatformFaultManager::Exclude : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class FaultType1S; //type: PlatformFaultManager::Exclude::FaultType1S
+        class FaultType1s; //type: PlatformFaultManager::Exclude::FaultType1s
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S> fault_type1s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s> fault_type1s;
         
 }; // PlatformFaultManager::Exclude
 
 
-class PlatformFaultManager::Exclude::FaultType1S : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s : public ydk::Entity
 {
     public:
-        FaultType1S();
-        ~FaultType1S();
+        FaultType1s();
+        ~FaultType1s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -81,14 +81,14 @@ class PlatformFaultManager::Exclude::FaultType1S : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class FaultType1; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1
+        class FaultType1; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1> > fault_type1;
+        ydk::YList fault_type1;
         
-}; // PlatformFaultManager::Exclude::FaultType1S
+}; // PlatformFaultManager::Exclude::FaultType1s
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1 : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1 : public ydk::Entity
 {
     public:
         FaultType1();
@@ -106,20 +106,20 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1 : public ydk::Entit
         std::string get_absolute_path() const override;
 
         ydk::YLeaf hw_fault_type1; //type: string
-        class FaultType2S; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S
-        class Racks; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks
+        class FaultType2s; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s
+        class Racks; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S> fault_type2s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks> racks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s> fault_type2s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks> racks;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s : public ydk::Entity
 {
     public:
-        FaultType2S();
-        ~FaultType2S();
+        FaultType2s();
+        ~FaultType2s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -131,14 +131,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class FaultType2; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2
+        class FaultType2; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2> > fault_type2;
+        ydk::YList fault_type2;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2 : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2 : public ydk::Entity
 {
     public:
         FaultType2();
@@ -155,20 +155,20 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf hw_fault_type2; //type: string
-        class FaultType3S; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S
-        class Racks; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks
+        class FaultType3s; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s
+        class Racks; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S> fault_type3s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks> racks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s> fault_type3s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks> racks;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s : public ydk::Entity
 {
     public:
-        FaultType3S();
-        ~FaultType3S();
+        FaultType3s();
+        ~FaultType3s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -180,14 +180,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class FaultType3; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3
+        class FaultType3; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3> > fault_type3;
+        ydk::YList fault_type3;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3 : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3 : public ydk::Entity
 {
     public:
         FaultType3();
@@ -204,14 +204,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf hw_fault_type3; //type: string
-        class Racks; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks
+        class Racks; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks> racks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks> racks;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks : public ydk::Entity
 {
     public:
         Racks();
@@ -227,14 +227,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Rack; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack
+        class Rack; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack> > rack;
+        ydk::YList rack;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack : public ydk::Entity
 {
     public:
         Rack();
@@ -250,15 +250,15 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf rack; //type: int32
-        class Slots; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots
+        ydk::YLeaf rack; //type: uint32
+        class Slots; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots> slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots> slots;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots : public ydk::Entity
 {
     public:
         Slots();
@@ -274,14 +274,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Slot; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot
+        class Slot; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot : public ydk::Entity
 {
     public:
         Slot();
@@ -298,16 +298,16 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf slot; //type: string
-        class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary
-        class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices
+        class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary
+        class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary : public ydk::Entity
 {
     public:
         FaultSummary();
@@ -328,10 +328,10 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf total; //type: int32
         ydk::YLeaf severity_error_count; //type: int32
 
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices : public ydk::Entity
 {
     public:
         HardwareFaultDevices();
@@ -347,14 +347,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
+        class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        ydk::YList hardware_fault_device;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice : public ydk::Entity
 {
     public:
         HardwareFaultDevice();
@@ -371,14 +371,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf hw_fault_device; //type: string
-        class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
+        class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        ydk::YList hardware_fault_type;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType : public ydk::Entity
 {
     public:
         HardwareFaultType();
@@ -404,10 +404,10 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf device_description; //type: string
         ydk::YLeaf condition_severity; //type: string
 
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks : public ydk::Entity
 {
     public:
         Racks();
@@ -423,14 +423,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Rack; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack
+        class Rack; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack> > rack;
+        ydk::YList rack;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack : public ydk::Entity
 {
     public:
         Rack();
@@ -446,15 +446,15 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf rack; //type: int32
-        class Slots; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots
+        ydk::YLeaf rack; //type: uint32
+        class Slots; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots> slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots> slots;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots : public ydk::Entity
 {
     public:
         Slots();
@@ -470,14 +470,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Slot; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot
+        class Slot; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot : public ydk::Entity
 {
     public:
         Slot();
@@ -494,16 +494,16 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf slot; //type: string
-        class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary
-        class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices
+        class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary
+        class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary : public ydk::Entity
 {
     public:
         FaultSummary();
@@ -524,10 +524,10 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf total; //type: int32
         ydk::YLeaf severity_error_count; //type: int32
 
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices : public ydk::Entity
 {
     public:
         HardwareFaultDevices();
@@ -543,14 +543,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
+        class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        ydk::YList hardware_fault_device;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice : public ydk::Entity
 {
     public:
         HardwareFaultDevice();
@@ -567,14 +567,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf hw_fault_device; //type: string
-        class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
+        class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        ydk::YList hardware_fault_type;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType : public ydk::Entity
 {
     public:
         HardwareFaultType();
@@ -600,10 +600,10 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::Fault
         ydk::YLeaf device_description; //type: string
         ydk::YLeaf condition_severity; //type: string
 
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks : public ydk::Entity
 {
     public:
         Racks();
@@ -619,14 +619,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Rack; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack
+        class Rack; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack> > rack;
+        ydk::YList rack;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack : public ydk::Entity
 {
     public:
         Rack();
@@ -642,15 +642,15 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf rack; //type: int32
-        class Slots; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
+        ydk::YLeaf rack; //type: uint32
+        class Slots; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots> slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots> slots;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots : public ydk::Entity
 {
     public:
         Slots();
@@ -666,14 +666,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Slot; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
+        class Slot; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot : public ydk::Entity
 {
     public:
         Slot();
@@ -690,16 +690,16 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf slot; //type: string
-        class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary
-        class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices
+        class FaultSummary; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary
+        class HardwareFaultDevices; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary> fault_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices> hardware_fault_devices;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary : public ydk::Entity
 {
     public:
         FaultSummary();
@@ -720,10 +720,10 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         ydk::YLeaf total; //type: int32
         ydk::YLeaf severity_error_count; //type: int32
 
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices : public ydk::Entity
 {
     public:
         HardwareFaultDevices();
@@ -739,14 +739,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
+        class HardwareFaultDevice; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        ydk::YList hardware_fault_device;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice : public ydk::Entity
 {
     public:
         HardwareFaultDevice();
@@ -763,14 +763,14 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf hw_fault_device; //type: string
-        class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
+        class HardwareFaultType; //type: PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        ydk::YList hardware_fault_type;
         
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
 
-class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType : public ydk::Entity
+class PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType : public ydk::Entity
 {
     public:
         HardwareFaultType();
@@ -796,7 +796,7 @@ class PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots
         ydk::YLeaf device_description; //type: string
         ydk::YLeaf condition_severity; //type: string
 
-}; // PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
+}; // PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
 
 class PlatformFaultManager::Racks : public ydk::Entity
@@ -818,7 +818,7 @@ class PlatformFaultManager::Racks : public ydk::Entity
 
         class Rack; //type: PlatformFaultManager::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // PlatformFaultManager::Racks
 
@@ -840,7 +840,7 @@ class PlatformFaultManager::Racks::Rack : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rack; //type: int32
+        ydk::YLeaf rack; //type: uint32
         class Slots; //type: PlatformFaultManager::Racks::Rack::Slots
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots> slots;
@@ -866,7 +866,7 @@ class PlatformFaultManager::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: PlatformFaultManager::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // PlatformFaultManager::Racks::Rack::Slots
 
@@ -939,7 +939,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices : pub
 
         class HardwareFaultDevice; //type: PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice> > hardware_fault_device;
+        ydk::YList hardware_fault_device;
         
 }; // PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices
 
@@ -963,7 +963,7 @@ class PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hard
         ydk::YLeaf hw_fault_device; //type: string
         class HardwareFaultType; //type: PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfm_oper::PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType> > hardware_fault_type;
+        ydk::YList hardware_fault_type;
         
 }; // PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice
 

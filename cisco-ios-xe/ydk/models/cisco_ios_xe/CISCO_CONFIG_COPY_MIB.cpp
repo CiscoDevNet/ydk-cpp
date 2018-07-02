@@ -13,13 +13,13 @@ namespace CISCO_CONFIG_COPY_MIB {
 
 CISCOCONFIGCOPYMIB::CISCOCONFIGCOPYMIB()
     :
-    cccopytable(std::make_shared<CISCOCONFIGCOPYMIB::Cccopytable>())
-	,cccopyerrortable(std::make_shared<CISCOCONFIGCOPYMIB::Cccopyerrortable>())
+    cccopytable(std::make_shared<CISCOCONFIGCOPYMIB::CcCopyTable>())
+    , cccopyerrortable(std::make_shared<CISCOCONFIGCOPYMIB::CcCopyErrorTable>())
 {
     cccopytable->parent = this;
     cccopyerrortable->parent = this;
 
-    yang_name = "CISCO-CONFIG-COPY-MIB"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-CONFIG-COPY-MIB"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOCONFIGCOPYMIB::~CISCOCONFIGCOPYMIB()
@@ -28,6 +28,7 @@ CISCOCONFIGCOPYMIB::~CISCOCONFIGCOPYMIB()
 
 bool CISCOCONFIGCOPYMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cccopytable !=  nullptr && cccopytable->has_data())
 	|| (cccopyerrortable !=  nullptr && cccopyerrortable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::get_child_by_name(const std::string 
     {
         if(cccopytable == nullptr)
         {
-            cccopytable = std::make_shared<CISCOCONFIGCOPYMIB::Cccopytable>();
+            cccopytable = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyTable>();
         }
         return cccopytable;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::get_child_by_name(const std::string 
     {
         if(cccopyerrortable == nullptr)
         {
-            cccopyerrortable = std::make_shared<CISCOCONFIGCOPYMIB::Cccopyerrortable>();
+            cccopyerrortable = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyErrorTable>();
         }
         return cccopyerrortable;
     }
@@ -135,19 +136,22 @@ bool CISCOCONFIGCOPYMIB::has_leaf_or_child_of_name(const std::string & name) con
     return false;
 }
 
-CISCOCONFIGCOPYMIB::Cccopytable::Cccopytable()
+CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyTable()
+    :
+    cccopyentry(this, {"cccopyindex"})
 {
 
-    yang_name = "ccCopyTable"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccCopyTable"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONFIGCOPYMIB::Cccopytable::~Cccopytable()
+CISCOCONFIGCOPYMIB::CcCopyTable::~CcCopyTable()
 {
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopytable::has_data() const
+bool CISCOCONFIGCOPYMIB::CcCopyTable::has_data() const
 {
-    for (std::size_t index=0; index<cccopyentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cccopyentry.len(); index++)
     {
         if(cccopyentry[index]->has_data())
             return true;
@@ -155,9 +159,9 @@ bool CISCOCONFIGCOPYMIB::Cccopytable::has_data() const
     return false;
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopytable::has_operation() const
+bool CISCOCONFIGCOPYMIB::CcCopyTable::has_operation() const
 {
-    for (std::size_t index=0; index<cccopyentry.size(); index++)
+    for (std::size_t index=0; index<cccopyentry.len(); index++)
     {
         if(cccopyentry[index]->has_operation())
             return true;
@@ -165,21 +169,21 @@ bool CISCOCONFIGCOPYMIB::Cccopytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopytable::get_absolute_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopytable::get_segment_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ccCopyTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -188,25 +192,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccCopyEntry")
     {
-        auto c = std::make_shared<CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry>();
+        auto c = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry>();
         c->parent = this;
-        cccopyentry.push_back(c);
+        cccopyentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cccopyentry)
+    for (auto c : cccopyentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,22 +221,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopytable::
     return children;
 }
 
-void CISCOCONFIGCOPYMIB::Cccopytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGCOPYMIB::CcCopyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCONFIGCOPYMIB::Cccopytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGCOPYMIB::CcCopyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGCOPYMIB::CcCopyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccCopyEntry")
         return true;
     return false;
 }
 
-CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::Cccopyentry()
+CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::CcCopyEntry()
     :
     cccopyindex{YType::uint32, "ccCopyIndex"},
     cccopyprotocol{YType::enumeration, "ccCopyProtocol"},
@@ -252,15 +256,16 @@ CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::Cccopyentry()
     cccopyserveraddressrev1{YType::str, "ccCopyServerAddressRev1"}
 {
 
-    yang_name = "ccCopyEntry"; yang_parent_name = "ccCopyTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccCopyEntry"; yang_parent_name = "ccCopyTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::~Cccopyentry()
+CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::~CcCopyEntry()
 {
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_data() const
+bool CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cccopyindex.is_set
 	|| cccopyprotocol.is_set
 	|| cccopysourcefiletype.is_set
@@ -279,7 +284,7 @@ bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_data() const
 	|| cccopyserveraddressrev1.is_set;
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_operation() const
+bool CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cccopyindex.yfilter)
@@ -300,21 +305,22 @@ bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_operation() const
 	|| ydk::is_set(cccopyserveraddressrev1.yfilter);
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_absolute_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/ccCopyTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_segment_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccCopyEntry" <<"[ccCopyIndex='" <<cccopyindex <<"']";
+    path_buffer << "ccCopyEntry";
+    ADD_KEY_TOKEN(cccopyindex, "ccCopyIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -339,19 +345,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopytable::
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccCopyIndex")
     {
@@ -451,7 +457,7 @@ void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_value(const std::string &
     }
 }
 
-void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ccCopyIndex")
     {
@@ -519,26 +525,29 @@ void CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::set_filter(const std::string 
     }
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopytable::Cccopyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccCopyIndex" || name == "ccCopyProtocol" || name == "ccCopySourceFileType" || name == "ccCopyDestFileType" || name == "ccCopyServerAddress" || name == "ccCopyFileName" || name == "ccCopyUserName" || name == "ccCopyUserPassword" || name == "ccCopyNotificationOnCompletion" || name == "ccCopyState" || name == "ccCopyTimeStarted" || name == "ccCopyTimeCompleted" || name == "ccCopyFailCause" || name == "ccCopyEntryRowStatus" || name == "ccCopyServerAddressType" || name == "ccCopyServerAddressRev1")
         return true;
     return false;
 }
 
-CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrortable()
+CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorTable()
+    :
+    cccopyerrorentry(this, {"cccopyindex", "cccopyerrorindex"})
 {
 
-    yang_name = "ccCopyErrorTable"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccCopyErrorTable"; yang_parent_name = "CISCO-CONFIG-COPY-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONFIGCOPYMIB::Cccopyerrortable::~Cccopyerrortable()
+CISCOCONFIGCOPYMIB::CcCopyErrorTable::~CcCopyErrorTable()
 {
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopyerrortable::has_data() const
+bool CISCOCONFIGCOPYMIB::CcCopyErrorTable::has_data() const
 {
-    for (std::size_t index=0; index<cccopyerrorentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cccopyerrorentry.len(); index++)
     {
         if(cccopyerrorentry[index]->has_data())
             return true;
@@ -546,9 +555,9 @@ bool CISCOCONFIGCOPYMIB::Cccopyerrortable::has_data() const
     return false;
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopyerrortable::has_operation() const
+bool CISCOCONFIGCOPYMIB::CcCopyErrorTable::has_operation() const
 {
-    for (std::size_t index=0; index<cccopyerrorentry.size(); index++)
+    for (std::size_t index=0; index<cccopyerrorentry.len(); index++)
     {
         if(cccopyerrorentry[index]->has_operation())
             return true;
@@ -556,21 +565,21 @@ bool CISCOCONFIGCOPYMIB::Cccopyerrortable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopyerrortable::get_absolute_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopyerrortable::get_segment_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ccCopyErrorTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopyerrortable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -579,25 +588,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopyerrorta
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopyerrortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccCopyErrorEntry")
     {
-        auto c = std::make_shared<CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry>();
+        auto c = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry>();
         c->parent = this;
-        cccopyerrorentry.push_back(c);
+        cccopyerrorentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopyerrortable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cccopyerrorentry)
+    for (auto c : cccopyerrorentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -608,22 +617,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopyerrorta
     return children;
 }
 
-void CISCOCONFIGCOPYMIB::Cccopyerrortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGCOPYMIB::CcCopyErrorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCONFIGCOPYMIB::Cccopyerrortable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGCOPYMIB::CcCopyErrorTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopyerrortable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGCOPYMIB::CcCopyErrorTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccCopyErrorEntry")
         return true;
     return false;
 }
 
-CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::Cccopyerrorentry()
+CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::CcCopyErrorEntry()
     :
     cccopyindex{YType::str, "ccCopyIndex"},
     cccopyerrorindex{YType::uint32, "ccCopyErrorIndex"},
@@ -633,15 +642,16 @@ CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::Cccopyerrorentry()
     cccopyerrordescription{YType::str, "ccCopyErrorDescription"}
 {
 
-    yang_name = "ccCopyErrorEntry"; yang_parent_name = "ccCopyErrorTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccCopyErrorEntry"; yang_parent_name = "ccCopyErrorTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::~Cccopyerrorentry()
+CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::~CcCopyErrorEntry()
 {
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_data() const
+bool CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cccopyindex.is_set
 	|| cccopyerrorindex.is_set
 	|| cccopyerrordeviceipaddresstype.is_set
@@ -650,7 +660,7 @@ bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_data() const
 	|| cccopyerrordescription.is_set;
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_operation() const
+bool CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cccopyindex.yfilter)
@@ -661,21 +671,23 @@ bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_operation() con
 	|| ydk::is_set(cccopyerrordescription.yfilter);
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::get_absolute_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONFIG-COPY-MIB:CISCO-CONFIG-COPY-MIB/ccCopyErrorTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::get_segment_path() const
+std::string CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccCopyErrorEntry" <<"[ccCopyIndex='" <<cccopyindex <<"']" <<"[ccCopyErrorIndex='" <<cccopyerrorindex <<"']";
+    path_buffer << "ccCopyErrorEntry";
+    ADD_KEY_TOKEN(cccopyindex, "ccCopyIndex");
+    ADD_KEY_TOKEN(cccopyerrorindex, "ccCopyErrorIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -690,19 +702,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::Cccopyerrorta
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccCopyIndex")
     {
@@ -742,7 +754,7 @@ void CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::set_value(const std
     }
 }
 
-void CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ccCopyIndex")
     {
@@ -770,23 +782,12 @@ void CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::set_filter(const st
     }
 }
 
-bool CISCOCONFIGCOPYMIB::Cccopyerrortable::Cccopyerrorentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccCopyIndex" || name == "ccCopyErrorIndex" || name == "ccCopyErrorDeviceIpAddressType" || name == "ccCopyErrorDeviceIpAddress" || name == "ccCopyErrorDeviceWWN" || name == "ccCopyErrorDescription")
         return true;
     return false;
 }
-
-const Enum::YLeaf ConfigCopyProtocol::tftp {1, "tftp"};
-const Enum::YLeaf ConfigCopyProtocol::ftp {2, "ftp"};
-const Enum::YLeaf ConfigCopyProtocol::rcp {3, "rcp"};
-const Enum::YLeaf ConfigCopyProtocol::scp {4, "scp"};
-const Enum::YLeaf ConfigCopyProtocol::sftp {5, "sftp"};
-
-const Enum::YLeaf ConfigCopyState::waiting {1, "waiting"};
-const Enum::YLeaf ConfigCopyState::running {2, "running"};
-const Enum::YLeaf ConfigCopyState::successful {3, "successful"};
-const Enum::YLeaf ConfigCopyState::failed {4, "failed"};
 
 const Enum::YLeaf ConfigCopyFailCause::unknown {1, "unknown"};
 const Enum::YLeaf ConfigCopyFailCause::badFileName {2, "badFileName"};
@@ -798,12 +799,23 @@ const Enum::YLeaf ConfigCopyFailCause::someConfigApplyFailed {7, "someConfigAppl
 const Enum::YLeaf ConfigCopyFailCause::systemNotReady {8, "systemNotReady"};
 const Enum::YLeaf ConfigCopyFailCause::requestAborted {9, "requestAborted"};
 
+const Enum::YLeaf ConfigCopyState::waiting {1, "waiting"};
+const Enum::YLeaf ConfigCopyState::running {2, "running"};
+const Enum::YLeaf ConfigCopyState::successful {3, "successful"};
+const Enum::YLeaf ConfigCopyState::failed {4, "failed"};
+
 const Enum::YLeaf ConfigFileType::networkFile {1, "networkFile"};
 const Enum::YLeaf ConfigFileType::iosFile {2, "iosFile"};
 const Enum::YLeaf ConfigFileType::startupConfig {3, "startupConfig"};
 const Enum::YLeaf ConfigFileType::runningConfig {4, "runningConfig"};
 const Enum::YLeaf ConfigFileType::terminal {5, "terminal"};
 const Enum::YLeaf ConfigFileType::fabricStartupConfig {6, "fabricStartupConfig"};
+
+const Enum::YLeaf ConfigCopyProtocol::tftp {1, "tftp"};
+const Enum::YLeaf ConfigCopyProtocol::ftp {2, "ftp"};
+const Enum::YLeaf ConfigCopyProtocol::rcp {3, "rcp"};
+const Enum::YLeaf ConfigCopyProtocol::scp {4, "scp"};
+const Enum::YLeaf ConfigCopyProtocol::sftp {5, "sftp"};
 
 
 }

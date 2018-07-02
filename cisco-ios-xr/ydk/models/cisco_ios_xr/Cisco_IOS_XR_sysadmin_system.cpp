@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysadmin_system {
 Mgmt::Mgmt()
     :
     ipv4(std::make_shared<Mgmt::Ipv4>())
-	,ipv6(std::make_shared<Mgmt::Ipv6>())
+    , ipv6(std::make_shared<Mgmt::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "mgmt"; yang_parent_name = "Cisco-IOS-XR-sysadmin-system"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mgmt"; yang_parent_name = "Cisco-IOS-XR-sysadmin-system"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Mgmt::~Mgmt()
@@ -28,6 +28,7 @@ Mgmt::~Mgmt()
 
 bool Mgmt::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -141,7 +142,7 @@ Mgmt::Ipv4::Ipv4()
     subnet_mask_ip{YType::str, "subnet-mask-ip"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mgmt::Ipv4::~Ipv4()
@@ -150,6 +151,7 @@ Mgmt::Ipv4::~Ipv4()
 
 bool Mgmt::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| subnet_mask_ip.is_set;
 }
@@ -239,7 +241,7 @@ Mgmt::Ipv6::Ipv6()
     prefix{YType::uint8, "prefix"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mgmt::Ipv6::~Ipv6()
@@ -248,6 +250,7 @@ Mgmt::Ipv6::~Ipv6()
 
 bool Mgmt::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix.is_set;
 }

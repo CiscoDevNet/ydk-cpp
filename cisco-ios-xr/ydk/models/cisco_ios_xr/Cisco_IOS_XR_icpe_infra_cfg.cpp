@@ -17,7 +17,7 @@ NvSatelliteGlobal::NvSatelliteGlobal()
 {
     chassis_mac->parent = this;
 
-    yang_name = "nv-satellite-global"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nv-satellite-global"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NvSatelliteGlobal::~NvSatelliteGlobal()
@@ -26,6 +26,7 @@ NvSatelliteGlobal::~NvSatelliteGlobal()
 
 bool NvSatelliteGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return (chassis_mac !=  nullptr && chassis_mac->has_data());
 }
 
@@ -124,7 +125,7 @@ NvSatelliteGlobal::ChassisMac::ChassisMac()
     mac3{YType::uint32, "mac3"}
 {
 
-    yang_name = "chassis-mac"; yang_parent_name = "nv-satellite-global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis-mac"; yang_parent_name = "nv-satellite-global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatelliteGlobal::ChassisMac::~ChassisMac()
@@ -133,6 +134,7 @@ NvSatelliteGlobal::ChassisMac::~ChassisMac()
 
 bool NvSatelliteGlobal::ChassisMac::has_data() const
 {
+    if (is_presence_container) return true;
     return mac1.is_set
 	|| mac2.is_set
 	|| mac3.is_set;
@@ -230,9 +232,11 @@ bool NvSatelliteGlobal::ChassisMac::has_leaf_or_child_of_name(const std::string 
 }
 
 NvSatellites::NvSatellites()
+    :
+    nv_satellite(this, {"satellite_id"})
 {
 
-    yang_name = "nv-satellites"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nv-satellites"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NvSatellites::~NvSatellites()
@@ -241,7 +245,8 @@ NvSatellites::~NvSatellites()
 
 bool NvSatellites::has_data() const
 {
-    for (std::size_t index=0; index<nv_satellite.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nv_satellite.len(); index++)
     {
         if(nv_satellite[index]->has_data())
             return true;
@@ -251,7 +256,7 @@ bool NvSatellites::has_data() const
 
 bool NvSatellites::has_operation() const
 {
-    for (std::size_t index=0; index<nv_satellite.size(); index++)
+    for (std::size_t index=0; index<nv_satellite.len(); index++)
     {
         if(nv_satellite[index]->has_operation())
             return true;
@@ -281,7 +286,7 @@ std::shared_ptr<Entity> NvSatellites::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<NvSatellites::NvSatellite>();
         c->parent = this;
-        nv_satellite.push_back(c);
+        nv_satellite.append(c);
         return c;
     }
 
@@ -293,7 +298,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nv_satellite)
+    for (auto c : nv_satellite.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -358,18 +363,18 @@ NvSatellites::NvSatellite::NvSatellite()
     serial_number{YType::str, "serial-number"},
     secret{YType::str, "secret"},
     ip_address{YType::str, "ip-address"}
-    	,
+        ,
     upgrade_on_connect(std::make_shared<NvSatellites::NvSatellite::UpgradeOnConnect>())
-	,candidate_fabric_ports(std::make_shared<NvSatellites::NvSatellite::CandidateFabricPorts>())
-	,connection_info(std::make_shared<NvSatellites::NvSatellite::ConnectionInfo>())
-	,redundancy(std::make_shared<NvSatellites::NvSatellite::Redundancy>())
+    , candidate_fabric_ports(std::make_shared<NvSatellites::NvSatellite::CandidateFabricPorts>())
+    , connection_info(std::make_shared<NvSatellites::NvSatellite::ConnectionInfo>())
+    , redundancy(std::make_shared<NvSatellites::NvSatellite::Redundancy>())
 {
     upgrade_on_connect->parent = this;
     candidate_fabric_ports->parent = this;
     connection_info->parent = this;
     redundancy->parent = this;
 
-    yang_name = "nv-satellite"; yang_parent_name = "nv-satellites"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nv-satellite"; yang_parent_name = "nv-satellites"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellites::NvSatellite::~NvSatellite()
@@ -378,6 +383,7 @@ NvSatellites::NvSatellite::~NvSatellite()
 
 bool NvSatellites::NvSatellite::has_data() const
 {
+    if (is_presence_container) return true;
     return satellite_id.is_set
 	|| vrf.is_set
 	|| timeout_warning.is_set
@@ -427,7 +433,8 @@ std::string NvSatellites::NvSatellite::get_absolute_path() const
 std::string NvSatellites::NvSatellite::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nv-satellite" <<"[satellite-id='" <<satellite_id <<"']";
+    path_buffer << "nv-satellite";
+    ADD_KEY_TOKEN(satellite_id, "satellite-id");
     return path_buffer.str();
 }
 
@@ -661,7 +668,7 @@ NvSatellites::NvSatellite::UpgradeOnConnect::UpgradeOnConnect()
     reference{YType::str, "reference"}
 {
 
-    yang_name = "upgrade-on-connect"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "upgrade-on-connect"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellites::NvSatellite::UpgradeOnConnect::~UpgradeOnConnect()
@@ -670,6 +677,7 @@ NvSatellites::NvSatellite::UpgradeOnConnect::~UpgradeOnConnect()
 
 bool NvSatellites::NvSatellite::UpgradeOnConnect::has_data() const
 {
+    if (is_presence_container) return true;
     return connect_type.is_set
 	|| reference.is_set;
 }
@@ -747,9 +755,11 @@ bool NvSatellites::NvSatellite::UpgradeOnConnect::has_leaf_or_child_of_name(cons
 }
 
 NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPorts()
+    :
+    candidate_fabric_port(this, {"port_type", "slot", "sub_slot"})
 {
 
-    yang_name = "candidate-fabric-ports"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-fabric-ports"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellites::NvSatellite::CandidateFabricPorts::~CandidateFabricPorts()
@@ -758,7 +768,8 @@ NvSatellites::NvSatellite::CandidateFabricPorts::~CandidateFabricPorts()
 
 bool NvSatellites::NvSatellite::CandidateFabricPorts::has_data() const
 {
-    for (std::size_t index=0; index<candidate_fabric_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_fabric_port.len(); index++)
     {
         if(candidate_fabric_port[index]->has_data())
             return true;
@@ -768,7 +779,7 @@ bool NvSatellites::NvSatellite::CandidateFabricPorts::has_data() const
 
 bool NvSatellites::NvSatellite::CandidateFabricPorts::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_fabric_port.size(); index++)
+    for (std::size_t index=0; index<candidate_fabric_port.len(); index++)
     {
         if(candidate_fabric_port[index]->has_operation())
             return true;
@@ -798,7 +809,7 @@ std::shared_ptr<Entity> NvSatellites::NvSatellite::CandidateFabricPorts::get_chi
     {
         auto c = std::make_shared<NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort>();
         c->parent = this;
-        candidate_fabric_port.push_back(c);
+        candidate_fabric_port.append(c);
         return c;
     }
 
@@ -810,7 +821,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Candid
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_fabric_port)
+    for (auto c : candidate_fabric_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -844,7 +855,7 @@ NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::CandidateF
     port_range{YType::str, "port-range"}
 {
 
-    yang_name = "candidate-fabric-port"; yang_parent_name = "candidate-fabric-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-fabric-port"; yang_parent_name = "candidate-fabric-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::~CandidateFabricPort()
@@ -853,6 +864,7 @@ NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::~Candidate
 
 bool NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::has_data() const
 {
+    if (is_presence_container) return true;
     return port_type.is_set
 	|| slot.is_set
 	|| sub_slot.is_set
@@ -871,7 +883,10 @@ bool NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::has_o
 std::string NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-fabric-port" <<"[port-type='" <<port_type <<"']" <<"[slot='" <<slot <<"']" <<"[sub-slot='" <<sub_slot <<"']";
+    path_buffer << "candidate-fabric-port";
+    ADD_KEY_TOKEN(port_type, "port-type");
+    ADD_KEY_TOKEN(slot, "slot");
+    ADD_KEY_TOKEN(sub_slot, "sub-slot");
     return path_buffer.str();
 }
 
@@ -961,7 +976,7 @@ NvSatellites::NvSatellite::ConnectionInfo::ConnectionInfo()
     password{YType::str, "password"}
 {
 
-    yang_name = "connection-info"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection-info"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellites::NvSatellite::ConnectionInfo::~ConnectionInfo()
@@ -970,6 +985,7 @@ NvSatellites::NvSatellite::ConnectionInfo::~ConnectionInfo()
 
 bool NvSatellites::NvSatellite::ConnectionInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| password.is_set;
 }
@@ -1051,7 +1067,7 @@ NvSatellites::NvSatellite::Redundancy::Redundancy()
     host_priority{YType::uint32, "host-priority"}
 {
 
-    yang_name = "redundancy"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redundancy"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellites::NvSatellite::Redundancy::~Redundancy()
@@ -1060,6 +1076,7 @@ NvSatellites::NvSatellite::Redundancy::~Redundancy()
 
 bool NvSatellites::NvSatellite::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return host_priority.is_set;
 }
 

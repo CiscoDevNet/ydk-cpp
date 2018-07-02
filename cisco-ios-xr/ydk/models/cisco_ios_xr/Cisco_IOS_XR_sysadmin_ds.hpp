@@ -33,7 +33,7 @@ class Services : public ydk::Entity
 
         class AllLocations; //type: Services::AllLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::Services::AllLocations> > all_locations;
+        ydk::YList all_locations;
         
 }; // Services
 
@@ -58,7 +58,7 @@ class Services::AllLocations : public ydk::Entity
         ydk::YLeaf location; //type: string
         class Services_; //type: Services::AllLocations::Services_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::Services::AllLocations::Services_> > services;
+        ydk::YList services;
         
 }; // Services::AllLocations
 
@@ -83,8 +83,8 @@ class Services::AllLocations::Services_ : public ydk::Entity
         class Endpoint; //type: Services::AllLocations::Services_::Endpoint
         class Registrations; //type: Services::AllLocations::Services_::Registrations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::Services::AllLocations::Services_::Endpoint> > endpoint;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::Services::AllLocations::Services_::Registrations> > registrations;
+        ydk::YList endpoint;
+        ydk::YList registrations;
         
 }; // Services::AllLocations::Services_
 
@@ -161,7 +161,7 @@ class ServicesStats : public ydk::Entity
         class AllLocations; //type: ServicesStats::AllLocations
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::ServicesStats::Ds> ds;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::ServicesStats::AllLocations> > all_locations;
+        ydk::YList all_locations;
         
 }; // ServicesStats
 
@@ -185,7 +185,7 @@ class ServicesStats::Ds : public ydk::Entity
 
         class Trace; //type: ServicesStats::Ds::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::ServicesStats::Ds::Trace> > trace;
+        ydk::YList trace;
         
 }; // ServicesStats::Ds
 
@@ -210,7 +210,7 @@ class ServicesStats::Ds::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: ServicesStats::Ds::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::ServicesStats::Ds::Trace::Location> > location;
+        ydk::YList location;
         
 }; // ServicesStats::Ds::Trace
 
@@ -234,7 +234,7 @@ class ServicesStats::Ds::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: ServicesStats::Ds::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::ServicesStats::Ds::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // ServicesStats::Ds::Trace::Location
 
@@ -258,7 +258,7 @@ class ServicesStats::Ds::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // ServicesStats::Ds::Trace::Location::AllOptions
 
@@ -304,7 +304,7 @@ class ServicesStats::AllLocations : public ydk::Entity
         ydk::YLeaf location; //type: string
         class Stats; //type: ServicesStats::AllLocations::Stats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ds::ServicesStats::AllLocations::Stats> > stats;
+        ydk::YList stats;
         
 }; // ServicesStats::AllLocations
 
@@ -337,13 +337,13 @@ class ServicesStats::AllLocations::Stats : public ydk::Entity
 
 }; // ServicesStats::AllLocations::Stats
 
-class ServiceScope : public ydk::Enum
+class ProcessIssuRole : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf None;
-        static const ydk::Enum::YLeaf Rack;
-        static const ydk::Enum::YLeaf System;
-        static const ydk::Enum::YLeaf Node;
+        static const ydk::Enum::YLeaf Primary;
+        static const ydk::Enum::YLeaf Secondary;
+        static const ydk::Enum::YLeaf Tertiary;
+        static const ydk::Enum::YLeaf Unknown;
 
 };
 
@@ -358,13 +358,13 @@ class ProcessRole : public ydk::Enum
 
 };
 
-class ProcessIssuRole : public ydk::Enum
+class ServiceScope : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Primary;
-        static const ydk::Enum::YLeaf Secondary;
-        static const ydk::Enum::YLeaf Tertiary;
-        static const ydk::Enum::YLeaf Unknown;
+        static const ydk::Enum::YLeaf None;
+        static const ydk::Enum::YLeaf Rack;
+        static const ydk::Enum::YLeaf System;
+        static const ydk::Enum::YLeaf Node;
 
 };
 

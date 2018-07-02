@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_ipv6_oper {
 
 Ipv6Data::Ipv6Data()
+    :
+    nd6_info(this, {"vrf_name", "if_name", "ip"})
 {
 
-    yang_name = "ipv6-data"; yang_parent_name = "Cisco-IOS-XE-ipv6-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-data"; yang_parent_name = "Cisco-IOS-XE-ipv6-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6Data::~Ipv6Data()
@@ -23,7 +25,8 @@ Ipv6Data::~Ipv6Data()
 
 bool Ipv6Data::has_data() const
 {
-    for (std::size_t index=0; index<nd6_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nd6_info.len(); index++)
     {
         if(nd6_info[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Ipv6Data::has_data() const
 
 bool Ipv6Data::has_operation() const
 {
-    for (std::size_t index=0; index<nd6_info.size(); index++)
+    for (std::size_t index=0; index<nd6_info.len(); index++)
     {
         if(nd6_info[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Ipv6Data::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<Ipv6Data::Nd6Info>();
         c->parent = this;
-        nd6_info.push_back(c);
+        nd6_info.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Data::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nd6_info)
+    for (auto c : nd6_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -137,7 +140,7 @@ Ipv6Data::Nd6Info::Nd6Info()
     uptime{YType::uint32, "uptime"}
 {
 
-    yang_name = "nd6-info"; yang_parent_name = "ipv6-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nd6-info"; yang_parent_name = "ipv6-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Data::Nd6Info::~Nd6Info()
@@ -146,6 +149,7 @@ Ipv6Data::Nd6Info::~Nd6Info()
 
 bool Ipv6Data::Nd6Info::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| if_name.is_set
 	|| ip.is_set
@@ -177,7 +181,10 @@ std::string Ipv6Data::Nd6Info::get_absolute_path() const
 std::string Ipv6Data::Nd6Info::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nd6-info" <<"[vrf-name='" <<vrf_name <<"']" <<"[if-name='" <<if_name <<"']" <<"[ip='" <<ip <<"']";
+    path_buffer << "nd6-info";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(if_name, "if-name");
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 

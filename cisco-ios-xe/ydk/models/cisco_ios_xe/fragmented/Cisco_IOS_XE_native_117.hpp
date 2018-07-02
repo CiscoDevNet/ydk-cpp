@@ -120,8 +120,8 @@ class Native::Crypto::Isakmp : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Key> key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Nat> nat;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Peer> peer;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Policy> > policy;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Profile> > profile;
+        ydk::YList policy;
+        ydk::YList profile;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Xauth> xauth;
                 class AggressiveMode;
         class Identity;
@@ -150,7 +150,7 @@ class Native::Crypto::Isakmp::Client : public ydk::Entity
         class Firewall; //type: Native::Crypto::Isakmp::Client::Firewall
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Client::Configuration> configuration;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Client::Firewall> > firewall;
+        ydk::YList firewall;
         
 }; // Native::Crypto::Isakmp::Client
 
@@ -177,7 +177,7 @@ class Native::Crypto::Isakmp::Client::Configuration : public ydk::Entity
         class Group; //type: Native::Crypto::Isakmp::Client::Configuration::Group
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Client::Configuration::AddressPool> address_pool;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Client::Configuration::Group> > group;
+        ydk::YList group;
         
 }; // Native::Crypto::Isakmp::Client::Configuration
 
@@ -850,7 +850,7 @@ class Native::Crypto::Isakmp::Peer : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Peer::Ipv4Addr> ipv4_addr;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Peer::Ipv6Addr> ipv6_addr;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Peer::Hostname> > hostname;
+        ydk::YList hostname;
         
 }; // Native::Crypto::Isakmp::Peer
 
@@ -874,7 +874,7 @@ class Native::Crypto::Isakmp::Peer::Ipv4Addr : public ydk::Entity
 
         class Address; //type: Native::Crypto::Isakmp::Peer::Ipv4Addr::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Peer::Ipv4Addr::Address> > address;
+        ydk::YList address;
         
 }; // Native::Crypto::Isakmp::Peer::Ipv4Addr
 
@@ -1020,7 +1020,7 @@ class Native::Crypto::Isakmp::Peer::Ipv6Addr : public ydk::Entity
 
         class Address; //type: Native::Crypto::Isakmp::Peer::Ipv6Addr::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp::Peer::Ipv6Addr::Address> > address;
+        ydk::YList address;
         
 }; // Native::Crypto::Isakmp::Peer::Ipv6Addr
 
@@ -1447,7 +1447,7 @@ class Native::Crypto::Isakmp::Profile : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf accounting; //type: string
         ydk::YLeaf description; //type: string
-        ydk::YLeaf keyring; //type: one of enumeration, string
+        ydk::YLeaf keyring; //type: one of string, enumeration
         ydk::YLeaf local_address; //type: string
         ydk::YLeaf qos_group; //type: uint16
         ydk::YLeaf virtual_template; //type: uint16
@@ -1492,7 +1492,7 @@ class Native::Crypto::Isakmp::Profile::Default : public ydk::Entity
 
         ydk::YLeaf accounting; //type: empty
         ydk::YLeaf description; //type: string
-        ydk::YLeaf keyring; //type: one of enumeration, string
+        ydk::YLeaf keyring; //type: one of string, enumeration
         ydk::YLeaf local_address; //type: empty
         ydk::YLeaf qos_group; //type: empty
         ydk::YLeaf virtual_template; //type: empty
@@ -2940,8 +2940,8 @@ class Native::Crypto::Key::Export : public ydk::Entity
         class Ec; //type: Native::Crypto::Key::Export::Ec
         class Rsa; //type: Native::Crypto::Key::Export::Rsa
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::Export::Ec> > ec;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::Export::Rsa> > rsa;
+        ydk::YList ec;
+        ydk::YList rsa;
         
 }; // Native::Crypto::Key::Export
 
@@ -3240,8 +3240,8 @@ class Native::Crypto::Key::Import : public ydk::Entity
         class Ec; //type: Native::Crypto::Key::Import::Ec
         class Rsa; //type: Native::Crypto::Key::Import::Rsa
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::Import::Ec> > ec;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::Import::Rsa> > rsa;
+        ydk::YList ec;
+        ydk::YList rsa;
         
 }; // Native::Crypto::Key::Import
 
@@ -3449,8 +3449,8 @@ class Native::Crypto::Key::PubkeyChain::Rsa : public ydk::Entity
         class NamedKey; //type: Native::Crypto::Key::PubkeyChain::Rsa::NamedKey
         class Default; //type: Native::Crypto::Key::PubkeyChain::Rsa::Default
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::PubkeyChain::Rsa::AddressedKey> > addressed_key;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::PubkeyChain::Rsa::NamedKey> > named_key;
+        ydk::YList addressed_key;
+        ydk::YList named_key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::PubkeyChain::Rsa::Default> default_;
         
 }; // Native::Crypto::Key::PubkeyChain::Rsa
@@ -3672,8 +3672,8 @@ class Native::Crypto::Key::PubkeyChain::Rsa::Default : public ydk::Entity
         class AddressedKey; //type: Native::Crypto::Key::PubkeyChain::Rsa::Default::AddressedKey
         class NamedKey; //type: Native::Crypto::Key::PubkeyChain::Rsa::Default::NamedKey
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::PubkeyChain::Rsa::Default::AddressedKey> > addressed_key;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key::PubkeyChain::Rsa::Default::NamedKey> > named_key;
+        ydk::YList addressed_key;
+        ydk::YList named_key;
         
 }; // Native::Crypto::Key::PubkeyChain::Rsa::Default
 

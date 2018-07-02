@@ -13,54 +13,6 @@ namespace openconfig {
 namespace openconfig_bgp {
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit : public ydk::Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State> state;
-        
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf max_prefixes; //type: uint32
-        ydk::YLeaf shutdown_threshold_pct; //type: uint8
-        ydk::YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
-
-
 class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State : public ydk::Entity
 {
     public:
@@ -78,6 +30,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Sta
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -195,6 +148,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Con
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -218,6 +172,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Sta
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -331,6 +286,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -354,6 +310,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -425,6 +382,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -448,17 +406,18 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast : public ydk::Entity
 {
     public:
-        L3VpnIpv4Unicast();
-        ~L3VpnIpv4Unicast();
+        L3vpnIpv4Unicast();
+        ~L3vpnIpv4Unicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -470,14 +429,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -493,16 +452,16 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
+        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config
+        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State> state;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -519,13 +478,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -542,17 +502,18 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast : public ydk::Entity
 {
     public:
-        L3VpnIpv6Unicast();
-        ~L3VpnIpv6Unicast();
+        L3vpnIpv6Unicast();
+        ~L3vpnIpv6Unicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -564,14 +525,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -587,16 +548,16 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
+        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config
+        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State> state;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -613,13 +574,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -636,17 +598,18 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast : public ydk::Entity
 {
     public:
-        L3VpnIpv4Multicast();
-        ~L3VpnIpv4Multicast();
+        L3vpnIpv4Multicast();
+        ~L3vpnIpv4Multicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -658,14 +621,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -681,16 +644,16 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLim
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
+        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config
+        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State> state;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -707,13 +670,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -730,17 +694,18 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast : public ydk::Entity
 {
     public:
-        L3VpnIpv6Multicast();
-        ~L3VpnIpv6Multicast();
+        L3vpnIpv6Multicast();
+        ~L3vpnIpv6Multicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -752,14 +717,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -775,16 +740,16 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLim
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
+        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config
+        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State> state;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -801,13 +766,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -824,17 +790,18 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls : public ydk::Entity
 {
     public:
-        L2VpnVpls();
-        ~L2VpnVpls();
+        L2vpnVpls();
+        ~L2vpnVpls();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -846,14 +813,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
+        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit> prefix_limit;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -869,16 +836,16 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State
+        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config
+        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State> state;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -895,13 +862,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Confi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -918,17 +886,18 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn : public ydk::Entity
 {
     public:
-        L2VpnEvpn();
-        ~L2VpnEvpn();
+        L2vpnEvpn();
+        ~L2vpnEvpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -940,14 +909,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
+        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit> prefix_limit;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -963,16 +932,16 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State
+        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config
+        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State> state;
         
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -989,13 +958,14 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Confi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State : public ydk::Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -1012,10 +982,11 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State
 
 
 class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths : public ydk::Entity
@@ -1173,7 +1144,7 @@ class Bgp::PeerGroups : public ydk::Entity
 
         class PeerGroup; //type: Bgp::PeerGroups::PeerGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup> > peer_group;
+        ydk::YList peer_group;
         
 }; // Bgp::PeerGroups
 
@@ -1407,7 +1378,7 @@ class Bgp::PeerGroups::PeerGroup::Transport::Config : public ydk::Entity
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // Bgp::PeerGroups::PeerGroup::Transport::Config
 
@@ -1431,7 +1402,7 @@ class Bgp::PeerGroups::PeerGroup::Transport::State : public ydk::Entity
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_address; //type: one of union, string
 
 }; // Bgp::PeerGroups::PeerGroup::Transport::State
 
@@ -1753,7 +1724,7 @@ class Bgp::PeerGroups::PeerGroup::RouteReflector::Config : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf route_reflector_cluster_id; //type: one of string, uint32
+        ydk::YLeaf route_reflector_cluster_id; //type: one of uint32, string
         ydk::YLeaf route_reflector_client; //type: boolean
 
 }; // Bgp::PeerGroups::PeerGroup::RouteReflector::Config
@@ -1775,7 +1746,7 @@ class Bgp::PeerGroups::PeerGroup::RouteReflector::State : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf route_reflector_cluster_id; //type: one of string, uint32
+        ydk::YLeaf route_reflector_cluster_id; //type: one of uint32, string
         ydk::YLeaf route_reflector_client; //type: boolean
 
 }; // Bgp::PeerGroups::PeerGroup::RouteReflector::State
@@ -2225,7 +2196,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis : public ydk::Entity
 
         class AfiSafi; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi
 
-        std::vector<std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi> > afi_safi;
+        ydk::YList afi_safi;
         
 }; // Bgp::PeerGroups::PeerGroup::AfiSafis
 
@@ -2257,12 +2228,12 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi : public ydk::Entity
         class Ipv6Unicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast
         class Ipv4LabeledUnicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabeledUnicast
         class Ipv6LabeledUnicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabeledUnicast
-        class L3VpnIpv4Unicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast
-        class L3VpnIpv6Unicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast
-        class L3VpnIpv4Multicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast
-        class L3VpnIpv6Multicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast
-        class L2VpnVpls; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls
-        class L2VpnEvpn; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn
+        class L3vpnIpv4Unicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast
+        class L3vpnIpv6Unicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast
+        class L3vpnIpv4Multicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast
+        class L3vpnIpv6Multicast; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast
+        class L2vpnVpls; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls
+        class L2vpnEvpn; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn
 
         std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Config> config;
         std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::State> state;
@@ -2274,12 +2245,12 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi : public ydk::Entity
         std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast> ipv6_unicast;
         std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabeledUnicast> ipv4_labeled_unicast;
         std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabeledUnicast> ipv6_labeled_unicast;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast> l3vpn_ipv4_unicast;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast> l3vpn_ipv6_unicast;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast> l3vpn_ipv4_multicast;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast> l3vpn_ipv6_multicast;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls> l2vpn_vpls;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn> l2vpn_evpn;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast> l3vpn_ipv4_unicast;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast> l3vpn_ipv6_unicast;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast> l3vpn_ipv4_multicast;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast> l3vpn_ipv6_multicast;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls> l2vpn_vpls;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn> l2vpn_evpn;
         
 }; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi
 
@@ -2825,6 +2796,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::C
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -2848,6 +2820,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::S
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -2965,6 +2938,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::C
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -2988,6 +2962,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::S
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -3101,6 +3076,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -3124,6 +3100,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -3195,6 +3172,7 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
@@ -3218,17 +3196,18 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
 }; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast : public ydk::Entity
 {
     public:
-        L3VpnIpv4Unicast();
-        ~L3VpnIpv4Unicast();
+        L3vpnIpv4Unicast();
+        ~L3vpnIpv4Unicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3240,14 +3219,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -3263,16 +3242,16 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLim
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
-        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
+        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config
+        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State> state;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3289,13 +3268,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -3312,17 +3292,18 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast : public ydk::Entity
 {
     public:
-        L3VpnIpv6Unicast();
-        ~L3VpnIpv6Unicast();
+        L3vpnIpv6Unicast();
+        ~L3vpnIpv6Unicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3334,14 +3315,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -3357,16 +3338,16 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLim
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
-        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
+        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config
+        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State> state;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3383,13 +3364,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -3406,17 +3388,18 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLim
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast : public ydk::Entity
 {
     public:
-        L3VpnIpv4Multicast();
-        ~L3VpnIpv4Multicast();
+        L3vpnIpv4Multicast();
+        ~L3vpnIpv4Multicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3428,14 +3411,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -3451,16 +3434,16 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixL
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
-        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
+        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config
+        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State> state;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3477,13 +3460,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -3500,17 +3484,18 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast : public ydk::Entity
 {
     public:
-        L3VpnIpv6Multicast();
-        ~L3VpnIpv6Multicast();
+        L3vpnIpv6Multicast();
+        ~L3vpnIpv6Multicast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3522,14 +3507,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
+        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit> prefix_limit;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit : public ydk::Entity
 {
     public:
         PrefixLimit();
@@ -3545,16 +3530,16 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixL
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
-        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
+        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config
+        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State
 
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State> state;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State> state;
         
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3571,13 +3556,14 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config
 
 
-class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State : public ydk::Entity
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State : public ydk::Entity
 {
     public:
         State();
@@ -3594,10 +3580,59 @@ class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf prevent_teardown; //type: boolean
         ydk::YLeaf shutdown_threshold_pct; //type: uint8
         ydk::YLeaf restart_timer; //type: decimal64
 
-}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State
+
+
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls : public ydk::Entity
+{
+    public:
+        L2vpnVpls();
+        ~L2vpnVpls();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit
+
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit> prefix_limit;
+        
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls
+
+
+class Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config
+        class State; //type: Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State
+
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig::openconfig_bgp::Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State> state;
+        
+}; // Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit
 
 
 }

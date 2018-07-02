@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_rsi_cfg {
 
 Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vrfs::~Vrfs()
@@ -23,7 +25,8 @@ Vrfs::~Vrfs()
 
 bool Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Vrfs::has_data() const
 
 bool Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Vrfs::get_child_by_name(const std::string & child_yang_n
     {
         auto c = std::make_shared<Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -134,15 +137,17 @@ Vrfs::Vrf::Vrf()
     create{YType::empty, "create"},
     mode_big{YType::empty, "mode-big"},
     description{YType::str, "description"}
-    	,
+        ,
     vpn_id(nullptr) // presence node
-	,afs(std::make_shared<Vrfs::Vrf::Afs>())
-	,multicast_host(std::make_shared<Vrfs::Vrf::MulticastHost>())
+    , afs(std::make_shared<Vrfs::Vrf::Afs>())
+    , bgp_global(std::make_shared<Vrfs::Vrf::BgpGlobal>())
+    , multicast_host(std::make_shared<Vrfs::Vrf::MulticastHost>())
 {
     afs->parent = this;
+    bgp_global->parent = this;
     multicast_host->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrfs::Vrf::~Vrf()
@@ -151,6 +156,7 @@ Vrfs::Vrf::~Vrf()
 
 bool Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| fallback_vrf.is_set
 	|| remote_route_filter_disable.is_set
@@ -159,6 +165,7 @@ bool Vrfs::Vrf::has_data() const
 	|| description.is_set
 	|| (vpn_id !=  nullptr && vpn_id->has_data())
 	|| (afs !=  nullptr && afs->has_data())
+	|| (bgp_global !=  nullptr && bgp_global->has_data())
 	|| (multicast_host !=  nullptr && multicast_host->has_data());
 }
 
@@ -173,6 +180,7 @@ bool Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(description.yfilter)
 	|| (vpn_id !=  nullptr && vpn_id->has_operation())
 	|| (afs !=  nullptr && afs->has_operation())
+	|| (bgp_global !=  nullptr && bgp_global->has_operation())
 	|| (multicast_host !=  nullptr && multicast_host->has_operation());
 }
 
@@ -186,7 +194,8 @@ std::string Vrfs::Vrf::get_absolute_path() const
 std::string Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -225,6 +234,15 @@ std::shared_ptr<Entity> Vrfs::Vrf::get_child_by_name(const std::string & child_y
         return afs;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global")
+    {
+        if(bgp_global == nullptr)
+        {
+            bgp_global = std::make_shared<Vrfs::Vrf::BgpGlobal>();
+        }
+        return bgp_global;
+    }
+
     if(child_yang_name == "Cisco-IOS-XR-ip-iarm-vrf-cfg:multicast-host")
     {
         if(multicast_host == nullptr)
@@ -249,6 +267,11 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::get_children() const
     if(afs != nullptr)
     {
         children["afs"] = afs;
+    }
+
+    if(bgp_global != nullptr)
+    {
+        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global"] = bgp_global;
     }
 
     if(multicast_host != nullptr)
@@ -329,7 +352,7 @@ void Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vpn-id" || name == "afs" || name == "multicast-host" || name == "vrf-name" || name == "fallback-vrf" || name == "remote-route-filter-disable" || name == "create" || name == "mode-big" || name == "description")
+    if(name == "vpn-id" || name == "afs" || name == "bgp-global" || name == "multicast-host" || name == "vrf-name" || name == "fallback-vrf" || name == "remote-route-filter-disable" || name == "create" || name == "mode-big" || name == "description")
         return true;
     return false;
 }
@@ -340,7 +363,7 @@ Vrfs::Vrf::VpnId::VpnId()
     vpn_index{YType::uint32, "vpn-index"}
 {
 
-    yang_name = "vpn-id"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpn-id"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Vrfs::Vrf::VpnId::~VpnId()
@@ -349,6 +372,7 @@ Vrfs::Vrf::VpnId::~VpnId()
 
 bool Vrfs::Vrf::VpnId::has_data() const
 {
+    if (is_presence_container) return true;
     return vpn_oui.is_set
 	|| vpn_index.is_set;
 }
@@ -426,9 +450,11 @@ bool Vrfs::Vrf::VpnId::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vrfs::Vrf::Afs::Afs()
+    :
+    af(this, {"af_name", "saf_name", "topology_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::~Afs()
@@ -437,7 +463,8 @@ Vrfs::Vrf::Afs::~Afs()
 
 bool Vrfs::Vrf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -447,7 +474,7 @@ bool Vrfs::Vrf::Afs::has_data() const
 
 bool Vrfs::Vrf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -477,7 +504,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -489,7 +516,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -521,13 +548,13 @@ Vrfs::Vrf::Afs::Af::Af()
     saf_name{YType::enumeration, "saf-name"},
     topology_name{YType::str, "topology-name"},
     create{YType::empty, "create"}
-    	,
-    maximum_prefix(nullptr) // presence node
-	,bgp(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp>())
+        ,
+    bgp(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp>())
+    , maximum_prefix(nullptr) // presence node
 {
     bgp->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::~Af()
@@ -536,12 +563,13 @@ Vrfs::Vrf::Afs::Af::~Af()
 
 bool Vrfs::Vrf::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| saf_name.is_set
 	|| topology_name.is_set
 	|| create.is_set
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data())
-	|| (bgp !=  nullptr && bgp->has_data());
+	|| (bgp !=  nullptr && bgp->has_data())
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data());
 }
 
 bool Vrfs::Vrf::Afs::Af::has_operation() const
@@ -551,14 +579,17 @@ bool Vrfs::Vrf::Afs::Af::has_operation() const
 	|| ydk::is_set(saf_name.yfilter)
 	|| ydk::is_set(topology_name.yfilter)
 	|| ydk::is_set(create.yfilter)
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation())
-	|| (bgp !=  nullptr && bgp->has_operation());
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation());
 }
 
 std::string Vrfs::Vrf::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']" <<"[saf-name='" <<saf_name <<"']" <<"[topology-name='" <<topology_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
+    ADD_KEY_TOKEN(saf_name, "saf-name");
+    ADD_KEY_TOKEN(topology_name, "topology-name");
     return path_buffer.str();
 }
 
@@ -577,15 +608,6 @@ std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::get_name_leaf
 
 std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
-    {
-        if(maximum_prefix == nullptr)
-        {
-            maximum_prefix = std::make_shared<Vrfs::Vrf::Afs::Af::MaximumPrefix>();
-        }
-        return maximum_prefix;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
     {
         if(bgp == nullptr)
@@ -595,6 +617,15 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string 
         return bgp;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
+    {
+        if(maximum_prefix == nullptr)
+        {
+            maximum_prefix = std::make_shared<Vrfs::Vrf::Afs::Af::MaximumPrefix>();
+        }
+        return maximum_prefix;
+    }
+
     return nullptr;
 }
 
@@ -602,14 +633,14 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::get_children(
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(maximum_prefix != nullptr)
-    {
-        children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
-    }
-
     if(bgp != nullptr)
     {
         children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
+    }
+
+    if(maximum_prefix != nullptr)
+    {
+        children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
     }
 
     return children;
@@ -665,98 +696,7 @@ void Vrfs::Vrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfil
 
 bool Vrfs::Vrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "maximum-prefix" || name == "bgp" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
-        return true;
-    return false;
-}
-
-Vrfs::Vrf::Afs::Af::MaximumPrefix::MaximumPrefix()
-    :
-    prefix_limit{YType::uint32, "prefix-limit"},
-    mid_threshold{YType::uint32, "mid-threshold"}
-{
-
-    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Vrfs::Vrf::Afs::Af::MaximumPrefix::~MaximumPrefix()
-{
-}
-
-bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_data() const
-{
-    return prefix_limit.is_set
-	|| mid_threshold.is_set;
-}
-
-bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_limit.yfilter)
-	|| ydk::is_set(mid_threshold.yfilter);
-}
-
-std::string Vrfs::Vrf::Afs::Af::MaximumPrefix::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
-    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit = value;
-        prefix_limit.value_namespace = name_space;
-        prefix_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold = value;
-        mid_threshold.value_namespace = name_space;
-        mid_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit.yfilter = yfilter;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold.yfilter = yfilter;
-    }
-}
-
-bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-limit" || name == "mid-threshold")
+    if(name == "bgp" || name == "maximum-prefix" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
         return true;
     return false;
 }
@@ -766,18 +706,18 @@ Vrfs::Vrf::Afs::Af::Bgp::Bgp()
     export_route_policy{YType::str, "export-route-policy"},
     import_route_policy{YType::str, "import-route-policy"},
     import_vrf_options{YType::boolean, "import-vrf-options"}
-    	,
+        ,
     import_route_targets(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets>())
-	,export_route_targets(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets>())
-	,vrf_to_global_export_route_policy(nullptr) // presence node
-	,export_vrf_options(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions>())
-	,global_to_vrf_import_route_policy(nullptr) // presence node
+    , export_route_targets(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets>())
+    , vrf_to_global_export_route_policy(nullptr) // presence node
+    , export_vrf_options(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions>())
+    , global_to_vrf_import_route_policy(nullptr) // presence node
 {
     import_route_targets->parent = this;
     export_route_targets->parent = this;
     export_vrf_options->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::~Bgp()
@@ -786,6 +726,7 @@ Vrfs::Vrf::Afs::Af::Bgp::~Bgp()
 
 bool Vrfs::Vrf::Afs::Af::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return export_route_policy.is_set
 	|| import_route_policy.is_set
 	|| import_vrf_options.is_set
@@ -961,7 +902,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::ImportRouteTargets()
 {
     route_targets->parent = this;
 
-    yang_name = "import-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "import-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::~ImportRouteTargets()
@@ -970,6 +911,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::~ImportRouteTargets()
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::has_data() const
 {
+    if (is_presence_container) return true;
     return (route_targets !=  nullptr && route_targets->has_data());
 }
 
@@ -1037,9 +979,11 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::has_leaf_or_child_of_name(cons
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTargets()
+    :
+    route_target(this, {"type"})
 {
 
-    yang_name = "route-targets"; yang_parent_name = "import-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-targets"; yang_parent_name = "import-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::~RouteTargets()
@@ -1048,7 +992,8 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::~RouteTargets()
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_data() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_data())
             return true;
@@ -1058,7 +1003,7 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_data() const
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_operation() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_operation())
             return true;
@@ -1088,7 +1033,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
     {
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(c);
+        route_target.append(c);
         return c;
     }
 
@@ -1100,7 +1045,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_target)
+    for (auto c : route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1129,9 +1074,12 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_leaf_or_chil
 Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::RouteTarget()
     :
     type{YType::enumeration, "type"}
+        ,
+    as_or_four_byte_as(this, {"as_xx", "as", "as_index", "stitching_rt"})
+    , ipv4_address(this, {"address", "address_index", "stitching_rt"})
 {
 
-    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::~RouteTarget()
@@ -1140,12 +1088,13 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::~RouteTa
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_data() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_data())
             return true;
@@ -1155,12 +1104,12 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_operation() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_operation())
             return true;
@@ -1172,7 +1121,8 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has
 std::string Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route-target" <<"[type='" <<type <<"']";
+    path_buffer << "route-target";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -1192,7 +1142,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
     {
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
         c->parent = this;
-        as_or_four_byte_as.push_back(c);
+        as_or_four_byte_as.append(c);
         return c;
     }
 
@@ -1200,7 +1150,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTarget
     {
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
-        ipv4_address.push_back(c);
+        ipv4_address.append(c);
         return c;
     }
 
@@ -1212,7 +1162,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_or_four_byte_as)
+    for (auto c : as_or_four_byte_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1221,7 +1171,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ImportRo
     }
 
     count = 0;
-    for (auto const & c : ipv4_address)
+    for (auto c : ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1265,7 +1215,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFour
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::~AsOrFourByteAs()
@@ -1274,6 +1224,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFour
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -1292,7 +1243,11 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsO
 std::string Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-or-four-byte-as" <<"[as-xx='" <<as_xx <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "as-or-four-byte-as";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as, "as");
+    ADD_KEY_TOKEN(as_index, "as-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -1383,7 +1338,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Addr
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
@@ -1392,6 +1347,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Addr
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| address_index.is_set
 	|| stitching_rt.is_set;
@@ -1408,7 +1364,10 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv
 std::string Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address" <<"[address='" <<address <<"']" <<"[address-index='" <<address_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(address_index, "address-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -1487,7 +1446,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::ExportRouteTargets()
 {
     route_targets->parent = this;
 
-    yang_name = "export-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "export-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::~ExportRouteTargets()
@@ -1496,6 +1455,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::~ExportRouteTargets()
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::has_data() const
 {
+    if (is_presence_container) return true;
     return (route_targets !=  nullptr && route_targets->has_data());
 }
 
@@ -1563,9 +1523,11 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::has_leaf_or_child_of_name(cons
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTargets()
+    :
+    route_target(this, {"type"})
 {
 
-    yang_name = "route-targets"; yang_parent_name = "export-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-targets"; yang_parent_name = "export-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::~RouteTargets()
@@ -1574,7 +1536,8 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::~RouteTargets()
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_data() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_data())
             return true;
@@ -1584,7 +1547,7 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_data() const
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_operation() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_operation())
             return true;
@@ -1614,7 +1577,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
     {
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(c);
+        route_target.append(c);
         return c;
     }
 
@@ -1626,7 +1589,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_target)
+    for (auto c : route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1655,9 +1618,12 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_leaf_or_chil
 Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::RouteTarget()
     :
     type{YType::enumeration, "type"}
+        ,
+    as_or_four_byte_as(this, {"as_xx", "as", "as_index", "stitching_rt"})
+    , ipv4_address(this, {"address", "address_index", "stitching_rt"})
 {
 
-    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::~RouteTarget()
@@ -1666,12 +1632,13 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::~RouteTa
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_data() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_data())
             return true;
@@ -1681,12 +1648,12 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_operation() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_operation())
             return true;
@@ -1698,7 +1665,8 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has
 std::string Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route-target" <<"[type='" <<type <<"']";
+    path_buffer << "route-target";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -1718,7 +1686,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
     {
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
         c->parent = this;
-        as_or_four_byte_as.push_back(c);
+        as_or_four_byte_as.append(c);
         return c;
     }
 
@@ -1726,7 +1694,7 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTarget
     {
         auto c = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
-        ipv4_address.push_back(c);
+        ipv4_address.append(c);
         return c;
     }
 
@@ -1738,7 +1706,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_or_four_byte_as)
+    for (auto c : as_or_four_byte_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1747,7 +1715,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::Bgp::ExportRo
     }
 
     count = 0;
-    for (auto const & c : ipv4_address)
+    for (auto c : ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1791,7 +1759,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFour
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::~AsOrFourByteAs()
@@ -1800,6 +1768,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFour
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -1818,7 +1787,11 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsO
 std::string Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-or-four-byte-as" <<"[as-xx='" <<as_xx <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "as-or-four-byte-as";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as, "as");
+    ADD_KEY_TOKEN(as_index, "as-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -1909,7 +1882,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Addr
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
@@ -1918,6 +1891,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Addr
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| address_index.is_set
 	|| stitching_rt.is_set;
@@ -1934,7 +1908,10 @@ bool Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv
 std::string Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address" <<"[address='" <<address <<"']" <<"[address-index='" <<address_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(address_index, "address-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -2013,7 +1990,7 @@ Vrfs::Vrf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::VrfToGlobalExportRoutePol
     allow_imported_vpn{YType::boolean, "allow-imported-vpn"}
 {
 
-    yang_name = "vrf-to-global-export-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-to-global-export-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::~VrfToGlobalExportRoutePolicy()
@@ -2022,6 +1999,7 @@ Vrfs::Vrf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::~VrfToGlobalExportRoutePo
 
 bool Vrfs::Vrf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| allow_imported_vpn.is_set;
 }
@@ -2104,7 +2082,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions::ExportVrfOptions()
     import_stitching_rt{YType::boolean, "import-stitching-rt"}
 {
 
-    yang_name = "export-vrf-options"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "export-vrf-options"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions::~ExportVrfOptions()
@@ -2113,6 +2091,7 @@ Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions::~ExportVrfOptions()
 
 bool Vrfs::Vrf::Afs::Af::Bgp::ExportVrfOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return allow_imported_vpn.is_set
 	|| import_stitching_rt.is_set;
 }
@@ -2195,7 +2174,7 @@ Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::GlobalToVrfImportRoutePol
     advertise_as_vpn{YType::boolean, "advertise-as-vpn"}
 {
 
-    yang_name = "global-to-vrf-import-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-to-vrf-import-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::~GlobalToVrfImportRoutePolicy()
@@ -2204,6 +2183,7 @@ Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::~GlobalToVrfImportRoutePo
 
 bool Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| advertise_as_vpn.is_set;
 }
@@ -2280,15 +2260,337 @@ bool Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_leaf_or_child_of
     return false;
 }
 
+Vrfs::Vrf::Afs::Af::MaximumPrefix::MaximumPrefix()
+    :
+    prefix_limit{YType::uint32, "prefix-limit"},
+    mid_threshold{YType::uint32, "mid-threshold"}
+{
+
+    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Vrfs::Vrf::Afs::Af::MaximumPrefix::~MaximumPrefix()
+{
+}
+
+bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_limit.is_set
+	|| mid_threshold.is_set;
+}
+
+bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_limit.yfilter)
+	|| ydk::is_set(mid_threshold.yfilter);
+}
+
+std::string Vrfs::Vrf::Afs::Af::MaximumPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
+    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit = value;
+        prefix_limit.value_namespace = name_space;
+        prefix_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold = value;
+        mid_threshold.value_namespace = name_space;
+        mid_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit.yfilter = yfilter;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold.yfilter = yfilter;
+    }
+}
+
+bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit" || name == "mid-threshold")
+        return true;
+    return false;
+}
+
+Vrfs::Vrf::BgpGlobal::BgpGlobal()
+    :
+    route_distinguisher(std::make_shared<Vrfs::Vrf::BgpGlobal::RouteDistinguisher>())
+{
+    route_distinguisher->parent = this;
+
+    yang_name = "bgp-global"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vrfs::Vrf::BgpGlobal::~BgpGlobal()
+{
+}
+
+bool Vrfs::Vrf::BgpGlobal::has_data() const
+{
+    if (is_presence_container) return true;
+    return (route_distinguisher !=  nullptr && route_distinguisher->has_data());
+}
+
+bool Vrfs::Vrf::BgpGlobal::has_operation() const
+{
+    return is_set(yfilter)
+	|| (route_distinguisher !=  nullptr && route_distinguisher->has_operation());
+}
+
+std::string Vrfs::Vrf::BgpGlobal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::BgpGlobal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vrfs::Vrf::BgpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-distinguisher")
+    {
+        if(route_distinguisher == nullptr)
+        {
+            route_distinguisher = std::make_shared<Vrfs::Vrf::BgpGlobal::RouteDistinguisher>();
+        }
+        return route_distinguisher;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::BgpGlobal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(route_distinguisher != nullptr)
+    {
+        children["route-distinguisher"] = route_distinguisher;
+    }
+
+    return children;
+}
+
+void Vrfs::Vrf::BgpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vrfs::Vrf::BgpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrfs::Vrf::BgpGlobal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-distinguisher")
+        return true;
+    return false;
+}
+
+Vrfs::Vrf::BgpGlobal::RouteDistinguisher::RouteDistinguisher()
+    :
+    type{YType::enumeration, "type"},
+    as_xx{YType::uint32, "as-xx"},
+    as{YType::uint32, "as"},
+    as_index{YType::uint32, "as-index"},
+    address{YType::str, "address"},
+    address_index{YType::uint32, "address-index"}
+{
+
+    yang_name = "route-distinguisher"; yang_parent_name = "bgp-global"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vrfs::Vrf::BgpGlobal::RouteDistinguisher::~RouteDistinguisher()
+{
+}
+
+bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| as_xx.is_set
+	|| as.is_set
+	|| as_index.is_set
+	|| address.is_set
+	|| address_index.is_set;
+}
+
+bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as_index.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_index.yfilter);
+}
+
+std::string Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-distinguisher";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as_index.is_set || is_set(as_index.yfilter)) leaf_name_data.push_back(as_index.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_index.is_set || is_set(address_index.yfilter)) leaf_name_data.push_back(address_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vrfs::Vrf::BgpGlobal::RouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-xx")
+    {
+        as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as")
+    {
+        as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-index")
+    {
+        as_index = value;
+        as_index.value_namespace = name_space;
+        as_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-index")
+    {
+        address_index = value;
+        address_index.value_namespace = name_space;
+        address_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vrfs::Vrf::BgpGlobal::RouteDistinguisher::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as-index")
+    {
+        as_index.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-index")
+    {
+        address_index.yfilter = yfilter;
+    }
+}
+
+bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "as-xx" || name == "as" || name == "as-index" || name == "address" || name == "address-index")
+        return true;
+    return false;
+}
+
 Vrfs::Vrf::MulticastHost::MulticastHost()
     :
     ipv4(std::make_shared<Vrfs::Vrf::MulticastHost::Ipv4>())
-	,ipv6(std::make_shared<Vrfs::Vrf::MulticastHost::Ipv6>())
+    , ipv6(std::make_shared<Vrfs::Vrf::MulticastHost::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "multicast-host"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-host"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::MulticastHost::~MulticastHost()
@@ -2297,6 +2599,7 @@ Vrfs::Vrf::MulticastHost::~MulticastHost()
 
 bool Vrfs::Vrf::MulticastHost::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -2384,7 +2687,7 @@ Vrfs::Vrf::MulticastHost::Ipv4::Ipv4()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "multicast-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "multicast-host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::MulticastHost::Ipv4::~Ipv4()
@@ -2393,6 +2696,7 @@ Vrfs::Vrf::MulticastHost::Ipv4::~Ipv4()
 
 bool Vrfs::Vrf::MulticastHost::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -2461,7 +2765,7 @@ Vrfs::Vrf::MulticastHost::Ipv6::Ipv6()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "multicast-host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "multicast-host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrfs::Vrf::MulticastHost::Ipv6::~Ipv6()
@@ -2470,6 +2774,7 @@ Vrfs::Vrf::MulticastHost::Ipv6::~Ipv6()
 
 bool Vrfs::Vrf::MulticastHost::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -2539,7 +2844,7 @@ GlobalAf::GlobalAf()
 {
     afs->parent = this;
 
-    yang_name = "global-af"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "global-af"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 GlobalAf::~GlobalAf()
@@ -2548,6 +2853,7 @@ GlobalAf::~GlobalAf()
 
 bool GlobalAf::has_data() const
 {
+    if (is_presence_container) return true;
     return (afs !=  nullptr && afs->has_data());
 }
 
@@ -2640,9 +2946,11 @@ bool GlobalAf::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 GlobalAf::Afs::Afs()
+    :
+    af(this, {"af_name", "saf_name", "topology_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "afs"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GlobalAf::Afs::~Afs()
@@ -2651,7 +2959,8 @@ GlobalAf::Afs::~Afs()
 
 bool GlobalAf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -2661,7 +2970,7 @@ bool GlobalAf::Afs::has_data() const
 
 bool GlobalAf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -2698,7 +3007,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<GlobalAf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -2710,7 +3019,7 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2742,13 +3051,13 @@ GlobalAf::Afs::Af::Af()
     saf_name{YType::enumeration, "saf-name"},
     topology_name{YType::str, "topology-name"},
     create{YType::empty, "create"}
-    	,
-    maximum_prefix(nullptr) // presence node
-	,bgp(std::make_shared<GlobalAf::Afs::Af::Bgp>())
+        ,
+    bgp(std::make_shared<GlobalAf::Afs::Af::Bgp>())
+    , maximum_prefix(nullptr) // presence node
 {
     bgp->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GlobalAf::Afs::Af::~Af()
@@ -2757,12 +3066,13 @@ GlobalAf::Afs::Af::~Af()
 
 bool GlobalAf::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| saf_name.is_set
 	|| topology_name.is_set
 	|| create.is_set
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data())
-	|| (bgp !=  nullptr && bgp->has_data());
+	|| (bgp !=  nullptr && bgp->has_data())
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data());
 }
 
 bool GlobalAf::Afs::Af::has_operation() const
@@ -2772,8 +3082,8 @@ bool GlobalAf::Afs::Af::has_operation() const
 	|| ydk::is_set(saf_name.yfilter)
 	|| ydk::is_set(topology_name.yfilter)
 	|| ydk::is_set(create.yfilter)
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation())
-	|| (bgp !=  nullptr && bgp->has_operation());
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation());
 }
 
 std::string GlobalAf::Afs::Af::get_absolute_path() const
@@ -2786,7 +3096,10 @@ std::string GlobalAf::Afs::Af::get_absolute_path() const
 std::string GlobalAf::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']" <<"[saf-name='" <<saf_name <<"']" <<"[topology-name='" <<topology_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
+    ADD_KEY_TOKEN(saf_name, "saf-name");
+    ADD_KEY_TOKEN(topology_name, "topology-name");
     return path_buffer.str();
 }
 
@@ -2805,15 +3118,6 @@ std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::get_name_leaf_
 
 std::shared_ptr<Entity> GlobalAf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
-    {
-        if(maximum_prefix == nullptr)
-        {
-            maximum_prefix = std::make_shared<GlobalAf::Afs::Af::MaximumPrefix>();
-        }
-        return maximum_prefix;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
     {
         if(bgp == nullptr)
@@ -2823,6 +3127,15 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::get_child_by_name(const std::string &
         return bgp;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
+    {
+        if(maximum_prefix == nullptr)
+        {
+            maximum_prefix = std::make_shared<GlobalAf::Afs::Af::MaximumPrefix>();
+        }
+        return maximum_prefix;
+    }
+
     return nullptr;
 }
 
@@ -2830,14 +3143,14 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::get_children()
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(maximum_prefix != nullptr)
-    {
-        children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
-    }
-
     if(bgp != nullptr)
     {
         children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
+    }
+
+    if(maximum_prefix != nullptr)
+    {
+        children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
     }
 
     return children;
@@ -2893,98 +3206,7 @@ void GlobalAf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilt
 
 bool GlobalAf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "maximum-prefix" || name == "bgp" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
-        return true;
-    return false;
-}
-
-GlobalAf::Afs::Af::MaximumPrefix::MaximumPrefix()
-    :
-    prefix_limit{YType::uint32, "prefix-limit"},
-    mid_threshold{YType::uint32, "mid-threshold"}
-{
-
-    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-GlobalAf::Afs::Af::MaximumPrefix::~MaximumPrefix()
-{
-}
-
-bool GlobalAf::Afs::Af::MaximumPrefix::has_data() const
-{
-    return prefix_limit.is_set
-	|| mid_threshold.is_set;
-}
-
-bool GlobalAf::Afs::Af::MaximumPrefix::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_limit.yfilter)
-	|| ydk::is_set(mid_threshold.yfilter);
-}
-
-std::string GlobalAf::Afs::Af::MaximumPrefix::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
-    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> GlobalAf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::MaximumPrefix::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void GlobalAf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit = value;
-        prefix_limit.value_namespace = name_space;
-        prefix_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold = value;
-        mid_threshold.value_namespace = name_space;
-        mid_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void GlobalAf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit.yfilter = yfilter;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold.yfilter = yfilter;
-    }
-}
-
-bool GlobalAf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-limit" || name == "mid-threshold")
+    if(name == "bgp" || name == "maximum-prefix" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
         return true;
     return false;
 }
@@ -2994,18 +3216,18 @@ GlobalAf::Afs::Af::Bgp::Bgp()
     export_route_policy{YType::str, "export-route-policy"},
     import_route_policy{YType::str, "import-route-policy"},
     import_vrf_options{YType::boolean, "import-vrf-options"}
-    	,
+        ,
     import_route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets>())
-	,export_route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets>())
-	,vrf_to_global_export_route_policy(nullptr) // presence node
-	,export_vrf_options(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportVrfOptions>())
-	,global_to_vrf_import_route_policy(nullptr) // presence node
+    , export_route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets>())
+    , vrf_to_global_export_route_policy(nullptr) // presence node
+    , export_vrf_options(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportVrfOptions>())
+    , global_to_vrf_import_route_policy(nullptr) // presence node
 {
     import_route_targets->parent = this;
     export_route_targets->parent = this;
     export_vrf_options->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::~Bgp()
@@ -3014,6 +3236,7 @@ GlobalAf::Afs::Af::Bgp::~Bgp()
 
 bool GlobalAf::Afs::Af::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return export_route_policy.is_set
 	|| import_route_policy.is_set
 	|| import_vrf_options.is_set
@@ -3189,7 +3412,7 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::ImportRouteTargets()
 {
     route_targets->parent = this;
 
-    yang_name = "import-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "import-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ImportRouteTargets::~ImportRouteTargets()
@@ -3198,6 +3421,7 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::~ImportRouteTargets()
 
 bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::has_data() const
 {
+    if (is_presence_container) return true;
     return (route_targets !=  nullptr && route_targets->has_data());
 }
 
@@ -3265,9 +3489,11 @@ bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::has_leaf_or_child_of_name(const
 }
 
 GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTargets()
+    :
+    route_target(this, {"type"})
 {
 
-    yang_name = "route-targets"; yang_parent_name = "import-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-targets"; yang_parent_name = "import-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::~RouteTargets()
@@ -3276,7 +3502,8 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::~RouteTargets()
 
 bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_data() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_data())
             return true;
@@ -3286,7 +3513,7 @@ bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_data() const
 
 bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_operation() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_operation())
             return true;
@@ -3316,7 +3543,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets
     {
         auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(c);
+        route_target.append(c);
         return c;
     }
 
@@ -3328,7 +3555,7 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_target)
+    for (auto c : route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3357,9 +3584,12 @@ bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::has_leaf_or_child
 GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::RouteTarget()
     :
     type{YType::enumeration, "type"}
+        ,
+    as_or_four_byte_as(this, {"as_xx", "as", "as_index", "stitching_rt"})
+    , ipv4_address(this, {"address", "address_index", "stitching_rt"})
 {
 
-    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::~RouteTarget()
@@ -3368,12 +3598,13 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::~RouteTar
 
 bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_data() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_data())
             return true;
@@ -3383,12 +3614,12 @@ bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_
 
 bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_operation() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_operation())
             return true;
@@ -3400,7 +3631,8 @@ bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::has_
 std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route-target" <<"[type='" <<type <<"']";
+    path_buffer << "route-target";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -3420,7 +3652,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets
     {
         auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
         c->parent = this;
-        as_or_four_byte_as.push_back(c);
+        as_or_four_byte_as.append(c);
         return c;
     }
 
@@ -3428,7 +3660,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets
     {
         auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
-        ipv4_address.push_back(c);
+        ipv4_address.append(c);
         return c;
     }
 
@@ -3440,7 +3672,7 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_or_four_byte_as)
+    for (auto c : as_or_four_byte_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3449,7 +3681,7 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ImportRou
     }
 
     count = 0;
-    for (auto const & c : ipv4_address)
+    for (auto c : ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3493,7 +3725,7 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourB
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::~AsOrFourByteAs()
@@ -3502,6 +3734,7 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourB
 
 bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -3520,7 +3753,11 @@ bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOr
 std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-or-four-byte-as" <<"[as-xx='" <<as_xx <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "as-or-four-byte-as";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as, "as");
+    ADD_KEY_TOKEN(as_index, "as-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -3611,7 +3848,7 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Addre
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
@@ -3620,6 +3857,7 @@ GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Addre
 
 bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| address_index.is_set
 	|| stitching_rt.is_set;
@@ -3636,7 +3874,10 @@ bool GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4
 std::string GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address" <<"[address='" <<address <<"']" <<"[address-index='" <<address_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(address_index, "address-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -3715,7 +3956,7 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::ExportRouteTargets()
 {
     route_targets->parent = this;
 
-    yang_name = "export-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "export-route-targets"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ExportRouteTargets::~ExportRouteTargets()
@@ -3724,6 +3965,7 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::~ExportRouteTargets()
 
 bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::has_data() const
 {
+    if (is_presence_container) return true;
     return (route_targets !=  nullptr && route_targets->has_data());
 }
 
@@ -3791,9 +4033,11 @@ bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::has_leaf_or_child_of_name(const
 }
 
 GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTargets()
+    :
+    route_target(this, {"type"})
 {
 
-    yang_name = "route-targets"; yang_parent_name = "export-route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-targets"; yang_parent_name = "export-route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::~RouteTargets()
@@ -3802,7 +4046,8 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::~RouteTargets()
 
 bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_data() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_data())
             return true;
@@ -3812,7 +4057,7 @@ bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_data() const
 
 bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_operation() const
 {
-    for (std::size_t index=0; index<route_target.size(); index++)
+    for (std::size_t index=0; index<route_target.len(); index++)
     {
         if(route_target[index]->has_operation())
             return true;
@@ -3842,7 +4087,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets
     {
         auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget>();
         c->parent = this;
-        route_target.push_back(c);
+        route_target.append(c);
         return c;
     }
 
@@ -3854,7 +4099,7 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_target)
+    for (auto c : route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3883,9 +4128,12 @@ bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::has_leaf_or_child
 GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::RouteTarget()
     :
     type{YType::enumeration, "type"}
+        ,
+    as_or_four_byte_as(this, {"as_xx", "as", "as_index", "stitching_rt"})
+    , ipv4_address(this, {"address", "address_index", "stitching_rt"})
 {
 
-    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-target"; yang_parent_name = "route-targets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::~RouteTarget()
@@ -3894,12 +4142,13 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::~RouteTar
 
 bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_data() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_data())
             return true;
@@ -3909,12 +4158,12 @@ bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_
 
 bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_operation() const
 {
-    for (std::size_t index=0; index<as_or_four_byte_as.size(); index++)
+    for (std::size_t index=0; index<as_or_four_byte_as.len(); index++)
     {
         if(as_or_four_byte_as[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_operation())
             return true;
@@ -3926,7 +4175,8 @@ bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::has_
 std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "route-target" <<"[type='" <<type <<"']";
+    path_buffer << "route-target";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -3946,7 +4196,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets
     {
         auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs>();
         c->parent = this;
-        as_or_four_byte_as.push_back(c);
+        as_or_four_byte_as.append(c);
         return c;
     }
 
@@ -3954,7 +4204,7 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets
     {
         auto c = std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
-        ipv4_address.push_back(c);
+        ipv4_address.append(c);
         return c;
     }
 
@@ -3966,7 +4216,7 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_or_four_byte_as)
+    for (auto c : as_or_four_byte_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3975,7 +4225,7 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::Bgp::ExportRou
     }
 
     count = 0;
-    for (auto const & c : ipv4_address)
+    for (auto c : ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4019,7 +4269,7 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourB
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-or-four-byte-as"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::~AsOrFourByteAs()
@@ -4028,6 +4278,7 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourB
 
 bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as.is_set
 	|| as_index.is_set
@@ -4046,7 +4297,11 @@ bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOr
 std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-or-four-byte-as" <<"[as-xx='" <<as_xx <<"']" <<"[as='" <<as <<"']" <<"[as-index='" <<as_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "as-or-four-byte-as";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as, "as");
+    ADD_KEY_TOKEN(as_index, "as-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -4137,7 +4392,7 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Addre
     stitching_rt{YType::uint32, "stitching-rt"}
 {
 
-    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address"; yang_parent_name = "route-target"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::~Ipv4Address()
@@ -4146,6 +4401,7 @@ GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Addre
 
 bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| address_index.is_set
 	|| stitching_rt.is_set;
@@ -4162,7 +4418,10 @@ bool GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4
 std::string GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address" <<"[address='" <<address <<"']" <<"[address-index='" <<address_index <<"']" <<"[stitching-rt='" <<stitching_rt <<"']";
+    path_buffer << "ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(address_index, "address-index");
+    ADD_KEY_TOKEN(stitching_rt, "stitching-rt");
     return path_buffer.str();
 }
 
@@ -4241,7 +4500,7 @@ GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::VrfToGlobalExportRoutePoli
     allow_imported_vpn{YType::boolean, "allow-imported-vpn"}
 {
 
-    yang_name = "vrf-to-global-export-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-to-global-export-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::~VrfToGlobalExportRoutePolicy()
@@ -4250,6 +4509,7 @@ GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::~VrfToGlobalExportRoutePol
 
 bool GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| allow_imported_vpn.is_set;
 }
@@ -4332,7 +4592,7 @@ GlobalAf::Afs::Af::Bgp::ExportVrfOptions::ExportVrfOptions()
     import_stitching_rt{YType::boolean, "import-stitching-rt"}
 {
 
-    yang_name = "export-vrf-options"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "export-vrf-options"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 GlobalAf::Afs::Af::Bgp::ExportVrfOptions::~ExportVrfOptions()
@@ -4341,6 +4601,7 @@ GlobalAf::Afs::Af::Bgp::ExportVrfOptions::~ExportVrfOptions()
 
 bool GlobalAf::Afs::Af::Bgp::ExportVrfOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return allow_imported_vpn.is_set
 	|| import_stitching_rt.is_set;
 }
@@ -4423,7 +4684,7 @@ GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::GlobalToVrfImportRoutePoli
     advertise_as_vpn{YType::boolean, "advertise-as-vpn"}
 {
 
-    yang_name = "global-to-vrf-import-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-to-vrf-import-route-policy"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::~GlobalToVrfImportRoutePolicy()
@@ -4432,6 +4693,7 @@ GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::~GlobalToVrfImportRoutePol
 
 bool GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| advertise_as_vpn.is_set;
 }
@@ -4508,21 +4770,113 @@ bool GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_leaf_or_child_of_
     return false;
 }
 
+GlobalAf::Afs::Af::MaximumPrefix::MaximumPrefix()
+    :
+    prefix_limit{YType::uint32, "prefix-limit"},
+    mid_threshold{YType::uint32, "mid-threshold"}
+{
+
+    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+GlobalAf::Afs::Af::MaximumPrefix::~MaximumPrefix()
+{
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_limit.is_set
+	|| mid_threshold.is_set;
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_limit.yfilter)
+	|| ydk::is_set(mid_threshold.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::MaximumPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
+    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::MaximumPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit = value;
+        prefix_limit.value_namespace = name_space;
+        prefix_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold = value;
+        mid_threshold.value_namespace = name_space;
+        mid_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit.yfilter = yfilter;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit" || name == "mid-threshold")
+        return true;
+    return false;
+}
+
 Srlg::Srlg()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     interfaces(std::make_shared<Srlg::Interfaces>())
-	,srlg_names(std::make_shared<Srlg::SrlgNames>())
-	,groups(std::make_shared<Srlg::Groups>())
-	,inherit_nodes(std::make_shared<Srlg::InheritNodes>())
+    , srlg_names(std::make_shared<Srlg::SrlgNames>())
+    , groups(std::make_shared<Srlg::Groups>())
+    , inherit_nodes(std::make_shared<Srlg::InheritNodes>())
 {
     interfaces->parent = this;
     srlg_names->parent = this;
     groups->parent = this;
     inherit_nodes->parent = this;
 
-    yang_name = "srlg"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "srlg"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Srlg::~Srlg()
@@ -4531,6 +4885,7 @@ Srlg::~Srlg()
 
 bool Srlg::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data())
 	|| (srlg_names !=  nullptr && srlg_names->has_data())
@@ -4684,9 +5039,11 @@ bool Srlg::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Srlg::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::Interfaces::~Interfaces()
@@ -4695,7 +5052,8 @@ Srlg::Interfaces::~Interfaces()
 
 bool Srlg::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -4705,7 +5063,7 @@ bool Srlg::Interfaces::has_data() const
 
 bool Srlg::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -4742,7 +5100,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Srlg::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -4754,7 +5112,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4784,18 +5142,18 @@ Srlg::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     include_optical(std::make_shared<Srlg::Interfaces::Interface::IncludeOptical>())
-	,interface_group(std::make_shared<Srlg::Interfaces::Interface::InterfaceGroup>())
-	,values(std::make_shared<Srlg::Interfaces::Interface::Values>())
-	,interface_srlg_names(std::make_shared<Srlg::Interfaces::Interface::InterfaceSrlgNames>())
+    , interface_group(std::make_shared<Srlg::Interfaces::Interface::InterfaceGroup>())
+    , values(std::make_shared<Srlg::Interfaces::Interface::Values>())
+    , interface_srlg_names(std::make_shared<Srlg::Interfaces::Interface::InterfaceSrlgNames>())
 {
     include_optical->parent = this;
     interface_group->parent = this;
     values->parent = this;
     interface_srlg_names->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::Interfaces::Interface::~Interface()
@@ -4804,6 +5162,7 @@ Srlg::Interfaces::Interface::~Interface()
 
 bool Srlg::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enable.is_set
 	|| (include_optical !=  nullptr && include_optical->has_data())
@@ -4833,7 +5192,8 @@ std::string Srlg::Interfaces::Interface::get_absolute_path() const
 std::string Srlg::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4957,7 +5317,7 @@ Srlg::Interfaces::Interface::IncludeOptical::IncludeOptical()
     priority{YType::enumeration, "priority"}
 {
 
-    yang_name = "include-optical"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "include-optical"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::IncludeOptical::~IncludeOptical()
@@ -4966,6 +5326,7 @@ Srlg::Interfaces::Interface::IncludeOptical::~IncludeOptical()
 
 bool Srlg::Interfaces::Interface::IncludeOptical::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| priority.is_set;
 }
@@ -5045,12 +5406,12 @@ bool Srlg::Interfaces::Interface::IncludeOptical::has_leaf_or_child_of_name(cons
 Srlg::Interfaces::Interface::InterfaceGroup::InterfaceGroup()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     group_names(std::make_shared<Srlg::Interfaces::Interface::InterfaceGroup::GroupNames>())
 {
     group_names->parent = this;
 
-    yang_name = "interface-group"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-group"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::InterfaceGroup::~InterfaceGroup()
@@ -5059,6 +5420,7 @@ Srlg::Interfaces::Interface::InterfaceGroup::~InterfaceGroup()
 
 bool Srlg::Interfaces::Interface::InterfaceGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (group_names !=  nullptr && group_names->has_data());
 }
@@ -5139,9 +5501,11 @@ bool Srlg::Interfaces::Interface::InterfaceGroup::has_leaf_or_child_of_name(cons
 }
 
 Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupNames()
+    :
+    group_name(this, {"group_name_index"})
 {
 
-    yang_name = "group-names"; yang_parent_name = "interface-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-names"; yang_parent_name = "interface-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::~GroupNames()
@@ -5150,7 +5514,8 @@ Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::~GroupNames()
 
 bool Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::has_data() const
 {
-    for (std::size_t index=0; index<group_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_name.len(); index++)
     {
         if(group_name[index]->has_data())
             return true;
@@ -5160,7 +5525,7 @@ bool Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::has_data() const
 
 bool Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::has_operation() const
 {
-    for (std::size_t index=0; index<group_name.size(); index++)
+    for (std::size_t index=0; index<group_name.len(); index++)
     {
         if(group_name[index]->has_operation())
             return true;
@@ -5190,7 +5555,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceGroup::GroupNames:
     {
         auto c = std::make_shared<Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName>();
         c->parent = this;
-        group_name.push_back(c);
+        group_name.append(c);
         return c;
     }
 
@@ -5202,7 +5567,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_name)
+    for (auto c : group_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5235,7 +5600,7 @@ Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::GroupName()
     srlg_priority{YType::enumeration, "srlg-priority"}
 {
 
-    yang_name = "group-name"; yang_parent_name = "group-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-name"; yang_parent_name = "group-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::~GroupName()
@@ -5244,6 +5609,7 @@ Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::~GroupName()
 
 bool Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::has_data() const
 {
+    if (is_presence_container) return true;
     return group_name_index.is_set
 	|| group_name.is_set
 	|| srlg_priority.is_set;
@@ -5260,7 +5626,8 @@ bool Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::has_ope
 std::string Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-name" <<"[group-name-index='" <<group_name_index <<"']";
+    path_buffer << "group-name";
+    ADD_KEY_TOKEN(group_name_index, "group-name-index");
     return path_buffer.str();
 }
 
@@ -5334,9 +5701,11 @@ bool Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName::has_lea
 }
 
 Srlg::Interfaces::Interface::Values::Values()
+    :
+    value_(this, {"srlg_index"})
 {
 
-    yang_name = "values"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "values"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::Values::~Values()
@@ -5345,7 +5714,8 @@ Srlg::Interfaces::Interface::Values::~Values()
 
 bool Srlg::Interfaces::Interface::Values::has_data() const
 {
-    for (std::size_t index=0; index<value_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<value_.len(); index++)
     {
         if(value_[index]->has_data())
             return true;
@@ -5355,7 +5725,7 @@ bool Srlg::Interfaces::Interface::Values::has_data() const
 
 bool Srlg::Interfaces::Interface::Values::has_operation() const
 {
-    for (std::size_t index=0; index<value_.size(); index++)
+    for (std::size_t index=0; index<value_.len(); index++)
     {
         if(value_[index]->has_operation())
             return true;
@@ -5385,7 +5755,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::Values::get_child_by_name(c
     {
         auto c = std::make_shared<Srlg::Interfaces::Interface::Values::Value>();
         c->parent = this;
-        value_.push_back(c);
+        value_.append(c);
         return c;
     }
 
@@ -5397,7 +5767,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::Valu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : value_)
+    for (auto c : value_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5430,7 +5800,7 @@ Srlg::Interfaces::Interface::Values::Value::Value()
     srlg_priority{YType::enumeration, "srlg-priority"}
 {
 
-    yang_name = "value"; yang_parent_name = "values"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "values"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::Values::Value::~Value()
@@ -5439,6 +5809,7 @@ Srlg::Interfaces::Interface::Values::Value::~Value()
 
 bool Srlg::Interfaces::Interface::Values::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return srlg_index.is_set
 	|| srlg_value.is_set
 	|| srlg_priority.is_set;
@@ -5455,7 +5826,8 @@ bool Srlg::Interfaces::Interface::Values::Value::has_operation() const
 std::string Srlg::Interfaces::Interface::Values::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "value" <<"[srlg-index='" <<srlg_index <<"']";
+    path_buffer << "value";
+    ADD_KEY_TOKEN(srlg_index, "srlg-index");
     return path_buffer.str();
 }
 
@@ -5529,9 +5901,11 @@ bool Srlg::Interfaces::Interface::Values::Value::has_leaf_or_child_of_name(const
 }
 
 Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgNames()
+    :
+    interface_srlg_name(this, {"srlg_name"})
 {
 
-    yang_name = "interface-srlg-names"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-srlg-names"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::InterfaceSrlgNames::~InterfaceSrlgNames()
@@ -5540,7 +5914,8 @@ Srlg::Interfaces::Interface::InterfaceSrlgNames::~InterfaceSrlgNames()
 
 bool Srlg::Interfaces::Interface::InterfaceSrlgNames::has_data() const
 {
-    for (std::size_t index=0; index<interface_srlg_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_srlg_name.len(); index++)
     {
         if(interface_srlg_name[index]->has_data())
             return true;
@@ -5550,7 +5925,7 @@ bool Srlg::Interfaces::Interface::InterfaceSrlgNames::has_data() const
 
 bool Srlg::Interfaces::Interface::InterfaceSrlgNames::has_operation() const
 {
-    for (std::size_t index=0; index<interface_srlg_name.size(); index++)
+    for (std::size_t index=0; index<interface_srlg_name.len(); index++)
     {
         if(interface_srlg_name[index]->has_operation())
             return true;
@@ -5580,7 +5955,7 @@ std::shared_ptr<Entity> Srlg::Interfaces::Interface::InterfaceSrlgNames::get_chi
     {
         auto c = std::make_shared<Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName>();
         c->parent = this;
-        interface_srlg_name.push_back(c);
+        interface_srlg_name.append(c);
         return c;
     }
 
@@ -5592,7 +5967,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Interfaces::Interface::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_srlg_name)
+    for (auto c : interface_srlg_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5623,7 +5998,7 @@ Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::InterfaceSrl
     srlg_name{YType::str, "srlg-name"}
 {
 
-    yang_name = "interface-srlg-name"; yang_parent_name = "interface-srlg-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-srlg-name"; yang_parent_name = "interface-srlg-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::~InterfaceSrlgName()
@@ -5632,6 +6007,7 @@ Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::~InterfaceSr
 
 bool Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::has_data() const
 {
+    if (is_presence_container) return true;
     return srlg_name.is_set;
 }
 
@@ -5644,7 +6020,8 @@ bool Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::has_ope
 std::string Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-srlg-name" <<"[srlg-name='" <<srlg_name <<"']";
+    path_buffer << "interface-srlg-name";
+    ADD_KEY_TOKEN(srlg_name, "srlg-name");
     return path_buffer.str();
 }
 
@@ -5696,9 +6073,11 @@ bool Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName::has_lea
 }
 
 Srlg::SrlgNames::SrlgNames()
+    :
+    srlg_name(this, {"srlg_name"})
 {
 
-    yang_name = "srlg-names"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "srlg-names"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::SrlgNames::~SrlgNames()
@@ -5707,7 +6086,8 @@ Srlg::SrlgNames::~SrlgNames()
 
 bool Srlg::SrlgNames::has_data() const
 {
-    for (std::size_t index=0; index<srlg_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<srlg_name.len(); index++)
     {
         if(srlg_name[index]->has_data())
             return true;
@@ -5717,7 +6097,7 @@ bool Srlg::SrlgNames::has_data() const
 
 bool Srlg::SrlgNames::has_operation() const
 {
-    for (std::size_t index=0; index<srlg_name.size(); index++)
+    for (std::size_t index=0; index<srlg_name.len(); index++)
     {
         if(srlg_name[index]->has_operation())
             return true;
@@ -5754,7 +6134,7 @@ std::shared_ptr<Entity> Srlg::SrlgNames::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Srlg::SrlgNames::SrlgName>();
         c->parent = this;
-        srlg_name.push_back(c);
+        srlg_name.append(c);
         return c;
     }
 
@@ -5766,7 +6146,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::SrlgNames::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : srlg_name)
+    for (auto c : srlg_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5798,7 +6178,7 @@ Srlg::SrlgNames::SrlgName::SrlgName()
     srlg_value{YType::uint32, "srlg-value"}
 {
 
-    yang_name = "srlg-name"; yang_parent_name = "srlg-names"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "srlg-name"; yang_parent_name = "srlg-names"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::SrlgNames::SrlgName::~SrlgName()
@@ -5807,6 +6187,7 @@ Srlg::SrlgNames::SrlgName::~SrlgName()
 
 bool Srlg::SrlgNames::SrlgName::has_data() const
 {
+    if (is_presence_container) return true;
     return srlg_name.is_set
 	|| srlg_value.is_set;
 }
@@ -5828,7 +6209,8 @@ std::string Srlg::SrlgNames::SrlgName::get_absolute_path() const
 std::string Srlg::SrlgNames::SrlgName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "srlg-name" <<"[srlg-name='" <<srlg_name <<"']";
+    path_buffer << "srlg-name";
+    ADD_KEY_TOKEN(srlg_name, "srlg-name");
     return path_buffer.str();
 }
 
@@ -5891,9 +6273,11 @@ bool Srlg::SrlgNames::SrlgName::has_leaf_or_child_of_name(const std::string & na
 }
 
 Srlg::Groups::Groups()
+    :
+    group(this, {"group_name"})
 {
 
-    yang_name = "groups"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::Groups::~Groups()
@@ -5902,7 +6286,8 @@ Srlg::Groups::~Groups()
 
 bool Srlg::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -5912,7 +6297,7 @@ bool Srlg::Groups::has_data() const
 
 bool Srlg::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -5949,7 +6334,7 @@ std::shared_ptr<Entity> Srlg::Groups::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Srlg::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -5961,7 +6346,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Groups::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5991,12 +6376,12 @@ Srlg::Groups::Group::Group()
     :
     group_name{YType::str, "group-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     group_values(std::make_shared<Srlg::Groups::Group::GroupValues>())
 {
     group_values->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::Groups::Group::~Group()
@@ -6005,6 +6390,7 @@ Srlg::Groups::Group::~Group()
 
 bool Srlg::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_name.is_set
 	|| enable.is_set
 	|| (group_values !=  nullptr && group_values->has_data());
@@ -6028,7 +6414,8 @@ std::string Srlg::Groups::Group::get_absolute_path() const
 std::string Srlg::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-name='" <<group_name <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_name, "group-name");
     return path_buffer.str();
 }
 
@@ -6105,9 +6492,11 @@ bool Srlg::Groups::Group::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Srlg::Groups::Group::GroupValues::GroupValues()
+    :
+    group_value(this, {"srlg_index"})
 {
 
-    yang_name = "group-values"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-values"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Groups::Group::GroupValues::~GroupValues()
@@ -6116,7 +6505,8 @@ Srlg::Groups::Group::GroupValues::~GroupValues()
 
 bool Srlg::Groups::Group::GroupValues::has_data() const
 {
-    for (std::size_t index=0; index<group_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_value.len(); index++)
     {
         if(group_value[index]->has_data())
             return true;
@@ -6126,7 +6516,7 @@ bool Srlg::Groups::Group::GroupValues::has_data() const
 
 bool Srlg::Groups::Group::GroupValues::has_operation() const
 {
-    for (std::size_t index=0; index<group_value.size(); index++)
+    for (std::size_t index=0; index<group_value.len(); index++)
     {
         if(group_value[index]->has_operation())
             return true;
@@ -6156,7 +6546,7 @@ std::shared_ptr<Entity> Srlg::Groups::Group::GroupValues::get_child_by_name(cons
     {
         auto c = std::make_shared<Srlg::Groups::Group::GroupValues::GroupValue>();
         c->parent = this;
-        group_value.push_back(c);
+        group_value.append(c);
         return c;
     }
 
@@ -6168,7 +6558,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Groups::Group::GroupValues:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_value)
+    for (auto c : group_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6201,7 +6591,7 @@ Srlg::Groups::Group::GroupValues::GroupValue::GroupValue()
     srlg_priority{YType::enumeration, "srlg-priority"}
 {
 
-    yang_name = "group-value"; yang_parent_name = "group-values"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-value"; yang_parent_name = "group-values"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::Groups::Group::GroupValues::GroupValue::~GroupValue()
@@ -6210,6 +6600,7 @@ Srlg::Groups::Group::GroupValues::GroupValue::~GroupValue()
 
 bool Srlg::Groups::Group::GroupValues::GroupValue::has_data() const
 {
+    if (is_presence_container) return true;
     return srlg_index.is_set
 	|| srlg_value.is_set
 	|| srlg_priority.is_set;
@@ -6226,7 +6617,8 @@ bool Srlg::Groups::Group::GroupValues::GroupValue::has_operation() const
 std::string Srlg::Groups::Group::GroupValues::GroupValue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-value" <<"[srlg-index='" <<srlg_index <<"']";
+    path_buffer << "group-value";
+    ADD_KEY_TOKEN(srlg_index, "srlg-index");
     return path_buffer.str();
 }
 
@@ -6300,9 +6692,11 @@ bool Srlg::Groups::Group::GroupValues::GroupValue::has_leaf_or_child_of_name(con
 }
 
 Srlg::InheritNodes::InheritNodes()
+    :
+    inherit_node(this, {"inherit_node_name"})
 {
 
-    yang_name = "inherit-nodes"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inherit-nodes"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::InheritNodes::~InheritNodes()
@@ -6311,7 +6705,8 @@ Srlg::InheritNodes::~InheritNodes()
 
 bool Srlg::InheritNodes::has_data() const
 {
-    for (std::size_t index=0; index<inherit_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inherit_node.len(); index++)
     {
         if(inherit_node[index]->has_data())
             return true;
@@ -6321,7 +6716,7 @@ bool Srlg::InheritNodes::has_data() const
 
 bool Srlg::InheritNodes::has_operation() const
 {
-    for (std::size_t index=0; index<inherit_node.size(); index++)
+    for (std::size_t index=0; index<inherit_node.len(); index++)
     {
         if(inherit_node[index]->has_operation())
             return true;
@@ -6358,7 +6753,7 @@ std::shared_ptr<Entity> Srlg::InheritNodes::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Srlg::InheritNodes::InheritNode>();
         c->parent = this;
-        inherit_node.push_back(c);
+        inherit_node.append(c);
         return c;
     }
 
@@ -6370,7 +6765,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::InheritNodes::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inherit_node)
+    for (auto c : inherit_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6400,12 +6795,12 @@ Srlg::InheritNodes::InheritNode::InheritNode()
     :
     inherit_node_name{YType::str, "inherit-node-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     inherit_node_values(std::make_shared<Srlg::InheritNodes::InheritNode::InheritNodeValues>())
 {
     inherit_node_values->parent = this;
 
-    yang_name = "inherit-node"; yang_parent_name = "inherit-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inherit-node"; yang_parent_name = "inherit-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Srlg::InheritNodes::InheritNode::~InheritNode()
@@ -6414,6 +6809,7 @@ Srlg::InheritNodes::InheritNode::~InheritNode()
 
 bool Srlg::InheritNodes::InheritNode::has_data() const
 {
+    if (is_presence_container) return true;
     return inherit_node_name.is_set
 	|| enable.is_set
 	|| (inherit_node_values !=  nullptr && inherit_node_values->has_data());
@@ -6437,7 +6833,8 @@ std::string Srlg::InheritNodes::InheritNode::get_absolute_path() const
 std::string Srlg::InheritNodes::InheritNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inherit-node" <<"[inherit-node-name='" <<inherit_node_name <<"']";
+    path_buffer << "inherit-node";
+    ADD_KEY_TOKEN(inherit_node_name, "inherit-node-name");
     return path_buffer.str();
 }
 
@@ -6514,9 +6911,11 @@ bool Srlg::InheritNodes::InheritNode::has_leaf_or_child_of_name(const std::strin
 }
 
 Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValues()
+    :
+    inherit_node_value(this, {"srlg_index"})
 {
 
-    yang_name = "inherit-node-values"; yang_parent_name = "inherit-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inherit-node-values"; yang_parent_name = "inherit-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::InheritNodes::InheritNode::InheritNodeValues::~InheritNodeValues()
@@ -6525,7 +6924,8 @@ Srlg::InheritNodes::InheritNode::InheritNodeValues::~InheritNodeValues()
 
 bool Srlg::InheritNodes::InheritNode::InheritNodeValues::has_data() const
 {
-    for (std::size_t index=0; index<inherit_node_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inherit_node_value.len(); index++)
     {
         if(inherit_node_value[index]->has_data())
             return true;
@@ -6535,7 +6935,7 @@ bool Srlg::InheritNodes::InheritNode::InheritNodeValues::has_data() const
 
 bool Srlg::InheritNodes::InheritNode::InheritNodeValues::has_operation() const
 {
-    for (std::size_t index=0; index<inherit_node_value.size(); index++)
+    for (std::size_t index=0; index<inherit_node_value.len(); index++)
     {
         if(inherit_node_value[index]->has_operation())
             return true;
@@ -6565,7 +6965,7 @@ std::shared_ptr<Entity> Srlg::InheritNodes::InheritNode::InheritNodeValues::get_
     {
         auto c = std::make_shared<Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue>();
         c->parent = this;
-        inherit_node_value.push_back(c);
+        inherit_node_value.append(c);
         return c;
     }
 
@@ -6577,7 +6977,7 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::InheritNodes::InheritNode::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inherit_node_value)
+    for (auto c : inherit_node_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6610,7 +7010,7 @@ Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::InheritNod
     srlg_priority{YType::enumeration, "srlg-priority"}
 {
 
-    yang_name = "inherit-node-value"; yang_parent_name = "inherit-node-values"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inherit-node-value"; yang_parent_name = "inherit-node-values"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::~InheritNodeValue()
@@ -6619,6 +7019,7 @@ Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::~InheritNo
 
 bool Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::has_data() const
 {
+    if (is_presence_container) return true;
     return srlg_index.is_set
 	|| srlg_value.is_set
 	|| srlg_priority.is_set;
@@ -6635,7 +7036,8 @@ bool Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::has_o
 std::string Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "inherit-node-value" <<"[srlg-index='" <<srlg_index <<"']";
+    path_buffer << "inherit-node-value";
+    ADD_KEY_TOKEN(srlg_index, "srlg-index");
     return path_buffer.str();
 }
 
@@ -6709,9 +7111,11 @@ bool Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue::has_l
 }
 
 VrfGroups::VrfGroups()
+    :
+    vrf_group(this, {"vrf_group_name"})
 {
 
-    yang_name = "vrf-groups"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vrf-groups"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 VrfGroups::~VrfGroups()
@@ -6720,7 +7124,8 @@ VrfGroups::~VrfGroups()
 
 bool VrfGroups::has_data() const
 {
-    for (std::size_t index=0; index<vrf_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_group.len(); index++)
     {
         if(vrf_group[index]->has_data())
             return true;
@@ -6730,7 +7135,7 @@ bool VrfGroups::has_data() const
 
 bool VrfGroups::has_operation() const
 {
-    for (std::size_t index=0; index<vrf_group.size(); index++)
+    for (std::size_t index=0; index<vrf_group.len(); index++)
     {
         if(vrf_group[index]->has_operation())
             return true;
@@ -6760,7 +7165,7 @@ std::shared_ptr<Entity> VrfGroups::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<VrfGroups::VrfGroup>();
         c->parent = this;
-        vrf_group.push_back(c);
+        vrf_group.append(c);
         return c;
     }
 
@@ -6772,7 +7177,7 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroups::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf_group)
+    for (auto c : vrf_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6827,12 +7232,12 @@ VrfGroups::VrfGroup::VrfGroup()
     :
     vrf_group_name{YType::str, "vrf-group-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     vrfs(std::make_shared<VrfGroups::VrfGroup::Vrfs>())
 {
     vrfs->parent = this;
 
-    yang_name = "vrf-group"; yang_parent_name = "vrf-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-group"; yang_parent_name = "vrf-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VrfGroups::VrfGroup::~VrfGroup()
@@ -6841,6 +7246,7 @@ VrfGroups::VrfGroup::~VrfGroup()
 
 bool VrfGroups::VrfGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_group_name.is_set
 	|| enable.is_set
 	|| (vrfs !=  nullptr && vrfs->has_data());
@@ -6864,7 +7270,8 @@ std::string VrfGroups::VrfGroup::get_absolute_path() const
 std::string VrfGroups::VrfGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-group" <<"[vrf-group-name='" <<vrf_group_name <<"']";
+    path_buffer << "vrf-group";
+    ADD_KEY_TOKEN(vrf_group_name, "vrf-group-name");
     return path_buffer.str();
 }
 
@@ -6941,9 +7348,11 @@ bool VrfGroups::VrfGroup::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 VrfGroups::VrfGroup::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "vrf-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "vrf-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VrfGroups::VrfGroup::Vrfs::~Vrfs()
@@ -6952,7 +7361,8 @@ VrfGroups::VrfGroup::Vrfs::~Vrfs()
 
 bool VrfGroups::VrfGroup::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -6962,7 +7372,7 @@ bool VrfGroups::VrfGroup::Vrfs::has_data() const
 
 bool VrfGroups::VrfGroup::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -6992,7 +7402,7 @@ std::shared_ptr<Entity> VrfGroups::VrfGroup::Vrfs::get_child_by_name(const std::
     {
         auto c = std::make_shared<VrfGroups::VrfGroup::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -7004,7 +7414,7 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroups::VrfGroup::Vrfs::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7035,7 +7445,7 @@ VrfGroups::VrfGroup::Vrfs::Vrf::Vrf()
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VrfGroups::VrfGroup::Vrfs::Vrf::~Vrf()
@@ -7044,6 +7454,7 @@ VrfGroups::VrfGroup::Vrfs::Vrf::~Vrf()
 
 bool VrfGroups::VrfGroup::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set;
 }
 
@@ -7056,7 +7467,8 @@ bool VrfGroups::VrfGroup::Vrfs::Vrf::has_operation() const
 std::string VrfGroups::VrfGroup::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -7112,7 +7524,7 @@ SelectiveVrfDownload::SelectiveVrfDownload()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "selective-vrf-download"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "selective-vrf-download"; yang_parent_name = "Cisco-IOS-XR-infra-rsi-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SelectiveVrfDownload::~SelectiveVrfDownload()
@@ -7121,6 +7533,7 @@ SelectiveVrfDownload::~SelectiveVrfDownload()
 
 bool SelectiveVrfDownload::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -7209,10 +7622,6 @@ bool SelectiveVrfDownload::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-const Enum::YLeaf VrfSubAddressFamily::unicast {1, "unicast"};
-const Enum::YLeaf VrfSubAddressFamily::multicast {2, "multicast"};
-const Enum::YLeaf VrfSubAddressFamily::flow_spec {133, "flow-spec"};
-
 const Enum::YLeaf VrfAddressFamily::ipv4 {1, "ipv4"};
 const Enum::YLeaf VrfAddressFamily::ipv6 {2, "ipv6"};
 
@@ -7221,6 +7630,10 @@ const Enum::YLeaf SrlgPriority::high {1, "high"};
 const Enum::YLeaf SrlgPriority::default_ {2, "default"};
 const Enum::YLeaf SrlgPriority::low {3, "low"};
 const Enum::YLeaf SrlgPriority::very_low {4, "very-low"};
+
+const Enum::YLeaf VrfSubAddressFamily::unicast {1, "unicast"};
+const Enum::YLeaf VrfSubAddressFamily::multicast {2, "multicast"};
+const Enum::YLeaf VrfSubAddressFamily::flow_spec {133, "flow-spec"};
 
 
 }

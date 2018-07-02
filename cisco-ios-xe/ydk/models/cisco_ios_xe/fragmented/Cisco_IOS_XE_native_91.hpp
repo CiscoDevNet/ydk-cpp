@@ -38,8 +38,8 @@ class Native::Interface::GroupAsync::Ipv6::Address : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::Address::Dhcp> dhcp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::Address::Autoconfig> autoconfig; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::Address::PrefixList> > prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::Address::LinkLocalAddress> > link_local_address;
+        ydk::YList prefix_list;
+        ydk::YList link_local_address;
         
 }; // Native::Interface::GroupAsync::Ipv6::Address
 
@@ -404,7 +404,7 @@ class Native::Interface::GroupAsync::Standby : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Standby::Delay> delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Standby::UseBia> use_bia; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Standby::StandbyList> > standby_list;
+        ydk::YList standby_list;
                 class Version;
 
 }; // Native::Interface::GroupAsync::Standby
@@ -494,7 +494,7 @@ class Native::Interface::GroupAsync::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -510,7 +510,7 @@ class Native::Interface::GroupAsync::Standby::StandbyList : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Standby::StandbyList::Preempt> preempt; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Standby::StandbyList::Redirect> redirect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Standby::StandbyList::Timers> timers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Standby::StandbyList::Track> > track;
+        ydk::YList track;
                 class Ipv6;
 
 }; // Native::Interface::GroupAsync::Standby::StandbyList
@@ -1447,7 +1447,7 @@ class Native::Interface::GroupAsync::RcvQueue : public ydk::Entity
 
         class CosMap; //type: Native::Interface::GroupAsync::RcvQueue::CosMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::RcvQueue::CosMap> > cos_map;
+        ydk::YList cos_map;
         
 }; // Native::Interface::GroupAsync::RcvQueue
 
@@ -1669,7 +1669,7 @@ class Native::Interface::Multilink : public ydk::Entity
         class Backup; //type: Native::Interface::Multilink::Backup
         class Cemoudp; //type: Native::Interface::Multilink::Cemoudp
         class CwsTunnel; //type: Native::Interface::Multilink::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::Multilink::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::Multilink::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::Multilink::Encapsulation
         class FairQueueConf; //type: Native::Interface::Multilink::FairQueueConf
         class FairQueue; //type: Native::Interface::Multilink::FairQueue
@@ -1707,7 +1707,7 @@ class Native::Interface::Multilink : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::FairQueue> fair_queue;
@@ -1718,7 +1718,7 @@ class Native::Interface::Multilink : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Vrf> vrf;
@@ -2136,11 +2136,11 @@ class Native::Interface::Multilink::CwsTunnel::Out : public ydk::Entity
 }; // Native::Interface::Multilink::CwsTunnel::Out
 
 
-class Native::Interface::Multilink::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::Multilink::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2155,16 +2155,16 @@ class Native::Interface::Multilink::L2ProtocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::Multilink::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::Multilink::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::Multilink::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::Multilink::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::Multilink::L2ProtocolTunnel
+}; // Native::Interface::Multilink::L2protocolTunnel
 
 
-class Native::Interface::Multilink::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::Multilink::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -2185,10 +2185,10 @@ class Native::Interface::Multilink::L2ProtocolTunnel::DropThreshold : public ydk
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::Multilink::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::Multilink::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::Multilink::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::Multilink::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -2209,7 +2209,7 @@ class Native::Interface::Multilink::L2ProtocolTunnel::ShutdownThreshold : public
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::Multilink::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::Multilink::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::Multilink::Encapsulation : public ydk::Entity
@@ -2827,7 +2827,7 @@ class Native::Interface::Multilink::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::Rip> rip;
@@ -3166,7 +3166,7 @@ class Native::Interface::Multilink::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::Multilink::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::Multilink::Ip::Address

@@ -17,7 +17,7 @@ Pbr::Pbr()
 {
     nodes->parent = this;
 
-    yang_name = "pbr"; yang_parent_name = "Cisco-IOS-XR-pbr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pbr"; yang_parent_name = "Cisco-IOS-XR-pbr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Pbr::~Pbr()
@@ -26,6 +26,7 @@ Pbr::~Pbr()
 
 bool Pbr::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Pbr::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Pbr::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pbr::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Pbr::Nodes::~Nodes()
 
 bool Pbr::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Pbr::Nodes::has_data() const
 
 bool Pbr::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Pbr::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Pbr::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool Pbr::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Pbr::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     policy_map(std::make_shared<Pbr::Nodes::Node::PolicyMap>())
 {
     policy_map->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pbr::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ Pbr::Nodes::Node::~Node()
 
 bool Pbr::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (policy_map !=  nullptr && policy_map->has_data());
 }
@@ -252,7 +257,8 @@ std::string Pbr::Nodes::Node::get_absolute_path() const
 std::string Pbr::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -323,7 +329,7 @@ Pbr::Nodes::Node::PolicyMap::PolicyMap()
 {
     interfaces->parent = this;
 
-    yang_name = "policy-map"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::~PolicyMap()
@@ -332,6 +338,7 @@ Pbr::Nodes::Node::PolicyMap::~PolicyMap()
 
 bool Pbr::Nodes::Node::PolicyMap::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -399,9 +406,11 @@ bool Pbr::Nodes::Node::PolicyMap::has_leaf_or_child_of_name(const std::string & 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::~Interfaces()
@@ -410,7 +419,8 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::~Interfaces()
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -420,7 +430,7 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::has_data() const
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -450,7 +460,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::get_child_by_na
     {
         auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -462,7 +472,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -491,12 +501,12 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::has_leaf_or_child_of_name(const st
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     direction(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction>())
 {
     direction->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::~Interface()
@@ -505,6 +515,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::~Interface()
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (direction !=  nullptr && direction->has_data());
 }
@@ -519,7 +530,8 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::has_operation() const
 std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -590,7 +602,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Direction()
 {
     input->parent = this;
 
-    yang_name = "direction"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "direction"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::~Direction()
@@ -599,6 +611,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::~Direction()
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -671,9 +684,11 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Input()
     policy_name{YType::str, "policy-name"},
     state{YType::enumeration, "state"},
     state_description{YType::str, "state-description"}
+        ,
+    class_stat(this, {})
 {
 
-    yang_name = "input"; yang_parent_name = "direction"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "direction"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::~Input()
@@ -682,7 +697,8 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::~Input()
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::has_data() const
 {
-    for (std::size_t index=0; index<class_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_stat.len(); index++)
     {
         if(class_stat[index]->has_data())
             return true;
@@ -695,7 +711,7 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::has_d
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::has_operation() const
 {
-    for (std::size_t index=0; index<class_stat.size(); index++)
+    for (std::size_t index=0; index<class_stat.len(); index++)
     {
         if(class_stat[index]->has_operation())
             return true;
@@ -733,7 +749,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
     {
         auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat>();
         c->parent = this;
-        class_stat.push_back(c);
+        class_stat.append(c);
         return c;
     }
 
@@ -745,7 +761,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_stat)
+    for (auto c : class_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -816,14 +832,14 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
     counter_validity_bitmask{YType::uint64, "counter-validity-bitmask"},
     class_name{YType::str, "class-name"},
     class_id{YType::uint32, "class-id"}
-    	,
+        ,
     general_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats>())
-	,httpr_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats>())
+    , httpr_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats>())
 {
     general_stats->parent = this;
     httpr_stats->parent = this;
 
-    yang_name = "class-stat"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-stat"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::~ClassStat()
@@ -832,6 +848,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::has_data() const
 {
+    if (is_presence_container) return true;
     return counter_validity_bitmask.is_set
 	|| class_name.is_set
 	|| class_id.is_set
@@ -966,7 +983,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
     pre_policy_matched_bytes{YType::uint64, "pre-policy-matched-bytes"}
 {
 
-    yang_name = "general-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::~GeneralStats()
@@ -975,6 +992,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_packets.is_set
 	|| transmit_bytes.is_set
 	|| total_drop_packets.is_set
@@ -1152,7 +1170,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
     resp_sent_bytes{YType::uint64, "resp-sent-bytes"}
 {
 
-    yang_name = "httpr-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "httpr-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::~HttprStats()
@@ -1161,6 +1179,7 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::has_data() const
 {
+    if (is_presence_container) return true;
     return rqst_rcvd_packets.is_set
 	|| rqst_rcvd_bytes.is_set
 	|| drop_packets.is_set

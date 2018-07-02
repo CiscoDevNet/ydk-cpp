@@ -17,7 +17,7 @@ Native::Flow::Record::Collect::Ipv6::Section::Payload::Payload()
     size{YType::uint16, "size"}
 {
 
-    yang_name = "payload"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "payload"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Ipv6::Section::Payload::~Payload()
@@ -26,6 +26,7 @@ Native::Flow::Record::Collect::Ipv6::Section::Payload::~Payload()
 
 bool Native::Flow::Record::Collect::Ipv6::Section::Payload::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set;
 }
 
@@ -92,12 +93,12 @@ bool Native::Flow::Record::Collect::Ipv6::Section::Payload::has_leaf_or_child_of
 Native::Flow::Record::Collect::Ipv6::Source::Source()
     :
     address{YType::empty, "address"}
-    	,
+        ,
     mask(nullptr) // presence node
-	,prefix(nullptr) // presence node
+    , prefix(nullptr) // presence node
 {
 
-    yang_name = "source"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Ipv6::Source::~Source()
@@ -106,6 +107,7 @@ Native::Flow::Record::Collect::Ipv6::Source::~Source()
 
 bool Native::Flow::Record::Collect::Ipv6::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| (mask !=  nullptr && mask->has_data())
 	|| (prefix !=  nullptr && prefix->has_data());
@@ -206,7 +208,7 @@ Native::Flow::Record::Collect::Ipv6::Source::Mask::Mask()
     minimum_mask{YType::uint8, "minimum-mask"}
 {
 
-    yang_name = "mask"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Ipv6::Source::Mask::~Mask()
@@ -215,6 +217,7 @@ Native::Flow::Record::Collect::Ipv6::Source::Mask::~Mask()
 
 bool Native::Flow::Record::Collect::Ipv6::Source::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_mask.is_set;
 }
 
@@ -283,7 +286,7 @@ Native::Flow::Record::Collect::Ipv6::Source::Prefix::Prefix()
     minimum_mask{YType::uint8, "minimum-mask"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Ipv6::Source::Prefix::~Prefix()
@@ -292,6 +295,7 @@ Native::Flow::Record::Collect::Ipv6::Source::Prefix::~Prefix()
 
 bool Native::Flow::Record::Collect::Ipv6::Source::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_mask.is_set;
 }
 
@@ -362,7 +366,7 @@ Native::Flow::Record::Collect::Metadata::Metadata()
     multi_party_session_id{YType::empty, "multi-party-session-id"}
 {
 
-    yang_name = "metadata"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metadata"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Metadata::~Metadata()
@@ -371,6 +375,7 @@ Native::Flow::Record::Collect::Metadata::~Metadata()
 
 bool Native::Flow::Record::Collect::Metadata::has_data() const
 {
+    if (is_presence_container) return true;
     return clock_rate.is_set
 	|| global_session_id.is_set
 	|| multi_party_session_id.is_set;
@@ -465,7 +470,7 @@ Native::Flow::Record::Collect::Monitor::Monitor()
     event{YType::empty, "event"}
 {
 
-    yang_name = "monitor"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Monitor::~Monitor()
@@ -474,6 +479,7 @@ Native::Flow::Record::Collect::Monitor::~Monitor()
 
 bool Native::Flow::Record::Collect::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return event.is_set;
 }
 
@@ -543,7 +549,7 @@ Native::Flow::Record::Collect::Mpls::Mpls()
 {
     label->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::~Mpls()
@@ -552,6 +558,7 @@ Native::Flow::Record::Collect::Mpls::~Mpls()
 
 bool Native::Flow::Record::Collect::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (label !=  nullptr && label->has_data());
 }
 
@@ -621,11 +628,11 @@ bool Native::Flow::Record::Collect::Mpls::has_leaf_or_child_of_name(const std::s
 Native::Flow::Record::Collect::Mpls::Label::Label()
     :
     one(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::One>())
-	,two(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Two>())
-	,three(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Three>())
-	,four(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Four>())
-	,five(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Five>())
-	,six(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Six>())
+    , two(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Two>())
+    , three(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Three>())
+    , four(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Four>())
+    , five(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Five>())
+    , six(std::make_shared<Native::Flow::Record::Collect::Mpls::Label::Six>())
 {
     one->parent = this;
     two->parent = this;
@@ -634,7 +641,7 @@ Native::Flow::Record::Collect::Mpls::Label::Label()
     five->parent = this;
     six->parent = this;
 
-    yang_name = "label"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::Label::~Label()
@@ -643,6 +650,7 @@ Native::Flow::Record::Collect::Mpls::Label::~Label()
 
 bool Native::Flow::Record::Collect::Mpls::Label::has_data() const
 {
+    if (is_presence_container) return true;
     return (one !=  nullptr && one->has_data())
 	|| (two !=  nullptr && two->has_data())
 	|| (three !=  nullptr && three->has_data())
@@ -797,7 +805,7 @@ Native::Flow::Record::Collect::Mpls::Label::One::One()
     type{YType::empty, "type"}
 {
 
-    yang_name = "one"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::Label::One::~One()
@@ -806,6 +814,7 @@ Native::Flow::Record::Collect::Mpls::Label::One::~One()
 
 bool Native::Flow::Record::Collect::Mpls::Label::One::has_data() const
 {
+    if (is_presence_container) return true;
     return details.is_set
 	|| exp.is_set
 	|| ttl.is_set
@@ -913,7 +922,7 @@ Native::Flow::Record::Collect::Mpls::Label::Two::Two()
     details{YType::empty, "details"}
 {
 
-    yang_name = "two"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "two"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::Label::Two::~Two()
@@ -922,6 +931,7 @@ Native::Flow::Record::Collect::Mpls::Label::Two::~Two()
 
 bool Native::Flow::Record::Collect::Mpls::Label::Two::has_data() const
 {
+    if (is_presence_container) return true;
     return details.is_set;
 }
 
@@ -990,7 +1000,7 @@ Native::Flow::Record::Collect::Mpls::Label::Three::Three()
     details{YType::empty, "details"}
 {
 
-    yang_name = "three"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "three"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::Label::Three::~Three()
@@ -999,6 +1009,7 @@ Native::Flow::Record::Collect::Mpls::Label::Three::~Three()
 
 bool Native::Flow::Record::Collect::Mpls::Label::Three::has_data() const
 {
+    if (is_presence_container) return true;
     return details.is_set;
 }
 
@@ -1067,7 +1078,7 @@ Native::Flow::Record::Collect::Mpls::Label::Four::Four()
     details{YType::empty, "details"}
 {
 
-    yang_name = "four"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "four"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::Label::Four::~Four()
@@ -1076,6 +1087,7 @@ Native::Flow::Record::Collect::Mpls::Label::Four::~Four()
 
 bool Native::Flow::Record::Collect::Mpls::Label::Four::has_data() const
 {
+    if (is_presence_container) return true;
     return details.is_set;
 }
 
@@ -1144,7 +1156,7 @@ Native::Flow::Record::Collect::Mpls::Label::Five::Five()
     details{YType::empty, "details"}
 {
 
-    yang_name = "five"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "five"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::Label::Five::~Five()
@@ -1153,6 +1165,7 @@ Native::Flow::Record::Collect::Mpls::Label::Five::~Five()
 
 bool Native::Flow::Record::Collect::Mpls::Label::Five::has_data() const
 {
+    if (is_presence_container) return true;
     return details.is_set;
 }
 
@@ -1221,7 +1234,7 @@ Native::Flow::Record::Collect::Mpls::Label::Six::Six()
     details{YType::empty, "details"}
 {
 
-    yang_name = "six"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "six"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Mpls::Label::Six::~Six()
@@ -1230,6 +1243,7 @@ Native::Flow::Record::Collect::Mpls::Label::Six::~Six()
 
 bool Native::Flow::Record::Collect::Mpls::Label::Six::has_data() const
 {
+    if (is_presence_container) return true;
     return details.is_set;
 }
 
@@ -1299,7 +1313,7 @@ Native::Flow::Record::Collect::Network::Network()
 {
     delay->parent = this;
 
-    yang_name = "network"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Network::~Network()
@@ -1308,6 +1322,7 @@ Native::Flow::Record::Collect::Network::~Network()
 
 bool Native::Flow::Record::Collect::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data());
 }
 
@@ -1380,7 +1395,7 @@ Native::Flow::Record::Collect::Network::Delay::Delay()
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "delay"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Network::Delay::~Delay()
@@ -1389,6 +1404,7 @@ Native::Flow::Record::Collect::Network::Delay::~Delay()
 
 bool Native::Flow::Record::Collect::Network::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return sample.is_set
 	|| sum.is_set;
 }
@@ -1468,16 +1484,16 @@ bool Native::Flow::Record::Collect::Network::Delay::has_leaf_or_child_of_name(co
 Native::Flow::Record::Collect::Pfr::Pfr()
     :
     label(std::make_shared<Native::Flow::Record::Collect::Pfr::Label>())
-	,one_way_delay(std::make_shared<Native::Flow::Record::Collect::Pfr::OneWayDelay>())
-	,service(std::make_shared<Native::Flow::Record::Collect::Pfr::Service>())
-	,site(std::make_shared<Native::Flow::Record::Collect::Pfr::Site>())
+    , one_way_delay(std::make_shared<Native::Flow::Record::Collect::Pfr::OneWayDelay>())
+    , service(std::make_shared<Native::Flow::Record::Collect::Pfr::Service>())
+    , site(std::make_shared<Native::Flow::Record::Collect::Pfr::Site>())
 {
     label->parent = this;
     one_way_delay->parent = this;
     service->parent = this;
     site->parent = this;
 
-    yang_name = "pfr"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfr"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::~Pfr()
@@ -1486,6 +1502,7 @@ Native::Flow::Record::Collect::Pfr::~Pfr()
 
 bool Native::Flow::Record::Collect::Pfr::has_data() const
 {
+    if (is_presence_container) return true;
     return (label !=  nullptr && label->has_data())
 	|| (one_way_delay !=  nullptr && one_way_delay->has_data())
 	|| (service !=  nullptr && service->has_data())
@@ -1605,7 +1622,7 @@ Native::Flow::Record::Collect::Pfr::Label::Label()
     identifier{YType::empty, "identifier"}
 {
 
-    yang_name = "label"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Label::~Label()
@@ -1614,6 +1631,7 @@ Native::Flow::Record::Collect::Pfr::Label::~Label()
 
 bool Native::Flow::Record::Collect::Pfr::Label::has_data() const
 {
+    if (is_presence_container) return true;
     return identifier.is_set;
 }
 
@@ -1683,7 +1701,7 @@ Native::Flow::Record::Collect::Pfr::OneWayDelay::OneWayDelay()
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "one-way-delay"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one-way-delay"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::OneWayDelay::~OneWayDelay()
@@ -1692,6 +1710,7 @@ Native::Flow::Record::Collect::Pfr::OneWayDelay::~OneWayDelay()
 
 bool Native::Flow::Record::Collect::Pfr::OneWayDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return samples.is_set
 	|| sum.is_set;
 }
@@ -1775,7 +1794,7 @@ Native::Flow::Record::Collect::Pfr::Service::Service()
     identifier{YType::empty, "identifier"}
 {
 
-    yang_name = "service"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Service::~Service()
@@ -1784,6 +1803,7 @@ Native::Flow::Record::Collect::Pfr::Service::~Service()
 
 bool Native::Flow::Record::Collect::Pfr::Service::has_data() const
 {
+    if (is_presence_container) return true;
     return provider.is_set
 	|| tag.is_set
 	|| identifier.is_set;
@@ -1876,12 +1896,12 @@ bool Native::Flow::Record::Collect::Pfr::Service::has_leaf_or_child_of_name(cons
 Native::Flow::Record::Collect::Pfr::Site::Site()
     :
     destination(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Destination>())
-	,source(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Source>())
+    , source(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Source>())
 {
     destination->parent = this;
     source->parent = this;
 
-    yang_name = "site"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "site"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::~Site()
@@ -1890,6 +1910,7 @@ Native::Flow::Record::Collect::Pfr::Site::~Site()
 
 bool Native::Flow::Record::Collect::Pfr::Site::has_data() const
 {
+    if (is_presence_container) return true;
     return (destination !=  nullptr && destination->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -1975,12 +1996,12 @@ bool Native::Flow::Record::Collect::Pfr::Site::has_leaf_or_child_of_name(const s
 Native::Flow::Record::Collect::Pfr::Site::Destination::Destination()
     :
     id(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Destination::Id>())
-	,prefix(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix>())
+    , prefix(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix>())
 {
     id->parent = this;
     prefix->parent = this;
 
-    yang_name = "destination"; yang_parent_name = "site"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "site"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Destination::~Destination()
@@ -1989,6 +2010,7 @@ Native::Flow::Record::Collect::Pfr::Site::Destination::~Destination()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return (id !=  nullptr && id->has_data())
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -2076,7 +2098,7 @@ Native::Flow::Record::Collect::Pfr::Site::Destination::Id::Id()
     ipv4{YType::empty, "ipv4"}
 {
 
-    yang_name = "id"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "id"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Destination::Id::~Id()
@@ -2085,6 +2107,7 @@ Native::Flow::Record::Collect::Pfr::Site::Destination::Id::~Id()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Destination::Id::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -2151,12 +2174,12 @@ bool Native::Flow::Record::Collect::Pfr::Site::Destination::Id::has_leaf_or_chil
 Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Prefix()
     :
     ipv4{YType::empty, "ipv4"}
-    	,
+        ,
     mask(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask>())
 {
     mask->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::~Prefix()
@@ -2165,6 +2188,7 @@ Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::~Prefix()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| (mask !=  nullptr && mask->has_data());
 }
@@ -2249,7 +2273,7 @@ Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::Mask()
     ipv4{YType::empty, "ipv4"}
 {
 
-    yang_name = "mask"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::~Mask()
@@ -2258,6 +2282,7 @@ Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::~Mask()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -2324,12 +2349,12 @@ bool Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::has_le
 Native::Flow::Record::Collect::Pfr::Site::Source::Source()
     :
     id(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Source::Id>())
-	,prefix(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Source::Prefix>())
+    , prefix(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Source::Prefix>())
 {
     id->parent = this;
     prefix->parent = this;
 
-    yang_name = "source"; yang_parent_name = "site"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "site"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Source::~Source()
@@ -2338,6 +2363,7 @@ Native::Flow::Record::Collect::Pfr::Site::Source::~Source()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return (id !=  nullptr && id->has_data())
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -2425,7 +2451,7 @@ Native::Flow::Record::Collect::Pfr::Site::Source::Id::Id()
     ipv4{YType::empty, "ipv4"}
 {
 
-    yang_name = "id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "id"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Source::Id::~Id()
@@ -2434,6 +2460,7 @@ Native::Flow::Record::Collect::Pfr::Site::Source::Id::~Id()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Source::Id::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -2500,12 +2527,12 @@ bool Native::Flow::Record::Collect::Pfr::Site::Source::Id::has_leaf_or_child_of_
 Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Prefix()
     :
     ipv4{YType::empty, "ipv4"}
-    	,
+        ,
     mask(std::make_shared<Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask>())
 {
     mask->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::~Prefix()
@@ -2514,6 +2541,7 @@ Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::~Prefix()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| (mask !=  nullptr && mask->has_data());
 }
@@ -2598,7 +2626,7 @@ Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::Mask()
     ipv4{YType::empty, "ipv4"}
 {
 
-    yang_name = "mask"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::~Mask()
@@ -2607,6 +2635,7 @@ Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::~Mask()
 
 bool Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set;
 }
 
@@ -2673,12 +2702,12 @@ bool Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::has_leaf_or
 Native::Flow::Record::Collect::Policy::Policy()
     :
     performance_monitor(std::make_shared<Native::Flow::Record::Collect::Policy::PerformanceMonitor>())
-	,qos(std::make_shared<Native::Flow::Record::Collect::Policy::Qos>())
+    , qos(std::make_shared<Native::Flow::Record::Collect::Policy::Qos>())
 {
     performance_monitor->parent = this;
     qos->parent = this;
 
-    yang_name = "policy"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Policy::~Policy()
@@ -2687,6 +2716,7 @@ Native::Flow::Record::Collect::Policy::~Policy()
 
 bool Native::Flow::Record::Collect::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return (performance_monitor !=  nullptr && performance_monitor->has_data())
 	|| (qos !=  nullptr && qos->has_data());
 }
@@ -2775,7 +2805,7 @@ Native::Flow::Record::Collect::Policy::PerformanceMonitor::PerformanceMonitor()
 {
     classification->parent = this;
 
-    yang_name = "performance-monitor"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "performance-monitor"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Policy::PerformanceMonitor::~PerformanceMonitor()
@@ -2784,6 +2814,7 @@ Native::Flow::Record::Collect::Policy::PerformanceMonitor::~PerformanceMonitor()
 
 bool Native::Flow::Record::Collect::Policy::PerformanceMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return (classification !=  nullptr && classification->has_data());
 }
 
@@ -2855,7 +2886,7 @@ Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::Class
     hierarchy{YType::empty, "hierarchy"}
 {
 
-    yang_name = "classification"; yang_parent_name = "performance-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classification"; yang_parent_name = "performance-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::~Classification()
@@ -2864,6 +2895,7 @@ Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::~Clas
 
 bool Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::has_data() const
 {
+    if (is_presence_container) return true;
     return hierarchy.is_set;
 }
 
@@ -2930,12 +2962,12 @@ bool Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::
 Native::Flow::Record::Collect::Policy::Qos::Qos()
     :
     classification(std::make_shared<Native::Flow::Record::Collect::Policy::Qos::Classification>())
-	,queue(std::make_shared<Native::Flow::Record::Collect::Policy::Qos::Queue>())
+    , queue(std::make_shared<Native::Flow::Record::Collect::Policy::Qos::Queue>())
 {
     classification->parent = this;
     queue->parent = this;
 
-    yang_name = "qos"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Policy::Qos::~Qos()
@@ -2944,6 +2976,7 @@ Native::Flow::Record::Collect::Policy::Qos::~Qos()
 
 bool Native::Flow::Record::Collect::Policy::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return (classification !=  nullptr && classification->has_data())
 	|| (queue !=  nullptr && queue->has_data());
 }
@@ -3031,7 +3064,7 @@ Native::Flow::Record::Collect::Policy::Qos::Classification::Classification()
     hierarchy{YType::empty, "hierarchy"}
 {
 
-    yang_name = "classification"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classification"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Policy::Qos::Classification::~Classification()
@@ -3040,6 +3073,7 @@ Native::Flow::Record::Collect::Policy::Qos::Classification::~Classification()
 
 bool Native::Flow::Record::Collect::Policy::Qos::Classification::has_data() const
 {
+    if (is_presence_container) return true;
     return hierarchy.is_set;
 }
 
@@ -3109,7 +3143,7 @@ Native::Flow::Record::Collect::Policy::Qos::Queue::Queue()
     index_{YType::empty, "index"}
 {
 
-    yang_name = "queue"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Policy::Qos::Queue::~Queue()
@@ -3118,6 +3152,7 @@ Native::Flow::Record::Collect::Policy::Qos::Queue::~Queue()
 
 bool Native::Flow::Record::Collect::Policy::Qos::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return drops.is_set
 	|| index_.is_set;
 }
@@ -3197,13 +3232,13 @@ bool Native::Flow::Record::Collect::Policy::Qos::Queue::has_leaf_or_child_of_nam
 Native::Flow::Record::Collect::Routing::Routing()
     :
     is_multicast{YType::empty, "is-multicast"}
-    	,
+        ,
     destination(std::make_shared<Native::Flow::Record::Collect::Routing::Destination>())
-	,forwarding_status(nullptr) // presence node
-	,next_hop(std::make_shared<Native::Flow::Record::Collect::Routing::NextHop>())
-	,pw(std::make_shared<Native::Flow::Record::Collect::Routing::Pw>())
-	,source(std::make_shared<Native::Flow::Record::Collect::Routing::Source>())
-	,vrf(std::make_shared<Native::Flow::Record::Collect::Routing::Vrf>())
+    , forwarding_status(nullptr) // presence node
+    , next_hop(std::make_shared<Native::Flow::Record::Collect::Routing::NextHop>())
+    , pw(std::make_shared<Native::Flow::Record::Collect::Routing::Pw>())
+    , source(std::make_shared<Native::Flow::Record::Collect::Routing::Source>())
+    , vrf(std::make_shared<Native::Flow::Record::Collect::Routing::Vrf>())
 {
     destination->parent = this;
     next_hop->parent = this;
@@ -3211,7 +3246,7 @@ Native::Flow::Record::Collect::Routing::Routing()
     source->parent = this;
     vrf->parent = this;
 
-    yang_name = "routing"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routing"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::~Routing()
@@ -3220,6 +3255,7 @@ Native::Flow::Record::Collect::Routing::~Routing()
 
 bool Native::Flow::Record::Collect::Routing::has_data() const
 {
+    if (is_presence_container) return true;
     return is_multicast.is_set
 	|| (destination !=  nullptr && destination->has_data())
 	|| (forwarding_status !=  nullptr && forwarding_status->has_data())
@@ -3382,11 +3418,11 @@ bool Native::Flow::Record::Collect::Routing::has_leaf_or_child_of_name(const std
 Native::Flow::Record::Collect::Routing::Destination::Destination()
     :
     traffic_index{YType::empty, "traffic-index"}
-    	,
+        ,
     as(nullptr) // presence node
 {
 
-    yang_name = "destination"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::Destination::~Destination()
@@ -3395,6 +3431,7 @@ Native::Flow::Record::Collect::Routing::Destination::~Destination()
 
 bool Native::Flow::Record::Collect::Routing::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_index.is_set
 	|| (as !=  nullptr && as->has_data());
 }
@@ -3477,11 +3514,11 @@ bool Native::Flow::Record::Collect::Routing::Destination::has_leaf_or_child_of_n
 Native::Flow::Record::Collect::Routing::Destination::As::As()
     :
     as4_octet{YType::empty, "as4-octet"}
-    	,
+        ,
     peer(nullptr) // presence node
 {
 
-    yang_name = "as"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Routing::Destination::As::~As()
@@ -3490,6 +3527,7 @@ Native::Flow::Record::Collect::Routing::Destination::As::~As()
 
 bool Native::Flow::Record::Collect::Routing::Destination::As::has_data() const
 {
+    if (is_presence_container) return true;
     return as4_octet.is_set
 	|| (peer !=  nullptr && peer->has_data());
 }
@@ -3574,7 +3612,7 @@ Native::Flow::Record::Collect::Routing::Destination::As::Peer::Peer()
     peer4_octet{YType::empty, "peer4-octet"}
 {
 
-    yang_name = "peer"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Routing::Destination::As::Peer::~Peer()
@@ -3583,6 +3621,7 @@ Native::Flow::Record::Collect::Routing::Destination::As::Peer::~Peer()
 
 bool Native::Flow::Record::Collect::Routing::Destination::As::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer4_octet.is_set;
 }
 
@@ -3651,7 +3690,7 @@ Native::Flow::Record::Collect::Routing::ForwardingStatus::ForwardingStatus()
     reason{YType::empty, "reason"}
 {
 
-    yang_name = "forwarding-status"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding-status"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Routing::ForwardingStatus::~ForwardingStatus()
@@ -3660,6 +3699,7 @@ Native::Flow::Record::Collect::Routing::ForwardingStatus::~ForwardingStatus()
 
 bool Native::Flow::Record::Collect::Routing::ForwardingStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return reason.is_set;
 }
 
@@ -3729,7 +3769,7 @@ Native::Flow::Record::Collect::Routing::NextHop::NextHop()
 {
     address->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::NextHop::~NextHop()
@@ -3738,6 +3778,7 @@ Native::Flow::Record::Collect::Routing::NextHop::~NextHop()
 
 bool Native::Flow::Record::Collect::Routing::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -3807,10 +3848,10 @@ bool Native::Flow::Record::Collect::Routing::NextHop::has_leaf_or_child_of_name(
 Native::Flow::Record::Collect::Routing::NextHop::Address::Address()
     :
     ipv4(nullptr) // presence node
-	,ipv6(nullptr) // presence node
+    , ipv6(nullptr) // presence node
 {
 
-    yang_name = "address"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::NextHop::Address::~Address()
@@ -3819,6 +3860,7 @@ Native::Flow::Record::Collect::Routing::NextHop::Address::~Address()
 
 bool Native::Flow::Record::Collect::Routing::NextHop::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -3906,7 +3948,7 @@ Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::Ipv4()
     bgp{YType::empty, "bgp"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::~Ipv4()
@@ -3915,6 +3957,7 @@ Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::~Ipv4()
 
 bool Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return bgp.is_set;
 }
 
@@ -3983,7 +4026,7 @@ Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::Ipv6()
     bgp{YType::empty, "bgp"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::~Ipv6()
@@ -3992,6 +4035,7 @@ Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::~Ipv6()
 
 bool Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return bgp.is_set;
 }
 
@@ -4061,7 +4105,7 @@ Native::Flow::Record::Collect::Routing::Pw::Pw()
 {
     destination->parent = this;
 
-    yang_name = "pw"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::Pw::~Pw()
@@ -4070,6 +4114,7 @@ Native::Flow::Record::Collect::Routing::Pw::~Pw()
 
 bool Native::Flow::Record::Collect::Routing::Pw::has_data() const
 {
+    if (is_presence_container) return true;
     return (destination !=  nullptr && destination->has_data());
 }
 
@@ -4141,7 +4186,7 @@ Native::Flow::Record::Collect::Routing::Pw::Destination::Destination()
     address{YType::empty, "address"}
 {
 
-    yang_name = "destination"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::Pw::Destination::~Destination()
@@ -4150,6 +4195,7 @@ Native::Flow::Record::Collect::Routing::Pw::Destination::~Destination()
 
 bool Native::Flow::Record::Collect::Routing::Pw::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4216,11 +4262,11 @@ bool Native::Flow::Record::Collect::Routing::Pw::Destination::has_leaf_or_child_
 Native::Flow::Record::Collect::Routing::Source::Source()
     :
     traffic_index{YType::empty, "traffic-index"}
-    	,
+        ,
     as(nullptr) // presence node
 {
 
-    yang_name = "source"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::Source::~Source()
@@ -4229,6 +4275,7 @@ Native::Flow::Record::Collect::Routing::Source::~Source()
 
 bool Native::Flow::Record::Collect::Routing::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_index.is_set
 	|| (as !=  nullptr && as->has_data());
 }
@@ -4311,11 +4358,11 @@ bool Native::Flow::Record::Collect::Routing::Source::has_leaf_or_child_of_name(c
 Native::Flow::Record::Collect::Routing::Source::As::As()
     :
     as4_octet{YType::empty, "as4-octet"}
-    	,
+        ,
     peer(nullptr) // presence node
 {
 
-    yang_name = "as"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Routing::Source::As::~As()
@@ -4324,6 +4371,7 @@ Native::Flow::Record::Collect::Routing::Source::As::~As()
 
 bool Native::Flow::Record::Collect::Routing::Source::As::has_data() const
 {
+    if (is_presence_container) return true;
     return as4_octet.is_set
 	|| (peer !=  nullptr && peer->has_data());
 }
@@ -4408,7 +4456,7 @@ Native::Flow::Record::Collect::Routing::Source::As::Peer::Peer()
     peer4_octet{YType::empty, "peer4-octet"}
 {
 
-    yang_name = "peer"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Routing::Source::As::Peer::~Peer()
@@ -4417,6 +4465,7 @@ Native::Flow::Record::Collect::Routing::Source::As::Peer::~Peer()
 
 bool Native::Flow::Record::Collect::Routing::Source::As::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer4_octet.is_set;
 }
 
@@ -4486,7 +4535,7 @@ Native::Flow::Record::Collect::Routing::Vrf::Vrf()
     output{YType::empty, "output"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Routing::Vrf::~Vrf()
@@ -4495,6 +4544,7 @@ Native::Flow::Record::Collect::Routing::Vrf::~Vrf()
 
 bool Native::Flow::Record::Collect::Routing::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return input.is_set
 	|| output.is_set;
 }
@@ -4577,7 +4627,7 @@ Native::Flow::Record::Collect::Services::Services()
 {
     waas->parent = this;
 
-    yang_name = "services"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "services"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Services::~Services()
@@ -4586,6 +4636,7 @@ Native::Flow::Record::Collect::Services::~Services()
 
 bool Native::Flow::Record::Collect::Services::has_data() const
 {
+    if (is_presence_container) return true;
     return (waas !=  nullptr && waas->has_data());
 }
 
@@ -4655,11 +4706,11 @@ bool Native::Flow::Record::Collect::Services::has_leaf_or_child_of_name(const st
 Native::Flow::Record::Collect::Services::Waas::Waas()
     :
     passthrough_reason{YType::empty, "passthrough-reason"}
-    	,
+        ,
     segment(nullptr) // presence node
 {
 
-    yang_name = "waas"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "waas"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Services::Waas::~Waas()
@@ -4668,6 +4719,7 @@ Native::Flow::Record::Collect::Services::Waas::~Waas()
 
 bool Native::Flow::Record::Collect::Services::Waas::has_data() const
 {
+    if (is_presence_container) return true;
     return passthrough_reason.is_set
 	|| (segment !=  nullptr && segment->has_data());
 }
@@ -4752,7 +4804,7 @@ Native::Flow::Record::Collect::Services::Waas::Segment::Segment()
     account_on_resolution{YType::empty, "account-on-resolution"}
 {
 
-    yang_name = "segment"; yang_parent_name = "waas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "segment"; yang_parent_name = "waas"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Services::Waas::Segment::~Segment()
@@ -4761,6 +4813,7 @@ Native::Flow::Record::Collect::Services::Waas::Segment::~Segment()
 
 bool Native::Flow::Record::Collect::Services::Waas::Segment::has_data() const
 {
+    if (is_presence_container) return true;
     return account_on_resolution.is_set;
 }
 
@@ -4827,14 +4880,14 @@ bool Native::Flow::Record::Collect::Services::Waas::Segment::has_leaf_or_child_o
 Native::Flow::Record::Collect::Timestamp::Timestamp()
     :
     interval{YType::empty, "interval"}
-    	,
+        ,
     absolute(std::make_shared<Native::Flow::Record::Collect::Timestamp::Absolute>())
-	,sys_uptime(std::make_shared<Native::Flow::Record::Collect::Timestamp::SysUptime>())
+    , sys_uptime(std::make_shared<Native::Flow::Record::Collect::Timestamp::SysUptime>())
 {
     absolute->parent = this;
     sys_uptime->parent = this;
 
-    yang_name = "timestamp"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timestamp"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Timestamp::~Timestamp()
@@ -4843,6 +4896,7 @@ Native::Flow::Record::Collect::Timestamp::~Timestamp()
 
 bool Native::Flow::Record::Collect::Timestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| (absolute !=  nullptr && absolute->has_data())
 	|| (sys_uptime !=  nullptr && sys_uptime->has_data());
@@ -4942,12 +4996,12 @@ Native::Flow::Record::Collect::Timestamp::Absolute::Absolute()
     :
     first{YType::empty, "first"},
     last{YType::empty, "last"}
-    	,
+        ,
     monitoring_interval(std::make_shared<Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval>())
 {
     monitoring_interval->parent = this;
 
-    yang_name = "absolute"; yang_parent_name = "timestamp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "absolute"; yang_parent_name = "timestamp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Timestamp::Absolute::~Absolute()
@@ -4956,6 +5010,7 @@ Native::Flow::Record::Collect::Timestamp::Absolute::~Absolute()
 
 bool Native::Flow::Record::Collect::Timestamp::Absolute::has_data() const
 {
+    if (is_presence_container) return true;
     return first.is_set
 	|| last.is_set
 	|| (monitoring_interval !=  nullptr && monitoring_interval->has_data());
@@ -5054,7 +5109,7 @@ Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::Monitori
     start{YType::empty, "start"}
 {
 
-    yang_name = "monitoring-interval"; yang_parent_name = "absolute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitoring-interval"; yang_parent_name = "absolute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::~MonitoringInterval()
@@ -5063,6 +5118,7 @@ Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::~Monitor
 
 bool Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return end.is_set
 	|| start.is_set;
 }
@@ -5145,7 +5201,7 @@ Native::Flow::Record::Collect::Timestamp::SysUptime::SysUptime()
     last{YType::empty, "last"}
 {
 
-    yang_name = "sys-uptime"; yang_parent_name = "timestamp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sys-uptime"; yang_parent_name = "timestamp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Timestamp::SysUptime::~SysUptime()
@@ -5154,6 +5210,7 @@ Native::Flow::Record::Collect::Timestamp::SysUptime::~SysUptime()
 
 bool Native::Flow::Record::Collect::Timestamp::SysUptime::has_data() const
 {
+    if (is_presence_container) return true;
     return first.is_set
 	|| last.is_set;
 }
@@ -5234,16 +5291,16 @@ Native::Flow::Record::Collect::Transport::Transport()
     :
     destination_port{YType::empty, "destination-port"},
     source_port{YType::empty, "source-port"}
-    	,
+        ,
     bytes(std::make_shared<Native::Flow::Record::Collect::Transport::Bytes>())
-	,icmp(std::make_shared<Native::Flow::Record::Collect::Transport::Icmp>())
-	,igmp(std::make_shared<Native::Flow::Record::Collect::Transport::Igmp>())
-	,tcp(std::make_shared<Native::Flow::Record::Collect::Transport::Tcp>())
-	,udp(std::make_shared<Native::Flow::Record::Collect::Transport::Udp>())
-	,event(std::make_shared<Native::Flow::Record::Collect::Transport::Event>())
-	,packets(std::make_shared<Native::Flow::Record::Collect::Transport::Packets>())
-	,round_trip_time(nullptr) // presence node
-	,rtp(std::make_shared<Native::Flow::Record::Collect::Transport::Rtp>())
+    , icmp(std::make_shared<Native::Flow::Record::Collect::Transport::Icmp>())
+    , igmp(std::make_shared<Native::Flow::Record::Collect::Transport::Igmp>())
+    , tcp(std::make_shared<Native::Flow::Record::Collect::Transport::Tcp>())
+    , udp(std::make_shared<Native::Flow::Record::Collect::Transport::Udp>())
+    , event(std::make_shared<Native::Flow::Record::Collect::Transport::Event>())
+    , packets(std::make_shared<Native::Flow::Record::Collect::Transport::Packets>())
+    , round_trip_time(nullptr) // presence node
+    , rtp(std::make_shared<Native::Flow::Record::Collect::Transport::Rtp>())
 {
     bytes->parent = this;
     icmp->parent = this;
@@ -5254,7 +5311,7 @@ Native::Flow::Record::Collect::Transport::Transport()
     packets->parent = this;
     rtp->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::~Transport()
@@ -5263,6 +5320,7 @@ Native::Flow::Record::Collect::Transport::~Transport()
 
 bool Native::Flow::Record::Collect::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_port.is_set
 	|| source_port.is_set
 	|| (bytes !=  nullptr && bytes->has_data())
@@ -5487,11 +5545,11 @@ Native::Flow::Record::Collect::Transport::Bytes::Bytes()
     :
     expected{YType::empty, "expected"},
     out_of_order{YType::empty, "out-of-order"}
-    	,
+        ,
     lost(nullptr) // presence node
 {
 
-    yang_name = "bytes"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bytes"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Bytes::~Bytes()
@@ -5500,6 +5558,7 @@ Native::Flow::Record::Collect::Transport::Bytes::~Bytes()
 
 bool Native::Flow::Record::Collect::Transport::Bytes::has_data() const
 {
+    if (is_presence_container) return true;
     return expected.is_set
 	|| out_of_order.is_set
 	|| (lost !=  nullptr && lost->has_data());
@@ -5597,7 +5656,7 @@ Native::Flow::Record::Collect::Transport::Bytes::Lost::Lost()
     rate{YType::empty, "rate"}
 {
 
-    yang_name = "lost"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lost"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Bytes::Lost::~Lost()
@@ -5606,6 +5665,7 @@ Native::Flow::Record::Collect::Transport::Bytes::Lost::~Lost()
 
 bool Native::Flow::Record::Collect::Transport::Bytes::Lost::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set;
 }
 
@@ -5672,12 +5732,12 @@ bool Native::Flow::Record::Collect::Transport::Bytes::Lost::has_leaf_or_child_of
 Native::Flow::Record::Collect::Transport::Icmp::Icmp()
     :
     ipv4(std::make_shared<Native::Flow::Record::Collect::Transport::Icmp::Ipv4>())
-	,ipv6(std::make_shared<Native::Flow::Record::Collect::Transport::Icmp::Ipv6>())
+    , ipv6(std::make_shared<Native::Flow::Record::Collect::Transport::Icmp::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "icmp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Icmp::~Icmp()
@@ -5686,6 +5746,7 @@ Native::Flow::Record::Collect::Transport::Icmp::~Icmp()
 
 bool Native::Flow::Record::Collect::Transport::Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -5774,7 +5835,7 @@ Native::Flow::Record::Collect::Transport::Icmp::Ipv4::Ipv4()
     type{YType::empty, "type"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Icmp::Ipv4::~Ipv4()
@@ -5783,6 +5844,7 @@ Native::Flow::Record::Collect::Transport::Icmp::Ipv4::~Ipv4()
 
 bool Native::Flow::Record::Collect::Transport::Icmp::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return code.is_set
 	|| type.is_set;
 }
@@ -5865,7 +5927,7 @@ Native::Flow::Record::Collect::Transport::Icmp::Ipv6::Ipv6()
     type{YType::empty, "type"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Icmp::Ipv6::~Ipv6()
@@ -5874,6 +5936,7 @@ Native::Flow::Record::Collect::Transport::Icmp::Ipv6::~Ipv6()
 
 bool Native::Flow::Record::Collect::Transport::Icmp::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return code.is_set
 	|| type.is_set;
 }
@@ -5955,7 +6018,7 @@ Native::Flow::Record::Collect::Transport::Igmp::Igmp()
     type{YType::empty, "type"}
 {
 
-    yang_name = "igmp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Igmp::~Igmp()
@@ -5964,6 +6027,7 @@ Native::Flow::Record::Collect::Transport::Igmp::~Igmp()
 
 bool Native::Flow::Record::Collect::Transport::Igmp::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6036,16 +6100,16 @@ Native::Flow::Record::Collect::Transport::Tcp::Tcp()
     sequence_number{YType::empty, "sequence-number"},
     source_port{YType::empty, "source-port"},
     urgent_pointer{YType::empty, "urgent-pointer"}
-    	,
+        ,
     flags(nullptr) // presence node
-	,flow(std::make_shared<Native::Flow::Record::Collect::Transport::Tcp::Flow_>())
-	,option(std::make_shared<Native::Flow::Record::Collect::Transport::Tcp::Option>())
-	,window_size(nullptr) // presence node
+    , flow(std::make_shared<Native::Flow::Record::Collect::Transport::Tcp::Flow_>())
+    , option(std::make_shared<Native::Flow::Record::Collect::Transport::Tcp::Option>())
+    , window_size(nullptr) // presence node
 {
     flow->parent = this;
     option->parent = this;
 
-    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Tcp::~Tcp()
@@ -6054,6 +6118,7 @@ Native::Flow::Record::Collect::Transport::Tcp::~Tcp()
 
 bool Native::Flow::Record::Collect::Transport::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return acknowledgement_number.is_set
 	|| destination_port.is_set
 	|| header_length.is_set
@@ -6271,7 +6336,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Flags::Flags()
     urg{YType::empty, "urg"}
 {
 
-    yang_name = "flags"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Tcp::Flags::~Flags()
@@ -6280,6 +6345,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Flags::~Flags()
 
 bool Native::Flow::Record::Collect::Transport::Tcp::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return ack.is_set
 	|| cwr.is_set
 	|| ece.is_set
@@ -6439,7 +6505,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Flow_::Flow_()
     count{YType::empty, "count"}
 {
 
-    yang_name = "flow"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Tcp::Flow_::~Flow_()
@@ -6448,6 +6514,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Flow_::~Flow_()
 
 bool Native::Flow::Record::Collect::Transport::Tcp::Flow_::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set;
 }
 
@@ -6516,7 +6583,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Option::Option()
     map(nullptr) // presence node
 {
 
-    yang_name = "option"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Tcp::Option::~Option()
@@ -6525,6 +6592,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Option::~Option()
 
 bool Native::Flow::Record::Collect::Transport::Tcp::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return (map !=  nullptr && map->has_data());
 }
 
@@ -6596,7 +6664,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Option::Map::Map()
     long_{YType::empty, "long"}
 {
 
-    yang_name = "map"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Tcp::Option::Map::~Map()
@@ -6605,6 +6673,7 @@ Native::Flow::Record::Collect::Transport::Tcp::Option::Map::~Map()
 
 bool Native::Flow::Record::Collect::Transport::Tcp::Option::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -6673,11 +6742,11 @@ Native::Flow::Record::Collect::Transport::Tcp::WindowSize::WindowSize()
     maximum{YType::empty, "maximum"},
     minimum{YType::empty, "minimum"},
     sum{YType::empty, "sum"}
-    	,
+        ,
     average(nullptr) // presence node
 {
 
-    yang_name = "window-size"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "window-size"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Tcp::WindowSize::~WindowSize()
@@ -6686,6 +6755,7 @@ Native::Flow::Record::Collect::Transport::Tcp::WindowSize::~WindowSize()
 
 bool Native::Flow::Record::Collect::Transport::Tcp::WindowSize::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum.is_set
 	|| minimum.is_set
 	|| sum.is_set
@@ -6796,7 +6866,7 @@ Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::Average()
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "average"; yang_parent_name = "window-size"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "average"; yang_parent_name = "window-size"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::~Average()
@@ -6805,6 +6875,7 @@ Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::~Average()
 
 bool Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::has_data() const
 {
+    if (is_presence_container) return true;
     return sum.is_set;
 }
 
@@ -6875,7 +6946,7 @@ Native::Flow::Record::Collect::Transport::Udp::Udp()
     source_port{YType::empty, "source-port"}
 {
 
-    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Udp::~Udp()
@@ -6884,6 +6955,7 @@ Native::Flow::Record::Collect::Transport::Udp::~Udp()
 
 bool Native::Flow::Record::Collect::Transport::Udp::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_port.is_set
 	|| message_length.is_set
 	|| source_port.is_set;
@@ -6979,7 +7051,7 @@ Native::Flow::Record::Collect::Transport::Event::Event()
 {
     packet_loss->parent = this;
 
-    yang_name = "event"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Event::~Event()
@@ -6988,6 +7060,7 @@ Native::Flow::Record::Collect::Transport::Event::~Event()
 
 bool Native::Flow::Record::Collect::Transport::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return (packet_loss !=  nullptr && packet_loss->has_data());
 }
 
@@ -7059,7 +7132,7 @@ Native::Flow::Record::Collect::Transport::Event::PacketLoss::PacketLoss()
     counter(nullptr) // presence node
 {
 
-    yang_name = "packet-loss"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-loss"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Event::PacketLoss::~PacketLoss()
@@ -7068,6 +7141,7 @@ Native::Flow::Record::Collect::Transport::Event::PacketLoss::~PacketLoss()
 
 bool Native::Flow::Record::Collect::Transport::Event::PacketLoss::has_data() const
 {
+    if (is_presence_container) return true;
     return (counter !=  nullptr && counter->has_data());
 }
 
@@ -7140,7 +7214,7 @@ Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::Counter()
     min{YType::empty, "min"}
 {
 
-    yang_name = "counter"; yang_parent_name = "packet-loss"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "packet-loss"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::~Counter()
@@ -7149,6 +7223,7 @@ Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::~Counter()
 
 bool Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set;
 }
@@ -7228,14 +7303,14 @@ bool Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::has_l
 Native::Flow::Record::Collect::Transport::Packets::Packets()
     :
     out_of_order{YType::empty, "out-of-order"}
-    	,
+        ,
     expected(std::make_shared<Native::Flow::Record::Collect::Transport::Packets::Expected>())
-	,lost(std::make_shared<Native::Flow::Record::Collect::Transport::Packets::Lost>())
+    , lost(std::make_shared<Native::Flow::Record::Collect::Transport::Packets::Lost>())
 {
     expected->parent = this;
     lost->parent = this;
 
-    yang_name = "packets"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packets"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Packets::~Packets()
@@ -7244,6 +7319,7 @@ Native::Flow::Record::Collect::Transport::Packets::~Packets()
 
 bool Native::Flow::Record::Collect::Transport::Packets::has_data() const
 {
+    if (is_presence_container) return true;
     return out_of_order.is_set
 	|| (expected !=  nullptr && expected->has_data())
 	|| (lost !=  nullptr && lost->has_data());
@@ -7344,7 +7420,7 @@ Native::Flow::Record::Collect::Transport::Packets::Expected::Expected()
     counter{YType::empty, "counter"}
 {
 
-    yang_name = "expected"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "expected"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Packets::Expected::~Expected()
@@ -7353,6 +7429,7 @@ Native::Flow::Record::Collect::Transport::Packets::Expected::~Expected()
 
 bool Native::Flow::Record::Collect::Transport::Packets::Expected::has_data() const
 {
+    if (is_presence_container) return true;
     return counter.is_set;
 }
 
@@ -7419,10 +7496,10 @@ bool Native::Flow::Record::Collect::Transport::Packets::Expected::has_leaf_or_ch
 Native::Flow::Record::Collect::Transport::Packets::Lost::Lost()
     :
     counter(nullptr) // presence node
-	,rate(nullptr) // presence node
+    , rate(nullptr) // presence node
 {
 
-    yang_name = "lost"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lost"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Packets::Lost::~Lost()
@@ -7431,6 +7508,7 @@ Native::Flow::Record::Collect::Transport::Packets::Lost::~Lost()
 
 bool Native::Flow::Record::Collect::Transport::Packets::Lost::has_data() const
 {
+    if (is_presence_container) return true;
     return (counter !=  nullptr && counter->has_data())
 	|| (rate !=  nullptr && rate->has_data());
 }
@@ -7519,7 +7597,7 @@ Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::Counter()
     min{YType::empty, "min"}
 {
 
-    yang_name = "counter"; yang_parent_name = "lost"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "lost"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::~Counter()
@@ -7528,6 +7606,7 @@ Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::~Counter()
 
 bool Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set;
 }
@@ -7610,7 +7689,7 @@ Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::Rate()
     min{YType::empty, "min"}
 {
 
-    yang_name = "rate"; yang_parent_name = "lost"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "lost"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::~Rate()
@@ -7619,6 +7698,7 @@ Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::~Rate()
 
 bool Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set;
 }
@@ -7703,7 +7783,7 @@ Native::Flow::Record::Collect::Transport::RoundTripTime::RoundTripTime()
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "round-trip-time"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "round-trip-time"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::RoundTripTime::~RoundTripTime()
@@ -7712,6 +7792,7 @@ Native::Flow::Record::Collect::Transport::RoundTripTime::~RoundTripTime()
 
 bool Native::Flow::Record::Collect::Transport::RoundTripTime::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| samples.is_set
@@ -7818,14 +7899,14 @@ Native::Flow::Record::Collect::Transport::Rtp::Rtp()
     :
     payload_type{YType::empty, "payload-type"},
     ssrc{YType::empty, "ssrc"}
-    	,
+        ,
     flow(std::make_shared<Native::Flow::Record::Collect::Transport::Rtp::Flow_>())
-	,jitter(std::make_shared<Native::Flow::Record::Collect::Transport::Rtp::Jitter>())
+    , jitter(std::make_shared<Native::Flow::Record::Collect::Transport::Rtp::Jitter>())
 {
     flow->parent = this;
     jitter->parent = this;
 
-    yang_name = "rtp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Rtp::~Rtp()
@@ -7834,6 +7915,7 @@ Native::Flow::Record::Collect::Transport::Rtp::~Rtp()
 
 bool Native::Flow::Record::Collect::Transport::Rtp::has_data() const
 {
+    if (is_presence_container) return true;
     return payload_type.is_set
 	|| ssrc.is_set
 	|| (flow !=  nullptr && flow->has_data())
@@ -7947,7 +8029,7 @@ Native::Flow::Record::Collect::Transport::Rtp::Flow_::Flow_()
     count{YType::empty, "count"}
 {
 
-    yang_name = "flow"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Rtp::Flow_::~Flow_()
@@ -7956,6 +8038,7 @@ Native::Flow::Record::Collect::Transport::Rtp::Flow_::~Flow_()
 
 bool Native::Flow::Record::Collect::Transport::Rtp::Flow_::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set;
 }
 
@@ -8023,11 +8106,11 @@ Native::Flow::Record::Collect::Transport::Rtp::Jitter::Jitter()
     :
     maximum{YType::empty, "maximum"},
     minimum{YType::empty, "minimum"}
-    	,
+        ,
     mean(nullptr) // presence node
 {
 
-    yang_name = "jitter"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "jitter"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Collect::Transport::Rtp::Jitter::~Jitter()
@@ -8036,6 +8119,7 @@ Native::Flow::Record::Collect::Transport::Rtp::Jitter::~Jitter()
 
 bool Native::Flow::Record::Collect::Transport::Rtp::Jitter::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum.is_set
 	|| minimum.is_set
 	|| (mean !=  nullptr && mean->has_data());
@@ -8133,7 +8217,7 @@ Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::Mean()
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "mean"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mean"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::~Mean()
@@ -8142,6 +8226,7 @@ Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::~Mean()
 
 bool Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::has_data() const
 {
+    if (is_presence_container) return true;
     return sum.is_set;
 }
 
@@ -8208,14 +8293,14 @@ bool Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::has_leaf_or_ch
 Native::Flow::Record::Default::Default()
     :
     description{YType::str, "description"}
-    	,
+        ,
     collect(std::make_shared<Native::Flow::Record::Default::Collect>())
-	,match(std::make_shared<Native::Flow::Record::Default::Match>())
+    , match(std::make_shared<Native::Flow::Record::Default::Match>())
 {
     collect->parent = this;
     match->parent = this;
 
-    yang_name = "default"; yang_parent_name = "record"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "record"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::~Default()
@@ -8224,6 +8309,7 @@ Native::Flow::Record::Default::~Default()
 
 bool Native::Flow::Record::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| (collect !=  nullptr && collect->has_data())
 	|| (match !=  nullptr && match->has_data());
@@ -8322,23 +8408,23 @@ bool Native::Flow::Record::Default::has_leaf_or_child_of_name(const std::string 
 Native::Flow::Record::Default::Collect::Collect()
     :
     application(std::make_shared<Native::Flow::Record::Default::Collect::Application>())
-	,connection(std::make_shared<Native::Flow::Record::Default::Collect::Connection>())
-	,counter(std::make_shared<Native::Flow::Record::Default::Collect::Counter>())
-	,datalink(std::make_shared<Native::Flow::Record::Default::Collect::Datalink>())
-	,flow(std::make_shared<Native::Flow::Record::Default::Collect::Flow_>())
-	,interface(std::make_shared<Native::Flow::Record::Default::Collect::Interface>())
-	,ipv4(std::make_shared<Native::Flow::Record::Default::Collect::Ipv4>())
-	,ipv6(std::make_shared<Native::Flow::Record::Default::Collect::Ipv6>())
-	,metadata(std::make_shared<Native::Flow::Record::Default::Collect::Metadata>())
-	,monitor(std::make_shared<Native::Flow::Record::Default::Collect::Monitor>())
-	,mpls(std::make_shared<Native::Flow::Record::Default::Collect::Mpls>())
-	,network(std::make_shared<Native::Flow::Record::Default::Collect::Network>())
-	,pfr(std::make_shared<Native::Flow::Record::Default::Collect::Pfr>())
-	,policy(std::make_shared<Native::Flow::Record::Default::Collect::Policy>())
-	,routing(std::make_shared<Native::Flow::Record::Default::Collect::Routing>())
-	,services(std::make_shared<Native::Flow::Record::Default::Collect::Services>())
-	,timestamp(std::make_shared<Native::Flow::Record::Default::Collect::Timestamp>())
-	,transport(std::make_shared<Native::Flow::Record::Default::Collect::Transport>())
+    , connection(std::make_shared<Native::Flow::Record::Default::Collect::Connection>())
+    , counter(std::make_shared<Native::Flow::Record::Default::Collect::Counter>())
+    , datalink(std::make_shared<Native::Flow::Record::Default::Collect::Datalink>())
+    , flow(std::make_shared<Native::Flow::Record::Default::Collect::Flow_>())
+    , interface(std::make_shared<Native::Flow::Record::Default::Collect::Interface>())
+    , ipv4(std::make_shared<Native::Flow::Record::Default::Collect::Ipv4>())
+    , ipv6(std::make_shared<Native::Flow::Record::Default::Collect::Ipv6>())
+    , metadata(std::make_shared<Native::Flow::Record::Default::Collect::Metadata>())
+    , monitor(std::make_shared<Native::Flow::Record::Default::Collect::Monitor>())
+    , mpls(std::make_shared<Native::Flow::Record::Default::Collect::Mpls>())
+    , network(std::make_shared<Native::Flow::Record::Default::Collect::Network>())
+    , pfr(std::make_shared<Native::Flow::Record::Default::Collect::Pfr>())
+    , policy(std::make_shared<Native::Flow::Record::Default::Collect::Policy>())
+    , routing(std::make_shared<Native::Flow::Record::Default::Collect::Routing>())
+    , services(std::make_shared<Native::Flow::Record::Default::Collect::Services>())
+    , timestamp(std::make_shared<Native::Flow::Record::Default::Collect::Timestamp>())
+    , transport(std::make_shared<Native::Flow::Record::Default::Collect::Transport>())
 {
     application->parent = this;
     connection->parent = this;
@@ -8359,7 +8445,7 @@ Native::Flow::Record::Default::Collect::Collect()
     timestamp->parent = this;
     transport->parent = this;
 
-    yang_name = "collect"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "collect"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::~Collect()
@@ -8368,6 +8454,7 @@ Native::Flow::Record::Default::Collect::~Collect()
 
 bool Native::Flow::Record::Default::Collect::has_data() const
 {
+    if (is_presence_container) return true;
     return (application !=  nullptr && application->has_data())
 	|| (connection !=  nullptr && connection->has_data())
 	|| (counter !=  nullptr && counter->has_data())
@@ -8710,18 +8797,18 @@ Native::Flow::Record::Default::Collect::Application::Application()
     :
     vendor{YType::empty, "vendor"},
     version{YType::empty, "version"}
-    	,
+        ,
     dns(std::make_shared<Native::Flow::Record::Default::Collect::Application::Dns>())
-	,http(std::make_shared<Native::Flow::Record::Default::Collect::Application::Http>())
-	,media(std::make_shared<Native::Flow::Record::Default::Collect::Application::Media>())
-	,name(nullptr) // presence node
-	,nntp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Nntp>())
-	,pop3(std::make_shared<Native::Flow::Record::Default::Collect::Application::Pop3>())
-	,rtmp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Rtmp>())
-	,rtsp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Rtsp>())
-	,sip(std::make_shared<Native::Flow::Record::Default::Collect::Application::Sip>())
-	,smtp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Smtp>())
-	,ssl(std::make_shared<Native::Flow::Record::Default::Collect::Application::Ssl>())
+    , http(std::make_shared<Native::Flow::Record::Default::Collect::Application::Http>())
+    , media(std::make_shared<Native::Flow::Record::Default::Collect::Application::Media>())
+    , name(nullptr) // presence node
+    , nntp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Nntp>())
+    , pop3(std::make_shared<Native::Flow::Record::Default::Collect::Application::Pop3>())
+    , rtmp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Rtmp>())
+    , rtsp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Rtsp>())
+    , sip(std::make_shared<Native::Flow::Record::Default::Collect::Application::Sip>())
+    , smtp(std::make_shared<Native::Flow::Record::Default::Collect::Application::Smtp>())
+    , ssl(std::make_shared<Native::Flow::Record::Default::Collect::Application::Ssl>())
 {
     dns->parent = this;
     http->parent = this;
@@ -8734,7 +8821,7 @@ Native::Flow::Record::Default::Collect::Application::Application()
     smtp->parent = this;
     ssl->parent = this;
 
-    yang_name = "application"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::~Application()
@@ -8743,6 +8830,7 @@ Native::Flow::Record::Default::Collect::Application::~Application()
 
 bool Native::Flow::Record::Default::Collect::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return vendor.is_set
 	|| version.is_set
 	|| (dns !=  nullptr && dns->has_data())
@@ -9000,7 +9088,7 @@ Native::Flow::Record::Default::Collect::Application::Dns::Dns()
     domain_name{YType::empty, "domain-name"}
 {
 
-    yang_name = "dns"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dns"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Dns::~Dns()
@@ -9009,6 +9097,7 @@ Native::Flow::Record::Default::Collect::Application::Dns::~Dns()
 
 bool Native::Flow::Record::Default::Collect::Application::Dns::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_name.is_set;
 }
 
@@ -9078,12 +9167,12 @@ Native::Flow::Record::Default::Collect::Application::Http::Http()
     referer{YType::empty, "referer"},
     url{YType::empty, "url"},
     user_agent{YType::empty, "user-agent"}
-    	,
+        ,
     uri(std::make_shared<Native::Flow::Record::Default::Collect::Application::Http::Uri>())
 {
     uri->parent = this;
 
-    yang_name = "http"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "http"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Http::~Http()
@@ -9092,6 +9181,7 @@ Native::Flow::Record::Default::Collect::Application::Http::~Http()
 
 bool Native::Flow::Record::Default::Collect::Application::Http::has_data() const
 {
+    if (is_presence_container) return true;
     return host.is_set
 	|| referer.is_set
 	|| url.is_set
@@ -9215,7 +9305,7 @@ Native::Flow::Record::Default::Collect::Application::Http::Uri::Uri()
     statistics{YType::empty, "statistics"}
 {
 
-    yang_name = "uri"; yang_parent_name = "http"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uri"; yang_parent_name = "http"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Http::Uri::~Uri()
@@ -9224,6 +9314,7 @@ Native::Flow::Record::Default::Collect::Application::Http::Uri::~Uri()
 
 bool Native::Flow::Record::Default::Collect::Application::Http::Uri::has_data() const
 {
+    if (is_presence_container) return true;
     return statistics.is_set;
 }
 
@@ -9290,14 +9381,14 @@ bool Native::Flow::Record::Default::Collect::Application::Http::Uri::has_leaf_or
 Native::Flow::Record::Default::Collect::Application::Media::Media()
     :
     event{YType::empty, "event"}
-    	,
+        ,
     bytes(std::make_shared<Native::Flow::Record::Default::Collect::Application::Media::Bytes>())
-	,packets(std::make_shared<Native::Flow::Record::Default::Collect::Application::Media::Packets>())
+    , packets(std::make_shared<Native::Flow::Record::Default::Collect::Application::Media::Packets>())
 {
     bytes->parent = this;
     packets->parent = this;
 
-    yang_name = "media"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "media"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::~Media()
@@ -9306,6 +9397,7 @@ Native::Flow::Record::Default::Collect::Application::Media::~Media()
 
 bool Native::Flow::Record::Default::Collect::Application::Media::has_data() const
 {
+    if (is_presence_container) return true;
     return event.is_set
 	|| (bytes !=  nullptr && bytes->has_data())
 	|| (packets !=  nullptr && packets->has_data());
@@ -9404,10 +9496,10 @@ bool Native::Flow::Record::Default::Collect::Application::Media::has_leaf_or_chi
 Native::Flow::Record::Default::Collect::Application::Media::Bytes::Bytes()
     :
     counter(nullptr) // presence node
-	,rate(nullptr) // presence node
+    , rate(nullptr) // presence node
 {
 
-    yang_name = "bytes"; yang_parent_name = "media"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bytes"; yang_parent_name = "media"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Bytes::~Bytes()
@@ -9416,6 +9508,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Bytes::~Bytes()
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Bytes::has_data() const
 {
+    if (is_presence_container) return true;
     return (counter !=  nullptr && counter->has_data())
 	|| (rate !=  nullptr && rate->has_data());
 }
@@ -9503,7 +9596,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::Coun
     long_{YType::empty, "long"}
 {
 
-    yang_name = "counter"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::~Counter()
@@ -9512,6 +9605,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::~Cou
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -9580,7 +9674,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::Rate()
     per_flow(nullptr) // presence node
 {
 
-    yang_name = "rate"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::~Rate()
@@ -9589,6 +9683,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::~Rate()
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::has_data() const
 {
+    if (is_presence_container) return true;
     return (per_flow !=  nullptr && per_flow->has_data());
 }
 
@@ -9661,7 +9756,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::PerFlow
     min{YType::empty, "min"}
 {
 
-    yang_name = "per-flow"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-flow"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::PerFlow::~PerFlow()
@@ -9670,6 +9765,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::PerFlow
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::PerFlow::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set;
 }
@@ -9749,10 +9845,10 @@ bool Native::Flow::Record::Default::Collect::Application::Media::Bytes::Rate::Pe
 Native::Flow::Record::Default::Collect::Application::Media::Packets::Packets()
     :
     counter(nullptr) // presence node
-	,rate(nullptr) // presence node
+    , rate(nullptr) // presence node
 {
 
-    yang_name = "packets"; yang_parent_name = "media"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packets"; yang_parent_name = "media"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Packets::~Packets()
@@ -9761,6 +9857,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Packets::~Packets()
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Packets::has_data() const
 {
+    if (is_presence_container) return true;
     return (counter !=  nullptr && counter->has_data())
 	|| (rate !=  nullptr && rate->has_data());
 }
@@ -9848,7 +9945,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Packets::Counter::Co
     long_{YType::empty, "long"}
 {
 
-    yang_name = "counter"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Packets::Counter::~Counter()
@@ -9857,6 +9954,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Packets::Counter::~C
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Packets::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -9925,7 +10023,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::Rate(
     variation(nullptr) // presence node
 {
 
-    yang_name = "rate"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "packets"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::~Rate()
@@ -9934,6 +10032,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::~Rate
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::has_data() const
 {
+    if (is_presence_container) return true;
     return (variation !=  nullptr && variation->has_data());
 }
 
@@ -10007,7 +10106,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::Varia
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "variation"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "variation"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::Variation::~Variation()
@@ -10016,6 +10115,7 @@ Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::Varia
 
 bool Native::Flow::Record::Default::Collect::Application::Media::Packets::Rate::Variation::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| sum.is_set;
@@ -10110,7 +10210,7 @@ Native::Flow::Record::Default::Collect::Application::Name::Name()
     account_on_resolution{YType::empty, "account-on-resolution"}
 {
 
-    yang_name = "name"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "name"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Application::Name::~Name()
@@ -10119,6 +10219,7 @@ Native::Flow::Record::Default::Collect::Application::Name::~Name()
 
 bool Native::Flow::Record::Default::Collect::Application::Name::has_data() const
 {
+    if (is_presence_container) return true;
     return account_on_resolution.is_set;
 }
 
@@ -10187,7 +10288,7 @@ Native::Flow::Record::Default::Collect::Application::Nntp::Nntp()
     group_name{YType::empty, "group-name"}
 {
 
-    yang_name = "nntp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nntp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Nntp::~Nntp()
@@ -10196,6 +10297,7 @@ Native::Flow::Record::Default::Collect::Application::Nntp::~Nntp()
 
 bool Native::Flow::Record::Default::Collect::Application::Nntp::has_data() const
 {
+    if (is_presence_container) return true;
     return group_name.is_set;
 }
 
@@ -10264,7 +10366,7 @@ Native::Flow::Record::Default::Collect::Application::Pop3::Pop3()
     server{YType::empty, "server"}
 {
 
-    yang_name = "pop3"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pop3"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Pop3::~Pop3()
@@ -10273,6 +10375,7 @@ Native::Flow::Record::Default::Collect::Application::Pop3::~Pop3()
 
 bool Native::Flow::Record::Default::Collect::Application::Pop3::has_data() const
 {
+    if (is_presence_container) return true;
     return server.is_set;
 }
 
@@ -10341,7 +10444,7 @@ Native::Flow::Record::Default::Collect::Application::Rtmp::Rtmp()
     pageurl{YType::empty, "pageUrl"}
 {
 
-    yang_name = "rtmp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtmp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Rtmp::~Rtmp()
@@ -10350,6 +10453,7 @@ Native::Flow::Record::Default::Collect::Application::Rtmp::~Rtmp()
 
 bool Native::Flow::Record::Default::Collect::Application::Rtmp::has_data() const
 {
+    if (is_presence_container) return true;
     return pageurl.is_set;
 }
 
@@ -10418,7 +10522,7 @@ Native::Flow::Record::Default::Collect::Application::Rtsp::Rtsp()
     host{YType::empty, "host"}
 {
 
-    yang_name = "rtsp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtsp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Rtsp::~Rtsp()
@@ -10427,6 +10531,7 @@ Native::Flow::Record::Default::Collect::Application::Rtsp::~Rtsp()
 
 bool Native::Flow::Record::Default::Collect::Application::Rtsp::has_data() const
 {
+    if (is_presence_container) return true;
     return host.is_set;
 }
 
@@ -10496,7 +10601,7 @@ Native::Flow::Record::Default::Collect::Application::Sip::Sip()
     source{YType::empty, "source"}
 {
 
-    yang_name = "sip"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sip"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Sip::~Sip()
@@ -10505,6 +10610,7 @@ Native::Flow::Record::Default::Collect::Application::Sip::~Sip()
 
 bool Native::Flow::Record::Default::Collect::Application::Sip::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| source.is_set;
 }
@@ -10587,7 +10693,7 @@ Native::Flow::Record::Default::Collect::Application::Smtp::Smtp()
     server{YType::empty, "server"}
 {
 
-    yang_name = "smtp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "smtp"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Smtp::~Smtp()
@@ -10596,6 +10702,7 @@ Native::Flow::Record::Default::Collect::Application::Smtp::~Smtp()
 
 bool Native::Flow::Record::Default::Collect::Application::Smtp::has_data() const
 {
+    if (is_presence_container) return true;
     return sender.is_set
 	|| server.is_set;
 }
@@ -10677,7 +10784,7 @@ Native::Flow::Record::Default::Collect::Application::Ssl::Ssl()
     common_name{YType::empty, "common-name"}
 {
 
-    yang_name = "ssl"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssl"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Application::Ssl::~Ssl()
@@ -10686,6 +10793,7 @@ Native::Flow::Record::Default::Collect::Application::Ssl::~Ssl()
 
 bool Native::Flow::Record::Default::Collect::Application::Ssl::has_data() const
 {
+    if (is_presence_container) return true;
     return common_name.is_set;
 }
 
@@ -10756,18 +10864,18 @@ Native::Flow::Record::Default::Collect::Connection::Connection()
     new_connections{YType::empty, "new-connections"},
     sum_duration{YType::empty, "sum-duration"},
     transaction_id{YType::empty, "transaction-id"}
-    	,
+        ,
     client(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client>())
-	,delay(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay>())
-	,server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server>())
-	,transaction(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Transaction>())
+    , delay(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay>())
+    , server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server>())
+    , transaction(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Transaction>())
 {
     client->parent = this;
     delay->parent = this;
     server->parent = this;
     transaction->parent = this;
 
-    yang_name = "connection"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::~Connection()
@@ -10776,6 +10884,7 @@ Native::Flow::Record::Default::Collect::Connection::~Connection()
 
 bool Native::Flow::Record::Default::Collect::Connection::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| initiator.is_set
 	|| new_connections.is_set
@@ -10958,18 +11067,18 @@ bool Native::Flow::Record::Default::Collect::Connection::has_leaf_or_child_of_na
 Native::Flow::Record::Default::Collect::Connection::Client::Client()
     :
     all{YType::empty, "all"}
-    	,
+        ,
     counter(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Counter>())
-	,ipv4(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Ipv4>())
-	,ipv6(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Ipv6>())
-	,transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Transport>())
+    , ipv4(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Ipv4>())
+    , ipv6(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Ipv6>())
+    , transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Transport>())
 {
     counter->parent = this;
     ipv4->parent = this;
     ipv6->parent = this;
     transport->parent = this;
 
-    yang_name = "client"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::~Client()
@@ -10978,6 +11087,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::~Client()
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| (counter !=  nullptr && counter->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
@@ -11108,12 +11218,12 @@ bool Native::Flow::Record::Default::Collect::Connection::Client::has_leaf_or_chi
 Native::Flow::Record::Default::Collect::Connection::Client::Counter::Counter()
     :
     bytes(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes>())
-	,packets(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Counter::Packets>())
+    , packets(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Counter::Packets>())
 {
     bytes->parent = this;
     packets->parent = this;
 
-    yang_name = "counter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Counter::~Counter()
@@ -11122,6 +11232,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::~Counter()
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return (bytes !=  nullptr && bytes->has_data())
 	|| (packets !=  nullptr && packets->has_data());
 }
@@ -11208,14 +11319,14 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Byte
     :
     long_{YType::empty, "long"},
     retransmitted{YType::empty, "retransmitted"}
-    	,
+        ,
     network(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Network>())
-	,transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Transport>())
+    , transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Transport>())
 {
     network->parent = this;
     transport->parent = this;
 
-    yang_name = "bytes"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bytes"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::~Bytes()
@@ -11224,6 +11335,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::~Byt
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set
 	|| retransmitted.is_set
 	|| (network !=  nullptr && network->has_data())
@@ -11337,7 +11449,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Netw
     long_{YType::empty, "long"}
 {
 
-    yang_name = "network"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Network::~Network()
@@ -11346,6 +11458,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Netw
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -11414,7 +11527,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Tran
     long_{YType::empty, "long"}
 {
 
-    yang_name = "transport"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Transport::~Transport()
@@ -11423,6 +11536,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Tran
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Counter::Bytes::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -11492,7 +11606,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Packets::Pa
     retransmitted{YType::empty, "retransmitted"}
 {
 
-    yang_name = "packets"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packets"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Counter::Packets::~Packets()
@@ -11501,6 +11615,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Counter::Packets::~P
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Counter::Packets::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set
 	|| retransmitted.is_set;
 }
@@ -11582,7 +11697,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Ipv4::Ipv4()
     address{YType::empty, "address"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Ipv4::~Ipv4()
@@ -11591,6 +11706,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Ipv4::~Ipv4()
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -11659,7 +11775,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Ipv6::Ipv6()
     address{YType::empty, "address"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Ipv6::~Ipv6()
@@ -11668,6 +11784,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Ipv6::~Ipv6()
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -11736,7 +11853,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Transport::Transport
     port{YType::empty, "port"}
 {
 
-    yang_name = "transport"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Client::Transport::~Transport()
@@ -11745,6 +11862,7 @@ Native::Flow::Record::Default::Collect::Connection::Client::Transport::~Transpor
 
 bool Native::Flow::Record::Default::Collect::Connection::Client::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set;
 }
 
@@ -11811,16 +11929,16 @@ bool Native::Flow::Record::Default::Collect::Connection::Client::Transport::has_
 Native::Flow::Record::Default::Collect::Connection::Delay::Delay()
     :
     all{YType::empty, "all"}
-    	,
+        ,
     application(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Application>())
-	,network(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network>())
-	,response(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Response>())
+    , network(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network>())
+    , response(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Response>())
 {
     application->parent = this;
     network->parent = this;
     response->parent = this;
 
-    yang_name = "delay"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::~Delay()
@@ -11829,6 +11947,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::~Delay()
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| (application !=  nullptr && application->has_data())
 	|| (network !=  nullptr && network->has_data())
@@ -11947,7 +12066,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Application::Applicat
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "application"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Application::~Application()
@@ -11956,6 +12075,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Application::~Applica
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| sum.is_set;
@@ -12048,16 +12168,16 @@ bool Native::Flow::Record::Default::Collect::Connection::Delay::Application::has
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::Network()
     :
     client_to_server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::ClientToServer>())
-	,long_lived(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived>())
-	,to_client(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToClient>())
-	,to_server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToServer>())
+    , long_lived(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived>())
+    , to_client(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToClient>())
+    , to_server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToServer>())
 {
     client_to_server->parent = this;
     long_lived->parent = this;
     to_client->parent = this;
     to_server->parent = this;
 
-    yang_name = "network"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::~Network()
@@ -12066,6 +12186,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::~Network()
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return (client_to_server !=  nullptr && client_to_server->has_data())
 	|| (long_lived !=  nullptr && long_lived->has_data())
 	|| (to_client !=  nullptr && to_client->has_data())
@@ -12188,7 +12309,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::ClientToServ
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "client-to-server"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-to-server"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::ClientToServer::~ClientToServer()
@@ -12197,6 +12318,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::ClientToServ
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::ClientToServer::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| num_samples.is_set
@@ -12302,14 +12424,14 @@ bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::ClientT
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::LongLived()
     :
     client_to_serve(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ClientToServe>())
-	,to_client(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToClient>())
-	,to_serve(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToServe>())
+    , to_client(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToClient>())
+    , to_serve(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToServe>())
 {
     client_to_serve->parent = this;
     to_client->parent = this;
     to_serve->parent = this;
 
-    yang_name = "long-lived"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "long-lived"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::~LongLived()
@@ -12318,6 +12440,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::~
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::has_data() const
 {
+    if (is_presence_container) return true;
     return (client_to_serve !=  nullptr && client_to_serve->has_data())
 	|| (to_client !=  nullptr && to_client->has_data())
 	|| (to_serve !=  nullptr && to_serve->has_data());
@@ -12421,7 +12544,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::C
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "client-to-serve"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-to-serve"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ClientToServe::~ClientToServe()
@@ -12430,6 +12553,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::C
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ClientToServe::has_data() const
 {
+    if (is_presence_container) return true;
     return sum.is_set;
 }
 
@@ -12498,7 +12622,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::T
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "to-client"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "to-client"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToClient::~ToClient()
@@ -12507,6 +12631,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::T
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToClient::has_data() const
 {
+    if (is_presence_container) return true;
     return sum.is_set;
 }
 
@@ -12575,7 +12700,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::T
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "to-serve"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "to-serve"; yang_parent_name = "long-lived"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToServe::~ToServe()
@@ -12584,6 +12709,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::T
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::LongLived::ToServe::has_data() const
 {
+    if (is_presence_container) return true;
     return sum.is_set;
 }
 
@@ -12655,7 +12781,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToClient::To
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "to-client"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "to-client"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToClient::~ToClient()
@@ -12664,6 +12790,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToClient::~T
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToClient::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| num_samples.is_set
@@ -12774,7 +12901,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToServer::To
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "to-server"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "to-server"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToServer::~ToServer()
@@ -12783,6 +12910,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToServer::~T
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToServer::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| num_samples.is_set
@@ -12888,12 +13016,12 @@ bool Native::Flow::Record::Default::Collect::Connection::Delay::Network::ToServe
 Native::Flow::Record::Default::Collect::Connection::Delay::Response::Response()
     :
     client_to_server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Response::ClientToServer>())
-	,to_server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToServer>())
+    , to_server(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToServer>())
 {
     client_to_server->parent = this;
     to_server->parent = this;
 
-    yang_name = "response"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "response"; yang_parent_name = "delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Response::~Response()
@@ -12902,6 +13030,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Response::~Response()
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Response::has_data() const
 {
+    if (is_presence_container) return true;
     return (client_to_server !=  nullptr && client_to_server->has_data())
 	|| (to_server !=  nullptr && to_server->has_data());
 }
@@ -12991,7 +13120,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Response::ClientToSer
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "client-to-server"; yang_parent_name = "response"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-to-server"; yang_parent_name = "response"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Response::ClientToServer::~ClientToServer()
@@ -13000,6 +13129,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Response::ClientToSer
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Response::ClientToServer::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| sum.is_set;
@@ -13097,7 +13227,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToServer::T
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "to-server"; yang_parent_name = "response"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "to-server"; yang_parent_name = "response"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToServer::~ToServer()
@@ -13106,6 +13236,7 @@ Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToServer::~
 
 bool Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToServer::has_data() const
 {
+    if (is_presence_container) return true;
     return histogram.is_set
 	|| max.is_set
 	|| min.is_set
@@ -13211,18 +13342,18 @@ bool Native::Flow::Record::Default::Collect::Connection::Delay::Response::ToServ
 Native::Flow::Record::Default::Collect::Connection::Server::Server()
     :
     all{YType::empty, "all"}
-    	,
+        ,
     counter(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Counter>())
-	,ipv4(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Ipv4>())
-	,ipv6(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Ipv6>())
-	,transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Transport>())
+    , ipv4(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Ipv4>())
+    , ipv6(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Ipv6>())
+    , transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Transport>())
 {
     counter->parent = this;
     ipv4->parent = this;
     ipv6->parent = this;
     transport->parent = this;
 
-    yang_name = "server"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::~Server()
@@ -13231,6 +13362,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::~Server()
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| (counter !=  nullptr && counter->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
@@ -13361,14 +13493,14 @@ bool Native::Flow::Record::Default::Collect::Connection::Server::has_leaf_or_chi
 Native::Flow::Record::Default::Collect::Connection::Server::Counter::Counter()
     :
     responses{YType::empty, "responses"}
-    	,
+        ,
     bytes(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes>())
-	,packets(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Counter::Packets>())
+    , packets(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Counter::Packets>())
 {
     bytes->parent = this;
     packets->parent = this;
 
-    yang_name = "counter"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Counter::~Counter()
@@ -13377,6 +13509,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::~Counter()
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return responses.is_set
 	|| (bytes !=  nullptr && bytes->has_data())
 	|| (packets !=  nullptr && packets->has_data());
@@ -13476,14 +13609,14 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Byte
     :
     long_{YType::empty, "long"},
     retransmitted{YType::empty, "retransmitted"}
-    	,
+        ,
     network(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Network>())
-	,transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Transport>())
+    , transport(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Transport>())
 {
     network->parent = this;
     transport->parent = this;
 
-    yang_name = "bytes"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bytes"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::~Bytes()
@@ -13492,6 +13625,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::~Byt
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set
 	|| retransmitted.is_set
 	|| (network !=  nullptr && network->has_data())
@@ -13605,7 +13739,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Netw
     long_{YType::empty, "long"}
 {
 
-    yang_name = "network"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Network::~Network()
@@ -13614,6 +13748,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Netw
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -13682,7 +13817,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Tran
     long_{YType::empty, "long"}
 {
 
-    yang_name = "transport"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Transport::~Transport()
@@ -13691,6 +13826,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Tran
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Counter::Bytes::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -13760,7 +13896,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Packets::Pa
     retransmitted{YType::empty, "retransmitted"}
 {
 
-    yang_name = "packets"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packets"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Counter::Packets::~Packets()
@@ -13769,6 +13905,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Counter::Packets::~P
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Counter::Packets::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set
 	|| retransmitted.is_set;
 }
@@ -13850,7 +13987,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Ipv4::Ipv4()
     address{YType::empty, "address"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Ipv4::~Ipv4()
@@ -13859,6 +13996,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Ipv4::~Ipv4()
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -13927,7 +14065,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Ipv6::Ipv6()
     address{YType::empty, "address"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Ipv6::~Ipv6()
@@ -13936,6 +14074,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Ipv6::~Ipv6()
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -14004,7 +14143,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Transport::Transport
     port{YType::empty, "port"}
 {
 
-    yang_name = "transport"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Server::Transport::~Transport()
@@ -14013,6 +14152,7 @@ Native::Flow::Record::Default::Collect::Connection::Server::Transport::~Transpor
 
 bool Native::Flow::Record::Default::Collect::Connection::Server::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set;
 }
 
@@ -14079,14 +14219,14 @@ bool Native::Flow::Record::Default::Collect::Connection::Server::Transport::has_
 Native::Flow::Record::Default::Collect::Connection::Transaction::Transaction()
     :
     all{YType::empty, "all"}
-    	,
+        ,
     counter(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Transaction::Counter>())
-	,duration(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Transaction::Duration>())
+    , duration(std::make_shared<Native::Flow::Record::Default::Collect::Connection::Transaction::Duration>())
 {
     counter->parent = this;
     duration->parent = this;
 
-    yang_name = "transaction"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transaction"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Transaction::~Transaction()
@@ -14095,6 +14235,7 @@ Native::Flow::Record::Default::Collect::Connection::Transaction::~Transaction()
 
 bool Native::Flow::Record::Default::Collect::Connection::Transaction::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| (counter !=  nullptr && counter->has_data())
 	|| (duration !=  nullptr && duration->has_data());
@@ -14195,7 +14336,7 @@ Native::Flow::Record::Default::Collect::Connection::Transaction::Counter::Counte
     complete{YType::empty, "complete"}
 {
 
-    yang_name = "counter"; yang_parent_name = "transaction"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "transaction"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Transaction::Counter::~Counter()
@@ -14204,6 +14345,7 @@ Native::Flow::Record::Default::Collect::Connection::Transaction::Counter::~Count
 
 bool Native::Flow::Record::Default::Collect::Connection::Transaction::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return complete.is_set;
 }
 
@@ -14274,7 +14416,7 @@ Native::Flow::Record::Default::Collect::Connection::Transaction::Duration::Durat
     sum{YType::empty, "sum"}
 {
 
-    yang_name = "duration"; yang_parent_name = "transaction"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "duration"; yang_parent_name = "transaction"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Connection::Transaction::Duration::~Duration()
@@ -14283,6 +14425,7 @@ Native::Flow::Record::Default::Collect::Connection::Transaction::Duration::~Dura
 
 bool Native::Flow::Record::Default::Collect::Connection::Transaction::Duration::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set
 	|| sum.is_set;
@@ -14375,12 +14518,12 @@ bool Native::Flow::Record::Default::Collect::Connection::Transaction::Duration::
 Native::Flow::Record::Default::Collect::Counter::Counter()
     :
     flows{YType::empty, "flows"}
-    	,
+        ,
     bytes(nullptr) // presence node
-	,packets(nullptr) // presence node
+    , packets(nullptr) // presence node
 {
 
-    yang_name = "counter"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter"; yang_parent_name = "collect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Counter::~Counter()
@@ -14389,6 +14532,7 @@ Native::Flow::Record::Default::Collect::Counter::~Counter()
 
 bool Native::Flow::Record::Default::Collect::Counter::has_data() const
 {
+    if (is_presence_container) return true;
     return flows.is_set
 	|| (bytes !=  nullptr && bytes->has_data())
 	|| (packets !=  nullptr && packets->has_data());
@@ -14487,15 +14631,15 @@ bool Native::Flow::Record::Default::Collect::Counter::has_leaf_or_child_of_name(
 Native::Flow::Record::Default::Collect::Counter::Bytes::Bytes()
     :
     long_{YType::empty, "long"}
-    	,
+        ,
     rate(nullptr) // presence node
-	,squared(std::make_shared<Native::Flow::Record::Default::Collect::Counter::Bytes::Squared>())
-	,layer2(std::make_shared<Native::Flow::Record::Default::Collect::Counter::Bytes::Layer2>())
+    , squared(std::make_shared<Native::Flow::Record::Default::Collect::Counter::Bytes::Squared>())
+    , layer2(std::make_shared<Native::Flow::Record::Default::Collect::Counter::Bytes::Layer2>())
 {
     squared->parent = this;
     layer2->parent = this;
 
-    yang_name = "bytes"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bytes"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Counter::Bytes::~Bytes()
@@ -14504,6 +14648,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::~Bytes()
 
 bool Native::Flow::Record::Default::Collect::Counter::Bytes::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set
 	|| (rate !=  nullptr && rate->has_data())
 	|| (squared !=  nullptr && squared->has_data())
@@ -14620,7 +14765,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::Rate()
     per_flow(nullptr) // presence node
 {
 
-    yang_name = "rate"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::~Rate()
@@ -14629,6 +14774,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::~Rate()
 
 bool Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::has_data() const
 {
+    if (is_presence_container) return true;
     return (per_flow !=  nullptr && per_flow->has_data());
 }
 
@@ -14701,7 +14847,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::PerFlow::PerFlow()
     min{YType::empty, "min"}
 {
 
-    yang_name = "per-flow"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-flow"; yang_parent_name = "rate"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::PerFlow::~PerFlow()
@@ -14710,6 +14856,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::PerFlow::~PerFlow(
 
 bool Native::Flow::Record::Default::Collect::Counter::Bytes::Rate::PerFlow::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| min.is_set;
 }
@@ -14791,7 +14938,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Squared::Squared()
     long_{YType::empty, "long"}
 {
 
-    yang_name = "squared"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "squared"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Counter::Bytes::Squared::~Squared()
@@ -14800,6 +14947,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Squared::~Squared()
 
 bool Native::Flow::Record::Default::Collect::Counter::Bytes::Squared::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -14868,7 +15016,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Layer2::Layer2()
     long_{YType::empty, "long"}
 {
 
-    yang_name = "layer2"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "layer2"; yang_parent_name = "bytes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Flow::Record::Default::Collect::Counter::Bytes::Layer2::~Layer2()
@@ -14877,6 +15025,7 @@ Native::Flow::Record::Default::Collect::Counter::Bytes::Layer2::~Layer2()
 
 bool Native::Flow::Record::Default::Collect::Counter::Bytes::Layer2::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set;
 }
 
@@ -14944,11 +15093,11 @@ Native::Flow::Record::Default::Collect::Counter::Packets::Packets()
     :
     dropped{YType::empty, "dropped"},
     long_{YType::empty, "long"}
-    	,
+        ,
     rate(nullptr) // presence node
 {
 
-    yang_name = "packets"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packets"; yang_parent_name = "counter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Flow::Record::Default::Collect::Counter::Packets::~Packets()
@@ -14957,6 +15106,7 @@ Native::Flow::Record::Default::Collect::Counter::Packets::~Packets()
 
 bool Native::Flow::Record::Default::Collect::Counter::Packets::has_data() const
 {
+    if (is_presence_container) return true;
     return dropped.is_set
 	|| long_.is_set
 	|| (rate !=  nullptr && rate->has_data());

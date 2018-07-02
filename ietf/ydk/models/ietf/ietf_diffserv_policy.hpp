@@ -43,7 +43,7 @@ class Policies : public ydk::Entity
 
         class PolicyEntry; //type: Policies::PolicyEntry
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry> > policy_entry;
+        ydk::YList policy_entry;
         
 }; // Policies
 
@@ -69,7 +69,7 @@ class Policies::PolicyEntry : public ydk::Entity
         ydk::YLeaf policy_descr; //type: string
         class ClassifierEntry; //type: Policies::PolicyEntry::ClassifierEntry
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry> > classifier_entry;
+        ydk::YList classifier_entry;
         
 }; // Policies::PolicyEntry
 
@@ -96,8 +96,8 @@ class Policies::PolicyEntry::ClassifierEntry : public ydk::Entity
         class FilterEntry; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry
         class ClassifierActionEntryCfg; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry> > filter_entry;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg> > classifier_action_entry_cfg;
+        ydk::YList filter_entry;
+        ydk::YList classifier_action_entry_cfg;
         
 }; // Policies::PolicyEntry::ClassifierEntry
 
@@ -127,12 +127,12 @@ class Policies::PolicyEntry::ClassifierEntry::FilterEntry : public ydk::Entity
         class DestinationPortCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg
         class ProtocolCfg; //type: Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg> > dscp_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg> > source_ip_address_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg> > destination_ip_address_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg> > source_port_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg> > destination_port_cfg;
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg> > protocol_cfg;
+        ydk::YList dscp_cfg;
+        ydk::YList source_ip_address_cfg;
+        ydk::YList destination_ip_address_cfg;
+        ydk::YList source_port_cfg;
+        ydk::YList destination_port_cfg;
+        ydk::YList protocol_cfg;
         
 }; // Policies::PolicyEntry::ClassifierEntry::FilterEntry
 
@@ -395,7 +395,7 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg
 
         class MeterList; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList> > meter_list;
+        ydk::YList meter_list;
         
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg
 
@@ -621,7 +621,7 @@ class Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDrop
 
         class QlimitDscpThresh; //type: Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh
 
-        std::vector<std::shared_ptr<ietf::ietf_diffserv_policy::Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh> > qlimit_dscp_thresh;
+        ydk::YList qlimit_dscp_thresh;
         
 }; // Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg
 

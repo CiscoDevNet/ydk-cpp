@@ -17,7 +17,7 @@ LptsPifib_::LptsPifib_()
 {
     nodes->parent = this;
 
-    yang_name = "lpts-pifib"; yang_parent_name = "Cisco-IOS-XR-lpts-pre-ifib-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lpts-pifib"; yang_parent_name = "Cisco-IOS-XR-lpts-pre-ifib-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LptsPifib_::~LptsPifib_()
@@ -26,6 +26,7 @@ LptsPifib_::~LptsPifib_()
 
 bool LptsPifib_::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool LptsPifib_::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 LptsPifib_::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "lpts-pifib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "lpts-pifib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsPifib_::Nodes::~Nodes()
@@ -129,7 +132,8 @@ LptsPifib_::Nodes::~Nodes()
 
 bool LptsPifib_::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool LptsPifib_::Nodes::has_data() const
 
 bool LptsPifib_::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool LptsPifib_::Nodes::has_leaf_or_child_of_name(const std::string & name) cons
 LptsPifib_::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     type_values(std::make_shared<LptsPifib_::Nodes::Node::TypeValues>())
-	,dynamic_flows_stats(std::make_shared<LptsPifib_::Nodes::Node::DynamicFlowsStats>())
-	,hardware(std::make_shared<LptsPifib_::Nodes::Node::Hardware>())
+    , dynamic_flows_stats(std::make_shared<LptsPifib_::Nodes::Node::DynamicFlowsStats>())
+    , hardware(std::make_shared<LptsPifib_::Nodes::Node::Hardware>())
 {
     type_values->parent = this;
     dynamic_flows_stats->parent = this;
     hardware->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsPifib_::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ LptsPifib_::Nodes::Node::~Node()
 
 bool LptsPifib_::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (type_values !=  nullptr && type_values->has_data())
 	|| (dynamic_flows_stats !=  nullptr && dynamic_flows_stats->has_data())
@@ -260,7 +265,8 @@ std::string LptsPifib_::Nodes::Node::get_absolute_path() const
 std::string LptsPifib_::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -354,9 +360,11 @@ bool LptsPifib_::Nodes::Node::has_leaf_or_child_of_name(const std::string & name
 }
 
 LptsPifib_::Nodes::Node::TypeValues::TypeValues()
+    :
+    type_value(this, {"pifib_type"})
 {
 
-    yang_name = "type-values"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-values"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::TypeValues::~TypeValues()
@@ -365,7 +373,8 @@ LptsPifib_::Nodes::Node::TypeValues::~TypeValues()
 
 bool LptsPifib_::Nodes::Node::TypeValues::has_data() const
 {
-    for (std::size_t index=0; index<type_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<type_value.len(); index++)
     {
         if(type_value[index]->has_data())
             return true;
@@ -375,7 +384,7 @@ bool LptsPifib_::Nodes::Node::TypeValues::has_data() const
 
 bool LptsPifib_::Nodes::Node::TypeValues::has_operation() const
 {
-    for (std::size_t index=0; index<type_value.size(); index++)
+    for (std::size_t index=0; index<type_value.len(); index++)
     {
         if(type_value[index]->has_operation())
             return true;
@@ -405,7 +414,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::TypeValues::get_child_by_name(c
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::TypeValues::TypeValue>();
         c->parent = this;
-        type_value.push_back(c);
+        type_value.append(c);
         return c;
     }
 
@@ -417,7 +426,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::TypeValu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : type_value)
+    for (auto c : type_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -446,9 +455,11 @@ bool LptsPifib_::Nodes::Node::TypeValues::has_leaf_or_child_of_name(const std::s
 LptsPifib_::Nodes::Node::TypeValues::TypeValue::TypeValue()
     :
     pifib_type{YType::enumeration, "pifib-type"}
+        ,
+    entry(this, {"entry"})
 {
 
-    yang_name = "type-value"; yang_parent_name = "type-values"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type-value"; yang_parent_name = "type-values"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::TypeValues::TypeValue::~TypeValue()
@@ -457,7 +468,8 @@ LptsPifib_::Nodes::Node::TypeValues::TypeValue::~TypeValue()
 
 bool LptsPifib_::Nodes::Node::TypeValues::TypeValue::has_data() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -467,7 +479,7 @@ bool LptsPifib_::Nodes::Node::TypeValues::TypeValue::has_data() const
 
 bool LptsPifib_::Nodes::Node::TypeValues::TypeValue::has_operation() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -479,7 +491,8 @@ bool LptsPifib_::Nodes::Node::TypeValues::TypeValue::has_operation() const
 std::string LptsPifib_::Nodes::Node::TypeValues::TypeValue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "type-value" <<"[pifib-type='" <<pifib_type <<"']";
+    path_buffer << "type-value";
+    ADD_KEY_TOKEN(pifib_type, "pifib-type");
     return path_buffer.str();
 }
 
@@ -499,7 +512,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::TypeValues::TypeValue::get_chil
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -511,7 +524,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::TypeValu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -578,7 +591,7 @@ LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::Entry()
     pifib_program_time{YType::str, "pifib-program-time"}
 {
 
-    yang_name = "entry"; yang_parent_name = "type-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entry"; yang_parent_name = "type-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::~Entry()
@@ -587,6 +600,7 @@ LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::~Entry()
 
 bool LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set
 	|| vrf_name.is_set
 	|| vid.is_set
@@ -651,7 +665,8 @@ bool LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::has_operation() cons
 std::string LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[entry='" <<entry <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(entry, "entry");
     return path_buffer.str();
 }
 
@@ -996,9 +1011,11 @@ LptsPifib_::Nodes::Node::DynamicFlowsStats::DynamicFlowsStats()
     platform_total_configured{YType::uint32, "platform-total-configured"},
     total_hw_entries{YType::uint32, "total-hw-entries"},
     total_sw_entries{YType::uint32, "total-sw-entries"}
+        ,
+    flow(this, {})
 {
 
-    yang_name = "dynamic-flows-stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic-flows-stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::DynamicFlowsStats::~DynamicFlowsStats()
@@ -1007,7 +1024,8 @@ LptsPifib_::Nodes::Node::DynamicFlowsStats::~DynamicFlowsStats()
 
 bool LptsPifib_::Nodes::Node::DynamicFlowsStats::has_data() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow.len(); index++)
     {
         if(flow[index]->has_data())
             return true;
@@ -1022,7 +1040,7 @@ bool LptsPifib_::Nodes::Node::DynamicFlowsStats::has_data() const
 
 bool LptsPifib_::Nodes::Node::DynamicFlowsStats::has_operation() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    for (std::size_t index=0; index<flow.len(); index++)
     {
         if(flow[index]->has_operation())
             return true;
@@ -1064,7 +1082,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::DynamicFlowsStats::get_child_by
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow>();
         c->parent = this;
-        flow.push_back(c);
+        flow.append(c);
         return c;
     }
 
@@ -1076,7 +1094,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::DynamicF
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow)
+    for (auto c : flow.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1175,7 +1193,7 @@ LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::Flow()
     pending_software_entries{YType::boolean, "pending-software-entries"}
 {
 
-    yang_name = "flow"; yang_parent_name = "dynamic-flows-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "dynamic-flows-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::~Flow()
@@ -1184,6 +1202,7 @@ LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::~Flow()
 
 bool LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_name.is_set
 	|| configurable.is_set
 	|| configured.is_set
@@ -1354,11 +1373,11 @@ bool LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::has_leaf_or_child_of_name
 LptsPifib_::Nodes::Node::Hardware::Hardware()
     :
     usage_entries(std::make_shared<LptsPifib_::Nodes::Node::Hardware::UsageEntries>())
-	,police(std::make_shared<LptsPifib_::Nodes::Node::Hardware::Police>())
-	,static_police(std::make_shared<LptsPifib_::Nodes::Node::Hardware::StaticPolice>())
-	,bfd(std::make_shared<LptsPifib_::Nodes::Node::Hardware::Bfd>())
-	,statistics(std::make_shared<LptsPifib_::Nodes::Node::Hardware::Statistics>())
-	,index_entries(std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries>())
+    , police(std::make_shared<LptsPifib_::Nodes::Node::Hardware::Police>())
+    , static_police(std::make_shared<LptsPifib_::Nodes::Node::Hardware::StaticPolice>())
+    , bfd(std::make_shared<LptsPifib_::Nodes::Node::Hardware::Bfd>())
+    , statistics(std::make_shared<LptsPifib_::Nodes::Node::Hardware::Statistics>())
+    , index_entries(std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries>())
 {
     usage_entries->parent = this;
     police->parent = this;
@@ -1367,7 +1386,7 @@ LptsPifib_::Nodes::Node::Hardware::Hardware()
     statistics->parent = this;
     index_entries->parent = this;
 
-    yang_name = "hardware"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::~Hardware()
@@ -1376,6 +1395,7 @@ LptsPifib_::Nodes::Node::Hardware::~Hardware()
 
 bool LptsPifib_::Nodes::Node::Hardware::has_data() const
 {
+    if (is_presence_container) return true;
     return (usage_entries !=  nullptr && usage_entries->has_data())
 	|| (police !=  nullptr && police->has_data())
 	|| (static_police !=  nullptr && static_police->has_data())
@@ -1523,9 +1543,11 @@ bool LptsPifib_::Nodes::Node::Hardware::has_leaf_or_child_of_name(const std::str
 }
 
 LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntries()
+    :
+    usage_entry(this, {"region_id"})
 {
 
-    yang_name = "usage-entries"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "usage-entries"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::UsageEntries::~UsageEntries()
@@ -1534,7 +1556,8 @@ LptsPifib_::Nodes::Node::Hardware::UsageEntries::~UsageEntries()
 
 bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::has_data() const
 {
-    for (std::size_t index=0; index<usage_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<usage_entry.len(); index++)
     {
         if(usage_entry[index]->has_data())
             return true;
@@ -1544,7 +1567,7 @@ bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::has_data() const
 
 bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::has_operation() const
 {
-    for (std::size_t index=0; index<usage_entry.size(); index++)
+    for (std::size_t index=0; index<usage_entry.len(); index++)
     {
         if(usage_entry[index]->has_operation())
             return true;
@@ -1574,7 +1597,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::get_chi
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry>();
         c->parent = this;
-        usage_entry.push_back(c);
+        usage_entry.append(c);
         return c;
     }
 
@@ -1586,7 +1609,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : usage_entry)
+    for (auto c : usage_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1615,9 +1638,11 @@ bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::has_leaf_or_child_of_name(
 LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageEntry()
     :
     region_id{YType::enumeration, "region-id"}
+        ,
+    usage_info(this, {})
 {
 
-    yang_name = "usage-entry"; yang_parent_name = "usage-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "usage-entry"; yang_parent_name = "usage-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::~UsageEntry()
@@ -1626,7 +1651,8 @@ LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::~UsageEntry()
 
 bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::has_data() const
 {
-    for (std::size_t index=0; index<usage_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<usage_info.len(); index++)
     {
         if(usage_info[index]->has_data())
             return true;
@@ -1636,7 +1662,7 @@ bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::has_data() con
 
 bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::has_operation() const
 {
-    for (std::size_t index=0; index<usage_info.size(); index++)
+    for (std::size_t index=0; index<usage_info.len(); index++)
     {
         if(usage_info[index]->has_operation())
             return true;
@@ -1648,7 +1674,8 @@ bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::has_operation(
 std::string LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "usage-entry" <<"[region-id='" <<region_id <<"']";
+    path_buffer << "usage-entry";
+    ADD_KEY_TOKEN(region_id, "region-id");
     return path_buffer.str();
 }
 
@@ -1668,7 +1695,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEn
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo>();
         c->parent = this;
-        usage_info.push_back(c);
+        usage_info.append(c);
         return c;
     }
 
@@ -1680,7 +1707,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : usage_info)
+    for (auto c : usage_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1725,7 +1752,7 @@ LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::UsageInf
     used{YType::uint32, "used"}
 {
 
-    yang_name = "usage-info"; yang_parent_name = "usage-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "usage-info"; yang_parent_name = "usage-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::~UsageInfo()
@@ -1734,6 +1761,7 @@ LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::~UsageIn
 
 bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return pipe_id.is_set
 	|| region.is_set
 	|| region_id.is_set
@@ -1850,9 +1878,11 @@ bool LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::has
 }
 
 LptsPifib_::Nodes::Node::Hardware::Police::Police()
+    :
+    police_info(this, {})
 {
 
-    yang_name = "police"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::Police::~Police()
@@ -1861,7 +1891,8 @@ LptsPifib_::Nodes::Node::Hardware::Police::~Police()
 
 bool LptsPifib_::Nodes::Node::Hardware::Police::has_data() const
 {
-    for (std::size_t index=0; index<police_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<police_info.len(); index++)
     {
         if(police_info[index]->has_data())
             return true;
@@ -1871,7 +1902,7 @@ bool LptsPifib_::Nodes::Node::Hardware::Police::has_data() const
 
 bool LptsPifib_::Nodes::Node::Hardware::Police::has_operation() const
 {
-    for (std::size_t index=0; index<police_info.size(); index++)
+    for (std::size_t index=0; index<police_info.len(); index++)
     {
         if(police_info[index]->has_operation())
             return true;
@@ -1901,7 +1932,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::Police::get_child_by_
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo>();
         c->parent = this;
-        police_info.push_back(c);
+        police_info.append(c);
         return c;
     }
 
@@ -1913,7 +1944,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : police_info)
+    for (auto c : police_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1954,7 +1985,7 @@ LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::PoliceInfo()
     acl_str{YType::str, "acl-str"}
 {
 
-    yang_name = "police-info"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-info"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::~PoliceInfo()
@@ -1963,6 +1994,7 @@ LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::~PoliceInfo()
 
 bool LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return avgrate.is_set
 	|| burst.is_set
 	|| static_avgrate.is_set
@@ -2157,9 +2189,11 @@ bool LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::has_leaf_or_child_of
 }
 
 LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticPolice()
+    :
+    static_info(this, {})
 {
 
-    yang_name = "static-police"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-police"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::StaticPolice::~StaticPolice()
@@ -2168,7 +2202,8 @@ LptsPifib_::Nodes::Node::Hardware::StaticPolice::~StaticPolice()
 
 bool LptsPifib_::Nodes::Node::Hardware::StaticPolice::has_data() const
 {
-    for (std::size_t index=0; index<static_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_info.len(); index++)
     {
         if(static_info[index]->has_data())
             return true;
@@ -2178,7 +2213,7 @@ bool LptsPifib_::Nodes::Node::Hardware::StaticPolice::has_data() const
 
 bool LptsPifib_::Nodes::Node::Hardware::StaticPolice::has_operation() const
 {
-    for (std::size_t index=0; index<static_info.size(); index++)
+    for (std::size_t index=0; index<static_info.len(); index++)
     {
         if(static_info[index]->has_operation())
             return true;
@@ -2208,7 +2243,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::StaticPolice::get_chi
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo>();
         c->parent = this;
-        static_info.push_back(c);
+        static_info.append(c);
         return c;
     }
 
@@ -2220,7 +2255,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_info)
+    for (auto c : static_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2258,7 +2293,7 @@ LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::StaticInfo()
     change_type{YType::uint8, "change-type"}
 {
 
-    yang_name = "static-info"; yang_parent_name = "static-police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-info"; yang_parent_name = "static-police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::~StaticInfo()
@@ -2267,6 +2302,7 @@ LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::~StaticInfo()
 
 bool LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return punt_reason.is_set
 	|| sid.is_set
 	|| flow_rate.is_set
@@ -2422,9 +2458,11 @@ bool LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::has_leaf_or_ch
 }
 
 LptsPifib_::Nodes::Node::Hardware::Bfd::Bfd()
+    :
+    bfd_entry_info(this, {})
 {
 
-    yang_name = "bfd"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::Bfd::~Bfd()
@@ -2433,7 +2471,8 @@ LptsPifib_::Nodes::Node::Hardware::Bfd::~Bfd()
 
 bool LptsPifib_::Nodes::Node::Hardware::Bfd::has_data() const
 {
-    for (std::size_t index=0; index<bfd_entry_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_entry_info.len(); index++)
     {
         if(bfd_entry_info[index]->has_data())
             return true;
@@ -2443,7 +2482,7 @@ bool LptsPifib_::Nodes::Node::Hardware::Bfd::has_data() const
 
 bool LptsPifib_::Nodes::Node::Hardware::Bfd::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_entry_info.size(); index++)
+    for (std::size_t index=0; index<bfd_entry_info.len(); index++)
     {
         if(bfd_entry_info[index]->has_operation())
             return true;
@@ -2473,7 +2512,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::Bfd::get_child_by_nam
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo>();
         c->parent = this;
-        bfd_entry_info.push_back(c);
+        bfd_entry_info.append(c);
         return c;
     }
 
@@ -2485,7 +2524,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bfd_entry_info)
+    for (auto c : bfd_entry_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2520,7 +2559,7 @@ LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::BfdEntryInfo()
     policer_id{YType::uint32, "policer-id"}
 {
 
-    yang_name = "bfd-entry-info"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-entry-info"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::~BfdEntryInfo()
@@ -2529,6 +2568,7 @@ LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::~BfdEntryInfo()
 
 bool LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| is_mcast.is_set
 	|| fgid_or_vqi.is_set
@@ -2652,7 +2692,7 @@ LptsPifib_::Nodes::Node::Hardware::Statistics::Statistics()
     no_stats_mem_err{YType::uint64, "no-stats-mem-err"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::Statistics::~Statistics()
@@ -2661,6 +2701,7 @@ LptsPifib_::Nodes::Node::Hardware::Statistics::~Statistics()
 
 bool LptsPifib_::Nodes::Node::Hardware::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return accepted.is_set
 	|| dropped.is_set
 	|| clear_ts.is_set
@@ -2764,9 +2805,11 @@ bool LptsPifib_::Nodes::Node::Hardware::Statistics::has_leaf_or_child_of_name(co
 }
 
 LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntries()
+    :
+    index_entry(this, {"index_"})
 {
 
-    yang_name = "index-entries"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index-entries"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::IndexEntries::~IndexEntries()
@@ -2775,7 +2818,8 @@ LptsPifib_::Nodes::Node::Hardware::IndexEntries::~IndexEntries()
 
 bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::has_data() const
 {
-    for (std::size_t index=0; index<index_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<index_entry.len(); index++)
     {
         if(index_entry[index]->has_data())
             return true;
@@ -2785,7 +2829,7 @@ bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::has_data() const
 
 bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::has_operation() const
 {
-    for (std::size_t index=0; index<index_entry.size(); index++)
+    for (std::size_t index=0; index<index_entry.len(); index++)
     {
         if(index_entry[index]->has_operation())
             return true;
@@ -2815,7 +2859,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::get_chi
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry>();
         c->parent = this;
-        index_entry.push_back(c);
+        index_entry.append(c);
         return c;
     }
 
@@ -2827,7 +2871,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : index_entry)
+    for (auto c : index_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2855,7 +2899,7 @@ bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::has_leaf_or_child_of_name(
 
 LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::IndexEntry()
     :
-    index_{YType::int32, "index"},
+    index_{YType::uint32, "index"},
     l3protocol{YType::uint32, "l3protocol"},
     l4protocol{YType::uint32, "l4protocol"},
     intf_handle{YType::uint32, "intf-handle"},
@@ -2902,9 +2946,11 @@ LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::IndexEntry()
     remote_fgid{YType::uint32, "remote-fgid"},
     acl_str{YType::str, "acl-str"},
     no_stats{YType::uint8, "no-stats"}
+        ,
+    hw_info(this, {})
 {
 
-    yang_name = "index-entry"; yang_parent_name = "index-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index-entry"; yang_parent_name = "index-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::~IndexEntry()
@@ -2913,7 +2959,8 @@ LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::~IndexEntry()
 
 bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::has_data() const
 {
-    for (std::size_t index=0; index<hw_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hw_info.len(); index++)
     {
         if(hw_info[index]->has_data())
             return true;
@@ -2969,7 +3016,7 @@ bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::has_data() con
 
 bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::has_operation() const
 {
-    for (std::size_t index=0; index<hw_info.size(); index++)
+    for (std::size_t index=0; index<hw_info.len(); index++)
     {
         if(hw_info[index]->has_operation())
             return true;
@@ -3027,7 +3074,8 @@ bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::has_operation(
 std::string LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "index-entry" <<"[index='" <<index_ <<"']";
+    path_buffer << "index-entry";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -3093,7 +3141,7 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEn
     {
         auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo>();
         c->parent = this;
-        hw_info.push_back(c);
+        hw_info.append(c);
         return c;
     }
 
@@ -3105,7 +3153,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hw_info)
+    for (auto c : hw_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3611,7 +3659,7 @@ LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::HwInfo()
     tm_start_offset{YType::int32, "tm-start-offset"}
 {
 
-    yang_name = "hw-info"; yang_parent_name = "index-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-info"; yang_parent_name = "index-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::~HwInfo()
@@ -3620,6 +3668,7 @@ LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::~HwInfo()
 
 bool LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return policer.is_set
 	|| stats_ptr.is_set
 	|| accepted.is_set

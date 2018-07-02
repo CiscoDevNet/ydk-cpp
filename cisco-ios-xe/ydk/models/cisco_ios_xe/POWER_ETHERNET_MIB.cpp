@@ -13,15 +13,15 @@ namespace POWER_ETHERNET_MIB {
 
 POWERETHERNETMIB::POWERETHERNETMIB()
     :
-    pethpseporttable(std::make_shared<POWERETHERNETMIB::Pethpseporttable>())
-	,pethmainpsetable(std::make_shared<POWERETHERNETMIB::Pethmainpsetable>())
-	,pethnotificationcontroltable(std::make_shared<POWERETHERNETMIB::Pethnotificationcontroltable>())
+    pethpseporttable(std::make_shared<POWERETHERNETMIB::PethPsePortTable>())
+    , pethmainpsetable(std::make_shared<POWERETHERNETMIB::PethMainPseTable>())
+    , pethnotificationcontroltable(std::make_shared<POWERETHERNETMIB::PethNotificationControlTable>())
 {
     pethpseporttable->parent = this;
     pethmainpsetable->parent = this;
     pethnotificationcontroltable->parent = this;
 
-    yang_name = "POWER-ETHERNET-MIB"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "POWER-ETHERNET-MIB"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 POWERETHERNETMIB::~POWERETHERNETMIB()
@@ -30,6 +30,7 @@ POWERETHERNETMIB::~POWERETHERNETMIB()
 
 bool POWERETHERNETMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (pethpseporttable !=  nullptr && pethpseporttable->has_data())
 	|| (pethmainpsetable !=  nullptr && pethmainpsetable->has_data())
 	|| (pethnotificationcontroltable !=  nullptr && pethnotificationcontroltable->has_data());
@@ -65,7 +66,7 @@ std::shared_ptr<Entity> POWERETHERNETMIB::get_child_by_name(const std::string & 
     {
         if(pethpseporttable == nullptr)
         {
-            pethpseporttable = std::make_shared<POWERETHERNETMIB::Pethpseporttable>();
+            pethpseporttable = std::make_shared<POWERETHERNETMIB::PethPsePortTable>();
         }
         return pethpseporttable;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> POWERETHERNETMIB::get_child_by_name(const std::string & 
     {
         if(pethmainpsetable == nullptr)
         {
-            pethmainpsetable = std::make_shared<POWERETHERNETMIB::Pethmainpsetable>();
+            pethmainpsetable = std::make_shared<POWERETHERNETMIB::PethMainPseTable>();
         }
         return pethmainpsetable;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> POWERETHERNETMIB::get_child_by_name(const std::string & 
     {
         if(pethnotificationcontroltable == nullptr)
         {
-            pethnotificationcontroltable = std::make_shared<POWERETHERNETMIB::Pethnotificationcontroltable>();
+            pethnotificationcontroltable = std::make_shared<POWERETHERNETMIB::PethNotificationControlTable>();
         }
         return pethnotificationcontroltable;
     }
@@ -153,19 +154,22 @@ bool POWERETHERNETMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-POWERETHERNETMIB::Pethpseporttable::Pethpseporttable()
+POWERETHERNETMIB::PethPsePortTable::PethPsePortTable()
+    :
+    pethpseportentry(this, {"pethpseportgroupindex", "pethpseportindex"})
 {
 
-    yang_name = "pethPsePortTable"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pethPsePortTable"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-POWERETHERNETMIB::Pethpseporttable::~Pethpseporttable()
+POWERETHERNETMIB::PethPsePortTable::~PethPsePortTable()
 {
 }
 
-bool POWERETHERNETMIB::Pethpseporttable::has_data() const
+bool POWERETHERNETMIB::PethPsePortTable::has_data() const
 {
-    for (std::size_t index=0; index<pethpseportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pethpseportentry.len(); index++)
     {
         if(pethpseportentry[index]->has_data())
             return true;
@@ -173,9 +177,9 @@ bool POWERETHERNETMIB::Pethpseporttable::has_data() const
     return false;
 }
 
-bool POWERETHERNETMIB::Pethpseporttable::has_operation() const
+bool POWERETHERNETMIB::PethPsePortTable::has_operation() const
 {
-    for (std::size_t index=0; index<pethpseportentry.size(); index++)
+    for (std::size_t index=0; index<pethpseportentry.len(); index++)
     {
         if(pethpseportentry[index]->has_operation())
             return true;
@@ -183,21 +187,21 @@ bool POWERETHERNETMIB::Pethpseporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string POWERETHERNETMIB::Pethpseporttable::get_absolute_path() const
+std::string POWERETHERNETMIB::PethPsePortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "POWER-ETHERNET-MIB:POWER-ETHERNET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string POWERETHERNETMIB::Pethpseporttable::get_segment_path() const
+std::string POWERETHERNETMIB::PethPsePortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pethPsePortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethpseporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethPsePortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -206,25 +210,25 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethpseporttabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::Pethpseporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> POWERETHERNETMIB::PethPsePortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pethPsePortEntry")
     {
-        auto c = std::make_shared<POWERETHERNETMIB::Pethpseporttable::Pethpseportentry>();
+        auto c = std::make_shared<POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry>();
         c->parent = this;
-        pethpseportentry.push_back(c);
+        pethpseportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethpseporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethPsePortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pethpseportentry)
+    for (auto c : pethpseportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,22 +239,22 @@ std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethpseporttabl
     return children;
 }
 
-void POWERETHERNETMIB::Pethpseporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void POWERETHERNETMIB::PethPsePortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void POWERETHERNETMIB::Pethpseporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void POWERETHERNETMIB::PethPsePortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool POWERETHERNETMIB::Pethpseporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool POWERETHERNETMIB::PethPsePortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethPsePortEntry")
         return true;
     return false;
 }
 
-POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportentry()
+POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortEntry()
     :
     pethpseportgroupindex{YType::int32, "pethPsePortGroupIndex"},
     pethpseportindex{YType::int32, "pethPsePortIndex"},
@@ -284,15 +288,16 @@ POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportentry()
     cpeextpseportcapabilities{YType::bits, "CISCO-POWER-ETHERNET-EXT-MIB:cpeExtPsePortCapabilities"}
 {
 
-    yang_name = "pethPsePortEntry"; yang_parent_name = "pethPsePortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pethPsePortEntry"; yang_parent_name = "pethPsePortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::~Pethpseportentry()
+POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::~PethPsePortEntry()
 {
 }
 
-bool POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::has_data() const
+bool POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pethpseportgroupindex.is_set
 	|| pethpseportindex.is_set
 	|| pethpseportadminenable.is_set
@@ -325,7 +330,7 @@ bool POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::has_data() const
 	|| cpeextpseportcapabilities.is_set;
 }
 
-bool POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::has_operation() const
+bool POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pethpseportgroupindex.yfilter)
@@ -360,21 +365,23 @@ bool POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::has_operation() const
 	|| ydk::is_set(cpeextpseportcapabilities.yfilter);
 }
 
-std::string POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::get_absolute_path() const
+std::string POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "POWER-ETHERNET-MIB:POWER-ETHERNET-MIB/pethPsePortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::get_segment_path() const
+std::string POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pethPsePortEntry" <<"[pethPsePortGroupIndex='" <<pethpseportgroupindex <<"']" <<"[pethPsePortIndex='" <<pethpseportindex <<"']";
+    path_buffer << "pethPsePortEntry";
+    ADD_KEY_TOKEN(pethpseportgroupindex, "pethPsePortGroupIndex");
+    ADD_KEY_TOKEN(pethpseportindex, "pethPsePortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -413,19 +420,19 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethpseporttabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pethPsePortGroupIndex")
     {
@@ -605,7 +612,7 @@ void POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::set_value(const std::
     }
 }
 
-void POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pethPsePortGroupIndex")
     {
@@ -729,26 +736,29 @@ void POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::set_filter(const std:
     }
 }
 
-bool POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethPsePortGroupIndex" || name == "pethPsePortIndex" || name == "pethPsePortAdminEnable" || name == "pethPsePortPowerPairsControlAbility" || name == "pethPsePortPowerPairs" || name == "pethPsePortDetectionStatus" || name == "pethPsePortPowerPriority" || name == "pethPsePortMPSAbsentCounter" || name == "pethPsePortType" || name == "pethPsePortPowerClassifications" || name == "pethPsePortInvalidSignatureCounter" || name == "pethPsePortPowerDeniedCounter" || name == "pethPsePortOverLoadCounter" || name == "pethPsePortShortCounter" || name == "cpeExtPsePortEnable" || name == "cpeExtPsePortDiscoverMode" || name == "cpeExtPsePortDeviceDetected" || name == "cpeExtPsePortIeeePd" || name == "cpeExtPsePortAdditionalStatus" || name == "cpeExtPsePortPwrMax" || name == "cpeExtPsePortPwrAllocated" || name == "cpeExtPsePortPwrAvailable" || name == "cpeExtPsePortPwrConsumption" || name == "cpeExtPsePortMaxPwrDrawn" || name == "cpeExtPsePortEntPhyIndex" || name == "cpeExtPsePortPolicingCapable" || name == "cpeExtPsePortPolicingEnable" || name == "cpeExtPsePortPolicingAction" || name == "cpeExtPsePortPwrManAlloc" || name == "cpeExtPsePortCapabilities")
         return true;
     return false;
 }
 
-POWERETHERNETMIB::Pethmainpsetable::Pethmainpsetable()
+POWERETHERNETMIB::PethMainPseTable::PethMainPseTable()
+    :
+    pethmainpseentry(this, {"pethmainpsegroupindex"})
 {
 
-    yang_name = "pethMainPseTable"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pethMainPseTable"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-POWERETHERNETMIB::Pethmainpsetable::~Pethmainpsetable()
+POWERETHERNETMIB::PethMainPseTable::~PethMainPseTable()
 {
 }
 
-bool POWERETHERNETMIB::Pethmainpsetable::has_data() const
+bool POWERETHERNETMIB::PethMainPseTable::has_data() const
 {
-    for (std::size_t index=0; index<pethmainpseentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pethmainpseentry.len(); index++)
     {
         if(pethmainpseentry[index]->has_data())
             return true;
@@ -756,9 +766,9 @@ bool POWERETHERNETMIB::Pethmainpsetable::has_data() const
     return false;
 }
 
-bool POWERETHERNETMIB::Pethmainpsetable::has_operation() const
+bool POWERETHERNETMIB::PethMainPseTable::has_operation() const
 {
-    for (std::size_t index=0; index<pethmainpseentry.size(); index++)
+    for (std::size_t index=0; index<pethmainpseentry.len(); index++)
     {
         if(pethmainpseentry[index]->has_operation())
             return true;
@@ -766,21 +776,21 @@ bool POWERETHERNETMIB::Pethmainpsetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string POWERETHERNETMIB::Pethmainpsetable::get_absolute_path() const
+std::string POWERETHERNETMIB::PethMainPseTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "POWER-ETHERNET-MIB:POWER-ETHERNET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string POWERETHERNETMIB::Pethmainpsetable::get_segment_path() const
+std::string POWERETHERNETMIB::PethMainPseTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pethMainPseTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethmainpsetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethMainPseTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -789,25 +799,25 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethmainpsetabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::Pethmainpsetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> POWERETHERNETMIB::PethMainPseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pethMainPseEntry")
     {
-        auto c = std::make_shared<POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry>();
+        auto c = std::make_shared<POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry>();
         c->parent = this;
-        pethmainpseentry.push_back(c);
+        pethmainpseentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethmainpsetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethMainPseTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pethmainpseentry)
+    for (auto c : pethmainpseentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -818,22 +828,22 @@ std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethmainpsetabl
     return children;
 }
 
-void POWERETHERNETMIB::Pethmainpsetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void POWERETHERNETMIB::PethMainPseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void POWERETHERNETMIB::Pethmainpsetable::set_filter(const std::string & value_path, YFilter yfilter)
+void POWERETHERNETMIB::PethMainPseTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool POWERETHERNETMIB::Pethmainpsetable::has_leaf_or_child_of_name(const std::string & name) const
+bool POWERETHERNETMIB::PethMainPseTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethMainPseEntry")
         return true;
     return false;
 }
 
-POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::Pethmainpseentry()
+POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::PethMainPseEntry()
     :
     pethmainpsegroupindex{YType::int32, "pethMainPseGroupIndex"},
     pethmainpsepower{YType::uint32, "pethMainPsePower"},
@@ -842,15 +852,16 @@ POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::Pethmainpseentry()
     pethmainpseusagethreshold{YType::int32, "pethMainPseUsageThreshold"}
 {
 
-    yang_name = "pethMainPseEntry"; yang_parent_name = "pethMainPseTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pethMainPseEntry"; yang_parent_name = "pethMainPseTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::~Pethmainpseentry()
+POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::~PethMainPseEntry()
 {
 }
 
-bool POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::has_data() const
+bool POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pethmainpsegroupindex.is_set
 	|| pethmainpsepower.is_set
 	|| pethmainpseoperstatus.is_set
@@ -858,7 +869,7 @@ bool POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::has_data() const
 	|| pethmainpseusagethreshold.is_set;
 }
 
-bool POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::has_operation() const
+bool POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pethmainpsegroupindex.yfilter)
@@ -868,21 +879,22 @@ bool POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::has_operation() const
 	|| ydk::is_set(pethmainpseusagethreshold.yfilter);
 }
 
-std::string POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::get_absolute_path() const
+std::string POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "POWER-ETHERNET-MIB:POWER-ETHERNET-MIB/pethMainPseTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::get_segment_path() const
+std::string POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pethMainPseEntry" <<"[pethMainPseGroupIndex='" <<pethmainpsegroupindex <<"']";
+    path_buffer << "pethMainPseEntry";
+    ADD_KEY_TOKEN(pethmainpsegroupindex, "pethMainPseGroupIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -896,19 +908,19 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethmainpsetabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pethMainPseGroupIndex")
     {
@@ -942,7 +954,7 @@ void POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::set_value(const std::
     }
 }
 
-void POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::set_filter(const std::string & value_path, YFilter yfilter)
+void POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pethMainPseGroupIndex")
     {
@@ -966,26 +978,29 @@ void POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::set_filter(const std:
     }
 }
 
-bool POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::has_leaf_or_child_of_name(const std::string & name) const
+bool POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethMainPseGroupIndex" || name == "pethMainPsePower" || name == "pethMainPseOperStatus" || name == "pethMainPseConsumptionPower" || name == "pethMainPseUsageThreshold")
         return true;
     return false;
 }
 
-POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontroltable()
+POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlTable()
+    :
+    pethnotificationcontrolentry(this, {"pethnotificationcontrolgroupindex"})
 {
 
-    yang_name = "pethNotificationControlTable"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pethNotificationControlTable"; yang_parent_name = "POWER-ETHERNET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-POWERETHERNETMIB::Pethnotificationcontroltable::~Pethnotificationcontroltable()
+POWERETHERNETMIB::PethNotificationControlTable::~PethNotificationControlTable()
 {
 }
 
-bool POWERETHERNETMIB::Pethnotificationcontroltable::has_data() const
+bool POWERETHERNETMIB::PethNotificationControlTable::has_data() const
 {
-    for (std::size_t index=0; index<pethnotificationcontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pethnotificationcontrolentry.len(); index++)
     {
         if(pethnotificationcontrolentry[index]->has_data())
             return true;
@@ -993,9 +1008,9 @@ bool POWERETHERNETMIB::Pethnotificationcontroltable::has_data() const
     return false;
 }
 
-bool POWERETHERNETMIB::Pethnotificationcontroltable::has_operation() const
+bool POWERETHERNETMIB::PethNotificationControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<pethnotificationcontrolentry.size(); index++)
+    for (std::size_t index=0; index<pethnotificationcontrolentry.len(); index++)
     {
         if(pethnotificationcontrolentry[index]->has_operation())
             return true;
@@ -1003,21 +1018,21 @@ bool POWERETHERNETMIB::Pethnotificationcontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string POWERETHERNETMIB::Pethnotificationcontroltable::get_absolute_path() const
+std::string POWERETHERNETMIB::PethNotificationControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "POWER-ETHERNET-MIB:POWER-ETHERNET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string POWERETHERNETMIB::Pethnotificationcontroltable::get_segment_path() const
+std::string POWERETHERNETMIB::PethNotificationControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pethNotificationControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethnotificationcontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethNotificationControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1026,25 +1041,25 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethnotificatio
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::Pethnotificationcontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> POWERETHERNETMIB::PethNotificationControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pethNotificationControlEntry")
     {
-        auto c = std::make_shared<POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry>();
+        auto c = std::make_shared<POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry>();
         c->parent = this;
-        pethnotificationcontrolentry.push_back(c);
+        pethnotificationcontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethnotificationcontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethNotificationControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pethnotificationcontrolentry)
+    for (auto c : pethnotificationcontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1055,62 +1070,64 @@ std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethnotificatio
     return children;
 }
 
-void POWERETHERNETMIB::Pethnotificationcontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void POWERETHERNETMIB::PethNotificationControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void POWERETHERNETMIB::Pethnotificationcontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void POWERETHERNETMIB::PethNotificationControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool POWERETHERNETMIB::Pethnotificationcontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool POWERETHERNETMIB::PethNotificationControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethNotificationControlEntry")
         return true;
     return false;
 }
 
-POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::Pethnotificationcontrolentry()
+POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::PethNotificationControlEntry()
     :
     pethnotificationcontrolgroupindex{YType::int32, "pethNotificationControlGroupIndex"},
     pethnotificationcontrolenable{YType::boolean, "pethNotificationControlEnable"}
 {
 
-    yang_name = "pethNotificationControlEntry"; yang_parent_name = "pethNotificationControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pethNotificationControlEntry"; yang_parent_name = "pethNotificationControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::~Pethnotificationcontrolentry()
+POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::~PethNotificationControlEntry()
 {
 }
 
-bool POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::has_data() const
+bool POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pethnotificationcontrolgroupindex.is_set
 	|| pethnotificationcontrolenable.is_set;
 }
 
-bool POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::has_operation() const
+bool POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pethnotificationcontrolgroupindex.yfilter)
 	|| ydk::is_set(pethnotificationcontrolenable.yfilter);
 }
 
-std::string POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::get_absolute_path() const
+std::string POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "POWER-ETHERNET-MIB:POWER-ETHERNET-MIB/pethNotificationControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::get_segment_path() const
+std::string POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pethNotificationControlEntry" <<"[pethNotificationControlGroupIndex='" <<pethnotificationcontrolgroupindex <<"']";
+    path_buffer << "pethNotificationControlEntry";
+    ADD_KEY_TOKEN(pethnotificationcontrolgroupindex, "pethNotificationControlGroupIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1121,19 +1138,19 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::Pethnotificatio
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pethNotificationControlGroupIndex")
     {
@@ -1149,7 +1166,7 @@ void POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentr
     }
 }
 
-void POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pethNotificationControlGroupIndex")
     {
@@ -1161,53 +1178,53 @@ void POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentr
     }
 }
 
-bool POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethNotificationControlGroupIndex" || name == "pethNotificationControlEnable")
         return true;
     return false;
 }
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpairs::signal {1, "signal"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpairs::spare {2, "spare"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPairs::signal {1, "signal"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPairs::spare {2, "spare"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetectionstatus::disabled {1, "disabled"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetectionstatus::searching {2, "searching"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetectionstatus::deliveringPower {3, "deliveringPower"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetectionstatus::fault {4, "fault"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetectionstatus::test {5, "test"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetectionstatus::otherFault {6, "otherFault"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus::disabled {1, "disabled"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus::searching {2, "searching"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus::deliveringPower {3, "deliveringPower"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus::fault {4, "fault"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus::test {5, "test"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus::otherFault {6, "otherFault"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpriority::critical {1, "critical"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpriority::high {2, "high"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpriority::low {3, "low"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPriority::critical {1, "critical"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPriority::high {2, "high"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPriority::low {3, "low"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerclassifications::class0 {1, "class0"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerclassifications::class1 {2, "class1"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerclassifications::class2 {3, "class2"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerclassifications::class3 {4, "class3"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerclassifications::class4 {5, "class4"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClassifications::class0 {1, "class0"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClassifications::class1 {2, "class1"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClassifications::class2 {3, "class2"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClassifications::class3 {4, "class3"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClassifications::class4 {5, "class4"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportenable::auto_ {1, "auto"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportenable::static_ {2, "static"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportenable::limit {3, "limit"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportenable::disable {4, "disable"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortEnable::auto_ {1, "auto"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortEnable::static_ {2, "static"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortEnable::limit {3, "limit"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortEnable::disable {4, "disable"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportdiscovermode::unknown {1, "unknown"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportdiscovermode::off {2, "off"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportdiscovermode::ieee {3, "ieee"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportdiscovermode::cisco {4, "cisco"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportdiscovermode::ieeeAndCisco {5, "ieeeAndCisco"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscoverMode::unknown {1, "unknown"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscoverMode::off {2, "off"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscoverMode::ieee {3, "ieee"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscoverMode::cisco {4, "cisco"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscoverMode::ieeeAndCisco {5, "ieeeAndCisco"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicingenable::on {1, "on"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicingenable::off {2, "off"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingEnable::on {1, "on"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingEnable::off {2, "off"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicingaction::deny {1, "deny"};
-const Enum::YLeaf POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicingaction::logOnly {2, "logOnly"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingAction::deny {1, "deny"};
+const Enum::YLeaf POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingAction::logOnly {2, "logOnly"};
 
-const Enum::YLeaf POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::Pethmainpseoperstatus::on {1, "on"};
-const Enum::YLeaf POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::Pethmainpseoperstatus::off {2, "off"};
-const Enum::YLeaf POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::Pethmainpseoperstatus::faulty {3, "faulty"};
+const Enum::YLeaf POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::PethMainPseOperStatus::on {1, "on"};
+const Enum::YLeaf POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::PethMainPseOperStatus::off {2, "off"};
+const Enum::YLeaf POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::PethMainPseOperStatus::faulty {3, "faulty"};
 
 
 }

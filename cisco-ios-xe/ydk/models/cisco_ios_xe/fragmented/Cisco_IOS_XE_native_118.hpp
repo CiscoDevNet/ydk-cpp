@@ -188,7 +188,7 @@ class Native::Crypto::Keyring::Default::PreSharedKey : public ydk::Entity
         class Hostname; //type: Native::Crypto::Keyring::Default::PreSharedKey::Hostname
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::Default::PreSharedKey::Address> address;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::Default::PreSharedKey::Hostname> > hostname;
+        ydk::YList hostname;
         
 }; // Native::Crypto::Keyring::Default::PreSharedKey
 
@@ -212,8 +212,8 @@ class Native::Crypto::Keyring::Default::PreSharedKey::Address : public ydk::Enti
         class Ipv4; //type: Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4
         class Ipv6; //type: Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4> > ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6> > ipv6;
+        ydk::YList ipv4;
+        ydk::YList ipv6;
         
 }; // Native::Crypto::Keyring::Default::PreSharedKey::Address
 
@@ -385,7 +385,7 @@ class Native::Crypto::Keyring::PreSharedKey : public ydk::Entity
         class Hostname; //type: Native::Crypto::Keyring::PreSharedKey::Hostname
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::PreSharedKey::Address> address;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::PreSharedKey::Hostname> > hostname;
+        ydk::YList hostname;
         
 }; // Native::Crypto::Keyring::PreSharedKey
 
@@ -409,8 +409,8 @@ class Native::Crypto::Keyring::PreSharedKey::Address : public ydk::Entity
         class Ipv4; //type: Native::Crypto::Keyring::PreSharedKey::Address::Ipv4
         class Ipv6; //type: Native::Crypto::Keyring::PreSharedKey::Address::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::PreSharedKey::Address::Ipv4> > ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring::PreSharedKey::Address::Ipv6> > ipv6;
+        ydk::YList ipv4;
+        ydk::YList ipv6;
         
 }; // Native::Crypto::Keyring::PreSharedKey::Address
 
@@ -629,7 +629,7 @@ class Native::Crypto::CryptoMap : public ydk::Entity
 
         class Map; //type: Native::Crypto::CryptoMap::Map
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::CryptoMap::Map> > map;
+        ydk::YList map;
         
 }; // Native::Crypto::CryptoMap
 
@@ -1339,7 +1339,7 @@ class Native::Crypto::MapIpv6Gdoi : public ydk::Entity
 
         class Map; //type: Native::Crypto::MapIpv6Gdoi::Map
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::MapIpv6Gdoi::Map> > map;
+        ydk::YList map;
         
 }; // Native::Crypto::MapIpv6Gdoi
 
@@ -1460,7 +1460,7 @@ class Native::Crypto::MapClient : public ydk::Entity
 
         class Map; //type: Native::Crypto::MapClient::Map
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::MapClient::Map> > map;
+        ydk::YList map;
         
 }; // Native::Crypto::MapClient
 
@@ -1853,12 +1853,12 @@ class Native::Crypto::Pki : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Certificate> certificate;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Crl> crl;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export> > export_;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Import> > import;
+        ydk::YList export_;
+        ydk::YList import;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile> profile;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Server> server;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::PkiServerNoSubmode> pki_server_no_submode;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Trustpoint> > trustpoint;
+        ydk::YList trustpoint;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Token> token;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Trustpool> trustpool;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Default> default_;
@@ -1890,8 +1890,8 @@ class Native::Crypto::Pki::Certificate : public ydk::Entity
         class Map; //type: Native::Crypto::Pki::Certificate::Map
         class Storage; //type: Native::Crypto::Pki::Certificate::Storage
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Certificate::Chain> > chain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Certificate::Map> > map;
+        ydk::YList chain;
+        ydk::YList map;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Certificate::Storage> storage;
         
 }; // Native::Crypto::Pki::Certificate
@@ -1917,7 +1917,7 @@ class Native::Crypto::Pki::Certificate::Chain : public ydk::Entity
         ydk::YLeaf name; //type: string
         class Certificate_; //type: Native::Crypto::Pki::Certificate::Chain::Certificate_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Certificate::Chain::Certificate_> > certificate;
+        ydk::YList certificate;
         
 }; // Native::Crypto::Pki::Certificate::Chain
 
@@ -2604,7 +2604,7 @@ class Native::Crypto::Pki::Certificate::Storage : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf path; //type: one of enumeration, string
+        ydk::YLeaf path; //type: one of string, enumeration
         ydk::YLeaf on; //type: empty
         ydk::YLeaf with_keypair; //type: empty
         class Path;
@@ -3096,7 +3096,7 @@ class Native::Crypto::Pki::Profile : public ydk::Entity
 
         class Enrollment; //type: Native::Crypto::Pki::Profile::Enrollment
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment> > enrollment;
+        ydk::YList enrollment;
         
 }; // Native::Crypto::Pki::Profile
 
@@ -3129,7 +3129,7 @@ class Native::Crypto::Pki::Profile::Enrollment : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Enrollment_> enrollment;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Parameter> > parameter;
+        ydk::YList parameter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Reenrollment> reenrollment;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default> default_;
         
@@ -3326,7 +3326,7 @@ class Native::Crypto::Pki::Profile::Enrollment::Default : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_> enrollment;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Parameter> > parameter;
+        ydk::YList parameter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment> reenrollment;
         
 }; // Native::Crypto::Pki::Profile::Enrollment::Default

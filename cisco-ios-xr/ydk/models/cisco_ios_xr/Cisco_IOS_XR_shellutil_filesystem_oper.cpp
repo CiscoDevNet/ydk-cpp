@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_shellutil_filesystem_oper {
 
 FileSystem::FileSystem()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "file-system"; yang_parent_name = "Cisco-IOS-XR-shellutil-filesystem-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "file-system"; yang_parent_name = "Cisco-IOS-XR-shellutil-filesystem-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FileSystem::~FileSystem()
@@ -23,7 +25,8 @@ FileSystem::~FileSystem()
 
 bool FileSystem::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool FileSystem::has_data() const
 
 bool FileSystem::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> FileSystem::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<FileSystem::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> FileSystem::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool FileSystem::has_leaf_or_child_of_name(const std::string & name) const
 FileSystem::Node::Node()
     :
     node_name{YType::str, "node-name"}
+        ,
+    file_system(this, {})
 {
 
-    yang_name = "node"; yang_parent_name = "file-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "file-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FileSystem::Node::~Node()
@@ -140,7 +145,8 @@ FileSystem::Node::~Node()
 
 bool FileSystem::Node::has_data() const
 {
-    for (std::size_t index=0; index<file_system.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<file_system.len(); index++)
     {
         if(file_system[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool FileSystem::Node::has_data() const
 
 bool FileSystem::Node::has_operation() const
 {
-    for (std::size_t index=0; index<file_system.size(); index++)
+    for (std::size_t index=0; index<file_system.len(); index++)
     {
         if(file_system[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string FileSystem::Node::get_absolute_path() const
 std::string FileSystem::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> FileSystem::Node::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<FileSystem::Node::FileSystem_>();
         c->parent = this;
-        file_system.push_back(c);
+        file_system.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> FileSystem::Node::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : file_system)
+    for (auto c : file_system.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -246,7 +253,7 @@ FileSystem::Node::FileSystem_::FileSystem_()
     prefixes{YType::str, "prefixes"}
 {
 
-    yang_name = "file-system"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "file-system"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FileSystem::Node::FileSystem_::~FileSystem_()
@@ -255,6 +262,7 @@ FileSystem::Node::FileSystem_::~FileSystem_()
 
 bool FileSystem::Node::FileSystem_::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| free.is_set
 	|| type.is_set

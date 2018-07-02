@@ -11,6 +11,296 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_cfg {
 
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::SignalledBandwidth()
+    :
+    signalled_bandwidth_type{YType::enumeration, "signalled-bandwidth-type"},
+    bitrate{YType::uint32, "bitrate"},
+    od_uflex_framing_type{YType::enumeration, "od-uflex-framing-type"}
+{
+
+    yang_name = "signalled-bandwidth"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::~SignalledBandwidth()
+{
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::has_data() const
+{
+    if (is_presence_container) return true;
+    return signalled_bandwidth_type.is_set
+	|| bitrate.is_set
+	|| od_uflex_framing_type.is_set;
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(signalled_bandwidth_type.yfilter)
+	|| ydk::is_set(bitrate.yfilter)
+	|| ydk::is_set(od_uflex_framing_type.yfilter);
+}
+
+std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "signalled-bandwidth";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (signalled_bandwidth_type.is_set || is_set(signalled_bandwidth_type.yfilter)) leaf_name_data.push_back(signalled_bandwidth_type.get_name_leafdata());
+    if (bitrate.is_set || is_set(bitrate.yfilter)) leaf_name_data.push_back(bitrate.get_name_leafdata());
+    if (od_uflex_framing_type.is_set || is_set(od_uflex_framing_type.yfilter)) leaf_name_data.push_back(od_uflex_framing_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "signalled-bandwidth-type")
+    {
+        signalled_bandwidth_type = value;
+        signalled_bandwidth_type.value_namespace = name_space;
+        signalled_bandwidth_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bitrate")
+    {
+        bitrate = value;
+        bitrate.value_namespace = name_space;
+        bitrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "od-uflex-framing-type")
+    {
+        od_uflex_framing_type = value;
+        od_uflex_framing_type.value_namespace = name_space;
+        od_uflex_framing_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "signalled-bandwidth-type")
+    {
+        signalled_bandwidth_type.yfilter = yfilter;
+    }
+    if(value_path == "bitrate")
+    {
+        bitrate.yfilter = yfilter;
+    }
+    if(value_path == "od-uflex-framing-type")
+    {
+        od_uflex_framing_type.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "signalled-bandwidth-type" || name == "bitrate" || name == "od-uflex-framing-type")
+        return true;
+    return false;
+}
+
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::Destination()
+    :
+    destination{YType::str, "destination"},
+    destination_type{YType::enumeration, "destination-type"},
+    interface_if_index{YType::uint32, "interface-if-index"}
+{
+
+    yang_name = "destination"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::~Destination()
+{
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::has_data() const
+{
+    if (is_presence_container) return true;
+    return destination.is_set
+	|| destination_type.is_set
+	|| interface_if_index.is_set;
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(destination_type.yfilter)
+	|| ydk::is_set(interface_if_index.yfilter);
+}
+
+std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (destination_type.is_set || is_set(destination_type.yfilter)) leaf_name_data.push_back(destination_type.get_name_leafdata());
+    if (interface_if_index.is_set || is_set(interface_if_index.yfilter)) leaf_name_data.push_back(interface_if_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination")
+    {
+        destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-type")
+    {
+        destination_type = value;
+        destination_type.value_namespace = name_space;
+        destination_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-if-index")
+    {
+        interface_if_index = value;
+        interface_if_index.value_namespace = name_space;
+        interface_if_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "destination-type")
+    {
+        destination_type.yfilter = yfilter;
+    }
+    if(value_path == "interface-if-index")
+    {
+        interface_if_index.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "destination-type" || name == "interface-if-index")
+        return true;
+    return false;
+}
+
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::ProtectionSwitching()
+    :
+    lockout{YType::enumeration, "lockout"}
+{
+
+    yang_name = "protection-switching"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::~ProtectionSwitching()
+{
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::has_data() const
+{
+    if (is_presence_container) return true;
+    return lockout.is_set;
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lockout.yfilter);
+}
+
+std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "protection-switching";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lockout.is_set || is_set(lockout.yfilter)) leaf_name_data.push_back(lockout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lockout")
+    {
+        lockout = value;
+        lockout.value_namespace = name_space;
+        lockout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lockout")
+    {
+        lockout.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lockout")
+        return true;
+    return false;
+}
+
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::Logging()
     :
     active_lsp_message{YType::empty, "active-lsp-message"},
@@ -22,7 +312,7 @@ MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::Logging()
     insufficient_bw_message{YType::empty, "insufficient-bw-message"}
 {
 
-    yang_name = "logging"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::~Logging()
@@ -31,6 +321,7 @@ MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::~Logging()
 
 bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return active_lsp_message.is_set
 	|| homepath_state_message.is_set
 	|| signalling_state_message.is_set
@@ -173,9 +464,11 @@ bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging::has_leaf_or_child_of_na
 }
 
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOptions()
+    :
+    path_option(this, {"preference_level"})
 {
 
-    yang_name = "path-options"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-options"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::~PathOptions()
@@ -184,7 +477,8 @@ MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::~PathOptions()
 
 bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::has_data() const
 {
-    for (std::size_t index=0; index<path_option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_option.len(); index++)
     {
         if(path_option[index]->has_data())
             return true;
@@ -194,7 +488,7 @@ bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::has_data() const
 
 bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::has_operation() const
 {
-    for (std::size_t index=0; index<path_option.size(); index++)
+    for (std::size_t index=0; index<path_option.len(); index++)
     {
         if(path_option[index]->has_operation())
             return true;
@@ -224,7 +518,7 @@ std::shared_ptr<Entity> MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::
     {
         auto c = std::make_shared<MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption>();
         c->parent = this;
-        path_option.push_back(c);
+        path_option.append(c);
         return c;
     }
 
@@ -236,7 +530,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsNni::TunnelHeads::Tu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path_option)
+    for (auto c : path_option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -272,10 +566,11 @@ MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::PathOption()
     restore_by_preference_level{YType::uint32, "restore-by-preference-level"},
     xro_type{YType::empty, "xro-type"},
     xro_attribute_set_name{YType::str, "xro-attribute-set-name"},
+    affinity_attribute_set_name{YType::str, "affinity-attribute-set-name"},
     lockdown{YType::enumeration, "lockdown"}
 {
 
-    yang_name = "path-option"; yang_parent_name = "path-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-option"; yang_parent_name = "path-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::~PathOption()
@@ -284,6 +579,7 @@ MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::~PathOption(
 
 bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::has_data() const
 {
+    if (is_presence_container) return true;
     return preference_level.is_set
 	|| path_type.is_set
 	|| path_id.is_set
@@ -292,6 +588,7 @@ bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::has_dat
 	|| restore_by_preference_level.is_set
 	|| xro_type.is_set
 	|| xro_attribute_set_name.is_set
+	|| affinity_attribute_set_name.is_set
 	|| lockdown.is_set;
 }
 
@@ -306,13 +603,15 @@ bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::has_ope
 	|| ydk::is_set(restore_by_preference_level.yfilter)
 	|| ydk::is_set(xro_type.yfilter)
 	|| ydk::is_set(xro_attribute_set_name.yfilter)
+	|| ydk::is_set(affinity_attribute_set_name.yfilter)
 	|| ydk::is_set(lockdown.yfilter);
 }
 
 std::string MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path-option" <<"[preference-level='" <<preference_level <<"']";
+    path_buffer << "path-option";
+    ADD_KEY_TOKEN(preference_level, "preference-level");
     return path_buffer.str();
 }
 
@@ -328,6 +627,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GmplsNni::TunnelHeads::Tu
     if (restore_by_preference_level.is_set || is_set(restore_by_preference_level.yfilter)) leaf_name_data.push_back(restore_by_preference_level.get_name_leafdata());
     if (xro_type.is_set || is_set(xro_type.yfilter)) leaf_name_data.push_back(xro_type.get_name_leafdata());
     if (xro_attribute_set_name.is_set || is_set(xro_attribute_set_name.yfilter)) leaf_name_data.push_back(xro_attribute_set_name.get_name_leafdata());
+    if (affinity_attribute_set_name.is_set || is_set(affinity_attribute_set_name.yfilter)) leaf_name_data.push_back(affinity_attribute_set_name.get_name_leafdata());
     if (lockdown.is_set || is_set(lockdown.yfilter)) leaf_name_data.push_back(lockdown.get_name_leafdata());
 
     return leaf_name_data;
@@ -396,6 +696,12 @@ void MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::set_val
         xro_attribute_set_name.value_namespace = name_space;
         xro_attribute_set_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "affinity-attribute-set-name")
+    {
+        affinity_attribute_set_name = value;
+        affinity_attribute_set_name.value_namespace = name_space;
+        affinity_attribute_set_name.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "lockdown")
     {
         lockdown = value;
@@ -438,6 +744,10 @@ void MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::set_fil
     {
         xro_attribute_set_name.yfilter = yfilter;
     }
+    if(value_path == "affinity-attribute-set-name")
+    {
+        affinity_attribute_set_name.yfilter = yfilter;
+    }
     if(value_path == "lockdown")
     {
         lockdown.yfilter = yfilter;
@@ -446,7 +756,7 @@ void MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::set_fil
 
 bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "preference-level" || name == "path-type" || name == "path-id" || name == "path-name" || name == "protected-by-preference-level" || name == "restore-by-preference-level" || name == "xro-type" || name == "xro-attribute-set-name" || name == "lockdown")
+    if(name == "preference-level" || name == "path-type" || name == "path-id" || name == "path-name" || name == "protected-by-preference-level" || name == "restore-by-preference-level" || name == "xro-type" || name == "xro-attribute-set-name" || name == "affinity-attribute-set-name" || name == "lockdown")
         return true;
     return false;
 }
@@ -454,12 +764,12 @@ bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption::has_lea
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::StaticUni()
     :
     ingress_controller_name{YType::str, "ingress-controller-name"},
-    egress_controller_if_index{YType::int32, "egress-controller-if-index"},
+    egress_controller_if_index{YType::uint32, "egress-controller-if-index"},
     ingress_type{YType::enumeration, "ingress-type"},
     egress_type{YType::enumeration, "egress-type"}
 {
 
-    yang_name = "static-uni"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-uni"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::~StaticUni()
@@ -468,6 +778,7 @@ MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::~StaticUni()
 
 bool MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni::has_data() const
 {
+    if (is_presence_container) return true;
     return ingress_controller_name.is_set
 	|| egress_controller_if_index.is_set
 	|| ingress_type.is_set
@@ -575,14 +886,14 @@ MplsTe::Lcac::Lcac()
     bandwidth_hold_timer{YType::uint32, "bandwidth-hold-timer"},
     delay_preempt_bundle_capacity_timer{YType::uint32, "delay-preempt-bundle-capacity-timer"},
     periodic_flooding_timer{YType::uint32, "periodic-flooding-timer"}
-    	,
+        ,
     bfd(std::make_shared<MplsTe::Lcac::Bfd>())
-	,flooding_threshold(std::make_shared<MplsTe::Lcac::FloodingThreshold>())
+    , flooding_threshold(std::make_shared<MplsTe::Lcac::FloodingThreshold>())
 {
     bfd->parent = this;
     flooding_threshold->parent = this;
 
-    yang_name = "lcac"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lcac"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::Lcac::~Lcac()
@@ -591,6 +902,7 @@ MplsTe::Lcac::~Lcac()
 
 bool MplsTe::Lcac::has_data() const
 {
+    if (is_presence_container) return true;
     return bandwidth_hold_timer.is_set
 	|| delay_preempt_bundle_capacity_timer.is_set
 	|| periodic_flooding_timer.is_set
@@ -725,7 +1037,7 @@ MplsTe::Lcac::Bfd::Bfd()
     detection_multiplier{YType::uint32, "detection-multiplier"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd"; yang_parent_name = "lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::Lcac::Bfd::~Bfd()
@@ -734,6 +1046,7 @@ MplsTe::Lcac::Bfd::~Bfd()
 
 bool MplsTe::Lcac::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| detection_multiplier.is_set;
 }
@@ -823,7 +1136,7 @@ MplsTe::Lcac::FloodingThreshold::FloodingThreshold()
     down_stream{YType::uint32, "down-stream"}
 {
 
-    yang_name = "flooding-threshold"; yang_parent_name = "lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flooding-threshold"; yang_parent_name = "lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::Lcac::FloodingThreshold::~FloodingThreshold()
@@ -832,6 +1145,7 @@ MplsTe::Lcac::FloodingThreshold::~FloodingThreshold()
 
 bool MplsTe::Lcac::FloodingThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return up_stream.is_set
 	|| down_stream.is_set;
 }

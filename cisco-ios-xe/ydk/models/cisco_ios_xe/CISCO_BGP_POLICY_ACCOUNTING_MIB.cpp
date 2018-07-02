@@ -13,11 +13,11 @@ namespace CISCO_BGP_POLICY_ACCOUNTING_MIB {
 
 CISCOBGPPOLICYACCOUNTINGMIB::CISCOBGPPOLICYACCOUNTINGMIB()
     :
-    cbpaccttable(std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable>())
+    cbpaccttable(std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable>())
 {
     cbpaccttable->parent = this;
 
-    yang_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB"; yang_parent_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB"; yang_parent_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOBGPPOLICYACCOUNTINGMIB::~CISCOBGPPOLICYACCOUNTINGMIB()
@@ -26,6 +26,7 @@ CISCOBGPPOLICYACCOUNTINGMIB::~CISCOBGPPOLICYACCOUNTINGMIB()
 
 bool CISCOBGPPOLICYACCOUNTINGMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cbpaccttable !=  nullptr && cbpaccttable->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::get_child_by_name(const std
     {
         if(cbpaccttable == nullptr)
         {
-            cbpaccttable = std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable>();
+            cbpaccttable = std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable>();
         }
         return cbpaccttable;
     }
@@ -117,19 +118,22 @@ bool CISCOBGPPOLICYACCOUNTINGMIB::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
-CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpaccttable()
+CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctTable()
+    :
+    cbpacctentry(this, {"ifindex", "cbpaccttrafficindex"})
 {
 
-    yang_name = "cbpAcctTable"; yang_parent_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbpAcctTable"; yang_parent_name = "CISCO-BGP-POLICY-ACCOUNTING-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::~Cbpaccttable()
+CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::~CbpAcctTable()
 {
 }
 
-bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::has_data() const
+bool CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::has_data() const
 {
-    for (std::size_t index=0; index<cbpacctentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cbpacctentry.len(); index++)
     {
         if(cbpacctentry[index]->has_data())
             return true;
@@ -137,9 +141,9 @@ bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::has_data() const
     return false;
 }
 
-bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::has_operation() const
+bool CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::has_operation() const
 {
-    for (std::size_t index=0; index<cbpacctentry.size(); index++)
+    for (std::size_t index=0; index<cbpacctentry.len(); index++)
     {
         if(cbpacctentry[index]->has_operation())
             return true;
@@ -147,21 +151,21 @@ bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::get_absolute_path() const
+std::string CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP-POLICY-ACCOUNTING-MIB:CISCO-BGP-POLICY-ACCOUNTING-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::get_segment_path() const
+std::string CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cbpAcctTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -170,25 +174,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::Cbpa
 
 }
 
-std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbpAcctEntry")
     {
-        auto c = std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry>();
+        auto c = std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry>();
         c->parent = this;
-        cbpacctentry.push_back(c);
+        cbpacctentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cbpacctentry)
+    for (auto c : cbpacctentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -199,22 +203,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::Cbpa
     return children;
 }
 
-void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cbpAcctEntry")
         return true;
     return false;
 }
 
-CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::Cbpacctentry()
+CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::CbpAcctEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cbpaccttrafficindex{YType::int32, "cbpAcctTrafficIndex"},
@@ -224,15 +228,16 @@ CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::Cbpacctentry()
     cbpacctoutoctetcount{YType::uint64, "cbpAcctOutOctetCount"}
 {
 
-    yang_name = "cbpAcctEntry"; yang_parent_name = "cbpAcctTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cbpAcctEntry"; yang_parent_name = "cbpAcctTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::~Cbpacctentry()
+CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::~CbpAcctEntry()
 {
 }
 
-bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_data() const
+bool CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cbpaccttrafficindex.is_set
 	|| cbpacctinpacketcount.is_set
@@ -241,7 +246,7 @@ bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_data() const
 	|| cbpacctoutoctetcount.is_set;
 }
 
-bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_operation() const
+bool CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -252,21 +257,23 @@ bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_operation() co
 	|| ydk::is_set(cbpacctoutoctetcount.yfilter);
 }
 
-std::string CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::get_absolute_path() const
+std::string CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-BGP-POLICY-ACCOUNTING-MIB:CISCO-BGP-POLICY-ACCOUNTING-MIB/cbpAcctTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::get_segment_path() const
+std::string CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cbpAcctEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cbpAcctTrafficIndex='" <<cbpaccttrafficindex <<"']";
+    path_buffer << "cbpAcctEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(cbpaccttrafficindex, "cbpAcctTrafficIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -281,19 +288,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::Cbpa
 
 }
 
-std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -333,7 +340,7 @@ void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::set_value(const st
     }
 }
 
-void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -361,7 +368,7 @@ void CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::set_filter(const s
     }
 }
 
-bool CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cbpAcctTrafficIndex" || name == "cbpAcctInPacketCount" || name == "cbpAcctInOctetCount" || name == "cbpAcctOutPacketCount" || name == "cbpAcctOutOctetCount")
         return true;

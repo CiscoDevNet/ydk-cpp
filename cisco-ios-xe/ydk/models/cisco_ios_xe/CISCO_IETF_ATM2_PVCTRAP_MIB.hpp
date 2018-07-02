@@ -31,18 +31,18 @@ class CISCOIETFATM2PVCTRAPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Atmcurrentlyfailingpvcltable; //type: CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable
+        class AtmCurrentlyFailingPVclTable; //type: CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB::CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable> atmcurrentlyfailingpvcltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB::CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable> atmcurrentlyfailingpvcltable;
         
 }; // CISCOIETFATM2PVCTRAPMIB
 
 
-class CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable : public ydk::Entity
+class CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable : public ydk::Entity
 {
     public:
-        Atmcurrentlyfailingpvcltable();
-        ~Atmcurrentlyfailingpvcltable();
+        AtmCurrentlyFailingPVclTable();
+        ~AtmCurrentlyFailingPVclTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,18 +55,18 @@ class CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmcurrentlyfailingpvclentry; //type: CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry
+        class AtmCurrentlyFailingPVclEntry; //type: CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ATM2_PVCTRAP_MIB::CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry> > atmcurrentlyfailingpvclentry;
+        ydk::YList atmcurrentlyfailingpvclentry;
         
-}; // CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable
+}; // CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable
 
 
-class CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry : public ydk::Entity
+class CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry : public ydk::Entity
 {
     public:
-        Atmcurrentlyfailingpvclentry();
-        ~Atmcurrentlyfailingpvclentry();
+        AtmCurrentlyFailingPVclEntry();
+        ~AtmCurrentlyFailingPVclEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,16 +79,16 @@ class CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailing
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvpi)
         ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvci)
         ydk::YLeaf atmvclvci;
         ydk::YLeaf atmcurrentlyfailingpvcltimestamp; //type: uint32
         ydk::YLeaf atmpreviouslyfailedpvcltimestamp; //type: uint32
 
-}; // CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry
+}; // CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry
 
 
 }

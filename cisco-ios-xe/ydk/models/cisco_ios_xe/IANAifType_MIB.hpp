@@ -10,6 +10,26 @@
 namespace cisco_ios_xe {
 namespace IANAifType_MIB {
 
+class IANAtunnelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf direct;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf minimal;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf pptp;
+        static const ydk::Enum::YLeaf l2f;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf atmp;
+        static const ydk::Enum::YLeaf msdp;
+        static const ydk::Enum::YLeaf sixToFour;
+        static const ydk::Enum::YLeaf sixOverFour;
+        static const ydk::Enum::YLeaf isatap;
+        static const ydk::Enum::YLeaf teredo;
+
+};
+
 class IANAifType : public ydk::Enum
 {
     public:
@@ -297,26 +317,6 @@ class IANAifType : public ydk::Enum
         static const ydk::Enum::YLeaf docsCableScte55d2UsOob;
         static const ydk::Enum::YLeaf docsCableNdf;
         static const ydk::Enum::YLeaf docsCableNdr;
-
-};
-
-class IANAtunnelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf direct;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf minimal;
-        static const ydk::Enum::YLeaf l2tp;
-        static const ydk::Enum::YLeaf pptp;
-        static const ydk::Enum::YLeaf l2f;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf atmp;
-        static const ydk::Enum::YLeaf msdp;
-        static const ydk::Enum::YLeaf sixToFour;
-        static const ydk::Enum::YLeaf sixOverFour;
-        static const ydk::Enum::YLeaf isatap;
-        static const ydk::Enum::YLeaf teredo;
 
 };
 

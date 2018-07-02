@@ -17,7 +17,7 @@ Ipv6Telnet::Ipv6Telnet()
 {
     client->parent = this;
 
-    yang_name = "ipv6-telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6Telnet::~Ipv6Telnet()
@@ -26,6 +26,7 @@ Ipv6Telnet::~Ipv6Telnet()
 
 bool Ipv6Telnet::has_data() const
 {
+    if (is_presence_container) return true;
     return (client !=  nullptr && client->has_data());
 }
 
@@ -122,7 +123,7 @@ Ipv6Telnet::Client::Client()
     source_interface{YType::str, "source-interface"}
 {
 
-    yang_name = "client"; yang_parent_name = "ipv6-telnet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "ipv6-telnet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Telnet::Client::~Client()
@@ -131,6 +132,7 @@ Ipv6Telnet::Client::~Client()
 
 bool Ipv6Telnet::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return source_interface.is_set;
 }
 
@@ -207,7 +209,7 @@ Ipv4Telnet::Ipv4Telnet()
 {
     client->parent = this;
 
-    yang_name = "ipv4-telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv4-telnet"; yang_parent_name = "Cisco-IOS-XR-ipv4-telnet-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv4Telnet::~Ipv4Telnet()
@@ -216,6 +218,7 @@ Ipv4Telnet::~Ipv4Telnet()
 
 bool Ipv4Telnet::has_data() const
 {
+    if (is_presence_container) return true;
     return (client !=  nullptr && client->has_data());
 }
 
@@ -312,7 +315,7 @@ Ipv4Telnet::Client::Client()
     source_interface{YType::str, "source-interface"}
 {
 
-    yang_name = "client"; yang_parent_name = "ipv4-telnet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "ipv4-telnet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Telnet::Client::~Client()
@@ -321,6 +324,7 @@ Ipv4Telnet::Client::~Client()
 
 bool Ipv4Telnet::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return source_interface.is_set;
 }
 

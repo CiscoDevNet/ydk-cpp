@@ -2067,8 +2067,8 @@ class Native::Flow::Exporter::Option : public ydk::Entity
 
         class ApplicationAttributes; //type: Native::Flow::Exporter::Option::ApplicationAttributes
         class ApplicationTable; //type: Native::Flow::Exporter::Option::ApplicationTable
-        class C3PlClassTable; //type: Native::Flow::Exporter::Option::C3PlClassTable
-        class C3PlPolicyTable; //type: Native::Flow::Exporter::Option::C3PlPolicyTable
+        class C3plClassTable; //type: Native::Flow::Exporter::Option::C3plClassTable
+        class C3plPolicyTable; //type: Native::Flow::Exporter::Option::C3plPolicyTable
         class ExporterStats; //type: Native::Flow::Exporter::Option::ExporterStats
         class InterfaceTable; //type: Native::Flow::Exporter::Option::InterfaceTable
         class MetadataVersionTable; //type: Native::Flow::Exporter::Option::MetadataVersionTable
@@ -2078,8 +2078,8 @@ class Native::Flow::Exporter::Option : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::ApplicationAttributes> application_attributes; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::ApplicationTable> application_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::C3PlClassTable> c3pl_class_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::C3PlPolicyTable> c3pl_policy_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::C3plClassTable> c3pl_class_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::C3plPolicyTable> c3pl_policy_table; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::ExporterStats> exporter_stats; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::InterfaceTable> interface_table; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option::MetadataVersionTable> metadata_version_table; // presence node
@@ -2132,11 +2132,11 @@ class Native::Flow::Exporter::Option::ApplicationTable : public ydk::Entity
 }; // Native::Flow::Exporter::Option::ApplicationTable
 
 
-class Native::Flow::Exporter::Option::C3PlClassTable : public ydk::Entity
+class Native::Flow::Exporter::Option::C3plClassTable : public ydk::Entity
 {
     public:
-        C3PlClassTable();
-        ~C3PlClassTable();
+        C3plClassTable();
+        ~C3plClassTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2150,14 +2150,14 @@ class Native::Flow::Exporter::Option::C3PlClassTable : public ydk::Entity
 
         ydk::YLeaf timeout; //type: uint32
 
-}; // Native::Flow::Exporter::Option::C3PlClassTable
+}; // Native::Flow::Exporter::Option::C3plClassTable
 
 
-class Native::Flow::Exporter::Option::C3PlPolicyTable : public ydk::Entity
+class Native::Flow::Exporter::Option::C3plPolicyTable : public ydk::Entity
 {
     public:
-        C3PlPolicyTable();
-        ~C3PlPolicyTable();
+        C3plPolicyTable();
+        ~C3plPolicyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2171,7 +2171,7 @@ class Native::Flow::Exporter::Option::C3PlPolicyTable : public ydk::Entity
 
         ydk::YLeaf timeout; //type: uint32
 
-}; // Native::Flow::Exporter::Option::C3PlPolicyTable
+}; // Native::Flow::Exporter::Option::C3plPolicyTable
 
 
 class Native::Flow::Exporter::Option::ExporterStats : public ydk::Entity
@@ -2577,8 +2577,8 @@ class Native::Flow::Exporter::Default::Option : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ApplicationAttributes; //type: Native::Flow::Exporter::Default::Option::ApplicationAttributes
-        class C3PlClassTable; //type: Native::Flow::Exporter::Default::Option::C3PlClassTable
-        class C3PlPolicyTable; //type: Native::Flow::Exporter::Default::Option::C3PlPolicyTable
+        class C3plClassTable; //type: Native::Flow::Exporter::Default::Option::C3plClassTable
+        class C3plPolicyTable; //type: Native::Flow::Exporter::Default::Option::C3plPolicyTable
         class ExporterStats; //type: Native::Flow::Exporter::Default::Option::ExporterStats
         class InterfaceTable; //type: Native::Flow::Exporter::Default::Option::InterfaceTable
         class MetadataVersionTable; //type: Native::Flow::Exporter::Default::Option::MetadataVersionTable
@@ -2587,8 +2587,8 @@ class Native::Flow::Exporter::Default::Option : public ydk::Entity
         class VrfTable; //type: Native::Flow::Exporter::Default::Option::VrfTable
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::ApplicationAttributes> application_attributes; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::C3PlClassTable> c3pl_class_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::C3PlPolicyTable> c3pl_policy_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::C3plClassTable> c3pl_class_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::C3plPolicyTable> c3pl_policy_table; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::ExporterStats> exporter_stats; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::InterfaceTable> interface_table; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::MetadataVersionTable> metadata_version_table; // presence node
@@ -2619,11 +2619,11 @@ class Native::Flow::Exporter::Default::Option::ApplicationAttributes : public yd
 }; // Native::Flow::Exporter::Default::Option::ApplicationAttributes
 
 
-class Native::Flow::Exporter::Default::Option::C3PlClassTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::C3plClassTable : public ydk::Entity
 {
     public:
-        C3PlClassTable();
-        ~C3PlClassTable();
+        C3plClassTable();
+        ~C3plClassTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2636,14 +2636,14 @@ class Native::Flow::Exporter::Default::Option::C3PlClassTable : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default::Option::C3PlClassTable
+}; // Native::Flow::Exporter::Default::Option::C3plClassTable
 
 
-class Native::Flow::Exporter::Default::Option::C3PlPolicyTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::C3plPolicyTable : public ydk::Entity
 {
     public:
-        C3PlPolicyTable();
-        ~C3PlPolicyTable();
+        C3plPolicyTable();
+        ~C3plPolicyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2656,7 +2656,7 @@ class Native::Flow::Exporter::Default::Option::C3PlPolicyTable : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default::Option::C3PlPolicyTable
+}; // Native::Flow::Exporter::Default::Option::C3plPolicyTable
 
 
 class Native::Flow::Exporter::Default::Option::ExporterStats : public ydk::Entity
@@ -2851,7 +2851,7 @@ class Native::Flow::Monitor : public ydk::Entity
         class Default; //type: Native::Flow::Monitor::Default
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Cache> cache;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Exporter> > exporter;
+        ydk::YList exporter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::History> history;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Record> record;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Statistics> statistics;
@@ -2994,7 +2994,7 @@ class Native::Flow::Monitor::Record : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf type; //type: one of enumeration, string
+        ydk::YLeaf type; //type: one of string, enumeration
         class Netflow; //type: Native::Flow::Monitor::Record::Netflow
         class Wireless; //type: Native::Flow::Monitor::Record::Wireless
 

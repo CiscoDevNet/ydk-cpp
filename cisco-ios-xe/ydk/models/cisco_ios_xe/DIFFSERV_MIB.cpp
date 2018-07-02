@@ -11,130 +11,130 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace DIFFSERV_MIB {
 
-Diffservtbparamsimpletokenbucket::Diffservtbparamsimpletokenbucket()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSimpleTokenBucket")
-{
-
-}
-
-Diffservtbparamsimpletokenbucket::~Diffservtbparamsimpletokenbucket()
-{
-}
-
-Diffservtbparamavgrate::Diffservtbparamavgrate()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamAvgRate")
-{
-
-}
-
-Diffservtbparamavgrate::~Diffservtbparamavgrate()
-{
-}
-
-Diffservtbparamsrtcmblind::Diffservtbparamsrtcmblind()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMBlind")
-{
-
-}
-
-Diffservtbparamsrtcmblind::~Diffservtbparamsrtcmblind()
-{
-}
-
-Diffservtbparamsrtcmaware::Diffservtbparamsrtcmaware()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMAware")
-{
-
-}
-
-Diffservtbparamsrtcmaware::~Diffservtbparamsrtcmaware()
-{
-}
-
-Diffservtbparamtrtcmblind::Diffservtbparamtrtcmblind()
+DiffServTBParamTrTCMBlind::DiffServTBParamTrTCMBlind()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTrTCMBlind")
 {
 
 }
 
-Diffservtbparamtrtcmblind::~Diffservtbparamtrtcmblind()
+DiffServTBParamTrTCMBlind::~DiffServTBParamTrTCMBlind()
 {
 }
 
-Diffservtbparamtrtcmaware::Diffservtbparamtrtcmaware()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTrTCMAware")
-{
-
-}
-
-Diffservtbparamtrtcmaware::~Diffservtbparamtrtcmaware()
-{
-}
-
-Diffservtbparamtswtcm::Diffservtbparamtswtcm()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTswTCM")
-{
-
-}
-
-Diffservtbparamtswtcm::~Diffservtbparamtswtcm()
-{
-}
-
-Diffservschedulerpriority::Diffservschedulerpriority()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerPriority")
-{
-
-}
-
-Diffservschedulerpriority::~Diffservschedulerpriority()
-{
-}
-
-Diffservschedulerwrr::Diffservschedulerwrr()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerWRR")
-{
-
-}
-
-Diffservschedulerwrr::~Diffservschedulerwrr()
-{
-}
-
-Diffservschedulerwfq::Diffservschedulerwfq()
+DiffServSchedulerWFQ::DiffServSchedulerWFQ()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerWFQ")
 {
 
 }
 
-Diffservschedulerwfq::~Diffservschedulerwfq()
+DiffServSchedulerWFQ::~DiffServSchedulerWFQ()
+{
+}
+
+DiffServTBParamTswTCM::DiffServTBParamTswTCM()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTswTCM")
+{
+
+}
+
+DiffServTBParamTswTCM::~DiffServTBParamTswTCM()
+{
+}
+
+DiffServTBParamAvgRate::DiffServTBParamAvgRate()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamAvgRate")
+{
+
+}
+
+DiffServTBParamAvgRate::~DiffServTBParamAvgRate()
+{
+}
+
+DiffServSchedulerWRR::DiffServSchedulerWRR()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerWRR")
+{
+
+}
+
+DiffServSchedulerWRR::~DiffServSchedulerWRR()
+{
+}
+
+DiffServTBParamSrTCMAware::DiffServTBParamSrTCMAware()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMAware")
+{
+
+}
+
+DiffServTBParamSrTCMAware::~DiffServTBParamSrTCMAware()
+{
+}
+
+DiffServTBParamSrTCMBlind::DiffServTBParamSrTCMBlind()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSrTCMBlind")
+{
+
+}
+
+DiffServTBParamSrTCMBlind::~DiffServTBParamSrTCMBlind()
+{
+}
+
+DiffServTBParamSimpleTokenBucket::DiffServTBParamSimpleTokenBucket()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamSimpleTokenBucket")
+{
+
+}
+
+DiffServTBParamSimpleTokenBucket::~DiffServTBParamSimpleTokenBucket()
+{
+}
+
+DiffServSchedulerPriority::DiffServSchedulerPriority()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServSchedulerPriority")
+{
+
+}
+
+DiffServSchedulerPriority::~DiffServSchedulerPriority()
+{
+}
+
+DiffServTBParamTrTCMAware::DiffServTBParamTrTCMAware()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:DIFFSERV-MIB", "DIFFSERV-MIB", "DIFFSERV-MIB:diffServTBParamTrTCMAware")
+{
+
+}
+
+DiffServTBParamTrTCMAware::~DiffServTBParamTrTCMAware()
 {
 }
 
 DIFFSERVMIB::DIFFSERVMIB()
     :
-    diffservclassifier(std::make_shared<DIFFSERVMIB::Diffservclassifier>())
-	,diffservmeter(std::make_shared<DIFFSERVMIB::Diffservmeter>())
-	,diffservtbparam(std::make_shared<DIFFSERVMIB::Diffservtbparam>())
-	,diffservaction(std::make_shared<DIFFSERVMIB::Diffservaction>())
-	,diffservalgdrop(std::make_shared<DIFFSERVMIB::Diffservalgdrop>())
-	,diffservqueue(std::make_shared<DIFFSERVMIB::Diffservqueue>())
-	,diffservscheduler(std::make_shared<DIFFSERVMIB::Diffservscheduler>())
-	,diffservdatapathtable(std::make_shared<DIFFSERVMIB::Diffservdatapathtable>())
-	,diffservclfrtable(std::make_shared<DIFFSERVMIB::Diffservclfrtable>())
-	,diffservclfrelementtable(std::make_shared<DIFFSERVMIB::Diffservclfrelementtable>())
-	,diffservmultifieldclfrtable(std::make_shared<DIFFSERVMIB::Diffservmultifieldclfrtable>())
-	,diffservmetertable(std::make_shared<DIFFSERVMIB::Diffservmetertable>())
-	,diffservtbparamtable(std::make_shared<DIFFSERVMIB::Diffservtbparamtable>())
-	,diffservactiontable(std::make_shared<DIFFSERVMIB::Diffservactiontable>())
-	,diffservdscpmarkacttable(std::make_shared<DIFFSERVMIB::Diffservdscpmarkacttable>())
-	,diffservcountacttable(std::make_shared<DIFFSERVMIB::Diffservcountacttable>())
-	,diffservalgdroptable(std::make_shared<DIFFSERVMIB::Diffservalgdroptable>())
-	,diffservrandomdroptable(std::make_shared<DIFFSERVMIB::Diffservrandomdroptable>())
-	,diffservqtable(std::make_shared<DIFFSERVMIB::Diffservqtable>())
-	,diffservschedulertable(std::make_shared<DIFFSERVMIB::Diffservschedulertable>())
-	,diffservminratetable(std::make_shared<DIFFSERVMIB::Diffservminratetable>())
-	,diffservmaxratetable(std::make_shared<DIFFSERVMIB::Diffservmaxratetable>())
+    diffservclassifier(std::make_shared<DIFFSERVMIB::DiffServClassifier>())
+    , diffservmeter(std::make_shared<DIFFSERVMIB::DiffServMeter>())
+    , diffservtbparam(std::make_shared<DIFFSERVMIB::DiffServTBParam>())
+    , diffservaction(std::make_shared<DIFFSERVMIB::DiffServAction>())
+    , diffservalgdrop(std::make_shared<DIFFSERVMIB::DiffServAlgDrop>())
+    , diffservqueue(std::make_shared<DIFFSERVMIB::DiffServQueue>())
+    , diffservscheduler(std::make_shared<DIFFSERVMIB::DiffServScheduler>())
+    , diffservdatapathtable(std::make_shared<DIFFSERVMIB::DiffServDataPathTable>())
+    , diffservclfrtable(std::make_shared<DIFFSERVMIB::DiffServClfrTable>())
+    , diffservclfrelementtable(std::make_shared<DIFFSERVMIB::DiffServClfrElementTable>())
+    , diffservmultifieldclfrtable(std::make_shared<DIFFSERVMIB::DiffServMultiFieldClfrTable>())
+    , diffservmetertable(std::make_shared<DIFFSERVMIB::DiffServMeterTable>())
+    , diffservtbparamtable(std::make_shared<DIFFSERVMIB::DiffServTBParamTable>())
+    , diffservactiontable(std::make_shared<DIFFSERVMIB::DiffServActionTable>())
+    , diffservdscpmarkacttable(std::make_shared<DIFFSERVMIB::DiffServDscpMarkActTable>())
+    , diffservcountacttable(std::make_shared<DIFFSERVMIB::DiffServCountActTable>())
+    , diffservalgdroptable(std::make_shared<DIFFSERVMIB::DiffServAlgDropTable>())
+    , diffservrandomdroptable(std::make_shared<DIFFSERVMIB::DiffServRandomDropTable>())
+    , diffservqtable(std::make_shared<DIFFSERVMIB::DiffServQTable>())
+    , diffservschedulertable(std::make_shared<DIFFSERVMIB::DiffServSchedulerTable>())
+    , diffservminratetable(std::make_shared<DIFFSERVMIB::DiffServMinRateTable>())
+    , diffservmaxratetable(std::make_shared<DIFFSERVMIB::DiffServMaxRateTable>())
 {
     diffservclassifier->parent = this;
     diffservmeter->parent = this;
@@ -159,7 +159,7 @@ DIFFSERVMIB::DIFFSERVMIB()
     diffservminratetable->parent = this;
     diffservmaxratetable->parent = this;
 
-    yang_name = "DIFFSERV-MIB"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "DIFFSERV-MIB"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DIFFSERVMIB::~DIFFSERVMIB()
@@ -168,6 +168,7 @@ DIFFSERVMIB::~DIFFSERVMIB()
 
 bool DIFFSERVMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (diffservclassifier !=  nullptr && diffservclassifier->has_data())
 	|| (diffservmeter !=  nullptr && diffservmeter->has_data())
 	|| (diffservtbparam !=  nullptr && diffservtbparam->has_data())
@@ -241,7 +242,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservclassifier == nullptr)
         {
-            diffservclassifier = std::make_shared<DIFFSERVMIB::Diffservclassifier>();
+            diffservclassifier = std::make_shared<DIFFSERVMIB::DiffServClassifier>();
         }
         return diffservclassifier;
     }
@@ -250,7 +251,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservmeter == nullptr)
         {
-            diffservmeter = std::make_shared<DIFFSERVMIB::Diffservmeter>();
+            diffservmeter = std::make_shared<DIFFSERVMIB::DiffServMeter>();
         }
         return diffservmeter;
     }
@@ -259,7 +260,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservtbparam == nullptr)
         {
-            diffservtbparam = std::make_shared<DIFFSERVMIB::Diffservtbparam>();
+            diffservtbparam = std::make_shared<DIFFSERVMIB::DiffServTBParam>();
         }
         return diffservtbparam;
     }
@@ -268,7 +269,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservaction == nullptr)
         {
-            diffservaction = std::make_shared<DIFFSERVMIB::Diffservaction>();
+            diffservaction = std::make_shared<DIFFSERVMIB::DiffServAction>();
         }
         return diffservaction;
     }
@@ -277,7 +278,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservalgdrop == nullptr)
         {
-            diffservalgdrop = std::make_shared<DIFFSERVMIB::Diffservalgdrop>();
+            diffservalgdrop = std::make_shared<DIFFSERVMIB::DiffServAlgDrop>();
         }
         return diffservalgdrop;
     }
@@ -286,7 +287,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservqueue == nullptr)
         {
-            diffservqueue = std::make_shared<DIFFSERVMIB::Diffservqueue>();
+            diffservqueue = std::make_shared<DIFFSERVMIB::DiffServQueue>();
         }
         return diffservqueue;
     }
@@ -295,7 +296,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservscheduler == nullptr)
         {
-            diffservscheduler = std::make_shared<DIFFSERVMIB::Diffservscheduler>();
+            diffservscheduler = std::make_shared<DIFFSERVMIB::DiffServScheduler>();
         }
         return diffservscheduler;
     }
@@ -304,7 +305,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservdatapathtable == nullptr)
         {
-            diffservdatapathtable = std::make_shared<DIFFSERVMIB::Diffservdatapathtable>();
+            diffservdatapathtable = std::make_shared<DIFFSERVMIB::DiffServDataPathTable>();
         }
         return diffservdatapathtable;
     }
@@ -313,7 +314,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservclfrtable == nullptr)
         {
-            diffservclfrtable = std::make_shared<DIFFSERVMIB::Diffservclfrtable>();
+            diffservclfrtable = std::make_shared<DIFFSERVMIB::DiffServClfrTable>();
         }
         return diffservclfrtable;
     }
@@ -322,7 +323,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservclfrelementtable == nullptr)
         {
-            diffservclfrelementtable = std::make_shared<DIFFSERVMIB::Diffservclfrelementtable>();
+            diffservclfrelementtable = std::make_shared<DIFFSERVMIB::DiffServClfrElementTable>();
         }
         return diffservclfrelementtable;
     }
@@ -331,7 +332,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservmultifieldclfrtable == nullptr)
         {
-            diffservmultifieldclfrtable = std::make_shared<DIFFSERVMIB::Diffservmultifieldclfrtable>();
+            diffservmultifieldclfrtable = std::make_shared<DIFFSERVMIB::DiffServMultiFieldClfrTable>();
         }
         return diffservmultifieldclfrtable;
     }
@@ -340,7 +341,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservmetertable == nullptr)
         {
-            diffservmetertable = std::make_shared<DIFFSERVMIB::Diffservmetertable>();
+            diffservmetertable = std::make_shared<DIFFSERVMIB::DiffServMeterTable>();
         }
         return diffservmetertable;
     }
@@ -349,7 +350,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservtbparamtable == nullptr)
         {
-            diffservtbparamtable = std::make_shared<DIFFSERVMIB::Diffservtbparamtable>();
+            diffservtbparamtable = std::make_shared<DIFFSERVMIB::DiffServTBParamTable>();
         }
         return diffservtbparamtable;
     }
@@ -358,7 +359,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservactiontable == nullptr)
         {
-            diffservactiontable = std::make_shared<DIFFSERVMIB::Diffservactiontable>();
+            diffservactiontable = std::make_shared<DIFFSERVMIB::DiffServActionTable>();
         }
         return diffservactiontable;
     }
@@ -367,7 +368,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservdscpmarkacttable == nullptr)
         {
-            diffservdscpmarkacttable = std::make_shared<DIFFSERVMIB::Diffservdscpmarkacttable>();
+            diffservdscpmarkacttable = std::make_shared<DIFFSERVMIB::DiffServDscpMarkActTable>();
         }
         return diffservdscpmarkacttable;
     }
@@ -376,7 +377,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservcountacttable == nullptr)
         {
-            diffservcountacttable = std::make_shared<DIFFSERVMIB::Diffservcountacttable>();
+            diffservcountacttable = std::make_shared<DIFFSERVMIB::DiffServCountActTable>();
         }
         return diffservcountacttable;
     }
@@ -385,7 +386,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservalgdroptable == nullptr)
         {
-            diffservalgdroptable = std::make_shared<DIFFSERVMIB::Diffservalgdroptable>();
+            diffservalgdroptable = std::make_shared<DIFFSERVMIB::DiffServAlgDropTable>();
         }
         return diffservalgdroptable;
     }
@@ -394,7 +395,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservrandomdroptable == nullptr)
         {
-            diffservrandomdroptable = std::make_shared<DIFFSERVMIB::Diffservrandomdroptable>();
+            diffservrandomdroptable = std::make_shared<DIFFSERVMIB::DiffServRandomDropTable>();
         }
         return diffservrandomdroptable;
     }
@@ -403,7 +404,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservqtable == nullptr)
         {
-            diffservqtable = std::make_shared<DIFFSERVMIB::Diffservqtable>();
+            diffservqtable = std::make_shared<DIFFSERVMIB::DiffServQTable>();
         }
         return diffservqtable;
     }
@@ -412,7 +413,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservschedulertable == nullptr)
         {
-            diffservschedulertable = std::make_shared<DIFFSERVMIB::Diffservschedulertable>();
+            diffservschedulertable = std::make_shared<DIFFSERVMIB::DiffServSchedulerTable>();
         }
         return diffservschedulertable;
     }
@@ -421,7 +422,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservminratetable == nullptr)
         {
-            diffservminratetable = std::make_shared<DIFFSERVMIB::Diffservminratetable>();
+            diffservminratetable = std::make_shared<DIFFSERVMIB::DiffServMinRateTable>();
         }
         return diffservminratetable;
     }
@@ -430,7 +431,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
     {
         if(diffservmaxratetable == nullptr)
         {
-            diffservmaxratetable = std::make_shared<DIFFSERVMIB::Diffservmaxratetable>();
+            diffservmaxratetable = std::make_shared<DIFFSERVMIB::DiffServMaxRateTable>();
         }
         return diffservmaxratetable;
     }
@@ -595,28 +596,29 @@ bool DIFFSERVMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-DIFFSERVMIB::Diffservclassifier::Diffservclassifier()
+DIFFSERVMIB::DiffServClassifier::DiffServClassifier()
     :
     diffservclfrnextfree{YType::uint32, "diffServClfrNextFree"},
     diffservclfrelementnextfree{YType::uint32, "diffServClfrElementNextFree"},
     diffservmultifieldclfrnextfree{YType::uint32, "diffServMultiFieldClfrNextFree"}
 {
 
-    yang_name = "diffServClassifier"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServClassifier"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservclassifier::~Diffservclassifier()
+DIFFSERVMIB::DiffServClassifier::~DiffServClassifier()
 {
 }
 
-bool DIFFSERVMIB::Diffservclassifier::has_data() const
+bool DIFFSERVMIB::DiffServClassifier::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservclfrnextfree.is_set
 	|| diffservclfrelementnextfree.is_set
 	|| diffservmultifieldclfrnextfree.is_set;
 }
 
-bool DIFFSERVMIB::Diffservclassifier::has_operation() const
+bool DIFFSERVMIB::DiffServClassifier::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservclfrnextfree.yfilter)
@@ -624,21 +626,21 @@ bool DIFFSERVMIB::Diffservclassifier::has_operation() const
 	|| ydk::is_set(diffservmultifieldclfrnextfree.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservclassifier::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServClassifier::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservclassifier::get_segment_path() const
+std::string DIFFSERVMIB::DiffServClassifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServClassifier";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclassifier::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServClassifier::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -650,19 +652,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclassifier::
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservclassifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServClassifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclassifier::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServClassifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservclassifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServClassifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServClfrNextFree")
     {
@@ -684,7 +686,7 @@ void DIFFSERVMIB::Diffservclassifier::set_value(const std::string & value_path, 
     }
 }
 
-void DIFFSERVMIB::Diffservclassifier::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServClassifier::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServClfrNextFree")
     {
@@ -700,51 +702,52 @@ void DIFFSERVMIB::Diffservclassifier::set_filter(const std::string & value_path,
     }
 }
 
-bool DIFFSERVMIB::Diffservclassifier::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServClassifier::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServClfrNextFree" || name == "diffServClfrElementNextFree" || name == "diffServMultiFieldClfrNextFree")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservmeter::Diffservmeter()
+DIFFSERVMIB::DiffServMeter::DiffServMeter()
     :
     diffservmeternextfree{YType::uint32, "diffServMeterNextFree"}
 {
 
-    yang_name = "diffServMeter"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMeter"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservmeter::~Diffservmeter()
+DIFFSERVMIB::DiffServMeter::~DiffServMeter()
 {
 }
 
-bool DIFFSERVMIB::Diffservmeter::has_data() const
+bool DIFFSERVMIB::DiffServMeter::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservmeternextfree.is_set;
 }
 
-bool DIFFSERVMIB::Diffservmeter::has_operation() const
+bool DIFFSERVMIB::DiffServMeter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservmeternextfree.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservmeter::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMeter::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservmeter::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMeter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServMeter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmeter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMeter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -754,19 +757,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmeter::get_n
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservmeter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMeter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmeter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMeter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservmeter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMeter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServMeterNextFree")
     {
@@ -776,7 +779,7 @@ void DIFFSERVMIB::Diffservmeter::set_value(const std::string & value_path, const
     }
 }
 
-void DIFFSERVMIB::Diffservmeter::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMeter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServMeterNextFree")
     {
@@ -784,51 +787,52 @@ void DIFFSERVMIB::Diffservmeter::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool DIFFSERVMIB::Diffservmeter::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMeter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMeterNextFree")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservtbparam::Diffservtbparam()
+DIFFSERVMIB::DiffServTBParam::DiffServTBParam()
     :
     diffservtbparamnextfree{YType::uint32, "diffServTBParamNextFree"}
 {
 
-    yang_name = "diffServTBParam"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServTBParam"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservtbparam::~Diffservtbparam()
+DIFFSERVMIB::DiffServTBParam::~DiffServTBParam()
 {
 }
 
-bool DIFFSERVMIB::Diffservtbparam::has_data() const
+bool DIFFSERVMIB::DiffServTBParam::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservtbparamnextfree.is_set;
 }
 
-bool DIFFSERVMIB::Diffservtbparam::has_operation() const
+bool DIFFSERVMIB::DiffServTBParam::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservtbparamnextfree.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservtbparam::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServTBParam::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservtbparam::get_segment_path() const
+std::string DIFFSERVMIB::DiffServTBParam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServTBParam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservtbparam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServTBParam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -838,19 +842,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservtbparam::get
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservtbparam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServTBParam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservtbparam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServTBParam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservtbparam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServTBParam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServTBParamNextFree")
     {
@@ -860,7 +864,7 @@ void DIFFSERVMIB::Diffservtbparam::set_value(const std::string & value_path, con
     }
 }
 
-void DIFFSERVMIB::Diffservtbparam::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServTBParam::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServTBParamNextFree")
     {
@@ -868,54 +872,55 @@ void DIFFSERVMIB::Diffservtbparam::set_filter(const std::string & value_path, YF
     }
 }
 
-bool DIFFSERVMIB::Diffservtbparam::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServTBParam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServTBParamNextFree")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservaction::Diffservaction()
+DIFFSERVMIB::DiffServAction::DiffServAction()
     :
     diffservactionnextfree{YType::uint32, "diffServActionNextFree"},
     diffservcountactnextfree{YType::uint32, "diffServCountActNextFree"}
 {
 
-    yang_name = "diffServAction"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServAction"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservaction::~Diffservaction()
+DIFFSERVMIB::DiffServAction::~DiffServAction()
 {
 }
 
-bool DIFFSERVMIB::Diffservaction::has_data() const
+bool DIFFSERVMIB::DiffServAction::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservactionnextfree.is_set
 	|| diffservcountactnextfree.is_set;
 }
 
-bool DIFFSERVMIB::Diffservaction::has_operation() const
+bool DIFFSERVMIB::DiffServAction::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservactionnextfree.yfilter)
 	|| ydk::is_set(diffservcountactnextfree.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservaction::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServAction::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservaction::get_segment_path() const
+std::string DIFFSERVMIB::DiffServAction::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServAction";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservaction::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServAction::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -926,19 +931,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservaction::get_
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservaction::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServAction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServActionNextFree")
     {
@@ -954,7 +959,7 @@ void DIFFSERVMIB::Diffservaction::set_value(const std::string & value_path, cons
     }
 }
 
-void DIFFSERVMIB::Diffservaction::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServAction::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServActionNextFree")
     {
@@ -966,54 +971,55 @@ void DIFFSERVMIB::Diffservaction::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool DIFFSERVMIB::Diffservaction::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServAction::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServActionNextFree" || name == "diffServCountActNextFree")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservalgdrop::Diffservalgdrop()
+DIFFSERVMIB::DiffServAlgDrop::DiffServAlgDrop()
     :
     diffservalgdropnextfree{YType::uint32, "diffServAlgDropNextFree"},
     diffservrandomdropnextfree{YType::uint32, "diffServRandomDropNextFree"}
 {
 
-    yang_name = "diffServAlgDrop"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServAlgDrop"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservalgdrop::~Diffservalgdrop()
+DIFFSERVMIB::DiffServAlgDrop::~DiffServAlgDrop()
 {
 }
 
-bool DIFFSERVMIB::Diffservalgdrop::has_data() const
+bool DIFFSERVMIB::DiffServAlgDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservalgdropnextfree.is_set
 	|| diffservrandomdropnextfree.is_set;
 }
 
-bool DIFFSERVMIB::Diffservalgdrop::has_operation() const
+bool DIFFSERVMIB::DiffServAlgDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservalgdropnextfree.yfilter)
 	|| ydk::is_set(diffservrandomdropnextfree.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservalgdrop::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServAlgDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservalgdrop::get_segment_path() const
+std::string DIFFSERVMIB::DiffServAlgDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServAlgDrop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservalgdrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServAlgDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1024,19 +1030,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservalgdrop::get
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservalgdrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServAlgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservalgdrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServAlgDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservalgdrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServAlgDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServAlgDropNextFree")
     {
@@ -1052,7 +1058,7 @@ void DIFFSERVMIB::Diffservalgdrop::set_value(const std::string & value_path, con
     }
 }
 
-void DIFFSERVMIB::Diffservalgdrop::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServAlgDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServAlgDropNextFree")
     {
@@ -1064,51 +1070,52 @@ void DIFFSERVMIB::Diffservalgdrop::set_filter(const std::string & value_path, YF
     }
 }
 
-bool DIFFSERVMIB::Diffservalgdrop::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServAlgDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServAlgDropNextFree" || name == "diffServRandomDropNextFree")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservqueue::Diffservqueue()
+DIFFSERVMIB::DiffServQueue::DiffServQueue()
     :
     diffservqnextfree{YType::uint32, "diffServQNextFree"}
 {
 
-    yang_name = "diffServQueue"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServQueue"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservqueue::~Diffservqueue()
+DIFFSERVMIB::DiffServQueue::~DiffServQueue()
 {
 }
 
-bool DIFFSERVMIB::Diffservqueue::has_data() const
+bool DIFFSERVMIB::DiffServQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservqnextfree.is_set;
 }
 
-bool DIFFSERVMIB::Diffservqueue::has_operation() const
+bool DIFFSERVMIB::DiffServQueue::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservqnextfree.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservqueue::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServQueue::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservqueue::get_segment_path() const
+std::string DIFFSERVMIB::DiffServQueue::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServQueue";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservqueue::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServQueue::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1118,19 +1125,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservqueue::get_n
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservqueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservqueue::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservqueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServQNextFree")
     {
@@ -1140,7 +1147,7 @@ void DIFFSERVMIB::Diffservqueue::set_value(const std::string & value_path, const
     }
 }
 
-void DIFFSERVMIB::Diffservqueue::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServQueue::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServQNextFree")
     {
@@ -1148,35 +1155,36 @@ void DIFFSERVMIB::Diffservqueue::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool DIFFSERVMIB::Diffservqueue::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServQueue::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServQNextFree")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservscheduler::Diffservscheduler()
+DIFFSERVMIB::DiffServScheduler::DiffServScheduler()
     :
     diffservschedulernextfree{YType::uint32, "diffServSchedulerNextFree"},
     diffservminratenextfree{YType::uint32, "diffServMinRateNextFree"},
     diffservmaxratenextfree{YType::uint32, "diffServMaxRateNextFree"}
 {
 
-    yang_name = "diffServScheduler"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServScheduler"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservscheduler::~Diffservscheduler()
+DIFFSERVMIB::DiffServScheduler::~DiffServScheduler()
 {
 }
 
-bool DIFFSERVMIB::Diffservscheduler::has_data() const
+bool DIFFSERVMIB::DiffServScheduler::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservschedulernextfree.is_set
 	|| diffservminratenextfree.is_set
 	|| diffservmaxratenextfree.is_set;
 }
 
-bool DIFFSERVMIB::Diffservscheduler::has_operation() const
+bool DIFFSERVMIB::DiffServScheduler::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservschedulernextfree.yfilter)
@@ -1184,21 +1192,21 @@ bool DIFFSERVMIB::Diffservscheduler::has_operation() const
 	|| ydk::is_set(diffservmaxratenextfree.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservscheduler::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServScheduler::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservscheduler::get_segment_path() const
+std::string DIFFSERVMIB::DiffServScheduler::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServScheduler";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservscheduler::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServScheduler::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1210,19 +1218,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservscheduler::g
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservscheduler::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServScheduler::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservscheduler::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServScheduler::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservscheduler::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServScheduler::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServSchedulerNextFree")
     {
@@ -1244,7 +1252,7 @@ void DIFFSERVMIB::Diffservscheduler::set_value(const std::string & value_path, c
     }
 }
 
-void DIFFSERVMIB::Diffservscheduler::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServScheduler::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServSchedulerNextFree")
     {
@@ -1260,26 +1268,29 @@ void DIFFSERVMIB::Diffservscheduler::set_filter(const std::string & value_path, 
     }
 }
 
-bool DIFFSERVMIB::Diffservscheduler::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServScheduler::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServSchedulerNextFree" || name == "diffServMinRateNextFree" || name == "diffServMaxRateNextFree")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathtable()
+DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathTable()
+    :
+    diffservdatapathentry(this, {"ifindex", "diffservdatapathifdirection"})
 {
 
-    yang_name = "diffServDataPathTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServDataPathTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservdatapathtable::~Diffservdatapathtable()
+DIFFSERVMIB::DiffServDataPathTable::~DiffServDataPathTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservdatapathtable::has_data() const
+bool DIFFSERVMIB::DiffServDataPathTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservdatapathentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservdatapathentry.len(); index++)
     {
         if(diffservdatapathentry[index]->has_data())
             return true;
@@ -1287,9 +1298,9 @@ bool DIFFSERVMIB::Diffservdatapathtable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservdatapathtable::has_operation() const
+bool DIFFSERVMIB::DiffServDataPathTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservdatapathentry.size(); index++)
+    for (std::size_t index=0; index<diffservdatapathentry.len(); index++)
     {
         if(diffservdatapathentry[index]->has_operation())
             return true;
@@ -1297,21 +1308,21 @@ bool DIFFSERVMIB::Diffservdatapathtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservdatapathtable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServDataPathTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservdatapathtable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServDataPathTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServDataPathTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdatapathtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServDataPathTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1320,25 +1331,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdatapathtabl
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservdatapathtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServDataPathTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServDataPathEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry>();
         c->parent = this;
-        diffservdatapathentry.push_back(c);
+        diffservdatapathentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdatapathtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServDataPathTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservdatapathentry)
+    for (auto c : diffservdatapathentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1349,22 +1360,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdatapathtabl
     return children;
 }
 
-void DIFFSERVMIB::Diffservdatapathtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServDataPathTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservdatapathtable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServDataPathTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservdatapathtable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServDataPathTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServDataPathEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::Diffservdatapathentry()
+DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::DiffServDataPathEntry()
     :
     ifindex{YType::str, "ifIndex"},
     diffservdatapathifdirection{YType::enumeration, "diffServDataPathIfDirection"},
@@ -1373,15 +1384,16 @@ DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::Diffservdatapathentry
     diffservdatapathstatus{YType::enumeration, "diffServDataPathStatus"}
 {
 
-    yang_name = "diffServDataPathEntry"; yang_parent_name = "diffServDataPathTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServDataPathEntry"; yang_parent_name = "diffServDataPathTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::~Diffservdatapathentry()
+DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::~DiffServDataPathEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::has_data() const
+bool DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| diffservdatapathifdirection.is_set
 	|| diffservdatapathstart.is_set
@@ -1389,7 +1401,7 @@ bool DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::has_data() const
 	|| diffservdatapathstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::has_operation() const
+bool DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1399,21 +1411,23 @@ bool DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::has_operation() 
 	|| ydk::is_set(diffservdatapathstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServDataPathTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServDataPathEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[diffServDataPathIfDirection='" <<diffservdatapathifdirection <<"']";
+    path_buffer << "diffServDataPathEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(diffservdatapathifdirection, "diffServDataPathIfDirection");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1427,19 +1441,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdatapathtabl
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1473,7 +1487,7 @@ void DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::set_value(const 
     }
 }
 
-void DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1497,26 +1511,29 @@ void DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::set_filter(const
     }
 }
 
-bool DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "diffServDataPathIfDirection" || name == "diffServDataPathStart" || name == "diffServDataPathStorage" || name == "diffServDataPathStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservclfrtable::Diffservclfrtable()
+DIFFSERVMIB::DiffServClfrTable::DiffServClfrTable()
+    :
+    diffservclfrentry(this, {"diffservclfrid"})
 {
 
-    yang_name = "diffServClfrTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServClfrTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservclfrtable::~Diffservclfrtable()
+DIFFSERVMIB::DiffServClfrTable::~DiffServClfrTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservclfrtable::has_data() const
+bool DIFFSERVMIB::DiffServClfrTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservclfrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservclfrentry.len(); index++)
     {
         if(diffservclfrentry[index]->has_data())
             return true;
@@ -1524,9 +1541,9 @@ bool DIFFSERVMIB::Diffservclfrtable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservclfrtable::has_operation() const
+bool DIFFSERVMIB::DiffServClfrTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservclfrentry.size(); index++)
+    for (std::size_t index=0; index<diffservclfrentry.len(); index++)
     {
         if(diffservclfrentry[index]->has_operation())
             return true;
@@ -1534,21 +1551,21 @@ bool DIFFSERVMIB::Diffservclfrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservclfrtable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServClfrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservclfrtable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServClfrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServClfrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServClfrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1557,25 +1574,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrtable::g
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServClfrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServClfrEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry>();
         c->parent = this;
-        diffservclfrentry.push_back(c);
+        diffservclfrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServClfrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservclfrentry)
+    for (auto c : diffservclfrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1586,43 +1603,44 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrtable::g
     return children;
 }
 
-void DIFFSERVMIB::Diffservclfrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServClfrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservclfrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServClfrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservclfrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServClfrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServClfrEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::Diffservclfrentry()
+DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::DiffServClfrEntry()
     :
     diffservclfrid{YType::uint32, "diffServClfrId"},
     diffservclfrstorage{YType::enumeration, "diffServClfrStorage"},
     diffservclfrstatus{YType::enumeration, "diffServClfrStatus"}
 {
 
-    yang_name = "diffServClfrEntry"; yang_parent_name = "diffServClfrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServClfrEntry"; yang_parent_name = "diffServClfrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::~Diffservclfrentry()
+DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::~DiffServClfrEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::has_data() const
+bool DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservclfrid.is_set
 	|| diffservclfrstorage.is_set
 	|| diffservclfrstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::has_operation() const
+bool DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservclfrid.yfilter)
@@ -1630,21 +1648,22 @@ bool DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::has_operation() const
 	|| ydk::is_set(diffservclfrstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServClfrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServClfrEntry" <<"[diffServClfrId='" <<diffservclfrid <<"']";
+    path_buffer << "diffServClfrEntry";
+    ADD_KEY_TOKEN(diffservclfrid, "diffServClfrId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1656,19 +1675,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrtable::D
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServClfrId")
     {
@@ -1690,7 +1709,7 @@ void DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::set_value(const std::str
     }
 }
 
-void DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServClfrId")
     {
@@ -1706,26 +1725,29 @@ void DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::set_filter(const std::st
     }
 }
 
-bool DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServClfrId" || name == "diffServClfrStorage" || name == "diffServClfrStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelementtable()
+DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementTable()
+    :
+    diffservclfrelemententry(this, {"diffservclfrid", "diffservclfrelementid"})
 {
 
-    yang_name = "diffServClfrElementTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServClfrElementTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservclfrelementtable::~Diffservclfrelementtable()
+DIFFSERVMIB::DiffServClfrElementTable::~DiffServClfrElementTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservclfrelementtable::has_data() const
+bool DIFFSERVMIB::DiffServClfrElementTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservclfrelemententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservclfrelemententry.len(); index++)
     {
         if(diffservclfrelemententry[index]->has_data())
             return true;
@@ -1733,9 +1755,9 @@ bool DIFFSERVMIB::Diffservclfrelementtable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservclfrelementtable::has_operation() const
+bool DIFFSERVMIB::DiffServClfrElementTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservclfrelemententry.size(); index++)
+    for (std::size_t index=0; index<diffservclfrelemententry.len(); index++)
     {
         if(diffservclfrelemententry[index]->has_operation())
             return true;
@@ -1743,21 +1765,21 @@ bool DIFFSERVMIB::Diffservclfrelementtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservclfrelementtable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServClfrElementTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservclfrelementtable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServClfrElementTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServClfrElementTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrelementtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServClfrElementTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1766,25 +1788,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrelementt
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrelementtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServClfrElementTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServClfrElementEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry>();
         c->parent = this;
-        diffservclfrelemententry.push_back(c);
+        diffservclfrelemententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrelementtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServClfrElementTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservclfrelemententry)
+    for (auto c : diffservclfrelemententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1795,22 +1817,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrelementt
     return children;
 }
 
-void DIFFSERVMIB::Diffservclfrelementtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServClfrElementTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservclfrelementtable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServClfrElementTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservclfrelementtable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServClfrElementTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServClfrElementEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::Diffservclfrelemententry()
+DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::DiffServClfrElementEntry()
     :
     diffservclfrid{YType::str, "diffServClfrId"},
     diffservclfrelementid{YType::uint32, "diffServClfrElementId"},
@@ -1821,15 +1843,16 @@ DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::Diffservclfrele
     diffservclfrelementstatus{YType::enumeration, "diffServClfrElementStatus"}
 {
 
-    yang_name = "diffServClfrElementEntry"; yang_parent_name = "diffServClfrElementTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServClfrElementEntry"; yang_parent_name = "diffServClfrElementTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::~Diffservclfrelemententry()
+DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::~DiffServClfrElementEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::has_data() const
+bool DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservclfrid.is_set
 	|| diffservclfrelementid.is_set
 	|| diffservclfrelementprecedence.is_set
@@ -1839,7 +1862,7 @@ bool DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::has_data()
 	|| diffservclfrelementstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::has_operation() const
+bool DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservclfrid.yfilter)
@@ -1851,21 +1874,23 @@ bool DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::has_operat
 	|| ydk::is_set(diffservclfrelementstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServClfrElementTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServClfrElementEntry" <<"[diffServClfrId='" <<diffservclfrid <<"']" <<"[diffServClfrElementId='" <<diffservclfrelementid <<"']";
+    path_buffer << "diffServClfrElementEntry";
+    ADD_KEY_TOKEN(diffservclfrid, "diffServClfrId");
+    ADD_KEY_TOKEN(diffservclfrelementid, "diffServClfrElementId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1881,19 +1906,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservclfrelementt
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServClfrId")
     {
@@ -1939,7 +1964,7 @@ void DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::set_value(
     }
 }
 
-void DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServClfrId")
     {
@@ -1971,26 +1996,29 @@ void DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::set_filter
     }
 }
 
-bool DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServClfrId" || name == "diffServClfrElementId" || name == "diffServClfrElementPrecedence" || name == "diffServClfrElementNext" || name == "diffServClfrElementSpecific" || name == "diffServClfrElementStorage" || name == "diffServClfrElementStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrtable()
+DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrTable()
+    :
+    diffservmultifieldclfrentry(this, {"diffservmultifieldclfrid"})
 {
 
-    yang_name = "diffServMultiFieldClfrTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMultiFieldClfrTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservmultifieldclfrtable::~Diffservmultifieldclfrtable()
+DIFFSERVMIB::DiffServMultiFieldClfrTable::~DiffServMultiFieldClfrTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservmultifieldclfrtable::has_data() const
+bool DIFFSERVMIB::DiffServMultiFieldClfrTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservmultifieldclfrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservmultifieldclfrentry.len(); index++)
     {
         if(diffservmultifieldclfrentry[index]->has_data())
             return true;
@@ -1998,9 +2026,9 @@ bool DIFFSERVMIB::Diffservmultifieldclfrtable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservmultifieldclfrtable::has_operation() const
+bool DIFFSERVMIB::DiffServMultiFieldClfrTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservmultifieldclfrentry.size(); index++)
+    for (std::size_t index=0; index<diffservmultifieldclfrentry.len(); index++)
     {
         if(diffservmultifieldclfrentry[index]->has_operation())
             return true;
@@ -2008,21 +2036,21 @@ bool DIFFSERVMIB::Diffservmultifieldclfrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservmultifieldclfrtable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMultiFieldClfrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservmultifieldclfrtable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMultiFieldClfrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServMultiFieldClfrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmultifieldclfrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMultiFieldClfrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2031,25 +2059,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmultifieldcl
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservmultifieldclfrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMultiFieldClfrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServMultiFieldClfrEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry>();
         c->parent = this;
-        diffservmultifieldclfrentry.push_back(c);
+        diffservmultifieldclfrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmultifieldclfrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMultiFieldClfrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservmultifieldclfrentry)
+    for (auto c : diffservmultifieldclfrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2060,22 +2088,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmultifieldcl
     return children;
 }
 
-void DIFFSERVMIB::Diffservmultifieldclfrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMultiFieldClfrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservmultifieldclfrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMultiFieldClfrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservmultifieldclfrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMultiFieldClfrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMultiFieldClfrEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::Diffservmultifieldclfrentry()
+DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::DiffServMultiFieldClfrEntry()
     :
     diffservmultifieldclfrid{YType::uint32, "diffServMultiFieldClfrId"},
     diffservmultifieldclfraddrtype{YType::enumeration, "diffServMultiFieldClfrAddrType"},
@@ -2094,15 +2122,16 @@ DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::Diffservm
     diffservmultifieldclfrstatus{YType::enumeration, "diffServMultiFieldClfrStatus"}
 {
 
-    yang_name = "diffServMultiFieldClfrEntry"; yang_parent_name = "diffServMultiFieldClfrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMultiFieldClfrEntry"; yang_parent_name = "diffServMultiFieldClfrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::~Diffservmultifieldclfrentry()
+DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::~DiffServMultiFieldClfrEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::has_data() const
+bool DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservmultifieldclfrid.is_set
 	|| diffservmultifieldclfraddrtype.is_set
 	|| diffservmultifieldclfrdstaddr.is_set
@@ -2120,7 +2149,7 @@ bool DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::has_
 	|| diffservmultifieldclfrstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::has_operation() const
+bool DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservmultifieldclfrid.yfilter)
@@ -2140,21 +2169,22 @@ bool DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::has_
 	|| ydk::is_set(diffservmultifieldclfrstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServMultiFieldClfrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServMultiFieldClfrEntry" <<"[diffServMultiFieldClfrId='" <<diffservmultifieldclfrid <<"']";
+    path_buffer << "diffServMultiFieldClfrEntry";
+    ADD_KEY_TOKEN(diffservmultifieldclfrid, "diffServMultiFieldClfrId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2178,19 +2208,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmultifieldcl
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServMultiFieldClfrId")
     {
@@ -2284,7 +2314,7 @@ void DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::set_
     }
 }
 
-void DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServMultiFieldClfrId")
     {
@@ -2348,26 +2378,29 @@ void DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::set_
     }
 }
 
-bool DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMultiFieldClfrId" || name == "diffServMultiFieldClfrAddrType" || name == "diffServMultiFieldClfrDstAddr" || name == "diffServMultiFieldClfrDstPrefixLength" || name == "diffServMultiFieldClfrSrcAddr" || name == "diffServMultiFieldClfrSrcPrefixLength" || name == "diffServMultiFieldClfrDscp" || name == "diffServMultiFieldClfrFlowId" || name == "diffServMultiFieldClfrProtocol" || name == "diffServMultiFieldClfrDstL4PortMin" || name == "diffServMultiFieldClfrDstL4PortMax" || name == "diffServMultiFieldClfrSrcL4PortMin" || name == "diffServMultiFieldClfrSrcL4PortMax" || name == "diffServMultiFieldClfrStorage" || name == "diffServMultiFieldClfrStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservmetertable::Diffservmetertable()
+DIFFSERVMIB::DiffServMeterTable::DiffServMeterTable()
+    :
+    diffservmeterentry(this, {"diffservmeterid"})
 {
 
-    yang_name = "diffServMeterTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMeterTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservmetertable::~Diffservmetertable()
+DIFFSERVMIB::DiffServMeterTable::~DiffServMeterTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservmetertable::has_data() const
+bool DIFFSERVMIB::DiffServMeterTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservmeterentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservmeterentry.len(); index++)
     {
         if(diffservmeterentry[index]->has_data())
             return true;
@@ -2375,9 +2408,9 @@ bool DIFFSERVMIB::Diffservmetertable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservmetertable::has_operation() const
+bool DIFFSERVMIB::DiffServMeterTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservmeterentry.size(); index++)
+    for (std::size_t index=0; index<diffservmeterentry.len(); index++)
     {
         if(diffservmeterentry[index]->has_operation())
             return true;
@@ -2385,21 +2418,21 @@ bool DIFFSERVMIB::Diffservmetertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservmetertable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMeterTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservmetertable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMeterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServMeterTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmetertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMeterTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2408,25 +2441,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmetertable::
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservmetertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMeterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServMeterEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservmetertable::Diffservmeterentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry>();
         c->parent = this;
-        diffservmeterentry.push_back(c);
+        diffservmeterentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmetertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMeterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservmeterentry)
+    for (auto c : diffservmeterentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2437,22 +2470,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmetertable::
     return children;
 }
 
-void DIFFSERVMIB::Diffservmetertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMeterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservmetertable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMeterTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservmetertable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMeterTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMeterEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::Diffservmeterentry()
+DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::DiffServMeterEntry()
     :
     diffservmeterid{YType::uint32, "diffServMeterId"},
     diffservmetersucceednext{YType::str, "diffServMeterSucceedNext"},
@@ -2462,15 +2495,16 @@ DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::Diffservmeterentry()
     diffservmeterstatus{YType::enumeration, "diffServMeterStatus"}
 {
 
-    yang_name = "diffServMeterEntry"; yang_parent_name = "diffServMeterTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMeterEntry"; yang_parent_name = "diffServMeterTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::~Diffservmeterentry()
+DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::~DiffServMeterEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::has_data() const
+bool DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservmeterid.is_set
 	|| diffservmetersucceednext.is_set
 	|| diffservmeterfailnext.is_set
@@ -2479,7 +2513,7 @@ bool DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::has_data() const
 	|| diffservmeterstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::has_operation() const
+bool DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservmeterid.yfilter)
@@ -2490,21 +2524,22 @@ bool DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::has_operation() const
 	|| ydk::is_set(diffservmeterstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServMeterTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServMeterEntry" <<"[diffServMeterId='" <<diffservmeterid <<"']";
+    path_buffer << "diffServMeterEntry";
+    ADD_KEY_TOKEN(diffservmeterid, "diffServMeterId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2519,19 +2554,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmetertable::
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServMeterId")
     {
@@ -2571,7 +2606,7 @@ void DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::set_value(const std::s
     }
 }
 
-void DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServMeterId")
     {
@@ -2599,26 +2634,29 @@ void DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::set_filter(const std::
     }
 }
 
-bool DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMeterId" || name == "diffServMeterSucceedNext" || name == "diffServMeterFailNext" || name == "diffServMeterSpecific" || name == "diffServMeterStorage" || name == "diffServMeterStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamtable()
+DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamTable()
+    :
+    diffservtbparamentry(this, {"diffservtbparamid"})
 {
 
-    yang_name = "diffServTBParamTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServTBParamTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservtbparamtable::~Diffservtbparamtable()
+DIFFSERVMIB::DiffServTBParamTable::~DiffServTBParamTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservtbparamtable::has_data() const
+bool DIFFSERVMIB::DiffServTBParamTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservtbparamentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservtbparamentry.len(); index++)
     {
         if(diffservtbparamentry[index]->has_data())
             return true;
@@ -2626,9 +2664,9 @@ bool DIFFSERVMIB::Diffservtbparamtable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservtbparamtable::has_operation() const
+bool DIFFSERVMIB::DiffServTBParamTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservtbparamentry.size(); index++)
+    for (std::size_t index=0; index<diffservtbparamentry.len(); index++)
     {
         if(diffservtbparamentry[index]->has_operation())
             return true;
@@ -2636,21 +2674,21 @@ bool DIFFSERVMIB::Diffservtbparamtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservtbparamtable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServTBParamTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservtbparamtable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServTBParamTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServTBParamTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservtbparamtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServTBParamTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2659,25 +2697,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservtbparamtable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservtbparamtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServTBParamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServTBParamEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry>();
         c->parent = this;
-        diffservtbparamentry.push_back(c);
+        diffservtbparamentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservtbparamtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServTBParamTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservtbparamentry)
+    for (auto c : diffservtbparamentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2688,22 +2726,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservtbparamtable
     return children;
 }
 
-void DIFFSERVMIB::Diffservtbparamtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServTBParamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservtbparamtable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServTBParamTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservtbparamtable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServTBParamTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServTBParamEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::Diffservtbparamentry()
+DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::DiffServTBParamEntry()
     :
     diffservtbparamid{YType::uint32, "diffServTBParamId"},
     diffservtbparamtype{YType::str, "diffServTBParamType"},
@@ -2714,15 +2752,16 @@ DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::Diffservtbparamentry()
     diffservtbparamstatus{YType::enumeration, "diffServTBParamStatus"}
 {
 
-    yang_name = "diffServTBParamEntry"; yang_parent_name = "diffServTBParamTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServTBParamEntry"; yang_parent_name = "diffServTBParamTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::~Diffservtbparamentry()
+DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::~DiffServTBParamEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::has_data() const
+bool DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservtbparamid.is_set
 	|| diffservtbparamtype.is_set
 	|| diffservtbparamrate.is_set
@@ -2732,7 +2771,7 @@ bool DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::has_data() const
 	|| diffservtbparamstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::has_operation() const
+bool DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservtbparamid.yfilter)
@@ -2744,21 +2783,22 @@ bool DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::has_operation() co
 	|| ydk::is_set(diffservtbparamstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServTBParamTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServTBParamEntry" <<"[diffServTBParamId='" <<diffservtbparamid <<"']";
+    path_buffer << "diffServTBParamEntry";
+    ADD_KEY_TOKEN(diffservtbparamid, "diffServTBParamId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2774,19 +2814,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservtbparamtable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServTBParamId")
     {
@@ -2832,7 +2872,7 @@ void DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::set_value(const st
     }
 }
 
-void DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServTBParamId")
     {
@@ -2864,26 +2904,29 @@ void DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::set_filter(const s
     }
 }
 
-bool DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServTBParamId" || name == "diffServTBParamType" || name == "diffServTBParamRate" || name == "diffServTBParamBurstSize" || name == "diffServTBParamInterval" || name == "diffServTBParamStorage" || name == "diffServTBParamStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservactiontable::Diffservactiontable()
+DIFFSERVMIB::DiffServActionTable::DiffServActionTable()
+    :
+    diffservactionentry(this, {"diffservactionid"})
 {
 
-    yang_name = "diffServActionTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServActionTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservactiontable::~Diffservactiontable()
+DIFFSERVMIB::DiffServActionTable::~DiffServActionTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservactiontable::has_data() const
+bool DIFFSERVMIB::DiffServActionTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservactionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservactionentry.len(); index++)
     {
         if(diffservactionentry[index]->has_data())
             return true;
@@ -2891,9 +2934,9 @@ bool DIFFSERVMIB::Diffservactiontable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservactiontable::has_operation() const
+bool DIFFSERVMIB::DiffServActionTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservactionentry.size(); index++)
+    for (std::size_t index=0; index<diffservactionentry.len(); index++)
     {
         if(diffservactionentry[index]->has_operation())
             return true;
@@ -2901,21 +2944,21 @@ bool DIFFSERVMIB::Diffservactiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservactiontable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServActionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservactiontable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServActionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServActionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservactiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServActionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2924,25 +2967,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservactiontable:
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservactiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServActionEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservactiontable::Diffservactionentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServActionTable::DiffServActionEntry>();
         c->parent = this;
-        diffservactionentry.push_back(c);
+        diffservactionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservactiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServActionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservactionentry)
+    for (auto c : diffservactionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2953,22 +2996,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservactiontable:
     return children;
 }
 
-void DIFFSERVMIB::Diffservactiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServActionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservactiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServActionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservactiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServActionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServActionEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservactiontable::Diffservactionentry::Diffservactionentry()
+DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::DiffServActionEntry()
     :
     diffservactionid{YType::uint32, "diffServActionId"},
     diffservactioninterface{YType::int32, "diffServActionInterface"},
@@ -2978,15 +3021,16 @@ DIFFSERVMIB::Diffservactiontable::Diffservactionentry::Diffservactionentry()
     diffservactionstatus{YType::enumeration, "diffServActionStatus"}
 {
 
-    yang_name = "diffServActionEntry"; yang_parent_name = "diffServActionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServActionEntry"; yang_parent_name = "diffServActionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservactiontable::Diffservactionentry::~Diffservactionentry()
+DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::~DiffServActionEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservactiontable::Diffservactionentry::has_data() const
+bool DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservactionid.is_set
 	|| diffservactioninterface.is_set
 	|| diffservactionnext.is_set
@@ -2995,7 +3039,7 @@ bool DIFFSERVMIB::Diffservactiontable::Diffservactionentry::has_data() const
 	|| diffservactionstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservactiontable::Diffservactionentry::has_operation() const
+bool DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservactionid.yfilter)
@@ -3006,21 +3050,22 @@ bool DIFFSERVMIB::Diffservactiontable::Diffservactionentry::has_operation() cons
 	|| ydk::is_set(diffservactionstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservactiontable::Diffservactionentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServActionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservactiontable::Diffservactionentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServActionEntry" <<"[diffServActionId='" <<diffservactionid <<"']";
+    path_buffer << "diffServActionEntry";
+    ADD_KEY_TOKEN(diffservactionid, "diffServActionId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservactiontable::Diffservactionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3035,19 +3080,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservactiontable:
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservactiontable::Diffservactionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservactiontable::Diffservactionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservactiontable::Diffservactionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServActionId")
     {
@@ -3087,7 +3132,7 @@ void DIFFSERVMIB::Diffservactiontable::Diffservactionentry::set_value(const std:
     }
 }
 
-void DIFFSERVMIB::Diffservactiontable::Diffservactionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServActionId")
     {
@@ -3115,26 +3160,29 @@ void DIFFSERVMIB::Diffservactiontable::Diffservactionentry::set_filter(const std
     }
 }
 
-bool DIFFSERVMIB::Diffservactiontable::Diffservactionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServActionTable::DiffServActionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServActionId" || name == "diffServActionInterface" || name == "diffServActionNext" || name == "diffServActionSpecific" || name == "diffServActionStorage" || name == "diffServActionStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkacttable()
+DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActTable()
+    :
+    diffservdscpmarkactentry(this, {"diffservdscpmarkactdscp"})
 {
 
-    yang_name = "diffServDscpMarkActTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServDscpMarkActTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservdscpmarkacttable::~Diffservdscpmarkacttable()
+DIFFSERVMIB::DiffServDscpMarkActTable::~DiffServDscpMarkActTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservdscpmarkacttable::has_data() const
+bool DIFFSERVMIB::DiffServDscpMarkActTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservdscpmarkactentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservdscpmarkactentry.len(); index++)
     {
         if(diffservdscpmarkactentry[index]->has_data())
             return true;
@@ -3142,9 +3190,9 @@ bool DIFFSERVMIB::Diffservdscpmarkacttable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservdscpmarkacttable::has_operation() const
+bool DIFFSERVMIB::DiffServDscpMarkActTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservdscpmarkactentry.size(); index++)
+    for (std::size_t index=0; index<diffservdscpmarkactentry.len(); index++)
     {
         if(diffservdscpmarkactentry[index]->has_operation())
             return true;
@@ -3152,21 +3200,21 @@ bool DIFFSERVMIB::Diffservdscpmarkacttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservdscpmarkacttable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServDscpMarkActTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservdscpmarkacttable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServDscpMarkActTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServDscpMarkActTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdscpmarkacttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServDscpMarkActTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3175,25 +3223,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdscpmarkactt
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservdscpmarkacttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServDscpMarkActTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServDscpMarkActEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry>();
         c->parent = this;
-        diffservdscpmarkactentry.push_back(c);
+        diffservdscpmarkactentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdscpmarkacttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServDscpMarkActTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservdscpmarkactentry)
+    for (auto c : diffservdscpmarkactentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3204,59 +3252,61 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdscpmarkactt
     return children;
 }
 
-void DIFFSERVMIB::Diffservdscpmarkacttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServDscpMarkActTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservdscpmarkacttable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServDscpMarkActTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservdscpmarkacttable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServDscpMarkActTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServDscpMarkActEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::Diffservdscpmarkactentry()
+DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::DiffServDscpMarkActEntry()
     :
     diffservdscpmarkactdscp{YType::uint8, "diffServDscpMarkActDscp"}
 {
 
-    yang_name = "diffServDscpMarkActEntry"; yang_parent_name = "diffServDscpMarkActTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServDscpMarkActEntry"; yang_parent_name = "diffServDscpMarkActTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::~Diffservdscpmarkactentry()
+DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::~DiffServDscpMarkActEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::has_data() const
+bool DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservdscpmarkactdscp.is_set;
 }
 
-bool DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::has_operation() const
+bool DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservdscpmarkactdscp.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServDscpMarkActTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServDscpMarkActEntry" <<"[diffServDscpMarkActDscp='" <<diffservdscpmarkactdscp <<"']";
+    path_buffer << "diffServDscpMarkActEntry";
+    ADD_KEY_TOKEN(diffservdscpmarkactdscp, "diffServDscpMarkActDscp");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3266,19 +3316,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservdscpmarkactt
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServDscpMarkActDscp")
     {
@@ -3288,7 +3338,7 @@ void DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::set_value(
     }
 }
 
-void DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServDscpMarkActDscp")
     {
@@ -3296,26 +3346,29 @@ void DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::set_filter
     }
 }
 
-bool DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServDscpMarkActDscp")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservcountacttable::Diffservcountacttable()
+DIFFSERVMIB::DiffServCountActTable::DiffServCountActTable()
+    :
+    diffservcountactentry(this, {"diffservcountactid"})
 {
 
-    yang_name = "diffServCountActTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServCountActTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservcountacttable::~Diffservcountacttable()
+DIFFSERVMIB::DiffServCountActTable::~DiffServCountActTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservcountacttable::has_data() const
+bool DIFFSERVMIB::DiffServCountActTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservcountactentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservcountactentry.len(); index++)
     {
         if(diffservcountactentry[index]->has_data())
             return true;
@@ -3323,9 +3376,9 @@ bool DIFFSERVMIB::Diffservcountacttable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservcountacttable::has_operation() const
+bool DIFFSERVMIB::DiffServCountActTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservcountactentry.size(); index++)
+    for (std::size_t index=0; index<diffservcountactentry.len(); index++)
     {
         if(diffservcountactentry[index]->has_operation())
             return true;
@@ -3333,21 +3386,21 @@ bool DIFFSERVMIB::Diffservcountacttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservcountacttable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServCountActTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservcountacttable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServCountActTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServCountActTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservcountacttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServCountActTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3356,25 +3409,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservcountacttabl
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservcountacttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServCountActTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServCountActEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry>();
         c->parent = this;
-        diffservcountactentry.push_back(c);
+        diffservcountactentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservcountacttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServCountActTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservcountactentry)
+    for (auto c : diffservcountactentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3385,22 +3438,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservcountacttabl
     return children;
 }
 
-void DIFFSERVMIB::Diffservcountacttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServCountActTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservcountacttable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServCountActTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservcountacttable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServCountActTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServCountActEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::Diffservcountactentry()
+DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::DiffServCountActEntry()
     :
     diffservcountactid{YType::uint32, "diffServCountActId"},
     diffservcountactoctets{YType::uint64, "diffServCountActOctets"},
@@ -3409,15 +3462,16 @@ DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::Diffservcountactentry
     diffservcountactstatus{YType::enumeration, "diffServCountActStatus"}
 {
 
-    yang_name = "diffServCountActEntry"; yang_parent_name = "diffServCountActTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServCountActEntry"; yang_parent_name = "diffServCountActTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::~Diffservcountactentry()
+DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::~DiffServCountActEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::has_data() const
+bool DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservcountactid.is_set
 	|| diffservcountactoctets.is_set
 	|| diffservcountactpkts.is_set
@@ -3425,7 +3479,7 @@ bool DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::has_data() const
 	|| diffservcountactstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::has_operation() const
+bool DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservcountactid.yfilter)
@@ -3435,21 +3489,22 @@ bool DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::has_operation() 
 	|| ydk::is_set(diffservcountactstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServCountActTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServCountActEntry" <<"[diffServCountActId='" <<diffservcountactid <<"']";
+    path_buffer << "diffServCountActEntry";
+    ADD_KEY_TOKEN(diffservcountactid, "diffServCountActId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3463,19 +3518,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservcountacttabl
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServCountActId")
     {
@@ -3509,7 +3564,7 @@ void DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::set_value(const 
     }
 }
 
-void DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServCountActId")
     {
@@ -3533,26 +3588,29 @@ void DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::set_filter(const
     }
 }
 
-bool DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServCountActId" || name == "diffServCountActOctets" || name == "diffServCountActPkts" || name == "diffServCountActStorage" || name == "diffServCountActStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservalgdroptable::Diffservalgdroptable()
+DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropTable()
+    :
+    diffservalgdropentry(this, {"diffservalgdropid"})
 {
 
-    yang_name = "diffServAlgDropTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServAlgDropTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservalgdroptable::~Diffservalgdroptable()
+DIFFSERVMIB::DiffServAlgDropTable::~DiffServAlgDropTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservalgdroptable::has_data() const
+bool DIFFSERVMIB::DiffServAlgDropTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservalgdropentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservalgdropentry.len(); index++)
     {
         if(diffservalgdropentry[index]->has_data())
             return true;
@@ -3560,9 +3618,9 @@ bool DIFFSERVMIB::Diffservalgdroptable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservalgdroptable::has_operation() const
+bool DIFFSERVMIB::DiffServAlgDropTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservalgdropentry.size(); index++)
+    for (std::size_t index=0; index<diffservalgdropentry.len(); index++)
     {
         if(diffservalgdropentry[index]->has_operation())
             return true;
@@ -3570,21 +3628,21 @@ bool DIFFSERVMIB::Diffservalgdroptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservalgdroptable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServAlgDropTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservalgdroptable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServAlgDropTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServAlgDropTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservalgdroptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServAlgDropTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3593,25 +3651,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservalgdroptable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservalgdroptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServAlgDropTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServAlgDropEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry>();
         c->parent = this;
-        diffservalgdropentry.push_back(c);
+        diffservalgdropentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservalgdroptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServAlgDropTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservalgdropentry)
+    for (auto c : diffservalgdropentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3622,22 +3680,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservalgdroptable
     return children;
 }
 
-void DIFFSERVMIB::Diffservalgdroptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServAlgDropTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservalgdroptable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServAlgDropTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservalgdroptable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServAlgDropTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServAlgDropEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdropentry()
+DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropEntry()
     :
     diffservalgdropid{YType::uint32, "diffServAlgDropId"},
     diffservalgdroptype{YType::enumeration, "diffServAlgDropType"},
@@ -3653,15 +3711,16 @@ DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdropentry()
     diffservalgdropstatus{YType::enumeration, "diffServAlgDropStatus"}
 {
 
-    yang_name = "diffServAlgDropEntry"; yang_parent_name = "diffServAlgDropTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServAlgDropEntry"; yang_parent_name = "diffServAlgDropTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::~Diffservalgdropentry()
+DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::~DiffServAlgDropEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::has_data() const
+bool DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservalgdropid.is_set
 	|| diffservalgdroptype.is_set
 	|| diffservalgdropnext.is_set
@@ -3676,7 +3735,7 @@ bool DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::has_data() const
 	|| diffservalgdropstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::has_operation() const
+bool DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservalgdropid.yfilter)
@@ -3693,21 +3752,22 @@ bool DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::has_operation() co
 	|| ydk::is_set(diffservalgdropstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServAlgDropTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServAlgDropEntry" <<"[diffServAlgDropId='" <<diffservalgdropid <<"']";
+    path_buffer << "diffServAlgDropEntry";
+    ADD_KEY_TOKEN(diffservalgdropid, "diffServAlgDropId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3728,19 +3788,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservalgdroptable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServAlgDropId")
     {
@@ -3816,7 +3876,7 @@ void DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::set_value(const st
     }
 }
 
-void DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServAlgDropId")
     {
@@ -3868,26 +3928,29 @@ void DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::set_filter(const s
     }
 }
 
-bool DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServAlgDropId" || name == "diffServAlgDropType" || name == "diffServAlgDropNext" || name == "diffServAlgDropQMeasure" || name == "diffServAlgDropQThreshold" || name == "diffServAlgDropSpecific" || name == "diffServAlgDropOctets" || name == "diffServAlgDropPkts" || name == "diffServAlgRandomDropOctets" || name == "diffServAlgRandomDropPkts" || name == "diffServAlgDropStorage" || name == "diffServAlgDropStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdroptable()
+DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropTable()
+    :
+    diffservrandomdropentry(this, {"diffservrandomdropid"})
 {
 
-    yang_name = "diffServRandomDropTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServRandomDropTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservrandomdroptable::~Diffservrandomdroptable()
+DIFFSERVMIB::DiffServRandomDropTable::~DiffServRandomDropTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservrandomdroptable::has_data() const
+bool DIFFSERVMIB::DiffServRandomDropTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservrandomdropentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservrandomdropentry.len(); index++)
     {
         if(diffservrandomdropentry[index]->has_data())
             return true;
@@ -3895,9 +3958,9 @@ bool DIFFSERVMIB::Diffservrandomdroptable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservrandomdroptable::has_operation() const
+bool DIFFSERVMIB::DiffServRandomDropTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservrandomdropentry.size(); index++)
+    for (std::size_t index=0; index<diffservrandomdropentry.len(); index++)
     {
         if(diffservrandomdropentry[index]->has_operation())
             return true;
@@ -3905,21 +3968,21 @@ bool DIFFSERVMIB::Diffservrandomdroptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservrandomdroptable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServRandomDropTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservrandomdroptable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServRandomDropTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServRandomDropTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservrandomdroptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServRandomDropTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3928,25 +3991,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservrandomdropta
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservrandomdroptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServRandomDropTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServRandomDropEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry>();
         c->parent = this;
-        diffservrandomdropentry.push_back(c);
+        diffservrandomdropentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservrandomdroptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServRandomDropTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservrandomdropentry)
+    for (auto c : diffservrandomdropentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3957,22 +4020,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservrandomdropta
     return children;
 }
 
-void DIFFSERVMIB::Diffservrandomdroptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServRandomDropTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservrandomdroptable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServRandomDropTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservrandomdroptable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServRandomDropTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServRandomDropEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::Diffservrandomdropentry()
+DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::DiffServRandomDropEntry()
     :
     diffservrandomdropid{YType::uint32, "diffServRandomDropId"},
     diffservrandomdropminthreshbytes{YType::uint32, "diffServRandomDropMinThreshBytes"},
@@ -3986,15 +4049,16 @@ DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::Diffservrandomdro
     diffservrandomdropstatus{YType::enumeration, "diffServRandomDropStatus"}
 {
 
-    yang_name = "diffServRandomDropEntry"; yang_parent_name = "diffServRandomDropTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServRandomDropEntry"; yang_parent_name = "diffServRandomDropTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::~Diffservrandomdropentry()
+DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::~DiffServRandomDropEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::has_data() const
+bool DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservrandomdropid.is_set
 	|| diffservrandomdropminthreshbytes.is_set
 	|| diffservrandomdropminthreshpkts.is_set
@@ -4007,7 +4071,7 @@ bool DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::has_data() c
 	|| diffservrandomdropstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::has_operation() const
+bool DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservrandomdropid.yfilter)
@@ -4022,21 +4086,22 @@ bool DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::has_operatio
 	|| ydk::is_set(diffservrandomdropstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServRandomDropTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServRandomDropEntry" <<"[diffServRandomDropId='" <<diffservrandomdropid <<"']";
+    path_buffer << "diffServRandomDropEntry";
+    ADD_KEY_TOKEN(diffservrandomdropid, "diffServRandomDropId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4055,19 +4120,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservrandomdropta
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServRandomDropId")
     {
@@ -4131,7 +4196,7 @@ void DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::set_value(co
     }
 }
 
-void DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServRandomDropId")
     {
@@ -4175,26 +4240,29 @@ void DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::set_filter(c
     }
 }
 
-bool DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServRandomDropId" || name == "diffServRandomDropMinThreshBytes" || name == "diffServRandomDropMinThreshPkts" || name == "diffServRandomDropMaxThreshBytes" || name == "diffServRandomDropMaxThreshPkts" || name == "diffServRandomDropProbMax" || name == "diffServRandomDropWeight" || name == "diffServRandomDropSamplingRate" || name == "diffServRandomDropStorage" || name == "diffServRandomDropStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservqtable::Diffservqtable()
+DIFFSERVMIB::DiffServQTable::DiffServQTable()
+    :
+    diffservqentry(this, {"diffservqid"})
 {
 
-    yang_name = "diffServQTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServQTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservqtable::~Diffservqtable()
+DIFFSERVMIB::DiffServQTable::~DiffServQTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservqtable::has_data() const
+bool DIFFSERVMIB::DiffServQTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservqentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservqentry.len(); index++)
     {
         if(diffservqentry[index]->has_data())
             return true;
@@ -4202,9 +4270,9 @@ bool DIFFSERVMIB::Diffservqtable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservqtable::has_operation() const
+bool DIFFSERVMIB::DiffServQTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservqentry.size(); index++)
+    for (std::size_t index=0; index<diffservqentry.len(); index++)
     {
         if(diffservqentry[index]->has_operation())
             return true;
@@ -4212,21 +4280,21 @@ bool DIFFSERVMIB::Diffservqtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservqtable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServQTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservqtable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServQTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServQTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservqtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServQTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4235,25 +4303,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservqtable::get_
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservqtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServQTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServQEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservqtable::Diffservqentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServQTable::DiffServQEntry>();
         c->parent = this;
-        diffservqentry.push_back(c);
+        diffservqentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservqtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServQTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservqentry)
+    for (auto c : diffservqentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4264,22 +4332,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservqtable::get_
     return children;
 }
 
-void DIFFSERVMIB::Diffservqtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServQTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservqtable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServQTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservqtable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServQTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServQEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservqtable::Diffservqentry::Diffservqentry()
+DIFFSERVMIB::DiffServQTable::DiffServQEntry::DiffServQEntry()
     :
     diffservqid{YType::uint32, "diffServQId"},
     diffservqnext{YType::str, "diffServQNext"},
@@ -4289,15 +4357,16 @@ DIFFSERVMIB::Diffservqtable::Diffservqentry::Diffservqentry()
     diffservqstatus{YType::enumeration, "diffServQStatus"}
 {
 
-    yang_name = "diffServQEntry"; yang_parent_name = "diffServQTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServQEntry"; yang_parent_name = "diffServQTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservqtable::Diffservqentry::~Diffservqentry()
+DIFFSERVMIB::DiffServQTable::DiffServQEntry::~DiffServQEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservqtable::Diffservqentry::has_data() const
+bool DIFFSERVMIB::DiffServQTable::DiffServQEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservqid.is_set
 	|| diffservqnext.is_set
 	|| diffservqminrate.is_set
@@ -4306,7 +4375,7 @@ bool DIFFSERVMIB::Diffservqtable::Diffservqentry::has_data() const
 	|| diffservqstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservqtable::Diffservqentry::has_operation() const
+bool DIFFSERVMIB::DiffServQTable::DiffServQEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservqid.yfilter)
@@ -4317,21 +4386,22 @@ bool DIFFSERVMIB::Diffservqtable::Diffservqentry::has_operation() const
 	|| ydk::is_set(diffservqstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservqtable::Diffservqentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServQTable::DiffServQEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServQTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservqtable::Diffservqentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServQTable::DiffServQEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServQEntry" <<"[diffServQId='" <<diffservqid <<"']";
+    path_buffer << "diffServQEntry";
+    ADD_KEY_TOKEN(diffservqid, "diffServQId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservqtable::Diffservqentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServQTable::DiffServQEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4346,19 +4416,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservqtable::Diff
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservqtable::Diffservqentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServQTable::DiffServQEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservqtable::Diffservqentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServQTable::DiffServQEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservqtable::Diffservqentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServQTable::DiffServQEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServQId")
     {
@@ -4398,7 +4468,7 @@ void DIFFSERVMIB::Diffservqtable::Diffservqentry::set_value(const std::string & 
     }
 }
 
-void DIFFSERVMIB::Diffservqtable::Diffservqentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServQTable::DiffServQEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServQId")
     {
@@ -4426,26 +4496,29 @@ void DIFFSERVMIB::Diffservqtable::Diffservqentry::set_filter(const std::string &
     }
 }
 
-bool DIFFSERVMIB::Diffservqtable::Diffservqentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServQTable::DiffServQEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServQId" || name == "diffServQNext" || name == "diffServQMinRate" || name == "diffServQMaxRate" || name == "diffServQStorage" || name == "diffServQStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservschedulertable::Diffservschedulertable()
+DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerTable()
+    :
+    diffservschedulerentry(this, {"diffservschedulerid"})
 {
 
-    yang_name = "diffServSchedulerTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServSchedulerTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservschedulertable::~Diffservschedulertable()
+DIFFSERVMIB::DiffServSchedulerTable::~DiffServSchedulerTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservschedulertable::has_data() const
+bool DIFFSERVMIB::DiffServSchedulerTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservschedulerentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservschedulerentry.len(); index++)
     {
         if(diffservschedulerentry[index]->has_data())
             return true;
@@ -4453,9 +4526,9 @@ bool DIFFSERVMIB::Diffservschedulertable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservschedulertable::has_operation() const
+bool DIFFSERVMIB::DiffServSchedulerTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservschedulerentry.size(); index++)
+    for (std::size_t index=0; index<diffservschedulerentry.len(); index++)
     {
         if(diffservschedulerentry[index]->has_operation())
             return true;
@@ -4463,21 +4536,21 @@ bool DIFFSERVMIB::Diffservschedulertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservschedulertable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServSchedulerTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservschedulertable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServSchedulerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServSchedulerTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservschedulertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServSchedulerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4486,25 +4559,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservschedulertab
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservschedulertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServSchedulerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServSchedulerEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry>();
         c->parent = this;
-        diffservschedulerentry.push_back(c);
+        diffservschedulerentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservschedulertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServSchedulerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservschedulerentry)
+    for (auto c : diffservschedulerentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4515,22 +4588,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservschedulertab
     return children;
 }
 
-void DIFFSERVMIB::Diffservschedulertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServSchedulerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservschedulertable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServSchedulerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservschedulertable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServSchedulerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServSchedulerEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::Diffservschedulerentry()
+DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::DiffServSchedulerEntry()
     :
     diffservschedulerid{YType::uint32, "diffServSchedulerId"},
     diffservschedulernext{YType::str, "diffServSchedulerNext"},
@@ -4541,15 +4614,16 @@ DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::Diffservscheduleren
     diffservschedulerstatus{YType::enumeration, "diffServSchedulerStatus"}
 {
 
-    yang_name = "diffServSchedulerEntry"; yang_parent_name = "diffServSchedulerTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServSchedulerEntry"; yang_parent_name = "diffServSchedulerTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::~Diffservschedulerentry()
+DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::~DiffServSchedulerEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::has_data() const
+bool DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservschedulerid.is_set
 	|| diffservschedulernext.is_set
 	|| diffservschedulermethod.is_set
@@ -4559,7 +4633,7 @@ bool DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::has_data() con
 	|| diffservschedulerstatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::has_operation() const
+bool DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservschedulerid.yfilter)
@@ -4571,21 +4645,22 @@ bool DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::has_operation(
 	|| ydk::is_set(diffservschedulerstatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServSchedulerTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServSchedulerEntry" <<"[diffServSchedulerId='" <<diffservschedulerid <<"']";
+    path_buffer << "diffServSchedulerEntry";
+    ADD_KEY_TOKEN(diffservschedulerid, "diffServSchedulerId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4601,19 +4676,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservschedulertab
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServSchedulerId")
     {
@@ -4659,7 +4734,7 @@ void DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::set_value(cons
     }
 }
 
-void DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServSchedulerId")
     {
@@ -4691,26 +4766,29 @@ void DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::set_filter(con
     }
 }
 
-bool DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServSchedulerId" || name == "diffServSchedulerNext" || name == "diffServSchedulerMethod" || name == "diffServSchedulerMinRate" || name == "diffServSchedulerMaxRate" || name == "diffServSchedulerStorage" || name == "diffServSchedulerStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservminratetable::Diffservminratetable()
+DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateTable()
+    :
+    diffservminrateentry(this, {"diffservminrateid"})
 {
 
-    yang_name = "diffServMinRateTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMinRateTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservminratetable::~Diffservminratetable()
+DIFFSERVMIB::DiffServMinRateTable::~DiffServMinRateTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservminratetable::has_data() const
+bool DIFFSERVMIB::DiffServMinRateTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservminrateentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservminrateentry.len(); index++)
     {
         if(diffservminrateentry[index]->has_data())
             return true;
@@ -4718,9 +4796,9 @@ bool DIFFSERVMIB::Diffservminratetable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservminratetable::has_operation() const
+bool DIFFSERVMIB::DiffServMinRateTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservminrateentry.size(); index++)
+    for (std::size_t index=0; index<diffservminrateentry.len(); index++)
     {
         if(diffservminrateentry[index]->has_operation())
             return true;
@@ -4728,21 +4806,21 @@ bool DIFFSERVMIB::Diffservminratetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservminratetable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMinRateTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservminratetable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMinRateTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServMinRateTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservminratetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMinRateTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4751,25 +4829,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservminratetable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservminratetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMinRateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServMinRateEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservminratetable::Diffservminrateentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry>();
         c->parent = this;
-        diffservminrateentry.push_back(c);
+        diffservminrateentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservminratetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMinRateTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservminrateentry)
+    for (auto c : diffservminrateentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4780,22 +4858,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservminratetable
     return children;
 }
 
-void DIFFSERVMIB::Diffservminratetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMinRateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservminratetable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMinRateTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservminratetable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMinRateTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMinRateEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::Diffservminrateentry()
+DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::DiffServMinRateEntry()
     :
     diffservminrateid{YType::uint32, "diffServMinRateId"},
     diffservminratepriority{YType::uint32, "diffServMinRatePriority"},
@@ -4805,15 +4883,16 @@ DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::Diffservminrateentry()
     diffservminratestatus{YType::enumeration, "diffServMinRateStatus"}
 {
 
-    yang_name = "diffServMinRateEntry"; yang_parent_name = "diffServMinRateTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMinRateEntry"; yang_parent_name = "diffServMinRateTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::~Diffservminrateentry()
+DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::~DiffServMinRateEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::has_data() const
+bool DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservminrateid.is_set
 	|| diffservminratepriority.is_set
 	|| diffservminrateabsolute.is_set
@@ -4822,7 +4901,7 @@ bool DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::has_data() const
 	|| diffservminratestatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::has_operation() const
+bool DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservminrateid.yfilter)
@@ -4833,21 +4912,22 @@ bool DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::has_operation() co
 	|| ydk::is_set(diffservminratestatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServMinRateTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServMinRateEntry" <<"[diffServMinRateId='" <<diffservminrateid <<"']";
+    path_buffer << "diffServMinRateEntry";
+    ADD_KEY_TOKEN(diffservminrateid, "diffServMinRateId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4862,19 +4942,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservminratetable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServMinRateId")
     {
@@ -4914,7 +4994,7 @@ void DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::set_value(const st
     }
 }
 
-void DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServMinRateId")
     {
@@ -4942,26 +5022,29 @@ void DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::set_filter(const s
     }
 }
 
-bool DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMinRateId" || name == "diffServMinRatePriority" || name == "diffServMinRateAbsolute" || name == "diffServMinRateRelative" || name == "diffServMinRateStorage" || name == "diffServMinRateStatus")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservmaxratetable::Diffservmaxratetable()
+DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateTable()
+    :
+    diffservmaxrateentry(this, {"diffservmaxrateid", "diffservmaxratelevel"})
 {
 
-    yang_name = "diffServMaxRateTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMaxRateTable"; yang_parent_name = "DIFFSERV-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservmaxratetable::~Diffservmaxratetable()
+DIFFSERVMIB::DiffServMaxRateTable::~DiffServMaxRateTable()
 {
 }
 
-bool DIFFSERVMIB::Diffservmaxratetable::has_data() const
+bool DIFFSERVMIB::DiffServMaxRateTable::has_data() const
 {
-    for (std::size_t index=0; index<diffservmaxrateentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffservmaxrateentry.len(); index++)
     {
         if(diffservmaxrateentry[index]->has_data())
             return true;
@@ -4969,9 +5052,9 @@ bool DIFFSERVMIB::Diffservmaxratetable::has_data() const
     return false;
 }
 
-bool DIFFSERVMIB::Diffservmaxratetable::has_operation() const
+bool DIFFSERVMIB::DiffServMaxRateTable::has_operation() const
 {
-    for (std::size_t index=0; index<diffservmaxrateentry.size(); index++)
+    for (std::size_t index=0; index<diffservmaxrateentry.len(); index++)
     {
         if(diffservmaxrateentry[index]->has_operation())
             return true;
@@ -4979,21 +5062,21 @@ bool DIFFSERVMIB::Diffservmaxratetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservmaxratetable::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMaxRateTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservmaxratetable::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMaxRateTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "diffServMaxRateTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmaxratetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMaxRateTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5002,25 +5085,25 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmaxratetable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservmaxratetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMaxRateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffServMaxRateEntry")
     {
-        auto c = std::make_shared<DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry>();
+        auto c = std::make_shared<DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry>();
         c->parent = this;
-        diffservmaxrateentry.push_back(c);
+        diffservmaxrateentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmaxratetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMaxRateTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffservmaxrateentry)
+    for (auto c : diffservmaxrateentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5031,22 +5114,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmaxratetable
     return children;
 }
 
-void DIFFSERVMIB::Diffservmaxratetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMaxRateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIFFSERVMIB::Diffservmaxratetable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMaxRateTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIFFSERVMIB::Diffservmaxratetable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMaxRateTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMaxRateEntry")
         return true;
     return false;
 }
 
-DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::Diffservmaxrateentry()
+DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::DiffServMaxRateEntry()
     :
     diffservmaxrateid{YType::uint32, "diffServMaxRateId"},
     diffservmaxratelevel{YType::uint32, "diffServMaxRateLevel"},
@@ -5057,15 +5140,16 @@ DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::Diffservmaxrateentry()
     diffservmaxratestatus{YType::enumeration, "diffServMaxRateStatus"}
 {
 
-    yang_name = "diffServMaxRateEntry"; yang_parent_name = "diffServMaxRateTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffServMaxRateEntry"; yang_parent_name = "diffServMaxRateTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::~Diffservmaxrateentry()
+DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::~DiffServMaxRateEntry()
 {
 }
 
-bool DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::has_data() const
+bool DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservmaxrateid.is_set
 	|| diffservmaxratelevel.is_set
 	|| diffservmaxrateabsolute.is_set
@@ -5075,7 +5159,7 @@ bool DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::has_data() const
 	|| diffservmaxratestatus.is_set;
 }
 
-bool DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::has_operation() const
+bool DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(diffservmaxrateid.yfilter)
@@ -5087,21 +5171,23 @@ bool DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::has_operation() co
 	|| ydk::is_set(diffservmaxratestatus.yfilter);
 }
 
-std::string DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::get_absolute_path() const
+std::string DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIFFSERV-MIB:DIFFSERV-MIB/diffServMaxRateTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::get_segment_path() const
+std::string DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffServMaxRateEntry" <<"[diffServMaxRateId='" <<diffservmaxrateid <<"']" <<"[diffServMaxRateLevel='" <<diffservmaxratelevel <<"']";
+    path_buffer << "diffServMaxRateEntry";
+    ADD_KEY_TOKEN(diffservmaxrateid, "diffServMaxRateId");
+    ADD_KEY_TOKEN(diffservmaxratelevel, "diffServMaxRateLevel");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5117,19 +5203,19 @@ std::vector<std::pair<std::string, LeafData> > DIFFSERVMIB::Diffservmaxratetable
 
 }
 
-std::shared_ptr<Entity> DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "diffServMaxRateId")
     {
@@ -5175,7 +5261,7 @@ void DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::set_value(const st
     }
 }
 
-void DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "diffServMaxRateId")
     {
@@ -5207,7 +5293,7 @@ void DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::set_filter(const s
     }
 }
 
-bool DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "diffServMaxRateId" || name == "diffServMaxRateLevel" || name == "diffServMaxRateAbsolute" || name == "diffServMaxRateRelative" || name == "diffServMaxRateThreshold" || name == "diffServMaxRateStorage" || name == "diffServMaxRateStatus")
         return true;
@@ -5217,11 +5303,11 @@ bool DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::has_leaf_or_child_
 const Enum::YLeaf IfDirection::inbound {1, "inbound"};
 const Enum::YLeaf IfDirection::outbound {2, "outbound"};
 
-const Enum::YLeaf DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdroptype::other {1, "other"};
-const Enum::YLeaf DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdroptype::tailDrop {2, "tailDrop"};
-const Enum::YLeaf DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdroptype::headDrop {3, "headDrop"};
-const Enum::YLeaf DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdroptype::randomDrop {4, "randomDrop"};
-const Enum::YLeaf DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdroptype::alwaysDrop {5, "alwaysDrop"};
+const Enum::YLeaf DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType::other {1, "other"};
+const Enum::YLeaf DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType::tailDrop {2, "tailDrop"};
+const Enum::YLeaf DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType::headDrop {3, "headDrop"};
+const Enum::YLeaf DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType::randomDrop {4, "randomDrop"};
+const Enum::YLeaf DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType::alwaysDrop {5, "alwaysDrop"};
 
 
 }

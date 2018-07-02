@@ -57,7 +57,7 @@ class MemorySummary::Nodes : public ydk::Entity
 
         class Node; //type: MemorySummary::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_nto_misc_shmem_oper::MemorySummary::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // MemorySummary::Nodes
 
@@ -151,10 +151,9 @@ class MemorySummary::Nodes::Node::Detail : public ydk::Entity
         ydk::YLeaf program_text; //type: uint64
         ydk::YLeaf program_data; //type: uint64
         ydk::YLeaf program_stack; //type: uint64
-        ydk::YLeaf total_used; //type: uint64
         class SharedWindow; //type: MemorySummary::Nodes::Node::Detail::SharedWindow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_nto_misc_shmem_oper::MemorySummary::Nodes::Node::Detail::SharedWindow> > shared_window;
+        ydk::YList shared_window;
         
 }; // MemorySummary::Nodes::Node::Detail
 

@@ -63,7 +63,7 @@ class RoutingPolicy::RoutePolicies : public ydk::Entity
 
         class RoutePolicy; //type: RoutingPolicy::RoutePolicies::RoutePolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::RoutePolicies::RoutePolicy> > route_policy;
+        ydk::YList route_policy;
         
 }; // RoutingPolicy::RoutePolicies
 
@@ -166,7 +166,7 @@ class RoutingPolicy::Sets::PrefixSets : public ydk::Entity
 
         class PrefixSet; //type: RoutingPolicy::Sets::PrefixSets::PrefixSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::PrefixSets::PrefixSet> > prefix_set;
+        ydk::YList prefix_set;
         
 }; // RoutingPolicy::Sets::PrefixSets
 
@@ -213,7 +213,7 @@ class RoutingPolicy::Sets::LargeCommunitySets : public ydk::Entity
 
         class LargeCommunitySet; //type: RoutingPolicy::Sets::LargeCommunitySets::LargeCommunitySet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::LargeCommunitySets::LargeCommunitySet> > large_community_set;
+        ydk::YList large_community_set;
         
 }; // RoutingPolicy::Sets::LargeCommunitySets
 
@@ -260,7 +260,7 @@ class RoutingPolicy::Sets::MacSets : public ydk::Entity
 
         class MacSet; //type: RoutingPolicy::Sets::MacSets::MacSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::MacSets::MacSet> > mac_set;
+        ydk::YList mac_set;
         
 }; // RoutingPolicy::Sets::MacSets
 
@@ -307,7 +307,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaqueSets : public ydk::Entity
 
         class ExtendedCommunityOpaqueSet; //type: RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet> > extended_community_opaque_set;
+        ydk::YList extended_community_opaque_set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaqueSets
 
@@ -354,7 +354,7 @@ class RoutingPolicy::Sets::OspfAreaSets : public ydk::Entity
 
         class OspfAreaSet; //type: RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet> > ospf_area_set;
+        ydk::YList ospf_area_set;
         
 }; // RoutingPolicy::Sets::OspfAreaSets
 
@@ -401,7 +401,7 @@ class RoutingPolicy::Sets::ExtendedCommunityCostSets : public ydk::Entity
 
         class ExtendedCommunityCostSet; //type: RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet> > extended_community_cost_set;
+        ydk::YList extended_community_cost_set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityCostSets
 
@@ -448,7 +448,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySooSets : public ydk::Entity
 
         class ExtendedCommunitySooSet; //type: RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet> > extended_community_soo_set;
+        ydk::YList extended_community_soo_set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySooSets
 
@@ -495,7 +495,7 @@ class RoutingPolicy::Sets::EsiSets : public ydk::Entity
 
         class EsiSet; //type: RoutingPolicy::Sets::EsiSets::EsiSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::EsiSets::EsiSet> > esi_set;
+        ydk::YList esi_set;
         
 }; // RoutingPolicy::Sets::EsiSets
 
@@ -542,7 +542,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNhSets : public ydk::Entity
 
         class ExtendedCommunitySegNhSet; //type: RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet> > extended_community_seg_nh_set;
+        ydk::YList extended_community_seg_nh_set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNhSets
 
@@ -589,7 +589,7 @@ class RoutingPolicy::Sets::RdSets : public ydk::Entity
 
         class RdSet; //type: RoutingPolicy::Sets::RdSets::RdSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::RdSets::RdSet> > rd_set;
+        ydk::YList rd_set;
         
 }; // RoutingPolicy::Sets::RdSets
 
@@ -658,7 +658,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidthSets : public ydk::Entity
 
         class ExtendedCommunityBandwidthSet; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet> > extended_community_bandwidth_set;
+        ydk::YList extended_community_bandwidth_set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidthSets
 
@@ -705,7 +705,7 @@ class RoutingPolicy::Sets::CommunitySets : public ydk::Entity
 
         class CommunitySet; //type: RoutingPolicy::Sets::CommunitySets::CommunitySet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::CommunitySets::CommunitySet> > community_set;
+        ydk::YList community_set;
         
 }; // RoutingPolicy::Sets::CommunitySets
 
@@ -752,7 +752,7 @@ class RoutingPolicy::Sets::AsPathSets : public ydk::Entity
 
         class AsPathSet; //type: RoutingPolicy::Sets::AsPathSets::AsPathSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::AsPathSets::AsPathSet> > as_path_set;
+        ydk::YList as_path_set;
         
 }; // RoutingPolicy::Sets::AsPathSets
 
@@ -799,7 +799,7 @@ class RoutingPolicy::Sets::TagSets : public ydk::Entity
 
         class TagSet; //type: RoutingPolicy::Sets::TagSets::TagSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::TagSets::TagSet> > tag_set;
+        ydk::YList tag_set;
         
 }; // RoutingPolicy::Sets::TagSets
 
@@ -846,7 +846,7 @@ class RoutingPolicy::Sets::EtagSets : public ydk::Entity
 
         class EtagSet; //type: RoutingPolicy::Sets::EtagSets::EtagSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::EtagSets::EtagSet> > etag_set;
+        ydk::YList etag_set;
         
 }; // RoutingPolicy::Sets::EtagSets
 
@@ -893,7 +893,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRtSets : public ydk::Entity
 
         class ExtendedCommunityRtSet; //type: RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_cfg::RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet> > extended_community_rt_set;
+        ydk::YList extended_community_rt_set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityRtSets
 
@@ -938,8 +938,8 @@ class RoutingPolicy::Limits : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf maximum_lines_of_policy; //type: int32
-        ydk::YLeaf maximum_number_of_policies; //type: int32
+        ydk::YLeaf maximum_lines_of_policy; //type: uint32
+        ydk::YLeaf maximum_number_of_policies; //type: uint32
 
 }; // RoutingPolicy::Limits
 

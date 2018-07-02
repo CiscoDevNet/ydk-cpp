@@ -13,11 +13,11 @@ namespace CISCO_POWER_ETHERNET_EXT_MIB {
 
 CISCOPOWERETHERNETEXTMIB::CISCOPOWERETHERNETEXTMIB()
     :
-    cpeextmibobjects(std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects>())
-	,cpeextpdstatistics(std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics>())
-	,cpeextmainpsetable(std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable>())
-	,cpeextpdstatstable(std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable>())
-	,cpeextpseportlldptable(std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable>())
+    cpeextmibobjects(std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects>())
+    , cpeextpdstatistics(std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics>())
+    , cpeextmainpsetable(std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable>())
+    , cpeextpdstatstable(std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable>())
+    , cpeextpseportlldptable(std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable>())
 {
     cpeextmibobjects->parent = this;
     cpeextpdstatistics->parent = this;
@@ -25,7 +25,7 @@ CISCOPOWERETHERNETEXTMIB::CISCOPOWERETHERNETEXTMIB()
     cpeextpdstatstable->parent = this;
     cpeextpseportlldptable->parent = this;
 
-    yang_name = "CISCO-POWER-ETHERNET-EXT-MIB"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-POWER-ETHERNET-EXT-MIB"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOPOWERETHERNETEXTMIB::~CISCOPOWERETHERNETEXTMIB()
@@ -34,6 +34,7 @@ CISCOPOWERETHERNETEXTMIB::~CISCOPOWERETHERNETEXTMIB()
 
 bool CISCOPOWERETHERNETEXTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cpeextmibobjects !=  nullptr && cpeextmibobjects->has_data())
 	|| (cpeextpdstatistics !=  nullptr && cpeextpdstatistics->has_data())
 	|| (cpeextmainpsetable !=  nullptr && cpeextmainpsetable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::s
     {
         if(cpeextmibobjects == nullptr)
         {
-            cpeextmibobjects = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects>();
+            cpeextmibobjects = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects>();
         }
         return cpeextmibobjects;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::s
     {
         if(cpeextpdstatistics == nullptr)
         {
-            cpeextpdstatistics = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics>();
+            cpeextpdstatistics = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics>();
         }
         return cpeextpdstatistics;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::s
     {
         if(cpeextmainpsetable == nullptr)
         {
-            cpeextmainpsetable = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable>();
+            cpeextmainpsetable = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable>();
         }
         return cpeextmainpsetable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::s
     {
         if(cpeextpdstatstable == nullptr)
         {
-            cpeextpdstatstable = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable>();
+            cpeextpdstatstable = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable>();
         }
         return cpeextpdstatstable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::s
     {
         if(cpeextpseportlldptable == nullptr)
         {
-            cpeextpseportlldptable = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable>();
+            cpeextpseportlldptable = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable>();
         }
         return cpeextpseportlldptable;
     }
@@ -189,28 +190,29 @@ bool CISCOPOWERETHERNETEXTMIB::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::Cpeextmibobjects()
+CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::CpeExtMIBObjects()
     :
     cpeextdefaultallocation{YType::uint32, "cpeExtDefaultAllocation"},
     cpeextpolicingnotifenable{YType::boolean, "cpeExtPolicingNotifEnable"},
     cpeextpowerpriorityenable{YType::boolean, "cpeExtPowerPriorityEnable"}
 {
 
-    yang_name = "cpeExtMIBObjects"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtMIBObjects"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::~Cpeextmibobjects()
+CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::~CpeExtMIBObjects()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return cpeextdefaultallocation.is_set
 	|| cpeextpolicingnotifenable.is_set
 	|| cpeextpowerpriorityenable.is_set;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpeextdefaultallocation.yfilter)
@@ -218,21 +220,21 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::has_operation() const
 	|| ydk::is_set(cpeextpowerpriorityenable.yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpeExtMIBObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -244,19 +246,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextm
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpeExtDefaultAllocation")
     {
@@ -278,7 +280,7 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::set_value(const std::string & v
     }
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpeExtDefaultAllocation")
     {
@@ -294,51 +296,52 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::set_filter(const std::string & 
     }
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpeExtDefaultAllocation" || name == "cpeExtPolicingNotifEnable" || name == "cpeExtPowerPriorityEnable")
         return true;
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::Cpeextpdstatistics()
+CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::CpeExtPdStatistics()
     :
     cpeextpdstatstotaldevices{YType::uint32, "cpeExtPdStatsTotalDevices"}
 {
 
-    yang_name = "cpeExtPdStatistics"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtPdStatistics"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::~Cpeextpdstatistics()
+CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::~CpeExtPdStatistics()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return cpeextpdstatstotaldevices.is_set;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpeextpdstatstotaldevices.yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpeExtPdStatistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -348,19 +351,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextp
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpeExtPdStatsTotalDevices")
     {
@@ -370,7 +373,7 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::set_value(const std::string &
     }
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpeExtPdStatsTotalDevices")
     {
@@ -378,26 +381,29 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::set_filter(const std::string 
     }
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpeExtPdStatsTotalDevices")
         return true;
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpsetable()
+CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseTable()
+    :
+    cpeextmainpseentry(this, {"pethmainpsegroupindex"})
 {
 
-    yang_name = "cpeExtMainPseTable"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtMainPseTable"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::~Cpeextmainpsetable()
+CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::~CpeExtMainPseTable()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::has_data() const
 {
-    for (std::size_t index=0; index<cpeextmainpseentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpeextmainpseentry.len(); index++)
     {
         if(cpeextmainpseentry[index]->has_data())
             return true;
@@ -405,9 +411,9 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::has_data() const
     return false;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpeextmainpseentry.size(); index++)
+    for (std::size_t index=0; index<cpeextmainpseentry.len(); index++)
     {
         if(cpeextmainpseentry[index]->has_operation())
             return true;
@@ -415,21 +421,21 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpeExtMainPseTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -438,25 +444,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextm
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpeExtMainPseEntry")
     {
-        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry>();
+        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry>();
         c->parent = this;
-        cpeextmainpseentry.push_back(c);
+        cpeextmainpseentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpeextmainpseentry)
+    for (auto c : cpeextmainpseentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -467,22 +473,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextm
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpeExtMainPseEntry")
         return true;
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::Cpeextmainpseentry()
+CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::CpeExtMainPseEntry()
     :
     pethmainpsegroupindex{YType::str, "pethMainPseGroupIndex"},
     cpeextmainpseentphyindex{YType::int32, "cpeExtMainPseEntPhyIndex"},
@@ -492,15 +498,16 @@ CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::Cpeextmainpsee
     cpeextmainpseremainingpower{YType::uint32, "cpeExtMainPseRemainingPower"}
 {
 
-    yang_name = "cpeExtMainPseEntry"; yang_parent_name = "cpeExtMainPseTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtMainPseEntry"; yang_parent_name = "cpeExtMainPseTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::~Cpeextmainpseentry()
+CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::~CpeExtMainPseEntry()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pethmainpsegroupindex.is_set
 	|| cpeextmainpseentphyindex.is_set
 	|| cpeextmainpsedescr.is_set
@@ -509,7 +516,7 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::has_data(
 	|| cpeextmainpseremainingpower.is_set;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pethmainpsegroupindex.yfilter)
@@ -520,21 +527,22 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::has_opera
 	|| ydk::is_set(cpeextmainpseremainingpower.yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/cpeExtMainPseTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpeExtMainPseEntry" <<"[pethMainPseGroupIndex='" <<pethmainpsegroupindex <<"']";
+    path_buffer << "cpeExtMainPseEntry";
+    ADD_KEY_TOKEN(pethmainpsegroupindex, "pethMainPseGroupIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -549,19 +557,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextm
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pethMainPseGroupIndex")
     {
@@ -601,7 +609,7 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::set_value
     }
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pethMainPseGroupIndex")
     {
@@ -629,26 +637,29 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::set_filte
     }
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethMainPseGroupIndex" || name == "cpeExtMainPseEntPhyIndex" || name == "cpeExtMainPseDescr" || name == "cpeExtMainPsePwrMonitorCapable" || name == "cpeExtMainPseUsedPower" || name == "cpeExtMainPseRemainingPower")
         return true;
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatstable()
+CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsTable()
+    :
+    cpeextpdstatsentry(this, {"cpeextpdstatsclass"})
 {
 
-    yang_name = "cpeExtPdStatsTable"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtPdStatsTable"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::~Cpeextpdstatstable()
+CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::~CpeExtPdStatsTable()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cpeextpdstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpeextpdstatsentry.len(); index++)
     {
         if(cpeextpdstatsentry[index]->has_data())
             return true;
@@ -656,9 +667,9 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::has_data() const
     return false;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpeextpdstatsentry.size(); index++)
+    for (std::size_t index=0; index<cpeextpdstatsentry.len(); index++)
     {
         if(cpeextpdstatsentry[index]->has_operation())
             return true;
@@ -666,21 +677,21 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpeExtPdStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -689,25 +700,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextp
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpeExtPdStatsEntry")
     {
-        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry>();
+        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry>();
         c->parent = this;
-        cpeextpdstatsentry.push_back(c);
+        cpeextpdstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpeextpdstatsentry)
+    for (auto c : cpeextpdstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -718,62 +729,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextp
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpeExtPdStatsEntry")
         return true;
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsentry()
+CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsEntry()
     :
     cpeextpdstatsclass{YType::enumeration, "cpeExtPdStatsClass"},
     cpeextpdstatsdevicecount{YType::uint32, "cpeExtPdStatsDeviceCount"}
 {
 
-    yang_name = "cpeExtPdStatsEntry"; yang_parent_name = "cpeExtPdStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtPdStatsEntry"; yang_parent_name = "cpeExtPdStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::~Cpeextpdstatsentry()
+CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::~CpeExtPdStatsEntry()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cpeextpdstatsclass.is_set
 	|| cpeextpdstatsdevicecount.is_set;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cpeextpdstatsclass.yfilter)
 	|| ydk::is_set(cpeextpdstatsdevicecount.yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/cpeExtPdStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpeExtPdStatsEntry" <<"[cpeExtPdStatsClass='" <<cpeextpdstatsclass <<"']";
+    path_buffer << "cpeExtPdStatsEntry";
+    ADD_KEY_TOKEN(cpeextpdstatsclass, "cpeExtPdStatsClass");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -784,19 +797,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextp
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cpeExtPdStatsClass")
     {
@@ -812,7 +825,7 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::set_value
     }
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cpeExtPdStatsClass")
     {
@@ -824,26 +837,29 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::set_filte
     }
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpeExtPdStatsClass" || name == "cpeExtPdStatsDeviceCount")
         return true;
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldptable()
+CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpTable()
+    :
+    cpeextpseportlldpentry(this, {"pethpseportgroupindex", "pethpseportindex"})
 {
 
-    yang_name = "cpeExtPsePortLldpTable"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtPsePortLldpTable"; yang_parent_name = "CISCO-POWER-ETHERNET-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::~Cpeextpseportlldptable()
+CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::~CpeExtPsePortLldpTable()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::has_data() const
 {
-    for (std::size_t index=0; index<cpeextpseportlldpentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpeextpseportlldpentry.len(); index++)
     {
         if(cpeextpseportlldpentry[index]->has_data())
             return true;
@@ -851,9 +867,9 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::has_data() const
     return false;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::has_operation() const
 {
-    for (std::size_t index=0; index<cpeextpseportlldpentry.size(); index++)
+    for (std::size_t index=0; index<cpeextpseportlldpentry.len(); index++)
     {
         if(cpeextpseportlldpentry[index]->has_operation())
             return true;
@@ -861,21 +877,21 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cpeExtPsePortLldpTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -884,25 +900,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextp
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpeExtPsePortLldpEntry")
     {
-        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry>();
+        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry>();
         c->parent = this;
-        cpeextpseportlldpentry.push_back(c);
+        cpeextpseportlldpentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpeextpseportlldpentry)
+    for (auto c : cpeextpseportlldpentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -913,22 +929,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextp
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cpeExtPsePortLldpEntry")
         return true;
     return false;
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::Cpeextpseportlldpentry()
+CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::CpeExtPsePortLldpEntry()
     :
     pethpseportgroupindex{YType::str, "pethPsePortGroupIndex"},
     pethpseportindex{YType::str, "pethPsePortIndex"},
@@ -944,15 +960,16 @@ CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::Cpeext
     cpeextpseportlldppdpwralloc{YType::uint32, "cpeExtPsePortLldpPdPwrAlloc"}
 {
 
-    yang_name = "cpeExtPsePortLldpEntry"; yang_parent_name = "cpeExtPsePortLldpTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpeExtPsePortLldpEntry"; yang_parent_name = "cpeExtPsePortLldpTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::~Cpeextpseportlldpentry()
+CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::~CpeExtPsePortLldpEntry()
 {
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::has_data() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return pethpseportgroupindex.is_set
 	|| pethpseportindex.is_set
 	|| cpeextpseportlldppwrtype.is_set
@@ -967,7 +984,7 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::h
 	|| cpeextpseportlldppdpwralloc.is_set;
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::has_operation() const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pethpseportgroupindex.yfilter)
@@ -984,21 +1001,23 @@ bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::h
 	|| ydk::is_set(cpeextpseportlldppdpwralloc.yfilter);
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::get_absolute_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-POWER-ETHERNET-EXT-MIB:CISCO-POWER-ETHERNET-EXT-MIB/cpeExtPsePortLldpTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::get_segment_path() const
+std::string CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpeExtPsePortLldpEntry" <<"[pethPsePortGroupIndex='" <<pethpseportgroupindex <<"']" <<"[pethPsePortIndex='" <<pethpseportindex <<"']";
+    path_buffer << "cpeExtPsePortLldpEntry";
+    ADD_KEY_TOKEN(pethpseportgroupindex, "pethPsePortGroupIndex");
+    ADD_KEY_TOKEN(pethpseportindex, "pethPsePortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1019,19 +1038,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::Cpeextp
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pethPsePortGroupIndex")
     {
@@ -1107,7 +1126,7 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::s
     }
 }
 
-void CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pethPsePortGroupIndex")
     {
@@ -1159,7 +1178,7 @@ void CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::s
     }
 }
 
-bool CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pethPsePortGroupIndex" || name == "pethPsePortIndex" || name == "cpeExtPsePortLldpPwrType" || name == "cpeExtPsePortLldpPdPwrType" || name == "cpeExtPsePortLldpPwrSrc" || name == "cpeExtPsePortLldpPdPwrSrc" || name == "cpeExtPsePortLldpPwrPriority" || name == "cpeExtPsePortLldpPdPwrPriority" || name == "cpeExtPsePortLldpPwrReq" || name == "cpeExtPsePortLldpPdPwrReq" || name == "cpeExtPsePortLldpPwrAlloc" || name == "cpeExtPsePortLldpPdPwrAlloc")
         return true;
@@ -1183,12 +1202,12 @@ const Enum::YLeaf CpeExtPwrPriority::high {2, "high"};
 const Enum::YLeaf CpeExtPwrPriority::low {3, "low"};
 const Enum::YLeaf CpeExtPwrPriority::unknown {4, "unknown"};
 
-const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsclass::cisco {1, "cisco"};
-const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsclass::class0 {2, "class0"};
-const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsclass::class1 {3, "class1"};
-const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsclass::class2 {4, "class2"};
-const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsclass::class3 {5, "class3"};
-const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsclass::class4 {6, "class4"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::cisco {1, "cisco"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class0 {2, "class0"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class1 {3, "class1"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class2 {4, "class2"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class3 {5, "class3"};
+const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class4 {6, "class4"};
 
 
 }

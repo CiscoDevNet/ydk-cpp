@@ -57,7 +57,7 @@ class Ppp::Nodes : public ydk::Entity
 
         class Node; //type: Ppp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ppp::Nodes
 
@@ -121,7 +121,7 @@ class Ppp::Nodes::Node::Statistics : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::LcpStatistics> lcp_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::AuthenticationStatistics> authentication_statistics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Statistics::NcpStatisticsArray> > ncp_statistics_array;
+        ydk::YList ncp_statistics_array;
         
 }; // Ppp::Nodes::Node::Statistics
 
@@ -258,7 +258,7 @@ class Ppp::Nodes::Node::NodeInterfaces : public ydk::Entity
 
         class NodeInterface; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface> > node_interface;
+        ydk::YList node_interface;
         
 }; // Ppp::Nodes::Node::NodeInterfaces
 
@@ -315,7 +315,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo> mp_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout> configured_timeout;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo> auth_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray> > ncp_info_array;
+        ydk::YList ncp_info_array;
         
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface
 
@@ -346,7 +346,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo : public ydk::Enti
         ydk::YLeaf mp_state; //type: PppLcpMpMbrState
         class MpMemberInfoArray; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray> > mp_member_info_array;
+        ydk::YList mp_member_info_array;
         
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo
 
@@ -469,11 +469,11 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo : p
         ydk::YLeaf type; //type: NcpIdent
         class IpcpInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo
         class IpcpiwInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo
-        class Ipv6CpInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo
+        class Ipv6cpInfo; //type: Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo> ipcp_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo> ipcpiw_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo> ipv6cp_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo> ipv6cp_info;
         
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo
 
@@ -589,11 +589,11 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
 }; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo
 
 
-class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo : public ydk::Entity
+class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo : public ydk::Entity
 {
     public:
-        Ipv6CpInfo();
-        ~Ipv6CpInfo();
+        Ipv6cpInfo();
+        ~Ipv6cpInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -608,7 +608,7 @@ class Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ip
         ydk::YLeaf local_address; //type: string
         ydk::YLeaf peer_address; //type: string
 
-}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo
+}; // Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6cpInfo
 
 
 class Ppp::Nodes::Node::SsoAlerts : public ydk::Entity
@@ -629,7 +629,7 @@ class Ppp::Nodes::Node::SsoAlerts : public ydk::Entity
 
         class SsoAlert; //type: Ppp::Nodes::Node::SsoAlerts::SsoAlert
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoAlerts::SsoAlert> > sso_alert;
+        ydk::YList sso_alert;
         
 }; // Ppp::Nodes::Node::SsoAlerts
 
@@ -774,7 +774,7 @@ class Ppp::Nodes::Node::NodeInterfaceStatistics : public ydk::Entity
 
         class NodeInterfaceStatistic; //type: Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic> > node_interface_statistic;
+        ydk::YList node_interface_statistic;
         
 }; // Ppp::Nodes::Node::NodeInterfaceStatistics
 
@@ -802,7 +802,7 @@ class Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic : public
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics> lcp_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics> authentication_statistics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray> > ncp_statistics_array;
+        ydk::YList ncp_statistics_array;
         
 }; // Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic
 
@@ -1042,7 +1042,7 @@ class Ppp::Nodes::Node::SsoGroups : public ydk::Entity
 
         class SsoGroup; //type: Ppp::Nodes::Node::SsoGroups::SsoGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup> > sso_group;
+        ydk::YList sso_group;
         
 }; // Ppp::Nodes::Node::SsoGroups
 
@@ -1089,7 +1089,7 @@ class Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates : public ydk::Entity
 
         class SsoState; //type: Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState> > sso_state;
+        ydk::YList sso_state;
         
 }; // Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates
 
@@ -1288,7 +1288,7 @@ class Ppp::Nodes::Node::Summary::FsmStates : public ydk::Entity
         class NcpfsmStatesArray; //type: Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates> lcpfsm_states;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_oper::Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray> > ncpfsm_states_array;
+        ydk::YList ncpfsm_states_array;
         
 }; // Ppp::Nodes::Node::Summary::FsmStates
 
@@ -1363,6 +1363,32 @@ class Ppp::Nodes::Node::Summary::LcpAuthPhases : public ydk::Entity
 
 }; // Ppp::Nodes::Node::Summary::LcpAuthPhases
 
+class NcpIdent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdpcp;
+        static const ydk::Enum::YLeaf ipcp;
+        static const ydk::Enum::YLeaf ipcpiw;
+        static const ydk::Enum::YLeaf ipv6cp;
+        static const ydk::Enum::YLeaf mplscp;
+        static const ydk::Enum::YLeaf osicp;
+
+};
+
+class PppSsoFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_sso_state_not_ready_0;
+        static const ydk::Enum::YLeaf ppp_sso_state_standby_unnegd_1;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_down_2;
+        static const ydk::Enum::YLeaf ppp_sso_state_deactivating_3;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_unnegd_4;
+        static const ydk::Enum::YLeaf ppp_sso_state_standby_negd_5;
+        static const ydk::Enum::YLeaf ppp_sso_state_activating_6;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_negd_7;
+
+};
+
 class PppIphcCompression : public ydk::Enum
 {
     public:
@@ -1371,6 +1397,22 @@ class PppIphcCompression : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_ietf;
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_iphc;
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_cisco;
+
+};
+
+class PppFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
+        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
+        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
+        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
 
 };
 
@@ -1391,48 +1433,6 @@ class PppLcpMpMbrState : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_mcmp_peer_mismatch;
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_standby_up;
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_active;
-
-};
-
-class PppSsoFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_sso_state_not_ready_0;
-        static const ydk::Enum::YLeaf ppp_sso_state_standby_unnegd_1;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_down_2;
-        static const ydk::Enum::YLeaf ppp_sso_state_deactivating_3;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_unnegd_4;
-        static const ydk::Enum::YLeaf ppp_sso_state_standby_negd_5;
-        static const ydk::Enum::YLeaf ppp_sso_state_activating_6;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_negd_7;
-
-};
-
-class PppFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
-        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
-        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
-        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
-
-};
-
-class NcpIdent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdpcp;
-        static const ydk::Enum::YLeaf ipcp;
-        static const ydk::Enum::YLeaf ipcpiw;
-        static const ydk::Enum::YLeaf ipv6cp;
-        static const ydk::Enum::YLeaf mplscp;
-        static const ydk::Enum::YLeaf osicp;
 
 };
 

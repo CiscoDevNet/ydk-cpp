@@ -32,20 +32,20 @@ class CISCOFTPCLIENTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cfcrequest; //type: CISCOFTPCLIENTMIB::Cfcrequest
-        class Cfcrequesttable; //type: CISCOFTPCLIENTMIB::Cfcrequesttable
+        class CfcRequest; //type: CISCOFTPCLIENTMIB::CfcRequest
+        class CfcRequestTable; //type: CISCOFTPCLIENTMIB::CfcRequestTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::Cfcrequest> cfcrequest;
-        std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::Cfcrequesttable> cfcrequesttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::CfcRequest> cfcrequest;
+        std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::CfcRequestTable> cfcrequesttable;
         
 }; // CISCOFTPCLIENTMIB
 
 
-class CISCOFTPCLIENTMIB::Cfcrequest : public ydk::Entity
+class CISCOFTPCLIENTMIB::CfcRequest : public ydk::Entity
 {
     public:
-        Cfcrequest();
-        ~Cfcrequest();
+        CfcRequest();
+        ~CfcRequest();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -63,14 +63,14 @@ class CISCOFTPCLIENTMIB::Cfcrequest : public ydk::Entity
         ydk::YLeaf cfcrequestshigh; //type: uint32
         ydk::YLeaf cfcrequestsbumped; //type: uint32
 
-}; // CISCOFTPCLIENTMIB::Cfcrequest
+}; // CISCOFTPCLIENTMIB::CfcRequest
 
 
-class CISCOFTPCLIENTMIB::Cfcrequesttable : public ydk::Entity
+class CISCOFTPCLIENTMIB::CfcRequestTable : public ydk::Entity
 {
     public:
-        Cfcrequesttable();
-        ~Cfcrequesttable();
+        CfcRequestTable();
+        ~CfcRequestTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -83,18 +83,18 @@ class CISCOFTPCLIENTMIB::Cfcrequesttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cfcrequestentry; //type: CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry
+        class CfcRequestEntry; //type: CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FTP_CLIENT_MIB::CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry> > cfcrequestentry;
+        ydk::YList cfcrequestentry;
         
-}; // CISCOFTPCLIENTMIB::Cfcrequesttable
+}; // CISCOFTPCLIENTMIB::CfcRequestTable
 
 
-class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry : public ydk::Entity
+class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry : public ydk::Entity
 {
     public:
-        Cfcrequestentry();
-        ~Cfcrequestentry();
+        CfcRequestEntry();
+        ~CfcRequestEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -108,25 +108,25 @@ class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cfcrequestindex; //type: uint32
-        ydk::YLeaf cfcrequestoperation; //type: Cfcrequestoperation
+        ydk::YLeaf cfcrequestoperation; //type: CfcRequestOperation
         ydk::YLeaf cfcrequestlocalfile; //type: string
         ydk::YLeaf cfcrequestremotefile; //type: string
         ydk::YLeaf cfcrequestserver; //type: string
         ydk::YLeaf cfcrequestuser; //type: string
         ydk::YLeaf cfcrequestpassword; //type: string
-        ydk::YLeaf cfcrequestresult; //type: Cfcrequestresult
+        ydk::YLeaf cfcrequestresult; //type: CfcRequestResult
         ydk::YLeaf cfcrequestcompletiontime; //type: uint32
-        ydk::YLeaf cfcrequeststop; //type: Cfcrequeststop
-        ydk::YLeaf cfcrequestoperationstate; //type: Cfcrequestoperationstate
+        ydk::YLeaf cfcrequeststop; //type: CfcRequestStop
+        ydk::YLeaf cfcrequestoperationstate; //type: CfcRequestOperationState
         ydk::YLeaf cfcrequestentrystatus; //type: RowStatus
-        class Cfcrequestoperation;
-        class Cfcrequestresult;
-        class Cfcrequeststop;
-        class Cfcrequestoperationstate;
+        class CfcRequestOperation;
+        class CfcRequestResult;
+        class CfcRequestStop;
+        class CfcRequestOperationState;
 
-}; // CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry
+}; // CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry
 
-class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation : public ydk::Enum
+class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf putBinary;
@@ -134,7 +134,7 @@ class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation :
 
 };
 
-class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult : public ydk::Enum
+class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pending;
@@ -150,7 +150,7 @@ class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult : pu
 
 };
 
-class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop : public ydk::Enum
+class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestStop : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ready;
@@ -158,7 +158,7 @@ class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop : publ
 
 };
 
-class CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate : public ydk::Enum
+class CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperationState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf running;

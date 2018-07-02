@@ -14,7 +14,7 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_bfd_oper {
 
 
-class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
 {
     public:
         LspPingTxLastTime();
@@ -34,10 +34,10 @@ class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ls
         ydk::YLeaf seconds; //type: uint64
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime
+}; // Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime
 
 
-class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
 {
     public:
         LspPingTxLastErrorTime();
@@ -57,10 +57,10 @@ class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ls
         ydk::YLeaf seconds; //type: uint64
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime
+}; // Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
 
-class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
 {
     public:
         LspPingRxLastTime();
@@ -80,10 +80,10 @@ class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ls
         ydk::YLeaf seconds; //type: uint64
         ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime
+}; // Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime
 
 
-class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -106,10 +106,10 @@ class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ow
         ydk::YLeaf adjusted_detection_multiplier; //type: uint32
         ydk::YLeaf name; //type: string
 
-}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation
+}; // Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation
 
 
-class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation : public ydk::Entity
 {
     public:
         AssociationInformation();
@@ -129,16 +129,16 @@ class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::As
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf sessiontype; //type: BfdSession
         ydk::YLeaf local_discriminator; //type: uint32
-        class IpDestinationAddress; //type: Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress
-        class OwnerInformation; //type: Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation
+        class IpDestinationAddress; //type: Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress
+        class OwnerInformation; //type: Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress> ip_destination_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation> > owner_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress> ip_destination_address;
+        ydk::YList owner_information;
         
-}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation
+}; // Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation
 
 
-class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress : public ydk::Entity
 {
     public:
         IpDestinationAddress();
@@ -160,10 +160,10 @@ class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::As
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress
+}; // Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress
 
 
-class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -186,7 +186,7 @@ class Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::As
         ydk::YLeaf adjusted_detection_multiplier; //type: uint32
         ydk::YLeaf name; //type: string
 
-}; // Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation
+}; // Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation
 
 
 class Bfd::RelationBriefs : public ydk::Entity
@@ -208,7 +208,7 @@ class Bfd::RelationBriefs : public ydk::Entity
 
         class RelationBrief; //type: Bfd::RelationBriefs::RelationBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationBriefs::RelationBrief> > relation_brief;
+        ydk::YList relation_brief;
         
 }; // Bfd::RelationBriefs
 
@@ -235,7 +235,7 @@ class Bfd::RelationBriefs::RelationBrief : public ydk::Entity
         ydk::YLeaf state; //type: BfdMgmtSessionState
         class LinkInformation; //type: Bfd::RelationBriefs::RelationBrief::LinkInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationBriefs::RelationBrief::LinkInformation> > link_information;
+        ydk::YList link_information;
         
 }; // Bfd::RelationBriefs::RelationBrief
 
@@ -282,7 +282,7 @@ class Bfd::ClientBriefs : public ydk::Entity
 
         class ClientBrief; //type: Bfd::ClientBriefs::ClientBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::ClientBriefs::ClientBrief> > client_brief;
+        ydk::YList client_brief;
         
 }; // Bfd::ClientBriefs
 
@@ -312,11 +312,11 @@ class Bfd::ClientBriefs::ClientBrief : public ydk::Entity
 }; // Bfd::ClientBriefs::ClientBrief
 
 
-class Bfd::Ipv4BfDoMplsteHeadMultiPaths : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadMultiPaths : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteHeadMultiPaths();
-        ~Ipv4BfDoMplsteHeadMultiPaths();
+        Ipv4bfDoMplsteHeadMultiPaths();
+        ~Ipv4bfDoMplsteHeadMultiPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -329,18 +329,18 @@ class Bfd::Ipv4BfDoMplsteHeadMultiPaths : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4BfDoMplsteHeadMultiPath; //type: Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath
+        class Ipv4bfDoMplsteHeadMultiPath; //type: Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath> > ipv4bf_do_mplste_head_multi_path;
+        ydk::YList ipv4bf_do_mplste_head_multi_path;
         
-}; // Bfd::Ipv4BfDoMplsteHeadMultiPaths
+}; // Bfd::Ipv4bfDoMplsteHeadMultiPaths
 
 
-class Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteHeadMultiPath();
-        ~Ipv4BfDoMplsteHeadMultiPath();
+        Ipv4bfDoMplsteHeadMultiPath();
+        ~Ipv4bfDoMplsteHeadMultiPath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -355,17 +355,17 @@ class Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath : public yd
 
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf incoming_label; //type: int32
-        ydk::YLeaf fe_ctype; //type: int32
-        ydk::YLeaf fec_subgroup_id; //type: int32
-        ydk::YLeaf feclspid; //type: int32
-        ydk::YLeaf fec_tunnel_id; //type: int32
+        ydk::YLeaf incoming_label; //type: uint32
+        ydk::YLeaf fe_ctype; //type: uint32
+        ydk::YLeaf fec_subgroup_id; //type: uint32
+        ydk::YLeaf feclspid; //type: uint32
+        ydk::YLeaf fec_tunnel_id; //type: uint32
         ydk::YLeaf fec_extended_tunnel_id; //type: string
         ydk::YLeaf fec_source; //type: string
         ydk::YLeaf fec_destination; //type: string
-        ydk::YLeaf fecp2mpid; //type: int32
+        ydk::YLeaf fecp2mpid; //type: uint32
         ydk::YLeaf fec_subgroup_originator; //type: string
-        ydk::YLeaf fec_ctype; //type: int32
+        ydk::YLeaf fec_ctype; //type: uint32
         ydk::YLeaf location; //type: string
         ydk::YLeaf session_subtype; //type: string
         ydk::YLeaf state; //type: BfdMgmtSessionState
@@ -374,7 +374,7 @@ class Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath : public yd
         ydk::YLeaf incoming_label_xr; //type: uint32
         ydk::YLeaf session_interface_name; //type: string
 
-}; // Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath
+}; // Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath
 
 
 class Bfd::RelationDetails : public ydk::Entity
@@ -396,7 +396,7 @@ class Bfd::RelationDetails : public ydk::Entity
 
         class RelationDetail; //type: Bfd::RelationDetails::RelationDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail> > relation_detail;
+        ydk::YList relation_detail;
         
 }; // Bfd::RelationDetails
 
@@ -425,8 +425,8 @@ class Bfd::RelationDetails::RelationDetail : public ydk::Entity
         class LinkInformation; //type: Bfd::RelationDetails::RelationDetail::LinkInformation
         class AssociationInformation; //type: Bfd::RelationDetails::RelationDetail::AssociationInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::LinkInformation> > link_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation> > association_information;
+        ydk::YList link_information;
+        ydk::YList association_information;
         
 }; // Bfd::RelationDetails::RelationDetail
 
@@ -479,7 +479,7 @@ class Bfd::RelationDetails::RelationDetail::AssociationInformation : public ydk:
         class OwnerInformation; //type: Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress> ip_destination_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation> > owner_information;
+        ydk::YList owner_information;
         
 }; // Bfd::RelationDetails::RelationDetail::AssociationInformation
 
@@ -535,11 +535,11 @@ class Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInforma
 }; // Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation
 
 
-class Bfd::Ipv4BfDoMplsteTailCounters : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteTailCounters : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteTailCounters();
-        ~Ipv4BfDoMplsteTailCounters();
+        Ipv4bfDoMplsteTailCounters();
+        ~Ipv4bfDoMplsteTailCounters();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -552,18 +552,18 @@ class Bfd::Ipv4BfDoMplsteTailCounters : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4BfDoMplsteTailPacketCounters; //type: Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters
+        class Ipv4bfDoMplsteTailPacketCounters; //type: Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters> ipv4bf_do_mplste_tail_packet_counters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters> ipv4bf_do_mplste_tail_packet_counters;
         
-}; // Bfd::Ipv4BfDoMplsteTailCounters
+}; // Bfd::Ipv4bfDoMplsteTailCounters
 
 
-class Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteTailPacketCounters();
-        ~Ipv4BfDoMplsteTailPacketCounters();
+        Ipv4bfDoMplsteTailPacketCounters();
+        ~Ipv4bfDoMplsteTailPacketCounters();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -576,18 +576,18 @@ class Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4BfDoMplsteTailPacketCounter; //type: Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter
+        class Ipv4bfDoMplsteTailPacketCounter; //type: Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter> > ipv4bf_do_mplste_tail_packet_counter;
+        ydk::YList ipv4bf_do_mplste_tail_packet_counter;
         
-}; // Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters
+}; // Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters
 
 
-class Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteTailPacketCounter();
-        ~Ipv4BfDoMplsteTailPacketCounter();
+        Ipv4bfDoMplsteTailPacketCounter();
+        ~Ipv4bfDoMplsteTailPacketCounter();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -601,17 +601,17 @@ class Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfD
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf incoming_label; //type: int32
-        ydk::YLeaf fe_ctype; //type: int32
-        ydk::YLeaf fec_subgroup_id; //type: int32
-        ydk::YLeaf feclspid; //type: int32
-        ydk::YLeaf fec_tunnel_id; //type: int32
+        ydk::YLeaf incoming_label; //type: uint32
+        ydk::YLeaf fe_ctype; //type: uint32
+        ydk::YLeaf fec_subgroup_id; //type: uint32
+        ydk::YLeaf feclspid; //type: uint32
+        ydk::YLeaf fec_tunnel_id; //type: uint32
         ydk::YLeaf fec_extended_tunnel_id; //type: string
         ydk::YLeaf fec_source; //type: string
         ydk::YLeaf fec_destination; //type: string
-        ydk::YLeaf fecp2mpid; //type: int32
+        ydk::YLeaf fecp2mpid; //type: uint32
         ydk::YLeaf fec_subgroup_originator; //type: string
-        ydk::YLeaf fec_ctype; //type: int32
+        ydk::YLeaf fec_ctype; //type: uint32
         ydk::YLeaf location; //type: string
         ydk::YLeaf hello_transmit_count; //type: uint32
         ydk::YLeaf hello_receive_count; //type: uint32
@@ -619,7 +619,7 @@ class Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfD
         ydk::YLeaf echo_receive_count; //type: uint32
         ydk::YLeaf display_type; //type: BfdMgmtPktDisplay
 
-}; // Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter
+}; // Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter
 
 
 class Bfd::Ipv6SingleHopSessionBriefs : public ydk::Entity
@@ -641,7 +641,7 @@ class Bfd::Ipv6SingleHopSessionBriefs : public ydk::Entity
 
         class Ipv6SingleHopSessionBrief; //type: Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief> > ipv6_single_hop_session_brief;
+        ydk::YList ipv6_single_hop_session_brief;
         
 }; // Bfd::Ipv6SingleHopSessionBriefs
 
@@ -753,11 +753,11 @@ class Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInf
 }; // Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::Ipv4BfDoMplsteTailMultiPaths : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteTailMultiPaths : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteTailMultiPaths();
-        ~Ipv4BfDoMplsteTailMultiPaths();
+        Ipv4bfDoMplsteTailMultiPaths();
+        ~Ipv4bfDoMplsteTailMultiPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -770,18 +770,18 @@ class Bfd::Ipv4BfDoMplsteTailMultiPaths : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4BfDoMplsteTailMultiPath; //type: Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath
+        class Ipv4bfDoMplsteTailMultiPath; //type: Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath> > ipv4bf_do_mplste_tail_multi_path;
+        ydk::YList ipv4bf_do_mplste_tail_multi_path;
         
-}; // Bfd::Ipv4BfDoMplsteTailMultiPaths
+}; // Bfd::Ipv4bfDoMplsteTailMultiPaths
 
 
-class Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteTailMultiPath();
-        ~Ipv4BfDoMplsteTailMultiPath();
+        Ipv4bfDoMplsteTailMultiPath();
+        ~Ipv4bfDoMplsteTailMultiPath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -795,17 +795,17 @@ class Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath : public yd
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf incoming_label; //type: int32
-        ydk::YLeaf fe_ctype; //type: int32
-        ydk::YLeaf fec_subgroup_id; //type: int32
-        ydk::YLeaf feclspid; //type: int32
-        ydk::YLeaf fec_tunnel_id; //type: int32
+        ydk::YLeaf incoming_label; //type: uint32
+        ydk::YLeaf fe_ctype; //type: uint32
+        ydk::YLeaf fec_subgroup_id; //type: uint32
+        ydk::YLeaf feclspid; //type: uint32
+        ydk::YLeaf fec_tunnel_id; //type: uint32
         ydk::YLeaf fec_extended_tunnel_id; //type: string
         ydk::YLeaf fec_source; //type: string
         ydk::YLeaf fec_destination; //type: string
-        ydk::YLeaf fecp2mpid; //type: int32
+        ydk::YLeaf fecp2mpid; //type: uint32
         ydk::YLeaf fec_subgroup_originator; //type: string
-        ydk::YLeaf fec_ctype; //type: int32
+        ydk::YLeaf fec_ctype; //type: uint32
         ydk::YLeaf location; //type: string
         ydk::YLeaf session_subtype; //type: string
         ydk::YLeaf state; //type: BfdMgmtSessionState
@@ -814,7 +814,7 @@ class Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath : public yd
         ydk::YLeaf incoming_label_xr; //type: uint32
         ydk::YLeaf session_interface_name; //type: string
 
-}; // Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath
+}; // Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath
 
 
 class Bfd::Ipv4MultiHopMultiPaths : public ydk::Entity
@@ -836,7 +836,7 @@ class Bfd::Ipv4MultiHopMultiPaths : public ydk::Entity
 
         class Ipv4MultiHopMultiPath; //type: Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath> > ipv4_multi_hop_multi_path;
+        ydk::YList ipv4_multi_hop_multi_path;
         
 }; // Bfd::Ipv4MultiHopMultiPaths
 
@@ -872,11 +872,11 @@ class Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath : public ydk::Entity
 }; // Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath
 
 
-class Bfd::Ipv4BfDoMplsteHeadSummary : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSummary : public ydk::Entity
 {
     public:
-        Ipv4BfDoMplsteHeadSummary();
-        ~Ipv4BfDoMplsteHeadSummary();
+        Ipv4bfDoMplsteHeadSummary();
+        ~Ipv4bfDoMplsteHeadSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -889,14 +889,14 @@ class Bfd::Ipv4BfDoMplsteHeadSummary : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class SessionState; //type: Bfd::Ipv4BfDoMplsteHeadSummary::SessionState
+        class SessionState; //type: Bfd::Ipv4bfDoMplsteHeadSummary::SessionState
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfDoMplsteHeadSummary::SessionState> session_state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4bfDoMplsteHeadSummary::SessionState> session_state;
         
-}; // Bfd::Ipv4BfDoMplsteHeadSummary
+}; // Bfd::Ipv4bfDoMplsteHeadSummary
 
 
-class Bfd::Ipv4BfDoMplsteHeadSummary::SessionState : public ydk::Entity
+class Bfd::Ipv4bfDoMplsteHeadSummary::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -918,7 +918,7 @@ class Bfd::Ipv4BfDoMplsteHeadSummary::SessionState : public ydk::Entity
         ydk::YLeaf up_count; //type: uint32
         ydk::YLeaf unknown_count; //type: uint32
 
-}; // Bfd::Ipv4BfDoMplsteHeadSummary::SessionState
+}; // Bfd::Ipv4bfDoMplsteHeadSummary::SessionState
 
 
 }

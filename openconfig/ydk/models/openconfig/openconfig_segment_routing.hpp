@@ -26,6 +26,7 @@ class MplsLabel : public ydk::Enum
         static const ydk::Enum::YLeaf IPV6_EXPLICIT_NULL;
         static const ydk::Enum::YLeaf IMPLICIT_NULL;
         static const ydk::Enum::YLeaf ENTROPY_LABEL_INDICATOR;
+        static const ydk::Enum::YLeaf NO_LABEL;
 
 };
 

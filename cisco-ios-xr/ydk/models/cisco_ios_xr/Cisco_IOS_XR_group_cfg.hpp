@@ -33,7 +33,7 @@ class Groups : public ydk::Entity
 
         class Group; //type: Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_group_cfg::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Groups
 

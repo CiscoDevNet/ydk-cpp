@@ -66,7 +66,7 @@ class SubscriberRedundancy::Groups : public ydk::Entity
 
         class Group; //type: SubscriberRedundancy::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group> > group;
+        ydk::YList group;
         
 }; // SubscriberRedundancy::Groups
 
@@ -159,7 +159,7 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces : public yd
 
         class Interface; //type: SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces
 
@@ -204,7 +204,7 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges : publ
 
         class InterfaceRange; //type: SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange> > interface_range;
+        ydk::YList interface_range;
         
 }; // SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges
 
@@ -367,7 +367,7 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes : publi
 
         class Ipv4Route; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route> > ipv4_route;
+        ydk::YList ipv4_route;
         
 }; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes
 
@@ -389,12 +389,12 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Ro
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix_string; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         class Ipv4RouteData; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData
         class Vrfname; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData> ipv4_route_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname> > vrfname;
+        ydk::YList vrfname;
         
 }; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route
 
@@ -458,20 +458,20 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6NaRoutes; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes
-        class Ipv6PdRoutes; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes
+        class Ipv6naRoutes; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes
+        class Ipv6pdRoutes; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes> ipv6na_routes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes> ipv6pd_routes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes> ipv6na_routes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes> ipv6pd_routes;
         
 }; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes : public ydk::Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes : public ydk::Entity
 {
     public:
-        Ipv6NaRoutes();
-        ~Ipv6NaRoutes();
+        Ipv6naRoutes();
+        ~Ipv6naRoutes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -483,18 +483,18 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaR
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6NaRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute
+        class Ipv6naRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute> > ipv6na_route;
+        ydk::YList ipv6na_route;
         
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute : public ydk::Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute : public ydk::Entity
 {
     public:
-        Ipv6NaRoute();
-        ~Ipv6NaRoute();
+        Ipv6naRoute();
+        ~Ipv6naRoute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -507,18 +507,18 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaR
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrfname; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf prefix_string; //type: string
         ydk::YLeaf tagvalue; //type: uint32
 
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes : public ydk::Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes : public ydk::Entity
 {
     public:
-        Ipv6PdRoutes();
-        ~Ipv6PdRoutes();
+        Ipv6pdRoutes();
+        ~Ipv6pdRoutes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -530,18 +530,18 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdR
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6PdRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute
+        class Ipv6pdRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute> > ipv6pd_route;
+        ydk::YList ipv6pd_route;
         
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute : public ydk::Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute : public ydk::Entity
 {
     public:
-        Ipv6PdRoute();
-        ~Ipv6PdRoute();
+        Ipv6pdRoute();
+        ~Ipv6pdRoute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -554,11 +554,11 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdR
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrfname; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf prefix_string; //type: string
         ydk::YLeaf tagvalue; //type: uint32
 
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute
 
 
 class SubscriberRedundancy::RevertiveTimer : public ydk::Entity
@@ -591,19 +591,19 @@ class SubscriberRedundancyGroupSlaveMode : public ydk::Enum
 
 };
 
-class SubscriberRedundancyGroupRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
 class SrgAddrFamily : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class SubscriberRedundancyGroupRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 

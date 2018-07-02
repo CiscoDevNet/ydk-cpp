@@ -17,7 +17,7 @@ Controller::Controller()
 {
     dpa->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-fia-internal-tcam-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-fia-internal-tcam-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Controller::~Controller()
@@ -26,6 +26,7 @@ Controller::~Controller()
 
 bool Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return (dpa !=  nullptr && dpa->has_data());
 }
 
@@ -123,7 +124,7 @@ Controller::Dpa::Dpa()
 {
     nodes->parent = this;
 
-    yang_name = "dpa"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dpa"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Dpa::~Dpa()
@@ -132,6 +133,7 @@ Controller::Dpa::~Dpa()
 
 bool Controller::Dpa::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -206,9 +208,11 @@ bool Controller::Dpa::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Controller::Dpa::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "dpa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "dpa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Dpa::Nodes::~Nodes()
@@ -217,7 +221,8 @@ Controller::Dpa::Nodes::~Nodes()
 
 bool Controller::Dpa::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -227,7 +232,7 @@ bool Controller::Dpa::Nodes::has_data() const
 
 bool Controller::Dpa::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -264,7 +269,7 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Controller::Dpa::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -276,7 +281,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -305,14 +310,14 @@ bool Controller::Dpa::Nodes::has_leaf_or_child_of_name(const std::string & name)
 Controller::Dpa::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     external_tcam_resources(std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources>())
-	,internal_tcam_resources(std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources>())
+    , internal_tcam_resources(std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources>())
 {
     external_tcam_resources->parent = this;
     internal_tcam_resources->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Dpa::Nodes::Node::~Node()
@@ -321,6 +326,7 @@ Controller::Dpa::Nodes::Node::~Node()
 
 bool Controller::Dpa::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (external_tcam_resources !=  nullptr && external_tcam_resources->has_data())
 	|| (internal_tcam_resources !=  nullptr && internal_tcam_resources->has_data());
@@ -344,7 +350,8 @@ std::string Controller::Dpa::Nodes::Node::get_absolute_path() const
 std::string Controller::Dpa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -424,9 +431,11 @@ bool Controller::Dpa::Nodes::Node::has_leaf_or_child_of_name(const std::string &
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::ExternalTcamResources()
+    :
+    npu_tcam(this, {})
 {
 
-    yang_name = "external-tcam-resources"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external-tcam-resources"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::~ExternalTcamResources()
@@ -435,7 +444,8 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::~ExternalTcamResources()
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::has_data() const
 {
-    for (std::size_t index=0; index<npu_tcam.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<npu_tcam.len(); index++)
     {
         if(npu_tcam[index]->has_data())
             return true;
@@ -445,7 +455,7 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::has_data() const
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::has_operation() const
 {
-    for (std::size_t index=0; index<npu_tcam.size(); index++)
+    for (std::size_t index=0; index<npu_tcam.len(); index++)
     {
         if(npu_tcam[index]->has_operation())
             return true;
@@ -475,7 +485,7 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::get
     {
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam>();
         c->parent = this;
-        npu_tcam.push_back(c);
+        npu_tcam.append(c);
         return c;
     }
 
@@ -487,7 +497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Ext
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : npu_tcam)
+    for (auto c : npu_tcam.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -516,9 +526,11 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::has_leaf_or_child_of_n
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::NpuTcam()
     :
     npu_id{YType::uint32, "npu-id"}
+        ,
+    tcam_bank(this, {})
 {
 
-    yang_name = "npu-tcam"; yang_parent_name = "external-tcam-resources"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "npu-tcam"; yang_parent_name = "external-tcam-resources"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::~NpuTcam()
@@ -527,7 +539,8 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::~NpuTcam()
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::has_data() const
 {
-    for (std::size_t index=0; index<tcam_bank.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcam_bank.len(); index++)
     {
         if(tcam_bank[index]->has_data())
             return true;
@@ -537,7 +550,7 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::has_data() co
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::has_operation() const
 {
-    for (std::size_t index=0; index<tcam_bank.size(); index++)
+    for (std::size_t index=0; index<tcam_bank.len(); index++)
     {
         if(tcam_bank[index]->has_operation())
             return true;
@@ -569,7 +582,7 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::Npu
     {
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank>();
         c->parent = this;
-        tcam_bank.push_back(c);
+        tcam_bank.append(c);
         return c;
     }
 
@@ -581,7 +594,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Ext
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tcam_bank)
+    for (auto c : tcam_bank.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -625,9 +638,11 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::TcamBank
     bank_inuse_entries{YType::uint32, "bank-inuse-entries"},
     owner{YType::str, "owner"},
     nof_dbs{YType::uint32, "nof-dbs"}
+        ,
+    bank_db(this, {})
 {
 
-    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::~TcamBank()
@@ -636,7 +651,8 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::~TcamBan
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::has_data() const
 {
-    for (std::size_t index=0; index<bank_db.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bank_db.len(); index++)
     {
         if(bank_db[index]->has_data())
             return true;
@@ -651,7 +667,7 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::has
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::has_operation() const
 {
-    for (std::size_t index=0; index<bank_db.size(); index++)
+    for (std::size_t index=0; index<bank_db.len(); index++)
     {
         if(bank_db[index]->has_operation())
             return true;
@@ -693,7 +709,7 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::Npu
     {
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb>();
         c->parent = this;
-        bank_db.push_back(c);
+        bank_db.append(c);
         return c;
     }
 
@@ -705,7 +721,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Ext
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bank_db)
+    for (auto c : bank_db.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -798,7 +814,7 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::
     db_prefix{YType::str, "db-prefix"}
 {
 
-    yang_name = "bank-db"; yang_parent_name = "tcam-bank"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bank-db"; yang_parent_name = "tcam-bank"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::~BankDb()
@@ -807,6 +823,7 @@ Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::
 
 bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::has_data() const
 {
+    if (is_presence_container) return true;
     return db_id.is_set
 	|| db_inuse_entries.is_set
 	|| db_prefix.is_set;
@@ -897,9 +914,11 @@ bool Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::Ban
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::InternalTcamResources()
+    :
+    npu_tcam(this, {})
 {
 
-    yang_name = "internal-tcam-resources"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "internal-tcam-resources"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::~InternalTcamResources()
@@ -908,7 +927,8 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::~InternalTcamResources()
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::has_data() const
 {
-    for (std::size_t index=0; index<npu_tcam.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<npu_tcam.len(); index++)
     {
         if(npu_tcam[index]->has_data())
             return true;
@@ -918,7 +938,7 @@ bool Controller::Dpa::Nodes::Node::InternalTcamResources::has_data() const
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::has_operation() const
 {
-    for (std::size_t index=0; index<npu_tcam.size(); index++)
+    for (std::size_t index=0; index<npu_tcam.len(); index++)
     {
         if(npu_tcam[index]->has_operation())
             return true;
@@ -948,7 +968,7 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::get
     {
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam>();
         c->parent = this;
-        npu_tcam.push_back(c);
+        npu_tcam.append(c);
         return c;
     }
 
@@ -960,7 +980,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : npu_tcam)
+    for (auto c : npu_tcam.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -989,9 +1009,11 @@ bool Controller::Dpa::Nodes::Node::InternalTcamResources::has_leaf_or_child_of_n
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::NpuTcam()
     :
     npu_id{YType::uint32, "npu-id"}
+        ,
+    tcam_bank(this, {})
 {
 
-    yang_name = "npu-tcam"; yang_parent_name = "internal-tcam-resources"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "npu-tcam"; yang_parent_name = "internal-tcam-resources"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::~NpuTcam()
@@ -1000,7 +1022,8 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::~NpuTcam()
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::has_data() const
 {
-    for (std::size_t index=0; index<tcam_bank.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcam_bank.len(); index++)
     {
         if(tcam_bank[index]->has_data())
             return true;
@@ -1010,7 +1033,7 @@ bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::has_data() co
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::has_operation() const
 {
-    for (std::size_t index=0; index<tcam_bank.size(); index++)
+    for (std::size_t index=0; index<tcam_bank.len(); index++)
     {
         if(tcam_bank[index]->has_operation())
             return true;
@@ -1042,7 +1065,7 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::Npu
     {
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank>();
         c->parent = this;
-        tcam_bank.push_back(c);
+        tcam_bank.append(c);
         return c;
     }
 
@@ -1054,7 +1077,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tcam_bank)
+    for (auto c : tcam_bank.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1098,9 +1121,11 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::TcamBank
     bank_inuse_entries{YType::uint32, "bank-inuse-entries"},
     owner{YType::str, "owner"},
     nof_dbs{YType::uint32, "nof-dbs"}
+        ,
+    bank_db(this, {})
 {
 
-    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-bank"; yang_parent_name = "npu-tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::~TcamBank()
@@ -1109,7 +1134,8 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::~TcamBan
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::has_data() const
 {
-    for (std::size_t index=0; index<bank_db.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bank_db.len(); index++)
     {
         if(bank_db[index]->has_data())
             return true;
@@ -1124,7 +1150,7 @@ bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::has
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::has_operation() const
 {
-    for (std::size_t index=0; index<bank_db.size(); index++)
+    for (std::size_t index=0; index<bank_db.len(); index++)
     {
         if(bank_db[index]->has_operation())
             return true;
@@ -1166,7 +1192,7 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::Npu
     {
         auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb>();
         c->parent = this;
-        bank_db.push_back(c);
+        bank_db.append(c);
         return c;
     }
 
@@ -1178,7 +1204,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bank_db)
+    for (auto c : bank_db.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1271,7 +1297,7 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::
     db_prefix{YType::str, "db-prefix"}
 {
 
-    yang_name = "bank-db"; yang_parent_name = "tcam-bank"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bank-db"; yang_parent_name = "tcam-bank"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::~BankDb()
@@ -1280,6 +1306,7 @@ Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::
 
 bool Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::has_data() const
 {
+    if (is_presence_container) return true;
     return db_id.is_set
 	|| db_inuse_entries.is_set
 	|| db_prefix.is_set;

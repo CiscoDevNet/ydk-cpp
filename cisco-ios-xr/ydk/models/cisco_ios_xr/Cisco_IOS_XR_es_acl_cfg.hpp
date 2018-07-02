@@ -57,7 +57,7 @@ class EsAcl::Accesses : public ydk::Entity
 
         class Access; //type: EsAcl::Accesses::Access
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access> > access;
+        ydk::YList access;
         
 }; // EsAcl::Accesses
 
@@ -105,7 +105,7 @@ class EsAcl::Accesses::Access::AccessListEntries : public ydk::Entity
 
         class AccessListEntry; //type: EsAcl::Accesses::Access::AccessListEntries::AccessListEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry> > access_list_entry;
+        ydk::YList access_list_entry;
         
 }; // EsAcl::Accesses::Access::AccessListEntries
 

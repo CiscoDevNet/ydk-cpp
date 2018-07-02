@@ -12,23 +12,23 @@
 namespace cisco_ios_xe {
 namespace SNMP_FRAMEWORK_MIB {
 
-class Snmpauthprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class SnmpPrivProtocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Snmpauthprotocols();
-        ~Snmpauthprotocols();
+        SnmpPrivProtocols();
+        ~SnmpPrivProtocols();
 
 
-}; // Snmpauthprotocols
+}; // SnmpPrivProtocols
 
-class Snmpprivprotocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class SnmpAuthProtocols : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Snmpprivprotocols();
-        ~Snmpprivprotocols();
+        SnmpAuthProtocols();
+        ~SnmpAuthProtocols();
 
 
-}; // Snmpprivprotocols
+}; // SnmpAuthProtocols
 
 class SNMPFRAMEWORKMIB : public ydk::Entity
 {
@@ -51,18 +51,18 @@ class SNMPFRAMEWORKMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Snmpengine; //type: SNMPFRAMEWORKMIB::Snmpengine
+        class SnmpEngine; //type: SNMPFRAMEWORKMIB::SnmpEngine
 
-        std::shared_ptr<cisco_ios_xe::SNMP_FRAMEWORK_MIB::SNMPFRAMEWORKMIB::Snmpengine> snmpengine;
+        std::shared_ptr<cisco_ios_xe::SNMP_FRAMEWORK_MIB::SNMPFRAMEWORKMIB::SnmpEngine> snmpengine;
         
 }; // SNMPFRAMEWORKMIB
 
 
-class SNMPFRAMEWORKMIB::Snmpengine : public ydk::Entity
+class SNMPFRAMEWORKMIB::SnmpEngine : public ydk::Entity
 {
     public:
-        Snmpengine();
-        ~Snmpengine();
+        SnmpEngine();
+        ~SnmpEngine();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -80,7 +80,7 @@ class SNMPFRAMEWORKMIB::Snmpengine : public ydk::Entity
         ydk::YLeaf snmpenginetime; //type: int32
         ydk::YLeaf snmpenginemaxmessagesize; //type: int32
 
-}; // SNMPFRAMEWORKMIB::Snmpengine
+}; // SNMPFRAMEWORKMIB::SnmpEngine
 
 class SnmpSecurityLevel : public ydk::Enum
 {

@@ -11,10 +11,521 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_cfg {
 
-Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleIntervals()
+Isis::Instances::Instance::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "lsp-retransmit-throttle-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Interfaces::~Interfaces()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Interfaces::has_operation() const
+{
+    for (std::size_t index=0; index<interface.len(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Interfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface>();
+        c->parent = this;
+        interface.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::Interface()
+    :
+    interface_name{YType::str, "interface-name"},
+    running{YType::empty, "running"},
+    circuit_type{YType::enumeration, "circuit-type"},
+    point_to_point{YType::empty, "point-to-point"},
+    state{YType::enumeration, "state"},
+    mesh_group{YType::str, "mesh-group"},
+    link_down_fast_detect{YType::empty, "link-down-fast-detect"}
+        ,
+    lsp_retransmit_throttle_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals>())
+    , lsp_retransmit_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals>())
+    , bfd(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Bfd>())
+    , priorities(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities>())
+    , hello_accept_passwords(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords>())
+    , hello_passwords(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPasswords>())
+    , hello_paddings(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPaddings>())
+    , hello_multipliers(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers>())
+    , lsp_fast_flood_thresholds(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds>())
+    , prefix_attribute_n_flag_clears(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears>())
+    , hello_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloIntervals>())
+    , interface_afs(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs>())
+    , csnp_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals>())
+    , lsp_intervals(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspIntervals>())
+{
+    lsp_retransmit_throttle_intervals->parent = this;
+    lsp_retransmit_intervals->parent = this;
+    bfd->parent = this;
+    priorities->parent = this;
+    hello_accept_passwords->parent = this;
+    hello_passwords->parent = this;
+    hello_paddings->parent = this;
+    hello_multipliers->parent = this;
+    lsp_fast_flood_thresholds->parent = this;
+    prefix_attribute_n_flag_clears->parent = this;
+    hello_intervals->parent = this;
+    interface_afs->parent = this;
+    csnp_intervals->parent = this;
+    lsp_intervals->parent = this;
+
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Interfaces::Interface::~Interface()
+{
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| running.is_set
+	|| circuit_type.is_set
+	|| point_to_point.is_set
+	|| state.is_set
+	|| mesh_group.is_set
+	|| link_down_fast_detect.is_set
+	|| (lsp_retransmit_throttle_intervals !=  nullptr && lsp_retransmit_throttle_intervals->has_data())
+	|| (lsp_retransmit_intervals !=  nullptr && lsp_retransmit_intervals->has_data())
+	|| (bfd !=  nullptr && bfd->has_data())
+	|| (priorities !=  nullptr && priorities->has_data())
+	|| (hello_accept_passwords !=  nullptr && hello_accept_passwords->has_data())
+	|| (hello_passwords !=  nullptr && hello_passwords->has_data())
+	|| (hello_paddings !=  nullptr && hello_paddings->has_data())
+	|| (hello_multipliers !=  nullptr && hello_multipliers->has_data())
+	|| (lsp_fast_flood_thresholds !=  nullptr && lsp_fast_flood_thresholds->has_data())
+	|| (prefix_attribute_n_flag_clears !=  nullptr && prefix_attribute_n_flag_clears->has_data())
+	|| (hello_intervals !=  nullptr && hello_intervals->has_data())
+	|| (interface_afs !=  nullptr && interface_afs->has_data())
+	|| (csnp_intervals !=  nullptr && csnp_intervals->has_data())
+	|| (lsp_intervals !=  nullptr && lsp_intervals->has_data());
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(circuit_type.yfilter)
+	|| ydk::is_set(point_to_point.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(mesh_group.yfilter)
+	|| ydk::is_set(link_down_fast_detect.yfilter)
+	|| (lsp_retransmit_throttle_intervals !=  nullptr && lsp_retransmit_throttle_intervals->has_operation())
+	|| (lsp_retransmit_intervals !=  nullptr && lsp_retransmit_intervals->has_operation())
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (priorities !=  nullptr && priorities->has_operation())
+	|| (hello_accept_passwords !=  nullptr && hello_accept_passwords->has_operation())
+	|| (hello_passwords !=  nullptr && hello_passwords->has_operation())
+	|| (hello_paddings !=  nullptr && hello_paddings->has_operation())
+	|| (hello_multipliers !=  nullptr && hello_multipliers->has_operation())
+	|| (lsp_fast_flood_thresholds !=  nullptr && lsp_fast_flood_thresholds->has_operation())
+	|| (prefix_attribute_n_flag_clears !=  nullptr && prefix_attribute_n_flag_clears->has_operation())
+	|| (hello_intervals !=  nullptr && hello_intervals->has_operation())
+	|| (interface_afs !=  nullptr && interface_afs->has_operation())
+	|| (csnp_intervals !=  nullptr && csnp_intervals->has_operation())
+	|| (lsp_intervals !=  nullptr && lsp_intervals->has_operation());
+}
+
+std::string Isis::Instances::Instance::Interfaces::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Interfaces::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (circuit_type.is_set || is_set(circuit_type.yfilter)) leaf_name_data.push_back(circuit_type.get_name_leafdata());
+    if (point_to_point.is_set || is_set(point_to_point.yfilter)) leaf_name_data.push_back(point_to_point.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (mesh_group.is_set || is_set(mesh_group.yfilter)) leaf_name_data.push_back(mesh_group.get_name_leafdata());
+    if (link_down_fast_detect.is_set || is_set(link_down_fast_detect.yfilter)) leaf_name_data.push_back(link_down_fast_detect.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "lsp-retransmit-throttle-intervals")
+    {
+        if(lsp_retransmit_throttle_intervals == nullptr)
+        {
+            lsp_retransmit_throttle_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals>();
+        }
+        return lsp_retransmit_throttle_intervals;
+    }
+
+    if(child_yang_name == "lsp-retransmit-intervals")
+    {
+        if(lsp_retransmit_intervals == nullptr)
+        {
+            lsp_retransmit_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals>();
+        }
+        return lsp_retransmit_intervals;
+    }
+
+    if(child_yang_name == "bfd")
+    {
+        if(bfd == nullptr)
+        {
+            bfd = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Bfd>();
+        }
+        return bfd;
+    }
+
+    if(child_yang_name == "priorities")
+    {
+        if(priorities == nullptr)
+        {
+            priorities = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities>();
+        }
+        return priorities;
+    }
+
+    if(child_yang_name == "hello-accept-passwords")
+    {
+        if(hello_accept_passwords == nullptr)
+        {
+            hello_accept_passwords = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords>();
+        }
+        return hello_accept_passwords;
+    }
+
+    if(child_yang_name == "hello-passwords")
+    {
+        if(hello_passwords == nullptr)
+        {
+            hello_passwords = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPasswords>();
+        }
+        return hello_passwords;
+    }
+
+    if(child_yang_name == "hello-paddings")
+    {
+        if(hello_paddings == nullptr)
+        {
+            hello_paddings = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPaddings>();
+        }
+        return hello_paddings;
+    }
+
+    if(child_yang_name == "hello-multipliers")
+    {
+        if(hello_multipliers == nullptr)
+        {
+            hello_multipliers = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers>();
+        }
+        return hello_multipliers;
+    }
+
+    if(child_yang_name == "lsp-fast-flood-thresholds")
+    {
+        if(lsp_fast_flood_thresholds == nullptr)
+        {
+            lsp_fast_flood_thresholds = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds>();
+        }
+        return lsp_fast_flood_thresholds;
+    }
+
+    if(child_yang_name == "prefix-attribute-n-flag-clears")
+    {
+        if(prefix_attribute_n_flag_clears == nullptr)
+        {
+            prefix_attribute_n_flag_clears = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears>();
+        }
+        return prefix_attribute_n_flag_clears;
+    }
+
+    if(child_yang_name == "hello-intervals")
+    {
+        if(hello_intervals == nullptr)
+        {
+            hello_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloIntervals>();
+        }
+        return hello_intervals;
+    }
+
+    if(child_yang_name == "interface-afs")
+    {
+        if(interface_afs == nullptr)
+        {
+            interface_afs = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs>();
+        }
+        return interface_afs;
+    }
+
+    if(child_yang_name == "csnp-intervals")
+    {
+        if(csnp_intervals == nullptr)
+        {
+            csnp_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals>();
+        }
+        return csnp_intervals;
+    }
+
+    if(child_yang_name == "lsp-intervals")
+    {
+        if(lsp_intervals == nullptr)
+        {
+            lsp_intervals = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspIntervals>();
+        }
+        return lsp_intervals;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interfaces::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(lsp_retransmit_throttle_intervals != nullptr)
+    {
+        children["lsp-retransmit-throttle-intervals"] = lsp_retransmit_throttle_intervals;
+    }
+
+    if(lsp_retransmit_intervals != nullptr)
+    {
+        children["lsp-retransmit-intervals"] = lsp_retransmit_intervals;
+    }
+
+    if(bfd != nullptr)
+    {
+        children["bfd"] = bfd;
+    }
+
+    if(priorities != nullptr)
+    {
+        children["priorities"] = priorities;
+    }
+
+    if(hello_accept_passwords != nullptr)
+    {
+        children["hello-accept-passwords"] = hello_accept_passwords;
+    }
+
+    if(hello_passwords != nullptr)
+    {
+        children["hello-passwords"] = hello_passwords;
+    }
+
+    if(hello_paddings != nullptr)
+    {
+        children["hello-paddings"] = hello_paddings;
+    }
+
+    if(hello_multipliers != nullptr)
+    {
+        children["hello-multipliers"] = hello_multipliers;
+    }
+
+    if(lsp_fast_flood_thresholds != nullptr)
+    {
+        children["lsp-fast-flood-thresholds"] = lsp_fast_flood_thresholds;
+    }
+
+    if(prefix_attribute_n_flag_clears != nullptr)
+    {
+        children["prefix-attribute-n-flag-clears"] = prefix_attribute_n_flag_clears;
+    }
+
+    if(hello_intervals != nullptr)
+    {
+        children["hello-intervals"] = hello_intervals;
+    }
+
+    if(interface_afs != nullptr)
+    {
+        children["interface-afs"] = interface_afs;
+    }
+
+    if(csnp_intervals != nullptr)
+    {
+        children["csnp-intervals"] = csnp_intervals;
+    }
+
+    if(lsp_intervals != nullptr)
+    {
+        children["lsp-intervals"] = lsp_intervals;
+    }
+
+    return children;
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "circuit-type")
+    {
+        circuit_type = value;
+        circuit_type.value_namespace = name_space;
+        circuit_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "point-to-point")
+    {
+        point_to_point = value;
+        point_to_point.value_namespace = name_space;
+        point_to_point.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mesh-group")
+    {
+        mesh_group = value;
+        mesh_group.value_namespace = name_space;
+        mesh_group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-down-fast-detect")
+    {
+        link_down_fast_detect = value;
+        link_down_fast_detect.value_namespace = name_space;
+        link_down_fast_detect.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "circuit-type")
+    {
+        circuit_type.yfilter = yfilter;
+    }
+    if(value_path == "point-to-point")
+    {
+        point_to_point.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "mesh-group")
+    {
+        mesh_group.yfilter = yfilter;
+    }
+    if(value_path == "link-down-fast-detect")
+    {
+        link_down_fast_detect.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-retransmit-throttle-intervals" || name == "lsp-retransmit-intervals" || name == "bfd" || name == "priorities" || name == "hello-accept-passwords" || name == "hello-passwords" || name == "hello-paddings" || name == "hello-multipliers" || name == "lsp-fast-flood-thresholds" || name == "prefix-attribute-n-flag-clears" || name == "hello-intervals" || name == "interface-afs" || name == "csnp-intervals" || name == "lsp-intervals" || name == "interface-name" || name == "running" || name == "circuit-type" || name == "point-to-point" || name == "state" || name == "mesh-group" || name == "link-down-fast-detect")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleIntervals()
+    :
+    lsp_retransmit_throttle_interval(this, {"level"})
+{
+
+    yang_name = "lsp-retransmit-throttle-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::~LspRetransmitThrottleIntervals()
@@ -23,7 +534,8 @@ Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::has_data() const
 {
-    for (std::size_t index=0; index<lsp_retransmit_throttle_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_retransmit_throttle_interval.len(); index++)
     {
         if(lsp_retransmit_throttle_interval[index]->has_data())
             return true;
@@ -33,7 +545,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleInte
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_retransmit_throttle_interval.size(); index++)
+    for (std::size_t index=0; index<lsp_retransmit_throttle_interval.len(); index++)
     {
         if(lsp_retransmit_throttle_interval[index]->has_operation())
             return true;
@@ -63,7 +575,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval>();
         c->parent = this;
-        lsp_retransmit_throttle_interval.push_back(c);
+        lsp_retransmit_throttle_interval.append(c);
         return c;
     }
 
@@ -75,7 +587,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_retransmit_throttle_interval)
+    for (auto c : lsp_retransmit_throttle_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -107,7 +619,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "lsp-retransmit-throttle-interval"; yang_parent_name = "lsp-retransmit-throttle-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-retransmit-throttle-interval"; yang_parent_name = "lsp-retransmit-throttle-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::~LspRetransmitThrottleInterval()
@@ -116,6 +628,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set;
 }
@@ -130,7 +643,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleInte
 std::string Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-retransmit-throttle-interval" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-retransmit-throttle-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -193,9 +707,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleInte
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitIntervals()
+    :
+    lsp_retransmit_interval(this, {"level"})
 {
 
-    yang_name = "lsp-retransmit-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-retransmit-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::~LspRetransmitIntervals()
@@ -204,7 +720,8 @@ Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::~LspRe
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::has_data() const
 {
-    for (std::size_t index=0; index<lsp_retransmit_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_retransmit_interval.len(); index++)
     {
         if(lsp_retransmit_interval[index]->has_data())
             return true;
@@ -214,7 +731,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::h
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_retransmit_interval.size(); index++)
+    for (std::size_t index=0; index<lsp_retransmit_interval.len(); index++)
     {
         if(lsp_retransmit_interval[index]->has_operation())
             return true;
@@ -244,7 +761,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspRet
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval>();
         c->parent = this;
-        lsp_retransmit_interval.push_back(c);
+        lsp_retransmit_interval.append(c);
         return c;
     }
 
@@ -256,7 +773,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_retransmit_interval)
+    for (auto c : lsp_retransmit_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -288,7 +805,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRet
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "lsp-retransmit-interval"; yang_parent_name = "lsp-retransmit-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-retransmit-interval"; yang_parent_name = "lsp-retransmit-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::~LspRetransmitInterval()
@@ -297,6 +814,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRet
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set;
 }
@@ -311,7 +829,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::L
 std::string Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-retransmit-interval" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-retransmit-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -381,7 +900,7 @@ Isis::Instances::Instance::Interfaces::Interface::Bfd::Bfd()
     detection_multiplier{YType::uint32, "detection-multiplier"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::Bfd::~Bfd()
@@ -390,6 +909,7 @@ Isis::Instances::Instance::Interfaces::Interface::Bfd::~Bfd()
 
 bool Isis::Instances::Instance::Interfaces::Interface::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_ipv6.is_set
 	|| enable_ipv4.is_set
 	|| interval.is_set
@@ -493,9 +1013,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::Bfd::has_leaf_or_child_of
 }
 
 Isis::Instances::Instance::Interfaces::Interface::Priorities::Priorities()
+    :
+    priority(this, {"level"})
 {
 
-    yang_name = "priorities"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priorities"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::Priorities::~Priorities()
@@ -504,7 +1026,8 @@ Isis::Instances::Instance::Interfaces::Interface::Priorities::~Priorities()
 
 bool Isis::Instances::Instance::Interfaces::Interface::Priorities::has_data() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_data())
             return true;
@@ -514,7 +1037,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::Priorities::has_data() co
 
 bool Isis::Instances::Instance::Interfaces::Interface::Priorities::has_operation() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_operation())
             return true;
@@ -544,7 +1067,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Priori
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority>();
         c->parent = this;
-        priority.push_back(c);
+        priority.append(c);
         return c;
     }
 
@@ -556,7 +1079,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority)
+    for (auto c : priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -588,7 +1111,7 @@ Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::Priority
     priority_value{YType::uint32, "priority-value"}
 {
 
-    yang_name = "priority"; yang_parent_name = "priorities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "priorities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::~Priority()
@@ -597,6 +1120,7 @@ Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::~Priorit
 
 bool Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| priority_value.is_set;
 }
@@ -611,7 +1135,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::has
 std::string Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priority" <<"[level='" <<level <<"']";
+    path_buffer << "priority";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -674,9 +1199,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority::has
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPasswords()
+    :
+    hello_accept_password(this, {"level"})
 {
 
-    yang_name = "hello-accept-passwords"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-accept-passwords"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::~HelloAcceptPasswords()
@@ -685,7 +1212,8 @@ Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::~HelloAc
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::has_data() const
 {
-    for (std::size_t index=0; index<hello_accept_password.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hello_accept_password.len(); index++)
     {
         if(hello_accept_password[index]->has_data())
             return true;
@@ -695,7 +1223,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::has
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::has_operation() const
 {
-    for (std::size_t index=0; index<hello_accept_password.size(); index++)
+    for (std::size_t index=0; index<hello_accept_password.len(); index++)
     {
         if(hello_accept_password[index]->has_operation())
             return true;
@@ -725,7 +1253,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloA
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword>();
         c->parent = this;
-        hello_accept_password.push_back(c);
+        hello_accept_password.append(c);
         return c;
     }
 
@@ -737,7 +1265,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hello_accept_password)
+    for (auto c : hello_accept_password.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -769,7 +1297,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcc
     password{YType::str, "password"}
 {
 
-    yang_name = "hello-accept-password"; yang_parent_name = "hello-accept-passwords"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-accept-password"; yang_parent_name = "hello-accept-passwords"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::~HelloAcceptPassword()
@@ -778,6 +1306,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcc
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| password.is_set;
 }
@@ -792,7 +1321,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::Hel
 std::string Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-accept-password" <<"[level='" <<level <<"']";
+    path_buffer << "hello-accept-password";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -855,9 +1385,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::Hel
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPasswords()
+    :
+    hello_password(this, {"level"})
 {
 
-    yang_name = "hello-passwords"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-passwords"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::~HelloPasswords()
@@ -866,7 +1398,8 @@ Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::~HelloPassword
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::has_data() const
 {
-    for (std::size_t index=0; index<hello_password.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hello_password.len(); index++)
     {
         if(hello_password[index]->has_data())
             return true;
@@ -876,7 +1409,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::has_data(
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::has_operation() const
 {
-    for (std::size_t index=0; index<hello_password.size(); index++)
+    for (std::size_t index=0; index<hello_password.len(); index++)
     {
         if(hello_password[index]->has_operation())
             return true;
@@ -906,7 +1439,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword>();
         c->parent = this;
-        hello_password.push_back(c);
+        hello_password.append(c);
         return c;
     }
 
@@ -918,7 +1451,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hello_password)
+    for (auto c : hello_password.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -952,7 +1485,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword:
     password{YType::str, "password"}
 {
 
-    yang_name = "hello-password"; yang_parent_name = "hello-passwords"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-password"; yang_parent_name = "hello-passwords"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::~HelloPassword()
@@ -961,6 +1494,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword:
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| algorithm.is_set
 	|| failure_mode.is_set
@@ -979,7 +1513,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPass
 std::string Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-password" <<"[level='" <<level <<"']";
+    path_buffer << "hello-password";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1064,9 +1599,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPass
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPaddings()
+    :
+    hello_padding(this, {"level"})
 {
 
-    yang_name = "hello-paddings"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-paddings"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::~HelloPaddings()
@@ -1075,7 +1612,8 @@ Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::~HelloPaddings(
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::has_data() const
 {
-    for (std::size_t index=0; index<hello_padding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hello_padding.len(); index++)
     {
         if(hello_padding[index]->has_data())
             return true;
@@ -1085,7 +1623,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::has_data()
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::has_operation() const
 {
-    for (std::size_t index=0; index<hello_padding.size(); index++)
+    for (std::size_t index=0; index<hello_padding.len(); index++)
     {
         if(hello_padding[index]->has_operation())
             return true;
@@ -1115,7 +1653,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloP
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding>();
         c->parent = this;
-        hello_padding.push_back(c);
+        hello_padding.append(c);
         return c;
     }
 
@@ -1127,7 +1665,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hello_padding)
+    for (auto c : hello_padding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1159,7 +1697,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::H
     padding_type{YType::enumeration, "padding-type"}
 {
 
-    yang_name = "hello-padding"; yang_parent_name = "hello-paddings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-padding"; yang_parent_name = "hello-paddings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::~HelloPadding()
@@ -1168,6 +1706,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::~
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| padding_type.is_set;
 }
@@ -1182,7 +1721,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPaddi
 std::string Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-padding" <<"[level='" <<level <<"']";
+    path_buffer << "hello-padding";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1245,9 +1785,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPaddi
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultipliers()
+    :
+    hello_multiplier(this, {"level"})
 {
 
-    yang_name = "hello-multipliers"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-multipliers"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::~HelloMultipliers()
@@ -1256,7 +1798,8 @@ Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::~HelloMultip
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::has_data() const
 {
-    for (std::size_t index=0; index<hello_multiplier.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hello_multiplier.len(); index++)
     {
         if(hello_multiplier[index]->has_data())
             return true;
@@ -1266,7 +1809,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::has_dat
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::has_operation() const
 {
-    for (std::size_t index=0; index<hello_multiplier.size(); index++)
+    for (std::size_t index=0; index<hello_multiplier.len(); index++)
     {
         if(hello_multiplier[index]->has_operation())
             return true;
@@ -1296,7 +1839,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloM
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier>();
         c->parent = this;
-        hello_multiplier.push_back(c);
+        hello_multiplier.append(c);
         return c;
     }
 
@@ -1308,7 +1851,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hello_multiplier)
+    for (auto c : hello_multiplier.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1340,7 +1883,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultipl
     multiplier{YType::uint32, "multiplier"}
 {
 
-    yang_name = "hello-multiplier"; yang_parent_name = "hello-multipliers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-multiplier"; yang_parent_name = "hello-multipliers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::~HelloMultiplier()
@@ -1349,6 +1892,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultipl
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| multiplier.is_set;
 }
@@ -1363,7 +1907,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMu
 std::string Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-multiplier" <<"[level='" <<level <<"']";
+    path_buffer << "hello-multiplier";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1426,9 +1971,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMu
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThresholds()
+    :
+    lsp_fast_flood_threshold(this, {"level"})
 {
 
-    yang_name = "lsp-fast-flood-thresholds"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-fast-flood-thresholds"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::~LspFastFloodThresholds()
@@ -1437,7 +1984,8 @@ Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::~LspFa
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::has_data() const
 {
-    for (std::size_t index=0; index<lsp_fast_flood_threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_fast_flood_threshold.len(); index++)
     {
         if(lsp_fast_flood_threshold[index]->has_data())
             return true;
@@ -1447,7 +1995,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::h
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_fast_flood_threshold.size(); index++)
+    for (std::size_t index=0; index<lsp_fast_flood_threshold.len(); index++)
     {
         if(lsp_fast_flood_threshold[index]->has_operation())
             return true;
@@ -1477,7 +2025,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspFas
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold>();
         c->parent = this;
-        lsp_fast_flood_threshold.push_back(c);
+        lsp_fast_flood_threshold.append(c);
         return c;
     }
 
@@ -1489,7 +2037,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_fast_flood_threshold)
+    for (auto c : lsp_fast_flood_threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1521,7 +2069,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFas
     count{YType::uint32, "count"}
 {
 
-    yang_name = "lsp-fast-flood-threshold"; yang_parent_name = "lsp-fast-flood-thresholds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-fast-flood-threshold"; yang_parent_name = "lsp-fast-flood-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold::~LspFastFloodThreshold()
@@ -1530,6 +2078,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFas
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| count.is_set;
 }
@@ -1544,7 +2093,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::L
 std::string Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-fast-flood-threshold" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-fast-flood-threshold";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1607,9 +2157,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::L
 }
 
 Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClears()
+    :
+    prefix_attribute_n_flag_clear(this, {"level"})
 {
 
-    yang_name = "prefix-attribute-n-flag-clears"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-attribute-n-flag-clears"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::~PrefixAttributeNFlagClears()
@@ -1618,7 +2170,8 @@ Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::~P
 
 bool Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::has_data() const
 {
-    for (std::size_t index=0; index<prefix_attribute_n_flag_clear.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_attribute_n_flag_clear.len(); index++)
     {
         if(prefix_attribute_n_flag_clear[index]->has_data())
             return true;
@@ -1628,7 +2181,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClear
 
 bool Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_attribute_n_flag_clear.size(); index++)
+    for (std::size_t index=0; index<prefix_attribute_n_flag_clear.len(); index++)
     {
         if(prefix_attribute_n_flag_clear[index]->has_operation())
             return true;
@@ -1658,7 +2211,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Prefix
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear>();
         c->parent = this;
-        prefix_attribute_n_flag_clear.push_back(c);
+        prefix_attribute_n_flag_clear.append(c);
         return c;
     }
 
@@ -1670,7 +2223,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_attribute_n_flag_clear)
+    for (auto c : prefix_attribute_n_flag_clear.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1701,7 +2254,7 @@ Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::Pr
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "prefix-attribute-n-flag-clear"; yang_parent_name = "prefix-attribute-n-flag-clears"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-attribute-n-flag-clear"; yang_parent_name = "prefix-attribute-n-flag-clears"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear::~PrefixAttributeNFlagClear()
@@ -1710,6 +2263,7 @@ Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::Pr
 
 bool Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -1722,7 +2276,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClear
 std::string Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-attribute-n-flag-clear" <<"[level='" <<level <<"']";
+    path_buffer << "prefix-attribute-n-flag-clear";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1774,9 +2329,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClear
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloIntervals()
+    :
+    hello_interval(this, {"level"})
 {
 
-    yang_name = "hello-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::~HelloIntervals()
@@ -1785,7 +2342,8 @@ Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::~HelloInterval
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::has_data() const
 {
-    for (std::size_t index=0; index<hello_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hello_interval.len(); index++)
     {
         if(hello_interval[index]->has_data())
             return true;
@@ -1795,7 +2353,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::has_data(
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<hello_interval.size(); index++)
+    for (std::size_t index=0; index<hello_interval.len(); index++)
     {
         if(hello_interval[index]->has_operation())
             return true;
@@ -1825,7 +2383,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::HelloI
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval>();
         c->parent = this;
-        hello_interval.push_back(c);
+        hello_interval.append(c);
         return c;
     }
 
@@ -1837,7 +2395,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hello_interval)
+    for (auto c : hello_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1869,7 +2427,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval:
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "hello-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "hello-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::~HelloInterval()
@@ -1878,6 +2436,7 @@ Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval:
 
 bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set;
 }
@@ -1892,7 +2451,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInte
 std::string Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hello-interval" <<"[level='" <<level <<"']";
+    path_buffer << "hello-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -1955,9 +2515,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInte
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAfs()
+    :
+    interface_af(this, {"af_name", "saf_name"})
 {
 
-    yang_name = "interface-afs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-afs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::~InterfaceAfs()
@@ -1966,7 +2528,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::~InterfaceAfs()
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::has_data() const
 {
-    for (std::size_t index=0; index<interface_af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_af.len(); index++)
     {
         if(interface_af[index]->has_data())
             return true;
@@ -1976,7 +2539,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::has_data() 
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::has_operation() const
 {
-    for (std::size_t index=0; index<interface_af.size(); index++)
+    for (std::size_t index=0; index<interface_af.len(); index++)
     {
         if(interface_af[index]->has_operation())
             return true;
@@ -2006,7 +2569,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf>();
         c->parent = this;
-        interface_af.push_back(c);
+        interface_af.append(c);
         return c;
     }
 
@@ -2018,7 +2581,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_af)
+    for (auto c : interface_af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2048,12 +2611,13 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     :
     af_name{YType::enumeration, "af-name"},
     saf_name{YType::enumeration, "saf-name"}
-    	,
+        ,
     interface_af_data(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData>())
+    , topology_name(this, {"topology_name"})
 {
     interface_af_data->parent = this;
 
-    yang_name = "interface-af"; yang_parent_name = "interface-afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-af"; yang_parent_name = "interface-afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::~InterfaceAf()
@@ -2062,7 +2626,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::~In
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::has_data() const
 {
-    for (std::size_t index=0; index<topology_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology_name.len(); index++)
     {
         if(topology_name[index]->has_data())
             return true;
@@ -2074,7 +2639,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::has_operation() const
 {
-    for (std::size_t index=0; index<topology_name.size(); index++)
+    for (std::size_t index=0; index<topology_name.len(); index++)
     {
         if(topology_name[index]->has_operation())
             return true;
@@ -2088,7 +2653,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-af" <<"[af-name='" <<af_name <<"']" <<"[saf-name='" <<saf_name <<"']";
+    path_buffer << "interface-af";
+    ADD_KEY_TOKEN(af_name, "af-name");
+    ADD_KEY_TOKEN(saf_name, "saf-name");
     return path_buffer.str();
 }
 
@@ -2118,7 +2685,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName>();
         c->parent = this;
-        topology_name.push_back(c);
+        topology_name.append(c);
         return c;
     }
 
@@ -2135,7 +2702,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     }
 
     count = 0;
-    for (auto const & c : topology_name)
+    for (auto c : topology_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2185,17 +2752,17 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     :
     interface_af_state{YType::enumeration, "interface-af-state"},
     running{YType::empty, "running"}
-    	,
+        ,
     prefix_sid(nullptr) // presence node
-	,interface_frr_table(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable>())
-	,mpls_ldp(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp>())
-	,prefix_sspfsid(nullptr) // presence node
-	,auto_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics>())
-	,admin_tags(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags>())
-	,interface_link_group(nullptr) // presence node
-	,manual_adj_sids(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids>())
-	,metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics>())
-	,weights(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights>())
+    , interface_frr_table(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable>())
+    , mpls_ldp(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp>())
+    , prefix_sspfsid(nullptr) // presence node
+    , auto_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics>())
+    , admin_tags(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags>())
+    , interface_link_group(nullptr) // presence node
+    , manual_adj_sids(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids>())
+    , metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics>())
+    , weights(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights>())
 {
     interface_frr_table->parent = this;
     mpls_ldp->parent = this;
@@ -2205,7 +2772,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     metrics->parent = this;
     weights->parent = this;
 
-    yang_name = "interface-af-data"; yang_parent_name = "interface-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-af-data"; yang_parent_name = "interface-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::~InterfaceAfData()
@@ -2214,6 +2781,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_af_state.is_set
 	|| running.is_set
 	|| (prefix_sid !=  nullptr && prefix_sid->has_data())
@@ -2459,7 +3027,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     nflag_clear{YType::enumeration, "nflag-clear"}
 {
 
-    yang_name = "prefix-sid"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-sid"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSid::~PrefixSid()
@@ -2468,6 +3036,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSid::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| php.is_set
@@ -2586,13 +3155,13 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTable()
     :
     frrlfa_candidate_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces>())
-	,frr_remote_lfa_max_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics>())
-	,frr_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes>())
-	,frr_remote_lfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes>())
-	,interface_frr_tiebreaker_defaults(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults>())
-	,frrtilfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes>())
-	,frr_exclude_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces>())
-	,interface_frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers>())
+    , frr_remote_lfa_max_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics>())
+    , frr_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes>())
+    , frr_remote_lfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes>())
+    , interface_frr_tiebreaker_defaults(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults>())
+    , frrtilfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes>())
+    , frr_exclude_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces>())
+    , interface_frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers>())
 {
     frrlfa_candidate_interfaces->parent = this;
     frr_remote_lfa_max_metrics->parent = this;
@@ -2603,7 +3172,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     frr_exclude_interfaces->parent = this;
     interface_frr_tiebreakers->parent = this;
 
-    yang_name = "interface-frr-table"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-table"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::~InterfaceFrrTable()
@@ -2612,6 +3181,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (frrlfa_candidate_interfaces !=  nullptr && frrlfa_candidate_interfaces->has_data())
 	|| (frr_remote_lfa_max_metrics !=  nullptr && frr_remote_lfa_max_metrics->has_data())
 	|| (frr_types !=  nullptr && frr_types->has_data())
@@ -2791,9 +3361,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterfaces()
+    :
+    frrlfa_candidate_interface(this, {"interface_name", "frr_type"})
 {
 
-    yang_name = "frrlfa-candidate-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrlfa-candidate-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::~FrrlfaCandidateInterfaces()
@@ -2802,7 +3374,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<frrlfa_candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frrlfa_candidate_interface.len(); index++)
     {
         if(frrlfa_candidate_interface[index]->has_data())
             return true;
@@ -2812,7 +3385,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<frrlfa_candidate_interface.size(); index++)
+    for (std::size_t index=0; index<frrlfa_candidate_interface.len(); index++)
     {
         if(frrlfa_candidate_interface[index]->has_operation())
             return true;
@@ -2842,7 +3415,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface>();
         c->parent = this;
-        frrlfa_candidate_interface.push_back(c);
+        frrlfa_candidate_interface.append(c);
         return c;
     }
 
@@ -2854,7 +3427,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frrlfa_candidate_interface)
+    for (auto c : frrlfa_candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2887,7 +3460,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     level{YType::uint32, "level"}
 {
 
-    yang_name = "frrlfa-candidate-interface"; yang_parent_name = "frrlfa-candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrlfa-candidate-interface"; yang_parent_name = "frrlfa-candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::~FrrlfaCandidateInterface()
@@ -2896,6 +3469,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| frr_type.is_set
 	|| level.is_set;
@@ -2912,7 +3486,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frrlfa-candidate-interface" <<"[interface-name='" <<interface_name <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "frrlfa-candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -2986,9 +3562,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetrics()
+    :
+    frr_remote_lfa_max_metric(this, {"level"})
 {
 
-    yang_name = "frr-remote-lfa-max-metrics"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-max-metrics"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::~FrrRemoteLfaMaxMetrics()
@@ -2997,7 +3575,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::has_data() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_max_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_remote_lfa_max_metric.len(); index++)
     {
         if(frr_remote_lfa_max_metric[index]->has_data())
             return true;
@@ -3007,7 +3586,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::has_operation() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_max_metric.size(); index++)
+    for (std::size_t index=0; index<frr_remote_lfa_max_metric.len(); index++)
     {
         if(frr_remote_lfa_max_metric[index]->has_operation())
             return true;
@@ -3037,7 +3616,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric>();
         c->parent = this;
-        frr_remote_lfa_max_metric.push_back(c);
+        frr_remote_lfa_max_metric.append(c);
         return c;
     }
 
@@ -3049,7 +3628,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_remote_lfa_max_metric)
+    for (auto c : frr_remote_lfa_max_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3081,7 +3660,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     max_metric{YType::uint32, "max-metric"}
 {
 
-    yang_name = "frr-remote-lfa-max-metric"; yang_parent_name = "frr-remote-lfa-max-metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-max-metric"; yang_parent_name = "frr-remote-lfa-max-metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::~FrrRemoteLfaMaxMetric()
@@ -3090,6 +3669,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| max_metric.is_set;
 }
@@ -3104,7 +3684,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-remote-lfa-max-metric" <<"[level='" <<level <<"']";
+    path_buffer << "frr-remote-lfa-max-metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -3167,9 +3748,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrTypes()
+    :
+    frr_type(this, {"level"})
 {
 
-    yang_name = "frr-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::~FrrTypes()
@@ -3178,7 +3761,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::has_data() const
 {
-    for (std::size_t index=0; index<frr_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_type.len(); index++)
     {
         if(frr_type[index]->has_data())
             return true;
@@ -3188,7 +3772,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::has_operation() const
 {
-    for (std::size_t index=0; index<frr_type.size(); index++)
+    for (std::size_t index=0; index<frr_type.len(); index++)
     {
         if(frr_type[index]->has_operation())
             return true;
@@ -3218,7 +3802,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType>();
         c->parent = this;
-        frr_type.push_back(c);
+        frr_type.append(c);
         return c;
     }
 
@@ -3230,7 +3814,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_type)
+    for (auto c : frr_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3262,7 +3846,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "frr-type"; yang_parent_name = "frr-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-type"; yang_parent_name = "frr-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType::~FrrType()
@@ -3271,6 +3855,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set;
 }
@@ -3285,7 +3870,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-type" <<"[level='" <<level <<"']";
+    path_buffer << "frr-type";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -3348,9 +3934,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaTypes()
+    :
+    frr_remote_lfa_type(this, {"level"})
 {
 
-    yang_name = "frr-remote-lfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::~FrrRemoteLfaTypes()
@@ -3359,7 +3947,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::has_data() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_remote_lfa_type.len(); index++)
     {
         if(frr_remote_lfa_type[index]->has_data())
             return true;
@@ -3369,7 +3958,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::has_operation() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_type.size(); index++)
+    for (std::size_t index=0; index<frr_remote_lfa_type.len(); index++)
     {
         if(frr_remote_lfa_type[index]->has_operation())
             return true;
@@ -3399,7 +3988,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType>();
         c->parent = this;
-        frr_remote_lfa_type.push_back(c);
+        frr_remote_lfa_type.append(c);
         return c;
     }
 
@@ -3411,7 +4000,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_remote_lfa_type)
+    for (auto c : frr_remote_lfa_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3443,7 +4032,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "frr-remote-lfa-type"; yang_parent_name = "frr-remote-lfa-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-type"; yang_parent_name = "frr-remote-lfa-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::~FrrRemoteLfaType()
@@ -3452,6 +4041,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set;
 }
@@ -3466,7 +4056,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-remote-lfa-type" <<"[level='" <<level <<"']";
+    path_buffer << "frr-remote-lfa-type";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -3529,9 +4120,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefaults()
+    :
+    interface_frr_tiebreaker_default(this, {"level"})
 {
 
-    yang_name = "interface-frr-tiebreaker-defaults"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreaker-defaults"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::~InterfaceFrrTiebreakerDefaults()
@@ -3540,7 +4133,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::has_data() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker_default.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_frr_tiebreaker_default.len(); index++)
     {
         if(interface_frr_tiebreaker_default[index]->has_data())
             return true;
@@ -3550,7 +4144,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::has_operation() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker_default.size(); index++)
+    for (std::size_t index=0; index<interface_frr_tiebreaker_default.len(); index++)
     {
         if(interface_frr_tiebreaker_default[index]->has_operation())
             return true;
@@ -3580,7 +4174,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault>();
         c->parent = this;
-        interface_frr_tiebreaker_default.push_back(c);
+        interface_frr_tiebreaker_default.append(c);
         return c;
     }
 
@@ -3592,7 +4186,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_frr_tiebreaker_default)
+    for (auto c : interface_frr_tiebreaker_default.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3623,7 +4217,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "interface-frr-tiebreaker-default"; yang_parent_name = "interface-frr-tiebreaker-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreaker-default"; yang_parent_name = "interface-frr-tiebreaker-defaults"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::~InterfaceFrrTiebreakerDefault()
@@ -3632,6 +4226,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -3644,7 +4239,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-frr-tiebreaker-default" <<"[level='" <<level <<"']";
+    path_buffer << "interface-frr-tiebreaker-default";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -3696,9 +4292,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaTypes()
+    :
+    frrtilfa_type(this, {"level"})
 {
 
-    yang_name = "frrtilfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrtilfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::~FrrtilfaTypes()
@@ -3707,7 +4305,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::has_data() const
 {
-    for (std::size_t index=0; index<frrtilfa_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frrtilfa_type.len(); index++)
     {
         if(frrtilfa_type[index]->has_data())
             return true;
@@ -3717,7 +4316,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::has_operation() const
 {
-    for (std::size_t index=0; index<frrtilfa_type.size(); index++)
+    for (std::size_t index=0; index<frrtilfa_type.len(); index++)
     {
         if(frrtilfa_type[index]->has_operation())
             return true;
@@ -3747,7 +4346,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType>();
         c->parent = this;
-        frrtilfa_type.push_back(c);
+        frrtilfa_type.append(c);
         return c;
     }
 
@@ -3759,7 +4358,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frrtilfa_type)
+    for (auto c : frrtilfa_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3790,7 +4389,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "frrtilfa-type"; yang_parent_name = "frrtilfa-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrtilfa-type"; yang_parent_name = "frrtilfa-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::~FrrtilfaType()
@@ -3799,6 +4398,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -3811,7 +4411,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frrtilfa-type" <<"[level='" <<level <<"']";
+    path_buffer << "frrtilfa-type";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -3863,9 +4464,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterfaces()
+    :
+    frr_exclude_interface(this, {"interface_name", "frr_type"})
 {
 
-    yang_name = "frr-exclude-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-exclude-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::~FrrExcludeInterfaces()
@@ -3874,7 +4477,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<frr_exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_exclude_interface.len(); index++)
     {
         if(frr_exclude_interface[index]->has_data())
             return true;
@@ -3884,7 +4488,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<frr_exclude_interface.size(); index++)
+    for (std::size_t index=0; index<frr_exclude_interface.len(); index++)
     {
         if(frr_exclude_interface[index]->has_operation())
             return true;
@@ -3914,7 +4518,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface>();
         c->parent = this;
-        frr_exclude_interface.push_back(c);
+        frr_exclude_interface.append(c);
         return c;
     }
 
@@ -3926,7 +4530,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_exclude_interface)
+    for (auto c : frr_exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3959,7 +4563,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     level{YType::uint32, "level"}
 {
 
-    yang_name = "frr-exclude-interface"; yang_parent_name = "frr-exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-exclude-interface"; yang_parent_name = "frr-exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::~FrrExcludeInterface()
@@ -3968,6 +4572,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| frr_type.is_set
 	|| level.is_set;
@@ -3984,7 +4589,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-exclude-interface" <<"[interface-name='" <<interface_name <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "frr-exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -4058,9 +4665,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreakers()
+    :
+    interface_frr_tiebreaker(this, {"level", "tiebreaker"})
 {
 
-    yang_name = "interface-frr-tiebreakers"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreakers"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::~InterfaceFrrTiebreakers()
@@ -4069,7 +4678,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::has_data() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_frr_tiebreaker.len(); index++)
     {
         if(interface_frr_tiebreaker[index]->has_data())
             return true;
@@ -4079,7 +4689,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::has_operation() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker.size(); index++)
+    for (std::size_t index=0; index<interface_frr_tiebreaker.len(); index++)
     {
         if(interface_frr_tiebreaker[index]->has_operation())
             return true;
@@ -4109,7 +4719,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker>();
         c->parent = this;
-        interface_frr_tiebreaker.push_back(c);
+        interface_frr_tiebreaker.append(c);
         return c;
     }
 
@@ -4121,7 +4731,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_frr_tiebreaker)
+    for (auto c : interface_frr_tiebreaker.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4154,7 +4764,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     index_{YType::uint32, "index"}
 {
 
-    yang_name = "interface-frr-tiebreaker"; yang_parent_name = "interface-frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreaker"; yang_parent_name = "interface-frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::~InterfaceFrrTiebreaker()
@@ -4163,6 +4773,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| tiebreaker.is_set
 	|| index_.is_set;
@@ -4179,7 +4790,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-frr-tiebreaker" <<"[level='" <<level <<"']" <<"[tiebreaker='" <<tiebreaker <<"']";
+    path_buffer << "interface-frr-tiebreaker";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(tiebreaker, "tiebreaker");
     return path_buffer.str();
 }
 
@@ -4257,7 +4870,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     sync_level{YType::uint32, "sync-level"}
 {
 
-    yang_name = "mpls-ldp"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-ldp"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp::~MplsLdp()
@@ -4266,6 +4879,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp::has_data() const
 {
+    if (is_presence_container) return true;
     return sync_level.is_set;
 }
 
@@ -4338,7 +4952,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     nflag_clear{YType::enumeration, "nflag-clear"}
 {
 
-    yang_name = "prefix-sspfsid"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-sspfsid"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSspfsid::~PrefixSspfsid()
@@ -4347,6 +4961,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSspfsid::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| php.is_set
@@ -4463,9 +5078,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetrics()
+    :
+    auto_metric(this, {"level"})
 {
 
-    yang_name = "auto-metrics"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-metrics"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::~AutoMetrics()
@@ -4474,7 +5091,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::has_data() const
 {
-    for (std::size_t index=0; index<auto_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<auto_metric.len(); index++)
     {
         if(auto_metric[index]->has_data())
             return true;
@@ -4484,7 +5102,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::has_operation() const
 {
-    for (std::size_t index=0; index<auto_metric.size(); index++)
+    for (std::size_t index=0; index<auto_metric.len(); index++)
     {
         if(auto_metric[index]->has_operation())
             return true;
@@ -4514,7 +5132,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric>();
         c->parent = this;
-        auto_metric.push_back(c);
+        auto_metric.append(c);
         return c;
     }
 
@@ -4526,7 +5144,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : auto_metric)
+    for (auto c : auto_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4558,7 +5176,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     proactive_protect{YType::uint32, "proactive-protect"}
 {
 
-    yang_name = "auto-metric"; yang_parent_name = "auto-metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-metric"; yang_parent_name = "auto-metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::~AutoMetric()
@@ -4567,6 +5185,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| proactive_protect.is_set;
 }
@@ -4581,7 +5200,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "auto-metric" <<"[level='" <<level <<"']";
+    path_buffer << "auto-metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -4644,9 +5264,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTags()
+    :
+    admin_tag(this, {"level"})
 {
 
-    yang_name = "admin-tags"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-tags"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::~AdminTags()
@@ -4655,7 +5277,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::has_data() const
 {
-    for (std::size_t index=0; index<admin_tag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<admin_tag.len(); index++)
     {
         if(admin_tag[index]->has_data())
             return true;
@@ -4665,7 +5288,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::has_operation() const
 {
-    for (std::size_t index=0; index<admin_tag.size(); index++)
+    for (std::size_t index=0; index<admin_tag.len(); index++)
     {
         if(admin_tag[index]->has_operation())
             return true;
@@ -4695,7 +5318,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag>();
         c->parent = this;
-        admin_tag.push_back(c);
+        admin_tag.append(c);
         return c;
     }
 
@@ -4707,7 +5330,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : admin_tag)
+    for (auto c : admin_tag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4739,7 +5362,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     admin_tag{YType::uint32, "admin-tag"}
 {
 
-    yang_name = "admin-tag"; yang_parent_name = "admin-tags"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-tag"; yang_parent_name = "admin-tags"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::~AdminTag()
@@ -4748,6 +5371,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| admin_tag.is_set;
 }
@@ -4762,7 +5386,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-tag" <<"[level='" <<level <<"']";
+    path_buffer << "admin-tag";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -4830,7 +5455,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     level{YType::uint32, "level"}
 {
 
-    yang_name = "interface-link-group"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-link-group"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceLinkGroup::~InterfaceLinkGroup()
@@ -4839,6 +5464,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceLinkGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return link_group.is_set
 	|| level.is_set;
 }
@@ -4916,9 +5542,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSids()
+    :
+    manual_adj_sid(this, {"level", "sid_type", "sid"})
 {
 
-    yang_name = "manual-adj-sids"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sids"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::~ManualAdjSids()
@@ -4927,7 +5555,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::has_data() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_data())
             return true;
@@ -4937,7 +5566,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::has_operation() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_operation())
             return true;
@@ -4967,7 +5596,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
-        manual_adj_sid.push_back(c);
+        manual_adj_sid.append(c);
         return c;
     }
 
@@ -4979,7 +5608,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : manual_adj_sid)
+    for (auto c : manual_adj_sid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5013,7 +5642,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     protected_{YType::enumeration, "protected"}
 {
 
-    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid::~ManualAdjSid()
@@ -5022,6 +5651,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| sid_type.is_set
 	|| sid.is_set
@@ -5040,7 +5670,10 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "manual-adj-sid" <<"[level='" <<level <<"']" <<"[sid-type='" <<sid_type <<"']" <<"[sid='" <<sid <<"']";
+    path_buffer << "manual-adj-sid";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(sid_type, "sid-type");
+    ADD_KEY_TOKEN(sid, "sid");
     return path_buffer.str();
 }
 
@@ -5125,9 +5758,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metrics()
+    :
+    metric(this, {"level"})
 {
 
-    yang_name = "metrics"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metrics"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::~Metrics()
@@ -5136,7 +5771,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::has_data() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_data())
             return true;
@@ -5146,7 +5782,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::has_operation() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_operation())
             return true;
@@ -5176,7 +5812,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric>();
         c->parent = this;
-        metric.push_back(c);
+        metric.append(c);
         return c;
     }
 
@@ -5188,7 +5824,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric)
+    for (auto c : metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5220,7 +5856,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     metric{YType::str, "metric"}
 {
 
-    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::~Metric()
@@ -5229,6 +5865,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| metric.is_set;
 }
@@ -5243,7 +5880,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric" <<"[level='" <<level <<"']";
+    path_buffer << "metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -5306,9 +5944,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weights()
+    :
+    weight(this, {"level"})
 {
 
-    yang_name = "weights"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weights"; yang_parent_name = "interface-af-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::~Weights()
@@ -5317,7 +5957,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::has_data() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_data())
             return true;
@@ -5327,7 +5968,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::has_operation() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_operation())
             return true;
@@ -5357,7 +5998,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight>();
         c->parent = this;
-        weight.push_back(c);
+        weight.append(c);
         return c;
     }
 
@@ -5369,7 +6010,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : weight)
+    for (auto c : weight.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5401,7 +6042,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight::~Weight()
@@ -5410,6 +6051,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Int
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| weight.is_set;
 }
@@ -5424,7 +6066,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "weight" <<"[level='" <<level <<"']";
+    path_buffer << "weight";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -5491,17 +6134,17 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     topology_name{YType::str, "topology-name"},
     interface_af_state{YType::enumeration, "interface-af-state"},
     running{YType::empty, "running"}
-    	,
+        ,
     prefix_sid(nullptr) // presence node
-	,interface_frr_table(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable>())
-	,mpls_ldp(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp>())
-	,prefix_sspfsid(nullptr) // presence node
-	,auto_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics>())
-	,admin_tags(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags>())
-	,interface_link_group(nullptr) // presence node
-	,manual_adj_sids(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids>())
-	,metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics>())
-	,weights(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights>())
+    , interface_frr_table(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable>())
+    , mpls_ldp(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp>())
+    , prefix_sspfsid(nullptr) // presence node
+    , auto_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics>())
+    , admin_tags(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags>())
+    , interface_link_group(nullptr) // presence node
+    , manual_adj_sids(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids>())
+    , metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics>())
+    , weights(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights>())
 {
     interface_frr_table->parent = this;
     mpls_ldp->parent = this;
@@ -5511,7 +6154,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     metrics->parent = this;
     weights->parent = this;
 
-    yang_name = "topology-name"; yang_parent_name = "interface-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology-name"; yang_parent_name = "interface-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::~TopologyName()
@@ -5520,6 +6163,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_name.is_set
 	|| interface_af_state.is_set
 	|| running.is_set
@@ -5556,7 +6200,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology-name" <<"[topology-name='" <<topology_name <<"']";
+    path_buffer << "topology-name";
+    ADD_KEY_TOKEN(topology_name, "topology-name");
     return path_buffer.str();
 }
 
@@ -5778,7 +6423,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     nflag_clear{YType::enumeration, "nflag-clear"}
 {
 
-    yang_name = "prefix-sid"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-sid"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSid::~PrefixSid()
@@ -5787,6 +6432,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSid::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| php.is_set
@@ -5905,13 +6551,13 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTable()
     :
     frrlfa_candidate_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces>())
-	,frr_remote_lfa_max_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics>())
-	,frr_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes>())
-	,frr_remote_lfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes>())
-	,interface_frr_tiebreaker_defaults(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults>())
-	,frrtilfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes>())
-	,frr_exclude_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces>())
-	,interface_frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers>())
+    , frr_remote_lfa_max_metrics(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics>())
+    , frr_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes>())
+    , frr_remote_lfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes>())
+    , interface_frr_tiebreaker_defaults(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults>())
+    , frrtilfa_types(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes>())
+    , frr_exclude_interfaces(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces>())
+    , interface_frr_tiebreakers(std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers>())
 {
     frrlfa_candidate_interfaces->parent = this;
     frr_remote_lfa_max_metrics->parent = this;
@@ -5922,7 +6568,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     frr_exclude_interfaces->parent = this;
     interface_frr_tiebreakers->parent = this;
 
-    yang_name = "interface-frr-table"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-table"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::~InterfaceFrrTable()
@@ -5931,6 +6577,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (frrlfa_candidate_interfaces !=  nullptr && frrlfa_candidate_interfaces->has_data())
 	|| (frr_remote_lfa_max_metrics !=  nullptr && frr_remote_lfa_max_metrics->has_data())
 	|| (frr_types !=  nullptr && frr_types->has_data())
@@ -6110,9 +6757,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterfaces()
+    :
+    frrlfa_candidate_interface(this, {"interface_name", "frr_type"})
 {
 
-    yang_name = "frrlfa-candidate-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrlfa-candidate-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::~FrrlfaCandidateInterfaces()
@@ -6121,7 +6770,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<frrlfa_candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frrlfa_candidate_interface.len(); index++)
     {
         if(frrlfa_candidate_interface[index]->has_data())
             return true;
@@ -6131,7 +6781,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<frrlfa_candidate_interface.size(); index++)
+    for (std::size_t index=0; index<frrlfa_candidate_interface.len(); index++)
     {
         if(frrlfa_candidate_interface[index]->has_operation())
             return true;
@@ -6161,7 +6811,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface>();
         c->parent = this;
-        frrlfa_candidate_interface.push_back(c);
+        frrlfa_candidate_interface.append(c);
         return c;
     }
 
@@ -6173,7 +6823,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frrlfa_candidate_interface)
+    for (auto c : frrlfa_candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6206,7 +6856,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     level{YType::uint32, "level"}
 {
 
-    yang_name = "frrlfa-candidate-interface"; yang_parent_name = "frrlfa-candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrlfa-candidate-interface"; yang_parent_name = "frrlfa-candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::~FrrlfaCandidateInterface()
@@ -6215,6 +6865,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| frr_type.is_set
 	|| level.is_set;
@@ -6231,7 +6882,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frrlfa-candidate-interface" <<"[interface-name='" <<interface_name <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "frrlfa-candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -6305,9 +6958,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetrics()
+    :
+    frr_remote_lfa_max_metric(this, {"level"})
 {
 
-    yang_name = "frr-remote-lfa-max-metrics"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-max-metrics"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::~FrrRemoteLfaMaxMetrics()
@@ -6316,7 +6971,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::has_data() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_max_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_remote_lfa_max_metric.len(); index++)
     {
         if(frr_remote_lfa_max_metric[index]->has_data())
             return true;
@@ -6326,7 +6982,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::has_operation() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_max_metric.size(); index++)
+    for (std::size_t index=0; index<frr_remote_lfa_max_metric.len(); index++)
     {
         if(frr_remote_lfa_max_metric[index]->has_operation())
             return true;
@@ -6356,7 +7012,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric>();
         c->parent = this;
-        frr_remote_lfa_max_metric.push_back(c);
+        frr_remote_lfa_max_metric.append(c);
         return c;
     }
 
@@ -6368,7 +7024,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_remote_lfa_max_metric)
+    for (auto c : frr_remote_lfa_max_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6400,7 +7056,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     max_metric{YType::uint32, "max-metric"}
 {
 
-    yang_name = "frr-remote-lfa-max-metric"; yang_parent_name = "frr-remote-lfa-max-metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-max-metric"; yang_parent_name = "frr-remote-lfa-max-metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::~FrrRemoteLfaMaxMetric()
@@ -6409,6 +7065,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| max_metric.is_set;
 }
@@ -6423,7 +7080,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-remote-lfa-max-metric" <<"[level='" <<level <<"']";
+    path_buffer << "frr-remote-lfa-max-metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -6486,9 +7144,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrTypes()
+    :
+    frr_type(this, {"level"})
 {
 
-    yang_name = "frr-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::~FrrTypes()
@@ -6497,7 +7157,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::has_data() const
 {
-    for (std::size_t index=0; index<frr_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_type.len(); index++)
     {
         if(frr_type[index]->has_data())
             return true;
@@ -6507,7 +7168,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::has_operation() const
 {
-    for (std::size_t index=0; index<frr_type.size(); index++)
+    for (std::size_t index=0; index<frr_type.len(); index++)
     {
         if(frr_type[index]->has_operation())
             return true;
@@ -6537,7 +7198,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType>();
         c->parent = this;
-        frr_type.push_back(c);
+        frr_type.append(c);
         return c;
     }
 
@@ -6549,7 +7210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_type)
+    for (auto c : frr_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6581,7 +7242,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "frr-type"; yang_parent_name = "frr-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-type"; yang_parent_name = "frr-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType::~FrrType()
@@ -6590,6 +7251,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set;
 }
@@ -6604,7 +7266,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-type" <<"[level='" <<level <<"']";
+    path_buffer << "frr-type";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -6667,9 +7330,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaTypes()
+    :
+    frr_remote_lfa_type(this, {"level"})
 {
 
-    yang_name = "frr-remote-lfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::~FrrRemoteLfaTypes()
@@ -6678,7 +7343,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::has_data() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_remote_lfa_type.len(); index++)
     {
         if(frr_remote_lfa_type[index]->has_data())
             return true;
@@ -6688,7 +7354,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::has_operation() const
 {
-    for (std::size_t index=0; index<frr_remote_lfa_type.size(); index++)
+    for (std::size_t index=0; index<frr_remote_lfa_type.len(); index++)
     {
         if(frr_remote_lfa_type[index]->has_operation())
             return true;
@@ -6718,7 +7384,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType>();
         c->parent = this;
-        frr_remote_lfa_type.push_back(c);
+        frr_remote_lfa_type.append(c);
         return c;
     }
 
@@ -6730,7 +7396,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_remote_lfa_type)
+    for (auto c : frr_remote_lfa_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6762,7 +7428,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "frr-remote-lfa-type"; yang_parent_name = "frr-remote-lfa-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-remote-lfa-type"; yang_parent_name = "frr-remote-lfa-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::~FrrRemoteLfaType()
@@ -6771,6 +7437,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set;
 }
@@ -6785,7 +7452,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-remote-lfa-type" <<"[level='" <<level <<"']";
+    path_buffer << "frr-remote-lfa-type";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -6848,9 +7516,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefaults()
+    :
+    interface_frr_tiebreaker_default(this, {"level"})
 {
 
-    yang_name = "interface-frr-tiebreaker-defaults"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreaker-defaults"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::~InterfaceFrrTiebreakerDefaults()
@@ -6859,7 +7529,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::has_data() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker_default.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_frr_tiebreaker_default.len(); index++)
     {
         if(interface_frr_tiebreaker_default[index]->has_data())
             return true;
@@ -6869,7 +7540,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::has_operation() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker_default.size(); index++)
+    for (std::size_t index=0; index<interface_frr_tiebreaker_default.len(); index++)
     {
         if(interface_frr_tiebreaker_default[index]->has_operation())
             return true;
@@ -6899,7 +7570,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault>();
         c->parent = this;
-        interface_frr_tiebreaker_default.push_back(c);
+        interface_frr_tiebreaker_default.append(c);
         return c;
     }
 
@@ -6911,7 +7582,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_frr_tiebreaker_default)
+    for (auto c : interface_frr_tiebreaker_default.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6942,7 +7613,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "interface-frr-tiebreaker-default"; yang_parent_name = "interface-frr-tiebreaker-defaults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreaker-default"; yang_parent_name = "interface-frr-tiebreaker-defaults"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::~InterfaceFrrTiebreakerDefault()
@@ -6951,6 +7622,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -6963,7 +7635,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-frr-tiebreaker-default" <<"[level='" <<level <<"']";
+    path_buffer << "interface-frr-tiebreaker-default";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -7015,9 +7688,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaTypes()
+    :
+    frrtilfa_type(this, {"level"})
 {
 
-    yang_name = "frrtilfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrtilfa-types"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::~FrrtilfaTypes()
@@ -7026,7 +7701,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::has_data() const
 {
-    for (std::size_t index=0; index<frrtilfa_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frrtilfa_type.len(); index++)
     {
         if(frrtilfa_type[index]->has_data())
             return true;
@@ -7036,7 +7712,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::has_operation() const
 {
-    for (std::size_t index=0; index<frrtilfa_type.size(); index++)
+    for (std::size_t index=0; index<frrtilfa_type.len(); index++)
     {
         if(frrtilfa_type[index]->has_operation())
             return true;
@@ -7066,7 +7742,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType>();
         c->parent = this;
-        frrtilfa_type.push_back(c);
+        frrtilfa_type.append(c);
         return c;
     }
 
@@ -7078,7 +7754,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frrtilfa_type)
+    for (auto c : frrtilfa_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7109,7 +7785,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     level{YType::enumeration, "level"}
 {
 
-    yang_name = "frrtilfa-type"; yang_parent_name = "frrtilfa-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frrtilfa-type"; yang_parent_name = "frrtilfa-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::~FrrtilfaType()
@@ -7118,6 +7794,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -7130,7 +7807,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frrtilfa-type" <<"[level='" <<level <<"']";
+    path_buffer << "frrtilfa-type";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -7182,9 +7860,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterfaces()
+    :
+    frr_exclude_interface(this, {"interface_name", "frr_type"})
 {
 
-    yang_name = "frr-exclude-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-exclude-interfaces"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::~FrrExcludeInterfaces()
@@ -7193,7 +7873,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<frr_exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_exclude_interface.len(); index++)
     {
         if(frr_exclude_interface[index]->has_data())
             return true;
@@ -7203,7 +7884,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<frr_exclude_interface.size(); index++)
+    for (std::size_t index=0; index<frr_exclude_interface.len(); index++)
     {
         if(frr_exclude_interface[index]->has_operation())
             return true;
@@ -7233,7 +7914,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface>();
         c->parent = this;
-        frr_exclude_interface.push_back(c);
+        frr_exclude_interface.append(c);
         return c;
     }
 
@@ -7245,7 +7926,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : frr_exclude_interface)
+    for (auto c : frr_exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7278,7 +7959,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     level{YType::uint32, "level"}
 {
 
-    yang_name = "frr-exclude-interface"; yang_parent_name = "frr-exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-exclude-interface"; yang_parent_name = "frr-exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::~FrrExcludeInterface()
@@ -7287,6 +7968,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| frr_type.is_set
 	|| level.is_set;
@@ -7303,7 +7985,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "frr-exclude-interface" <<"[interface-name='" <<interface_name <<"']" <<"[frr-type='" <<frr_type <<"']";
+    path_buffer << "frr-exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -7377,9 +8061,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreakers()
+    :
+    interface_frr_tiebreaker(this, {"level", "tiebreaker"})
 {
 
-    yang_name = "interface-frr-tiebreakers"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreakers"; yang_parent_name = "interface-frr-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::~InterfaceFrrTiebreakers()
@@ -7388,7 +8074,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::has_data() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_frr_tiebreaker.len(); index++)
     {
         if(interface_frr_tiebreaker[index]->has_data())
             return true;
@@ -7398,7 +8085,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::has_operation() const
 {
-    for (std::size_t index=0; index<interface_frr_tiebreaker.size(); index++)
+    for (std::size_t index=0; index<interface_frr_tiebreaker.len(); index++)
     {
         if(interface_frr_tiebreaker[index]->has_operation())
             return true;
@@ -7428,7 +8115,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker>();
         c->parent = this;
-        interface_frr_tiebreaker.push_back(c);
+        interface_frr_tiebreaker.append(c);
         return c;
     }
 
@@ -7440,7 +8127,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_frr_tiebreaker)
+    for (auto c : interface_frr_tiebreaker.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7473,7 +8160,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     index_{YType::uint32, "index"}
 {
 
-    yang_name = "interface-frr-tiebreaker"; yang_parent_name = "interface-frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-frr-tiebreaker"; yang_parent_name = "interface-frr-tiebreakers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::~InterfaceFrrTiebreaker()
@@ -7482,6 +8169,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| tiebreaker.is_set
 	|| index_.is_set;
@@ -7498,7 +8186,9 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-frr-tiebreaker" <<"[level='" <<level <<"']" <<"[tiebreaker='" <<tiebreaker <<"']";
+    path_buffer << "interface-frr-tiebreaker";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(tiebreaker, "tiebreaker");
     return path_buffer.str();
 }
 
@@ -7576,7 +8266,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     sync_level{YType::uint32, "sync-level"}
 {
 
-    yang_name = "mpls-ldp"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-ldp"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp::~MplsLdp()
@@ -7585,6 +8275,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp::has_data() const
 {
+    if (is_presence_container) return true;
     return sync_level.is_set;
 }
 
@@ -7657,7 +8348,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     nflag_clear{YType::enumeration, "nflag-clear"}
 {
 
-    yang_name = "prefix-sspfsid"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-sspfsid"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSspfsid::~PrefixSspfsid()
@@ -7666,6 +8357,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSspfsid::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| php.is_set
@@ -7782,9 +8474,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetrics()
+    :
+    auto_metric(this, {"level"})
 {
 
-    yang_name = "auto-metrics"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-metrics"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::~AutoMetrics()
@@ -7793,7 +8487,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::has_data() const
 {
-    for (std::size_t index=0; index<auto_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<auto_metric.len(); index++)
     {
         if(auto_metric[index]->has_data())
             return true;
@@ -7803,7 +8498,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::has_operation() const
 {
-    for (std::size_t index=0; index<auto_metric.size(); index++)
+    for (std::size_t index=0; index<auto_metric.len(); index++)
     {
         if(auto_metric[index]->has_operation())
             return true;
@@ -7833,7 +8528,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric>();
         c->parent = this;
-        auto_metric.push_back(c);
+        auto_metric.append(c);
         return c;
     }
 
@@ -7845,7 +8540,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : auto_metric)
+    for (auto c : auto_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7877,7 +8572,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     proactive_protect{YType::uint32, "proactive-protect"}
 {
 
-    yang_name = "auto-metric"; yang_parent_name = "auto-metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-metric"; yang_parent_name = "auto-metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric::~AutoMetric()
@@ -7886,6 +8581,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| proactive_protect.is_set;
 }
@@ -7900,7 +8596,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "auto-metric" <<"[level='" <<level <<"']";
+    path_buffer << "auto-metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -7963,9 +8660,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTags()
+    :
+    admin_tag(this, {"level"})
 {
 
-    yang_name = "admin-tags"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-tags"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::~AdminTags()
@@ -7974,7 +8673,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::has_data() const
 {
-    for (std::size_t index=0; index<admin_tag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<admin_tag.len(); index++)
     {
         if(admin_tag[index]->has_data())
             return true;
@@ -7984,7 +8684,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::has_operation() const
 {
-    for (std::size_t index=0; index<admin_tag.size(); index++)
+    for (std::size_t index=0; index<admin_tag.len(); index++)
     {
         if(admin_tag[index]->has_operation())
             return true;
@@ -8014,7 +8714,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag>();
         c->parent = this;
-        admin_tag.push_back(c);
+        admin_tag.append(c);
         return c;
     }
 
@@ -8026,7 +8726,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : admin_tag)
+    for (auto c : admin_tag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8058,7 +8758,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     admin_tag{YType::uint32, "admin-tag"}
 {
 
-    yang_name = "admin-tag"; yang_parent_name = "admin-tags"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "admin-tag"; yang_parent_name = "admin-tags"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag::~AdminTag()
@@ -8067,6 +8767,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| admin_tag.is_set;
 }
@@ -8081,7 +8782,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin-tag" <<"[level='" <<level <<"']";
+    path_buffer << "admin-tag";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -8149,7 +8851,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     level{YType::uint32, "level"}
 {
 
-    yang_name = "interface-link-group"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-link-group"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceLinkGroup::~InterfaceLinkGroup()
@@ -8158,6 +8860,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceLinkGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return link_group.is_set
 	|| level.is_set;
 }
@@ -8235,9 +8938,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSids()
+    :
+    manual_adj_sid(this, {"level", "sid_type", "sid"})
 {
 
-    yang_name = "manual-adj-sids"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sids"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::~ManualAdjSids()
@@ -8246,7 +8951,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::has_data() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_data())
             return true;
@@ -8256,7 +8962,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::has_operation() const
 {
-    for (std::size_t index=0; index<manual_adj_sid.size(); index++)
+    for (std::size_t index=0; index<manual_adj_sid.len(); index++)
     {
         if(manual_adj_sid[index]->has_operation())
             return true;
@@ -8286,7 +8992,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid>();
         c->parent = this;
-        manual_adj_sid.push_back(c);
+        manual_adj_sid.append(c);
         return c;
     }
 
@@ -8298,7 +9004,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : manual_adj_sid)
+    for (auto c : manual_adj_sid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8332,7 +9038,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     protected_{YType::enumeration, "protected"}
 {
 
-    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "manual-adj-sid"; yang_parent_name = "manual-adj-sids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid::~ManualAdjSid()
@@ -8341,6 +9047,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| sid_type.is_set
 	|| sid.is_set
@@ -8359,7 +9066,10 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "manual-adj-sid" <<"[level='" <<level <<"']" <<"[sid-type='" <<sid_type <<"']" <<"[sid='" <<sid <<"']";
+    path_buffer << "manual-adj-sid";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(sid_type, "sid-type");
+    ADD_KEY_TOKEN(sid, "sid");
     return path_buffer.str();
 }
 
@@ -8444,9 +9154,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metrics()
+    :
+    metric(this, {"level"})
 {
 
-    yang_name = "metrics"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metrics"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::~Metrics()
@@ -8455,7 +9167,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::has_data() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_data())
             return true;
@@ -8465,7 +9178,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::has_operation() const
 {
-    for (std::size_t index=0; index<metric.size(); index++)
+    for (std::size_t index=0; index<metric.len(); index++)
     {
         if(metric[index]->has_operation())
             return true;
@@ -8495,7 +9208,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric>();
         c->parent = this;
-        metric.push_back(c);
+        metric.append(c);
         return c;
     }
 
@@ -8507,7 +9220,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : metric)
+    for (auto c : metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8539,7 +9252,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     metric{YType::str, "metric"}
 {
 
-    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "metrics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::~Metric()
@@ -8548,6 +9261,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| metric.is_set;
 }
@@ -8562,7 +9276,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "metric" <<"[level='" <<level <<"']";
+    path_buffer << "metric";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -8625,9 +9340,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weights()
+    :
+    weight(this, {"level"})
 {
 
-    yang_name = "weights"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weights"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::~Weights()
@@ -8636,7 +9353,8 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::has_data() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_data())
             return true;
@@ -8646,7 +9364,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::has_operation() const
 {
-    for (std::size_t index=0; index<weight.size(); index++)
+    for (std::size_t index=0; index<weight.len(); index++)
     {
         if(weight[index]->has_operation())
             return true;
@@ -8676,7 +9394,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::Interf
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight>();
         c->parent = this;
-        weight.push_back(c);
+        weight.append(c);
         return c;
     }
 
@@ -8688,7 +9406,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : weight)
+    for (auto c : weight.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8720,7 +9438,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
     weight{YType::uint32, "weight"}
 {
 
-    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "weight"; yang_parent_name = "weights"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight::~Weight()
@@ -8729,6 +9447,7 @@ Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::Top
 
 bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| weight.is_set;
 }
@@ -8743,7 +9462,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "weight" <<"[level='" <<level <<"']";
+    path_buffer << "weight";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -8806,9 +9526,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 }
 
 Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpIntervals()
+    :
+    csnp_interval(this, {"level"})
 {
 
-    yang_name = "csnp-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csnp-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::~CsnpIntervals()
@@ -8817,7 +9539,8 @@ Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::~CsnpIntervals(
 
 bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::has_data() const
 {
-    for (std::size_t index=0; index<csnp_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csnp_interval.len(); index++)
     {
         if(csnp_interval[index]->has_data())
             return true;
@@ -8827,7 +9550,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::has_data()
 
 bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<csnp_interval.size(); index++)
+    for (std::size_t index=0; index<csnp_interval.len(); index++)
     {
         if(csnp_interval[index]->has_operation())
             return true;
@@ -8857,7 +9580,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::CsnpIn
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval>();
         c->parent = this;
-        csnp_interval.push_back(c);
+        csnp_interval.append(c);
         return c;
     }
 
@@ -8869,7 +9592,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csnp_interval)
+    for (auto c : csnp_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8901,7 +9624,7 @@ Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::C
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "csnp-interval"; yang_parent_name = "csnp-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "csnp-interval"; yang_parent_name = "csnp-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::~CsnpInterval()
@@ -8910,6 +9633,7 @@ Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::~
 
 bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set;
 }
@@ -8924,7 +9648,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterv
 std::string Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csnp-interval" <<"[level='" <<level <<"']";
+    path_buffer << "csnp-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -8987,9 +9712,11 @@ bool Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterv
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspIntervals()
+    :
+    lsp_interval(this, {"level"})
 {
 
-    yang_name = "lsp-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-intervals"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspIntervals::~LspIntervals()
@@ -8998,7 +9725,8 @@ Isis::Instances::Instance::Interfaces::Interface::LspIntervals::~LspIntervals()
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspIntervals::has_data() const
 {
-    for (std::size_t index=0; index<lsp_interval.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_interval.len(); index++)
     {
         if(lsp_interval[index]->has_data())
             return true;
@@ -9008,7 +9736,7 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspIntervals::has_data() 
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspIntervals::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_interval.size(); index++)
+    for (std::size_t index=0; index<lsp_interval.len(); index++)
     {
         if(lsp_interval[index]->has_operation())
             return true;
@@ -9038,7 +9766,7 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Interfaces::Interface::LspInt
     {
         auto c = std::make_shared<Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval>();
         c->parent = this;
-        lsp_interval.push_back(c);
+        lsp_interval.append(c);
         return c;
     }
 
@@ -9050,7 +9778,7 @@ std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Interf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_interval)
+    for (auto c : lsp_interval.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9082,7 +9810,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval::Lsp
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "lsp-interval"; yang_parent_name = "lsp-intervals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-interval"; yang_parent_name = "lsp-intervals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval::~LspInterval()
@@ -9091,6 +9819,7 @@ Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval::~Ls
 
 bool Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set;
 }
@@ -9105,7 +9834,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
 std::string Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-interval" <<"[level='" <<level <<"']";
+    path_buffer << "lsp-interval";
+    ADD_KEY_TOKEN(level, "level");
     return path_buffer.str();
 }
 
@@ -9166,6 +9896,8 @@ bool Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
         return true;
     return false;
 }
+
+const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::MeshGroup::blocked {0, "blocked"};
 
 const Enum::YLeaf Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 

@@ -61,7 +61,7 @@ class TelemetryModelDriven::Destinations : public ydk::Entity
 
         class Destination; //type: TelemetryModelDriven::Destinations::Destination
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination> > destination;
+        ydk::YList destination;
         
 }; // TelemetryModelDriven::Destinations
 
@@ -88,7 +88,7 @@ class TelemetryModelDriven::Destinations::Destination : public ydk::Entity
         ydk::YLeaf configured; //type: uint32
         class Destination_; //type: TelemetryModelDriven::Destinations::Destination::Destination_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_> > destination;
+        ydk::YList destination;
         
 }; // TelemetryModelDriven::Destinations::Destination
 
@@ -113,7 +113,7 @@ class TelemetryModelDriven::Destinations::Destination::Destination_ : public ydk
         class CollectionGroup; //type: TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_::Destination__> destination;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup> > collection_group;
+        ydk::YList collection_group;
         
 }; // TelemetryModelDriven::Destinations::Destination::Destination_
 
@@ -215,8 +215,8 @@ class TelemetryModelDriven::Destinations::Destination::Destination_::CollectionG
         class CollectionPath; //type: TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath
         class InternalCollectionGroup; //type: TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath> > collection_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup> > internal_collection_group;
+        ydk::YList collection_path;
+        ydk::YList internal_collection_group;
         
 }; // TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup
 
@@ -310,7 +310,7 @@ class TelemetryModelDriven::Subscriptions : public ydk::Entity
 
         class Subscription; //type: TelemetryModelDriven::Subscriptions::Subscription
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription> > subscription;
+        ydk::YList subscription;
         
 }; // TelemetryModelDriven::Subscriptions
 
@@ -337,7 +337,7 @@ class TelemetryModelDriven::Subscriptions::Subscription : public ydk::Entity
         class CollectionGroup; //type: TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::Subscription_> subscription;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup> > collection_group;
+        ydk::YList collection_group;
         
 }; // TelemetryModelDriven::Subscriptions::Subscription
 
@@ -366,8 +366,8 @@ class TelemetryModelDriven::Subscriptions::Subscription::Subscription_ : public 
         class DestinationGrp; //type: TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface> source_interface;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile> > sensor_profile;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp> > destination_grp;
+        ydk::YList sensor_profile;
+        ydk::YList destination_grp;
         
 }; // TelemetryModelDriven::Subscriptions::Subscription::Subscription_
 
@@ -443,7 +443,7 @@ class TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorPr
         ydk::YLeaf configured; //type: uint32
         class SensorPath; //type: TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath> > sensor_path;
+        ydk::YList sensor_path;
         
 }; // TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup
 
@@ -491,7 +491,7 @@ class TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinat
         ydk::YLeaf configured; //type: uint32
         class Destination; //type: TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination> > destination;
+        ydk::YList destination;
         
 }; // TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp
 
@@ -593,8 +593,8 @@ class TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup : publi
         class CollectionPath; //type: TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath
         class InternalCollectionGroup; //type: TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath> > collection_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup> > internal_collection_group;
+        ydk::YList collection_path;
+        ydk::YList internal_collection_group;
         
 }; // TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup
 
@@ -688,7 +688,7 @@ class TelemetryModelDriven::SensorGroups : public ydk::Entity
 
         class SensorGroup; //type: TelemetryModelDriven::SensorGroups::SensorGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::SensorGroups::SensorGroup> > sensor_group;
+        ydk::YList sensor_group;
         
 }; // TelemetryModelDriven::SensorGroups
 
@@ -715,7 +715,7 @@ class TelemetryModelDriven::SensorGroups::SensorGroup : public ydk::Entity
         ydk::YLeaf configured; //type: uint32
         class SensorPath; //type: TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_oper::TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath> > sensor_path;
+        ydk::YList sensor_path;
         
 }; // TelemetryModelDriven::SensorGroups::SensorGroup
 
@@ -741,6 +741,51 @@ class TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath : public ydk::
         ydk::YLeaf status_str; //type: string
 
 }; // TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath
+
+class MdtTransportEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf grpc;
+        static const ydk::Enum::YLeaf tcp;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf dialin;
+
+};
+
+class MdtInternalPathStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf internal_err;
+        static const ydk::Enum::YLeaf plugin_active;
+        static const ydk::Enum::YLeaf plugin_not_initialized;
+        static const ydk::Enum::YLeaf plugin_invalid_cadence;
+        static const ydk::Enum::YLeaf plugin_err;
+        static const ydk::Enum::YLeaf filter_err;
+        static const ydk::Enum::YLeaf paused;
+        static const ydk::Enum::YLeaf event_ing_active;
+        static const ydk::Enum::YLeaf event_ing_not_active;
+        static const ydk::Enum::YLeaf event_ing_err;
+
+};
+
+class MdtIp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class MdtSubsStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_active;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf paused;
+
+};
 
 class MdtSourceQosMarking : public ydk::Enum
 {
@@ -769,32 +814,6 @@ class MdtSourceQosMarking : public ydk::Enum
 
 };
 
-class MdtSubsStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_active;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf paused;
-
-};
-
-class MdtInternalPathStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf internal_err;
-        static const ydk::Enum::YLeaf plugin_active;
-        static const ydk::Enum::YLeaf plugin_not_initialized;
-        static const ydk::Enum::YLeaf plugin_invalid_cadence;
-        static const ydk::Enum::YLeaf plugin_err;
-        static const ydk::Enum::YLeaf filter_err;
-        static const ydk::Enum::YLeaf paused;
-        static const ydk::Enum::YLeaf event_ing_active;
-        static const ydk::Enum::YLeaf event_ing_not_active;
-        static const ydk::Enum::YLeaf event_ing_err;
-
-};
-
 class MdtDestStateEnum : public ydk::Enum
 {
     public:
@@ -807,17 +826,6 @@ class MdtDestStateEnum : public ydk::Enum
 
 };
 
-class MdtTransportEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf grpc;
-        static const ydk::Enum::YLeaf tcp;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf dialin;
-
-};
-
 class MdtEncodingEnum : public ydk::Enum
 {
     public:
@@ -825,14 +833,6 @@ class MdtEncodingEnum : public ydk::Enum
         static const ydk::Enum::YLeaf gpb;
         static const ydk::Enum::YLeaf self_describing_gpb;
         static const ydk::Enum::YLeaf json;
-
-};
-
-class MdtIp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
 
 };
 

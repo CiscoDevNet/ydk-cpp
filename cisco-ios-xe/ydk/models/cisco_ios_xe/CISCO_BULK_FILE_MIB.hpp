@@ -32,26 +32,26 @@ class CISCOBULKFILEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cbfdefine; //type: CISCOBULKFILEMIB::Cbfdefine
-        class Cbfstatus; //type: CISCOBULKFILEMIB::Cbfstatus
-        class Cbfdefinefiletable; //type: CISCOBULKFILEMIB::Cbfdefinefiletable
-        class Cbfdefineobjecttable; //type: CISCOBULKFILEMIB::Cbfdefineobjecttable
-        class Cbfstatusfiletable; //type: CISCOBULKFILEMIB::Cbfstatusfiletable
+        class CbfDefine; //type: CISCOBULKFILEMIB::CbfDefine
+        class CbfStatus; //type: CISCOBULKFILEMIB::CbfStatus
+        class CbfDefineFileTable; //type: CISCOBULKFILEMIB::CbfDefineFileTable
+        class CbfDefineObjectTable; //type: CISCOBULKFILEMIB::CbfDefineObjectTable
+        class CbfStatusFileTable; //type: CISCOBULKFILEMIB::CbfStatusFileTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfdefine> cbfdefine;
-        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfstatus> cbfstatus;
-        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfdefinefiletable> cbfdefinefiletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfdefineobjecttable> cbfdefineobjecttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfstatusfiletable> cbfstatusfiletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::CbfDefine> cbfdefine;
+        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::CbfStatus> cbfstatus;
+        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::CbfDefineFileTable> cbfdefinefiletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::CbfDefineObjectTable> cbfdefineobjecttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::CbfStatusFileTable> cbfstatusfiletable;
         
 }; // CISCOBULKFILEMIB
 
 
-class CISCOBULKFILEMIB::Cbfdefine : public ydk::Entity
+class CISCOBULKFILEMIB::CbfDefine : public ydk::Entity
 {
     public:
-        Cbfdefine();
-        ~Cbfdefine();
+        CbfDefine();
+        ~CbfDefine();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -73,14 +73,14 @@ class CISCOBULKFILEMIB::Cbfdefine : public ydk::Entity
         ydk::YLeaf cbfdefinehighobjects; //type: uint32
         ydk::YLeaf cbfdefineobjectsrefused; //type: uint32
 
-}; // CISCOBULKFILEMIB::Cbfdefine
+}; // CISCOBULKFILEMIB::CbfDefine
 
 
-class CISCOBULKFILEMIB::Cbfstatus : public ydk::Entity
+class CISCOBULKFILEMIB::CbfStatus : public ydk::Entity
 {
     public:
-        Cbfstatus();
-        ~Cbfstatus();
+        CbfStatus();
+        ~CbfStatus();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,14 +98,14 @@ class CISCOBULKFILEMIB::Cbfstatus : public ydk::Entity
         ydk::YLeaf cbfstatushighfiles; //type: uint32
         ydk::YLeaf cbfstatusfilesbumped; //type: uint32
 
-}; // CISCOBULKFILEMIB::Cbfstatus
+}; // CISCOBULKFILEMIB::CbfStatus
 
 
-class CISCOBULKFILEMIB::Cbfdefinefiletable : public ydk::Entity
+class CISCOBULKFILEMIB::CbfDefineFileTable : public ydk::Entity
 {
     public:
-        Cbfdefinefiletable();
-        ~Cbfdefinefiletable();
+        CbfDefineFileTable();
+        ~CbfDefineFileTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,18 +118,18 @@ class CISCOBULKFILEMIB::Cbfdefinefiletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbfdefinefileentry; //type: CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry
+        class CbfDefineFileEntry; //type: CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry> > cbfdefinefileentry;
+        ydk::YList cbfdefinefileentry;
         
-}; // CISCOBULKFILEMIB::Cbfdefinefiletable
+}; // CISCOBULKFILEMIB::CbfDefineFileTable
 
 
-class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry : public ydk::Entity
+class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry : public ydk::Entity
 {
     public:
-        Cbfdefinefileentry();
-        ~Cbfdefinefileentry();
+        CbfDefineFileEntry();
+        ~CbfDefineFileEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -144,23 +144,23 @@ class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry : public ydk::Ent
 
         ydk::YLeaf cbfdefinefileindex; //type: uint32
         ydk::YLeaf cbfdefinefilename; //type: string
-        ydk::YLeaf cbfdefinefilestorage; //type: Cbfdefinefilestorage
-        ydk::YLeaf cbfdefinefileformat; //type: Cbfdefinefileformat
-        ydk::YLeaf cbfdefinefilenow; //type: Cbfdefinefilenow
+        ydk::YLeaf cbfdefinefilestorage; //type: CbfDefineFileStorage
+        ydk::YLeaf cbfdefinefileformat; //type: CbfDefineFileFormat
+        ydk::YLeaf cbfdefinefilenow; //type: CbfDefineFileNow
         ydk::YLeaf cbfdefinefileentrystatus; //type: RowStatus
         ydk::YLeaf cbfdefinefilenotifyoncompletion; //type: boolean
-        class Cbfdefinefilestorage;
-        class Cbfdefinefileformat;
-        class Cbfdefinefilenow;
+        class CbfDefineFileStorage;
+        class CbfDefineFileFormat;
+        class CbfDefineFileNow;
 
-}; // CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry
+}; // CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry
 
 
-class CISCOBULKFILEMIB::Cbfdefineobjecttable : public ydk::Entity
+class CISCOBULKFILEMIB::CbfDefineObjectTable : public ydk::Entity
 {
     public:
-        Cbfdefineobjecttable();
-        ~Cbfdefineobjecttable();
+        CbfDefineObjectTable();
+        ~CbfDefineObjectTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -173,18 +173,18 @@ class CISCOBULKFILEMIB::Cbfdefineobjecttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbfdefineobjectentry; //type: CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry
+        class CbfDefineObjectEntry; //type: CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry> > cbfdefineobjectentry;
+        ydk::YList cbfdefineobjectentry;
         
-}; // CISCOBULKFILEMIB::Cbfdefineobjecttable
+}; // CISCOBULKFILEMIB::CbfDefineObjectTable
 
 
-class CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry : public ydk::Entity
+class CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry : public ydk::Entity
 {
     public:
-        Cbfdefineobjectentry();
-        ~Cbfdefineobjectentry();
+        CbfDefineObjectEntry();
+        ~CbfDefineObjectEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -197,25 +197,25 @@ class CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::cbfdefinefileindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::cbfdefinefileindex)
         ydk::YLeaf cbfdefinefileindex;
         ydk::YLeaf cbfdefineobjectindex; //type: uint32
-        ydk::YLeaf cbfdefineobjectclass; //type: Cbfdefineobjectclass
+        ydk::YLeaf cbfdefineobjectclass; //type: CbfDefineObjectClass
         ydk::YLeaf cbfdefineobjectid; //type: string
         ydk::YLeaf cbfdefineobjectentrystatus; //type: RowStatus
         ydk::YLeaf cbfdefineobjecttableinstance; //type: string
         ydk::YLeaf cbfdefineobjectnumentries; //type: uint32
         ydk::YLeaf cbfdefineobjectlastpolledinst; //type: string
-        class Cbfdefineobjectclass;
+        class CbfDefineObjectClass;
 
-}; // CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry
+}; // CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry
 
 
-class CISCOBULKFILEMIB::Cbfstatusfiletable : public ydk::Entity
+class CISCOBULKFILEMIB::CbfStatusFileTable : public ydk::Entity
 {
     public:
-        Cbfstatusfiletable();
-        ~Cbfstatusfiletable();
+        CbfStatusFileTable();
+        ~CbfStatusFileTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -228,18 +228,18 @@ class CISCOBULKFILEMIB::Cbfstatusfiletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbfstatusfileentry; //type: CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry
+        class CbfStatusFileEntry; //type: CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry> > cbfstatusfileentry;
+        ydk::YList cbfstatusfileentry;
         
-}; // CISCOBULKFILEMIB::Cbfstatusfiletable
+}; // CISCOBULKFILEMIB::CbfStatusFileTable
 
 
-class CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry : public ydk::Entity
+class CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry : public ydk::Entity
 {
     public:
-        Cbfstatusfileentry();
-        ~Cbfstatusfileentry();
+        CbfStatusFileEntry();
+        ~CbfStatusFileEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -252,17 +252,17 @@ class CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::cbfdefinefileindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_BULK_FILE_MIB::CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::cbfdefinefileindex)
         ydk::YLeaf cbfdefinefileindex;
         ydk::YLeaf cbfstatusfileindex; //type: uint32
-        ydk::YLeaf cbfstatusfilestate; //type: Cbfstatusfilestate
+        ydk::YLeaf cbfstatusfilestate; //type: CbfStatusFileState
         ydk::YLeaf cbfstatusfilecompletiontime; //type: uint32
         ydk::YLeaf cbfstatusfileentrystatus; //type: RowStatus
-        class Cbfstatusfilestate;
+        class CbfStatusFileState;
 
-}; // CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry
+}; // CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry
 
-class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilestorage : public ydk::Enum
+class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileStorage : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ephemeral;
@@ -271,7 +271,7 @@ class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilesto
 
 };
 
-class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefileformat : public ydk::Enum
+class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileFormat : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf standardBER;
@@ -282,7 +282,7 @@ class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilefor
 
 };
 
-class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilenow : public ydk::Enum
+class CISCOBULKFILEMIB::CbfDefineFileTable::CbfDefineFileEntry::CbfDefineFileNow : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notActive;
@@ -293,7 +293,7 @@ class CISCOBULKFILEMIB::Cbfdefinefiletable::Cbfdefinefileentry::Cbfdefinefilenow
 
 };
 
-class CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::Cbfdefineobjectclass : public ydk::Enum
+class CISCOBULKFILEMIB::CbfDefineObjectTable::CbfDefineObjectEntry::CbfDefineObjectClass : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf object;
@@ -302,7 +302,7 @@ class CISCOBULKFILEMIB::Cbfdefineobjecttable::Cbfdefineobjectentry::Cbfdefineobj
 
 };
 
-class CISCOBULKFILEMIB::Cbfstatusfiletable::Cbfstatusfileentry::Cbfstatusfilestate : public ydk::Enum
+class CISCOBULKFILEMIB::CbfStatusFileTable::CbfStatusFileEntry::CbfStatusFileState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf running;

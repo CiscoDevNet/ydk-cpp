@@ -64,7 +64,7 @@ class BgpStateData::Neighbors : public ydk::Entity
 
         class Neighbor; //type: BgpStateData::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // BgpStateData::Neighbors
 
@@ -361,7 +361,7 @@ class BgpStateData::AddressFamilies : public ydk::Entity
 
         class AddressFamily; //type: BgpStateData::AddressFamilies::AddressFamily
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::AddressFamilies::AddressFamily> > address_family;
+        ydk::YList address_family;
         
 }; // BgpStateData::AddressFamilies
 
@@ -560,7 +560,7 @@ class BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries : publi
 
         class BgpNeighborSummary; //type: BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary> > bgp_neighbor_summary;
+        ydk::YList bgp_neighbor_summary;
         
 }; // BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries
 
@@ -616,7 +616,7 @@ class BgpStateData::BgpRouteVrfs : public ydk::Entity
 
         class BgpRouteVrf; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf> > bgp_route_vrf;
+        ydk::YList bgp_route_vrf;
         
 }; // BgpStateData::BgpRouteVrfs
 
@@ -664,7 +664,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs : public ydk::Entity
 
         class BgpRouteAf; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf> > bgp_route_af;
+        ydk::YList bgp_route_af;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs
 
@@ -715,7 +715,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRoute
 
         class BgpRouteFilter; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter> > bgp_route_filter;
+        ydk::YList bgp_route_filter;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters
 
@@ -762,7 +762,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRoute
 
         class BgpRouteEntry; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry> > bgp_route_entry;
+        ydk::YList bgp_route_entry;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries
 
@@ -812,7 +812,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRoute
 
         class BgpPathEntry; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry> > bgp_path_entry;
+        ydk::YList bgp_path_entry;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries
 
@@ -916,7 +916,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRoute
 
         class BgpRouteNeighbor; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor> > bgp_route_neighbor;
+        ydk::YList bgp_route_neighbor;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors
 
@@ -963,7 +963,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRoute
 
         class BgpNeighborRouteFilter; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter> > bgp_neighbor_route_filter;
+        ydk::YList bgp_neighbor_route_filter;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters
 
@@ -1010,7 +1010,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRoute
 
         class BgpNeighborRouteEntry; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry> > bgp_neighbor_route_entry;
+        ydk::YList bgp_neighbor_route_entry;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries
 
@@ -1060,7 +1060,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRoute
 
         class BgpNeighborPathEntry; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry> > bgp_neighbor_path_entry;
+        ydk::YList bgp_neighbor_path_entry;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries
 
@@ -1164,7 +1164,7 @@ class BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerG
 
         class BgpPeerGroup; //type: BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup> > bgp_peer_group;
+        ydk::YList bgp_peer_group;
         
 }; // BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups
 
@@ -1230,7 +1230,7 @@ class BgpStateData::BgpRouteRds : public ydk::Entity
 
         class BgpRouteRd; //type: BgpStateData::BgpRouteRds::BgpRouteRd
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd> > bgp_route_rd;
+        ydk::YList bgp_route_rd;
         
 }; // BgpStateData::BgpRouteRds
 
@@ -1278,7 +1278,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs : public ydk::Entity
 
         class BgpRdRouteAf; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf> > bgp_rd_route_af;
+        ydk::YList bgp_rd_route_af;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs
 
@@ -1327,7 +1327,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
         class BgpRdRouteFilter; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter> > bgp_rd_route_filter;
+        ydk::YList bgp_rd_route_filter;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters
 
@@ -1374,7 +1374,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
         class BgpRdRouteEntry; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry> > bgp_rd_route_entry;
+        ydk::YList bgp_rd_route_entry;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries
 
@@ -1424,7 +1424,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
         class BgpRdPathEntry; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry> > bgp_rd_path_entry;
+        ydk::YList bgp_rd_path_entry;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries
 
@@ -1528,7 +1528,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
         class BgpRdRouteNeighbor; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor> > bgp_rd_route_neighbor;
+        ydk::YList bgp_rd_route_neighbor;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors
 
@@ -1575,7 +1575,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
         class BgpRdNeighborRouteFilter; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter> > bgp_rd_neighbor_route_filter;
+        ydk::YList bgp_rd_neighbor_route_filter;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters
 
@@ -1622,7 +1622,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
         class BgpRdNeighborRouteEntry; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry> > bgp_rd_neighbor_route_entry;
+        ydk::YList bgp_rd_neighbor_route_entry;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries
 
@@ -1672,7 +1672,7 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
         class BgpRdNeighborPathEntry; //type: BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bgp_oper::BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry> > bgp_rd_neighbor_path_entry;
+        ydk::YList bgp_rd_neighbor_path_entry;
         
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries
 
@@ -1757,14 +1757,6 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus
 
-class BgpLink : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf external;
-
-};
-
 class BgpFsmState : public ydk::Enum
 {
     public:
@@ -1775,6 +1767,14 @@ class BgpFsmState : public ydk::Enum
         static const ydk::Enum::YLeaf fsm_openconfirm;
         static const ydk::Enum::YLeaf fsm_established;
         static const ydk::Enum::YLeaf fsm_nonnegotiated;
+
+};
+
+class BgpLink : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf external;
 
 };
 

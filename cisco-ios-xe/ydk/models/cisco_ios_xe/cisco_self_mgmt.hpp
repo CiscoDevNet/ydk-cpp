@@ -78,11 +78,11 @@ class NetconfYang::CiscoIa : public ydk::Entity
         class Blocking; //type: NetconfYang::CiscoIa::Blocking
 
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl> snmp_trap_control;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::PreserveNedPath> > preserve_ned_path;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::ParserMsgIgnore> > parser_msg_ignore;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::ConfParserMsgIgnore> > conf_parser_msg_ignore;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::FullSyncCli> > full_sync_cli;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::ConfFullSyncCli> > conf_full_sync_cli;
+        ydk::YList preserve_ned_path;
+        ydk::YList parser_msg_ignore;
+        ydk::YList conf_parser_msg_ignore;
+        ydk::YList full_sync_cli;
+        ydk::YList conf_full_sync_cli;
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Logging> logging;
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Blocking> blocking;
         
@@ -109,7 +109,7 @@ class NetconfYang::CiscoIa::SnmpTrapControl : public ydk::Entity
         ydk::YLeaf global_forwarding; //type: boolean
         class TrapList; //type: NetconfYang::CiscoIa::SnmpTrapControl::TrapList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl::TrapList> > trap_list;
+        ydk::YList trap_list;
         
 }; // NetconfYang::CiscoIa::SnmpTrapControl
 
@@ -297,8 +297,8 @@ class NetconfYang::CiscoIa::Blocking : public ydk::Entity
         class NetworkElementCommand; //type: NetconfYang::CiscoIa::Blocking::NetworkElementCommand
         class ConfdCfgCommand; //type: NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::NetworkElementCommand> > network_element_command;
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Blocking::ConfdCfgCommand> > confd_cfg_command;
+        ydk::YList network_element_command;
+        ydk::YList confd_cfg_command;
         
 }; // NetconfYang::CiscoIa::Blocking
 

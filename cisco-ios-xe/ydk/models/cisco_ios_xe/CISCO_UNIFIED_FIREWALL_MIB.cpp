@@ -13,22 +13,22 @@ namespace CISCO_UNIFIED_FIREWALL_MIB {
 
 CISCOUNIFIEDFIREWALLMIB::CISCOUNIFIEDFIREWALLMIB()
     :
-    cufwconnectionglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals>())
-	,cufwconnectionresources(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources>())
-	,cufwconnectionreportsettings(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings>())
-	,cufwapplinspectiongrp(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp>())
-	,cufwurlfilterglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals>())
-	,cufwurlfilterresourceusage(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage>())
-	,cufwaaicglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals>())
-	,cufwaaichttpprotocolstats(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats>())
-	,cufwl2fwglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals>())
-	,cufwnotifcntlgrp(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp>())
-	,cufwconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable>())
-	,cufwappconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable>())
-	,cufwpolicyconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable>())
-	,cufwpolicyappconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable>())
-	,cufwinspectiontable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable>())
-	,cufwurlfservertable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable>())
+    cufwconnectionglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals>())
+    , cufwconnectionresources(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources>())
+    , cufwconnectionreportsettings(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings>())
+    , cufwapplinspectiongrp(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp>())
+    , cufwurlfilterglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals>())
+    , cufwurlfilterresourceusage(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage>())
+    , cufwaaicglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals>())
+    , cufwaaichttpprotocolstats(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats>())
+    , cufwl2fwglobals(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals>())
+    , cufwnotifcntlgrp(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp>())
+    , cufwconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable>())
+    , cufwappconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable>())
+    , cufwpolicyconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable>())
+    , cufwpolicyappconnsummarytable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable>())
+    , cufwinspectiontable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable>())
+    , cufwurlfservertable(std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable>())
 {
     cufwconnectionglobals->parent = this;
     cufwconnectionresources->parent = this;
@@ -47,7 +47,7 @@ CISCOUNIFIEDFIREWALLMIB::CISCOUNIFIEDFIREWALLMIB()
     cufwinspectiontable->parent = this;
     cufwurlfservertable->parent = this;
 
-    yang_name = "CISCO-UNIFIED-FIREWALL-MIB"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-UNIFIED-FIREWALL-MIB"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOUNIFIEDFIREWALLMIB::~CISCOUNIFIEDFIREWALLMIB()
@@ -56,6 +56,7 @@ CISCOUNIFIEDFIREWALLMIB::~CISCOUNIFIEDFIREWALLMIB()
 
 bool CISCOUNIFIEDFIREWALLMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cufwconnectionglobals !=  nullptr && cufwconnectionglobals->has_data())
 	|| (cufwconnectionresources !=  nullptr && cufwconnectionresources->has_data())
 	|| (cufwconnectionreportsettings !=  nullptr && cufwconnectionreportsettings->has_data())
@@ -117,7 +118,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwconnectionglobals == nullptr)
         {
-            cufwconnectionglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals>();
+            cufwconnectionglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals>();
         }
         return cufwconnectionglobals;
     }
@@ -126,7 +127,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwconnectionresources == nullptr)
         {
-            cufwconnectionresources = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources>();
+            cufwconnectionresources = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources>();
         }
         return cufwconnectionresources;
     }
@@ -135,7 +136,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwconnectionreportsettings == nullptr)
         {
-            cufwconnectionreportsettings = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings>();
+            cufwconnectionreportsettings = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings>();
         }
         return cufwconnectionreportsettings;
     }
@@ -144,7 +145,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwapplinspectiongrp == nullptr)
         {
-            cufwapplinspectiongrp = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp>();
+            cufwapplinspectiongrp = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp>();
         }
         return cufwapplinspectiongrp;
     }
@@ -153,7 +154,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwurlfilterglobals == nullptr)
         {
-            cufwurlfilterglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals>();
+            cufwurlfilterglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals>();
         }
         return cufwurlfilterglobals;
     }
@@ -162,7 +163,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwurlfilterresourceusage == nullptr)
         {
-            cufwurlfilterresourceusage = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage>();
+            cufwurlfilterresourceusage = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage>();
         }
         return cufwurlfilterresourceusage;
     }
@@ -171,7 +172,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwaaicglobals == nullptr)
         {
-            cufwaaicglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals>();
+            cufwaaicglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals>();
         }
         return cufwaaicglobals;
     }
@@ -180,7 +181,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwaaichttpprotocolstats == nullptr)
         {
-            cufwaaichttpprotocolstats = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats>();
+            cufwaaichttpprotocolstats = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats>();
         }
         return cufwaaichttpprotocolstats;
     }
@@ -189,7 +190,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwl2fwglobals == nullptr)
         {
-            cufwl2fwglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals>();
+            cufwl2fwglobals = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals>();
         }
         return cufwl2fwglobals;
     }
@@ -198,7 +199,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwnotifcntlgrp == nullptr)
         {
-            cufwnotifcntlgrp = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp>();
+            cufwnotifcntlgrp = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp>();
         }
         return cufwnotifcntlgrp;
     }
@@ -207,7 +208,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwconnsummarytable == nullptr)
         {
-            cufwconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable>();
+            cufwconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable>();
         }
         return cufwconnsummarytable;
     }
@@ -216,7 +217,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwappconnsummarytable == nullptr)
         {
-            cufwappconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable>();
+            cufwappconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable>();
         }
         return cufwappconnsummarytable;
     }
@@ -225,7 +226,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwpolicyconnsummarytable == nullptr)
         {
-            cufwpolicyconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable>();
+            cufwpolicyconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable>();
         }
         return cufwpolicyconnsummarytable;
     }
@@ -234,7 +235,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwpolicyappconnsummarytable == nullptr)
         {
-            cufwpolicyappconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable>();
+            cufwpolicyappconnsummarytable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable>();
         }
         return cufwpolicyappconnsummarytable;
     }
@@ -243,7 +244,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwinspectiontable == nullptr)
         {
-            cufwinspectiontable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable>();
+            cufwinspectiontable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable>();
         }
         return cufwinspectiontable;
     }
@@ -252,7 +253,7 @@ std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::get_child_by_name(const std::st
     {
         if(cufwurlfservertable == nullptr)
         {
-            cufwurlfservertable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable>();
+            cufwurlfservertable = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable>();
         }
         return cufwurlfservertable;
     }
@@ -387,7 +388,7 @@ bool CISCOUNIFIEDFIREWALLMIB::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::Cufwconnectionglobals()
+CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::CuFwConnectionGlobals()
     :
     cufwconnglobalnumattempted{YType::uint64, "cufwConnGlobalNumAttempted"},
     cufwconnglobalnumsetupsaborted{YType::uint64, "cufwConnGlobalNumSetupsAborted"},
@@ -403,15 +404,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::Cufwconnectionglobals()
     cufwconnglobalnumremoteaccess{YType::uint32, "cufwConnGlobalNumRemoteAccess"}
 {
 
-    yang_name = "cuFwConnectionGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cuFwConnectionGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::~Cufwconnectionglobals()
+CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::~CuFwConnectionGlobals()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwconnglobalnumattempted.is_set
 	|| cufwconnglobalnumsetupsaborted.is_set
 	|| cufwconnglobalnumpolicydeclined.is_set
@@ -426,7 +428,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_data() const
 	|| cufwconnglobalnumremoteaccess.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwconnglobalnumattempted.yfilter)
@@ -443,21 +445,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_operation() const
 	|| ydk::is_set(cufwconnglobalnumremoteaccess.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cuFwConnectionGlobals";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -478,19 +480,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconn
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwConnGlobalNumAttempted")
     {
@@ -566,7 +568,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::set_value(const std::string
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwConnGlobalNumAttempted")
     {
@@ -618,14 +620,14 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::set_filter(const std::strin
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwConnGlobalNumAttempted" || name == "cufwConnGlobalNumSetupsAborted" || name == "cufwConnGlobalNumPolicyDeclined" || name == "cufwConnGlobalNumResDeclined" || name == "cufwConnGlobalNumHalfOpen" || name == "cufwConnGlobalNumActive" || name == "cufwConnGlobalNumExpired" || name == "cufwConnGlobalNumAborted" || name == "cufwConnGlobalNumEmbryonic" || name == "cufwConnGlobalConnSetupRate1" || name == "cufwConnGlobalConnSetupRate5" || name == "cufwConnGlobalNumRemoteAccess")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::Cufwconnectionresources()
+CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::CuFwConnectionResources()
     :
     cufwconnresmemoryusage{YType::uint32, "cufwConnResMemoryUsage"},
     cufwconnresactiveconnmemoryusage{YType::uint32, "cufwConnResActiveConnMemoryUsage"},
@@ -633,22 +635,23 @@ CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::Cufwconnectionresources()
     cufwconnresembrconnmemoryusage{YType::uint32, "cufwConnResEmbrConnMemoryUsage"}
 {
 
-    yang_name = "cuFwConnectionResources"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cuFwConnectionResources"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::~Cufwconnectionresources()
+CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::~CuFwConnectionResources()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwconnresmemoryusage.is_set
 	|| cufwconnresactiveconnmemoryusage.is_set
 	|| cufwconnreshoconnmemoryusage.is_set
 	|| cufwconnresembrconnmemoryusage.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwconnresmemoryusage.yfilter)
@@ -657,21 +660,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::has_operation() const
 	|| ydk::is_set(cufwconnresembrconnmemoryusage.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cuFwConnectionResources";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -684,19 +687,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconn
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwConnResMemoryUsage")
     {
@@ -724,7 +727,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::set_value(const std::stri
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwConnResMemoryUsage")
     {
@@ -744,54 +747,55 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::set_filter(const std::str
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwConnResMemoryUsage" || name == "cufwConnResActiveConnMemoryUsage" || name == "cufwConnResHOConnMemoryUsage" || name == "cufwConnResEmbrConnMemoryUsage")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::Cufwconnectionreportsettings()
+CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::CuFwConnectionReportSettings()
     :
     cufwconnreptappstats{YType::boolean, "cufwConnReptAppStats"},
     cufwconnreptappstatslastchanged{YType::uint32, "cufwConnReptAppStatsLastChanged"}
 {
 
-    yang_name = "cuFwConnectionReportSettings"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cuFwConnectionReportSettings"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::~Cufwconnectionreportsettings()
+CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::~CuFwConnectionReportSettings()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwconnreptappstats.is_set
 	|| cufwconnreptappstatslastchanged.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwconnreptappstats.yfilter)
 	|| ydk::is_set(cufwconnreptappstatslastchanged.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cuFwConnectionReportSettings";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -802,19 +806,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconn
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwConnReptAppStats")
     {
@@ -830,7 +834,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::set_value(const std:
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwConnReptAppStats")
     {
@@ -842,54 +846,55 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::set_filter(const std
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwConnReptAppStats" || name == "cufwConnReptAppStatsLastChanged")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::Cufwapplinspectiongrp()
+CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::CuFwApplInspectionGrp()
     :
     cufwaiaudittrailenabled{YType::boolean, "cufwAIAuditTrailEnabled"},
     cufwaialertenabled{YType::boolean, "cufwAIAlertEnabled"}
 {
 
-    yang_name = "cuFwApplInspectionGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cuFwApplInspectionGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::~Cufwapplinspectiongrp()
+CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::~CuFwApplInspectionGrp()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwaiaudittrailenabled.is_set
 	|| cufwaialertenabled.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwaiaudittrailenabled.yfilter)
 	|| ydk::is_set(cufwaialertenabled.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cuFwApplInspectionGrp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -900,19 +905,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwappl
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwAIAuditTrailEnabled")
     {
@@ -928,7 +933,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::set_value(const std::string
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwAIAuditTrailEnabled")
     {
@@ -940,14 +945,14 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::set_filter(const std::strin
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwAIAuditTrailEnabled" || name == "cufwAIAlertEnabled")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::Cufwurlfilterglobals()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::CufwUrlFilterGlobals()
     :
     cufwurlffunctionenabled{YType::uint32, "cufwUrlfFunctionEnabled"},
     cufwurlfrequestsnumprocessed{YType::uint64, "cufwUrlfRequestsNumProcessed"},
@@ -970,15 +975,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::Cufwurlfilterglobals()
     cufwurlfurlaccrespsnumresdropped{YType::uint64, "cufwUrlfUrlAccRespsNumResDropped"}
 {
 
-    yang_name = "cufwUrlFilterGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwUrlFilterGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::~Cufwurlfilterglobals()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::~CufwUrlFilterGlobals()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwurlffunctionenabled.is_set
 	|| cufwurlfrequestsnumprocessed.is_set
 	|| cufwurlfrequestsprocrate1.is_set
@@ -1000,7 +1006,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_data() const
 	|| cufwurlfurlaccrespsnumresdropped.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwurlffunctionenabled.yfilter)
@@ -1024,21 +1030,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_operation() const
 	|| ydk::is_set(cufwurlfurlaccrespsnumresdropped.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwUrlFilterGlobals";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1066,19 +1072,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlf
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwUrlfFunctionEnabled")
     {
@@ -1196,7 +1202,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::set_value(const std::string 
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwUrlfFunctionEnabled")
     {
@@ -1276,54 +1282,55 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::set_filter(const std::string
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfFunctionEnabled" || name == "cufwUrlfRequestsNumProcessed" || name == "cufwUrlfRequestsProcRate1" || name == "cufwUrlfRequestsProcRate5" || name == "cufwUrlfRequestsNumAllowed" || name == "cufwUrlfRequestsNumDenied" || name == "cufwUrlfRequestsDeniedRate1" || name == "cufwUrlfRequestsDeniedRate5" || name == "cufwUrlfRequestsNumCacheAllowed" || name == "cufwUrlfRequestsNumCacheDenied" || name == "cufwUrlfAllowModeReqNumAllowed" || name == "cufwUrlfAllowModeReqNumDenied" || name == "cufwUrlfRequestsNumResDropped" || name == "cufwUrlfRequestsResDropRate1" || name == "cufwUrlfRequestsResDropRate5" || name == "cufwUrlfNumServerTimeouts" || name == "cufwUrlfNumServerRetries" || name == "cufwUrlfResponsesNumLate" || name == "cufwUrlfUrlAccRespsNumResDropped")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::Cufwurlfilterresourceusage()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::CufwUrlFilterResourceUsage()
     :
     cufwurlfrestotalrequestcachesize{YType::uint32, "cufwUrlfResTotalRequestCacheSize"},
     cufwurlfrestotalrespcachesize{YType::uint32, "cufwUrlfResTotalRespCacheSize"}
 {
 
-    yang_name = "cufwUrlFilterResourceUsage"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwUrlFilterResourceUsage"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::~Cufwurlfilterresourceusage()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::~CufwUrlFilterResourceUsage()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwurlfrestotalrequestcachesize.is_set
 	|| cufwurlfrestotalrespcachesize.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwurlfrestotalrequestcachesize.yfilter)
 	|| ydk::is_set(cufwurlfrestotalrespcachesize.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwUrlFilterResourceUsage";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1334,19 +1341,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlf
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwUrlfResTotalRequestCacheSize")
     {
@@ -1362,7 +1369,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::set_value(const std::s
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwUrlfResTotalRequestCacheSize")
     {
@@ -1374,35 +1381,36 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::set_filter(const std::
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfResTotalRequestCacheSize" || name == "cufwUrlfResTotalRespCacheSize")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::Cufwaaicglobals()
+CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::CufwAaicGlobals()
     :
     cufwaaicglobalnumbadprotocolops{YType::uint64, "cufwAaicGlobalNumBadProtocolOps"},
     cufwaaicglobalnumbadpdusize{YType::uint64, "cufwAaicGlobalNumBadPDUSize"},
     cufwaaicglobalnumbadportrange{YType::uint64, "cufwAaicGlobalNumBadPortRange"}
 {
 
-    yang_name = "cufwAaicGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwAaicGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::~Cufwaaicglobals()
+CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::~CufwAaicGlobals()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwaaicglobalnumbadprotocolops.is_set
 	|| cufwaaicglobalnumbadpdusize.is_set
 	|| cufwaaicglobalnumbadportrange.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwaaicglobalnumbadprotocolops.yfilter)
@@ -1410,21 +1418,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::has_operation() const
 	|| ydk::is_set(cufwaaicglobalnumbadportrange.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwAaicGlobals";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1436,19 +1444,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwaaic
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwAaicGlobalNumBadProtocolOps")
     {
@@ -1470,7 +1478,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::set_value(const std::string & val
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwAaicGlobalNumBadProtocolOps")
     {
@@ -1486,14 +1494,14 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::set_filter(const std::string & va
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwAaicGlobalNumBadProtocolOps" || name == "cufwAaicGlobalNumBadPDUSize" || name == "cufwAaicGlobalNumBadPortRange")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::Cufwaaichttpprotocolstats()
+CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::CufwAaicHttpProtocolStats()
     :
     cufwaaichttpnumbadprotocolops{YType::uint64, "cufwAaicHttpNumBadProtocolOps"},
     cufwaaichttpnumbadpdusize{YType::uint64, "cufwAaicHttpNumBadPDUSize"},
@@ -1504,15 +1512,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::Cufwaaichttpprotocolstats()
     cufwaaichttpnumdoubleencodedpkts{YType::uint64, "cufwAaicHttpNumDoubleEncodedPkts"}
 {
 
-    yang_name = "cufwAaicHttpProtocolStats"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwAaicHttpProtocolStats"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::~Cufwaaichttpprotocolstats()
+CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::~CufwAaicHttpProtocolStats()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwaaichttpnumbadprotocolops.is_set
 	|| cufwaaichttpnumbadpdusize.is_set
 	|| cufwaaichttpnumtunneledconns.is_set
@@ -1522,7 +1531,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_data() const
 	|| cufwaaichttpnumdoubleencodedpkts.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwaaichttpnumbadprotocolops.yfilter)
@@ -1534,21 +1543,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_operation() const
 	|| ydk::is_set(cufwaaichttpnumdoubleencodedpkts.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwAaicHttpProtocolStats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1564,19 +1573,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwaaic
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwAaicHttpNumBadProtocolOps")
     {
@@ -1622,7 +1631,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::set_value(const std::st
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwAaicHttpNumBadProtocolOps")
     {
@@ -1654,14 +1663,14 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::set_filter(const std::s
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwAaicHttpNumBadProtocolOps" || name == "cufwAaicHttpNumBadPDUSize" || name == "cufwAaicHttpNumTunneledConns" || name == "cufwAaicHttpNumLargeURIs" || name == "cufwAaicHttpNumBadContent" || name == "cufwAaicHttpNumMismatchContent" || name == "cufwAaicHttpNumDoubleEncodedPkts")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::Cufwl2Fwglobals()
+CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::CufwL2FwGlobals()
     :
     cufwl2globalenablestealthmode{YType::boolean, "cufwL2GlobalEnableStealthMode"},
     cufwl2globalarpcachesize{YType::int32, "cufwL2GlobalArpCacheSize"},
@@ -1675,15 +1684,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::Cufwl2Fwglobals()
     cufwl2globalnumspoofedarpresps{YType::uint64, "cufwL2GlobalNumSpoofedArpResps"}
 {
 
-    yang_name = "cufwL2FwGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwL2FwGlobals"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::~Cufwl2Fwglobals()
+CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::~CufwL2FwGlobals()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwl2globalenablestealthmode.is_set
 	|| cufwl2globalarpcachesize.is_set
 	|| cufwl2globalenablearpinspection.is_set
@@ -1696,7 +1706,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_data() const
 	|| cufwl2globalnumspoofedarpresps.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwl2globalenablestealthmode.yfilter)
@@ -1711,21 +1721,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_operation() const
 	|| ydk::is_set(cufwl2globalnumspoofedarpresps.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwL2FwGlobals";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1744,19 +1754,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwl2Fw
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwL2GlobalEnableStealthMode")
     {
@@ -1820,7 +1830,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::set_value(const std::string & val
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwL2GlobalEnableStealthMode")
     {
@@ -1864,54 +1874,55 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::set_filter(const std::string & va
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwL2GlobalEnableStealthMode" || name == "cufwL2GlobalArpCacheSize" || name == "cufwL2GlobalEnableArpInspection" || name == "cufwL2GlobalNumArpRequests" || name == "cufwL2GlobalNumIcmpRequests" || name == "cufwL2GlobalNumFloods" || name == "cufwL2GlobalNumDrops" || name == "cufwL2GlobalArpOverflowRate5" || name == "cufwL2GlobalNumBadArpResponses" || name == "cufwL2GlobalNumSpoofedArpResps")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::Cufwnotifcntlgrp()
+CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::CuFwNotifCntlGrp()
     :
     cufwcntlurlfserverstatuschange{YType::boolean, "cufwCntlUrlfServerStatusChange"},
     cufwcntll2staticmacaddressmoved{YType::boolean, "cufwCntlL2StaticMacAddressMoved"}
 {
 
-    yang_name = "cuFwNotifCntlGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cuFwNotifCntlGrp"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::~Cufwnotifcntlgrp()
+CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::~CuFwNotifCntlGrp()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwcntlurlfserverstatuschange.is_set
 	|| cufwcntll2staticmacaddressmoved.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwcntlurlfserverstatuschange.yfilter)
 	|| ydk::is_set(cufwcntll2staticmacaddressmoved.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cuFwNotifCntlGrp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1922,19 +1933,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwnoti
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwCntlUrlfServerStatusChange")
     {
@@ -1950,7 +1961,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::set_value(const std::string & va
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwCntlUrlfServerStatusChange")
     {
@@ -1962,26 +1973,29 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::set_filter(const std::string & v
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwCntlUrlfServerStatusChange" || name == "cufwCntlL2StaticMacAddressMoved")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryTable()
+    :
+    cufwconnsummaryentry(this, {"cufwconnprotocol"})
 {
 
-    yang_name = "cufwConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::~Cufwconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::~CufwConnSummaryTable()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<cufwconnsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cufwconnsummaryentry.len(); index++)
     {
         if(cufwconnsummaryentry[index]->has_data())
             return true;
@@ -1989,9 +2003,9 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_data() const
     return false;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cufwconnsummaryentry.size(); index++)
+    for (std::size_t index=0; index<cufwconnsummaryentry.len(); index++)
     {
         if(cufwconnsummaryentry[index]->has_operation())
             return true;
@@ -1999,21 +2013,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwConnSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2022,25 +2036,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconn
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwConnSummaryEntry")
     {
-        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry>();
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry>();
         c->parent = this;
-        cufwconnsummaryentry.push_back(c);
+        cufwconnsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cufwconnsummaryentry)
+    for (auto c : cufwconnsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2051,22 +2065,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconn
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwConnSummaryEntry")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::Cufwconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::CufwConnSummaryEntry()
     :
     cufwconnprotocol{YType::enumeration, "cufwConnProtocol"},
     cufwconnnumattempted{YType::uint64, "cufwConnNumAttempted"},
@@ -2080,15 +2094,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::Cufwconnsum
     cufwconnsetuprate5{YType::uint32, "cufwConnSetupRate5"}
 {
 
-    yang_name = "cufwConnSummaryEntry"; yang_parent_name = "cufwConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwConnSummaryEntry"; yang_parent_name = "cufwConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::~Cufwconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::~CufwConnSummaryEntry()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwconnprotocol.is_set
 	|| cufwconnnumattempted.is_set
 	|| cufwconnnumsetupsaborted.is_set
@@ -2101,7 +2116,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_da
 	|| cufwconnsetuprate5.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwconnprotocol.yfilter)
@@ -2116,21 +2131,22 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_op
 	|| ydk::is_set(cufwconnsetuprate5.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwConnSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cufwConnSummaryEntry" <<"[cufwConnProtocol='" <<cufwconnprotocol <<"']";
+    path_buffer << "cufwConnSummaryEntry";
+    ADD_KEY_TOKEN(cufwconnprotocol, "cufwConnProtocol");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2149,19 +2165,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwconn
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwConnProtocol")
     {
@@ -2225,7 +2241,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::set_va
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwConnProtocol")
     {
@@ -2269,26 +2285,29 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::set_fi
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwConnProtocol" || name == "cufwConnNumAttempted" || name == "cufwConnNumSetupsAborted" || name == "cufwConnNumPolicyDeclined" || name == "cufwConnNumResDeclined" || name == "cufwConnNumHalfOpen" || name == "cufwConnNumActive" || name == "cufwConnNumAborted" || name == "cufwConnSetupRate1" || name == "cufwConnSetupRate5")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryTable()
+    :
+    cufwappconnsummaryentry(this, {"cufwappconnprotocol"})
 {
 
-    yang_name = "cufwAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::~Cufwappconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::~CufwAppConnSummaryTable()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<cufwappconnsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cufwappconnsummaryentry.len(); index++)
     {
         if(cufwappconnsummaryentry[index]->has_data())
             return true;
@@ -2296,9 +2315,9 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_data() const
     return false;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cufwappconnsummaryentry.size(); index++)
+    for (std::size_t index=0; index<cufwappconnsummaryentry.len(); index++)
     {
         if(cufwappconnsummaryentry[index]->has_operation())
             return true;
@@ -2306,21 +2325,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwAppConnSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2329,25 +2348,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwappc
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwAppConnSummaryEntry")
     {
-        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry>();
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry>();
         c->parent = this;
-        cufwappconnsummaryentry.push_back(c);
+        cufwappconnsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cufwappconnsummaryentry)
+    for (auto c : cufwappconnsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2358,22 +2377,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwappc
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwAppConnSummaryEntry")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::Cufwappconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::CufwAppConnSummaryEntry()
     :
     cufwappconnprotocol{YType::enumeration, "cufwAppConnProtocol"},
     cufwappconnnumattempted{YType::uint64, "cufwAppConnNumAttempted"},
@@ -2387,15 +2406,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::Cufwa
     cufwappconnsetuprate5{YType::uint32, "cufwAppConnSetupRate5"}
 {
 
-    yang_name = "cufwAppConnSummaryEntry"; yang_parent_name = "cufwAppConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwAppConnSummaryEntry"; yang_parent_name = "cufwAppConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::~Cufwappconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::~CufwAppConnSummaryEntry()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwappconnprotocol.is_set
 	|| cufwappconnnumattempted.is_set
 	|| cufwappconnnumsetupsaborted.is_set
@@ -2408,7 +2428,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::
 	|| cufwappconnsetuprate5.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwappconnprotocol.yfilter)
@@ -2423,21 +2443,22 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::
 	|| ydk::is_set(cufwappconnsetuprate5.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwAppConnSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cufwAppConnSummaryEntry" <<"[cufwAppConnProtocol='" <<cufwappconnprotocol <<"']";
+    path_buffer << "cufwAppConnSummaryEntry";
+    ADD_KEY_TOKEN(cufwappconnprotocol, "cufwAppConnProtocol");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2456,19 +2477,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwappc
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwAppConnProtocol")
     {
@@ -2532,7 +2553,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwAppConnProtocol")
     {
@@ -2576,26 +2597,29 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwAppConnProtocol" || name == "cufwAppConnNumAttempted" || name == "cufwAppConnNumSetupsAborted" || name == "cufwAppConnNumPolicyDeclined" || name == "cufwAppConnNumResDeclined" || name == "cufwAppConnNumHalfOpen" || name == "cufwAppConnNumActive" || name == "cufwAppConnNumAborted" || name == "cufwAppConnSetupRate1" || name == "cufwAppConnSetupRate5")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryTable()
+    :
+    cufwpolicyconnsummaryentry(this, {"cufwpolconnpolicy", "cufwpolconnpolicytargettype", "cufwpolconnpolicytarget", "cufwpolconnprotocol"})
 {
 
-    yang_name = "cufwPolicyConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwPolicyConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::~Cufwpolicyconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::~CufwPolicyConnSummaryTable()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.len(); index++)
     {
         if(cufwpolicyconnsummaryentry[index]->has_data())
             return true;
@@ -2603,9 +2627,9 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_data() const
     return false;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.size(); index++)
+    for (std::size_t index=0; index<cufwpolicyconnsummaryentry.len(); index++)
     {
         if(cufwpolicyconnsummaryentry[index]->has_operation())
             return true;
@@ -2613,21 +2637,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwPolicyConnSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2636,25 +2660,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpoli
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwPolicyConnSummaryEntry")
     {
-        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry>();
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry>();
         c->parent = this;
-        cufwpolicyconnsummaryentry.push_back(c);
+        cufwpolicyconnsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cufwpolicyconnsummaryentry)
+    for (auto c : cufwpolicyconnsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2665,22 +2689,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpoli
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwPolicyConnSummaryEntry")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::Cufwpolicyconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::CufwPolicyConnSummaryEntry()
     :
     cufwpolconnpolicy{YType::str, "cufwPolConnPolicy"},
     cufwpolconnpolicytargettype{YType::enumeration, "cufwPolConnPolicyTargetType"},
@@ -2695,15 +2719,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry:
     cufwpolconnnumaborted{YType::uint64, "cufwPolConnNumAborted"}
 {
 
-    yang_name = "cufwPolicyConnSummaryEntry"; yang_parent_name = "cufwPolicyConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwPolicyConnSummaryEntry"; yang_parent_name = "cufwPolicyConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::~Cufwpolicyconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::~CufwPolicyConnSummaryEntry()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwpolconnpolicy.is_set
 	|| cufwpolconnpolicytargettype.is_set
 	|| cufwpolconnpolicytarget.is_set
@@ -2717,7 +2742,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummarye
 	|| cufwpolconnnumaborted.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwpolconnpolicy.yfilter)
@@ -2733,21 +2758,25 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummarye
 	|| ydk::is_set(cufwpolconnnumaborted.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwPolicyConnSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cufwPolicyConnSummaryEntry" <<"[cufwPolConnPolicy='" <<cufwpolconnpolicy <<"']" <<"[cufwPolConnPolicyTargetType='" <<cufwpolconnpolicytargettype <<"']" <<"[cufwPolConnPolicyTarget='" <<cufwpolconnpolicytarget <<"']" <<"[cufwPolConnProtocol='" <<cufwpolconnprotocol <<"']";
+    path_buffer << "cufwPolicyConnSummaryEntry";
+    ADD_KEY_TOKEN(cufwpolconnpolicy, "cufwPolConnPolicy");
+    ADD_KEY_TOKEN(cufwpolconnpolicytargettype, "cufwPolConnPolicyTargetType");
+    ADD_KEY_TOKEN(cufwpolconnpolicytarget, "cufwPolConnPolicyTarget");
+    ADD_KEY_TOKEN(cufwpolconnprotocol, "cufwPolConnProtocol");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2767,19 +2796,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpoli
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwPolConnPolicy")
     {
@@ -2849,7 +2878,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummarye
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwPolConnPolicy")
     {
@@ -2897,26 +2926,29 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummarye
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwPolConnPolicy" || name == "cufwPolConnPolicyTargetType" || name == "cufwPolConnPolicyTarget" || name == "cufwPolConnProtocol" || name == "cufwPolConnNumAttempted" || name == "cufwPolConnNumSetupsAborted" || name == "cufwPolConnNumPolicyDeclined" || name == "cufwPolConnNumResDeclined" || name == "cufwPolConnNumHalfOpen" || name == "cufwPolConnNumActive" || name == "cufwPolConnNumAborted")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryTable()
+    :
+    cufwpolicyappconnsummaryentry(this, {"cufwpolappconnpolicy", "cufwpolappconnpolicytargettype", "cufwpolappconnpolicytarget", "cufwpolappconnprotocol"})
 {
 
-    yang_name = "cufwPolicyAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwPolicyAppConnSummaryTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::~Cufwpolicyappconnsummarytable()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::~CufwPolicyAppConnSummaryTable()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.len(); index++)
     {
         if(cufwpolicyappconnsummaryentry[index]->has_data())
             return true;
@@ -2924,9 +2956,9 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_data() const
     return false;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.size(); index++)
+    for (std::size_t index=0; index<cufwpolicyappconnsummaryentry.len(); index++)
     {
         if(cufwpolicyappconnsummaryentry[index]->has_operation())
             return true;
@@ -2934,21 +2966,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_operation() con
     return is_set(yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwPolicyAppConnSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2957,25 +2989,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpoli
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwPolicyAppConnSummaryEntry")
     {
-        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry>();
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry>();
         c->parent = this;
-        cufwpolicyappconnsummaryentry.push_back(c);
+        cufwpolicyappconnsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cufwpolicyappconnsummaryentry)
+    for (auto c : cufwpolicyappconnsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2986,22 +3018,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpoli
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwPolicyAppConnSummaryEntry")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::Cufwpolicyappconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::CufwPolicyAppConnSummaryEntry()
     :
     cufwpolappconnpolicy{YType::str, "cufwPolAppConnPolicy"},
     cufwpolappconnpolicytargettype{YType::enumeration, "cufwPolAppConnPolicyTargetType"},
@@ -3016,15 +3048,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummary
     cufwpolappconnnumaborted{YType::uint64, "cufwPolAppConnNumAborted"}
 {
 
-    yang_name = "cufwPolicyAppConnSummaryEntry"; yang_parent_name = "cufwPolicyAppConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwPolicyAppConnSummaryEntry"; yang_parent_name = "cufwPolicyAppConnSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::~Cufwpolicyappconnsummaryentry()
+CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::~CufwPolicyAppConnSummaryEntry()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwpolappconnpolicy.is_set
 	|| cufwpolappconnpolicytargettype.is_set
 	|| cufwpolappconnpolicytarget.is_set
@@ -3038,7 +3071,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsu
 	|| cufwpolappconnnumaborted.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwpolappconnpolicy.yfilter)
@@ -3054,21 +3087,25 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsu
 	|| ydk::is_set(cufwpolappconnnumaborted.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwPolicyAppConnSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cufwPolicyAppConnSummaryEntry" <<"[cufwPolAppConnPolicy='" <<cufwpolappconnpolicy <<"']" <<"[cufwPolAppConnPolicyTargetType='" <<cufwpolappconnpolicytargettype <<"']" <<"[cufwPolAppConnPolicyTarget='" <<cufwpolappconnpolicytarget <<"']" <<"[cufwPolAppConnProtocol='" <<cufwpolappconnprotocol <<"']";
+    path_buffer << "cufwPolicyAppConnSummaryEntry";
+    ADD_KEY_TOKEN(cufwpolappconnpolicy, "cufwPolAppConnPolicy");
+    ADD_KEY_TOKEN(cufwpolappconnpolicytargettype, "cufwPolAppConnPolicyTargetType");
+    ADD_KEY_TOKEN(cufwpolappconnpolicytarget, "cufwPolAppConnPolicyTarget");
+    ADD_KEY_TOKEN(cufwpolappconnprotocol, "cufwPolAppConnProtocol");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3088,19 +3125,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwpoli
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwPolAppConnPolicy")
     {
@@ -3170,7 +3207,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsu
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwPolAppConnPolicy")
     {
@@ -3218,26 +3255,29 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsu
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwPolAppConnPolicy" || name == "cufwPolAppConnPolicyTargetType" || name == "cufwPolAppConnPolicyTarget" || name == "cufwPolAppConnProtocol" || name == "cufwPolAppConnNumAttempted" || name == "cufwPolAppConnNumSetupsAborted" || name == "cufwPolAppConnNumPolicyDeclined" || name == "cufwPolAppConnNumResDeclined" || name == "cufwPolAppConnNumHalfOpen" || name == "cufwPolAppConnNumActive" || name == "cufwPolAppConnNumAborted")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectiontable()
+CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionTable()
+    :
+    cufwinspectionentry(this, {"cufwinspectionpolicyname", "cufwinspectionprotocol"})
 {
 
-    yang_name = "cufwInspectionTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwInspectionTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::~Cufwinspectiontable()
+CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::~CufwInspectionTable()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::has_data() const
 {
-    for (std::size_t index=0; index<cufwinspectionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cufwinspectionentry.len(); index++)
     {
         if(cufwinspectionentry[index]->has_data())
             return true;
@@ -3245,9 +3285,9 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_data() const
     return false;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::has_operation() const
 {
-    for (std::size_t index=0; index<cufwinspectionentry.size(); index++)
+    for (std::size_t index=0; index<cufwinspectionentry.len(); index++)
     {
         if(cufwinspectionentry[index]->has_operation())
             return true;
@@ -3255,21 +3295,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwInspectionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3278,25 +3318,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwinsp
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwInspectionEntry")
     {
-        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry>();
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry>();
         c->parent = this;
-        cufwinspectionentry.push_back(c);
+        cufwinspectionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cufwinspectionentry)
+    for (auto c : cufwinspectionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3307,43 +3347,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwinsp
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwInspectionEntry")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::Cufwinspectionentry()
+CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::CufwInspectionEntry()
     :
     cufwinspectionpolicyname{YType::str, "cufwInspectionPolicyName"},
     cufwinspectionprotocol{YType::enumeration, "cufwInspectionProtocol"},
     cufwinspectionstatus{YType::boolean, "cufwInspectionStatus"}
 {
 
-    yang_name = "cufwInspectionEntry"; yang_parent_name = "cufwInspectionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwInspectionEntry"; yang_parent_name = "cufwInspectionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::~Cufwinspectionentry()
+CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::~CufwInspectionEntry()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwinspectionpolicyname.is_set
 	|| cufwinspectionprotocol.is_set
 	|| cufwinspectionstatus.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwinspectionpolicyname.yfilter)
@@ -3351,21 +3392,23 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::has_oper
 	|| ydk::is_set(cufwinspectionstatus.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwInspectionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cufwInspectionEntry" <<"[cufwInspectionPolicyName='" <<cufwinspectionpolicyname <<"']" <<"[cufwInspectionProtocol='" <<cufwinspectionprotocol <<"']";
+    path_buffer << "cufwInspectionEntry";
+    ADD_KEY_TOKEN(cufwinspectionpolicyname, "cufwInspectionPolicyName");
+    ADD_KEY_TOKEN(cufwinspectionprotocol, "cufwInspectionProtocol");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3377,19 +3420,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwinsp
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwInspectionPolicyName")
     {
@@ -3411,7 +3454,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::set_valu
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwInspectionPolicyName")
     {
@@ -3427,26 +3470,29 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::set_filt
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwInspectionPolicyName" || name == "cufwInspectionProtocol" || name == "cufwInspectionStatus")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfservertable()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerTable()
+    :
+    cufwurlfserverentry(this, {"cufwurlfserveraddrtype", "cufwurlfserveraddress", "cufwurlfserverport"})
 {
 
-    yang_name = "cufwUrlfServerTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwUrlfServerTable"; yang_parent_name = "CISCO-UNIFIED-FIREWALL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::~Cufwurlfservertable()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::~CufwUrlfServerTable()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::has_data() const
 {
-    for (std::size_t index=0; index<cufwurlfserverentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cufwurlfserverentry.len(); index++)
     {
         if(cufwurlfserverentry[index]->has_data())
             return true;
@@ -3454,9 +3500,9 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_data() const
     return false;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::has_operation() const
 {
-    for (std::size_t index=0; index<cufwurlfserverentry.size(); index++)
+    for (std::size_t index=0; index<cufwurlfserverentry.len(); index++)
     {
         if(cufwurlfserverentry[index]->has_operation())
             return true;
@@ -3464,21 +3510,21 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cufwUrlfServerTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3487,25 +3533,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlf
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cufwUrlfServerEntry")
     {
-        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry>();
+        auto c = std::make_shared<CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry>();
         c->parent = this;
-        cufwurlfserverentry.push_back(c);
+        cufwurlfserverentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cufwurlfserverentry)
+    for (auto c : cufwurlfserverentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3516,22 +3562,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlf
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfServerEntry")
         return true;
     return false;
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::Cufwurlfserverentry()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::CufwUrlfServerEntry()
     :
     cufwurlfserveraddrtype{YType::enumeration, "cufwUrlfServerAddrType"},
     cufwurlfserveraddress{YType::str, "cufwUrlfServerAddress"},
@@ -3549,15 +3595,16 @@ CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::Cufwurlfserve
     cufwurlfserveravgresptime5{YType::uint32, "cufwUrlfServerAvgRespTime5"}
 {
 
-    yang_name = "cufwUrlfServerEntry"; yang_parent_name = "cufwUrlfServerTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cufwUrlfServerEntry"; yang_parent_name = "cufwUrlfServerTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::~Cufwurlfserverentry()
+CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::~CufwUrlfServerEntry()
 {
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_data() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cufwurlfserveraddrtype.is_set
 	|| cufwurlfserveraddress.is_set
 	|| cufwurlfserverport.is_set
@@ -3574,7 +3621,7 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_data
 	|| cufwurlfserveravgresptime5.is_set;
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_operation() const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cufwurlfserveraddrtype.yfilter)
@@ -3593,21 +3640,24 @@ bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_oper
 	|| ydk::is_set(cufwurlfserveravgresptime5.yfilter);
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_absolute_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UNIFIED-FIREWALL-MIB:CISCO-UNIFIED-FIREWALL-MIB/cufwUrlfServerTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_segment_path() const
+std::string CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cufwUrlfServerEntry" <<"[cufwUrlfServerAddrType='" <<cufwurlfserveraddrtype <<"']" <<"[cufwUrlfServerAddress='" <<cufwurlfserveraddress <<"']" <<"[cufwUrlfServerPort='" <<cufwurlfserverport <<"']";
+    path_buffer << "cufwUrlfServerEntry";
+    ADD_KEY_TOKEN(cufwurlfserveraddrtype, "cufwUrlfServerAddrType");
+    ADD_KEY_TOKEN(cufwurlfserveraddress, "cufwUrlfServerAddress");
+    ADD_KEY_TOKEN(cufwurlfserverport, "cufwUrlfServerPort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3630,19 +3680,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUNIFIEDFIREWALLMIB::Cufwurlf
 
 }
 
-std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cufwUrlfServerAddrType")
     {
@@ -3730,7 +3780,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::set_valu
     }
 }
 
-void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cufwUrlfServerAddrType")
     {
@@ -3790,7 +3840,7 @@ void CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::set_filt
     }
 }
 
-bool CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cufwUrlfServerAddrType" || name == "cufwUrlfServerAddress" || name == "cufwUrlfServerPort" || name == "cufwUrlfServerVendor" || name == "cufwUrlfServerStatus" || name == "cufwUrlfServerReqsNumProcessed" || name == "cufwUrlfServerReqsNumAllowed" || name == "cufwUrlfServerReqsNumDenied" || name == "cufwUrlfServerNumTimeouts" || name == "cufwUrlfServerNumRetries" || name == "cufwUrlfServerRespsNumReceived" || name == "cufwUrlfServerRespsNumLate" || name == "cufwUrlfServerAvgRespTime1" || name == "cufwUrlfServerAvgRespTime5")
         return true;

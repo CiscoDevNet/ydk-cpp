@@ -31,28 +31,28 @@ class CISCODOT3OAMMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cdot3Oamtable; //type: CISCODOT3OAMMIB::Cdot3Oamtable
-        class Cdot3Oampeertable; //type: CISCODOT3OAMMIB::Cdot3Oampeertable
-        class Cdot3Oamloopbacktable; //type: CISCODOT3OAMMIB::Cdot3Oamloopbacktable
-        class Cdot3Oamstatstable; //type: CISCODOT3OAMMIB::Cdot3Oamstatstable
-        class Cdot3Oameventconfigtable; //type: CISCODOT3OAMMIB::Cdot3Oameventconfigtable
-        class Cdot3Oameventlogtable; //type: CISCODOT3OAMMIB::Cdot3Oameventlogtable
+        class Cdot3OamTable; //type: CISCODOT3OAMMIB::Cdot3OamTable
+        class Cdot3OamPeerTable; //type: CISCODOT3OAMMIB::Cdot3OamPeerTable
+        class Cdot3OamLoopbackTable; //type: CISCODOT3OAMMIB::Cdot3OamLoopbackTable
+        class Cdot3OamStatsTable; //type: CISCODOT3OAMMIB::Cdot3OamStatsTable
+        class Cdot3OamEventConfigTable; //type: CISCODOT3OAMMIB::Cdot3OamEventConfigTable
+        class Cdot3OamEventLogTable; //type: CISCODOT3OAMMIB::Cdot3OamEventLogTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oamtable> cdot3oamtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oampeertable> cdot3oampeertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oamloopbacktable> cdot3oamloopbacktable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oamstatstable> cdot3oamstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oameventconfigtable> cdot3oameventconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oameventlogtable> cdot3oameventlogtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3OamTable> cdot3oamtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3OamPeerTable> cdot3oampeertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3OamLoopbackTable> cdot3oamloopbacktable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3OamStatsTable> cdot3oamstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3OamEventConfigTable> cdot3oameventconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3OamEventLogTable> cdot3oameventlogtable;
         
 }; // CISCODOT3OAMMIB
 
 
-class CISCODOT3OAMMIB::Cdot3Oamtable : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamTable : public ydk::Entity
 {
     public:
-        Cdot3Oamtable();
-        ~Cdot3Oamtable();
+        Cdot3OamTable();
+        ~Cdot3OamTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -65,18 +65,18 @@ class CISCODOT3OAMMIB::Cdot3Oamtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdot3Oamentry; //type: CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry
+        class Cdot3OamEntry; //type: CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry> > cdot3oamentry;
+        ydk::YList cdot3oamentry;
         
-}; // CISCODOT3OAMMIB::Cdot3Oamtable
+}; // CISCODOT3OAMMIB::Cdot3OamTable
 
 
-class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry : public ydk::Entity
 {
     public:
-        Cdot3Oamentry();
-        ~Cdot3Oamentry();
+        Cdot3OamEntry();
+        ~Cdot3OamEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -89,26 +89,26 @@ class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf cdot3oamadminstate; //type: Cdot3Oamadminstate
-        ydk::YLeaf cdot3oamoperstatus; //type: Cdot3Oamoperstatus
-        ydk::YLeaf cdot3oammode; //type: Cdot3Oammode
+        ydk::YLeaf cdot3oamadminstate; //type: Cdot3OamAdminState
+        ydk::YLeaf cdot3oamoperstatus; //type: Cdot3OamOperStatus
+        ydk::YLeaf cdot3oammode; //type: Cdot3OamMode
         ydk::YLeaf cdot3oammaxoampdusize; //type: uint32
         ydk::YLeaf cdot3oamconfigrevision; //type: uint32
-        ydk::YLeaf cdot3oamfunctionssupported; //type: Cdot3Oamfunctionssupported
-        class Cdot3Oamadminstate;
-        class Cdot3Oamoperstatus;
-        class Cdot3Oammode;
+        ydk::YLeaf cdot3oamfunctionssupported; //type: Cdot3OamFunctionsSupported
+        class Cdot3OamAdminState;
+        class Cdot3OamOperStatus;
+        class Cdot3OamMode;
 
-}; // CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry
+}; // CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry
 
 
-class CISCODOT3OAMMIB::Cdot3Oampeertable : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamPeerTable : public ydk::Entity
 {
     public:
-        Cdot3Oampeertable();
-        ~Cdot3Oampeertable();
+        Cdot3OamPeerTable();
+        ~Cdot3OamPeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -121,18 +121,18 @@ class CISCODOT3OAMMIB::Cdot3Oampeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdot3Oampeerentry; //type: CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry
+        class Cdot3OamPeerEntry; //type: CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry> > cdot3oampeerentry;
+        ydk::YList cdot3oampeerentry;
         
-}; // CISCODOT3OAMMIB::Cdot3Oampeertable
+}; // CISCODOT3OAMMIB::Cdot3OamPeerTable
 
 
-class CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry : public ydk::Entity
 {
     public:
-        Cdot3Oampeerentry();
-        ~Cdot3Oampeerentry();
+        Cdot3OamPeerEntry();
+        ~Cdot3OamPeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -145,25 +145,25 @@ class CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cdot3oampeermacaddress; //type: string
         ydk::YLeaf cdot3oampeervendoroui; //type: binary
         ydk::YLeaf cdot3oampeervendorinfo; //type: uint32
-        ydk::YLeaf cdot3oampeermode; //type: Cdot3Oampeermode
+        ydk::YLeaf cdot3oampeermode; //type: Cdot3OamPeerMode
         ydk::YLeaf cdot3oampeermaxoampdusize; //type: uint32
         ydk::YLeaf cdot3oampeerconfigrevision; //type: uint32
-        ydk::YLeaf cdot3oampeerfunctionssupported; //type: Cdot3Oampeerfunctionssupported
-        class Cdot3Oampeermode;
+        ydk::YLeaf cdot3oampeerfunctionssupported; //type: Cdot3OamPeerFunctionsSupported
+        class Cdot3OamPeerMode;
 
-}; // CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry
+}; // CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry
 
 
-class CISCODOT3OAMMIB::Cdot3Oamloopbacktable : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamLoopbackTable : public ydk::Entity
 {
     public:
-        Cdot3Oamloopbacktable();
-        ~Cdot3Oamloopbacktable();
+        Cdot3OamLoopbackTable();
+        ~Cdot3OamLoopbackTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -176,18 +176,18 @@ class CISCODOT3OAMMIB::Cdot3Oamloopbacktable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdot3Oamloopbackentry; //type: CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry
+        class Cdot3OamLoopbackEntry; //type: CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry> > cdot3oamloopbackentry;
+        ydk::YList cdot3oamloopbackentry;
         
-}; // CISCODOT3OAMMIB::Cdot3Oamloopbacktable
+}; // CISCODOT3OAMMIB::Cdot3OamLoopbackTable
 
 
-class CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry : public ydk::Entity
 {
     public:
-        Cdot3Oamloopbackentry();
-        ~Cdot3Oamloopbackentry();
+        Cdot3OamLoopbackEntry();
+        ~Cdot3OamLoopbackEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -200,21 +200,21 @@ class CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf cdot3oamloopbackstatus; //type: Cdot3Oamloopbackstatus
-        ydk::YLeaf cdot3oamloopbackignorerx; //type: Cdot3Oamloopbackignorerx
-        class Cdot3Oamloopbackstatus;
-        class Cdot3Oamloopbackignorerx;
+        ydk::YLeaf cdot3oamloopbackstatus; //type: Cdot3OamLoopbackStatus
+        ydk::YLeaf cdot3oamloopbackignorerx; //type: Cdot3OamLoopbackIgnoreRx
+        class Cdot3OamLoopbackStatus;
+        class Cdot3OamLoopbackIgnoreRx;
 
-}; // CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry
+}; // CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry
 
 
-class CISCODOT3OAMMIB::Cdot3Oamstatstable : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamStatsTable : public ydk::Entity
 {
     public:
-        Cdot3Oamstatstable();
-        ~Cdot3Oamstatstable();
+        Cdot3OamStatsTable();
+        ~Cdot3OamStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -227,18 +227,18 @@ class CISCODOT3OAMMIB::Cdot3Oamstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdot3Oamstatsentry; //type: CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry
+        class Cdot3OamStatsEntry; //type: CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry> > cdot3oamstatsentry;
+        ydk::YList cdot3oamstatsentry;
         
-}; // CISCODOT3OAMMIB::Cdot3Oamstatstable
+}; // CISCODOT3OAMMIB::Cdot3OamStatsTable
 
 
-class CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry : public ydk::Entity
 {
     public:
-        Cdot3Oamstatsentry();
-        ~Cdot3Oamstatsentry();
+        Cdot3OamStatsEntry();
+        ~Cdot3OamStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -251,7 +251,7 @@ class CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cdot3oaminformationtx; //type: uint32
         ydk::YLeaf cdot3oaminformationrx; //type: uint32
@@ -271,14 +271,14 @@ class CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry : public ydk::Enti
         ydk::YLeaf cdot3oamunsupportedcodesrx; //type: uint32
         ydk::YLeaf cdot3oamframeslostduetooam; //type: uint32
 
-}; // CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry
+}; // CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry
 
 
-class CISCODOT3OAMMIB::Cdot3Oameventconfigtable : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamEventConfigTable : public ydk::Entity
 {
     public:
-        Cdot3Oameventconfigtable();
-        ~Cdot3Oameventconfigtable();
+        Cdot3OamEventConfigTable();
+        ~Cdot3OamEventConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -291,18 +291,18 @@ class CISCODOT3OAMMIB::Cdot3Oameventconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdot3Oameventconfigentry; //type: CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry
+        class Cdot3OamEventConfigEntry; //type: CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry> > cdot3oameventconfigentry;
+        ydk::YList cdot3oameventconfigentry;
         
-}; // CISCODOT3OAMMIB::Cdot3Oameventconfigtable
+}; // CISCODOT3OAMMIB::Cdot3OamEventConfigTable
 
 
-class CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry : public ydk::Entity
 {
     public:
-        Cdot3Oameventconfigentry();
-        ~Cdot3Oameventconfigentry();
+        Cdot3OamEventConfigEntry();
+        ~Cdot3OamEventConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -315,7 +315,7 @@ class CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cdot3oamerrsymperiodwindowhi; //type: uint32
         ydk::YLeaf cdot3oamerrsymperiodwindowlo; //type: uint32
@@ -334,14 +334,14 @@ class CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry : publ
         ydk::YLeaf cdot3oamdyinggaspenable; //type: boolean
         ydk::YLeaf cdot3oamcriticaleventenable; //type: boolean
 
-}; // CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry
+}; // CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry
 
 
-class CISCODOT3OAMMIB::Cdot3Oameventlogtable : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamEventLogTable : public ydk::Entity
 {
     public:
-        Cdot3Oameventlogtable();
-        ~Cdot3Oameventlogtable();
+        Cdot3OamEventLogTable();
+        ~Cdot3OamEventLogTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -354,18 +354,18 @@ class CISCODOT3OAMMIB::Cdot3Oameventlogtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdot3Oameventlogentry; //type: CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry
+        class Cdot3OamEventLogEntry; //type: CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DOT3_OAM_MIB::CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry> > cdot3oameventlogentry;
+        ydk::YList cdot3oameventlogentry;
         
-}; // CISCODOT3OAMMIB::Cdot3Oameventlogtable
+}; // CISCODOT3OAMMIB::Cdot3OamEventLogTable
 
 
-class CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry : public ydk::Entity
+class CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry : public ydk::Entity
 {
     public:
-        Cdot3Oameventlogentry();
-        ~Cdot3Oameventlogentry();
+        Cdot3OamEventLogEntry();
+        ~Cdot3OamEventLogEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -378,13 +378,13 @@ class CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cdot3oameventlogindex; //type: uint32
         ydk::YLeaf cdot3oameventlogtimestamp; //type: uint32
         ydk::YLeaf cdot3oameventlogoui; //type: binary
         ydk::YLeaf cdot3oameventlogtype; //type: uint32
-        ydk::YLeaf cdot3oameventloglocation; //type: Cdot3Oameventloglocation
+        ydk::YLeaf cdot3oameventloglocation; //type: Cdot3OamEventLogLocation
         ydk::YLeaf cdot3oameventlogwindowhi; //type: uint32
         ydk::YLeaf cdot3oameventlogwindowlo; //type: uint32
         ydk::YLeaf cdot3oameventlogthresholdhi; //type: uint32
@@ -392,11 +392,11 @@ class CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry : public ydk
         ydk::YLeaf cdot3oameventlogvalue; //type: uint64
         ydk::YLeaf cdot3oameventlogrunningtotal; //type: uint64
         ydk::YLeaf cdot3oameventlogeventtotal; //type: uint32
-        class Cdot3Oameventloglocation;
+        class Cdot3OamEventLogLocation;
 
-}; // CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry
+}; // CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry
 
-class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamadminstate : public ydk::Enum
+class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamAdminState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -404,7 +404,7 @@ class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamadminstate : public
 
 };
 
-class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus : public ydk::Enum
+class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -420,7 +420,7 @@ class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus : public
 
 };
 
-class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oammode : public ydk::Enum
+class CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
@@ -428,7 +428,7 @@ class CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oammode : public ydk::
 
 };
 
-class CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode : public ydk::Enum
+class CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::Cdot3OamPeerMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
@@ -437,7 +437,7 @@ class CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode : 
 
 };
 
-class CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus : public ydk::Enum
+class CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noLoopback;
@@ -449,7 +449,7 @@ class CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloo
 
 };
 
-class CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackignorerx : public ydk::Enum
+class CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackIgnoreRx : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ignore;
@@ -457,7 +457,7 @@ class CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloo
 
 };
 
-class CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventloglocation : public ydk::Enum
+class CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::Cdot3OamEventLogLocation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf local;

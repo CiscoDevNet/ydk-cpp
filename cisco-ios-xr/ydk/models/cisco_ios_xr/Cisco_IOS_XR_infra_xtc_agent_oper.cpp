@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_infra_xtc_agent_oper {
 Pcc::Pcc()
     :
     plsps(std::make_shared<Pcc::Plsps>())
-	,peers(std::make_shared<Pcc::Peers>())
+    , peers(std::make_shared<Pcc::Peers>())
 {
     plsps->parent = this;
     peers->parent = this;
 
-    yang_name = "pcc"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-agent-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pcc"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-agent-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Pcc::~Pcc()
@@ -28,6 +28,7 @@ Pcc::~Pcc()
 
 bool Pcc::has_data() const
 {
+    if (is_presence_container) return true;
     return (plsps !=  nullptr && plsps->has_data())
 	|| (peers !=  nullptr && peers->has_data());
 }
@@ -136,9 +137,11 @@ bool Pcc::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Pcc::Plsps::Plsps()
+    :
+    plsp(this, {"plsp_id"})
 {
 
-    yang_name = "plsps"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plsps"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pcc::Plsps::~Plsps()
@@ -147,7 +150,8 @@ Pcc::Plsps::~Plsps()
 
 bool Pcc::Plsps::has_data() const
 {
-    for (std::size_t index=0; index<plsp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<plsp.len(); index++)
     {
         if(plsp[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Pcc::Plsps::has_data() const
 
 bool Pcc::Plsps::has_operation() const
 {
-    for (std::size_t index=0; index<plsp.size(); index++)
+    for (std::size_t index=0; index<plsp.len(); index++)
     {
         if(plsp[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Pcc::Plsps::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Pcc::Plsps::Plsp>();
         c->parent = this;
-        plsp.push_back(c);
+        plsp.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : plsp)
+    for (auto c : plsp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -234,17 +238,19 @@ bool Pcc::Plsps::has_leaf_or_child_of_name(const std::string & name) const
 
 Pcc::Plsps::Plsp::Plsp()
     :
-    plsp_id{YType::int32, "plsp-id"},
+    plsp_id{YType::uint32, "plsp-id"},
     plsp_id_xr{YType::uint32, "plsp-id-xr"},
     sym_path_name{YType::str, "sym-path-name"},
     refcnt{YType::int64, "refcnt"},
     conn_delegated_to{YType::uint32, "conn-delegated-to"}
-    	,
+        ,
     stats(std::make_shared<Pcc::Plsps::Plsp::Stats>())
+    , event_history(this, {})
+    , path(this, {})
 {
     stats->parent = this;
 
-    yang_name = "plsp"; yang_parent_name = "plsps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plsp"; yang_parent_name = "plsps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pcc::Plsps::Plsp::~Plsp()
@@ -253,12 +259,13 @@ Pcc::Plsps::Plsp::~Plsp()
 
 bool Pcc::Plsps::Plsp::has_data() const
 {
-    for (std::size_t index=0; index<event_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<event_history.len(); index++)
     {
         if(event_history[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
@@ -273,12 +280,12 @@ bool Pcc::Plsps::Plsp::has_data() const
 
 bool Pcc::Plsps::Plsp::has_operation() const
 {
-    for (std::size_t index=0; index<event_history.size(); index++)
+    for (std::size_t index=0; index<event_history.len(); index++)
     {
         if(event_history[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
@@ -302,7 +309,8 @@ std::string Pcc::Plsps::Plsp::get_absolute_path() const
 std::string Pcc::Plsps::Plsp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "plsp" <<"[plsp-id='" <<plsp_id <<"']";
+    path_buffer << "plsp";
+    ADD_KEY_TOKEN(plsp_id, "plsp-id");
     return path_buffer.str();
 }
 
@@ -335,7 +343,7 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Pcc::Plsps::Plsp::EventHistory>();
         c->parent = this;
-        event_history.push_back(c);
+        event_history.append(c);
         return c;
     }
 
@@ -343,7 +351,7 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Pcc::Plsps::Plsp::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -360,7 +368,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::get_children() 
     }
 
     count = 0;
-    for (auto const & c : event_history)
+    for (auto c : event_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -369,7 +377,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::get_children() 
     }
 
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -456,7 +464,7 @@ Pcc::Plsps::Plsp::Stats::Stats()
     requests_failed{YType::uint64, "requests-failed"}
 {
 
-    yang_name = "stats"; yang_parent_name = "plsp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "plsp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Stats::~Stats()
@@ -465,6 +473,7 @@ Pcc::Plsps::Plsp::Stats::~Stats()
 
 bool Pcc::Plsps::Plsp::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return paths_created.is_set
 	|| paths_destroyed.is_set
 	|| path_create_errors.is_set
@@ -612,7 +621,7 @@ Pcc::Plsps::Plsp::EventHistory::EventHistory()
     desc{YType::str, "desc"}
 {
 
-    yang_name = "event-history"; yang_parent_name = "plsp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event-history"; yang_parent_name = "plsp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::EventHistory::~EventHistory()
@@ -621,6 +630,7 @@ Pcc::Plsps::Plsp::EventHistory::~EventHistory()
 
 bool Pcc::Plsps::Plsp::EventHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return ts.is_set
 	|| desc.is_set;
 }
@@ -722,12 +732,14 @@ Pcc::Plsps::Plsp::Path::Path()
     lsp_s_flag{YType::boolean, "lsp-s-flag"},
     lsp_d_flag{YType::boolean, "lsp-d-flag"},
     lsp_c_flag{YType::boolean, "lsp-c-flag"}
-    	,
+        ,
     stats(std::make_shared<Pcc::Plsps::Plsp::Path::Stats>())
+    , ero_hop(this, {})
+    , rro_hop(this, {})
 {
     stats->parent = this;
 
-    yang_name = "path"; yang_parent_name = "plsp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "plsp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::~Path()
@@ -736,12 +748,13 @@ Pcc::Plsps::Plsp::Path::~Path()
 
 bool Pcc::Plsps::Plsp::Path::has_data() const
 {
-    for (std::size_t index=0; index<ero_hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ero_hop.len(); index++)
     {
         if(ero_hop[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<rro_hop.size(); index++)
+    for (std::size_t index=0; index<rro_hop.len(); index++)
     {
         if(rro_hop[index]->has_data())
             return true;
@@ -774,12 +787,12 @@ bool Pcc::Plsps::Plsp::Path::has_data() const
 
 bool Pcc::Plsps::Plsp::Path::has_operation() const
 {
-    for (std::size_t index=0; index<ero_hop.size(); index++)
+    for (std::size_t index=0; index<ero_hop.len(); index++)
     {
         if(ero_hop[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<rro_hop.size(); index++)
+    for (std::size_t index=0; index<rro_hop.len(); index++)
     {
         if(rro_hop[index]->has_operation())
             return true;
@@ -865,7 +878,7 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Pcc::Plsps::Plsp::Path::EroHop>();
         c->parent = this;
-        ero_hop.push_back(c);
+        ero_hop.append(c);
         return c;
     }
 
@@ -873,7 +886,7 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Pcc::Plsps::Plsp::Path::RroHop>();
         c->parent = this;
-        rro_hop.push_back(c);
+        rro_hop.append(c);
         return c;
     }
 
@@ -890,7 +903,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::get_child
     }
 
     count = 0;
-    for (auto const & c : ero_hop)
+    for (auto c : ero_hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -899,7 +912,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::get_child
     }
 
     count = 0;
-    for (auto const & c : rro_hop)
+    for (auto c : rro_hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1162,7 +1175,7 @@ Pcc::Plsps::Plsp::Path::Stats::Stats()
     reports_failed_to_send{YType::uint64, "reports-failed-to-send"}
 {
 
-    yang_name = "stats"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::Stats::~Stats()
@@ -1171,6 +1184,7 @@ Pcc::Plsps::Plsp::Path::Stats::~Stats()
 
 bool Pcc::Plsps::Plsp::Path::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return reports_requested.is_set
 	|| reports_sent.is_set
 	|| reports_failed_to_send.is_set;
@@ -1263,12 +1277,12 @@ bool Pcc::Plsps::Plsp::Path::Stats::has_leaf_or_child_of_name(const std::string 
 Pcc::Plsps::Plsp::Path::EroHop::EroHop()
     :
     loose{YType::boolean, "loose"}
-    	,
+        ,
     data(std::make_shared<Pcc::Plsps::Plsp::Path::EroHop::Data>())
 {
     data->parent = this;
 
-    yang_name = "ero-hop"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ero-hop"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::EroHop::~EroHop()
@@ -1277,6 +1291,7 @@ Pcc::Plsps::Plsp::Path::EroHop::~EroHop()
 
 bool Pcc::Plsps::Plsp::Path::EroHop::has_data() const
 {
+    if (is_presence_container) return true;
     return loose.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -1359,14 +1374,14 @@ bool Pcc::Plsps::Plsp::Path::EroHop::has_leaf_or_child_of_name(const std::string
 Pcc::Plsps::Plsp::Path::EroHop::Data::Data()
     :
     hop_type{YType::uint8, "hop-type"}
-    	,
+        ,
     ipv4(std::make_shared<Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4>())
-	,sr_v4(std::make_shared<Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4>())
+    , sr_v4(std::make_shared<Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4>())
 {
     ipv4->parent = this;
     sr_v4->parent = this;
 
-    yang_name = "data"; yang_parent_name = "ero-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "ero-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::EroHop::Data::~Data()
@@ -1375,6 +1390,7 @@ Pcc::Plsps::Plsp::Path::EroHop::Data::~Data()
 
 bool Pcc::Plsps::Plsp::Path::EroHop::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_type.is_set
 	|| (ipv4 !=  nullptr && ipv4->has_data())
 	|| (sr_v4 !=  nullptr && sr_v4->has_data());
@@ -1476,7 +1492,7 @@ Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::Ipv4()
     prefix_len{YType::uint8, "prefix-len"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::~Ipv4()
@@ -1485,6 +1501,7 @@ Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::~Ipv4()
 
 bool Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return v4_addr.is_set
 	|| prefix_len.is_set;
 }
@@ -1570,7 +1587,7 @@ Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::SrV4()
     local_addr{YType::uint32, "local-addr"}
 {
 
-    yang_name = "sr-v4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-v4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::~SrV4()
@@ -1579,6 +1596,7 @@ Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::~SrV4()
 
 bool Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| cflag.is_set
 	|| sid.is_set
@@ -1697,12 +1715,12 @@ bool Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::has_leaf_or_child_of_name(const
 Pcc::Plsps::Plsp::Path::RroHop::RroHop()
     :
     loose{YType::boolean, "loose"}
-    	,
+        ,
     data(std::make_shared<Pcc::Plsps::Plsp::Path::RroHop::Data>())
 {
     data->parent = this;
 
-    yang_name = "rro-hop"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rro-hop"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::RroHop::~RroHop()
@@ -1711,6 +1729,7 @@ Pcc::Plsps::Plsp::Path::RroHop::~RroHop()
 
 bool Pcc::Plsps::Plsp::Path::RroHop::has_data() const
 {
+    if (is_presence_container) return true;
     return loose.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -1793,14 +1812,14 @@ bool Pcc::Plsps::Plsp::Path::RroHop::has_leaf_or_child_of_name(const std::string
 Pcc::Plsps::Plsp::Path::RroHop::Data::Data()
     :
     hop_type{YType::uint8, "hop-type"}
-    	,
+        ,
     ipv4(std::make_shared<Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4>())
-	,sr_v4(std::make_shared<Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4>())
+    , sr_v4(std::make_shared<Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4>())
 {
     ipv4->parent = this;
     sr_v4->parent = this;
 
-    yang_name = "data"; yang_parent_name = "rro-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "rro-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::RroHop::Data::~Data()
@@ -1809,6 +1828,7 @@ Pcc::Plsps::Plsp::Path::RroHop::Data::~Data()
 
 bool Pcc::Plsps::Plsp::Path::RroHop::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_type.is_set
 	|| (ipv4 !=  nullptr && ipv4->has_data())
 	|| (sr_v4 !=  nullptr && sr_v4->has_data());
@@ -1910,7 +1930,7 @@ Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::Ipv4()
     prefix_len{YType::uint8, "prefix-len"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::~Ipv4()
@@ -1919,6 +1939,7 @@ Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::~Ipv4()
 
 bool Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return v4_addr.is_set
 	|| prefix_len.is_set;
 }
@@ -2004,7 +2025,7 @@ Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::SrV4()
     local_addr{YType::uint32, "local-addr"}
 {
 
-    yang_name = "sr-v4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-v4"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::~SrV4()
@@ -2013,6 +2034,7 @@ Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::~SrV4()
 
 bool Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| cflag.is_set
 	|| sid.is_set
@@ -2129,9 +2151,11 @@ bool Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::has_leaf_or_child_of_name(const
 }
 
 Pcc::Peers::Peers()
+    :
+    peer(this, {"peer_addr"})
 {
 
-    yang_name = "peers"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pcc::Peers::~Peers()
@@ -2140,7 +2164,8 @@ Pcc::Peers::~Peers()
 
 bool Pcc::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -2150,7 +2175,7 @@ bool Pcc::Peers::has_data() const
 
 bool Pcc::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -2187,7 +2212,7 @@ std::shared_ptr<Entity> Pcc::Peers::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Pcc::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -2199,7 +2224,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pcc::Peers::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2252,17 +2277,19 @@ Pcc::Peers::Peer::Peer()
     is_stateful_u_flag_remote{YType::boolean, "is-stateful-u-flag-remote"},
     is_segment_routing_local{YType::boolean, "is-segment-routing-local"},
     is_segment_routing_remote{YType::boolean, "is-segment-routing-remote"},
+    is_initiate_local{YType::boolean, "is-initiate-local"},
+    is_initiate_remote{YType::boolean, "is-initiate-remote"},
     is_best_pce{YType::boolean, "is-best-pce"},
     sr_msd_local{YType::uint8, "sr-msd-local"},
     sr_msd_remote{YType::uint8, "sr-msd-remote"}
-    	,
+        ,
     socket_info(std::make_shared<Pcc::Peers::Peer::SocketInfo>())
-	,stats(std::make_shared<Pcc::Peers::Peer::Stats>())
+    , stats(std::make_shared<Pcc::Peers::Peer::Stats>())
 {
     socket_info->parent = this;
     stats->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pcc::Peers::Peer::~Peer()
@@ -2271,6 +2298,7 @@ Pcc::Peers::Peer::~Peer()
 
 bool Pcc::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_addr.is_set
 	|| handle.is_set
 	|| state_str.is_set
@@ -2296,6 +2324,8 @@ bool Pcc::Peers::Peer::has_data() const
 	|| is_stateful_u_flag_remote.is_set
 	|| is_segment_routing_local.is_set
 	|| is_segment_routing_remote.is_set
+	|| is_initiate_local.is_set
+	|| is_initiate_remote.is_set
 	|| is_best_pce.is_set
 	|| sr_msd_local.is_set
 	|| sr_msd_remote.is_set
@@ -2331,6 +2361,8 @@ bool Pcc::Peers::Peer::has_operation() const
 	|| ydk::is_set(is_stateful_u_flag_remote.yfilter)
 	|| ydk::is_set(is_segment_routing_local.yfilter)
 	|| ydk::is_set(is_segment_routing_remote.yfilter)
+	|| ydk::is_set(is_initiate_local.yfilter)
+	|| ydk::is_set(is_initiate_remote.yfilter)
 	|| ydk::is_set(is_best_pce.yfilter)
 	|| ydk::is_set(sr_msd_local.yfilter)
 	|| ydk::is_set(sr_msd_remote.yfilter)
@@ -2348,7 +2380,8 @@ std::string Pcc::Peers::Peer::get_absolute_path() const
 std::string Pcc::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[peer-addr='" <<peer_addr <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(peer_addr, "peer-addr");
     return path_buffer.str();
 }
 
@@ -2381,6 +2414,8 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Peers::Peer::get_name_leaf_d
     if (is_stateful_u_flag_remote.is_set || is_set(is_stateful_u_flag_remote.yfilter)) leaf_name_data.push_back(is_stateful_u_flag_remote.get_name_leafdata());
     if (is_segment_routing_local.is_set || is_set(is_segment_routing_local.yfilter)) leaf_name_data.push_back(is_segment_routing_local.get_name_leafdata());
     if (is_segment_routing_remote.is_set || is_set(is_segment_routing_remote.yfilter)) leaf_name_data.push_back(is_segment_routing_remote.get_name_leafdata());
+    if (is_initiate_local.is_set || is_set(is_initiate_local.yfilter)) leaf_name_data.push_back(is_initiate_local.get_name_leafdata());
+    if (is_initiate_remote.is_set || is_set(is_initiate_remote.yfilter)) leaf_name_data.push_back(is_initiate_remote.get_name_leafdata());
     if (is_best_pce.is_set || is_set(is_best_pce.yfilter)) leaf_name_data.push_back(is_best_pce.get_name_leafdata());
     if (sr_msd_local.is_set || is_set(sr_msd_local.yfilter)) leaf_name_data.push_back(sr_msd_local.get_name_leafdata());
     if (sr_msd_remote.is_set || is_set(sr_msd_remote.yfilter)) leaf_name_data.push_back(sr_msd_remote.get_name_leafdata());
@@ -2581,6 +2616,18 @@ void Pcc::Peers::Peer::set_value(const std::string & value_path, const std::stri
         is_segment_routing_remote.value_namespace = name_space;
         is_segment_routing_remote.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "is-initiate-local")
+    {
+        is_initiate_local = value;
+        is_initiate_local.value_namespace = name_space;
+        is_initiate_local.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-initiate-remote")
+    {
+        is_initiate_remote = value;
+        is_initiate_remote.value_namespace = name_space;
+        is_initiate_remote.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "is-best-pce")
     {
         is_best_pce = value;
@@ -2703,6 +2750,14 @@ void Pcc::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilte
     {
         is_segment_routing_remote.yfilter = yfilter;
     }
+    if(value_path == "is-initiate-local")
+    {
+        is_initiate_local.yfilter = yfilter;
+    }
+    if(value_path == "is-initiate-remote")
+    {
+        is_initiate_remote.yfilter = yfilter;
+    }
     if(value_path == "is-best-pce")
     {
         is_best_pce.yfilter = yfilter;
@@ -2719,7 +2774,7 @@ void Pcc::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilte
 
 bool Pcc::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "socket-info" || name == "stats" || name == "peer-addr" || name == "handle" || name == "state-str" || name == "local-ok" || name == "remote-ok" || name == "open-retry" || name == "ref-cnt" || name == "rx-state-str" || name == "holddown-counter" || name == "pcep-up-ts" || name == "precedence" || name == "ka-interval-local" || name == "ka-interval-remote" || name == "dead-interval-local" || name == "dead-interval-remote" || name == "pcep-session-id-local" || name == "pcep-session-id-remote" || name == "pcep-server-ipv4-addr" || name == "pcep-client-ipv4-addr" || name == "is-stateful-local" || name == "is-stateful-remote" || name == "is-stateful-u-flag-local" || name == "is-stateful-u-flag-remote" || name == "is-segment-routing-local" || name == "is-segment-routing-remote" || name == "is-best-pce" || name == "sr-msd-local" || name == "sr-msd-remote")
+    if(name == "socket-info" || name == "stats" || name == "peer-addr" || name == "handle" || name == "state-str" || name == "local-ok" || name == "remote-ok" || name == "open-retry" || name == "ref-cnt" || name == "rx-state-str" || name == "holddown-counter" || name == "pcep-up-ts" || name == "precedence" || name == "ka-interval-local" || name == "ka-interval-remote" || name == "dead-interval-local" || name == "dead-interval-remote" || name == "pcep-session-id-local" || name == "pcep-session-id-remote" || name == "pcep-server-ipv4-addr" || name == "pcep-client-ipv4-addr" || name == "is-stateful-local" || name == "is-stateful-remote" || name == "is-stateful-u-flag-local" || name == "is-stateful-u-flag-remote" || name == "is-segment-routing-local" || name == "is-segment-routing-remote" || name == "is-initiate-local" || name == "is-initiate-remote" || name == "is-best-pce" || name == "sr-msd-local" || name == "sr-msd-remote")
         return true;
     return false;
 }
@@ -2736,7 +2791,7 @@ Pcc::Peers::Peer::SocketInfo::SocketInfo()
     ssockaddr_str{YType::str, "ssockaddr-str"}
 {
 
-    yang_name = "socket-info"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "socket-info"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Peers::Peer::SocketInfo::~SocketInfo()
@@ -2745,6 +2800,7 @@ Pcc::Peers::Peer::SocketInfo::~SocketInfo()
 
 bool Pcc::Peers::Peer::SocketInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return fd.is_set
 	|| wnotify.is_set
 	|| rnotify.is_set
@@ -2956,7 +3012,7 @@ Pcc::Peers::Peer::Stats::Stats()
     recorded_reply_time{YType::uint64, "recorded-reply-time"}
 {
 
-    yang_name = "stats"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pcc::Peers::Peer::Stats::~Stats()
@@ -2965,6 +3021,7 @@ Pcc::Peers::Peer::Stats::~Stats()
 
 bool Pcc::Peers::Peer::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : recorded_reply_time.getYLeafs())
     {
         if(leaf.is_set)
@@ -3715,20 +3772,22 @@ bool Pcc::Peers::Peer::Stats::has_leaf_or_child_of_name(const std::string & name
 Xtc::Xtc()
     :
     policies(std::make_shared<Xtc::Policies>())
-	,on_demand_colors(std::make_shared<Xtc::OnDemandColors>())
-	,forwarding(std::make_shared<Xtc::Forwarding>())
-	,topology_summary(std::make_shared<Xtc::TopologySummary>())
-	,topology_nodes(std::make_shared<Xtc::TopologyNodes>())
-	,prefix_infos(std::make_shared<Xtc::PrefixInfos>())
+    , on_demand_colors(std::make_shared<Xtc::OnDemandColors>())
+    , forwarding(std::make_shared<Xtc::Forwarding>())
+    , controller(std::make_shared<Xtc::Controller>())
+    , topology_summary(std::make_shared<Xtc::TopologySummary>())
+    , topology_nodes(std::make_shared<Xtc::TopologyNodes>())
+    , prefix_infos(std::make_shared<Xtc::PrefixInfos>())
 {
     policies->parent = this;
     on_demand_colors->parent = this;
     forwarding->parent = this;
+    controller->parent = this;
     topology_summary->parent = this;
     topology_nodes->parent = this;
     prefix_infos->parent = this;
 
-    yang_name = "xtc"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-agent-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "xtc"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-agent-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Xtc::~Xtc()
@@ -3737,9 +3796,11 @@ Xtc::~Xtc()
 
 bool Xtc::has_data() const
 {
+    if (is_presence_container) return true;
     return (policies !=  nullptr && policies->has_data())
 	|| (on_demand_colors !=  nullptr && on_demand_colors->has_data())
 	|| (forwarding !=  nullptr && forwarding->has_data())
+	|| (controller !=  nullptr && controller->has_data())
 	|| (topology_summary !=  nullptr && topology_summary->has_data())
 	|| (topology_nodes !=  nullptr && topology_nodes->has_data())
 	|| (prefix_infos !=  nullptr && prefix_infos->has_data());
@@ -3751,6 +3812,7 @@ bool Xtc::has_operation() const
 	|| (policies !=  nullptr && policies->has_operation())
 	|| (on_demand_colors !=  nullptr && on_demand_colors->has_operation())
 	|| (forwarding !=  nullptr && forwarding->has_operation())
+	|| (controller !=  nullptr && controller->has_operation())
 	|| (topology_summary !=  nullptr && topology_summary->has_operation())
 	|| (topology_nodes !=  nullptr && topology_nodes->has_operation())
 	|| (prefix_infos !=  nullptr && prefix_infos->has_operation());
@@ -3801,6 +3863,15 @@ std::shared_ptr<Entity> Xtc::get_child_by_name(const std::string & child_yang_na
         return forwarding;
     }
 
+    if(child_yang_name == "controller")
+    {
+        if(controller == nullptr)
+        {
+            controller = std::make_shared<Xtc::Controller>();
+        }
+        return controller;
+    }
+
     if(child_yang_name == "topology-summary")
     {
         if(topology_summary == nullptr)
@@ -3848,6 +3919,11 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::get_children() const
     if(forwarding != nullptr)
     {
         children["forwarding"] = forwarding;
+    }
+
+    if(controller != nullptr)
+    {
+        children["controller"] = controller;
     }
 
     if(topology_summary != nullptr)
@@ -3903,15 +3979,17 @@ std::map<std::pair<std::string, std::string>, std::string> Xtc::get_namespace_id
 
 bool Xtc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "policies" || name == "on-demand-colors" || name == "forwarding" || name == "topology-summary" || name == "topology-nodes" || name == "prefix-infos")
+    if(name == "policies" || name == "on-demand-colors" || name == "forwarding" || name == "controller" || name == "topology-summary" || name == "topology-nodes" || name == "prefix-infos")
         return true;
     return false;
 }
 
 Xtc::Policies::Policies()
+    :
+    policy(this, {"id"})
 {
 
-    yang_name = "policies"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policies"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::Policies::~Policies()
@@ -3920,7 +3998,8 @@ Xtc::Policies::~Policies()
 
 bool Xtc::Policies::has_data() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_data())
             return true;
@@ -3930,7 +4009,7 @@ bool Xtc::Policies::has_data() const
 
 bool Xtc::Policies::has_operation() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_operation())
             return true;
@@ -3967,7 +4046,7 @@ std::shared_ptr<Entity> Xtc::Policies::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Xtc::Policies::Policy>();
         c->parent = this;
-        policy.push_back(c);
+        policy.append(c);
         return c;
     }
 
@@ -3979,7 +4058,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy)
+    for (auto c : policy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4007,7 +4086,7 @@ bool Xtc::Policies::has_leaf_or_child_of_name(const std::string & name) const
 
 Xtc::Policies::Policy::Policy()
     :
-    id{YType::int32, "id"},
+    id{YType::uint32, "id"},
     policy_name{YType::str, "policy-name"},
     administrative_up{YType::uint32, "administrative-up"},
     operational_up{YType::uint32, "operational-up"},
@@ -4024,16 +4103,17 @@ Xtc::Policies::Policy::Policy()
     policy_group_identifier{YType::uint16, "policy-group-identifier"},
     local_label_identifier{YType::uint16, "local-label-identifier"},
     local_label{YType::uint32, "local-label"}
-    	,
+        ,
     destination_address(std::make_shared<Xtc::Policies::Policy::DestinationAddress>())
-	,binding_sid(std::make_shared<Xtc::Policies::Policy::BindingSid>())
-	,auto_policy_info(std::make_shared<Xtc::Policies::Policy::AutoPolicyInfo>())
+    , binding_sid(std::make_shared<Xtc::Policies::Policy::BindingSid>())
+    , auto_policy_info(std::make_shared<Xtc::Policies::Policy::AutoPolicyInfo>())
+    , paths(this, {})
 {
     destination_address->parent = this;
     binding_sid->parent = this;
     auto_policy_info->parent = this;
 
-    yang_name = "policy"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::Policies::Policy::~Policy()
@@ -4042,7 +4122,8 @@ Xtc::Policies::Policy::~Policy()
 
 bool Xtc::Policies::Policy::has_data() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_data())
             return true;
@@ -4071,7 +4152,7 @@ bool Xtc::Policies::Policy::has_data() const
 
 bool Xtc::Policies::Policy::has_operation() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_operation())
             return true;
@@ -4109,7 +4190,8 @@ std::string Xtc::Policies::Policy::get_absolute_path() const
 std::string Xtc::Policies::Policy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy" <<"[id='" <<id <<"']";
+    path_buffer << "policy";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -4172,7 +4254,7 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Xtc::Policies::Policy::Paths>();
         c->parent = this;
-        paths.push_back(c);
+        paths.append(c);
         return c;
     }
 
@@ -4199,7 +4281,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::get_childr
     }
 
     count = 0;
-    for (auto const & c : paths)
+    for (auto c : paths.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4402,7 +4484,7 @@ Xtc::Policies::Policy::DestinationAddress::DestinationAddress()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::DestinationAddress::~DestinationAddress()
@@ -4411,6 +4493,7 @@ Xtc::Policies::Policy::DestinationAddress::~DestinationAddress()
 
 bool Xtc::Policies::Policy::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -4507,12 +4590,12 @@ Xtc::Policies::Policy::BindingSid::BindingSid()
     state{YType::str, "state"},
     explicit_based{YType::boolean, "explicit-based"},
     policy_selected{YType::boolean, "policy-selected"}
-    	,
+        ,
     value_(std::make_shared<Xtc::Policies::Policy::BindingSid::Value>())
 {
     value_->parent = this;
 
-    yang_name = "binding-sid"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding-sid"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::BindingSid::~BindingSid()
@@ -4521,6 +4604,7 @@ Xtc::Policies::Policy::BindingSid::~BindingSid()
 
 bool Xtc::Policies::Policy::BindingSid::has_data() const
 {
+    if (is_presence_container) return true;
     return bsid_mode.is_set
 	|| error.is_set
 	|| state.is_set
@@ -4659,7 +4743,7 @@ Xtc::Policies::Policy::BindingSid::Value::Value()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "value"; yang_parent_name = "binding-sid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "binding-sid"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::BindingSid::Value::~Value()
@@ -4668,6 +4752,7 @@ Xtc::Policies::Policy::BindingSid::Value::~Value()
 
 bool Xtc::Policies::Policy::BindingSid::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| label.is_set
 	|| ipv6.is_set;
@@ -4765,7 +4850,7 @@ Xtc::Policies::Policy::AutoPolicyInfo::AutoPolicyInfo()
     ipv6_caps_enabled{YType::boolean, "ipv6-caps-enabled"}
 {
 
-    yang_name = "auto-policy-info"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-policy-info"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::AutoPolicyInfo::~AutoPolicyInfo()
@@ -4774,6 +4859,7 @@ Xtc::Policies::Policy::AutoPolicyInfo::~AutoPolicyInfo()
 
 bool Xtc::Policies::Policy::AutoPolicyInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return creator_name.is_set
 	|| distinguisher.is_set
 	|| preference.is_set
@@ -4889,12 +4975,13 @@ Xtc::Policies::Policy::Paths::Paths()
     pce_based_path{YType::boolean, "pce-based-path"},
     pce_address{YType::str, "pce-address"},
     error{YType::str, "error"}
-    	,
+        ,
     sr_path_constraints(std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints>())
+    , hops(this, {})
 {
     sr_path_constraints->parent = this;
 
-    yang_name = "paths"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::~Paths()
@@ -4903,7 +4990,8 @@ Xtc::Policies::Policy::Paths::~Paths()
 
 bool Xtc::Policies::Policy::Paths::has_data() const
 {
-    for (std::size_t index=0; index<hops.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hops.len(); index++)
     {
         if(hops[index]->has_data())
             return true;
@@ -4924,7 +5012,7 @@ bool Xtc::Policies::Policy::Paths::has_data() const
 
 bool Xtc::Policies::Policy::Paths::has_operation() const
 {
-    for (std::size_t index=0; index<hops.size(); index++)
+    for (std::size_t index=0; index<hops.len(); index++)
     {
         if(hops[index]->has_operation())
             return true;
@@ -4986,7 +5074,7 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::get_child_by_name(const st
     {
         auto c = std::make_shared<Xtc::Policies::Policy::Paths::Hops>();
         c->parent = this;
-        hops.push_back(c);
+        hops.append(c);
         return c;
     }
 
@@ -5003,7 +5091,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::get
     }
 
     count = 0;
-    for (auto const & c : hops)
+    for (auto c : hops.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5142,10 +5230,11 @@ bool Xtc::Policies::Policy::Paths::has_leaf_or_child_of_name(const std::string &
 Xtc::Policies::Policy::Paths::SrPathConstraints::SrPathConstraints()
     :
     path_metrics(std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics>())
+    , affinity_constraint(this, {})
 {
     path_metrics->parent = this;
 
-    yang_name = "sr-path-constraints"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-path-constraints"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::SrPathConstraints::~SrPathConstraints()
@@ -5154,7 +5243,8 @@ Xtc::Policies::Policy::Paths::SrPathConstraints::~SrPathConstraints()
 
 bool Xtc::Policies::Policy::Paths::SrPathConstraints::has_data() const
 {
-    for (std::size_t index=0; index<affinity_constraint.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_constraint.len(); index++)
     {
         if(affinity_constraint[index]->has_data())
             return true;
@@ -5164,7 +5254,7 @@ bool Xtc::Policies::Policy::Paths::SrPathConstraints::has_data() const
 
 bool Xtc::Policies::Policy::Paths::SrPathConstraints::has_operation() const
 {
-    for (std::size_t index=0; index<affinity_constraint.size(); index++)
+    for (std::size_t index=0; index<affinity_constraint.len(); index++)
     {
         if(affinity_constraint[index]->has_operation())
             return true;
@@ -5204,7 +5294,7 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::get_chi
     {
         auto c = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint>();
         c->parent = this;
-        affinity_constraint.push_back(c);
+        affinity_constraint.append(c);
         return c;
     }
 
@@ -5221,7 +5311,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::SrP
     }
 
     count = 0;
-    for (auto const & c : affinity_constraint)
+    for (auto c : affinity_constraint.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5257,7 +5347,7 @@ Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::PathMetrics()
     accumulative_delay{YType::uint32, "accumulative-delay"}
 {
 
-    yang_name = "path-metrics"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-metrics"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::~PathMetrics()
@@ -5266,6 +5356,7 @@ Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::~PathMetrics()
 
 bool Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::has_data() const
 {
+    if (is_presence_container) return true;
     return margin_relative.is_set
 	|| margin_absolute.is_set
 	|| maximum_segments.is_set
@@ -5398,9 +5489,11 @@ Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::AffinityCon
     :
     type{YType::uint8, "type"},
     value_{YType::uint32, "value"}
+        ,
+    color(this, {})
 {
 
-    yang_name = "affinity-constraint"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "affinity-constraint"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::~AffinityConstraint()
@@ -5409,7 +5502,8 @@ Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::~AffinityCo
 
 bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::has_data() const
 {
-    for (std::size_t index=0; index<color.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<color.len(); index++)
     {
         if(color[index]->has_data())
             return true;
@@ -5420,7 +5514,7 @@ bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::has_da
 
 bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::has_operation() const
 {
-    for (std::size_t index=0; index<color.size(); index++)
+    for (std::size_t index=0; index<color.len(); index++)
     {
         if(color[index]->has_operation())
             return true;
@@ -5454,7 +5548,7 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::Affinit
     {
         auto c = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color>();
         c->parent = this;
-        color.push_back(c);
+        color.append(c);
         return c;
     }
 
@@ -5466,7 +5560,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::SrP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : color)
+    for (auto c : color.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5517,7 +5611,7 @@ Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::Colo
     color{YType::str, "color"}
 {
 
-    yang_name = "color"; yang_parent_name = "affinity-constraint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color"; yang_parent_name = "affinity-constraint"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::~Color()
@@ -5526,6 +5620,7 @@ Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::~Col
 
 bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::has_data() const
 {
+    if (is_presence_container) return true;
     return color.is_set;
 }
 
@@ -5592,16 +5687,16 @@ bool Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color:
 Xtc::Policies::Policy::Paths::Hops::Hops()
     :
     sid_type{YType::enumeration, "sid-type"}
-    	,
+        ,
     sid(std::make_shared<Xtc::Policies::Policy::Paths::Hops::Sid>())
-	,local_address(std::make_shared<Xtc::Policies::Policy::Paths::Hops::LocalAddress>())
-	,remote_address(std::make_shared<Xtc::Policies::Policy::Paths::Hops::RemoteAddress>())
+    , local_address(std::make_shared<Xtc::Policies::Policy::Paths::Hops::LocalAddress>())
+    , remote_address(std::make_shared<Xtc::Policies::Policy::Paths::Hops::RemoteAddress>())
 {
     sid->parent = this;
     local_address->parent = this;
     remote_address->parent = this;
 
-    yang_name = "hops"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hops"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::Hops::~Hops()
@@ -5610,6 +5705,7 @@ Xtc::Policies::Policy::Paths::Hops::~Hops()
 
 bool Xtc::Policies::Policy::Paths::Hops::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| (sid !=  nullptr && sid->has_data())
 	|| (local_address !=  nullptr && local_address->has_data())
@@ -5728,7 +5824,7 @@ Xtc::Policies::Policy::Paths::Hops::Sid::Sid()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "sid"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sid"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::Hops::Sid::~Sid()
@@ -5737,6 +5833,7 @@ Xtc::Policies::Policy::Paths::Hops::Sid::~Sid()
 
 bool Xtc::Policies::Policy::Paths::Hops::Sid::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| label.is_set
 	|| ipv6.is_set;
@@ -5833,7 +5930,7 @@ Xtc::Policies::Policy::Paths::Hops::LocalAddress::LocalAddress()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::Hops::LocalAddress::~LocalAddress()
@@ -5842,6 +5939,7 @@ Xtc::Policies::Policy::Paths::Hops::LocalAddress::~LocalAddress()
 
 bool Xtc::Policies::Policy::Paths::Hops::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -5938,7 +6036,7 @@ Xtc::Policies::Policy::Paths::Hops::RemoteAddress::RemoteAddress()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "remote-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Policies::Policy::Paths::Hops::RemoteAddress::~RemoteAddress()
@@ -5947,6 +6045,7 @@ Xtc::Policies::Policy::Paths::Hops::RemoteAddress::~RemoteAddress()
 
 bool Xtc::Policies::Policy::Paths::Hops::RemoteAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -6037,9 +6136,11 @@ bool Xtc::Policies::Policy::Paths::Hops::RemoteAddress::has_leaf_or_child_of_nam
 }
 
 Xtc::OnDemandColors::OnDemandColors()
+    :
+    on_demand_color(this, {"color"})
 {
 
-    yang_name = "on-demand-colors"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "on-demand-colors"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::OnDemandColors::~OnDemandColors()
@@ -6048,7 +6149,8 @@ Xtc::OnDemandColors::~OnDemandColors()
 
 bool Xtc::OnDemandColors::has_data() const
 {
-    for (std::size_t index=0; index<on_demand_color.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<on_demand_color.len(); index++)
     {
         if(on_demand_color[index]->has_data())
             return true;
@@ -6058,7 +6160,7 @@ bool Xtc::OnDemandColors::has_data() const
 
 bool Xtc::OnDemandColors::has_operation() const
 {
-    for (std::size_t index=0; index<on_demand_color.size(); index++)
+    for (std::size_t index=0; index<on_demand_color.len(); index++)
     {
         if(on_demand_color[index]->has_operation())
             return true;
@@ -6095,7 +6197,7 @@ std::shared_ptr<Entity> Xtc::OnDemandColors::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Xtc::OnDemandColors::OnDemandColor>();
         c->parent = this;
-        on_demand_color.push_back(c);
+        on_demand_color.append(c);
         return c;
     }
 
@@ -6107,7 +6209,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::OnDemandColors::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : on_demand_color)
+    for (auto c : on_demand_color.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6135,14 +6237,14 @@ bool Xtc::OnDemandColors::has_leaf_or_child_of_name(const std::string & name) co
 
 Xtc::OnDemandColors::OnDemandColor::OnDemandColor()
     :
-    color{YType::int32, "color"},
+    color{YType::uint32, "color"},
     color_xr{YType::uint32, "color-xr"}
-    	,
+        ,
     disjoint_path_info(std::make_shared<Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo>())
 {
     disjoint_path_info->parent = this;
 
-    yang_name = "on-demand-color"; yang_parent_name = "on-demand-colors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "on-demand-color"; yang_parent_name = "on-demand-colors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::OnDemandColors::OnDemandColor::~OnDemandColor()
@@ -6151,6 +6253,7 @@ Xtc::OnDemandColors::OnDemandColor::~OnDemandColor()
 
 bool Xtc::OnDemandColors::OnDemandColor::has_data() const
 {
+    if (is_presence_container) return true;
     return color.is_set
 	|| color_xr.is_set
 	|| (disjoint_path_info !=  nullptr && disjoint_path_info->has_data());
@@ -6174,7 +6277,8 @@ std::string Xtc::OnDemandColors::OnDemandColor::get_absolute_path() const
 std::string Xtc::OnDemandColors::OnDemandColor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "on-demand-color" <<"[color='" <<color <<"']";
+    path_buffer << "on-demand-color";
+    ADD_KEY_TOKEN(color, "color");
     return path_buffer.str();
 }
 
@@ -6257,7 +6361,7 @@ Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::DisjointPathInfo()
     sub_id{YType::uint32, "sub-id"}
 {
 
-    yang_name = "disjoint-path-info"; yang_parent_name = "on-demand-color"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disjoint-path-info"; yang_parent_name = "on-demand-color"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::~DisjointPathInfo()
@@ -6266,6 +6370,7 @@ Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::~DisjointPathInfo()
 
 bool Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return disjointness_type.is_set
 	|| group_id.is_set
 	|| sub_id.is_set;
@@ -6361,7 +6466,7 @@ Xtc::Forwarding::Forwarding()
 {
     policy_forwardings->parent = this;
 
-    yang_name = "forwarding"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forwarding"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::Forwarding::~Forwarding()
@@ -6370,6 +6475,7 @@ Xtc::Forwarding::~Forwarding()
 
 bool Xtc::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return (policy_forwardings !=  nullptr && policy_forwardings->has_data());
 }
 
@@ -6444,9 +6550,11 @@ bool Xtc::Forwarding::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Xtc::Forwarding::PolicyForwardings::PolicyForwardings()
+    :
+    policy_forwarding(this, {"name"})
 {
 
-    yang_name = "policy-forwardings"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-forwardings"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::Forwarding::PolicyForwardings::~PolicyForwardings()
@@ -6455,7 +6563,8 @@ Xtc::Forwarding::PolicyForwardings::~PolicyForwardings()
 
 bool Xtc::Forwarding::PolicyForwardings::has_data() const
 {
-    for (std::size_t index=0; index<policy_forwarding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_forwarding.len(); index++)
     {
         if(policy_forwarding[index]->has_data())
             return true;
@@ -6465,7 +6574,7 @@ bool Xtc::Forwarding::PolicyForwardings::has_data() const
 
 bool Xtc::Forwarding::PolicyForwardings::has_operation() const
 {
-    for (std::size_t index=0; index<policy_forwarding.size(); index++)
+    for (std::size_t index=0; index<policy_forwarding.len(); index++)
     {
         if(policy_forwarding[index]->has_operation())
             return true;
@@ -6502,7 +6611,7 @@ std::shared_ptr<Entity> Xtc::Forwarding::PolicyForwardings::get_child_by_name(co
     {
         auto c = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding>();
         c->parent = this;
-        policy_forwarding.push_back(c);
+        policy_forwarding.append(c);
         return c;
     }
 
@@ -6514,7 +6623,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::Forwarding::PolicyForwarding
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_forwarding)
+    for (auto c : policy_forwarding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6549,9 +6658,11 @@ Xtc::Forwarding::PolicyForwardings::PolicyForwarding::PolicyForwarding()
     are_stats_valid{YType::boolean, "are-stats-valid"},
     forwarding_stats_pkts{YType::uint64, "forwarding-stats-pkts"},
     forwarding_stats_bytes{YType::uint64, "forwarding-stats-bytes"}
+        ,
+    paths(this, {})
 {
 
-    yang_name = "policy-forwarding"; yang_parent_name = "policy-forwardings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-forwarding"; yang_parent_name = "policy-forwardings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::Forwarding::PolicyForwardings::PolicyForwarding::~PolicyForwarding()
@@ -6560,7 +6671,8 @@ Xtc::Forwarding::PolicyForwardings::PolicyForwarding::~PolicyForwarding()
 
 bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::has_data() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_data())
             return true;
@@ -6576,7 +6688,7 @@ bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::has_data() const
 
 bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::has_operation() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_operation())
             return true;
@@ -6601,7 +6713,8 @@ std::string Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_absolute_p
 std::string Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-forwarding" <<"[name='" <<name <<"']";
+    path_buffer << "policy-forwarding";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6627,7 +6740,7 @@ std::shared_ptr<Entity> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::ge
     {
         auto c = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths>();
         c->parent = this;
-        paths.push_back(c);
+        paths.append(c);
         return c;
     }
 
@@ -6639,7 +6752,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::Forwarding::PolicyForwarding
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : paths)
+    for (auto c : paths.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6752,7 +6865,7 @@ Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::Paths()
     label_stack{YType::uint32, "label-stack"}
 {
 
-    yang_name = "paths"; yang_parent_name = "policy-forwarding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "policy-forwarding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::~Paths()
@@ -6761,6 +6874,7 @@ Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::~Paths()
 
 bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : label_stack.getYLeafs())
     {
         if(leaf.is_set)
@@ -6988,6 +7102,1765 @@ bool Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::has_leaf_or_ch
     return false;
 }
 
+Xtc::Controller::Controller()
+    :
+    policy_requests(std::make_shared<Xtc::Controller::PolicyRequests>())
+{
+    policy_requests->parent = this;
+
+    yang_name = "controller"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Xtc::Controller::~Controller()
+{
+}
+
+bool Xtc::Controller::has_data() const
+{
+    if (is_presence_container) return true;
+    return (policy_requests !=  nullptr && policy_requests->has_data());
+}
+
+bool Xtc::Controller::has_operation() const
+{
+    return is_set(yfilter)
+	|| (policy_requests !=  nullptr && policy_requests->has_operation());
+}
+
+std::string Xtc::Controller::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Xtc::Controller::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "controller";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy-requests")
+    {
+        if(policy_requests == nullptr)
+        {
+            policy_requests = std::make_shared<Xtc::Controller::PolicyRequests>();
+        }
+        return policy_requests;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(policy_requests != nullptr)
+    {
+        children["policy-requests"] = policy_requests;
+    }
+
+    return children;
+}
+
+void Xtc::Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Xtc::Controller::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Xtc::Controller::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-requests")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequests()
+    :
+    policy_request(this, {"source_address", "end_point_type", "end_point_address", "color", "route_distinguisher"})
+{
+
+    yang_name = "policy-requests"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Xtc::Controller::PolicyRequests::~PolicyRequests()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_request.len(); index++)
+    {
+        if(policy_request[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Xtc::Controller::PolicyRequests::has_operation() const
+{
+    for (std::size_t index=0; index<policy_request.len(); index++)
+    {
+        if(policy_request[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/controller/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Xtc::Controller::PolicyRequests::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-requests";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "policy-request")
+    {
+        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest>();
+        c->parent = this;
+        policy_request.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : policy_request.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Xtc::Controller::PolicyRequests::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Xtc::Controller::PolicyRequests::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-request")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::PolicyRequest()
+    :
+    source_address{YType::str, "source-address"},
+    end_point_type{YType::enumeration, "end-point-type"},
+    end_point_address{YType::str, "end-point-address"},
+    color{YType::uint32, "color"},
+    route_distinguisher{YType::uint32, "route-distinguisher"},
+    source_address_xr{YType::str, "source-address-xr"},
+    binding_sid{YType::uint32, "binding-sid"},
+    preference{YType::uint32, "preference"},
+    color_xr{YType::uint32, "color-xr"},
+    route_distinguisher_xr{YType::uint32, "route-distinguisher-xr"},
+    creation_time{YType::uint32, "creation-time"},
+    last_updated_time{YType::uint32, "last-updated-time"}
+        ,
+    end_point(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint>())
+    , paths(this, {})
+{
+    end_point->parent = this;
+
+    yang_name = "policy-request"; yang_parent_name = "policy-requests"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::~PolicyRequest()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
+    {
+        if(paths[index]->has_data())
+            return true;
+    }
+    return source_address.is_set
+	|| end_point_type.is_set
+	|| end_point_address.is_set
+	|| color.is_set
+	|| route_distinguisher.is_set
+	|| source_address_xr.is_set
+	|| binding_sid.is_set
+	|| preference.is_set
+	|| color_xr.is_set
+	|| route_distinguisher_xr.is_set
+	|| creation_time.is_set
+	|| last_updated_time.is_set
+	|| (end_point !=  nullptr && end_point->has_data());
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::has_operation() const
+{
+    for (std::size_t index=0; index<paths.len(); index++)
+    {
+        if(paths[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(end_point_type.yfilter)
+	|| ydk::is_set(end_point_address.yfilter)
+	|| ydk::is_set(color.yfilter)
+	|| ydk::is_set(route_distinguisher.yfilter)
+	|| ydk::is_set(source_address_xr.yfilter)
+	|| ydk::is_set(binding_sid.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(color_xr.yfilter)
+	|| ydk::is_set(route_distinguisher_xr.yfilter)
+	|| ydk::is_set(creation_time.yfilter)
+	|| ydk::is_set(last_updated_time.yfilter)
+	|| (end_point !=  nullptr && end_point->has_operation());
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/controller/policy-requests/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "policy-request";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(end_point_type, "end-point-type");
+    ADD_KEY_TOKEN(end_point_address, "end-point-address");
+    ADD_KEY_TOKEN(color, "color");
+    ADD_KEY_TOKEN(route_distinguisher, "route-distinguisher");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (end_point_type.is_set || is_set(end_point_type.yfilter)) leaf_name_data.push_back(end_point_type.get_name_leafdata());
+    if (end_point_address.is_set || is_set(end_point_address.yfilter)) leaf_name_data.push_back(end_point_address.get_name_leafdata());
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+    if (route_distinguisher.is_set || is_set(route_distinguisher.yfilter)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
+    if (source_address_xr.is_set || is_set(source_address_xr.yfilter)) leaf_name_data.push_back(source_address_xr.get_name_leafdata());
+    if (binding_sid.is_set || is_set(binding_sid.yfilter)) leaf_name_data.push_back(binding_sid.get_name_leafdata());
+    if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (color_xr.is_set || is_set(color_xr.yfilter)) leaf_name_data.push_back(color_xr.get_name_leafdata());
+    if (route_distinguisher_xr.is_set || is_set(route_distinguisher_xr.yfilter)) leaf_name_data.push_back(route_distinguisher_xr.get_name_leafdata());
+    if (creation_time.is_set || is_set(creation_time.yfilter)) leaf_name_data.push_back(creation_time.get_name_leafdata());
+    if (last_updated_time.is_set || is_set(last_updated_time.yfilter)) leaf_name_data.push_back(last_updated_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "end-point")
+    {
+        if(end_point == nullptr)
+        {
+            end_point = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint>();
+        }
+        return end_point;
+    }
+
+    if(child_yang_name == "paths")
+    {
+        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths>();
+        c->parent = this;
+        paths.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(end_point != nullptr)
+    {
+        children["end-point"] = end_point;
+    }
+
+    count = 0;
+    for (auto c : paths.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-point-type")
+    {
+        end_point_type = value;
+        end_point_type.value_namespace = name_space;
+        end_point_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-point-address")
+    {
+        end_point_address = value;
+        end_point_address.value_namespace = name_space;
+        end_point_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher = value;
+        route_distinguisher.value_namespace = name_space;
+        route_distinguisher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-address-xr")
+    {
+        source_address_xr = value;
+        source_address_xr.value_namespace = name_space;
+        source_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "binding-sid")
+    {
+        binding_sid = value;
+        binding_sid.value_namespace = name_space;
+        binding_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "preference")
+    {
+        preference = value;
+        preference.value_namespace = name_space;
+        preference.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "color-xr")
+    {
+        color_xr = value;
+        color_xr.value_namespace = name_space;
+        color_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-distinguisher-xr")
+    {
+        route_distinguisher_xr = value;
+        route_distinguisher_xr.value_namespace = name_space;
+        route_distinguisher_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "creation-time")
+    {
+        creation_time = value;
+        creation_time.value_namespace = name_space;
+        creation_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-updated-time")
+    {
+        last_updated_time = value;
+        last_updated_time.value_namespace = name_space;
+        last_updated_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "end-point-type")
+    {
+        end_point_type.yfilter = yfilter;
+    }
+    if(value_path == "end-point-address")
+    {
+        end_point_address.yfilter = yfilter;
+    }
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "source-address-xr")
+    {
+        source_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "binding-sid")
+    {
+        binding_sid.yfilter = yfilter;
+    }
+    if(value_path == "preference")
+    {
+        preference.yfilter = yfilter;
+    }
+    if(value_path == "color-xr")
+    {
+        color_xr.yfilter = yfilter;
+    }
+    if(value_path == "route-distinguisher-xr")
+    {
+        route_distinguisher_xr.yfilter = yfilter;
+    }
+    if(value_path == "creation-time")
+    {
+        creation_time.yfilter = yfilter;
+    }
+    if(value_path == "last-updated-time")
+    {
+        last_updated_time.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-point" || name == "paths" || name == "source-address" || name == "end-point-type" || name == "end-point-address" || name == "color" || name == "route-distinguisher" || name == "source-address-xr" || name == "binding-sid" || name == "preference" || name == "color-xr" || name == "route-distinguisher-xr" || name == "creation-time" || name == "last-updated-time")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::EndPoint()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "end-point"; yang_parent_name = "policy-request"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::~EndPoint()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "end-point";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Paths()
+    :
+    index_{YType::uint32, "index"},
+    type{YType::enumeration, "type"},
+    name{YType::str, "name"},
+    active{YType::boolean, "active"},
+    weight{YType::uint32, "weight"},
+    metric_type{YType::uint8, "metric-type"},
+    metric_value{YType::uint32, "metric-value"},
+    is_valid{YType::boolean, "is-valid"},
+    pce_based_path{YType::boolean, "pce-based-path"},
+    pce_address{YType::str, "pce-address"},
+    error{YType::str, "error"}
+        ,
+    sr_path_constraints(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints>())
+    , hops(this, {})
+{
+    sr_path_constraints->parent = this;
+
+    yang_name = "paths"; yang_parent_name = "policy-request"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::~Paths()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hops.len(); index++)
+    {
+        if(hops[index]->has_data())
+            return true;
+    }
+    return index_.is_set
+	|| type.is_set
+	|| name.is_set
+	|| active.is_set
+	|| weight.is_set
+	|| metric_type.is_set
+	|| metric_value.is_set
+	|| is_valid.is_set
+	|| pce_based_path.is_set
+	|| pce_address.is_set
+	|| error.is_set
+	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_data());
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_operation() const
+{
+    for (std::size_t index=0; index<hops.len(); index++)
+    {
+        if(hops[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(metric_value.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(pce_based_path.yfilter)
+	|| ydk::is_set(pce_address.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_operation());
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "paths";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (metric_value.is_set || is_set(metric_value.yfilter)) leaf_name_data.push_back(metric_value.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (pce_based_path.is_set || is_set(pce_based_path.yfilter)) leaf_name_data.push_back(pce_based_path.get_name_leafdata());
+    if (pce_address.is_set || is_set(pce_address.yfilter)) leaf_name_data.push_back(pce_address.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-path-constraints")
+    {
+        if(sr_path_constraints == nullptr)
+        {
+            sr_path_constraints = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints>();
+        }
+        return sr_path_constraints;
+    }
+
+    if(child_yang_name == "hops")
+    {
+        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops>();
+        c->parent = this;
+        hops.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(sr_path_constraints != nullptr)
+    {
+        children["sr-path-constraints"] = sr_path_constraints;
+    }
+
+    count = 0;
+    for (auto c : hops.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active")
+    {
+        active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-value")
+    {
+        metric_value = value;
+        metric_value.value_namespace = name_space;
+        metric_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pce-based-path")
+    {
+        pce_based_path = value;
+        pce_based_path.value_namespace = name_space;
+        pce_based_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pce-address")
+    {
+        pce_address = value;
+        pce_address.value_namespace = name_space;
+        pce_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "metric-value")
+    {
+        metric_value.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "pce-based-path")
+    {
+        pce_based_path.yfilter = yfilter;
+    }
+    if(value_path == "pce-address")
+    {
+        pce_address.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-path-constraints" || name == "hops" || name == "index" || name == "type" || name == "name" || name == "active" || name == "weight" || name == "metric-type" || name == "metric-value" || name == "is-valid" || name == "pce-based-path" || name == "pce-address" || name == "error")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::SrPathConstraints()
+    :
+    path_metrics(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics>())
+    , affinity_constraint(this, {})
+{
+    path_metrics->parent = this;
+
+    yang_name = "sr-path-constraints"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::~SrPathConstraints()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_constraint.len(); index++)
+    {
+        if(affinity_constraint[index]->has_data())
+            return true;
+    }
+    return (path_metrics !=  nullptr && path_metrics->has_data());
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_constraint.len(); index++)
+    {
+        if(affinity_constraint[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (path_metrics !=  nullptr && path_metrics->has_operation());
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-path-constraints";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-metrics")
+    {
+        if(path_metrics == nullptr)
+        {
+            path_metrics = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics>();
+        }
+        return path_metrics;
+    }
+
+    if(child_yang_name == "affinity-constraint")
+    {
+        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint>();
+        c->parent = this;
+        affinity_constraint.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(path_metrics != nullptr)
+    {
+        children["path-metrics"] = path_metrics;
+    }
+
+    count = 0;
+    for (auto c : affinity_constraint.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-metrics" || name == "affinity-constraint")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::PathMetrics()
+    :
+    margin_relative{YType::uint8, "margin-relative"},
+    margin_absolute{YType::uint8, "margin-absolute"},
+    maximum_segments{YType::uint16, "maximum-segments"},
+    accumulative_te_metric{YType::uint32, "accumulative-te-metric"},
+    accumulative_igp_metric{YType::uint32, "accumulative-igp-metric"},
+    accumulative_delay{YType::uint32, "accumulative-delay"}
+{
+
+    yang_name = "path-metrics"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::~PathMetrics()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::has_data() const
+{
+    if (is_presence_container) return true;
+    return margin_relative.is_set
+	|| margin_absolute.is_set
+	|| maximum_segments.is_set
+	|| accumulative_te_metric.is_set
+	|| accumulative_igp_metric.is_set
+	|| accumulative_delay.is_set;
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(margin_relative.yfilter)
+	|| ydk::is_set(margin_absolute.yfilter)
+	|| ydk::is_set(maximum_segments.yfilter)
+	|| ydk::is_set(accumulative_te_metric.yfilter)
+	|| ydk::is_set(accumulative_igp_metric.yfilter)
+	|| ydk::is_set(accumulative_delay.yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (margin_relative.is_set || is_set(margin_relative.yfilter)) leaf_name_data.push_back(margin_relative.get_name_leafdata());
+    if (margin_absolute.is_set || is_set(margin_absolute.yfilter)) leaf_name_data.push_back(margin_absolute.get_name_leafdata());
+    if (maximum_segments.is_set || is_set(maximum_segments.yfilter)) leaf_name_data.push_back(maximum_segments.get_name_leafdata());
+    if (accumulative_te_metric.is_set || is_set(accumulative_te_metric.yfilter)) leaf_name_data.push_back(accumulative_te_metric.get_name_leafdata());
+    if (accumulative_igp_metric.is_set || is_set(accumulative_igp_metric.yfilter)) leaf_name_data.push_back(accumulative_igp_metric.get_name_leafdata());
+    if (accumulative_delay.is_set || is_set(accumulative_delay.yfilter)) leaf_name_data.push_back(accumulative_delay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "margin-relative")
+    {
+        margin_relative = value;
+        margin_relative.value_namespace = name_space;
+        margin_relative.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "margin-absolute")
+    {
+        margin_absolute = value;
+        margin_absolute.value_namespace = name_space;
+        margin_absolute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-segments")
+    {
+        maximum_segments = value;
+        maximum_segments.value_namespace = name_space;
+        maximum_segments.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accumulative-te-metric")
+    {
+        accumulative_te_metric = value;
+        accumulative_te_metric.value_namespace = name_space;
+        accumulative_te_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accumulative-igp-metric")
+    {
+        accumulative_igp_metric = value;
+        accumulative_igp_metric.value_namespace = name_space;
+        accumulative_igp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accumulative-delay")
+    {
+        accumulative_delay = value;
+        accumulative_delay.value_namespace = name_space;
+        accumulative_delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "margin-relative")
+    {
+        margin_relative.yfilter = yfilter;
+    }
+    if(value_path == "margin-absolute")
+    {
+        margin_absolute.yfilter = yfilter;
+    }
+    if(value_path == "maximum-segments")
+    {
+        maximum_segments.yfilter = yfilter;
+    }
+    if(value_path == "accumulative-te-metric")
+    {
+        accumulative_te_metric.yfilter = yfilter;
+    }
+    if(value_path == "accumulative-igp-metric")
+    {
+        accumulative_igp_metric.yfilter = yfilter;
+    }
+    if(value_path == "accumulative-delay")
+    {
+        accumulative_delay.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "margin-relative" || name == "margin-absolute" || name == "maximum-segments" || name == "accumulative-te-metric" || name == "accumulative-igp-metric" || name == "accumulative-delay")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::AffinityConstraint()
+    :
+    type{YType::uint8, "type"},
+    value_{YType::uint32, "value"}
+        ,
+    color(this, {})
+{
+
+    yang_name = "affinity-constraint"; yang_parent_name = "sr-path-constraints"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::~AffinityConstraint()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<color.len(); index++)
+    {
+        if(color[index]->has_data())
+            return true;
+    }
+    return type.is_set
+	|| value_.is_set;
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::has_operation() const
+{
+    for (std::size_t index=0; index<color.len(); index++)
+    {
+        if(color[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-constraint";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "color")
+    {
+        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color>();
+        c->parent = this;
+        color.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : color.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color" || name == "type" || name == "value")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::Color()
+    :
+    color{YType::str, "color"}
+{
+
+    yang_name = "color"; yang_parent_name = "affinity-constraint"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::~Color()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::has_data() const
+{
+    if (is_presence_container) return true;
+    return color.is_set;
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(color.yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "color";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "color")
+    {
+        color = value;
+        color.value_namespace = name_space;
+        color.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color")
+    {
+        color.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "color")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Hops()
+    :
+    sid_type{YType::enumeration, "sid-type"}
+        ,
+    sid(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid>())
+    , local_address(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress>())
+    , remote_address(std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress>())
+{
+    sid->parent = this;
+    local_address->parent = this;
+    remote_address->parent = this;
+
+    yang_name = "hops"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::~Hops()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| (sid !=  nullptr && sid->has_data())
+	|| (local_address !=  nullptr && local_address->has_data())
+	|| (remote_address !=  nullptr && remote_address->has_data());
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| (sid !=  nullptr && sid->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (remote_address !=  nullptr && remote_address->has_operation());
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hops";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sid")
+    {
+        if(sid == nullptr)
+        {
+            sid = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid>();
+        }
+        return sid;
+    }
+
+    if(child_yang_name == "local-address")
+    {
+        if(local_address == nullptr)
+        {
+            local_address = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress>();
+        }
+        return local_address;
+    }
+
+    if(child_yang_name == "remote-address")
+    {
+        if(remote_address == nullptr)
+        {
+            remote_address = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress>();
+        }
+        return remote_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(sid != nullptr)
+    {
+        children["sid"] = sid;
+    }
+
+    if(local_address != nullptr)
+    {
+        children["local-address"] = local_address;
+    }
+
+    if(remote_address != nullptr)
+    {
+        children["remote-address"] = remote_address;
+    }
+
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid" || name == "local-address" || name == "remote-address" || name == "sid-type")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::Sid()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    label{YType::uint32, "label"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "sid"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::~Sid()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| label.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-type" || name == "label" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::LocalAddress()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "local-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::~LocalAddress()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::RemoteAddress()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "remote-address"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::~RemoteAddress()
+{
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
 Xtc::TopologySummary::TopologySummary()
     :
     nodes{YType::uint32, "nodes"},
@@ -6997,7 +8870,7 @@ Xtc::TopologySummary::TopologySummary()
     adjacency_sids{YType::uint32, "adjacency-sids"}
 {
 
-    yang_name = "topology-summary"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology-summary"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::TopologySummary::~TopologySummary()
@@ -7006,6 +8879,7 @@ Xtc::TopologySummary::~TopologySummary()
 
 bool Xtc::TopologySummary::has_data() const
 {
+    if (is_presence_container) return true;
     return nodes.is_set
 	|| prefixes.is_set
 	|| prefix_sids.is_set
@@ -7129,9 +9003,11 @@ bool Xtc::TopologySummary::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Xtc::TopologyNodes::TopologyNodes()
+    :
+    topology_node(this, {"node_identifier"})
 {
 
-    yang_name = "topology-nodes"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology-nodes"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::TopologyNodes::~TopologyNodes()
@@ -7140,7 +9016,8 @@ Xtc::TopologyNodes::~TopologyNodes()
 
 bool Xtc::TopologyNodes::has_data() const
 {
-    for (std::size_t index=0; index<topology_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology_node.len(); index++)
     {
         if(topology_node[index]->has_data())
             return true;
@@ -7150,7 +9027,7 @@ bool Xtc::TopologyNodes::has_data() const
 
 bool Xtc::TopologyNodes::has_operation() const
 {
-    for (std::size_t index=0; index<topology_node.size(); index++)
+    for (std::size_t index=0; index<topology_node.len(); index++)
     {
         if(topology_node[index]->has_operation())
             return true;
@@ -7187,7 +9064,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode>();
         c->parent = this;
-        topology_node.push_back(c);
+        topology_node.append(c);
         return c;
     }
 
@@ -7199,7 +9076,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology_node)
+    for (auto c : topology_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7227,15 +9104,18 @@ bool Xtc::TopologyNodes::has_leaf_or_child_of_name(const std::string & name) con
 
 Xtc::TopologyNodes::TopologyNode::TopologyNode()
     :
-    node_identifier{YType::int32, "node-identifier"},
+    node_identifier{YType::uint32, "node-identifier"},
     node_identifier_xr{YType::uint32, "node-identifier-xr"},
     overload{YType::boolean, "overload"}
-    	,
+        ,
     node_protocol_identifier(std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier>())
+    , prefix_sid(this, {})
+    , ipv4_link(this, {})
+    , ipv6_link(this, {})
 {
     node_protocol_identifier->parent = this;
 
-    yang_name = "topology-node"; yang_parent_name = "topology-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology-node"; yang_parent_name = "topology-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::TopologyNodes::TopologyNode::~TopologyNode()
@@ -7244,17 +9124,18 @@ Xtc::TopologyNodes::TopologyNode::~TopologyNode()
 
 bool Xtc::TopologyNodes::TopologyNode::has_data() const
 {
-    for (std::size_t index=0; index<prefix_sid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_sid.len(); index++)
     {
         if(prefix_sid[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_link.size(); index++)
+    for (std::size_t index=0; index<ipv4_link.len(); index++)
     {
         if(ipv4_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_link.size(); index++)
+    for (std::size_t index=0; index<ipv6_link.len(); index++)
     {
         if(ipv6_link[index]->has_data())
             return true;
@@ -7267,17 +9148,17 @@ bool Xtc::TopologyNodes::TopologyNode::has_data() const
 
 bool Xtc::TopologyNodes::TopologyNode::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_sid.size(); index++)
+    for (std::size_t index=0; index<prefix_sid.len(); index++)
     {
         if(prefix_sid[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_link.size(); index++)
+    for (std::size_t index=0; index<ipv4_link.len(); index++)
     {
         if(ipv4_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_link.size(); index++)
+    for (std::size_t index=0; index<ipv6_link.len(); index++)
     {
         if(ipv6_link[index]->has_operation())
             return true;
@@ -7299,7 +9180,8 @@ std::string Xtc::TopologyNodes::TopologyNode::get_absolute_path() const
 std::string Xtc::TopologyNodes::TopologyNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology-node" <<"[node-identifier='" <<node_identifier <<"']";
+    path_buffer << "topology-node";
+    ADD_KEY_TOKEN(node_identifier, "node-identifier");
     return path_buffer.str();
 }
 
@@ -7330,7 +9212,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::get_child_by_name(cons
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::PrefixSid>();
         c->parent = this;
-        prefix_sid.push_back(c);
+        prefix_sid.append(c);
         return c;
     }
 
@@ -7338,7 +9220,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::get_child_by_name(cons
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link>();
         c->parent = this;
-        ipv4_link.push_back(c);
+        ipv4_link.append(c);
         return c;
     }
 
@@ -7346,7 +9228,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::get_child_by_name(cons
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link>();
         c->parent = this;
-        ipv6_link.push_back(c);
+        ipv6_link.append(c);
         return c;
     }
 
@@ -7363,7 +9245,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     }
 
     count = 0;
-    for (auto const & c : prefix_sid)
+    for (auto c : prefix_sid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7372,7 +9254,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     }
 
     count = 0;
-    for (auto const & c : ipv4_link)
+    for (auto c : ipv4_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7381,7 +9263,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     }
 
     count = 0;
-    for (auto const & c : ipv6_link)
+    for (auto c : ipv6_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7444,9 +9326,11 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::NodeProtocolIdentifier
     ipv4_bgp_router_id{YType::str, "ipv4-bgp-router-id"},
     ipv4te_router_id_set{YType::boolean, "ipv4te-router-id-set"},
     ipv4te_router_id{YType::str, "ipv4te-router-id"}
+        ,
+    igp_information(this, {})
 {
 
-    yang_name = "node-protocol-identifier"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-protocol-identifier"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::~NodeProtocolIdentifier()
@@ -7455,7 +9339,8 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::~NodeProtocolIdentifie
 
 bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::has_data() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_data())
             return true;
@@ -7469,7 +9354,7 @@ bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::has_data() const
 
 bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::has_operation() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_operation())
             return true;
@@ -7509,7 +9394,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
-        igp_information.push_back(c);
+        igp_information.append(c);
         return c;
     }
 
@@ -7521,7 +9406,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : igp_information)
+    for (auto c : igp_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7600,12 +9485,12 @@ bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::has_leaf_or_child
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::IgpInformation()
     :
     domain_identifier{YType::uint64, "domain-identifier"}
-    	,
+        ,
     igp(std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp>())
 {
     igp->parent = this;
 
-    yang_name = "igp-information"; yang_parent_name = "node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp-information"; yang_parent_name = "node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::~IgpInformation()
@@ -7614,6 +9499,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::~IgpIn
 
 bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
@@ -7696,16 +9582,16 @@ bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::h
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Igp()
     :
     igp_id{YType::enumeration, "igp-id"}
-    	,
+        ,
     isis(std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis>())
-	,ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
-	,bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
+    , ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
+    , bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
 {
     isis->parent = this;
     ospf->parent = this;
     bgp->parent = this;
 
-    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::~Igp()
@@ -7714,6 +9600,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::~
 
 bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_id.is_set
 	|| (isis !=  nullptr && isis->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
@@ -7831,7 +9718,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::I
     level{YType::uint32, "level"}
 {
 
-    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::~Isis()
@@ -7840,6 +9727,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::I
 
 bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return system_id.is_set
 	|| level.is_set;
 }
@@ -7922,7 +9810,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::O
     area{YType::uint32, "area"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::~Ospf()
@@ -7931,6 +9819,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::O
 
 bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| area.is_set;
 }
@@ -8012,7 +9901,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::B
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::~Bgp()
@@ -8021,6 +9910,7 @@ Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::B
 
 bool Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set;
 }
 
@@ -8089,12 +9979,12 @@ Xtc::TopologyNodes::TopologyNode::PrefixSid::PrefixSid()
     sid_type{YType::enumeration, "sid-type"},
     algorithm{YType::uint32, "algorithm"},
     mpls_label{YType::uint32, "mpls-label"}
-    	,
+        ,
     sid_prefix(std::make_shared<Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix>())
 {
     sid_prefix->parent = this;
 
-    yang_name = "prefix-sid"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-sid"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::PrefixSid::~PrefixSid()
@@ -8103,6 +9993,7 @@ Xtc::TopologyNodes::TopologyNode::PrefixSid::~PrefixSid()
 
 bool Xtc::TopologyNodes::TopologyNode::PrefixSid::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| algorithm.is_set
 	|| mpls_label.is_set
@@ -8215,7 +10106,7 @@ Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::SidPrefix()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "sid-prefix"; yang_parent_name = "prefix-sid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sid-prefix"; yang_parent_name = "prefix-sid"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::~SidPrefix()
@@ -8224,6 +10115,7 @@ Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::~SidPrefix()
 
 bool Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -8323,14 +10215,15 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::Ipv4Link()
     max_reservable_bandwidth{YType::uint64, "max-reservable-bandwidth"},
     administrative_groups{YType::uint32, "administrative-groups"},
     srlgs{YType::uint32, "srlgs"}
-    	,
+        ,
     local_igp_information(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation>())
-	,remote_node_protocol_identifier(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier>())
+    , remote_node_protocol_identifier(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier>())
+    , adjacency_sid(this, {})
 {
     local_igp_information->parent = this;
     remote_node_protocol_identifier->parent = this;
 
-    yang_name = "ipv4-link"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-link"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::~Ipv4Link()
@@ -8339,7 +10232,8 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::~Ipv4Link()
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_data() const
 {
-    for (std::size_t index=0; index<adjacency_sid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
     {
         if(adjacency_sid[index]->has_data())
             return true;
@@ -8362,7 +10256,7 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_data() const
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_operation() const
 {
-    for (std::size_t index=0; index<adjacency_sid.size(); index++)
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
     {
         if(adjacency_sid[index]->has_operation())
             return true;
@@ -8434,7 +10328,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_child_by
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid>();
         c->parent = this;
-        adjacency_sid.push_back(c);
+        adjacency_sid.append(c);
         return c;
     }
 
@@ -8456,7 +10350,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     }
 
     count = 0;
-    for (auto const & c : adjacency_sid)
+    for (auto c : adjacency_sid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8563,12 +10457,12 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_leaf_or_child_of_name(const
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::LocalIgpInformation()
     :
     domain_identifier{YType::uint64, "domain-identifier"}
-    	,
+        ,
     igp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp>())
 {
     igp->parent = this;
 
-    yang_name = "local-igp-information"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-igp-information"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::~LocalIgpInformation()
@@ -8577,6 +10471,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::~LocalIgpInform
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
@@ -8659,16 +10554,16 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::has_leaf_o
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Igp()
     :
     igp_id{YType::enumeration, "igp-id"}
-    	,
+        ,
     isis(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis>())
-	,ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf>())
-	,bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp>())
+    , ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf>())
+    , bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp>())
 {
     isis->parent = this;
     ospf->parent = this;
     bgp->parent = this;
 
-    yang_name = "igp"; yang_parent_name = "local-igp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "local-igp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::~Igp()
@@ -8677,6 +10572,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::~Igp()
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_id.is_set
 	|| (isis !=  nullptr && isis->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
@@ -8794,7 +10690,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::Isis
     level{YType::uint32, "level"}
 {
 
-    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::~Isis()
@@ -8803,6 +10699,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::~Isi
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return system_id.is_set
 	|| level.is_set;
 }
@@ -8885,7 +10782,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::Ospf
     area{YType::uint32, "area"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::~Ospf()
@@ -8894,6 +10791,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::~Osp
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| area.is_set;
 }
@@ -8975,7 +10873,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::Bgp()
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::~Bgp()
@@ -8984,6 +10882,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::~Bgp(
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set;
 }
 
@@ -9054,9 +10953,11 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::Remote
     ipv4_bgp_router_id{YType::str, "ipv4-bgp-router-id"},
     ipv4te_router_id_set{YType::boolean, "ipv4te-router-id-set"},
     ipv4te_router_id{YType::str, "ipv4te-router-id"}
+        ,
+    igp_information(this, {})
 {
 
-    yang_name = "remote-node-protocol-identifier"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-node-protocol-identifier"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::~RemoteNodeProtocolIdentifier()
@@ -9065,7 +10966,8 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::~Remot
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::has_data() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_data())
             return true;
@@ -9079,7 +10981,7 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::h
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::has_operation() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_operation())
             return true;
@@ -9119,7 +11021,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodePr
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
-        igp_information.push_back(c);
+        igp_information.append(c);
         return c;
     }
 
@@ -9131,7 +11033,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : igp_information)
+    for (auto c : igp_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9210,12 +11112,12 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::h
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::IgpInformation()
     :
     domain_identifier{YType::uint64, "domain-identifier"}
-    	,
+        ,
     igp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp>())
 {
     igp->parent = this;
 
-    yang_name = "igp-information"; yang_parent_name = "remote-node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp-information"; yang_parent_name = "remote-node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::~IgpInformation()
@@ -9224,6 +11126,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
@@ -9306,16 +11209,16 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::I
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Igp()
     :
     igp_id{YType::enumeration, "igp-id"}
-    	,
+        ,
     isis(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis>())
-	,ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
-	,bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
+    , ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
+    , bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
 {
     isis->parent = this;
     ospf->parent = this;
     bgp->parent = this;
 
-    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::~Igp()
@@ -9324,6 +11227,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_id.is_set
 	|| (isis !=  nullptr && isis->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
@@ -9441,7 +11345,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
     level{YType::uint32, "level"}
 {
 
-    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::~Isis()
@@ -9450,6 +11354,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return system_id.is_set
 	|| level.is_set;
 }
@@ -9532,7 +11437,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
     area{YType::uint32, "area"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::~Ospf()
@@ -9541,6 +11446,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| area.is_set;
 }
@@ -9622,7 +11528,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::~Bgp()
@@ -9631,6 +11537,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set;
 }
 
@@ -9699,12 +11606,12 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::AdjacencySid()
     sid_type{YType::enumeration, "sid-type"},
     algorithm{YType::uint32, "algorithm"},
     mpls_label{YType::uint32, "mpls-label"}
-    	,
+        ,
     sid_prefix(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix>())
 {
     sid_prefix->parent = this;
 
-    yang_name = "adjacency-sid"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-sid"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::~AdjacencySid()
@@ -9713,6 +11620,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::~AdjacencySid()
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| algorithm.is_set
 	|| mpls_label.is_set
@@ -9825,7 +11733,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::SidPrefix()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "sid-prefix"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sid-prefix"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::~SidPrefix()
@@ -9834,6 +11742,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::~SidPrefix(
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -9931,14 +11840,15 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::Ipv6Link()
     te_metric{YType::uint32, "te-metric"},
     maximum_link_bandwidth{YType::uint64, "maximum-link-bandwidth"},
     max_reservable_bandwidth{YType::uint64, "max-reservable-bandwidth"}
-    	,
+        ,
     local_igp_information(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation>())
-	,remote_node_protocol_identifier(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier>())
+    , remote_node_protocol_identifier(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier>())
+    , adjacency_sid(this, {})
 {
     local_igp_information->parent = this;
     remote_node_protocol_identifier->parent = this;
 
-    yang_name = "ipv6-link"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-link"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::~Ipv6Link()
@@ -9947,7 +11857,8 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::~Ipv6Link()
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::has_data() const
 {
-    for (std::size_t index=0; index<adjacency_sid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
     {
         if(adjacency_sid[index]->has_data())
             return true;
@@ -9964,7 +11875,7 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::has_data() const
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::has_operation() const
 {
-    for (std::size_t index=0; index<adjacency_sid.size(); index++)
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
     {
         if(adjacency_sid[index]->has_operation())
             return true;
@@ -10026,7 +11937,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_child_by
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid>();
         c->parent = this;
-        adjacency_sid.push_back(c);
+        adjacency_sid.append(c);
         return c;
     }
 
@@ -10048,7 +11959,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     }
 
     count = 0;
-    for (auto const & c : adjacency_sid)
+    for (auto c : adjacency_sid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10137,12 +12048,12 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::has_leaf_or_child_of_name(const
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::LocalIgpInformation()
     :
     domain_identifier{YType::uint64, "domain-identifier"}
-    	,
+        ,
     igp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp>())
 {
     igp->parent = this;
 
-    yang_name = "local-igp-information"; yang_parent_name = "ipv6-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-igp-information"; yang_parent_name = "ipv6-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::~LocalIgpInformation()
@@ -10151,6 +12062,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::~LocalIgpInform
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
@@ -10233,16 +12145,16 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::has_leaf_o
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Igp()
     :
     igp_id{YType::enumeration, "igp-id"}
-    	,
+        ,
     isis(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis>())
-	,ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf>())
-	,bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp>())
+    , ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf>())
+    , bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp>())
 {
     isis->parent = this;
     ospf->parent = this;
     bgp->parent = this;
 
-    yang_name = "igp"; yang_parent_name = "local-igp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "local-igp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::~Igp()
@@ -10251,6 +12163,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::~Igp()
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_id.is_set
 	|| (isis !=  nullptr && isis->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
@@ -10368,7 +12281,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::Isis
     level{YType::uint32, "level"}
 {
 
-    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::~Isis()
@@ -10377,6 +12290,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::~Isi
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return system_id.is_set
 	|| level.is_set;
 }
@@ -10459,7 +12373,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::Ospf
     area{YType::uint32, "area"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::~Ospf()
@@ -10468,6 +12382,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::~Osp
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| area.is_set;
 }
@@ -10549,7 +12464,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::Bgp()
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::~Bgp()
@@ -10558,6 +12473,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::~Bgp(
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set;
 }
 
@@ -10628,9 +12544,11 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::Remote
     ipv4_bgp_router_id{YType::str, "ipv4-bgp-router-id"},
     ipv4te_router_id_set{YType::boolean, "ipv4te-router-id-set"},
     ipv4te_router_id{YType::str, "ipv4te-router-id"}
+        ,
+    igp_information(this, {})
 {
 
-    yang_name = "remote-node-protocol-identifier"; yang_parent_name = "ipv6-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-node-protocol-identifier"; yang_parent_name = "ipv6-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::~RemoteNodeProtocolIdentifier()
@@ -10639,7 +12557,8 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::~Remot
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::has_data() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_data())
             return true;
@@ -10653,7 +12572,7 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::h
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::has_operation() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_operation())
             return true;
@@ -10693,7 +12612,7 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodePr
     {
         auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
-        igp_information.push_back(c);
+        igp_information.append(c);
         return c;
     }
 
@@ -10705,7 +12624,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : igp_information)
+    for (auto c : igp_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10784,12 +12703,12 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::h
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::IgpInformation()
     :
     domain_identifier{YType::uint64, "domain-identifier"}
-    	,
+        ,
     igp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp>())
 {
     igp->parent = this;
 
-    yang_name = "igp-information"; yang_parent_name = "remote-node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp-information"; yang_parent_name = "remote-node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::~IgpInformation()
@@ -10798,6 +12717,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
@@ -10880,16 +12800,16 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::I
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Igp()
     :
     igp_id{YType::enumeration, "igp-id"}
-    	,
+        ,
     isis(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis>())
-	,ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
-	,bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
+    , ospf(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
+    , bgp(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
 {
     isis->parent = this;
     ospf->parent = this;
     bgp->parent = this;
 
-    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::~Igp()
@@ -10898,6 +12818,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_id.is_set
 	|| (isis !=  nullptr && isis->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
@@ -11015,7 +12936,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
     level{YType::uint32, "level"}
 {
 
-    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::~Isis()
@@ -11024,6 +12945,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return system_id.is_set
 	|| level.is_set;
 }
@@ -11106,7 +13028,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
     area{YType::uint32, "area"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::~Ospf()
@@ -11115,6 +13037,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| area.is_set;
 }
@@ -11196,7 +13119,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::~Bgp()
@@ -11205,6 +13128,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set;
 }
 
@@ -11273,12 +13197,12 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::AdjacencySid()
     sid_type{YType::enumeration, "sid-type"},
     algorithm{YType::uint32, "algorithm"},
     mpls_label{YType::uint32, "mpls-label"}
-    	,
+        ,
     sid_prefix(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix>())
 {
     sid_prefix->parent = this;
 
-    yang_name = "adjacency-sid"; yang_parent_name = "ipv6-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-sid"; yang_parent_name = "ipv6-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::~AdjacencySid()
@@ -11287,6 +13211,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::~AdjacencySid()
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::has_data() const
 {
+    if (is_presence_container) return true;
     return sid_type.is_set
 	|| algorithm.is_set
 	|| mpls_label.is_set
@@ -11399,7 +13324,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::SidPrefix()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "sid-prefix"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sid-prefix"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::~SidPrefix()
@@ -11408,6 +13333,7 @@ Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::~SidPrefix(
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -11498,9 +13424,11 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::has_le
 }
 
 Xtc::PrefixInfos::PrefixInfos()
+    :
+    prefix_info(this, {"node_identifier"})
 {
 
-    yang_name = "prefix-infos"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-infos"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::PrefixInfos::~PrefixInfos()
@@ -11509,7 +13437,8 @@ Xtc::PrefixInfos::~PrefixInfos()
 
 bool Xtc::PrefixInfos::has_data() const
 {
-    for (std::size_t index=0; index<prefix_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_info.len(); index++)
     {
         if(prefix_info[index]->has_data())
             return true;
@@ -11519,7 +13448,7 @@ bool Xtc::PrefixInfos::has_data() const
 
 bool Xtc::PrefixInfos::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_info.size(); index++)
+    for (std::size_t index=0; index<prefix_info.len(); index++)
     {
         if(prefix_info[index]->has_operation())
             return true;
@@ -11556,7 +13485,7 @@ std::shared_ptr<Entity> Xtc::PrefixInfos::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Xtc::PrefixInfos::PrefixInfo>();
         c->parent = this;
-        prefix_info.push_back(c);
+        prefix_info.append(c);
         return c;
     }
 
@@ -11568,7 +13497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_info)
+    for (auto c : prefix_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11596,14 +13525,15 @@ bool Xtc::PrefixInfos::has_leaf_or_child_of_name(const std::string & name) const
 
 Xtc::PrefixInfos::PrefixInfo::PrefixInfo()
     :
-    node_identifier{YType::int32, "node-identifier"},
+    node_identifier{YType::uint32, "node-identifier"},
     node_identifier_xr{YType::uint32, "node-identifier-xr"}
-    	,
+        ,
     node_protocol_identifier(std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier>())
+    , address(this, {})
 {
     node_protocol_identifier->parent = this;
 
-    yang_name = "prefix-info"; yang_parent_name = "prefix-infos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-info"; yang_parent_name = "prefix-infos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::~PrefixInfo()
@@ -11612,7 +13542,8 @@ Xtc::PrefixInfos::PrefixInfo::~PrefixInfo()
 
 bool Xtc::PrefixInfos::PrefixInfo::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -11624,7 +13555,7 @@ bool Xtc::PrefixInfos::PrefixInfo::has_data() const
 
 bool Xtc::PrefixInfos::PrefixInfo::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -11645,7 +13576,8 @@ std::string Xtc::PrefixInfos::PrefixInfo::get_absolute_path() const
 std::string Xtc::PrefixInfos::PrefixInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-info" <<"[node-identifier='" <<node_identifier <<"']";
+    path_buffer << "prefix-info";
+    ADD_KEY_TOKEN(node_identifier, "node-identifier");
     return path_buffer.str();
 }
 
@@ -11675,7 +13607,7 @@ std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::get_child_by_name(const st
     {
         auto c = std::make_shared<Xtc::PrefixInfos::PrefixInfo::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -11692,7 +13624,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::get
     }
 
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11745,9 +13677,11 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::NodeProtocolIdentifier()
     ipv4_bgp_router_id{YType::str, "ipv4-bgp-router-id"},
     ipv4te_router_id_set{YType::boolean, "ipv4te-router-id-set"},
     ipv4te_router_id{YType::str, "ipv4te-router-id"}
+        ,
+    igp_information(this, {})
 {
 
-    yang_name = "node-protocol-identifier"; yang_parent_name = "prefix-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-protocol-identifier"; yang_parent_name = "prefix-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::~NodeProtocolIdentifier()
@@ -11756,7 +13690,8 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::~NodeProtocolIdentifier()
 
 bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::has_data() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_data())
             return true;
@@ -11770,7 +13705,7 @@ bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::has_data() const
 
 bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::has_operation() const
 {
-    for (std::size_t index=0; index<igp_information.size(); index++)
+    for (std::size_t index=0; index<igp_information.len(); index++)
     {
         if(igp_information[index]->has_operation())
             return true;
@@ -11810,7 +13745,7 @@ std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::ge
     {
         auto c = std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation>();
         c->parent = this;
-        igp_information.push_back(c);
+        igp_information.append(c);
         return c;
     }
 
@@ -11822,7 +13757,7 @@ std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::Nod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : igp_information)
+    for (auto c : igp_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11901,12 +13836,12 @@ bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::has_leaf_or_child_of_
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::IgpInformation()
     :
     domain_identifier{YType::uint64, "domain-identifier"}
-    	,
+        ,
     igp(std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp>())
 {
     igp->parent = this;
 
-    yang_name = "igp-information"; yang_parent_name = "node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp-information"; yang_parent_name = "node-protocol-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::~IgpInformation()
@@ -11915,6 +13850,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::~IgpInform
 
 bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
@@ -11997,16 +13933,16 @@ bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::has_l
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Igp()
     :
     igp_id{YType::enumeration, "igp-id"}
-    	,
+        ,
     isis(std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis>())
-	,ospf(std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
-	,bgp(std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
+    , ospf(std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf>())
+    , bgp(std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp>())
 {
     isis->parent = this;
     ospf->parent = this;
     bgp->parent = this;
 
-    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "igp-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::~Igp()
@@ -12015,6 +13951,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::~Igp(
 
 bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::has_data() const
 {
+    if (is_presence_container) return true;
     return igp_id.is_set
 	|| (isis !=  nullptr && isis->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
@@ -12132,7 +14069,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis:
     level{YType::uint32, "level"}
 {
 
-    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::~Isis()
@@ -12141,6 +14078,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis:
 
 bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return system_id.is_set
 	|| level.is_set;
 }
@@ -12223,7 +14161,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf:
     area{YType::uint32, "area"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::~Ospf()
@@ -12232,6 +14170,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf:
 
 bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set
 	|| area.is_set;
 }
@@ -12313,7 +14252,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::~Bgp()
@@ -12322,6 +14261,7 @@ Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::
 
 bool Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return router_id.is_set;
 }
 
@@ -12392,7 +14332,7 @@ Xtc::PrefixInfos::PrefixInfo::Address::Address()
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "address"; yang_parent_name = "prefix-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "prefix-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Xtc::PrefixInfos::PrefixInfo::Address::~Address()
@@ -12401,6 +14341,7 @@ Xtc::PrefixInfos::PrefixInfo::Address::~Address()
 
 bool Xtc::PrefixInfos::PrefixInfo::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -12490,29 +14431,32 @@ bool Xtc::PrefixInfos::PrefixInfo::Address::has_leaf_or_child_of_name(const std:
     return false;
 }
 
+const Enum::YLeaf XtcSrSid::ipv4_node_sid {0, "ipv4-node-sid"};
+const Enum::YLeaf XtcSrSid::ipv4_adjacency_sid {1, "ipv4-adjacency-sid"};
+const Enum::YLeaf XtcSrSid::unknown_sid {2, "unknown-sid"};
+
+const Enum::YLeaf XtcIgpInfoId::isis {1, "isis"};
+const Enum::YLeaf XtcIgpInfoId::ospf {2, "ospf"};
+const Enum::YLeaf XtcIgpInfoId::bgp {3, "bgp"};
+
+const Enum::YLeaf XtcAfId::none {0, "none"};
+const Enum::YLeaf XtcAfId::ipv4 {1, "ipv4"};
+const Enum::YLeaf XtcAfId::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf XtcBsidMode::explicit_ {0, "explicit"};
+const Enum::YLeaf XtcBsidMode::dynamic {1, "dynamic"};
+
 const Enum::YLeaf XtcSid1::sr_protected_adj_sid {1, "sr-protected-adj-sid"};
 const Enum::YLeaf XtcSid1::sr_unprotected_adj_sid {2, "sr-unprotected-adj-sid"};
 const Enum::YLeaf XtcSid1::sr_bgp_egress_peer_engineering_sid {3, "sr-bgp-egress-peer-engineering-sid"};
 const Enum::YLeaf XtcSid1::sr_reqular_prefix_sid {4, "sr-reqular-prefix-sid"};
 const Enum::YLeaf XtcSid1::sr_strict_prefix_sid {5, "sr-strict-prefix-sid"};
 
-const Enum::YLeaf XtcIgpInfoId::isis {1, "isis"};
-const Enum::YLeaf XtcIgpInfoId::ospf {2, "ospf"};
-const Enum::YLeaf XtcIgpInfoId::bgp {3, "bgp"};
-
 const Enum::YLeaf XtcDisjointness::no_disjointness {0, "no-disjointness"};
 const Enum::YLeaf XtcDisjointness::link_disjointness {1, "link-disjointness"};
 const Enum::YLeaf XtcDisjointness::node_disjointness {2, "node-disjointness"};
 const Enum::YLeaf XtcDisjointness::srlg_disjointness {3, "srlg-disjointness"};
 const Enum::YLeaf XtcDisjointness::srlg_node_disjointness {4, "srlg-node-disjointness"};
-
-const Enum::YLeaf XtcSrSid::ipv4_node_sid {0, "ipv4-node-sid"};
-const Enum::YLeaf XtcSrSid::ipv4_adjacency_sid {1, "ipv4-adjacency-sid"};
-const Enum::YLeaf XtcSrSid::unknown_sid {2, "unknown-sid"};
-
-const Enum::YLeaf XtcPolicyPath::explicit_ {0, "explicit"};
-const Enum::YLeaf XtcPolicyPath::dynamic {1, "dynamic"};
-const Enum::YLeaf XtcPolicyPath::dynamic_pce {2, "dynamic-pce"};
 
 const Enum::YLeaf XtcBsidError::none {0, "none"};
 const Enum::YLeaf XtcBsidError::allocating {1, "allocating"};
@@ -12522,16 +14466,16 @@ const Enum::YLeaf XtcBsidError::color_endpoint_exists {4, "color-endpoint-exists
 const Enum::YLeaf XtcBsidError::forwarding_rewrite_error {5, "forwarding-rewrite-error"};
 const Enum::YLeaf XtcBsidError::srlb_invalid_label {6, "srlb-invalid-label"};
 
-const Enum::YLeaf XtcBsidMode::explicit_ {0, "explicit"};
-const Enum::YLeaf XtcBsidMode::dynamic {1, "dynamic"};
-
 const Enum::YLeaf XtcSid::none {0, "none"};
 const Enum::YLeaf XtcSid::mpls {1, "mpls"};
 const Enum::YLeaf XtcSid::ipv6 {2, "ipv6"};
 
-const Enum::YLeaf XtcAfId::none {0, "none"};
-const Enum::YLeaf XtcAfId::ipv4 {1, "ipv4"};
-const Enum::YLeaf XtcAfId::ipv6 {2, "ipv6"};
+const Enum::YLeaf XtcPolicyPath::explicit_ {0, "explicit"};
+const Enum::YLeaf XtcPolicyPath::dynamic {1, "dynamic"};
+const Enum::YLeaf XtcPolicyPath::dynamic_pce {2, "dynamic-pce"};
+
+const Enum::YLeaf XtcAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf XtcAddressFamily::ipv6 {2, "ipv6"};
 
 
 }

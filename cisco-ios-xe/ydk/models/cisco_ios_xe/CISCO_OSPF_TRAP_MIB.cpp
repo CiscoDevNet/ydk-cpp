@@ -13,11 +13,11 @@ namespace CISCO_OSPF_TRAP_MIB {
 
 CISCOOSPFTRAPMIB::CISCOOSPFTRAPMIB()
     :
-    cospftrapcontrol(std::make_shared<CISCOOSPFTRAPMIB::Cospftrapcontrol>())
+    cospftrapcontrol(std::make_shared<CISCOOSPFTRAPMIB::CospfTrapControl>())
 {
     cospftrapcontrol->parent = this;
 
-    yang_name = "CISCO-OSPF-TRAP-MIB"; yang_parent_name = "CISCO-OSPF-TRAP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-OSPF-TRAP-MIB"; yang_parent_name = "CISCO-OSPF-TRAP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOOSPFTRAPMIB::~CISCOOSPFTRAPMIB()
@@ -26,6 +26,7 @@ CISCOOSPFTRAPMIB::~CISCOOSPFTRAPMIB()
 
 bool CISCOOSPFTRAPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cospftrapcontrol !=  nullptr && cospftrapcontrol->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOOSPFTRAPMIB::get_child_by_name(const std::string & 
     {
         if(cospftrapcontrol == nullptr)
         {
-            cospftrapcontrol = std::make_shared<CISCOOSPFTRAPMIB::Cospftrapcontrol>();
+            cospftrapcontrol = std::make_shared<CISCOOSPFTRAPMIB::CospfTrapControl>();
         }
         return cospftrapcontrol;
     }
@@ -117,7 +118,7 @@ bool CISCOOSPFTRAPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospftrapcontrol()
+CISCOOSPFTRAPMIB::CospfTrapControl::CospfTrapControl()
     :
     cospfsettrap{YType::bits, "cospfSetTrap"},
     cospfconfigerrortype{YType::enumeration, "cospfConfigErrorType"},
@@ -125,22 +126,23 @@ CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospftrapcontrol()
     cospfpacketsrc{YType::str, "cospfPacketSrc"}
 {
 
-    yang_name = "cospfTrapControl"; yang_parent_name = "CISCO-OSPF-TRAP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cospfTrapControl"; yang_parent_name = "CISCO-OSPF-TRAP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOOSPFTRAPMIB::Cospftrapcontrol::~Cospftrapcontrol()
+CISCOOSPFTRAPMIB::CospfTrapControl::~CospfTrapControl()
 {
 }
 
-bool CISCOOSPFTRAPMIB::Cospftrapcontrol::has_data() const
+bool CISCOOSPFTRAPMIB::CospfTrapControl::has_data() const
 {
+    if (is_presence_container) return true;
     return cospfsettrap.is_set
 	|| cospfconfigerrortype.is_set
 	|| cospfpackettype.is_set
 	|| cospfpacketsrc.is_set;
 }
 
-bool CISCOOSPFTRAPMIB::Cospftrapcontrol::has_operation() const
+bool CISCOOSPFTRAPMIB::CospfTrapControl::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cospfsettrap.yfilter)
@@ -149,21 +151,21 @@ bool CISCOOSPFTRAPMIB::Cospftrapcontrol::has_operation() const
 	|| ydk::is_set(cospfpacketsrc.yfilter);
 }
 
-std::string CISCOOSPFTRAPMIB::Cospftrapcontrol::get_absolute_path() const
+std::string CISCOOSPFTRAPMIB::CospfTrapControl::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-OSPF-TRAP-MIB:CISCO-OSPF-TRAP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOOSPFTRAPMIB::Cospftrapcontrol::get_segment_path() const
+std::string CISCOOSPFTRAPMIB::CospfTrapControl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cospfTrapControl";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOOSPFTRAPMIB::Cospftrapcontrol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOOSPFTRAPMIB::CospfTrapControl::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -176,19 +178,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFTRAPMIB::Cospftrapcontro
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFTRAPMIB::Cospftrapcontrol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOOSPFTRAPMIB::CospfTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFTRAPMIB::Cospftrapcontrol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFTRAPMIB::CospfTrapControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOOSPFTRAPMIB::Cospftrapcontrol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOOSPFTRAPMIB::CospfTrapControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cospfSetTrap")
     {
@@ -214,7 +216,7 @@ void CISCOOSPFTRAPMIB::Cospftrapcontrol::set_value(const std::string & value_pat
     }
 }
 
-void CISCOOSPFTRAPMIB::Cospftrapcontrol::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOOSPFTRAPMIB::CospfTrapControl::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cospfSetTrap")
     {
@@ -234,33 +236,33 @@ void CISCOOSPFTRAPMIB::Cospftrapcontrol::set_filter(const std::string & value_pa
     }
 }
 
-bool CISCOOSPFTRAPMIB::Cospftrapcontrol::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOOSPFTRAPMIB::CospfTrapControl::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cospfSetTrap" || name == "cospfConfigErrorType" || name == "cospfPacketType" || name == "cospfPacketSrc")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::badVersion {1, "badVersion"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::areaMismatch {2, "areaMismatch"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::unknownNbmaNbr {3, "unknownNbmaNbr"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::unknownVirtualNbr {4, "unknownVirtualNbr"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::authTypeMismatch {5, "authTypeMismatch"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::authFailure {6, "authFailure"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::netMaskMismatch {7, "netMaskMismatch"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::helloIntervalMismatch {8, "helloIntervalMismatch"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::deadIntervalMismatch {9, "deadIntervalMismatch"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::optionMismatch {10, "optionMismatch"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::mtuMismatch {11, "mtuMismatch"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::noError {12, "noError"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype::unknownShamLinkNbr {13, "unknownShamLinkNbr"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::badVersion {1, "badVersion"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::areaMismatch {2, "areaMismatch"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::unknownNbmaNbr {3, "unknownNbmaNbr"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::unknownVirtualNbr {4, "unknownVirtualNbr"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::authTypeMismatch {5, "authTypeMismatch"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::authFailure {6, "authFailure"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::netMaskMismatch {7, "netMaskMismatch"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::helloIntervalMismatch {8, "helloIntervalMismatch"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::deadIntervalMismatch {9, "deadIntervalMismatch"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::optionMismatch {10, "optionMismatch"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::mtuMismatch {11, "mtuMismatch"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::noError {12, "noError"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType::unknownShamLinkNbr {13, "unknownShamLinkNbr"};
 
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfpackettype::hello {1, "hello"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfpackettype::dbDescript {2, "dbDescript"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfpackettype::lsReq {3, "lsReq"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfpackettype::lsUpdate {4, "lsUpdate"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfpackettype::lsAck {5, "lsAck"};
-const Enum::YLeaf CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfpackettype::nullPacket {6, "nullPacket"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfPacketType::hello {1, "hello"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfPacketType::dbDescript {2, "dbDescript"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfPacketType::lsReq {3, "lsReq"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfPacketType::lsUpdate {4, "lsUpdate"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfPacketType::lsAck {5, "lsAck"};
+const Enum::YLeaf CISCOOSPFTRAPMIB::CospfTrapControl::CospfPacketType::nullPacket {6, "nullPacket"};
 
 
 }

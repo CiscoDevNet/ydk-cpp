@@ -31,28 +31,28 @@ class PBRIDGEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Dot1Dextbase; //type: PBRIDGEMIB::Dot1Dextbase
-        class Dot1Dtphcporttable; //type: PBRIDGEMIB::Dot1Dtphcporttable
-        class Dot1Dtpportoverflowtable; //type: PBRIDGEMIB::Dot1Dtpportoverflowtable
-        class Dot1Duserpriorityregentable; //type: PBRIDGEMIB::Dot1Duserpriorityregentable
-        class Dot1Dtrafficclasstable; //type: PBRIDGEMIB::Dot1Dtrafficclasstable
-        class Dot1Dportoutboundaccessprioritytable; //type: PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable
+        class Dot1dExtBase; //type: PBRIDGEMIB::Dot1dExtBase
+        class Dot1dTpHCPortTable; //type: PBRIDGEMIB::Dot1dTpHCPortTable
+        class Dot1dTpPortOverflowTable; //type: PBRIDGEMIB::Dot1dTpPortOverflowTable
+        class Dot1dUserPriorityRegenTable; //type: PBRIDGEMIB::Dot1dUserPriorityRegenTable
+        class Dot1dTrafficClassTable; //type: PBRIDGEMIB::Dot1dTrafficClassTable
+        class Dot1dPortOutboundAccessPriorityTable; //type: PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable
 
-        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dextbase> dot1dextbase;
-        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dtphcporttable> dot1dtphcporttable;
-        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dtpportoverflowtable> dot1dtpportoverflowtable;
-        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Duserpriorityregentable> dot1duserpriorityregentable;
-        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dtrafficclasstable> dot1dtrafficclasstable;
-        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable> dot1dportoutboundaccessprioritytable;
+        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1dExtBase> dot1dextbase;
+        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1dTpHCPortTable> dot1dtphcporttable;
+        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1dTpPortOverflowTable> dot1dtpportoverflowtable;
+        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1dUserPriorityRegenTable> dot1duserpriorityregentable;
+        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1dTrafficClassTable> dot1dtrafficclasstable;
+        std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable> dot1dportoutboundaccessprioritytable;
         
 }; // PBRIDGEMIB
 
 
-class PBRIDGEMIB::Dot1Dextbase : public ydk::Entity
+class PBRIDGEMIB::Dot1dExtBase : public ydk::Entity
 {
     public:
-        Dot1Dextbase();
-        ~Dot1Dextbase();
+        Dot1dExtBase();
+        ~Dot1dExtBase();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -65,18 +65,18 @@ class PBRIDGEMIB::Dot1Dextbase : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dot1ddevicecapabilities; //type: Dot1Ddevicecapabilities
+        ydk::YLeaf dot1ddevicecapabilities; //type: Dot1dDeviceCapabilities
         ydk::YLeaf dot1dtrafficclassesenabled; //type: boolean
         ydk::YLeaf dot1dgmrpstatus; //type: EnabledStatus
 
-}; // PBRIDGEMIB::Dot1Dextbase
+}; // PBRIDGEMIB::Dot1dExtBase
 
 
-class PBRIDGEMIB::Dot1Dtphcporttable : public ydk::Entity
+class PBRIDGEMIB::Dot1dTpHCPortTable : public ydk::Entity
 {
     public:
-        Dot1Dtphcporttable();
-        ~Dot1Dtphcporttable();
+        Dot1dTpHCPortTable();
+        ~Dot1dTpHCPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -89,18 +89,18 @@ class PBRIDGEMIB::Dot1Dtphcporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dtphcportentry; //type: PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry
+        class Dot1dTpHCPortEntry; //type: PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry> > dot1dtphcportentry;
+        ydk::YList dot1dtphcportentry;
         
-}; // PBRIDGEMIB::Dot1Dtphcporttable
+}; // PBRIDGEMIB::Dot1dTpHCPortTable
 
 
-class PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry : public ydk::Entity
+class PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry : public ydk::Entity
 {
     public:
-        Dot1Dtphcportentry();
-        ~Dot1Dtphcportentry();
+        Dot1dTpHCPortEntry();
+        ~Dot1dTpHCPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -113,20 +113,20 @@ class PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::dot1dtpport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::dot1dtpport)
         ydk::YLeaf dot1dtpport;
         ydk::YLeaf dot1dtphcportinframes; //type: uint64
         ydk::YLeaf dot1dtphcportoutframes; //type: uint64
         ydk::YLeaf dot1dtphcportindiscards; //type: uint64
 
-}; // PBRIDGEMIB::Dot1Dtphcporttable::Dot1Dtphcportentry
+}; // PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry
 
 
-class PBRIDGEMIB::Dot1Dtpportoverflowtable : public ydk::Entity
+class PBRIDGEMIB::Dot1dTpPortOverflowTable : public ydk::Entity
 {
     public:
-        Dot1Dtpportoverflowtable();
-        ~Dot1Dtpportoverflowtable();
+        Dot1dTpPortOverflowTable();
+        ~Dot1dTpPortOverflowTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -139,18 +139,18 @@ class PBRIDGEMIB::Dot1Dtpportoverflowtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dtpportoverflowentry; //type: PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry
+        class Dot1dTpPortOverflowEntry; //type: PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry> > dot1dtpportoverflowentry;
+        ydk::YList dot1dtpportoverflowentry;
         
-}; // PBRIDGEMIB::Dot1Dtpportoverflowtable
+}; // PBRIDGEMIB::Dot1dTpPortOverflowTable
 
 
-class PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry : public ydk::Entity
+class PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry : public ydk::Entity
 {
     public:
-        Dot1Dtpportoverflowentry();
-        ~Dot1Dtpportoverflowentry();
+        Dot1dTpPortOverflowEntry();
+        ~Dot1dTpPortOverflowEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -163,20 +163,20 @@ class PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry::dot1dtpport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry::dot1dtpport)
         ydk::YLeaf dot1dtpport;
         ydk::YLeaf dot1dtpportinoverflowframes; //type: uint32
         ydk::YLeaf dot1dtpportoutoverflowframes; //type: uint32
         ydk::YLeaf dot1dtpportinoverflowdiscards; //type: uint32
 
-}; // PBRIDGEMIB::Dot1Dtpportoverflowtable::Dot1Dtpportoverflowentry
+}; // PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry
 
 
-class PBRIDGEMIB::Dot1Duserpriorityregentable : public ydk::Entity
+class PBRIDGEMIB::Dot1dUserPriorityRegenTable : public ydk::Entity
 {
     public:
-        Dot1Duserpriorityregentable();
-        ~Dot1Duserpriorityregentable();
+        Dot1dUserPriorityRegenTable();
+        ~Dot1dUserPriorityRegenTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -189,18 +189,18 @@ class PBRIDGEMIB::Dot1Duserpriorityregentable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Duserpriorityregenentry; //type: PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry
+        class Dot1dUserPriorityRegenEntry; //type: PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry> > dot1duserpriorityregenentry;
+        ydk::YList dot1duserpriorityregenentry;
         
-}; // PBRIDGEMIB::Dot1Duserpriorityregentable
+}; // PBRIDGEMIB::Dot1dUserPriorityRegenTable
 
 
-class PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry : public ydk::Entity
+class PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry : public ydk::Entity
 {
     public:
-        Dot1Duserpriorityregenentry();
-        ~Dot1Duserpriorityregenentry();
+        Dot1dUserPriorityRegenEntry();
+        ~Dot1dUserPriorityRegenEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -213,19 +213,19 @@ class PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::dot1dbaseport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::dot1dbaseport)
         ydk::YLeaf dot1dbaseport;
         ydk::YLeaf dot1duserpriority; //type: int32
         ydk::YLeaf dot1dregenuserpriority; //type: int32
 
-}; // PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry
+}; // PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry
 
 
-class PBRIDGEMIB::Dot1Dtrafficclasstable : public ydk::Entity
+class PBRIDGEMIB::Dot1dTrafficClassTable : public ydk::Entity
 {
     public:
-        Dot1Dtrafficclasstable();
-        ~Dot1Dtrafficclasstable();
+        Dot1dTrafficClassTable();
+        ~Dot1dTrafficClassTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,18 +238,18 @@ class PBRIDGEMIB::Dot1Dtrafficclasstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dtrafficclassentry; //type: PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry
+        class Dot1dTrafficClassEntry; //type: PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry> > dot1dtrafficclassentry;
+        ydk::YList dot1dtrafficclassentry;
         
-}; // PBRIDGEMIB::Dot1Dtrafficclasstable
+}; // PBRIDGEMIB::Dot1dTrafficClassTable
 
 
-class PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry : public ydk::Entity
+class PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry : public ydk::Entity
 {
     public:
-        Dot1Dtrafficclassentry();
-        ~Dot1Dtrafficclassentry();
+        Dot1dTrafficClassEntry();
+        ~Dot1dTrafficClassEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -262,19 +262,19 @@ class PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::dot1dbaseport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::dot1dbaseport)
         ydk::YLeaf dot1dbaseport;
         ydk::YLeaf dot1dtrafficclasspriority; //type: int32
         ydk::YLeaf dot1dtrafficclass; //type: int32
 
-}; // PBRIDGEMIB::Dot1Dtrafficclasstable::Dot1Dtrafficclassentry
+}; // PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry
 
 
-class PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable : public ydk::Entity
+class PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable : public ydk::Entity
 {
     public:
-        Dot1Dportoutboundaccessprioritytable();
-        ~Dot1Dportoutboundaccessprioritytable();
+        Dot1dPortOutboundAccessPriorityTable();
+        ~Dot1dPortOutboundAccessPriorityTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,18 +287,18 @@ class PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dportoutboundaccesspriorityentry; //type: PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry
+        class Dot1dPortOutboundAccessPriorityEntry; //type: PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry> > dot1dportoutboundaccesspriorityentry;
+        ydk::YList dot1dportoutboundaccesspriorityentry;
         
-}; // PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable
+}; // PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable
 
 
-class PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry : public ydk::Entity
+class PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry : public ydk::Entity
 {
     public:
-        Dot1Dportoutboundaccesspriorityentry();
-        ~Dot1Dportoutboundaccesspriorityentry();
+        Dot1dPortOutboundAccessPriorityEntry();
+        ~Dot1dPortOutboundAccessPriorityEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -311,13 +311,13 @@ class PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccessp
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::dot1dbaseport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::dot1dbaseport)
         ydk::YLeaf dot1dbaseport;
-        //type: int32 (refers to cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1Duserpriorityregentable::Dot1Duserpriorityregenentry::dot1dregenuserpriority)
+        //type: int32 (refers to cisco_ios_xe::P_BRIDGE_MIB::PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry::dot1dregenuserpriority)
         ydk::YLeaf dot1dregenuserpriority;
         ydk::YLeaf dot1dportoutboundaccesspriority; //type: int32
 
-}; // PBRIDGEMIB::Dot1Dportoutboundaccessprioritytable::Dot1Dportoutboundaccesspriorityentry
+}; // PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry
 
 class EnabledStatus : public ydk::Enum
 {

@@ -59,7 +59,7 @@ class PppoeCfg::PppoeBbaGroups : public ydk::Entity
 
         class PppoeBbaGroup; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup> > pppoe_bba_group;
+        ydk::YList pppoe_bba_group;
         
 }; // PppoeCfg::PppoeBbaGroups
 
@@ -94,7 +94,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag> tag;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions> sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets> control_packets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay> pa_do_delay;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay> pa_do_delay; // presence node
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup
 
@@ -169,7 +169,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds : pub
 
         class ServiceNameConfigured; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured> > service_name_configured;
+        ydk::YList service_name_configured;
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds
 
@@ -826,7 +826,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings : p
 
         class RemoteIdSubstring; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring> > remote_id_substring;
+        ydk::YList remote_id_substring;
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings
 
@@ -871,7 +871,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings : publ
 
         class RemoteIdString; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString> > remote_id_string;
+        ydk::YList remote_id_string;
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings
 
@@ -916,7 +916,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings : p
 
         class ServiceNameString; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString> > service_name_string;
+        ydk::YList service_name_string;
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings
 
@@ -961,7 +961,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings : 
 
         class CircuitIdSubstring; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring> > circuit_id_substring;
+        ydk::YList circuit_id_substring;
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings
 
@@ -1006,7 +1006,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings 
 
         class ServiceNameSubstring; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring> > service_name_substring;
+        ydk::YList service_name_substring;
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings
 
@@ -1051,7 +1051,7 @@ class PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings : pub
 
         class CircuitIdString; //type: PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg::PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString> > circuit_id_string;
+        ydk::YList circuit_id_string;
         
 }; // PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings
 

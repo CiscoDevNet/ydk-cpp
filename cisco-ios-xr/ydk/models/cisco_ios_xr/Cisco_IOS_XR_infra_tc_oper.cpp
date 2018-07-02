@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_infra_tc_oper {
 TrafficCollector::TrafficCollector()
     :
     external_interfaces(std::make_shared<TrafficCollector::ExternalInterfaces>())
-	,summary(std::make_shared<TrafficCollector::Summary>())
-	,vrf_table(std::make_shared<TrafficCollector::VrfTable>())
-	,afs(std::make_shared<TrafficCollector::Afs>())
+    , summary(std::make_shared<TrafficCollector::Summary>())
+    , vrf_table(std::make_shared<TrafficCollector::VrfTable>())
+    , afs(std::make_shared<TrafficCollector::Afs>())
 {
     external_interfaces->parent = this;
     summary->parent = this;
     vrf_table->parent = this;
     afs->parent = this;
 
-    yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "traffic-collector"; yang_parent_name = "Cisco-IOS-XR-infra-tc-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TrafficCollector::~TrafficCollector()
@@ -32,6 +32,7 @@ TrafficCollector::~TrafficCollector()
 
 bool TrafficCollector::has_data() const
 {
+    if (is_presence_container) return true;
     return (external_interfaces !=  nullptr && external_interfaces->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (vrf_table !=  nullptr && vrf_table->has_data())
@@ -172,9 +173,11 @@ bool TrafficCollector::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterfaces()
+    :
+    external_interface(this, {"interface_name"})
 {
 
-    yang_name = "external-interfaces"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "external-interfaces"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::ExternalInterfaces::~ExternalInterfaces()
@@ -183,7 +186,8 @@ TrafficCollector::ExternalInterfaces::~ExternalInterfaces()
 
 bool TrafficCollector::ExternalInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<external_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<external_interface.len(); index++)
     {
         if(external_interface[index]->has_data())
             return true;
@@ -193,7 +197,7 @@ bool TrafficCollector::ExternalInterfaces::has_data() const
 
 bool TrafficCollector::ExternalInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<external_interface.size(); index++)
+    for (std::size_t index=0; index<external_interface.len(); index++)
     {
         if(external_interface[index]->has_operation())
             return true;
@@ -230,7 +234,7 @@ std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(
     {
         auto c = std::make_shared<TrafficCollector::ExternalInterfaces::ExternalInterface>();
         c->parent = this;
-        external_interface.push_back(c);
+        external_interface.append(c);
         return c;
     }
 
@@ -242,7 +246,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : external_interface)
+    for (auto c : external_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -277,7 +281,7 @@ TrafficCollector::ExternalInterfaces::ExternalInterface::ExternalInterface()
     is_interface_enabled{YType::boolean, "is-interface-enabled"}
 {
 
-    yang_name = "external-interface"; yang_parent_name = "external-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "external-interface"; yang_parent_name = "external-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterface::~ExternalInterface()
@@ -286,6 +290,7 @@ TrafficCollector::ExternalInterfaces::ExternalInterface::~ExternalInterface()
 
 bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| interface_handle.is_set
@@ -313,7 +318,8 @@ std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_absolut
 std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "external-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "external-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -415,12 +421,15 @@ TrafficCollector::Summary::Summary()
     timeout_interval{YType::uint16, "timeout-interval"},
     timeout_timer_is_running{YType::boolean, "timeout-timer-is-running"},
     history_size{YType::uint8, "history-size"}
-    	,
+        ,
     database_statistics_external_interface(std::make_shared<TrafficCollector::Summary::DatabaseStatisticsExternalInterface>())
+    , vrf_statistic(this, {})
+    , collection_message_statistic(this, {})
+    , checkpoint_message_statistic(this, {})
 {
     database_statistics_external_interface->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Summary::~Summary()
@@ -429,17 +438,18 @@ TrafficCollector::Summary::~Summary()
 
 bool TrafficCollector::Summary::has_data() const
 {
-    for (std::size_t index=0; index<vrf_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_statistic.len(); index++)
     {
         if(vrf_statistic[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<collection_message_statistic.size(); index++)
+    for (std::size_t index=0; index<collection_message_statistic.len(); index++)
     {
         if(collection_message_statistic[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<checkpoint_message_statistic.size(); index++)
+    for (std::size_t index=0; index<checkpoint_message_statistic.len(); index++)
     {
         if(checkpoint_message_statistic[index]->has_data())
             return true;
@@ -454,17 +464,17 @@ bool TrafficCollector::Summary::has_data() const
 
 bool TrafficCollector::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<vrf_statistic.size(); index++)
+    for (std::size_t index=0; index<vrf_statistic.len(); index++)
     {
         if(vrf_statistic[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<collection_message_statistic.size(); index++)
+    for (std::size_t index=0; index<collection_message_statistic.len(); index++)
     {
         if(collection_message_statistic[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<checkpoint_message_statistic.size(); index++)
+    for (std::size_t index=0; index<checkpoint_message_statistic.len(); index++)
     {
         if(checkpoint_message_statistic[index]->has_operation())
             return true;
@@ -521,7 +531,7 @@ std::shared_ptr<Entity> TrafficCollector::Summary::get_child_by_name(const std::
     {
         auto c = std::make_shared<TrafficCollector::Summary::VrfStatistic>();
         c->parent = this;
-        vrf_statistic.push_back(c);
+        vrf_statistic.append(c);
         return c;
     }
 
@@ -529,7 +539,7 @@ std::shared_ptr<Entity> TrafficCollector::Summary::get_child_by_name(const std::
     {
         auto c = std::make_shared<TrafficCollector::Summary::CollectionMessageStatistic>();
         c->parent = this;
-        collection_message_statistic.push_back(c);
+        collection_message_statistic.append(c);
         return c;
     }
 
@@ -537,7 +547,7 @@ std::shared_ptr<Entity> TrafficCollector::Summary::get_child_by_name(const std::
     {
         auto c = std::make_shared<TrafficCollector::Summary::CheckpointMessageStatistic>();
         c->parent = this;
-        checkpoint_message_statistic.push_back(c);
+        checkpoint_message_statistic.append(c);
         return c;
     }
 
@@ -554,7 +564,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::get_ch
     }
 
     count = 0;
-    for (auto const & c : vrf_statistic)
+    for (auto c : vrf_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -563,7 +573,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::get_ch
     }
 
     count = 0;
-    for (auto const & c : collection_message_statistic)
+    for (auto c : collection_message_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -572,7 +582,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::get_ch
     }
 
     count = 0;
-    for (auto const & c : checkpoint_message_statistic)
+    for (auto c : checkpoint_message_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -656,7 +666,7 @@ TrafficCollector::Summary::DatabaseStatisticsExternalInterface::DatabaseStatisti
     number_of_delete_o_perations{YType::uint64, "number-of-delete-o-perations"}
 {
 
-    yang_name = "database-statistics-external-interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "database-statistics-external-interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Summary::DatabaseStatisticsExternalInterface::~DatabaseStatisticsExternalInterface()
@@ -665,6 +675,7 @@ TrafficCollector::Summary::DatabaseStatisticsExternalInterface::~DatabaseStatist
 
 bool TrafficCollector::Summary::DatabaseStatisticsExternalInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return number_of_entries.is_set
 	|| number_of_stale_entries.is_set
 	|| number_of_add_o_perations.is_set
@@ -777,14 +788,14 @@ bool TrafficCollector::Summary::DatabaseStatisticsExternalInterface::has_leaf_or
 TrafficCollector::Summary::VrfStatistic::VrfStatistic()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     database_statistics_ipv4(std::make_shared<TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4>())
-	,database_statistics_tunnel(std::make_shared<TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel>())
+    , database_statistics_tunnel(std::make_shared<TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel>())
 {
     database_statistics_ipv4->parent = this;
     database_statistics_tunnel->parent = this;
 
-    yang_name = "vrf-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Summary::VrfStatistic::~VrfStatistic()
@@ -793,6 +804,7 @@ TrafficCollector::Summary::VrfStatistic::~VrfStatistic()
 
 bool TrafficCollector::Summary::VrfStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (database_statistics_ipv4 !=  nullptr && database_statistics_ipv4->has_data())
 	|| (database_statistics_tunnel !=  nullptr && database_statistics_tunnel->has_data());
@@ -903,7 +915,7 @@ TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::DatabaseStatist
     number_of_delete_o_perations{YType::uint64, "number-of-delete-o-perations"}
 {
 
-    yang_name = "database-statistics-ipv4"; yang_parent_name = "vrf-statistic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "database-statistics-ipv4"; yang_parent_name = "vrf-statistic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::~DatabaseStatisticsIpv4()
@@ -912,6 +924,7 @@ TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::~DatabaseStatis
 
 bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::has_data() const
 {
+    if (is_presence_container) return true;
     return number_of_entries.is_set
 	|| number_of_stale_entries.is_set
 	|| number_of_add_o_perations.is_set
@@ -1029,7 +1042,7 @@ TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::DatabaseStati
     number_of_delete_o_perations{YType::uint64, "number-of-delete-o-perations"}
 {
 
-    yang_name = "database-statistics-tunnel"; yang_parent_name = "vrf-statistic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "database-statistics-tunnel"; yang_parent_name = "vrf-statistic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::~DatabaseStatisticsTunnel()
@@ -1038,6 +1051,7 @@ TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::~DatabaseStat
 
 bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return number_of_entries.is_set
 	|| number_of_stale_entries.is_set
 	|| number_of_add_o_perations.is_set
@@ -1157,7 +1171,7 @@ TrafficCollector::Summary::CollectionMessageStatistic::CollectionMessageStatisti
     maimum_latency_timestamp{YType::uint64, "maimum-latency-timestamp"}
 {
 
-    yang_name = "collection-message-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collection-message-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Summary::CollectionMessageStatistic::~CollectionMessageStatistic()
@@ -1166,6 +1180,7 @@ TrafficCollector::Summary::CollectionMessageStatistic::~CollectionMessageStatist
 
 bool TrafficCollector::Summary::CollectionMessageStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_sent.is_set
 	|| byte_sent.is_set
 	|| packet_received.is_set
@@ -1311,7 +1326,7 @@ TrafficCollector::Summary::CheckpointMessageStatistic::CheckpointMessageStatisti
     maimum_latency_timestamp{YType::uint64, "maimum-latency-timestamp"}
 {
 
-    yang_name = "checkpoint-message-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "checkpoint-message-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Summary::CheckpointMessageStatistic::~CheckpointMessageStatistic()
@@ -1320,6 +1335,7 @@ TrafficCollector::Summary::CheckpointMessageStatistic::~CheckpointMessageStatist
 
 bool TrafficCollector::Summary::CheckpointMessageStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_sent.is_set
 	|| byte_sent.is_set
 	|| packet_received.is_set
@@ -1461,7 +1477,7 @@ TrafficCollector::VrfTable::VrfTable()
 {
     default_vrf->parent = this;
 
-    yang_name = "vrf-table"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-table"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::VrfTable::~VrfTable()
@@ -1470,6 +1486,7 @@ TrafficCollector::VrfTable::~VrfTable()
 
 bool TrafficCollector::VrfTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_vrf !=  nullptr && default_vrf->has_data());
 }
 
@@ -1549,7 +1566,7 @@ TrafficCollector::VrfTable::DefaultVrf::DefaultVrf()
 {
     afs->parent = this;
 
-    yang_name = "default-vrf"; yang_parent_name = "vrf-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-vrf"; yang_parent_name = "vrf-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::~DefaultVrf()
@@ -1558,6 +1575,7 @@ TrafficCollector::VrfTable::DefaultVrf::~DefaultVrf()
 
 bool TrafficCollector::VrfTable::DefaultVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (afs !=  nullptr && afs->has_data());
 }
 
@@ -1632,9 +1650,11 @@ bool TrafficCollector::VrfTable::DefaultVrf::has_leaf_or_child_of_name(const std
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Afs()
+    :
+    af(this, {"af_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "afs"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::~Afs()
@@ -1643,7 +1663,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::~Afs()
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -1653,7 +1674,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::has_data() const
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -1690,7 +1711,7 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::get_child_b
     {
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -1702,7 +1723,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1731,12 +1752,12 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::has_leaf_or_child_of_name(cons
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Af()
     :
     af_name{YType::enumeration, "af-name"}
-    	,
+        ,
     counters(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::~Af()
@@ -1745,6 +1766,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::~Af()
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| (counters !=  nullptr && counters->has_data());
 }
@@ -1766,7 +1788,8 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_absolute_path()
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -1834,12 +1857,12 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::has_leaf_or_child_of_name(
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Counters()
     :
     prefixes(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes>())
-	,tunnels(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels>())
+    , tunnels(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels>())
 {
     prefixes->parent = this;
     tunnels->parent = this;
 
-    yang_name = "counters"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::~Counters()
@@ -1848,6 +1871,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::~Counters()
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return (prefixes !=  nullptr && prefixes->has_data())
 	|| (tunnels !=  nullptr && tunnels->has_data());
 }
@@ -1931,9 +1955,11 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::has_leaf_or_chil
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefixes()
+    :
+    prefix(this, {})
 {
 
-    yang_name = "prefixes"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefixes"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::~Prefixes()
@@ -1942,7 +1968,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::~Prefixes()
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::has_data() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_data())
             return true;
@@ -1952,7 +1979,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::has_da
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_operation())
             return true;
@@ -1982,7 +2009,7 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
     {
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix>();
         c->parent = this;
-        prefix.push_back(c);
+        prefix.append(c);
         return c;
     }
 
@@ -1994,7 +2021,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix)
+    for (auto c : prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2028,14 +2055,14 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Pre
     prefix{YType::str, "prefix"},
     label_xr{YType::uint32, "label-xr"},
     is_active{YType::boolean, "is-active"}
-    	,
+        ,
     base_counter_statistics(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics>())
-	,traffic_matrix_counter_statistics(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>())
+    , traffic_matrix_counter_statistics(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>())
 {
     base_counter_statistics->parent = this;
     traffic_matrix_counter_statistics->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::~Prefix()
@@ -2044,6 +2071,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::~Pr
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return ipaddr.is_set
 	|| mask.is_set
 	|| label.is_set
@@ -2208,9 +2236,11 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Bas
     :
     transmit_packets_per_second_switched{YType::uint64, "transmit-packets-per-second-switched"},
     transmit_bytes_per_second_switched{YType::uint64, "transmit-bytes-per-second-switched"}
+        ,
+    count_history(this, {})
 {
 
-    yang_name = "base-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::~BaseCounterStatistics()
@@ -2219,7 +2249,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Bas
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::has_data() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_data())
             return true;
@@ -2230,7 +2261,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_operation())
             return true;
@@ -2264,7 +2295,7 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
     {
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(c);
+        count_history.append(c);
         return c;
     }
 
@@ -2276,7 +2307,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : count_history)
+    for (auto c : count_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2331,7 +2362,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Bas
     is_valid{YType::boolean, "is-valid"}
 {
 
-    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::~CountHistory()
@@ -2340,6 +2371,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Bas
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return event_start_timestamp.is_set
 	|| event_end_timestamp.is_set
 	|| transmit_number_of_packets_switched.is_set
@@ -2459,9 +2491,11 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Tra
     :
     transmit_packets_per_second_switched{YType::uint64, "transmit-packets-per-second-switched"},
     transmit_bytes_per_second_switched{YType::uint64, "transmit-bytes-per-second-switched"}
+        ,
+    count_history(this, {})
 {
 
-    yang_name = "traffic-matrix-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-matrix-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::~TrafficMatrixCounterStatistics()
@@ -2470,7 +2504,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Tra
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::has_data() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_data())
             return true;
@@ -2481,7 +2516,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_operation())
             return true;
@@ -2515,7 +2550,7 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
     {
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(c);
+        count_history.append(c);
         return c;
     }
 
@@ -2527,7 +2562,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : count_history)
+    for (auto c : count_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2582,7 +2617,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Tra
     is_valid{YType::boolean, "is-valid"}
 {
 
-    yang_name = "count-history"; yang_parent_name = "traffic-matrix-counter-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "count-history"; yang_parent_name = "traffic-matrix-counter-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::~CountHistory()
@@ -2591,6 +2626,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Tra
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return event_start_timestamp.is_set
 	|| event_end_timestamp.is_set
 	|| transmit_number_of_packets_switched.is_set
@@ -2707,9 +2743,11 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnels()
+    :
+    tunnel(this, {"interface_name"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnels"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::~Tunnels()
@@ -2718,7 +2756,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::~Tunnels()
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -2728,7 +2767,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::has_dat
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -2758,7 +2797,7 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
     {
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
@@ -2770,7 +2809,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2803,12 +2842,12 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::Tunn
     interface_handle{YType::uint32, "interface-handle"},
     vrfid{YType::uint32, "vrfid"},
     is_active{YType::boolean, "is-active"}
-    	,
+        ,
     base_counter_statistics(std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics>())
 {
     base_counter_statistics->parent = this;
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::~Tunnel()
@@ -2817,6 +2856,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::~Tun
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| interface_handle.is_set
@@ -2839,7 +2879,8 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel:
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2952,9 +2993,11 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::Base
     :
     transmit_packets_per_second_switched{YType::uint64, "transmit-packets-per-second-switched"},
     transmit_bytes_per_second_switched{YType::uint64, "transmit-bytes-per-second-switched"}
+        ,
+    count_history(this, {})
 {
 
-    yang_name = "base-counter-statistics"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-counter-statistics"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::~BaseCounterStatistics()
@@ -2963,7 +3006,8 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::Base
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::has_data() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_data())
             return true;
@@ -2974,7 +3018,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel:
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_operation())
             return true;
@@ -3008,7 +3052,7 @@ std::shared_ptr<Entity> TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counter
     {
         auto c = std::make_shared<TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(c);
+        count_history.append(c);
         return c;
     }
 
@@ -3020,7 +3064,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : count_history)
+    for (auto c : count_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3075,7 +3119,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::Base
     is_valid{YType::boolean, "is-valid"}
 {
 
-    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::~CountHistory()
@@ -3084,6 +3128,7 @@ TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::Base
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return event_start_timestamp.is_set
 	|| event_end_timestamp.is_set
 	|| transmit_number_of_packets_switched.is_set
@@ -3200,9 +3245,11 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel:
 }
 
 TrafficCollector::Afs::Afs()
+    :
+    af(this, {"af_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "afs"; yang_parent_name = "traffic-collector"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Afs::~Afs()
@@ -3211,7 +3258,8 @@ TrafficCollector::Afs::~Afs()
 
 bool TrafficCollector::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -3221,7 +3269,7 @@ bool TrafficCollector::Afs::has_data() const
 
 bool TrafficCollector::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -3258,7 +3306,7 @@ std::shared_ptr<Entity> TrafficCollector::Afs::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<TrafficCollector::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -3270,7 +3318,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3299,12 +3347,12 @@ bool TrafficCollector::Afs::has_leaf_or_child_of_name(const std::string & name) 
 TrafficCollector::Afs::Af::Af()
     :
     af_name{YType::enumeration, "af-name"}
-    	,
+        ,
     counters(std::make_shared<TrafficCollector::Afs::Af::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TrafficCollector::Afs::Af::~Af()
@@ -3313,6 +3361,7 @@ TrafficCollector::Afs::Af::~Af()
 
 bool TrafficCollector::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| (counters !=  nullptr && counters->has_data());
 }
@@ -3334,7 +3383,8 @@ std::string TrafficCollector::Afs::Af::get_absolute_path() const
 std::string TrafficCollector::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -3402,12 +3452,12 @@ bool TrafficCollector::Afs::Af::has_leaf_or_child_of_name(const std::string & na
 TrafficCollector::Afs::Af::Counters::Counters()
     :
     prefixes(std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes>())
-	,tunnels(std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels>())
+    , tunnels(std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels>())
 {
     prefixes->parent = this;
     tunnels->parent = this;
 
-    yang_name = "counters"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::~Counters()
@@ -3416,6 +3466,7 @@ TrafficCollector::Afs::Af::Counters::~Counters()
 
 bool TrafficCollector::Afs::Af::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return (prefixes !=  nullptr && prefixes->has_data())
 	|| (tunnels !=  nullptr && tunnels->has_data());
 }
@@ -3499,9 +3550,11 @@ bool TrafficCollector::Afs::Af::Counters::has_leaf_or_child_of_name(const std::s
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefixes()
+    :
+    prefix(this, {})
 {
 
-    yang_name = "prefixes"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefixes"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::~Prefixes()
@@ -3510,7 +3563,8 @@ TrafficCollector::Afs::Af::Counters::Prefixes::~Prefixes()
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::has_data() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_data())
             return true;
@@ -3520,7 +3574,7 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::has_data() const
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_operation())
             return true;
@@ -3550,7 +3604,7 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::get_child
     {
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix>();
         c->parent = this;
-        prefix.push_back(c);
+        prefix.append(c);
         return c;
     }
 
@@ -3562,7 +3616,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix)
+    for (auto c : prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3596,14 +3650,14 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::Prefix()
     prefix{YType::str, "prefix"},
     label_xr{YType::uint32, "label-xr"},
     is_active{YType::boolean, "is-active"}
-    	,
+        ,
     base_counter_statistics(std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics>())
-	,traffic_matrix_counter_statistics(std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>())
+    , traffic_matrix_counter_statistics(std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics>())
 {
     base_counter_statistics->parent = this;
     traffic_matrix_counter_statistics->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::~Prefix()
@@ -3612,6 +3666,7 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::~Prefix()
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return ipaddr.is_set
 	|| mask.is_set
 	|| label.is_set
@@ -3776,9 +3831,11 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::Ba
     :
     transmit_packets_per_second_switched{YType::uint64, "transmit-packets-per-second-switched"},
     transmit_bytes_per_second_switched{YType::uint64, "transmit-bytes-per-second-switched"}
+        ,
+    count_history(this, {})
 {
 
-    yang_name = "base-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::~BaseCounterStatistics()
@@ -3787,7 +3844,8 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::~B
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::has_data() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_data())
             return true;
@@ -3798,7 +3856,7 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistic
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_operation())
             return true;
@@ -3832,7 +3890,7 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::B
     {
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(c);
+        count_history.append(c);
         return c;
     }
 
@@ -3844,7 +3902,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : count_history)
+    for (auto c : count_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3899,7 +3957,7 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::Co
     is_valid{YType::boolean, "is-valid"}
 {
 
-    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::~CountHistory()
@@ -3908,6 +3966,7 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::Co
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return event_start_timestamp.is_set
 	|| event_end_timestamp.is_set
 	|| transmit_number_of_packets_switched.is_set
@@ -4027,9 +4086,11 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStati
     :
     transmit_packets_per_second_switched{YType::uint64, "transmit-packets-per-second-switched"},
     transmit_bytes_per_second_switched{YType::uint64, "transmit-bytes-per-second-switched"}
+        ,
+    count_history(this, {})
 {
 
-    yang_name = "traffic-matrix-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-matrix-counter-statistics"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::~TrafficMatrixCounterStatistics()
@@ -4038,7 +4099,8 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStati
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::has_data() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_data())
             return true;
@@ -4049,7 +4111,7 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounter
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_operation())
             return true;
@@ -4083,7 +4145,7 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::T
     {
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(c);
+        count_history.append(c);
         return c;
     }
 
@@ -4095,7 +4157,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : count_history)
+    for (auto c : count_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4150,7 +4212,7 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStati
     is_valid{YType::boolean, "is-valid"}
 {
 
-    yang_name = "count-history"; yang_parent_name = "traffic-matrix-counter-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "count-history"; yang_parent_name = "traffic-matrix-counter-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::~CountHistory()
@@ -4159,6 +4221,7 @@ TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStati
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return event_start_timestamp.is_set
 	|| event_end_timestamp.is_set
 	|| transmit_number_of_packets_switched.is_set
@@ -4275,9 +4338,11 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounter
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnels()
+    :
+    tunnel(this, {"interface_name"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnels"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::~Tunnels()
@@ -4286,7 +4351,8 @@ TrafficCollector::Afs::Af::Counters::Tunnels::~Tunnels()
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -4296,7 +4362,7 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::has_data() const
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -4326,7 +4392,7 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::get_child_
     {
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
@@ -4338,7 +4404,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4371,12 +4437,12 @@ TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::Tunnel()
     interface_handle{YType::uint32, "interface-handle"},
     vrfid{YType::uint32, "vrfid"},
     is_active{YType::boolean, "is-active"}
-    	,
+        ,
     base_counter_statistics(std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics>())
 {
     base_counter_statistics->parent = this;
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::~Tunnel()
@@ -4385,6 +4451,7 @@ TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::~Tunnel()
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| interface_handle.is_set
@@ -4407,7 +4474,8 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::has_operation() const
 std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4520,9 +4588,11 @@ TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::Bas
     :
     transmit_packets_per_second_switched{YType::uint64, "transmit-packets-per-second-switched"},
     transmit_bytes_per_second_switched{YType::uint64, "transmit-bytes-per-second-switched"}
+        ,
+    count_history(this, {})
 {
 
-    yang_name = "base-counter-statistics"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base-counter-statistics"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::~BaseCounterStatistics()
@@ -4531,7 +4601,8 @@ TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::~Ba
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::has_data() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_data())
             return true;
@@ -4542,7 +4613,7 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<count_history.size(); index++)
+    for (std::size_t index=0; index<count_history.len(); index++)
     {
         if(count_history[index]->has_operation())
             return true;
@@ -4576,7 +4647,7 @@ std::shared_ptr<Entity> TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::Ba
     {
         auto c = std::make_shared<TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory>();
         c->parent = this;
-        count_history.push_back(c);
+        count_history.append(c);
         return c;
     }
 
@@ -4588,7 +4659,7 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : count_history)
+    for (auto c : count_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4643,7 +4714,7 @@ TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::Cou
     is_valid{YType::boolean, "is-valid"}
 {
 
-    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "count-history"; yang_parent_name = "base-counter-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::~CountHistory()
@@ -4652,6 +4723,7 @@ TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::Cou
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return event_start_timestamp.is_set
 	|| event_end_timestamp.is_set
 	|| transmit_number_of_packets_switched.is_set

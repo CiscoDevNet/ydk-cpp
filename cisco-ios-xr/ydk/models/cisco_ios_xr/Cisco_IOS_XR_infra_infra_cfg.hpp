@@ -33,7 +33,7 @@ class Banners : public ydk::Entity
 
         class Banner; //type: Banners::Banner
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_infra_cfg::Banners::Banner> > banner;
+        ydk::YList banner;
         
 }; // Banners
 

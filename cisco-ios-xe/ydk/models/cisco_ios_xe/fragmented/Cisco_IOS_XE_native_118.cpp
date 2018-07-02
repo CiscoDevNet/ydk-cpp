@@ -15,11 +15,11 @@ namespace Cisco_IOS_XE_native {
 Native::Crypto::Key::Zeroize::Zeroize()
     :
     ec(nullptr) // presence node
-	,pubkey_chain(nullptr) // presence node
-	,rsa(nullptr) // presence node
+    , pubkey_chain(nullptr) // presence node
+    , rsa(nullptr) // presence node
 {
 
-    yang_name = "zeroize"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "zeroize"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Key::Zeroize::~Zeroize()
@@ -28,6 +28,7 @@ Native::Crypto::Key::Zeroize::~Zeroize()
 
 bool Native::Crypto::Key::Zeroize::has_data() const
 {
+    if (is_presence_container) return true;
     return (ec !=  nullptr && ec->has_data())
 	|| (pubkey_chain !=  nullptr && pubkey_chain->has_data())
 	|| (rsa !=  nullptr && rsa->has_data());
@@ -138,7 +139,7 @@ Native::Crypto::Key::Zeroize::Ec::Ec()
     label{YType::str, "label"}
 {
 
-    yang_name = "ec"; yang_parent_name = "zeroize"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ec"; yang_parent_name = "zeroize"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Crypto::Key::Zeroize::Ec::~Ec()
@@ -147,6 +148,7 @@ Native::Crypto::Key::Zeroize::Ec::~Ec()
 
 bool Native::Crypto::Key::Zeroize::Ec::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set;
 }
 
@@ -222,7 +224,7 @@ Native::Crypto::Key::Zeroize::PubkeyChain::PubkeyChain()
     index_{YType::uint16, "index"}
 {
 
-    yang_name = "pubkey-chain"; yang_parent_name = "zeroize"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pubkey-chain"; yang_parent_name = "zeroize"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Crypto::Key::Zeroize::PubkeyChain::~PubkeyChain()
@@ -231,6 +233,7 @@ Native::Crypto::Key::Zeroize::PubkeyChain::~PubkeyChain()
 
 bool Native::Crypto::Key::Zeroize::PubkeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set;
 }
 
@@ -306,7 +309,7 @@ Native::Crypto::Key::Zeroize::Rsa::Rsa()
     label{YType::str, "label"}
 {
 
-    yang_name = "rsa"; yang_parent_name = "zeroize"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsa"; yang_parent_name = "zeroize"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Crypto::Key::Zeroize::Rsa::~Rsa()
@@ -315,6 +318,7 @@ Native::Crypto::Key::Zeroize::Rsa::~Rsa()
 
 bool Native::Crypto::Key::Zeroize::Rsa::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set;
 }
 
@@ -391,16 +395,16 @@ Native::Crypto::Keyring::Keyring()
     vrf{YType::str, "vrf"},
     description{YType::str, "description"},
     local_address{YType::str, "local-address"}
-    	,
+        ,
     default_(std::make_shared<Native::Crypto::Keyring::Default>())
-	,pre_shared_key(std::make_shared<Native::Crypto::Keyring::PreSharedKey>())
-	,rsa_pubkey(std::make_shared<Native::Crypto::Keyring::RsaPubkey>())
+    , pre_shared_key(std::make_shared<Native::Crypto::Keyring::PreSharedKey>())
+    , rsa_pubkey(std::make_shared<Native::Crypto::Keyring::RsaPubkey>())
 {
     default_->parent = this;
     pre_shared_key->parent = this;
     rsa_pubkey->parent = this;
 
-    yang_name = "keyring"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "keyring"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Keyring::~Keyring()
@@ -409,6 +413,7 @@ Native::Crypto::Keyring::~Keyring()
 
 bool Native::Crypto::Keyring::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| vrf.is_set
 	|| description.is_set
@@ -440,7 +445,8 @@ std::string Native::Crypto::Keyring::get_absolute_path() const
 std::string Native::Crypto::Keyring::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-crypto:keyring" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-crypto:keyring";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -570,14 +576,14 @@ Native::Crypto::Keyring::Default::Default()
     :
     description{YType::str, "description"},
     local_address{YType::str, "local-address"}
-    	,
+        ,
     pre_shared_key(std::make_shared<Native::Crypto::Keyring::Default::PreSharedKey>())
-	,rsa_pubkey(std::make_shared<Native::Crypto::Keyring::Default::RsaPubkey>())
+    , rsa_pubkey(std::make_shared<Native::Crypto::Keyring::Default::RsaPubkey>())
 {
     pre_shared_key->parent = this;
     rsa_pubkey->parent = this;
 
-    yang_name = "default"; yang_parent_name = "keyring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "keyring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::~Default()
@@ -586,6 +592,7 @@ Native::Crypto::Keyring::Default::~Default()
 
 bool Native::Crypto::Keyring::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| local_address.is_set
 	|| (pre_shared_key !=  nullptr && pre_shared_key->has_data())
@@ -697,10 +704,11 @@ bool Native::Crypto::Keyring::Default::has_leaf_or_child_of_name(const std::stri
 Native::Crypto::Keyring::Default::PreSharedKey::PreSharedKey()
     :
     address(std::make_shared<Native::Crypto::Keyring::Default::PreSharedKey::Address>())
+    , hostname(this, {"name"})
 {
     address->parent = this;
 
-    yang_name = "pre-shared-key"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-shared-key"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::PreSharedKey::~PreSharedKey()
@@ -709,7 +717,8 @@ Native::Crypto::Keyring::Default::PreSharedKey::~PreSharedKey()
 
 bool Native::Crypto::Keyring::Default::PreSharedKey::has_data() const
 {
-    for (std::size_t index=0; index<hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hostname.len(); index++)
     {
         if(hostname[index]->has_data())
             return true;
@@ -719,7 +728,7 @@ bool Native::Crypto::Keyring::Default::PreSharedKey::has_data() const
 
 bool Native::Crypto::Keyring::Default::PreSharedKey::has_operation() const
 {
-    for (std::size_t index=0; index<hostname.size(); index++)
+    for (std::size_t index=0; index<hostname.len(); index++)
     {
         if(hostname[index]->has_operation())
             return true;
@@ -759,7 +768,7 @@ std::shared_ptr<Entity> Native::Crypto::Keyring::Default::PreSharedKey::get_chil
     {
         auto c = std::make_shared<Native::Crypto::Keyring::Default::PreSharedKey::Hostname>();
         c->parent = this;
-        hostname.push_back(c);
+        hostname.append(c);
         return c;
     }
 
@@ -776,7 +785,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Keyring::Default:
     }
 
     count = 0;
-    for (auto const & c : hostname)
+    for (auto c : hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -803,9 +812,12 @@ bool Native::Crypto::Keyring::Default::PreSharedKey::has_leaf_or_child_of_name(c
 }
 
 Native::Crypto::Keyring::Default::PreSharedKey::Address::Address()
+    :
+    ipv4(this, {"ipv4_addr"})
+    , ipv6(this, {"ipv6_addr"})
 {
 
-    yang_name = "address"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::PreSharedKey::Address::~Address()
@@ -814,12 +826,13 @@ Native::Crypto::Keyring::Default::PreSharedKey::Address::~Address()
 
 bool Native::Crypto::Keyring::Default::PreSharedKey::Address::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_data())
             return true;
@@ -829,12 +842,12 @@ bool Native::Crypto::Keyring::Default::PreSharedKey::Address::has_data() const
 
 bool Native::Crypto::Keyring::Default::PreSharedKey::Address::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_operation())
             return true;
@@ -864,7 +877,7 @@ std::shared_ptr<Entity> Native::Crypto::Keyring::Default::PreSharedKey::Address:
     {
         auto c = std::make_shared<Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -872,7 +885,7 @@ std::shared_ptr<Entity> Native::Crypto::Keyring::Default::PreSharedKey::Address:
     {
         auto c = std::make_shared<Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6>();
         c->parent = this;
-        ipv6.push_back(c);
+        ipv6.append(c);
         return c;
     }
 
@@ -884,7 +897,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Keyring::Default:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -893,7 +906,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Keyring::Default:
     }
 
     count = 0;
-    for (auto const & c : ipv6)
+    for (auto c : ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -928,7 +941,7 @@ Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::Ipv4()
     unencryt_key{YType::str, "unencryt-key"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::~Ipv4()
@@ -937,6 +950,7 @@ Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::~Ipv4()
 
 bool Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_addr.is_set
 	|| mask.is_set
 	|| key.is_set
@@ -957,7 +971,8 @@ bool Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::has_operatio
 std::string Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4-addr='" <<ipv4_addr <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4_addr, "ipv4-addr");
     return path_buffer.str();
 }
 
@@ -1060,7 +1075,7 @@ Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::Ipv6()
     unencryt_key{YType::str, "unencryt-key"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::~Ipv6()
@@ -1069,6 +1084,7 @@ Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::~Ipv6()
 
 bool Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_addr.is_set
 	|| key.is_set
 	|| encryption.is_set
@@ -1087,7 +1103,8 @@ bool Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::has_operatio
 std::string Native::Crypto::Keyring::Default::PreSharedKey::Address::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6" <<"[ipv6-addr='" <<ipv6_addr <<"']";
+    path_buffer << "ipv6";
+    ADD_KEY_TOKEN(ipv6_addr, "ipv6-addr");
     return path_buffer.str();
 }
 
@@ -1179,7 +1196,7 @@ Native::Crypto::Keyring::Default::PreSharedKey::Hostname::Hostname()
     unencryt_key{YType::str, "unencryt-key"}
 {
 
-    yang_name = "hostname"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hostname"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::PreSharedKey::Hostname::~Hostname()
@@ -1188,6 +1205,7 @@ Native::Crypto::Keyring::Default::PreSharedKey::Hostname::~Hostname()
 
 bool Native::Crypto::Keyring::Default::PreSharedKey::Hostname::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| key.is_set
 	|| encryption.is_set
@@ -1206,7 +1224,8 @@ bool Native::Crypto::Keyring::Default::PreSharedKey::Hostname::has_operation() c
 std::string Native::Crypto::Keyring::Default::PreSharedKey::Hostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hostname" <<"[name='" <<name <<"']";
+    path_buffer << "hostname";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1293,12 +1312,12 @@ bool Native::Crypto::Keyring::Default::PreSharedKey::Hostname::has_leaf_or_child
 Native::Crypto::Keyring::Default::RsaPubkey::RsaPubkey()
     :
     addr(std::make_shared<Native::Crypto::Keyring::Default::RsaPubkey::Addr>())
-	,hostname(std::make_shared<Native::Crypto::Keyring::Default::RsaPubkey::Hostname>())
+    , hostname(std::make_shared<Native::Crypto::Keyring::Default::RsaPubkey::Hostname>())
 {
     addr->parent = this;
     hostname->parent = this;
 
-    yang_name = "rsa-pubkey"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsa-pubkey"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::RsaPubkey::~RsaPubkey()
@@ -1307,6 +1326,7 @@ Native::Crypto::Keyring::Default::RsaPubkey::~RsaPubkey()
 
 bool Native::Crypto::Keyring::Default::RsaPubkey::has_data() const
 {
+    if (is_presence_container) return true;
     return (addr !=  nullptr && addr->has_data())
 	|| (hostname !=  nullptr && hostname->has_data());
 }
@@ -1395,7 +1415,7 @@ Native::Crypto::Keyring::Default::RsaPubkey::Addr::Addr()
     way{YType::enumeration, "way"}
 {
 
-    yang_name = "addr"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addr"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::RsaPubkey::Addr::~Addr()
@@ -1404,6 +1424,7 @@ Native::Crypto::Keyring::Default::RsaPubkey::Addr::~Addr()
 
 bool Native::Crypto::Keyring::Default::RsaPubkey::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| way.is_set;
 }
@@ -1486,7 +1507,7 @@ Native::Crypto::Keyring::Default::RsaPubkey::Hostname::Hostname()
     way{YType::enumeration, "way"}
 {
 
-    yang_name = "hostname"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hostname"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::Default::RsaPubkey::Hostname::~Hostname()
@@ -1495,6 +1516,7 @@ Native::Crypto::Keyring::Default::RsaPubkey::Hostname::~Hostname()
 
 bool Native::Crypto::Keyring::Default::RsaPubkey::Hostname::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| way.is_set;
 }
@@ -1574,10 +1596,11 @@ bool Native::Crypto::Keyring::Default::RsaPubkey::Hostname::has_leaf_or_child_of
 Native::Crypto::Keyring::PreSharedKey::PreSharedKey()
     :
     address(std::make_shared<Native::Crypto::Keyring::PreSharedKey::Address>())
+    , hostname(this, {"name"})
 {
     address->parent = this;
 
-    yang_name = "pre-shared-key"; yang_parent_name = "keyring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-shared-key"; yang_parent_name = "keyring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::PreSharedKey::~PreSharedKey()
@@ -1586,7 +1609,8 @@ Native::Crypto::Keyring::PreSharedKey::~PreSharedKey()
 
 bool Native::Crypto::Keyring::PreSharedKey::has_data() const
 {
-    for (std::size_t index=0; index<hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hostname.len(); index++)
     {
         if(hostname[index]->has_data())
             return true;
@@ -1596,7 +1620,7 @@ bool Native::Crypto::Keyring::PreSharedKey::has_data() const
 
 bool Native::Crypto::Keyring::PreSharedKey::has_operation() const
 {
-    for (std::size_t index=0; index<hostname.size(); index++)
+    for (std::size_t index=0; index<hostname.len(); index++)
     {
         if(hostname[index]->has_operation())
             return true;
@@ -1636,7 +1660,7 @@ std::shared_ptr<Entity> Native::Crypto::Keyring::PreSharedKey::get_child_by_name
     {
         auto c = std::make_shared<Native::Crypto::Keyring::PreSharedKey::Hostname>();
         c->parent = this;
-        hostname.push_back(c);
+        hostname.append(c);
         return c;
     }
 
@@ -1653,7 +1677,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Keyring::PreShare
     }
 
     count = 0;
-    for (auto const & c : hostname)
+    for (auto c : hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1680,9 +1704,12 @@ bool Native::Crypto::Keyring::PreSharedKey::has_leaf_or_child_of_name(const std:
 }
 
 Native::Crypto::Keyring::PreSharedKey::Address::Address()
+    :
+    ipv4(this, {"ipv4_addr"})
+    , ipv6(this, {"ipv6_addr"})
 {
 
-    yang_name = "address"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::PreSharedKey::Address::~Address()
@@ -1691,12 +1718,13 @@ Native::Crypto::Keyring::PreSharedKey::Address::~Address()
 
 bool Native::Crypto::Keyring::PreSharedKey::Address::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_data())
             return true;
@@ -1706,12 +1734,12 @@ bool Native::Crypto::Keyring::PreSharedKey::Address::has_data() const
 
 bool Native::Crypto::Keyring::PreSharedKey::Address::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_operation())
             return true;
@@ -1741,7 +1769,7 @@ std::shared_ptr<Entity> Native::Crypto::Keyring::PreSharedKey::Address::get_chil
     {
         auto c = std::make_shared<Native::Crypto::Keyring::PreSharedKey::Address::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -1749,7 +1777,7 @@ std::shared_ptr<Entity> Native::Crypto::Keyring::PreSharedKey::Address::get_chil
     {
         auto c = std::make_shared<Native::Crypto::Keyring::PreSharedKey::Address::Ipv6>();
         c->parent = this;
-        ipv6.push_back(c);
+        ipv6.append(c);
         return c;
     }
 
@@ -1761,7 +1789,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Keyring::PreShare
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1770,7 +1798,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Keyring::PreShare
     }
 
     count = 0;
-    for (auto const & c : ipv6)
+    for (auto c : ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1805,7 +1833,7 @@ Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::Ipv4()
     unencryt_key{YType::str, "unencryt-key"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::~Ipv4()
@@ -1814,6 +1842,7 @@ Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::~Ipv4()
 
 bool Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_addr.is_set
 	|| mask.is_set
 	|| key.is_set
@@ -1834,7 +1863,8 @@ bool Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::has_operation() const
 std::string Native::Crypto::Keyring::PreSharedKey::Address::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4-addr='" <<ipv4_addr <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4_addr, "ipv4-addr");
     return path_buffer.str();
 }
 
@@ -1937,7 +1967,7 @@ Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::Ipv6()
     unencryt_key{YType::str, "unencryt-key"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::~Ipv6()
@@ -1946,6 +1976,7 @@ Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::~Ipv6()
 
 bool Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_addr.is_set
 	|| key.is_set
 	|| encryption.is_set
@@ -1964,7 +1995,8 @@ bool Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::has_operation() const
 std::string Native::Crypto::Keyring::PreSharedKey::Address::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6" <<"[ipv6-addr='" <<ipv6_addr <<"']";
+    path_buffer << "ipv6";
+    ADD_KEY_TOKEN(ipv6_addr, "ipv6-addr");
     return path_buffer.str();
 }
 
@@ -2056,7 +2088,7 @@ Native::Crypto::Keyring::PreSharedKey::Hostname::Hostname()
     unencryt_key{YType::str, "unencryt-key"}
 {
 
-    yang_name = "hostname"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hostname"; yang_parent_name = "pre-shared-key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::PreSharedKey::Hostname::~Hostname()
@@ -2065,6 +2097,7 @@ Native::Crypto::Keyring::PreSharedKey::Hostname::~Hostname()
 
 bool Native::Crypto::Keyring::PreSharedKey::Hostname::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| key.is_set
 	|| encryption.is_set
@@ -2083,7 +2116,8 @@ bool Native::Crypto::Keyring::PreSharedKey::Hostname::has_operation() const
 std::string Native::Crypto::Keyring::PreSharedKey::Hostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hostname" <<"[name='" <<name <<"']";
+    path_buffer << "hostname";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2170,12 +2204,12 @@ bool Native::Crypto::Keyring::PreSharedKey::Hostname::has_leaf_or_child_of_name(
 Native::Crypto::Keyring::RsaPubkey::RsaPubkey()
     :
     addr(std::make_shared<Native::Crypto::Keyring::RsaPubkey::Addr>())
-	,hostname(std::make_shared<Native::Crypto::Keyring::RsaPubkey::Hostname>())
+    , hostname(std::make_shared<Native::Crypto::Keyring::RsaPubkey::Hostname>())
 {
     addr->parent = this;
     hostname->parent = this;
 
-    yang_name = "rsa-pubkey"; yang_parent_name = "keyring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsa-pubkey"; yang_parent_name = "keyring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::RsaPubkey::~RsaPubkey()
@@ -2184,6 +2218,7 @@ Native::Crypto::Keyring::RsaPubkey::~RsaPubkey()
 
 bool Native::Crypto::Keyring::RsaPubkey::has_data() const
 {
+    if (is_presence_container) return true;
     return (addr !=  nullptr && addr->has_data())
 	|| (hostname !=  nullptr && hostname->has_data());
 }
@@ -2272,7 +2307,7 @@ Native::Crypto::Keyring::RsaPubkey::Addr::Addr()
     way{YType::enumeration, "way"}
 {
 
-    yang_name = "addr"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addr"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::RsaPubkey::Addr::~Addr()
@@ -2281,6 +2316,7 @@ Native::Crypto::Keyring::RsaPubkey::Addr::~Addr()
 
 bool Native::Crypto::Keyring::RsaPubkey::Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| way.is_set;
 }
@@ -2363,7 +2399,7 @@ Native::Crypto::Keyring::RsaPubkey::Hostname::Hostname()
     way{YType::enumeration, "way"}
 {
 
-    yang_name = "hostname"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hostname"; yang_parent_name = "rsa-pubkey"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Keyring::RsaPubkey::Hostname::~Hostname()
@@ -2372,6 +2408,7 @@ Native::Crypto::Keyring::RsaPubkey::Hostname::~Hostname()
 
 bool Native::Crypto::Keyring::RsaPubkey::Hostname::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| way.is_set;
 }
@@ -2452,11 +2489,11 @@ Native::Crypto::Logging::Logging()
     :
     ikev2{YType::empty, "ikev2"},
     session{YType::empty, "session"}
-    	,
+        ,
     ezvpn(nullptr) // presence node
 {
 
-    yang_name = "logging"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Logging::~Logging()
@@ -2465,6 +2502,7 @@ Native::Crypto::Logging::~Logging()
 
 bool Native::Crypto::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return ikev2.is_set
 	|| session.is_set
 	|| (ezvpn !=  nullptr && ezvpn->has_data());
@@ -2569,7 +2607,7 @@ Native::Crypto::Logging::Ezvpn::Ezvpn()
     group{YType::str, "group"}
 {
 
-    yang_name = "ezvpn"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ezvpn"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Crypto::Logging::Ezvpn::~Ezvpn()
@@ -2578,6 +2616,7 @@ Native::Crypto::Logging::Ezvpn::~Ezvpn()
 
 bool Native::Crypto::Logging::Ezvpn::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -2649,9 +2688,11 @@ bool Native::Crypto::Logging::Ezvpn::has_leaf_or_child_of_name(const std::string
 }
 
 Native::Crypto::CryptoMap::CryptoMap()
+    :
+    map(this, {"name", "sequence_number"})
 {
 
-    yang_name = "crypto-map"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "crypto-map"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::CryptoMap::~CryptoMap()
@@ -2660,7 +2701,8 @@ Native::Crypto::CryptoMap::~CryptoMap()
 
 bool Native::Crypto::CryptoMap::has_data() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_data())
             return true;
@@ -2670,7 +2712,7 @@ bool Native::Crypto::CryptoMap::has_data() const
 
 bool Native::Crypto::CryptoMap::has_operation() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_operation())
             return true;
@@ -2707,7 +2749,7 @@ std::shared_ptr<Entity> Native::Crypto::CryptoMap::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Crypto::CryptoMap::Map>();
         c->parent = this;
-        map.push_back(c);
+        map.append(c);
         return c;
     }
 
@@ -2719,7 +2761,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::CryptoMap::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : map)
+    for (auto c : map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2754,13 +2796,13 @@ Native::Crypto::CryptoMap::Map::Map()
     dynamic{YType::str, "dynamic"},
     profile{YType::str, "profile"},
     description{YType::str, "description"}
-    	,
+        ,
     default_(std::make_shared<Native::Crypto::CryptoMap::Map::Default>())
-	,dialer(std::make_shared<Native::Crypto::CryptoMap::Map::Dialer>())
-	,match(std::make_shared<Native::Crypto::CryptoMap::Map::Match>())
-	,qos(std::make_shared<Native::Crypto::CryptoMap::Map::Qos>())
-	,reverse_route(nullptr) // presence node
-	,set(std::make_shared<Native::Crypto::CryptoMap::Map::Set>())
+    , dialer(std::make_shared<Native::Crypto::CryptoMap::Map::Dialer>())
+    , match(std::make_shared<Native::Crypto::CryptoMap::Map::Match>())
+    , qos(std::make_shared<Native::Crypto::CryptoMap::Map::Qos>())
+    , reverse_route(nullptr) // presence node
+    , set(std::make_shared<Native::Crypto::CryptoMap::Map::Set>())
 {
     default_->parent = this;
     dialer->parent = this;
@@ -2768,7 +2810,7 @@ Native::Crypto::CryptoMap::Map::Map()
     qos->parent = this;
     set->parent = this;
 
-    yang_name = "map"; yang_parent_name = "crypto-map"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map"; yang_parent_name = "crypto-map"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::CryptoMap::Map::~Map()
@@ -2777,6 +2819,7 @@ Native::Crypto::CryptoMap::Map::~Map()
 
 bool Native::Crypto::CryptoMap::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| sequence_number.is_set
 	|| ipv6.is_set
@@ -2820,7 +2863,9 @@ std::string Native::Crypto::CryptoMap::Map::get_absolute_path() const
 std::string Native::Crypto::CryptoMap::Map::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map" <<"[name='" <<name <<"']" <<"[sequence-number='" <<sequence_number <<"']";
+    path_buffer << "map";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(sequence_number, "sequence-number");
     return path_buffer.str();
 }
 
@@ -3024,19 +3069,19 @@ bool Native::Crypto::CryptoMap::Map::has_leaf_or_child_of_name(const std::string
 Native::Crypto::CryptoMap::Map::Default::Default()
     :
     description{YType::empty, "description"}
-    	,
+        ,
     dialer(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Dialer>())
-	,match(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Match>())
-	,qos(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Qos>())
-	,reverse_route(nullptr) // presence node
-	,set(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set>())
+    , match(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Match>())
+    , qos(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Qos>())
+    , reverse_route(nullptr) // presence node
+    , set(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set>())
 {
     dialer->parent = this;
     match->parent = this;
     qos->parent = this;
     set->parent = this;
 
-    yang_name = "default"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::~Default()
@@ -3045,6 +3090,7 @@ Native::Crypto::CryptoMap::Map::Default::~Default()
 
 bool Native::Crypto::CryptoMap::Map::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| (dialer !=  nullptr && dialer->has_data())
 	|| (match !=  nullptr && match->has_data())
@@ -3193,7 +3239,7 @@ Native::Crypto::CryptoMap::Map::Default::Dialer::Dialer()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "dialer"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dialer"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Dialer::~Dialer()
@@ -3202,6 +3248,7 @@ Native::Crypto::CryptoMap::Map::Default::Dialer::~Dialer()
 
 bool Native::Crypto::CryptoMap::Map::Default::Dialer::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -3270,7 +3317,7 @@ Native::Crypto::CryptoMap::Map::Default::Match::Match()
     address{YType::empty, "address"}
 {
 
-    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Match::~Match()
@@ -3279,6 +3326,7 @@ Native::Crypto::CryptoMap::Map::Default::Match::~Match()
 
 bool Native::Crypto::CryptoMap::Map::Default::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -3347,7 +3395,7 @@ Native::Crypto::CryptoMap::Map::Default::Qos::Qos()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "qos"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Qos::~Qos()
@@ -3356,6 +3404,7 @@ Native::Crypto::CryptoMap::Map::Default::Qos::~Qos()
 
 bool Native::Crypto::CryptoMap::Map::Default::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -3422,7 +3471,7 @@ bool Native::Crypto::CryptoMap::Map::Default::Qos::has_leaf_or_child_of_name(con
 Native::Crypto::CryptoMap::Map::Default::ReverseRoute::ReverseRoute()
 {
 
-    yang_name = "reverse-route"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::CryptoMap::Map::Default::ReverseRoute::~ReverseRoute()
@@ -3431,6 +3480,7 @@ Native::Crypto::CryptoMap::Map::Default::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::CryptoMap::Map::Default::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3487,14 +3537,14 @@ Native::Crypto::CryptoMap::Map::Default::Set::Set()
     ikev2_profile{YType::str, "ikev2-profile"},
     isakmp_profile{YType::empty, "isakmp-profile"},
     transform_set{YType::empty, "transform-set"}
-    	,
+        ,
     pfs(nullptr) // presence node
-	,reverse_route(nullptr) // presence node
-	,security_association(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation>())
+    , reverse_route(nullptr) // presence node
+    , security_association(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation>())
 {
     security_association->parent = this;
 
-    yang_name = "set"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::~Set()
@@ -3503,6 +3553,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::~Set()
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| identity.is_set
 	|| ikev2_profile.is_set
@@ -3669,7 +3720,7 @@ bool Native::Crypto::CryptoMap::Map::Default::Set::has_leaf_or_child_of_name(con
 Native::Crypto::CryptoMap::Map::Default::Set::Pfs::Pfs()
 {
 
-    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::Pfs::~Pfs()
@@ -3678,6 +3729,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::Pfs::~Pfs()
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::Pfs::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3730,7 +3782,7 @@ bool Native::Crypto::CryptoMap::Map::Default::Set::Pfs::has_leaf_or_child_of_nam
 Native::Crypto::CryptoMap::Map::Default::Set::ReverseRoute::ReverseRoute()
 {
 
-    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::ReverseRoute::~ReverseRoute()
@@ -3739,6 +3791,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3793,17 +3846,17 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::SecurityAssoc
     dfbit{YType::empty, "dfbit"},
     ecn{YType::empty, "ecn"},
     level{YType::enumeration, "level"}
-    	,
+        ,
     dummy(nullptr) // presence node
-	,idle_time_container(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::IdleTimeContainer>())
-	,lifetime(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Lifetime>())
-	,replay(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Replay>())
+    , idle_time_container(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::IdleTimeContainer>())
+    , lifetime(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Lifetime>())
+    , replay(std::make_shared<Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Replay>())
 {
     idle_time_container->parent = this;
     lifetime->parent = this;
     replay->parent = this;
 
-    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::~SecurityAssociation()
@@ -3812,6 +3865,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::~SecurityAsso
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::has_data() const
 {
+    if (is_presence_container) return true;
     return dfbit.is_set
 	|| ecn.is_set
 	|| level.is_set
@@ -3968,7 +4022,7 @@ bool Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::has_leaf
 Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Dummy::Dummy()
 {
 
-    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Dummy::~Dummy()
@@ -3977,6 +4031,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Dummy::~Dummy
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Dummy::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4032,7 +4087,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::IdleTimeConta
     default_{YType::empty, "default"}
 {
 
-    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::IdleTimeContainer::~IdleTimeContainer()
@@ -4041,6 +4096,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::IdleTimeConta
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::IdleTimeContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return idle_time.is_set
 	|| default_.is_set;
 }
@@ -4124,7 +4180,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Lifetime::Lif
     seconds{YType::empty, "seconds"}
 {
 
-    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Lifetime::~Lifetime()
@@ -4133,6 +4189,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Lifetime::~Li
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Lifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return days.is_set
 	|| kilobytes.is_set
 	|| seconds.is_set;
@@ -4228,7 +4285,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Replay::Repla
     window_size{YType::empty, "window-size"}
 {
 
-    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Replay::~Replay()
@@ -4237,6 +4294,7 @@ Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Replay::~Repl
 
 bool Native::Crypto::CryptoMap::Map::Default::Set::SecurityAssociation::Replay::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| window_size.is_set;
 }
@@ -4318,7 +4376,7 @@ Native::Crypto::CryptoMap::Map::Dialer::Dialer()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "dialer"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dialer"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Dialer::~Dialer()
@@ -4327,6 +4385,7 @@ Native::Crypto::CryptoMap::Map::Dialer::~Dialer()
 
 bool Native::Crypto::CryptoMap::Map::Dialer::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -4395,7 +4454,7 @@ Native::Crypto::CryptoMap::Map::Match::Match()
     address{YType::str, "address"}
 {
 
-    yang_name = "match"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Match::~Match()
@@ -4404,6 +4463,7 @@ Native::Crypto::CryptoMap::Map::Match::~Match()
 
 bool Native::Crypto::CryptoMap::Map::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4472,7 +4532,7 @@ Native::Crypto::CryptoMap::Map::Qos::Qos()
     pre_classify{YType::empty, "pre-classify"}
 {
 
-    yang_name = "qos"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Qos::~Qos()
@@ -4481,6 +4541,7 @@ Native::Crypto::CryptoMap::Map::Qos::~Qos()
 
 bool Native::Crypto::CryptoMap::Map::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return pre_classify.is_set;
 }
 
@@ -4547,12 +4608,12 @@ bool Native::Crypto::CryptoMap::Map::Qos::has_leaf_or_child_of_name(const std::s
 Native::Crypto::CryptoMap::Map::ReverseRoute::ReverseRoute()
     :
     static_{YType::empty, "static"}
-    	,
+        ,
     remote_peer_conatiner(std::make_shared<Native::Crypto::CryptoMap::Map::ReverseRoute::RemotePeerConatiner>())
 {
     remote_peer_conatiner->parent = this;
 
-    yang_name = "reverse-route"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::CryptoMap::Map::ReverseRoute::~ReverseRoute()
@@ -4561,6 +4622,7 @@ Native::Crypto::CryptoMap::Map::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::CryptoMap::Map::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| (remote_peer_conatiner !=  nullptr && remote_peer_conatiner->has_data());
 }
@@ -4647,7 +4709,7 @@ Native::Crypto::CryptoMap::Map::ReverseRoute::RemotePeerConatiner::RemotePeerCon
     static_{YType::empty, "static"}
 {
 
-    yang_name = "remote-peer-conatiner"; yang_parent_name = "reverse-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-peer-conatiner"; yang_parent_name = "reverse-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::ReverseRoute::RemotePeerConatiner::~RemotePeerConatiner()
@@ -4656,6 +4718,7 @@ Native::Crypto::CryptoMap::Map::ReverseRoute::RemotePeerConatiner::~RemotePeerCo
 
 bool Native::Crypto::CryptoMap::Map::ReverseRoute::RemotePeerConatiner::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_peer.is_set
 	|| gateway.is_set
 	|| static_.is_set;
@@ -4752,17 +4815,17 @@ Native::Crypto::CryptoMap::Map::Set::Set()
     ikev2_profile{YType::str, "ikev2-profile"},
     isakmp_profile{YType::str, "isakmp-profile"},
     transform_set{YType::str, "transform-set"}
-    	,
+        ,
     peer(std::make_shared<Native::Crypto::CryptoMap::Map::Set::Peer>())
-	,pfs(nullptr) // presence node
-	,reverse_route(std::make_shared<Native::Crypto::CryptoMap::Map::Set::ReverseRoute>())
-	,security_association(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation>())
+    , pfs(nullptr) // presence node
+    , reverse_route(std::make_shared<Native::Crypto::CryptoMap::Map::Set::ReverseRoute>())
+    , security_association(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation>())
 {
     peer->parent = this;
     reverse_route->parent = this;
     security_association->parent = this;
 
-    yang_name = "set"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::~Set()
@@ -4771,6 +4834,7 @@ Native::Crypto::CryptoMap::Map::Set::~Set()
 
 bool Native::Crypto::CryptoMap::Map::Set::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : transform_set.getYLeafs())
     {
         if(leaf.is_set)
@@ -4965,7 +5029,7 @@ Native::Crypto::CryptoMap::Map::Set::Peer::Peer()
     dynamic{YType::empty, "dynamic"}
 {
 
-    yang_name = "peer"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::Peer::~Peer()
@@ -4974,6 +5038,7 @@ Native::Crypto::CryptoMap::Map::Set::Peer::~Peer()
 
 bool Native::Crypto::CryptoMap::Map::Set::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| default_.is_set
 	|| dynamic.is_set;
@@ -5068,7 +5133,7 @@ Native::Crypto::CryptoMap::Map::Set::Pfs::Pfs()
     group{YType::enumeration, "group"}
 {
 
-    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfs"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::CryptoMap::Map::Set::Pfs::~Pfs()
@@ -5077,6 +5142,7 @@ Native::Crypto::CryptoMap::Map::Set::Pfs::~Pfs()
 
 bool Native::Crypto::CryptoMap::Map::Set::Pfs::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -5146,7 +5212,7 @@ Native::Crypto::CryptoMap::Map::Set::ReverseRoute::ReverseRoute()
     tag{YType::uint64, "tag"}
 {
 
-    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-route"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::ReverseRoute::~ReverseRoute()
@@ -5155,6 +5221,7 @@ Native::Crypto::CryptoMap::Map::Set::ReverseRoute::~ReverseRoute()
 
 bool Native::Crypto::CryptoMap::Map::Set::ReverseRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return distance.is_set
 	|| tag.is_set;
 }
@@ -5236,18 +5303,18 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::SecurityAssociation()
     dfbit{YType::enumeration, "dfbit"},
     ecn{YType::enumeration, "ecn"},
     level{YType::enumeration, "level"}
-    	,
+        ,
     dummy(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Dummy>())
-	,idle_time_container(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::IdleTimeContainer>())
-	,lifetime(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime>())
-	,replay(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay>())
+    , idle_time_container(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::IdleTimeContainer>())
+    , lifetime(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime>())
+    , replay(std::make_shared<Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay>())
 {
     dummy->parent = this;
     idle_time_container->parent = this;
     lifetime->parent = this;
     replay->parent = this;
 
-    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-association"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::~SecurityAssociation()
@@ -5256,6 +5323,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::~SecurityAssociation()
 
 bool Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::has_data() const
 {
+    if (is_presence_container) return true;
     return dfbit.is_set
 	|| ecn.is_set
 	|| level.is_set
@@ -5415,7 +5483,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Dummy::Dummy()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dummy"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Dummy::~Dummy()
@@ -5424,6 +5492,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Dummy::~Dummy()
 
 bool Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Dummy::has_data() const
 {
+    if (is_presence_container) return true;
     return pps.is_set
 	|| seconds.is_set;
 }
@@ -5506,7 +5575,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::IdleTimeContainer::Idl
     default_{YType::empty, "default"}
 {
 
-    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idle-time-container"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::IdleTimeContainer::~IdleTimeContainer()
@@ -5515,6 +5584,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::IdleTimeContainer::~Id
 
 bool Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::IdleTimeContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return idle_time.is_set
 	|| default_.is_set;
 }
@@ -5598,7 +5668,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime::Lifetime()
     seconds{YType::uint64, "seconds"}
 {
 
-    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lifetime"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime::~Lifetime()
@@ -5607,6 +5677,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime::~Lifetime()
 
 bool Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return days.is_set
 	|| kilobytes.is_set
 	|| seconds.is_set;
@@ -5702,7 +5773,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay::Replay()
     window_size{YType::enumeration, "window-size"}
 {
 
-    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "replay"; yang_parent_name = "security-association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay::~Replay()
@@ -5711,6 +5782,7 @@ Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay::~Replay()
 
 bool Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| window_size.is_set;
 }
@@ -5788,9 +5860,11 @@ bool Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Replay::has_leaf_
 }
 
 Native::Crypto::MapIpv6Gdoi::MapIpv6Gdoi()
+    :
+    map(this, {"name"})
 {
 
-    yang_name = "map-ipv6-gdoi"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map-ipv6-gdoi"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::MapIpv6Gdoi::~MapIpv6Gdoi()
@@ -5799,7 +5873,8 @@ Native::Crypto::MapIpv6Gdoi::~MapIpv6Gdoi()
 
 bool Native::Crypto::MapIpv6Gdoi::has_data() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_data())
             return true;
@@ -5809,7 +5884,7 @@ bool Native::Crypto::MapIpv6Gdoi::has_data() const
 
 bool Native::Crypto::MapIpv6Gdoi::has_operation() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_operation())
             return true;
@@ -5846,7 +5921,7 @@ std::shared_ptr<Entity> Native::Crypto::MapIpv6Gdoi::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Crypto::MapIpv6Gdoi::Map>();
         c->parent = this;
-        map.push_back(c);
+        map.append(c);
         return c;
     }
 
@@ -5858,7 +5933,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::MapIpv6Gdoi::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : map)
+    for (auto c : map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5890,14 +5965,14 @@ Native::Crypto::MapIpv6Gdoi::Map::Map()
     ipv6{YType::empty, "ipv6"},
     gdoi{YType::enumeration, "gdoi"},
     activate{YType::empty, "activate"}
-    	,
+        ,
     default_(std::make_shared<Native::Crypto::MapIpv6Gdoi::Map::Default>())
-	,match(std::make_shared<Native::Crypto::MapIpv6Gdoi::Map::Match>())
+    , match(std::make_shared<Native::Crypto::MapIpv6Gdoi::Map::Match>())
 {
     default_->parent = this;
     match->parent = this;
 
-    yang_name = "map"; yang_parent_name = "map-ipv6-gdoi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map"; yang_parent_name = "map-ipv6-gdoi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::MapIpv6Gdoi::Map::~Map()
@@ -5906,6 +5981,7 @@ Native::Crypto::MapIpv6Gdoi::Map::~Map()
 
 bool Native::Crypto::MapIpv6Gdoi::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| ipv6.is_set
 	|| gdoi.is_set
@@ -5935,7 +6011,8 @@ std::string Native::Crypto::MapIpv6Gdoi::Map::get_absolute_path() const
 std::string Native::Crypto::MapIpv6Gdoi::Map::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map" <<"[name='" <<name <<"']";
+    path_buffer << "map";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6050,12 +6127,12 @@ bool Native::Crypto::MapIpv6Gdoi::Map::has_leaf_or_child_of_name(const std::stri
 Native::Crypto::MapIpv6Gdoi::Map::Default::Default()
     :
     activate{YType::empty, "activate"}
-    	,
+        ,
     match(std::make_shared<Native::Crypto::MapIpv6Gdoi::Map::Default::Match>())
 {
     match->parent = this;
 
-    yang_name = "default"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapIpv6Gdoi::Map::Default::~Default()
@@ -6064,6 +6141,7 @@ Native::Crypto::MapIpv6Gdoi::Map::Default::~Default()
 
 bool Native::Crypto::MapIpv6Gdoi::Map::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return activate.is_set
 	|| (match !=  nullptr && match->has_data());
 }
@@ -6148,7 +6226,7 @@ Native::Crypto::MapIpv6Gdoi::Map::Default::Match::Match()
     address{YType::empty, "address"}
 {
 
-    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapIpv6Gdoi::Map::Default::Match::~Match()
@@ -6157,6 +6235,7 @@ Native::Crypto::MapIpv6Gdoi::Map::Default::Match::~Match()
 
 bool Native::Crypto::MapIpv6Gdoi::Map::Default::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6225,7 +6304,7 @@ Native::Crypto::MapIpv6Gdoi::Map::Match::Match()
     address{YType::str, "address"}
 {
 
-    yang_name = "match"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapIpv6Gdoi::Map::Match::~Match()
@@ -6234,6 +6313,7 @@ Native::Crypto::MapIpv6Gdoi::Map::Match::~Match()
 
 bool Native::Crypto::MapIpv6Gdoi::Map::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6298,9 +6378,11 @@ bool Native::Crypto::MapIpv6Gdoi::Map::Match::has_leaf_or_child_of_name(const st
 }
 
 Native::Crypto::MapClient::MapClient()
+    :
+    map(this, {"name"})
 {
 
-    yang_name = "map-client"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map-client"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::MapClient::~MapClient()
@@ -6309,7 +6391,8 @@ Native::Crypto::MapClient::~MapClient()
 
 bool Native::Crypto::MapClient::has_data() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_data())
             return true;
@@ -6319,7 +6402,7 @@ bool Native::Crypto::MapClient::has_data() const
 
 bool Native::Crypto::MapClient::has_operation() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_operation())
             return true;
@@ -6356,7 +6439,7 @@ std::shared_ptr<Entity> Native::Crypto::MapClient::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Crypto::MapClient::Map>();
         c->parent = this;
-        map.push_back(c);
+        map.append(c);
         return c;
     }
 
@@ -6368,7 +6451,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::MapClient::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : map)
+    for (auto c : map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6400,16 +6483,16 @@ Native::Crypto::MapClient::Map::Map()
     ipv6{YType::empty, "ipv6"},
     isakmp_profile{YType::str, "isakmp-profile"},
     local_address{YType::str, "local-address"}
-    	,
+        ,
     client(std::make_shared<Native::Crypto::MapClient::Map::Client>())
-	,isakmp(std::make_shared<Native::Crypto::MapClient::Map::Isakmp>())
-	,redundancy(std::make_shared<Native::Crypto::MapClient::Map::Redundancy>())
+    , isakmp(std::make_shared<Native::Crypto::MapClient::Map::Isakmp>())
+    , redundancy(std::make_shared<Native::Crypto::MapClient::Map::Redundancy>())
 {
     client->parent = this;
     isakmp->parent = this;
     redundancy->parent = this;
 
-    yang_name = "map"; yang_parent_name = "map-client"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map"; yang_parent_name = "map-client"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::MapClient::Map::~Map()
@@ -6418,6 +6501,7 @@ Native::Crypto::MapClient::Map::~Map()
 
 bool Native::Crypto::MapClient::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| ipv6.is_set
 	|| isakmp_profile.is_set
@@ -6449,7 +6533,8 @@ std::string Native::Crypto::MapClient::Map::get_absolute_path() const
 std::string Native::Crypto::MapClient::Map::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map" <<"[name='" <<name <<"']";
+    path_buffer << "map";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6578,14 +6663,14 @@ bool Native::Crypto::MapClient::Map::has_leaf_or_child_of_name(const std::string
 Native::Crypto::MapClient::Map::Client::Client()
     :
     accounting(std::make_shared<Native::Crypto::MapClient::Map::Client::Accounting>())
-	,authentication(std::make_shared<Native::Crypto::MapClient::Map::Client::Authentication>())
-	,configuration(std::make_shared<Native::Crypto::MapClient::Map::Client::Configuration>())
+    , authentication(std::make_shared<Native::Crypto::MapClient::Map::Client::Authentication>())
+    , configuration(std::make_shared<Native::Crypto::MapClient::Map::Client::Configuration>())
 {
     accounting->parent = this;
     authentication->parent = this;
     configuration->parent = this;
 
-    yang_name = "client"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Client::~Client()
@@ -6594,6 +6679,7 @@ Native::Crypto::MapClient::Map::Client::~Client()
 
 bool Native::Crypto::MapClient::Map::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting !=  nullptr && accounting->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (configuration !=  nullptr && configuration->has_data());
@@ -6697,7 +6783,7 @@ Native::Crypto::MapClient::Map::Client::Accounting::Accounting()
     list{YType::str, "list"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Client::Accounting::~Accounting()
@@ -6706,6 +6792,7 @@ Native::Crypto::MapClient::Map::Client::Accounting::~Accounting()
 
 bool Native::Crypto::MapClient::Map::Client::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set;
 }
 
@@ -6774,7 +6861,7 @@ Native::Crypto::MapClient::Map::Client::Authentication::Authentication()
     list{YType::str, "list"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Client::Authentication::~Authentication()
@@ -6783,6 +6870,7 @@ Native::Crypto::MapClient::Map::Client::Authentication::~Authentication()
 
 bool Native::Crypto::MapClient::Map::Client::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set;
 }
 
@@ -6852,7 +6940,7 @@ Native::Crypto::MapClient::Map::Client::Configuration::Configuration()
 {
     address->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Client::Configuration::~Configuration()
@@ -6861,6 +6949,7 @@ Native::Crypto::MapClient::Map::Client::Configuration::~Configuration()
 
 bool Native::Crypto::MapClient::Map::Client::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -6933,7 +7022,7 @@ Native::Crypto::MapClient::Map::Client::Configuration::Address::Address()
     respond{YType::empty, "respond"}
 {
 
-    yang_name = "address"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Client::Configuration::Address::~Address()
@@ -6942,6 +7031,7 @@ Native::Crypto::MapClient::Map::Client::Configuration::Address::~Address()
 
 bool Native::Crypto::MapClient::Map::Client::Configuration::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return initiate.is_set
 	|| respond.is_set;
 }
@@ -7024,7 +7114,7 @@ Native::Crypto::MapClient::Map::Isakmp::Isakmp()
     list{YType::str, "list"}
 {
 
-    yang_name = "isakmp"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isakmp"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Isakmp::~Isakmp()
@@ -7033,6 +7123,7 @@ Native::Crypto::MapClient::Map::Isakmp::~Isakmp()
 
 bool Native::Crypto::MapClient::Map::Isakmp::has_data() const
 {
+    if (is_presence_container) return true;
     return authorization.is_set
 	|| list.is_set;
 }
@@ -7115,7 +7206,7 @@ Native::Crypto::MapClient::Map::Redundancy::Redundancy()
 {
     replay_interval->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redundancy"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Redundancy::~Redundancy()
@@ -7124,6 +7215,7 @@ Native::Crypto::MapClient::Map::Redundancy::~Redundancy()
 
 bool Native::Crypto::MapClient::Map::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return (replay_interval !=  nullptr && replay_interval->has_data());
 }
 
@@ -7196,7 +7288,7 @@ Native::Crypto::MapClient::Map::Redundancy::ReplayInterval::ReplayInterval()
     outbound{YType::uint32, "outbound"}
 {
 
-    yang_name = "replay-interval"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "replay-interval"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::MapClient::Map::Redundancy::ReplayInterval::~ReplayInterval()
@@ -7205,6 +7297,7 @@ Native::Crypto::MapClient::Map::Redundancy::ReplayInterval::~ReplayInterval()
 
 bool Native::Crypto::MapClient::Map::Redundancy::ReplayInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return inbound.is_set
 	|| outbound.is_set;
 }
@@ -7287,7 +7380,7 @@ Native::Crypto::Mib::Mib()
 {
     ipsec->parent = this;
 
-    yang_name = "mib"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mib"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Mib::~Mib()
@@ -7296,6 +7389,7 @@ Native::Crypto::Mib::~Mib()
 
 bool Native::Crypto::Mib::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipsec !=  nullptr && ipsec->has_data());
 }
 
@@ -7375,7 +7469,7 @@ Native::Crypto::Mib::Ipsec::Ipsec()
 {
     flowmib->parent = this;
 
-    yang_name = "ipsec"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsec"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Mib::Ipsec::~Ipsec()
@@ -7384,6 +7478,7 @@ Native::Crypto::Mib::Ipsec::~Ipsec()
 
 bool Native::Crypto::Mib::Ipsec::has_data() const
 {
+    if (is_presence_container) return true;
     return (flowmib !=  nullptr && flowmib->has_data());
 }
 
@@ -7463,7 +7558,7 @@ Native::Crypto::Mib::Ipsec::Flowmib::Flowmib()
 {
     history->parent = this;
 
-    yang_name = "flowmib"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flowmib"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Mib::Ipsec::Flowmib::~Flowmib()
@@ -7472,6 +7567,7 @@ Native::Crypto::Mib::Ipsec::Flowmib::~Flowmib()
 
 bool Native::Crypto::Mib::Ipsec::Flowmib::has_data() const
 {
+    if (is_presence_container) return true;
     return (history !=  nullptr && history->has_data());
 }
 
@@ -7548,12 +7644,12 @@ bool Native::Crypto::Mib::Ipsec::Flowmib::has_leaf_or_child_of_name(const std::s
 Native::Crypto::Mib::Ipsec::Flowmib::History::History()
     :
     failure(std::make_shared<Native::Crypto::Mib::Ipsec::Flowmib::History::Failure>())
-	,tunnel(std::make_shared<Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel>())
+    , tunnel(std::make_shared<Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel>())
 {
     failure->parent = this;
     tunnel->parent = this;
 
-    yang_name = "history"; yang_parent_name = "flowmib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "flowmib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Mib::Ipsec::Flowmib::History::~History()
@@ -7562,6 +7658,7 @@ Native::Crypto::Mib::Ipsec::Flowmib::History::~History()
 
 bool Native::Crypto::Mib::Ipsec::Flowmib::History::has_data() const
 {
+    if (is_presence_container) return true;
     return (failure !=  nullptr && failure->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data());
 }
@@ -7656,7 +7753,7 @@ Native::Crypto::Mib::Ipsec::Flowmib::History::Failure::Failure()
     size{YType::uint8, "size"}
 {
 
-    yang_name = "failure"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "failure"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Mib::Ipsec::Flowmib::History::Failure::~Failure()
@@ -7665,6 +7762,7 @@ Native::Crypto::Mib::Ipsec::Flowmib::History::Failure::~Failure()
 
 bool Native::Crypto::Mib::Ipsec::Flowmib::History::Failure::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set;
 }
 
@@ -7740,7 +7838,7 @@ Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel::Tunnel()
     size{YType::uint8, "size"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel::~Tunnel()
@@ -7749,6 +7847,7 @@ Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel::~Tunnel()
 
 bool Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set;
 }
 
@@ -7823,15 +7922,18 @@ Native::Crypto::Pki::Pki()
     :
     authenticate{YType::str, "authenticate"},
     enroll{YType::str, "enroll"}
-    	,
+        ,
     certificate(std::make_shared<Native::Crypto::Pki::Certificate>())
-	,crl(std::make_shared<Native::Crypto::Pki::Crl>())
-	,profile(std::make_shared<Native::Crypto::Pki::Profile>())
-	,server(std::make_shared<Native::Crypto::Pki::Server>())
-	,pki_server_no_submode(std::make_shared<Native::Crypto::Pki::PkiServerNoSubmode>())
-	,token(std::make_shared<Native::Crypto::Pki::Token>())
-	,trustpool(std::make_shared<Native::Crypto::Pki::Trustpool>())
-	,default_(std::make_shared<Native::Crypto::Pki::Default>())
+    , crl(std::make_shared<Native::Crypto::Pki::Crl>())
+    , export_(this, {"name"})
+    , import(this, {"name"})
+    , profile(std::make_shared<Native::Crypto::Pki::Profile>())
+    , server(std::make_shared<Native::Crypto::Pki::Server>())
+    , pki_server_no_submode(std::make_shared<Native::Crypto::Pki::PkiServerNoSubmode>())
+    , trustpoint(this, {"id"})
+    , token(std::make_shared<Native::Crypto::Pki::Token>())
+    , trustpool(std::make_shared<Native::Crypto::Pki::Trustpool>())
+    , default_(std::make_shared<Native::Crypto::Pki::Default>())
 {
     certificate->parent = this;
     crl->parent = this;
@@ -7842,7 +7944,7 @@ Native::Crypto::Pki::Pki()
     trustpool->parent = this;
     default_->parent = this;
 
-    yang_name = "pki"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pki"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::~Pki()
@@ -7851,17 +7953,18 @@ Native::Crypto::Pki::~Pki()
 
 bool Native::Crypto::Pki::has_data() const
 {
-    for (std::size_t index=0; index<export_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<export_.len(); index++)
     {
         if(export_[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<import.size(); index++)
+    for (std::size_t index=0; index<import.len(); index++)
     {
         if(import[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<trustpoint.size(); index++)
+    for (std::size_t index=0; index<trustpoint.len(); index++)
     {
         if(trustpoint[index]->has_data())
             return true;
@@ -7880,17 +7983,17 @@ bool Native::Crypto::Pki::has_data() const
 
 bool Native::Crypto::Pki::has_operation() const
 {
-    for (std::size_t index=0; index<export_.size(); index++)
+    for (std::size_t index=0; index<export_.len(); index++)
     {
         if(export_[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<import.size(); index++)
+    for (std::size_t index=0; index<import.len(); index++)
     {
         if(import[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<trustpoint.size(); index++)
+    for (std::size_t index=0; index<trustpoint.len(); index++)
     {
         if(trustpoint[index]->has_operation())
             return true;
@@ -7957,7 +8060,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::Crypto::Pki::Export>();
         c->parent = this;
-        export_.push_back(c);
+        export_.append(c);
         return c;
     }
 
@@ -7965,7 +8068,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::Crypto::Pki::Import>();
         c->parent = this;
-        import.push_back(c);
+        import.append(c);
         return c;
     }
 
@@ -8000,7 +8103,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::Crypto::Pki::Trustpoint>();
         c->parent = this;
-        trustpoint.push_back(c);
+        trustpoint.append(c);
         return c;
     }
 
@@ -8049,7 +8152,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::get_children
     }
 
     count = 0;
-    for (auto const & c : export_)
+    for (auto c : export_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8058,7 +8161,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::get_children
     }
 
     count = 0;
-    for (auto const & c : import)
+    for (auto c : import.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8082,7 +8185,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::get_children
     }
 
     count = 0;
-    for (auto const & c : trustpoint)
+    for (auto c : trustpoint.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8148,12 +8251,14 @@ Native::Crypto::Pki::Certificate::Certificate()
     pool{YType::empty, "pool"},
     query{YType::empty, "query"},
     validate{YType::str, "validate"}
-    	,
-    storage(std::make_shared<Native::Crypto::Pki::Certificate::Storage>())
+        ,
+    chain(this, {"name"})
+    , map(this, {"tag"})
+    , storage(std::make_shared<Native::Crypto::Pki::Certificate::Storage>())
 {
     storage->parent = this;
 
-    yang_name = "certificate"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "certificate"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Certificate::~Certificate()
@@ -8162,12 +8267,13 @@ Native::Crypto::Pki::Certificate::~Certificate()
 
 bool Native::Crypto::Pki::Certificate::has_data() const
 {
-    for (std::size_t index=0; index<chain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chain.len(); index++)
     {
         if(chain[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<map.size(); index++)
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_data())
             return true;
@@ -8180,12 +8286,12 @@ bool Native::Crypto::Pki::Certificate::has_data() const
 
 bool Native::Crypto::Pki::Certificate::has_operation() const
 {
-    for (std::size_t index=0; index<chain.size(); index++)
+    for (std::size_t index=0; index<chain.len(); index++)
     {
         if(chain[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<map.size(); index++)
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_operation())
             return true;
@@ -8229,7 +8335,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::get_child_by_name(cons
     {
         auto c = std::make_shared<Native::Crypto::Pki::Certificate::Chain>();
         c->parent = this;
-        chain.push_back(c);
+        chain.append(c);
         return c;
     }
 
@@ -8237,7 +8343,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::get_child_by_name(cons
     {
         auto c = std::make_shared<Native::Crypto::Pki::Certificate::Map>();
         c->parent = this;
-        map.push_back(c);
+        map.append(c);
         return c;
     }
 
@@ -8258,7 +8364,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chain)
+    for (auto c : chain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8267,7 +8373,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate:
     }
 
     count = 0;
-    for (auto const & c : map)
+    for (auto c : map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8331,9 +8437,11 @@ bool Native::Crypto::Pki::Certificate::has_leaf_or_child_of_name(const std::stri
 Native::Crypto::Pki::Certificate::Chain::Chain()
     :
     name{YType::str, "name"}
+        ,
+    certificate(this, {"serial"})
 {
 
-    yang_name = "chain"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chain"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Certificate::Chain::~Chain()
@@ -8342,7 +8450,8 @@ Native::Crypto::Pki::Certificate::Chain::~Chain()
 
 bool Native::Crypto::Pki::Certificate::Chain::has_data() const
 {
-    for (std::size_t index=0; index<certificate.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<certificate.len(); index++)
     {
         if(certificate[index]->has_data())
             return true;
@@ -8352,7 +8461,7 @@ bool Native::Crypto::Pki::Certificate::Chain::has_data() const
 
 bool Native::Crypto::Pki::Certificate::Chain::has_operation() const
 {
-    for (std::size_t index=0; index<certificate.size(); index++)
+    for (std::size_t index=0; index<certificate.len(); index++)
     {
         if(certificate[index]->has_operation())
             return true;
@@ -8371,7 +8480,8 @@ std::string Native::Crypto::Pki::Certificate::Chain::get_absolute_path() const
 std::string Native::Crypto::Pki::Certificate::Chain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "chain" <<"[name='" <<name <<"']";
+    path_buffer << "chain";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -8391,7 +8501,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Chain::get_child_by_na
     {
         auto c = std::make_shared<Native::Crypto::Pki::Certificate::Chain::Certificate_>();
         c->parent = this;
-        certificate.push_back(c);
+        certificate.append(c);
         return c;
     }
 
@@ -8403,7 +8513,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : certificate)
+    for (auto c : certificate.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8445,7 +8555,7 @@ Native::Crypto::Pki::Certificate::Chain::Certificate_::Certificate_()
     certtype{YType::enumeration, "certtype"}
 {
 
-    yang_name = "certificate"; yang_parent_name = "chain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "certificate"; yang_parent_name = "chain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Chain::Certificate_::~Certificate_()
@@ -8454,6 +8564,7 @@ Native::Crypto::Pki::Certificate::Chain::Certificate_::~Certificate_()
 
 bool Native::Crypto::Pki::Certificate::Chain::Certificate_::has_data() const
 {
+    if (is_presence_container) return true;
     return serial.is_set
 	|| certtype.is_set;
 }
@@ -8468,7 +8579,8 @@ bool Native::Crypto::Pki::Certificate::Chain::Certificate_::has_operation() cons
 std::string Native::Crypto::Pki::Certificate::Chain::Certificate_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "certificate" <<"[serial='" <<serial <<"']";
+    path_buffer << "certificate";
+    ADD_KEY_TOKEN(serial, "serial");
     return path_buffer.str();
 }
 
@@ -8534,15 +8646,15 @@ Native::Crypto::Pki::Certificate::Map::Map()
     :
     tag{YType::str, "tag"},
     sequence{YType::uint16, "sequence"}
-    	,
+        ,
     alt_subject_name(std::make_shared<Native::Crypto::Pki::Certificate::Map::AltSubjectName>())
-	,expires_on(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn>())
-	,issuer_name(std::make_shared<Native::Crypto::Pki::Certificate::Map::IssuerName>())
-	,name(std::make_shared<Native::Crypto::Pki::Certificate::Map::Name>())
-	,serial_number(std::make_shared<Native::Crypto::Pki::Certificate::Map::SerialNumber>())
-	,subject_name(std::make_shared<Native::Crypto::Pki::Certificate::Map::SubjectName>())
-	,unstructured_subject_name(std::make_shared<Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName>())
-	,valid_start(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart>())
+    , expires_on(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn>())
+    , issuer_name(std::make_shared<Native::Crypto::Pki::Certificate::Map::IssuerName>())
+    , name(std::make_shared<Native::Crypto::Pki::Certificate::Map::Name>())
+    , serial_number(std::make_shared<Native::Crypto::Pki::Certificate::Map::SerialNumber>())
+    , subject_name(std::make_shared<Native::Crypto::Pki::Certificate::Map::SubjectName>())
+    , unstructured_subject_name(std::make_shared<Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName>())
+    , valid_start(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart>())
 {
     alt_subject_name->parent = this;
     expires_on->parent = this;
@@ -8553,7 +8665,7 @@ Native::Crypto::Pki::Certificate::Map::Map()
     unstructured_subject_name->parent = this;
     valid_start->parent = this;
 
-    yang_name = "map"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Certificate::Map::~Map()
@@ -8562,6 +8674,7 @@ Native::Crypto::Pki::Certificate::Map::~Map()
 
 bool Native::Crypto::Pki::Certificate::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set
 	|| sequence.is_set
 	|| (alt_subject_name !=  nullptr && alt_subject_name->has_data())
@@ -8599,7 +8712,8 @@ std::string Native::Crypto::Pki::Certificate::Map::get_absolute_path() const
 std::string Native::Crypto::Pki::Certificate::Map::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map" <<"[tag='" <<tag <<"']";
+    path_buffer << "map";
+    ADD_KEY_TOKEN(tag, "tag");
     return path_buffer.str();
 }
 
@@ -8781,7 +8895,7 @@ Native::Crypto::Pki::Certificate::Map::AltSubjectName::AltSubjectName()
     ne{YType::str, "ne"}
 {
 
-    yang_name = "alt-subject-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alt-subject-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::AltSubjectName::~AltSubjectName()
@@ -8790,6 +8904,7 @@ Native::Crypto::Pki::Certificate::Map::AltSubjectName::~AltSubjectName()
 
 bool Native::Crypto::Pki::Certificate::Map::AltSubjectName::has_data() const
 {
+    if (is_presence_container) return true;
     return co.is_set
 	|| eq.is_set
 	|| nc.is_set
@@ -8895,16 +9010,16 @@ bool Native::Crypto::Pki::Certificate::Map::AltSubjectName::has_leaf_or_child_of
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::ExpiresOn()
     :
     eq(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq>())
-	,ge(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge>())
-	,lt(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt>())
-	,ne(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne>())
+    , ge(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge>())
+    , lt(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt>())
+    , ne(std::make_shared<Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne>())
 {
     eq->parent = this;
     ge->parent = this;
     lt->parent = this;
     ne->parent = this;
 
-    yang_name = "expires-on"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "expires-on"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::~ExpiresOn()
@@ -8913,6 +9028,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::~ExpiresOn()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::has_data() const
 {
+    if (is_presence_container) return true;
     return (eq !=  nullptr && eq->has_data())
 	|| (ge !=  nullptr && ge->has_data())
 	|| (lt !=  nullptr && lt->has_data())
@@ -9033,7 +9149,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::Eq()
 {
     time->parent = this;
 
-    yang_name = "eq"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eq"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::~Eq()
@@ -9042,6 +9158,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::~Eq()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -9119,7 +9236,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "eq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "eq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::Time::~Time()
@@ -9128,6 +9245,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -9275,7 +9393,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::Ge()
 {
     time->parent = this;
 
-    yang_name = "ge"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ge"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::~Ge()
@@ -9284,6 +9402,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::~Ge()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -9361,7 +9480,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "ge"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "ge"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::Time::~Time()
@@ -9370,6 +9489,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -9517,7 +9637,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::Lt()
 {
     time->parent = this;
 
-    yang_name = "lt"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lt"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::~Lt()
@@ -9526,6 +9646,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::~Lt()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -9603,7 +9724,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "lt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "lt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::Time::~Time()
@@ -9612,6 +9733,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -9759,7 +9881,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::Ne()
 {
     time->parent = this;
 
-    yang_name = "ne"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ne"; yang_parent_name = "expires-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::~Ne()
@@ -9768,6 +9890,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::~Ne()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -9845,7 +9968,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "ne"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "ne"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::Time::~Time()
@@ -9854,6 +9977,7 @@ Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -10003,7 +10127,7 @@ Native::Crypto::Pki::Certificate::Map::IssuerName::IssuerName()
     ne{YType::str, "ne"}
 {
 
-    yang_name = "issuer-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "issuer-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::IssuerName::~IssuerName()
@@ -10012,6 +10136,7 @@ Native::Crypto::Pki::Certificate::Map::IssuerName::~IssuerName()
 
 bool Native::Crypto::Pki::Certificate::Map::IssuerName::has_data() const
 {
+    if (is_presence_container) return true;
     return co.is_set
 	|| eq.is_set
 	|| nc.is_set
@@ -10122,7 +10247,7 @@ Native::Crypto::Pki::Certificate::Map::Name::Name()
     ne{YType::str, "ne"}
 {
 
-    yang_name = "name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::Name::~Name()
@@ -10131,6 +10256,7 @@ Native::Crypto::Pki::Certificate::Map::Name::~Name()
 
 bool Native::Crypto::Pki::Certificate::Map::Name::has_data() const
 {
+    if (is_presence_container) return true;
     return co.is_set
 	|| eq.is_set
 	|| nc.is_set
@@ -10241,7 +10367,7 @@ Native::Crypto::Pki::Certificate::Map::SerialNumber::SerialNumber()
     ne{YType::str, "ne"}
 {
 
-    yang_name = "serial-number"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "serial-number"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::SerialNumber::~SerialNumber()
@@ -10250,6 +10376,7 @@ Native::Crypto::Pki::Certificate::Map::SerialNumber::~SerialNumber()
 
 bool Native::Crypto::Pki::Certificate::Map::SerialNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return co.is_set
 	|| eq.is_set
 	|| nc.is_set
@@ -10360,7 +10487,7 @@ Native::Crypto::Pki::Certificate::Map::SubjectName::SubjectName()
     ne{YType::str, "ne"}
 {
 
-    yang_name = "subject-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subject-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::SubjectName::~SubjectName()
@@ -10369,6 +10496,7 @@ Native::Crypto::Pki::Certificate::Map::SubjectName::~SubjectName()
 
 bool Native::Crypto::Pki::Certificate::Map::SubjectName::has_data() const
 {
+    if (is_presence_container) return true;
     return co.is_set
 	|| eq.is_set
 	|| nc.is_set
@@ -10479,7 +10607,7 @@ Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName::UnstructuredSubj
     ne{YType::str, "ne"}
 {
 
-    yang_name = "unstructured-subject-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unstructured-subject-name"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName::~UnstructuredSubjectName()
@@ -10488,6 +10616,7 @@ Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName::~UnstructuredSub
 
 bool Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName::has_data() const
 {
+    if (is_presence_container) return true;
     return co.is_set
 	|| eq.is_set
 	|| nc.is_set
@@ -10593,16 +10722,16 @@ bool Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName::has_leaf_or
 Native::Crypto::Pki::Certificate::Map::ValidStart::ValidStart()
     :
     eq(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart::Eq>())
-	,ge(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart::Ge>())
-	,lt(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart::Lt>())
-	,ne(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart::Ne>())
+    , ge(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart::Ge>())
+    , lt(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart::Lt>())
+    , ne(std::make_shared<Native::Crypto::Pki::Certificate::Map::ValidStart::Ne>())
 {
     eq->parent = this;
     ge->parent = this;
     lt->parent = this;
     ne->parent = this;
 
-    yang_name = "valid-start"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "valid-start"; yang_parent_name = "map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::~ValidStart()
@@ -10611,6 +10740,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::~ValidStart()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::has_data() const
 {
+    if (is_presence_container) return true;
     return (eq !=  nullptr && eq->has_data())
 	|| (ge !=  nullptr && ge->has_data())
 	|| (lt !=  nullptr && lt->has_data())
@@ -10731,7 +10861,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::Eq()
 {
     time->parent = this;
 
-    yang_name = "eq"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eq"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::~Eq()
@@ -10740,6 +10870,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::~Eq()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -10817,7 +10948,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "eq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "eq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::Time::~Time()
@@ -10826,6 +10957,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -10973,7 +11105,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::Ge()
 {
     time->parent = this;
 
-    yang_name = "ge"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ge"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::~Ge()
@@ -10982,6 +11114,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::~Ge()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -11059,7 +11192,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "ge"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "ge"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::Time::~Time()
@@ -11068,6 +11201,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -11215,7 +11349,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::Lt()
 {
     time->parent = this;
 
-    yang_name = "lt"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lt"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::~Lt()
@@ -11224,6 +11358,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::~Lt()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -11301,7 +11436,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "lt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "lt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::Time::~Time()
@@ -11310,6 +11445,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -11457,7 +11593,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::Ne()
 {
     time->parent = this;
 
-    yang_name = "ne"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ne"; yang_parent_name = "valid-start"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::~Ne()
@@ -11466,6 +11602,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::~Ne()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::has_data() const
 {
+    if (is_presence_container) return true;
     return (time !=  nullptr && time->has_data());
 }
 
@@ -11543,7 +11680,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::Time::Time()
     utc{YType::empty, "utc"}
 {
 
-    yang_name = "time"; yang_parent_name = "ne"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "ne"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::Time::~Time()
@@ -11552,6 +11689,7 @@ Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::Time::~Time()
 
 bool Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date1.is_set
 	|| month1.is_set
 	|| date2.is_set
@@ -11700,7 +11838,7 @@ Native::Crypto::Pki::Certificate::Storage::Storage()
     with_keypair{YType::empty, "with-keypair"}
 {
 
-    yang_name = "storage"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "storage"; yang_parent_name = "certificate"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Certificate::Storage::~Storage()
@@ -11709,6 +11847,7 @@ Native::Crypto::Pki::Certificate::Storage::~Storage()
 
 bool Native::Crypto::Pki::Certificate::Storage::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| on.is_set
 	|| with_keypair.is_set;
@@ -11808,14 +11947,14 @@ bool Native::Crypto::Pki::Certificate::Storage::has_leaf_or_child_of_name(const 
 Native::Crypto::Pki::Crl::Crl()
     :
     request{YType::str, "request"}
-    	,
+        ,
     cache(std::make_shared<Native::Crypto::Pki::Crl::Cache>())
-	,download(std::make_shared<Native::Crypto::Pki::Crl::Download>())
+    , download(std::make_shared<Native::Crypto::Pki::Crl::Download>())
 {
     cache->parent = this;
     download->parent = this;
 
-    yang_name = "crl"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "crl"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Crl::~Crl()
@@ -11824,6 +11963,7 @@ Native::Crypto::Pki::Crl::~Crl()
 
 bool Native::Crypto::Pki::Crl::has_data() const
 {
+    if (is_presence_container) return true;
     return request.is_set
 	|| (cache !=  nullptr && cache->has_data())
 	|| (download !=  nullptr && download->has_data());
@@ -11931,7 +12071,7 @@ Native::Crypto::Pki::Crl::Cache::Cache()
     size{YType::uint32, "size"}
 {
 
-    yang_name = "cache"; yang_parent_name = "crl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cache"; yang_parent_name = "crl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Crl::Cache::~Cache()
@@ -11940,6 +12080,7 @@ Native::Crypto::Pki::Crl::Cache::~Cache()
 
 bool Native::Crypto::Pki::Crl::Cache::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set;
 }
 
@@ -12013,14 +12154,14 @@ bool Native::Crypto::Pki::Crl::Cache::has_leaf_or_child_of_name(const std::strin
 Native::Crypto::Pki::Crl::Download::Download()
     :
     trustpoint{YType::str, "trustpoint"}
-    	,
+        ,
     schedule(std::make_shared<Native::Crypto::Pki::Crl::Download::Schedule>())
-	,url(std::make_shared<Native::Crypto::Pki::Crl::Download::Url>())
+    , url(std::make_shared<Native::Crypto::Pki::Crl::Download::Url>())
 {
     schedule->parent = this;
     url->parent = this;
 
-    yang_name = "download"; yang_parent_name = "crl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "download"; yang_parent_name = "crl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Crl::Download::~Download()
@@ -12029,6 +12170,7 @@ Native::Crypto::Pki::Crl::Download::~Download()
 
 bool Native::Crypto::Pki::Crl::Download::has_data() const
 {
+    if (is_presence_container) return true;
     return trustpoint.is_set
 	|| (schedule !=  nullptr && schedule->has_data())
 	|| (url !=  nullptr && url->has_data());
@@ -12134,14 +12276,14 @@ bool Native::Crypto::Pki::Crl::Download::has_leaf_or_child_of_name(const std::st
 Native::Crypto::Pki::Crl::Download::Schedule::Schedule()
     :
     prepublish{YType::uint16, "prepublish"}
-    	,
+        ,
     retries(std::make_shared<Native::Crypto::Pki::Crl::Download::Schedule::Retries>())
-	,time(std::make_shared<Native::Crypto::Pki::Crl::Download::Schedule::Time>())
+    , time(std::make_shared<Native::Crypto::Pki::Crl::Download::Schedule::Time>())
 {
     retries->parent = this;
     time->parent = this;
 
-    yang_name = "schedule"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "schedule"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Crl::Download::Schedule::~Schedule()
@@ -12150,6 +12292,7 @@ Native::Crypto::Pki::Crl::Download::Schedule::~Schedule()
 
 bool Native::Crypto::Pki::Crl::Download::Schedule::has_data() const
 {
+    if (is_presence_container) return true;
     return prepublish.is_set
 	|| (retries !=  nullptr && retries->has_data())
 	|| (time !=  nullptr && time->has_data());
@@ -12258,7 +12401,7 @@ Native::Crypto::Pki::Crl::Download::Schedule::Retries::Retries()
     interval{YType::uint16, "interval"}
 {
 
-    yang_name = "retries"; yang_parent_name = "schedule"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "retries"; yang_parent_name = "schedule"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Crl::Download::Schedule::Retries::~Retries()
@@ -12267,6 +12410,7 @@ Native::Crypto::Pki::Crl::Download::Schedule::Retries::~Retries()
 
 bool Native::Crypto::Pki::Crl::Download::Schedule::Retries::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| interval.is_set;
 }
@@ -12356,7 +12500,7 @@ Native::Crypto::Pki::Crl::Download::Schedule::Time::Time()
     clock_{YType::str, "clock"}
 {
 
-    yang_name = "time"; yang_parent_name = "schedule"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "time"; yang_parent_name = "schedule"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Crl::Download::Schedule::Time::~Time()
@@ -12365,6 +12509,7 @@ Native::Crypto::Pki::Crl::Download::Schedule::Time::~Time()
 
 bool Native::Crypto::Pki::Crl::Download::Schedule::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return date.is_set
 	|| clock_.is_set;
 }
@@ -12455,7 +12600,7 @@ Native::Crypto::Pki::Crl::Download::Url::Url()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "url"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "url"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Crl::Download::Url::~Url()
@@ -12464,6 +12609,7 @@ Native::Crypto::Pki::Crl::Download::Url::~Url()
 
 bool Native::Crypto::Pki::Crl::Download::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| source_interface.is_set
 	|| vrf.is_set;
@@ -12563,14 +12709,14 @@ bool Native::Crypto::Pki::Crl::Download::Url::has_leaf_or_child_of_name(const st
 Native::Crypto::Pki::Export::Export()
     :
     name{YType::str, "name"}
-    	,
+        ,
     pem(std::make_shared<Native::Crypto::Pki::Export::Pem>())
-	,pkcs12(std::make_shared<Native::Crypto::Pki::Export::Pkcs12>())
+    , pkcs12(std::make_shared<Native::Crypto::Pki::Export::Pkcs12>())
 {
     pem->parent = this;
     pkcs12->parent = this;
 
-    yang_name = "export"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "export"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Export::~Export()
@@ -12579,6 +12725,7 @@ Native::Crypto::Pki::Export::~Export()
 
 bool Native::Crypto::Pki::Export::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (pem !=  nullptr && pem->has_data())
 	|| (pkcs12 !=  nullptr && pkcs12->has_data());
@@ -12602,7 +12749,8 @@ std::string Native::Crypto::Pki::Export::get_absolute_path() const
 std::string Native::Crypto::Pki::Export::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "export" <<"[name='" <<name <<"']";
+    path_buffer << "export";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12684,11 +12832,11 @@ bool Native::Crypto::Pki::Export::has_leaf_or_child_of_name(const std::string & 
 Native::Crypto::Pki::Export::Pem::Pem()
     :
     terminal(nullptr) // presence node
-	,url(std::make_shared<Native::Crypto::Pki::Export::Pem::Url>())
+    , url(std::make_shared<Native::Crypto::Pki::Export::Pem::Url>())
 {
     url->parent = this;
 
-    yang_name = "pem"; yang_parent_name = "export"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pem"; yang_parent_name = "export"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Export::Pem::~Pem()
@@ -12697,6 +12845,7 @@ Native::Crypto::Pki::Export::Pem::~Pem()
 
 bool Native::Crypto::Pki::Export::Pem::has_data() const
 {
+    if (is_presence_container) return true;
     return (terminal !=  nullptr && terminal->has_data())
 	|| (url !=  nullptr && url->has_data());
 }
@@ -12782,14 +12931,14 @@ bool Native::Crypto::Pki::Export::Pem::has_leaf_or_child_of_name(const std::stri
 Native::Crypto::Pki::Export::Pem::Terminal::Terminal()
     :
     rollover{YType::empty, "rollover"}
-    	,
+        ,
     pem_3des(std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal::Pem3des>())
-	,des(std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal::Des>())
+    , des(std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal::Des>())
 {
     pem_3des->parent = this;
     des->parent = this;
 
-    yang_name = "terminal"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "terminal"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Pki::Export::Pem::Terminal::~Terminal()
@@ -12798,6 +12947,7 @@ Native::Crypto::Pki::Export::Pem::Terminal::~Terminal()
 
 bool Native::Crypto::Pki::Export::Pem::Terminal::has_data() const
 {
+    if (is_presence_container) return true;
     return rollover.is_set
 	|| (pem_3des !=  nullptr && pem_3des->has_data())
 	|| (des !=  nullptr && des->has_data());
@@ -12898,7 +13048,7 @@ Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::Pem3des()
     password{YType::str, "password"}
 {
 
-    yang_name = "pem-3des"; yang_parent_name = "terminal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pem-3des"; yang_parent_name = "terminal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::~Pem3des()
@@ -12907,6 +13057,7 @@ Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::~Pem3des()
 
 bool Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::has_data() const
 {
+    if (is_presence_container) return true;
     return password.is_set;
 }
 
@@ -12975,7 +13126,7 @@ Native::Crypto::Pki::Export::Pem::Terminal::Des::Des()
     password{YType::str, "password"}
 {
 
-    yang_name = "des"; yang_parent_name = "terminal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "des"; yang_parent_name = "terminal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Export::Pem::Terminal::Des::~Des()
@@ -12984,6 +13135,7 @@ Native::Crypto::Pki::Export::Pem::Terminal::Des::~Des()
 
 bool Native::Crypto::Pki::Export::Pem::Terminal::Des::has_data() const
 {
+    if (is_presence_container) return true;
     return password.is_set;
 }
 
@@ -13054,7 +13206,7 @@ Native::Crypto::Pki::Export::Pem::Url::Url()
     password{YType::str, "password"}
 {
 
-    yang_name = "url"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Export::Pem::Url::~Url()
@@ -13063,6 +13215,7 @@ Native::Crypto::Pki::Export::Pem::Url::~Url()
 
 bool Native::Crypto::Pki::Export::Pem::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return file.is_set
 	|| encrypt.is_set
 	|| password.is_set;
@@ -13158,7 +13311,7 @@ Native::Crypto::Pki::Export::Pkcs12::Pkcs12()
     password{YType::str, "password"}
 {
 
-    yang_name = "pkcs12"; yang_parent_name = "export"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pkcs12"; yang_parent_name = "export"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Export::Pkcs12::~Pkcs12()
@@ -13167,6 +13320,7 @@ Native::Crypto::Pki::Export::Pkcs12::~Pkcs12()
 
 bool Native::Crypto::Pki::Export::Pkcs12::has_data() const
 {
+    if (is_presence_container) return true;
     return file.is_set
 	|| password.is_set;
 }
@@ -13247,14 +13401,14 @@ Native::Crypto::Pki::Import::Import()
     :
     name{YType::str, "name"},
     certificate{YType::empty, "certificate"}
-    	,
+        ,
     pem(std::make_shared<Native::Crypto::Pki::Import::Pem>())
-	,pkcs12(std::make_shared<Native::Crypto::Pki::Import::Pkcs12>())
+    , pkcs12(std::make_shared<Native::Crypto::Pki::Import::Pkcs12>())
 {
     pem->parent = this;
     pkcs12->parent = this;
 
-    yang_name = "import"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "import"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Import::~Import()
@@ -13263,6 +13417,7 @@ Native::Crypto::Pki::Import::~Import()
 
 bool Native::Crypto::Pki::Import::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| certificate.is_set
 	|| (pem !=  nullptr && pem->has_data())
@@ -13288,7 +13443,8 @@ std::string Native::Crypto::Pki::Import::get_absolute_path() const
 std::string Native::Crypto::Pki::Import::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "import" <<"[name='" <<name <<"']";
+    path_buffer << "import";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13383,14 +13539,14 @@ Native::Crypto::Pki::Import::Pem::Pem()
     check{YType::empty, "check"},
     exportable{YType::empty, "exportable"},
     usage_keys{YType::empty, "usage-keys"}
-    	,
+        ,
     terminal(std::make_shared<Native::Crypto::Pki::Import::Pem::Terminal>())
-	,url(std::make_shared<Native::Crypto::Pki::Import::Pem::Url>())
+    , url(std::make_shared<Native::Crypto::Pki::Import::Pem::Url>())
 {
     terminal->parent = this;
     url->parent = this;
 
-    yang_name = "pem"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pem"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Import::Pem::~Pem()
@@ -13399,6 +13555,7 @@ Native::Crypto::Pki::Import::Pem::~Pem()
 
 bool Native::Crypto::Pki::Import::Pem::has_data() const
 {
+    if (is_presence_container) return true;
     return check.is_set
 	|| exportable.is_set
 	|| usage_keys.is_set
@@ -13525,7 +13682,7 @@ Native::Crypto::Pki::Import::Pem::Terminal::Terminal()
     password{YType::str, "password"}
 {
 
-    yang_name = "terminal"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "terminal"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Import::Pem::Terminal::~Terminal()
@@ -13534,6 +13691,7 @@ Native::Crypto::Pki::Import::Pem::Terminal::~Terminal()
 
 bool Native::Crypto::Pki::Import::Pem::Terminal::has_data() const
 {
+    if (is_presence_container) return true;
     return password.is_set;
 }
 
@@ -13603,7 +13761,7 @@ Native::Crypto::Pki::Import::Pem::Url::Url()
     password{YType::str, "password"}
 {
 
-    yang_name = "url"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Import::Pem::Url::~Url()
@@ -13612,6 +13770,7 @@ Native::Crypto::Pki::Import::Pem::Url::~Url()
 
 bool Native::Crypto::Pki::Import::Pem::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return file.is_set
 	|| password.is_set;
 }
@@ -13694,7 +13853,7 @@ Native::Crypto::Pki::Import::Pkcs12::Pkcs12()
     password{YType::str, "password"}
 {
 
-    yang_name = "pkcs12"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pkcs12"; yang_parent_name = "import"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Import::Pkcs12::~Pkcs12()
@@ -13703,6 +13862,7 @@ Native::Crypto::Pki::Import::Pkcs12::~Pkcs12()
 
 bool Native::Crypto::Pki::Import::Pkcs12::has_data() const
 {
+    if (is_presence_container) return true;
     return file.is_set
 	|| password.is_set;
 }
@@ -13780,9 +13940,11 @@ bool Native::Crypto::Pki::Import::Pkcs12::has_leaf_or_child_of_name(const std::s
 }
 
 Native::Crypto::Pki::Profile::Profile()
+    :
+    enrollment(this, {"tag"})
 {
 
-    yang_name = "profile"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Profile::~Profile()
@@ -13791,7 +13953,8 @@ Native::Crypto::Pki::Profile::~Profile()
 
 bool Native::Crypto::Pki::Profile::has_data() const
 {
-    for (std::size_t index=0; index<enrollment.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<enrollment.len(); index++)
     {
         if(enrollment[index]->has_data())
             return true;
@@ -13801,7 +13964,7 @@ bool Native::Crypto::Pki::Profile::has_data() const
 
 bool Native::Crypto::Pki::Profile::has_operation() const
 {
-    for (std::size_t index=0; index<enrollment.size(); index++)
+    for (std::size_t index=0; index<enrollment.len(); index++)
     {
         if(enrollment[index]->has_operation())
             return true;
@@ -13838,7 +14001,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::get_child_by_name(const st
     {
         auto c = std::make_shared<Native::Crypto::Pki::Profile::Enrollment>();
         c->parent = this;
-        enrollment.push_back(c);
+        enrollment.append(c);
         return c;
     }
 
@@ -13850,7 +14013,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : enrollment)
+    for (auto c : enrollment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13881,18 +14044,19 @@ Native::Crypto::Pki::Profile::Enrollment::Enrollment()
     tag{YType::str, "tag"},
     method_est{YType::empty, "method-est"},
     source_interface{YType::str, "source-interface"}
-    	,
+        ,
     authentication(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Authentication>())
-	,enrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Enrollment_>())
-	,reenrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Reenrollment>())
-	,default_(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default>())
+    , enrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Enrollment_>())
+    , parameter(this, {"number"})
+    , reenrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Reenrollment>())
+    , default_(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default>())
 {
     authentication->parent = this;
     enrollment->parent = this;
     reenrollment->parent = this;
     default_->parent = this;
 
-    yang_name = "enrollment"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enrollment"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::~Enrollment()
@@ -13901,7 +14065,8 @@ Native::Crypto::Pki::Profile::Enrollment::~Enrollment()
 
 bool Native::Crypto::Pki::Profile::Enrollment::has_data() const
 {
-    for (std::size_t index=0; index<parameter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<parameter.len(); index++)
     {
         if(parameter[index]->has_data())
             return true;
@@ -13917,7 +14082,7 @@ bool Native::Crypto::Pki::Profile::Enrollment::has_data() const
 
 bool Native::Crypto::Pki::Profile::Enrollment::has_operation() const
 {
-    for (std::size_t index=0; index<parameter.size(); index++)
+    for (std::size_t index=0; index<parameter.len(); index++)
     {
         if(parameter[index]->has_operation())
             return true;
@@ -13942,7 +14107,8 @@ std::string Native::Crypto::Pki::Profile::Enrollment::get_absolute_path() const
 std::string Native::Crypto::Pki::Profile::Enrollment::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "enrollment" <<"[tag='" <<tag <<"']";
+    path_buffer << "enrollment";
+    ADD_KEY_TOKEN(tag, "tag");
     return path_buffer.str();
 }
 
@@ -13982,7 +14148,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::get_child_by_n
     {
         auto c = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Parameter>();
         c->parent = this;
-        parameter.push_back(c);
+        parameter.append(c);
         return c;
     }
 
@@ -14022,7 +14188,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
     }
 
     count = 0;
-    for (auto const & c : parameter)
+    for (auto c : parameter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14092,12 +14258,12 @@ Native::Crypto::Pki::Profile::Enrollment::Authentication::Authentication()
     :
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"}
-    	,
+        ,
     url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Authentication::Url>())
 {
     url->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Authentication::~Authentication()
@@ -14106,6 +14272,7 @@ Native::Crypto::Pki::Profile::Enrollment::Authentication::~Authentication()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| terminal.is_set
 	|| (url !=  nullptr && url->has_data());
@@ -14204,7 +14371,7 @@ Native::Crypto::Pki::Profile::Enrollment::Authentication::Url::Url()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "url"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Authentication::Url::~Url()
@@ -14213,6 +14380,7 @@ Native::Crypto::Pki::Profile::Enrollment::Authentication::Url::~Url()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Authentication::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| vrf.is_set;
 }
@@ -14294,12 +14462,12 @@ Native::Crypto::Pki::Profile::Enrollment::Enrollment_::Enrollment_()
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"},
     credential{YType::str, "credential"}
-    	,
+        ,
     url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Enrollment_::Url>())
 {
     url->parent = this;
 
-    yang_name = "enrollment"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enrollment"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Enrollment_::~Enrollment_()
@@ -14308,6 +14476,7 @@ Native::Crypto::Pki::Profile::Enrollment::Enrollment_::~Enrollment_()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Enrollment_::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| terminal.is_set
 	|| credential.is_set
@@ -14419,7 +14588,7 @@ Native::Crypto::Pki::Profile::Enrollment::Enrollment_::Url::Url()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "url"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Enrollment_::Url::~Url()
@@ -14428,6 +14597,7 @@ Native::Crypto::Pki::Profile::Enrollment::Enrollment_::Url::~Url()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Enrollment_::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| vrf.is_set;
 }
@@ -14511,7 +14681,7 @@ Native::Crypto::Pki::Profile::Enrollment::Parameter::Parameter()
     value_{YType::str, "value"}
 {
 
-    yang_name = "parameter"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parameter"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Parameter::~Parameter()
@@ -14520,6 +14690,7 @@ Native::Crypto::Pki::Profile::Enrollment::Parameter::~Parameter()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Parameter::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| prompt.is_set
 	|| value_.is_set;
@@ -14536,7 +14707,8 @@ bool Native::Crypto::Pki::Profile::Enrollment::Parameter::has_operation() const
 std::string Native::Crypto::Pki::Profile::Enrollment::Parameter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "parameter" <<"[number='" <<number <<"']";
+    path_buffer << "parameter";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -14613,12 +14785,12 @@ Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Reenrollment()
     :
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"}
-    	,
+        ,
     url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url>())
 {
     url->parent = this;
 
-    yang_name = "reenrollment"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reenrollment"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Reenrollment::~Reenrollment()
@@ -14627,6 +14799,7 @@ Native::Crypto::Pki::Profile::Enrollment::Reenrollment::~Reenrollment()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Reenrollment::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| terminal.is_set
 	|| (url !=  nullptr && url->has_data());
@@ -14725,7 +14898,7 @@ Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url::Url()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "url"; yang_parent_name = "reenrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "reenrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url::~Url()
@@ -14734,6 +14907,7 @@ Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url::~Url()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| vrf.is_set;
 }
@@ -14814,16 +14988,17 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Default()
     :
     method_est{YType::empty, "method-est"},
     source_interface{YType::str, "source-interface"}
-    	,
+        ,
     authentication(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Authentication>())
-	,enrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_>())
-	,reenrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment>())
+    , enrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_>())
+    , parameter(this, {"number"})
+    , reenrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment>())
 {
     authentication->parent = this;
     enrollment->parent = this;
     reenrollment->parent = this;
 
-    yang_name = "default"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::~Default()
@@ -14832,7 +15007,8 @@ Native::Crypto::Pki::Profile::Enrollment::Default::~Default()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::has_data() const
 {
-    for (std::size_t index=0; index<parameter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<parameter.len(); index++)
     {
         if(parameter[index]->has_data())
             return true;
@@ -14846,7 +15022,7 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default::has_data() const
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::has_operation() const
 {
-    for (std::size_t index=0; index<parameter.size(); index++)
+    for (std::size_t index=0; index<parameter.len(); index++)
     {
         if(parameter[index]->has_operation())
             return true;
@@ -14901,7 +15077,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::get_c
     {
         auto c = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Parameter>();
         c->parent = this;
-        parameter.push_back(c);
+        parameter.append(c);
         return c;
     }
 
@@ -14932,7 +15108,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
     }
 
     count = 0;
-    for (auto const & c : parameter)
+    for (auto c : parameter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14987,12 +15163,12 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Authenticatio
     :
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"}
-    	,
+        ,
     url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url>())
 {
     url->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::~Authentication()
@@ -15001,6 +15177,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::~Authenticati
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| terminal.is_set
 	|| (url !=  nullptr && url->has_data());
@@ -15099,7 +15276,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::Url()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "url"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::~Url()
@@ -15108,6 +15285,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::~Url()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| vrf.is_set;
 }
@@ -15189,12 +15367,12 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Enrollment_()
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"},
     credential{YType::str, "credential"}
-    	,
+        ,
     url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url>())
 {
     url->parent = this;
 
-    yang_name = "enrollment"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enrollment"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::~Enrollment_()
@@ -15203,6 +15381,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::~Enrollment_()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| terminal.is_set
 	|| credential.is_set
@@ -15314,7 +15493,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::Url()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "url"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::~Url()
@@ -15323,6 +15502,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::~Url()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| vrf.is_set;
 }
@@ -15406,7 +15586,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::Parameter()
     value_{YType::str, "value"}
 {
 
-    yang_name = "parameter"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parameter"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::~Parameter()
@@ -15415,6 +15595,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::~Parameter()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| prompt.is_set
 	|| value_.is_set;
@@ -15431,7 +15612,8 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::has_operation
 std::string Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "parameter" <<"[number='" <<number <<"']";
+    path_buffer << "parameter";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -15508,12 +15690,12 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Reenrollment()
     :
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"}
-    	,
+        ,
     url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url>())
 {
     url->parent = this;
 
-    yang_name = "reenrollment"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reenrollment"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::~Reenrollment()
@@ -15522,6 +15704,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::~Reenrollment()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| terminal.is_set
 	|| (url !=  nullptr && url->has_data());
@@ -15620,7 +15803,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::Url()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "url"; yang_parent_name = "reenrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "url"; yang_parent_name = "reenrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::~Url()
@@ -15629,6 +15812,7 @@ Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::~Url()
 
 bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| vrf.is_set;
 }
@@ -15710,12 +15894,12 @@ Native::Crypto::Pki::Server::Server()
     name{YType::str, "name"},
     issuer_name{YType::str, "issuer-name"},
     grant{YType::enumeration, "grant"}
-    	,
+        ,
     database(std::make_shared<Native::Crypto::Pki::Server::Database>())
 {
     database->parent = this;
 
-    yang_name = "server"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Server::~Server()
@@ -15724,6 +15908,7 @@ Native::Crypto::Pki::Server::~Server()
 
 bool Native::Crypto::Pki::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| issuer_name.is_set
 	|| grant.is_set
@@ -15842,7 +16027,7 @@ Native::Crypto::Pki::Server::Database::Database()
 {
     archive->parent = this;
 
-    yang_name = "database"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "database"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Server::Database::~Database()
@@ -15851,6 +16036,7 @@ Native::Crypto::Pki::Server::Database::~Database()
 
 bool Native::Crypto::Pki::Server::Database::has_data() const
 {
+    if (is_presence_container) return true;
     return (archive !=  nullptr && archive->has_data());
 }
 
@@ -15927,10 +16113,10 @@ bool Native::Crypto::Pki::Server::Database::has_leaf_or_child_of_name(const std:
 Native::Crypto::Pki::Server::Database::Archive::Archive()
     :
     pem(nullptr) // presence node
-	,pkcs12(nullptr) // presence node
+    , pkcs12(nullptr) // presence node
 {
 
-    yang_name = "archive"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "archive"; yang_parent_name = "database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Server::Database::Archive::~Archive()
@@ -15939,6 +16125,7 @@ Native::Crypto::Pki::Server::Database::Archive::~Archive()
 
 bool Native::Crypto::Pki::Server::Database::Archive::has_data() const
 {
+    if (is_presence_container) return true;
     return (pem !=  nullptr && pem->has_data())
 	|| (pkcs12 !=  nullptr && pkcs12->has_data());
 }
@@ -16034,7 +16221,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pem::Pem()
 {
     password->parent = this;
 
-    yang_name = "pem"; yang_parent_name = "archive"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pem"; yang_parent_name = "archive"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Crypto::Pki::Server::Database::Archive::Pem::~Pem()
@@ -16043,6 +16230,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pem::~Pem()
 
 bool Native::Crypto::Pki::Server::Database::Archive::Pem::has_data() const
 {
+    if (is_presence_container) return true;
     return (password !=  nullptr && password->has_data());
 }
 
@@ -16122,7 +16310,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pem::Password::Password()
     passphrase{YType::str, "passphrase"}
 {
 
-    yang_name = "password"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Server::Database::Archive::Pem::Password::~Password()
@@ -16131,6 +16319,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pem::Password::~Password()
 
 bool Native::Crypto::Pki::Server::Database::Archive::Pem::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return encryption_type.is_set
 	|| passphrase.is_set;
 }
@@ -16220,7 +16409,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pkcs12::Pkcs12()
 {
     password->parent = this;
 
-    yang_name = "pkcs12"; yang_parent_name = "archive"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pkcs12"; yang_parent_name = "archive"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Crypto::Pki::Server::Database::Archive::Pkcs12::~Pkcs12()
@@ -16229,6 +16418,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pkcs12::~Pkcs12()
 
 bool Native::Crypto::Pki::Server::Database::Archive::Pkcs12::has_data() const
 {
+    if (is_presence_container) return true;
     return (password !=  nullptr && password->has_data());
 }
 
@@ -16308,7 +16498,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pkcs12::Password::Password()
     passphrase{YType::str, "passphrase"}
 {
 
-    yang_name = "password"; yang_parent_name = "pkcs12"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "pkcs12"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Server::Database::Archive::Pkcs12::Password::~Password()
@@ -16317,6 +16507,7 @@ Native::Crypto::Pki::Server::Database::Archive::Pkcs12::Password::~Password()
 
 bool Native::Crypto::Pki::Server::Database::Archive::Pkcs12::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return encryption_type.is_set
 	|| passphrase.is_set;
 }
@@ -16406,7 +16597,7 @@ Native::Crypto::Pki::PkiServerNoSubmode::PkiServerNoSubmode()
 {
     server->parent = this;
 
-    yang_name = "pki-server-no-submode"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pki-server-no-submode"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::PkiServerNoSubmode::~PkiServerNoSubmode()
@@ -16415,6 +16606,7 @@ Native::Crypto::Pki::PkiServerNoSubmode::~PkiServerNoSubmode()
 
 bool Native::Crypto::Pki::PkiServerNoSubmode::has_data() const
 {
+    if (is_presence_container) return true;
     return (server !=  nullptr && server->has_data());
 }
 
@@ -16495,7 +16687,7 @@ Native::Crypto::Pki::PkiServerNoSubmode::Server::Server()
     cancel{YType::empty, "cancel"}
 {
 
-    yang_name = "server"; yang_parent_name = "pki-server-no-submode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "pki-server-no-submode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::PkiServerNoSubmode::Server::~Server()
@@ -16504,6 +16696,7 @@ Native::Crypto::Pki::PkiServerNoSubmode::Server::~Server()
 
 bool Native::Crypto::Pki::PkiServerNoSubmode::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| rollover.is_set
 	|| cancel.is_set;
@@ -16607,20 +16800,20 @@ Native::Crypto::Pki::Trustpoint::Trustpoint()
     revocation_check{YType::enumeration, "revocation-check"},
     subject_name{YType::str, "subject-name"},
     vrf{YType::str, "vrf"}
-    	,
+        ,
     auto_enroll(std::make_shared<Native::Crypto::Pki::Trustpoint::AutoEnroll>())
-	,enrollment(std::make_shared<Native::Crypto::Pki::Trustpoint::Enrollment>())
-	,password(nullptr) // presence node
-	,rsakeypair(std::make_shared<Native::Crypto::Pki::Trustpoint::Rsakeypair>())
-	,serial_number(nullptr) // presence node
-	,ip_address(std::make_shared<Native::Crypto::Pki::Trustpoint::IpAddress>())
+    , enrollment(std::make_shared<Native::Crypto::Pki::Trustpoint::Enrollment>())
+    , password(nullptr) // presence node
+    , rsakeypair(std::make_shared<Native::Crypto::Pki::Trustpoint::Rsakeypair>())
+    , serial_number(nullptr) // presence node
+    , ip_address(std::make_shared<Native::Crypto::Pki::Trustpoint::IpAddress>())
 {
     auto_enroll->parent = this;
     enrollment->parent = this;
     rsakeypair->parent = this;
     ip_address->parent = this;
 
-    yang_name = "trustpoint"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trustpoint"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Trustpoint::~Trustpoint()
@@ -16629,6 +16822,7 @@ Native::Crypto::Pki::Trustpoint::~Trustpoint()
 
 bool Native::Crypto::Pki::Trustpoint::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| fqdn.is_set
 	|| revocation_check.is_set
@@ -16668,7 +16862,8 @@ std::string Native::Crypto::Pki::Trustpoint::get_absolute_path() const
 std::string Native::Crypto::Pki::Trustpoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trustpoint" <<"[id='" <<id <<"']";
+    path_buffer << "trustpoint";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 

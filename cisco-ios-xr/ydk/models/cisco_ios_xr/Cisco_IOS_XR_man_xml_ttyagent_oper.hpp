@@ -105,7 +105,7 @@ class Netconf::Agent::Tty::Sessions : public ydk::Entity
 
         class Session; //type: Netconf::Agent::Tty::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::Netconf::Agent::Tty::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // Netconf::Agent::Tty::Sessions
 
@@ -241,7 +241,7 @@ class XrXml::Agent::Tty::Sessions : public ydk::Entity
 
         class Session; //type: XrXml::Agent::Tty::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Tty::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // XrXml::Agent::Tty::Sessions
 
@@ -322,7 +322,7 @@ class XrXml::Agent::Default::Sessions : public ydk::Entity
 
         class Session; //type: XrXml::Agent::Default::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Default::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // XrXml::Agent::Default::Sessions
 
@@ -403,7 +403,7 @@ class XrXml::Agent::Ssl::Sessions : public ydk::Entity
 
         class Session; //type: XrXml::Agent::Ssl::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Ssl::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // XrXml::Agent::Ssl::Sessions
 

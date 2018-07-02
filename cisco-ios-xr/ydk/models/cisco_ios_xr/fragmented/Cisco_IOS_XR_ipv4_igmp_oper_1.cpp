@@ -20,12 +20,13 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::SsmMapDetail()
     response_pending{YType::boolean, "response-pending"},
     query_interval{YType::uint32, "query-interval"},
     elapsed_time{YType::uint64, "elapsed-time"}
-    	,
+        ,
     map_info(std::make_shared<Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo>())
+    , sources(this, {})
 {
     map_info->parent = this;
 
-    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
@@ -34,7 +35,8 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
 
 bool Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::has_data() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_data())
             return true;
@@ -50,7 +52,7 @@ bool Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::has_data() const
 
 bool Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::has_operation() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_operation())
             return true;
@@ -109,7 +111,7 @@ std::shared_ptr<Entity> Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetai
     {
         auto c = std::make_shared<Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources>();
         c->parent = this;
-        sources.push_back(c);
+        sources.append(c);
         return c;
     }
 
@@ -126,7 +128,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Standby::DefaultContext::Ssm
     }
 
     count = 0;
-    for (auto const & c : sources)
+    for (auto c : sources.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -216,12 +218,12 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::MapInfo()
     :
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
@@ -230,6 +232,7 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
 
 bool Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return map_type.is_set
 	|| source_counts.is_set
 	|| (group_address_xr !=  nullptr && group_address_xr->has_data());
@@ -336,7 +339,7 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::~GroupAddressXr()
@@ -345,6 +348,7 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddress
 
 bool Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -448,7 +452,7 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::Sources()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::~Sources()
@@ -457,6 +461,7 @@ Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::~Sources()
 
 bool Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -554,9 +559,11 @@ bool Mld::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::has_lea
 }
 
 Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOffs()
+    :
+    interface_state_off(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-offs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-offs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Standby::DefaultContext::InterfaceStateOffs::~InterfaceStateOffs()
@@ -565,7 +572,8 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::~InterfaceStateOffs()
 
 bool Mld::Standby::DefaultContext::InterfaceStateOffs::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_data())
             return true;
@@ -575,7 +583,7 @@ bool Mld::Standby::DefaultContext::InterfaceStateOffs::has_data() const
 
 bool Mld::Standby::DefaultContext::InterfaceStateOffs::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_operation())
             return true;
@@ -612,7 +620,7 @@ std::shared_ptr<Entity> Mld::Standby::DefaultContext::InterfaceStateOffs::get_ch
     {
         auto c = std::make_shared<Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff>();
         c->parent = this;
-        interface_state_off.push_back(c);
+        interface_state_off.append(c);
         return c;
     }
 
@@ -624,7 +632,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Standby::DefaultContext::Int
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_off)
+    for (auto c : interface_state_off.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -701,16 +709,16 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::InterfaceSt
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address>())
-	,querier_address(std::make_shared<Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::~InterfaceStateOff()
@@ -719,6 +727,7 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::~InterfaceS
 
 bool Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -840,7 +849,8 @@ std::string Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff:
 std::string Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-off" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-off";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1468,7 +1478,7 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::Ad
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::~Address()
@@ -1477,6 +1487,7 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::~A
 
 bool Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1573,7 +1584,7 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::~QuerierAddress()
@@ -1582,6 +1593,7 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddr
 
 bool Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1678,7 +1690,7 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberA
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::~SubscriberAddress()
@@ -1687,6 +1699,7 @@ Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberA
 
 bool Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1779,14 +1792,14 @@ bool Mld::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Subscr
 Mld::Active::Active()
     :
     vrfs(std::make_shared<Mld::Active::Vrfs>())
-	,process(std::make_shared<Mld::Active::Process>())
-	,default_context(std::make_shared<Mld::Active::DefaultContext>())
+    , process(std::make_shared<Mld::Active::Process>())
+    , default_context(std::make_shared<Mld::Active::DefaultContext>())
 {
     vrfs->parent = this;
     process->parent = this;
     default_context->parent = this;
 
-    yang_name = "active"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "mld"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::~Active()
@@ -1795,6 +1808,7 @@ Mld::Active::~Active()
 
 bool Mld::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (process !=  nullptr && process->has_data())
 	|| (default_context !=  nullptr && default_context->has_data());
@@ -1901,9 +1915,11 @@ bool Mld::Active::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Mld::Active::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Vrfs::~Vrfs()
@@ -1912,7 +1928,8 @@ Mld::Active::Vrfs::~Vrfs()
 
 bool Mld::Active::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -1922,7 +1939,7 @@ bool Mld::Active::Vrfs::has_data() const
 
 bool Mld::Active::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -1959,7 +1976,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -1971,7 +1988,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2000,24 +2017,24 @@ bool Mld::Active::Vrfs::has_leaf_or_child_of_name(const std::string & name) cons
 Mld::Active::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     summary(std::make_shared<Mld::Active::Vrfs::Vrf::Summary>())
-	,interface_state_ons(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns>())
-	,detail_groups(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups>())
-	,non_active_groups(std::make_shared<Mld::Active::Vrfs::Vrf::NonActiveGroups>())
-	,ssm_maps(std::make_shared<Mld::Active::Vrfs::Vrf::SsmMaps>())
-	,explicit_groups(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups>())
-	,interface_table(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable>())
-	,interface_unicast_qos_adjusts(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts>())
-	,ranges(std::make_shared<Mld::Active::Vrfs::Vrf::Ranges>())
-	,ifrs_interfaces(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces>())
-	,traffic_counters(std::make_shared<Mld::Active::Vrfs::Vrf::TrafficCounters>())
-	,groups(std::make_shared<Mld::Active::Vrfs::Vrf::Groups>())
-	,group_summary(std::make_shared<Mld::Active::Vrfs::Vrf::GroupSummary>())
-	,ifrs_interface_summary(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaceSummary>())
-	,global_interface_table(std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable>())
-	,ssm_map_details(std::make_shared<Mld::Active::Vrfs::Vrf::SsmMapDetails>())
-	,interface_state_offs(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs>())
+    , interface_state_ons(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns>())
+    , detail_groups(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups>())
+    , non_active_groups(std::make_shared<Mld::Active::Vrfs::Vrf::NonActiveGroups>())
+    , ssm_maps(std::make_shared<Mld::Active::Vrfs::Vrf::SsmMaps>())
+    , explicit_groups(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups>())
+    , interface_table(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable>())
+    , interface_unicast_qos_adjusts(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts>())
+    , ranges(std::make_shared<Mld::Active::Vrfs::Vrf::Ranges>())
+    , ifrs_interfaces(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces>())
+    , traffic_counters(std::make_shared<Mld::Active::Vrfs::Vrf::TrafficCounters>())
+    , groups(std::make_shared<Mld::Active::Vrfs::Vrf::Groups>())
+    , group_summary(std::make_shared<Mld::Active::Vrfs::Vrf::GroupSummary>())
+    , ifrs_interface_summary(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaceSummary>())
+    , global_interface_table(std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable>())
+    , ssm_map_details(std::make_shared<Mld::Active::Vrfs::Vrf::SsmMapDetails>())
+    , interface_state_offs(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs>())
 {
     summary->parent = this;
     interface_state_ons->parent = this;
@@ -2037,7 +2054,7 @@ Mld::Active::Vrfs::Vrf::Vrf()
     ssm_map_details->parent = this;
     interface_state_offs->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Vrfs::Vrf::~Vrf()
@@ -2046,6 +2063,7 @@ Mld::Active::Vrfs::Vrf::~Vrf()
 
 bool Mld::Active::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (summary !=  nullptr && summary->has_data())
 	|| (interface_state_ons !=  nullptr && interface_state_ons->has_data())
@@ -2099,7 +2117,8 @@ std::string Mld::Active::Vrfs::Vrf::get_absolute_path() const
 std::string Mld::Active::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -2400,9 +2419,11 @@ Mld::Active::Vrfs::Vrf::Summary::Summary()
     disabled_interface_count{YType::uint32, "disabled-interface-count"},
     tunnel_mte_config_count{YType::uint32, "tunnel-mte-config-count"},
     node_low_memory{YType::boolean, "node-low-memory"}
+        ,
+    interface(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Summary::~Summary()
@@ -2411,7 +2432,8 @@ Mld::Active::Vrfs::Vrf::Summary::~Summary()
 
 bool Mld::Active::Vrfs::Vrf::Summary::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2430,7 +2452,7 @@ bool Mld::Active::Vrfs::Vrf::Summary::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2480,7 +2502,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::Summary::get_child_by_name(const
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::Summary::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2492,7 +2514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Summary::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2630,7 +2652,7 @@ Mld::Active::Vrfs::Vrf::Summary::Interface::Interface()
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"}
 {
 
-    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Summary::Interface::~Interface()
@@ -2639,6 +2661,7 @@ Mld::Active::Vrfs::Vrf::Summary::Interface::~Interface()
 
 bool Mld::Active::Vrfs::Vrf::Summary::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| group_limit.is_set
 	|| group_count.is_set
@@ -2794,9 +2817,11 @@ bool Mld::Active::Vrfs::Vrf::Summary::Interface::has_leaf_or_child_of_name(const
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOns()
+    :
+    interface_state_on(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-ons"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-ons"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOns::~InterfaceStateOns()
@@ -2805,7 +2830,8 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::~InterfaceStateOns()
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_data())
             return true;
@@ -2815,7 +2841,7 @@ bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_operation())
             return true;
@@ -2845,7 +2871,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::InterfaceStateOns::get_child_by_
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn>();
         c->parent = this;
-        interface_state_on.push_back(c);
+        interface_state_on.append(c);
         return c;
     }
 
@@ -2857,7 +2883,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_on)
+    for (auto c : interface_state_on.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2934,16 +2960,16 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::InterfaceStateOn()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address>())
-	,querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::~InterfaceStateOn()
@@ -2952,6 +2978,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::~InterfaceStateOn()
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -3066,7 +3093,8 @@ bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::has_operation(
 std::string Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-on" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-on";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3694,7 +3722,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::~Address()
@@ -3703,6 +3731,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::~Address()
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3799,7 +3828,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::Que
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::~QuerierAddress()
@@ -3808,6 +3837,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::~Qu
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3904,7 +3934,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::~SubscriberAddress()
@@ -3913,6 +3943,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4003,9 +4034,11 @@ bool Mld::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn::SubscriberAddr
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroups()
+    :
+    detail_group(this, {})
 {
 
-    yang_name = "detail-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::~DetailGroups()
@@ -4014,7 +4047,8 @@ Mld::Active::Vrfs::Vrf::DetailGroups::~DetailGroups()
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::has_data() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_data())
             return true;
@@ -4024,7 +4058,7 @@ bool Mld::Active::Vrfs::Vrf::DetailGroups::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::has_operation() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_operation())
             return true;
@@ -4054,7 +4088,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::DetailGroups::get_child_by_name(
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup>();
         c->parent = this;
-        detail_group.push_back(c);
+        detail_group.append(c);
         return c;
     }
 
@@ -4066,7 +4100,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::DetailGro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_group)
+    for (auto c : detail_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4099,12 +4133,13 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::DetailGroup()
     source_address{YType::str, "source-address"},
     is_router_exclude_mode{YType::boolean, "is-router-exclude-mode"},
     is_host_exclude_mode{YType::boolean, "is-host-exclude-mode"}
-    	,
+        ,
     group_info(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo>())
+    , source(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::~DetailGroup()
@@ -4113,7 +4148,8 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::~DetailGroup()
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::has_data() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_data())
             return true;
@@ -4128,7 +4164,7 @@ bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::has_operation() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_operation())
             return true;
@@ -4178,7 +4214,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::get_c
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source>();
         c->parent = this;
-        source.push_back(c);
+        source.append(c);
         return c;
     }
 
@@ -4195,7 +4231,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::DetailGro
     }
 
     count = 0;
-    for (auto const & c : source)
+    for (auto c : source.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4285,16 +4321,16 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupInfo()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
@@ -4303,6 +4339,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -4564,7 +4601,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::Gr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -4573,6 +4610,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::~G
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4669,7 +4707,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::Last
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::~LastReporter()
@@ -4678,6 +4716,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::~Las
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4774,7 +4813,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::Sou
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -4783,6 +4822,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::~So
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4882,12 +4922,12 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::Source()
     is_we_report{YType::boolean, "is-we-report"},
     flags{YType::int32, "flags"},
     is_added{YType::boolean, "is-added"}
-    	,
+        ,
     source_address(std::make_shared<Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress>())
 {
     source_address->parent = this;
 
-    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::~Source()
@@ -4896,6 +4936,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::~Source()
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return uptime.is_set
 	|| expiration_time.is_set
 	|| is_local.is_set
@@ -5073,7 +5114,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::Source
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::~SourceAddress()
@@ -5082,6 +5123,7 @@ Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::~Sourc
 
 bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5172,9 +5214,11 @@ bool Mld::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source::SourceAddress::h
 }
 
 Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups()
+    :
+    non_active_groups(this, {})
 {
 
-    yang_name = "non-active-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-active-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::NonActiveGroups::~NonActiveGroups()
@@ -5183,7 +5227,8 @@ Mld::Active::Vrfs::Vrf::NonActiveGroups::~NonActiveGroups()
 
 bool Mld::Active::Vrfs::Vrf::NonActiveGroups::has_data() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_data())
             return true;
@@ -5193,7 +5238,7 @@ bool Mld::Active::Vrfs::Vrf::NonActiveGroups::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::NonActiveGroups::has_operation() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_operation())
             return true;
@@ -5223,7 +5268,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::NonActiveGroups::get_child_by_na
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_>();
         c->parent = this;
-        non_active_groups.push_back(c);
+        non_active_groups.append(c);
         return c;
     }
 
@@ -5235,7 +5280,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::NonActive
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : non_active_groups)
+    for (auto c : non_active_groups.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5265,14 +5310,14 @@ Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::NonActiveGroups_()
     :
     interface{YType::str, "interface"},
     reason_for_non_activity{YType::str, "reason-for-non-activity"}
-    	,
+        ,
     group_address(std::make_shared<Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress>())
-	,source_address(std::make_shared<Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress>())
+    , source_address(std::make_shared<Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress>())
 {
     group_address->parent = this;
     source_address->parent = this;
 
-    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::~NonActiveGroups_()
@@ -5281,6 +5326,7 @@ Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::~NonActiveGroups_()
 
 bool Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| reason_for_non_activity.is_set
 	|| (group_address !=  nullptr && group_address->has_data())
@@ -5396,7 +5442,7 @@ Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::GroupAd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::~GroupAddress()
@@ -5405,6 +5451,7 @@ Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::~GroupA
 
 bool Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::GroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5501,7 +5548,7 @@ Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::Source
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::~SourceAddress()
@@ -5510,6 +5557,7 @@ Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::~Sourc
 
 bool Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5600,9 +5648,11 @@ bool Mld::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::SourceAddress::h
 }
 
 Mld::Active::Vrfs::Vrf::SsmMaps::SsmMaps()
+    :
+    ssm_map(this, {})
 {
 
-    yang_name = "ssm-maps"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-maps"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMaps::~SsmMaps()
@@ -5611,7 +5661,8 @@ Mld::Active::Vrfs::Vrf::SsmMaps::~SsmMaps()
 
 bool Mld::Active::Vrfs::Vrf::SsmMaps::has_data() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_data())
             return true;
@@ -5621,7 +5672,7 @@ bool Mld::Active::Vrfs::Vrf::SsmMaps::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::SsmMaps::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_operation())
             return true;
@@ -5651,7 +5702,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::SsmMaps::get_child_by_name(const
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap>();
         c->parent = this;
-        ssm_map.push_back(c);
+        ssm_map.append(c);
         return c;
     }
 
@@ -5663,7 +5714,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::SsmMaps::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_map)
+    for (auto c : ssm_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5695,12 +5746,12 @@ Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::SsmMap()
     group_address{YType::str, "group-address"},
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::~SsmMap()
@@ -5709,6 +5760,7 @@ Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::~SsmMap()
 
 bool Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::has_data() const
 {
+    if (is_presence_container) return true;
     return ssm_map_type.is_set
 	|| group_address.is_set
 	|| map_type.is_set
@@ -5834,7 +5886,7 @@ Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
@@ -5843,6 +5895,7 @@ Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
 
 bool Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5933,9 +5986,11 @@ bool Mld::Active::Vrfs::Vrf::SsmMaps::SsmMap::GroupAddressXr::has_leaf_or_child_
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroups()
+    :
+    explicit_group(this, {})
 {
 
-    yang_name = "explicit-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::~ExplicitGroups()
@@ -5944,7 +5999,8 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::~ExplicitGroups()
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::has_data() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_data())
             return true;
@@ -5954,7 +6010,7 @@ bool Mld::Active::Vrfs::Vrf::ExplicitGroups::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::has_operation() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_operation())
             return true;
@@ -5984,7 +6040,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::ExplicitGroups::get_child_by_nam
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup>();
         c->parent = this;
-        explicit_group.push_back(c);
+        explicit_group.append(c);
         return c;
     }
 
@@ -5996,7 +6052,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::ExplicitG
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : explicit_group)
+    for (auto c : explicit_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6029,12 +6085,13 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::ExplicitGroup()
     source_address{YType::str, "source-address"},
     include_hosts{YType::uint32, "include-hosts"},
     exclude_hosts{YType::uint32, "exclude-hosts"}
-    	,
+        ,
     group_info(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo>())
+    , host(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
@@ -6043,7 +6100,8 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -6058,7 +6116,7 @@ bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -6108,7 +6166,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::g
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -6125,7 +6183,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::ExplicitG
     }
 
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6215,16 +6273,16 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupInfo()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupInfo()
@@ -6233,6 +6291,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupInfo()
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -6494,7 +6553,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -6503,6 +6562,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6599,7 +6659,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::~LastReporter()
@@ -6608,6 +6668,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6704,7 +6765,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -6713,6 +6774,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress:
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6808,12 +6870,13 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Host()
     is_exclude{YType::boolean, "is-exclude"},
     expiration_time{YType::uint32, "expiration-time"},
     source_count{YType::uint32, "source-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address>())
+    , source_address(this, {})
 {
     address->parent = this;
 
-    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::~Host()
@@ -6822,7 +6885,8 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::~Host()
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::has_data() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_data())
             return true;
@@ -6836,7 +6900,7 @@ bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::has_data() con
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::has_operation() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_operation())
             return true;
@@ -6884,7 +6948,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::H
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress>();
         c->parent = this;
-        source_address.push_back(c);
+        source_address.append(c);
         return c;
     }
 
@@ -6901,7 +6965,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::ExplicitG
     }
 
     count = 0;
-    for (auto const & c : source_address)
+    for (auto c : source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6974,7 +7038,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::~Address()
@@ -6983,6 +7047,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::~Address()
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7079,7 +7144,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::Sour
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::~SourceAddress()
@@ -7088,6 +7153,7 @@ Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::~Sou
 
 bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7178,9 +7244,11 @@ bool Mld::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress:
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceTable::InterfaceTable()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceTable::~InterfaceTable()
@@ -7189,7 +7257,8 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::~InterfaceTable()
 
 bool Mld::Active::Vrfs::Vrf::InterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -7199,7 +7268,7 @@ bool Mld::Active::Vrfs::Vrf::InterfaceTable::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::InterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -7229,7 +7298,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::InterfaceTable::get_child_by_nam
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -7241,7 +7310,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7318,16 +7387,16 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::Interface()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::Address>())
-	,querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::~Interface()
@@ -7336,6 +7405,7 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::~Interface()
 
 bool Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -7450,7 +7520,8 @@ bool Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::has_operation() const
 std::string Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8078,7 +8149,7 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::~Address()
@@ -8087,6 +8158,7 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::~Address()
 
 bool Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8183,7 +8255,7 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::QuerierAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::~QuerierAddress()
@@ -8192,6 +8264,7 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::~QuerierAddre
 
 bool Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8288,7 +8361,7 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::Subscriber
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::~SubscriberAddress()
@@ -8297,6 +8370,7 @@ Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::~Subscribe
 
 bool Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8387,9 +8461,11 @@ bool Mld::Active::Vrfs::Vrf::InterfaceTable::Interface::SubscriberAddress::has_l
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjusts()
+    :
+    interface_unicast_qos_adjust(this, {"interface_name"})
 {
 
-    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAdjusts()
@@ -8398,7 +8474,8 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAdjusts(
 
 bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::has_data() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_data())
             return true;
@@ -8408,7 +8485,7 @@ bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::has_operation() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_operation())
             return true;
@@ -8438,7 +8515,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::get_
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust>();
         c->parent = this;
-        interface_unicast_qos_adjust.push_back(c);
+        interface_unicast_qos_adjust.append(c);
         return c;
     }
 
@@ -8450,7 +8527,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_unicast_qos_adjust)
+    for (auto c : interface_unicast_qos_adjust.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8483,9 +8560,11 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::I
     rate{YType::uint32, "rate"},
     rate_increments{YType::uint32, "rate-increments"},
     rate_decrements{YType::uint32, "rate-decrements"}
+        ,
+    update(this, {})
 {
 
-    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::~InterfaceUnicastQosAdjust()
@@ -8494,7 +8573,8 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::~
 
 bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_data() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_data())
             return true;
@@ -8508,7 +8588,7 @@ bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
 
 bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_operation() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_operation())
             return true;
@@ -8524,7 +8604,8 @@ bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
 std::string Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-unicast-qos-adjust" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-unicast-qos-adjust";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8548,7 +8629,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::Inte
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update>();
         c->parent = this;
-        update.push_back(c);
+        update.append(c);
         return c;
     }
 
@@ -8560,7 +8641,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : update)
+    for (auto c : update.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8641,14 +8722,14 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::U
     is_add{YType::boolean, "is-add"},
     weight{YType::uint32, "weight"},
     received_time{YType::uint64, "received-time"}
-    	,
+        ,
     source_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress>())
-	,group_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
+    , group_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
 {
     source_address->parent = this;
     group_address->parent = this;
 
-    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::~Update()
@@ -8657,6 +8738,7 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::U
 
 bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return is_add.is_set
 	|| weight.is_set
 	|| received_time.is_set
@@ -8785,7 +8867,7 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::U
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::~SourceAddress()
@@ -8794,6 +8876,7 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::U
 
 bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8890,7 +8973,7 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::U
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::~GroupAddress()
@@ -8899,6 +8982,7 @@ Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::U
 
 bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8989,9 +9073,11 @@ bool Mld::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
 }
 
 Mld::Active::Vrfs::Vrf::Ranges::Ranges()
+    :
+    range(this, {})
 {
 
-    yang_name = "ranges"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ranges"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Ranges::~Ranges()
@@ -9000,7 +9086,8 @@ Mld::Active::Vrfs::Vrf::Ranges::~Ranges()
 
 bool Mld::Active::Vrfs::Vrf::Ranges::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -9010,7 +9097,7 @@ bool Mld::Active::Vrfs::Vrf::Ranges::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::Ranges::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -9040,7 +9127,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::Ranges::get_child_by_name(const 
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::Ranges::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -9052,7 +9139,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Ranges::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9081,16 +9168,16 @@ bool Mld::Active::Vrfs::Vrf::Ranges::has_leaf_or_child_of_name(const std::string
 Mld::Active::Vrfs::Vrf::Ranges::Range::Range()
     :
     group_address{YType::str, "group-address"},
-    group_mask{YType::int32, "group-mask"},
+    group_mask{YType::uint32, "group-mask"},
     prefix_length{YType::uint32, "prefix-length"},
     protocol{YType::enumeration, "protocol"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Ranges::Range::~Range()
@@ -9099,6 +9186,7 @@ Mld::Active::Vrfs::Vrf::Ranges::Range::~Range()
 
 bool Mld::Active::Vrfs::Vrf::Ranges::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_mask.is_set
 	|| prefix_length.is_set
@@ -9237,7 +9325,7 @@ Mld::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::~GroupAddressXr()
@@ -9246,6 +9334,7 @@ Mld::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::~GroupAddressXr()
 
 bool Mld::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9336,9 +9425,11 @@ bool Mld::Active::Vrfs::Vrf::Ranges::Range::GroupAddressXr::has_leaf_or_child_of
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterfaces()
+    :
+    ifrs_interface(this, {"interface_name"})
 {
 
-    yang_name = "ifrs-interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaces::~IfrsInterfaces()
@@ -9347,7 +9438,8 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::~IfrsInterfaces()
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_data())
             return true;
@@ -9357,7 +9449,7 @@ bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_operation())
             return true;
@@ -9387,7 +9479,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::IfrsInterfaces::get_child_by_nam
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface>();
         c->parent = this;
-        ifrs_interface.push_back(c);
+        ifrs_interface.append(c);
         return c;
     }
 
@@ -9399,7 +9491,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::IfrsInter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifrs_interface)
+    for (auto c : ifrs_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9429,12 +9521,12 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IfrsInterface()
     :
     interface_name{YType::str, "interface-name"},
     join_group_count{YType::uint32, "join-group-count"}
-    	,
+        ,
     igmp_interface_entry(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry>())
 {
     igmp_interface_entry->parent = this;
 
-    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::~IfrsInterface()
@@ -9443,6 +9535,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::~IfrsInterface()
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| join_group_count.is_set
 	|| (igmp_interface_entry !=  nullptr && igmp_interface_entry->has_data());
@@ -9459,7 +9552,8 @@ bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_operation() cons
 std::string Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifrs-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "ifrs-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -9585,16 +9679,16 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::IgmpI
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address>())
-	,querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "igmp-interface-entry"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp-interface-entry"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::~IgmpInterfaceEntry()
@@ -9603,6 +9697,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::~Igmp
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| state.is_set
 	|| prefix_length.is_set
@@ -10332,7 +10427,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Addre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::~Address()
@@ -10341,6 +10436,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Addre
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10437,7 +10533,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Queri
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::~QuerierAddress()
@@ -10446,6 +10542,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Queri
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10542,7 +10639,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Subsc
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::~SubscriberAddress()
@@ -10551,6 +10648,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Subsc
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10679,7 +10777,7 @@ Mld::Active::Vrfs::Vrf::TrafficCounters::TrafficCounters()
     input_no_platform_support_mtrace{YType::uint32, "input-no-platform-support-mtrace"}
 {
 
-    yang_name = "traffic-counters"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-counters"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::TrafficCounters::~TrafficCounters()
@@ -10688,6 +10786,7 @@ Mld::Active::Vrfs::Vrf::TrafficCounters::~TrafficCounters()
 
 bool Mld::Active::Vrfs::Vrf::TrafficCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return elapsed_time.is_set
 	|| packets_in.is_set
 	|| packets_out.is_set
@@ -11194,9 +11293,11 @@ bool Mld::Active::Vrfs::Vrf::TrafficCounters::has_leaf_or_child_of_name(const st
 }
 
 Mld::Active::Vrfs::Vrf::Groups::Groups()
+    :
+    group(this, {})
 {
 
-    yang_name = "groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "groups"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Groups::~Groups()
@@ -11205,7 +11306,8 @@ Mld::Active::Vrfs::Vrf::Groups::~Groups()
 
 bool Mld::Active::Vrfs::Vrf::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -11215,7 +11317,7 @@ bool Mld::Active::Vrfs::Vrf::Groups::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -11245,7 +11347,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::Groups::get_child_by_name(const 
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -11257,7 +11359,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Groups::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11299,16 +11401,16 @@ Mld::Active::Vrfs::Vrf::Groups::Group::Group()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr>())
-	,last_reporter(std::make_shared<Mld::Active::Vrfs::Vrf::Groups::Group::LastReporter>())
-	,source_address(std::make_shared<Mld::Active::Vrfs::Vrf::Groups::Group::SourceAddress>())
+    , last_reporter(std::make_shared<Mld::Active::Vrfs::Vrf::Groups::Group::LastReporter>())
+    , source_address(std::make_shared<Mld::Active::Vrfs::Vrf::Groups::Group::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Groups::Group::~Group()
@@ -11317,6 +11419,7 @@ Mld::Active::Vrfs::Vrf::Groups::Group::~Group()
 
 bool Mld::Active::Vrfs::Vrf::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| interface_name.is_set
 	|| interface_name_xr.is_set
@@ -11604,7 +11707,7 @@ Mld::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::~GroupAddressXr()
@@ -11613,6 +11716,7 @@ Mld::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::~GroupAddressXr()
 
 bool Mld::Active::Vrfs::Vrf::Groups::Group::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -11709,7 +11813,7 @@ Mld::Active::Vrfs::Vrf::Groups::Group::LastReporter::LastReporter()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Groups::Group::LastReporter::~LastReporter()
@@ -11718,6 +11822,7 @@ Mld::Active::Vrfs::Vrf::Groups::Group::LastReporter::~LastReporter()
 
 bool Mld::Active::Vrfs::Vrf::Groups::Group::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -11814,7 +11919,7 @@ Mld::Active::Vrfs::Vrf::Groups::Group::SourceAddress::SourceAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::Groups::Group::SourceAddress::~SourceAddress()
@@ -11823,6 +11928,7 @@ Mld::Active::Vrfs::Vrf::Groups::Group::SourceAddress::~SourceAddress()
 
 bool Mld::Active::Vrfs::Vrf::Groups::Group::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -11920,7 +12026,7 @@ Mld::Active::Vrfs::Vrf::GroupSummary::GroupSummary()
     is_low_memory{YType::boolean, "is-low-memory"}
 {
 
-    yang_name = "group-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::GroupSummary::~GroupSummary()
@@ -11929,6 +12035,7 @@ Mld::Active::Vrfs::Vrf::GroupSummary::~GroupSummary()
 
 bool Mld::Active::Vrfs::Vrf::GroupSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return groutes.is_set
 	|| sg_routes.is_set
 	|| group_count.is_set
@@ -12037,7 +12144,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaceSummary::IfrsInterfaceSummary()
     configuration_count{YType::uint32, "configuration-count"}
 {
 
-    yang_name = "ifrs-interface-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interface-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::IfrsInterfaceSummary::~IfrsInterfaceSummary()
@@ -12046,6 +12153,7 @@ Mld::Active::Vrfs::Vrf::IfrsInterfaceSummary::~IfrsInterfaceSummary()
 
 bool Mld::Active::Vrfs::Vrf::IfrsInterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| configuration_count.is_set;
 }
@@ -12123,9 +12231,11 @@ bool Mld::Active::Vrfs::Vrf::IfrsInterfaceSummary::has_leaf_or_child_of_name(con
 }
 
 Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::GlobalInterfaceTable()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "global-interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-interface-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::~GlobalInterfaceTable()
@@ -12134,7 +12244,8 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::~GlobalInterfaceTable()
 
 bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -12144,7 +12255,7 @@ bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -12174,7 +12285,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::get_child_
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -12186,7 +12297,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::GlobalInt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12263,16 +12374,16 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Interface()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address>())
-	,querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "global-interface-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "global-interface-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::~Interface()
@@ -12281,6 +12392,7 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::~Interface()
 
 bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -12395,7 +12507,8 @@ bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::has_operation() co
 std::string Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -13023,7 +13136,7 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::~Address()
@@ -13032,6 +13145,7 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::~Address()
 
 bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13128,7 +13242,7 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::Querier
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::~QuerierAddress()
@@ -13137,6 +13251,7 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::~Querie
 
 bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13233,7 +13348,7 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::Subs
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::~SubscriberAddress()
@@ -13242,6 +13357,7 @@ Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::~Sub
 
 bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13332,9 +13448,11 @@ bool Mld::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface::SubscriberAddress:
 }
 
 Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetails()
+    :
+    ssm_map_detail(this, {})
 {
 
-    yang_name = "ssm-map-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-map-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMapDetails::~SsmMapDetails()
@@ -13343,7 +13461,8 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::~SsmMapDetails()
 
 bool Mld::Active::Vrfs::Vrf::SsmMapDetails::has_data() const
 {
-    for (std::size_t index=0; index<ssm_map_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_map_detail.len(); index++)
     {
         if(ssm_map_detail[index]->has_data())
             return true;
@@ -13353,7 +13472,7 @@ bool Mld::Active::Vrfs::Vrf::SsmMapDetails::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::SsmMapDetails::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_map_detail.size(); index++)
+    for (std::size_t index=0; index<ssm_map_detail.len(); index++)
     {
         if(ssm_map_detail[index]->has_operation())
             return true;
@@ -13383,7 +13502,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::SsmMapDetails::get_child_by_name
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail>();
         c->parent = this;
-        ssm_map_detail.push_back(c);
+        ssm_map_detail.append(c);
         return c;
     }
 
@@ -13395,7 +13514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::SsmMapDet
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_map_detail)
+    for (auto c : ssm_map_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13429,12 +13548,13 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::SsmMapDetail()
     response_pending{YType::boolean, "response-pending"},
     query_interval{YType::uint32, "query-interval"},
     elapsed_time{YType::uint64, "elapsed-time"}
-    	,
+        ,
     map_info(std::make_shared<Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo>())
+    , sources(this, {})
 {
     map_info->parent = this;
 
-    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssm-map-detail"; yang_parent_name = "ssm-map-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
@@ -13443,7 +13563,8 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::~SsmMapDetail()
 
 bool Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::has_data() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_data())
             return true;
@@ -13459,7 +13580,7 @@ bool Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::has_operation() const
 {
-    for (std::size_t index=0; index<sources.size(); index++)
+    for (std::size_t index=0; index<sources.len(); index++)
     {
         if(sources[index]->has_operation())
             return true;
@@ -13511,7 +13632,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources>();
         c->parent = this;
-        sources.push_back(c);
+        sources.append(c);
         return c;
     }
 
@@ -13528,7 +13649,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::SsmMapDet
     }
 
     count = 0;
-    for (auto const & c : sources)
+    for (auto c : sources.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13618,12 +13739,12 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::MapInfo()
     :
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map-info"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
@@ -13632,6 +13753,7 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::~MapInfo()
 
 bool Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return map_type.is_set
 	|| source_counts.is_set
 	|| (group_address_xr !=  nullptr && group_address_xr->has_data());
@@ -13731,7 +13853,7 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::Gr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-xr"; yang_parent_name = "map-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::~GroupAddressXr()
@@ -13740,6 +13862,7 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::~G
 
 bool Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13836,7 +13959,7 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::Sources()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sources"; yang_parent_name = "ssm-map-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::~Sources()
@@ -13845,6 +13968,7 @@ Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::~Sources()
 
 bool Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13935,9 +14059,11 @@ bool Mld::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::has_leaf_or_c
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOffs()
+    :
+    interface_state_off(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-offs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-offs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOffs::~InterfaceStateOffs()
@@ -13946,7 +14072,8 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::~InterfaceStateOffs()
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_data())
             return true;
@@ -13956,7 +14083,7 @@ bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::has_data() const
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_off.size(); index++)
+    for (std::size_t index=0; index<interface_state_off.len(); index++)
     {
         if(interface_state_off[index]->has_operation())
             return true;
@@ -13986,7 +14113,7 @@ std::shared_ptr<Entity> Mld::Active::Vrfs::Vrf::InterfaceStateOffs::get_child_by
     {
         auto c = std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff>();
         c->parent = this;
-        interface_state_off.push_back(c);
+        interface_state_off.append(c);
         return c;
     }
 
@@ -13998,7 +14125,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Vrfs::Vrf::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_off)
+    for (auto c : interface_state_off.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14075,16 +14202,16 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::InterfaceStateOff
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address>())
-	,querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-state-off"; yang_parent_name = "interface-state-offs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::~InterfaceStateOff()
@@ -14093,6 +14220,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::~InterfaceStateOf
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -14207,7 +14335,8 @@ bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::has_operatio
 std::string Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-off" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-off";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -14835,7 +14964,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::Address(
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::~Address()
@@ -14844,6 +14973,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::~Address
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -14940,7 +15070,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::Q
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::~QuerierAddress()
@@ -14949,6 +15079,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::~
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -15045,7 +15176,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-off"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::~SubscriberAddress()
@@ -15054,6 +15185,7 @@ Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress
 
 bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -15146,11 +15278,11 @@ bool Mld::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff::SubscriberAd
 Mld::Active::Process::Process()
     :
     amt_summary(std::make_shared<Mld::Active::Process::AmtSummary>())
-	,nsr(std::make_shared<Mld::Active::Process::Nsr>())
-	,amt_gatewaies(std::make_shared<Mld::Active::Process::AmtGatewaies>())
-	,unicast_qos_adjust_stats(std::make_shared<Mld::Active::Process::UnicastQosAdjustStats>())
-	,bvi_statistics(std::make_shared<Mld::Active::Process::BviStatistics>())
-	,nsf(std::make_shared<Mld::Active::Process::Nsf>())
+    , nsr(std::make_shared<Mld::Active::Process::Nsr>())
+    , amt_gatewaies(std::make_shared<Mld::Active::Process::AmtGatewaies>())
+    , unicast_qos_adjust_stats(std::make_shared<Mld::Active::Process::UnicastQosAdjustStats>())
+    , bvi_statistics(std::make_shared<Mld::Active::Process::BviStatistics>())
+    , nsf(std::make_shared<Mld::Active::Process::Nsf>())
 {
     amt_summary->parent = this;
     nsr->parent = this;
@@ -15159,7 +15291,7 @@ Mld::Active::Process::Process()
     bvi_statistics->parent = this;
     nsf->parent = this;
 
-    yang_name = "process"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::~Process()
@@ -15168,6 +15300,7 @@ Mld::Active::Process::~Process()
 
 bool Mld::Active::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return (amt_summary !=  nullptr && amt_summary->has_data())
 	|| (nsr !=  nullptr && nsr->has_data())
 	|| (amt_gatewaies !=  nullptr && amt_gatewaies->has_data())
@@ -15339,7 +15472,7 @@ Mld::Active::Process::AmtSummary::AmtSummary()
     is_ou_of_resource{YType::boolean, "is-ou-of-resource"}
 {
 
-    yang_name = "amt-summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amt-summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::AmtSummary::~AmtSummary()
@@ -15348,6 +15481,7 @@ Mld::Active::Process::AmtSummary::~AmtSummary()
 
 bool Mld::Active::Process::AmtSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return anycast_prefix.is_set
 	|| prefix_length.is_set
 	|| relay_address.is_set
@@ -15604,7 +15738,7 @@ Mld::Active::Process::Nsr::Nsr()
     count_rmf_not_ready{YType::uint32, "count-rmf-not-ready"}
 {
 
-    yang_name = "nsr"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsr"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::Nsr::~Nsr()
@@ -15613,6 +15747,7 @@ Mld::Active::Process::Nsr::~Nsr()
 
 bool Mld::Active::Process::Nsr::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| partner_proc_connected.is_set
 	|| collab_conv_done.is_set
@@ -15840,9 +15975,11 @@ bool Mld::Active::Process::Nsr::has_leaf_or_child_of_name(const std::string & na
 }
 
 Mld::Active::Process::AmtGatewaies::AmtGatewaies()
+    :
+    amt_gateway(this, {})
 {
 
-    yang_name = "amt-gatewaies"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amt-gatewaies"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::AmtGatewaies::~AmtGatewaies()
@@ -15851,7 +15988,8 @@ Mld::Active::Process::AmtGatewaies::~AmtGatewaies()
 
 bool Mld::Active::Process::AmtGatewaies::has_data() const
 {
-    for (std::size_t index=0; index<amt_gateway.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<amt_gateway.len(); index++)
     {
         if(amt_gateway[index]->has_data())
             return true;
@@ -15861,7 +15999,7 @@ bool Mld::Active::Process::AmtGatewaies::has_data() const
 
 bool Mld::Active::Process::AmtGatewaies::has_operation() const
 {
-    for (std::size_t index=0; index<amt_gateway.size(); index++)
+    for (std::size_t index=0; index<amt_gateway.len(); index++)
     {
         if(amt_gateway[index]->has_operation())
             return true;
@@ -15898,7 +16036,7 @@ std::shared_ptr<Entity> Mld::Active::Process::AmtGatewaies::get_child_by_name(co
     {
         auto c = std::make_shared<Mld::Active::Process::AmtGatewaies::AmtGateway>();
         c->parent = this;
-        amt_gateway.push_back(c);
+        amt_gateway.append(c);
         return c;
     }
 
@@ -15910,7 +16048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::Process::AmtGatewaie
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : amt_gateway)
+    for (auto c : amt_gateway.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15939,7 +16077,7 @@ bool Mld::Active::Process::AmtGatewaies::has_leaf_or_child_of_name(const std::st
 Mld::Active::Process::AmtGatewaies::AmtGateway::AmtGateway()
     :
     gateway_address{YType::str, "gateway-address"},
-    port{YType::int32, "port"},
+    port{YType::uint32, "port"},
     amtgw{YType::str, "amtgw"},
     amt_port{YType::uint32, "amt-port"},
     key_len{YType::uint32, "key-len"},
@@ -15950,7 +16088,7 @@ Mld::Active::Process::AmtGatewaies::AmtGateway::AmtGateway()
     mem_upd_out{YType::uint32, "mem-upd-out"}
 {
 
-    yang_name = "amt-gateway"; yang_parent_name = "amt-gatewaies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amt-gateway"; yang_parent_name = "amt-gatewaies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::AmtGatewaies::AmtGateway::~AmtGateway()
@@ -15959,6 +16097,7 @@ Mld::Active::Process::AmtGatewaies::AmtGateway::~AmtGateway()
 
 bool Mld::Active::Process::AmtGatewaies::AmtGateway::has_data() const
 {
+    if (is_presence_container) return true;
     return gateway_address.is_set
 	|| port.is_set
 	|| amtgw.is_set
@@ -16166,7 +16305,7 @@ Mld::Active::Process::UnicastQosAdjustStats::UnicastQosAdjustStats()
     last_download_time{YType::uint64, "last-download-time"}
 {
 
-    yang_name = "unicast-qos-adjust-stats"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unicast-qos-adjust-stats"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::UnicastQosAdjustStats::~UnicastQosAdjustStats()
@@ -16175,6 +16314,7 @@ Mld::Active::Process::UnicastQosAdjustStats::~UnicastQosAdjustStats()
 
 bool Mld::Active::Process::UnicastQosAdjustStats::has_data() const
 {
+    if (is_presence_container) return true;
     return queues.is_set
 	|| batches.is_set
 	|| add_to_batches.is_set
@@ -16479,7 +16619,7 @@ Mld::Active::Process::BviStatistics::BviStatistics()
     wtx_msg_freed{YType::uint32, "wtx-msg-freed"}
 {
 
-    yang_name = "bvi-statistics"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bvi-statistics"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::BviStatistics::~BviStatistics()
@@ -16488,6 +16628,7 @@ Mld::Active::Process::BviStatistics::~BviStatistics()
 
 bool Mld::Active::Process::BviStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return receive_buffers.is_set
 	|| release_buffers.is_set
 	|| send_blocks.is_set
@@ -17014,7 +17155,7 @@ Mld::Active::Process::Nsf::Nsf()
     last_icd_notif_recv_min{YType::int32, "last-icd-notif-recv-min"}
 {
 
-    yang_name = "nsf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::Process::Nsf::~Nsf()
@@ -17023,6 +17164,7 @@ Mld::Active::Process::Nsf::~Nsf()
 
 bool Mld::Active::Process::Nsf::has_data() const
 {
+    if (is_presence_container) return true;
     return is_multicast_nsf_active.is_set
 	|| multicast_nsf_timeout.is_set
 	|| multicast_nsf_time_left.is_set
@@ -17213,22 +17355,22 @@ bool Mld::Active::Process::Nsf::has_leaf_or_child_of_name(const std::string & na
 Mld::Active::DefaultContext::DefaultContext()
     :
     summary(std::make_shared<Mld::Active::DefaultContext::Summary>())
-	,interface_state_ons(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns>())
-	,detail_groups(std::make_shared<Mld::Active::DefaultContext::DetailGroups>())
-	,non_active_groups(std::make_shared<Mld::Active::DefaultContext::NonActiveGroups>())
-	,ssm_maps(std::make_shared<Mld::Active::DefaultContext::SsmMaps>())
-	,explicit_groups(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups>())
-	,interface_table(std::make_shared<Mld::Active::DefaultContext::InterfaceTable>())
-	,interface_unicast_qos_adjusts(std::make_shared<Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts>())
-	,ranges(std::make_shared<Mld::Active::DefaultContext::Ranges>())
-	,ifrs_interfaces(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces>())
-	,traffic_counters(std::make_shared<Mld::Active::DefaultContext::TrafficCounters>())
-	,groups(std::make_shared<Mld::Active::DefaultContext::Groups>())
-	,group_summary(std::make_shared<Mld::Active::DefaultContext::GroupSummary>())
-	,ifrs_interface_summary(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaceSummary>())
-	,global_interface_table(std::make_shared<Mld::Active::DefaultContext::GlobalInterfaceTable>())
-	,ssm_map_details(std::make_shared<Mld::Active::DefaultContext::SsmMapDetails>())
-	,interface_state_offs(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOffs>())
+    , interface_state_ons(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns>())
+    , detail_groups(std::make_shared<Mld::Active::DefaultContext::DetailGroups>())
+    , non_active_groups(std::make_shared<Mld::Active::DefaultContext::NonActiveGroups>())
+    , ssm_maps(std::make_shared<Mld::Active::DefaultContext::SsmMaps>())
+    , explicit_groups(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups>())
+    , interface_table(std::make_shared<Mld::Active::DefaultContext::InterfaceTable>())
+    , interface_unicast_qos_adjusts(std::make_shared<Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts>())
+    , ranges(std::make_shared<Mld::Active::DefaultContext::Ranges>())
+    , ifrs_interfaces(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces>())
+    , traffic_counters(std::make_shared<Mld::Active::DefaultContext::TrafficCounters>())
+    , groups(std::make_shared<Mld::Active::DefaultContext::Groups>())
+    , group_summary(std::make_shared<Mld::Active::DefaultContext::GroupSummary>())
+    , ifrs_interface_summary(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaceSummary>())
+    , global_interface_table(std::make_shared<Mld::Active::DefaultContext::GlobalInterfaceTable>())
+    , ssm_map_details(std::make_shared<Mld::Active::DefaultContext::SsmMapDetails>())
+    , interface_state_offs(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOffs>())
 {
     summary->parent = this;
     interface_state_ons->parent = this;
@@ -17248,7 +17390,7 @@ Mld::Active::DefaultContext::DefaultContext()
     ssm_map_details->parent = this;
     interface_state_offs->parent = this;
 
-    yang_name = "default-context"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-context"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::~DefaultContext()
@@ -17257,6 +17399,7 @@ Mld::Active::DefaultContext::~DefaultContext()
 
 bool Mld::Active::DefaultContext::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (interface_state_ons !=  nullptr && interface_state_ons->has_data())
 	|| (detail_groups !=  nullptr && detail_groups->has_data())
@@ -17598,9 +17741,11 @@ Mld::Active::DefaultContext::Summary::Summary()
     disabled_interface_count{YType::uint32, "disabled-interface-count"},
     tunnel_mte_config_count{YType::uint32, "tunnel-mte-config-count"},
     node_low_memory{YType::boolean, "node-low-memory"}
+        ,
+    interface(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Summary::~Summary()
@@ -17609,7 +17754,8 @@ Mld::Active::DefaultContext::Summary::~Summary()
 
 bool Mld::Active::DefaultContext::Summary::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -17628,7 +17774,7 @@ bool Mld::Active::DefaultContext::Summary::has_data() const
 
 bool Mld::Active::DefaultContext::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -17685,7 +17831,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::Summary::get_child_by_name(
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::Summary::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -17697,7 +17843,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Summ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17835,7 +17981,7 @@ Mld::Active::DefaultContext::Summary::Interface::Interface()
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"}
 {
 
-    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Summary::Interface::~Interface()
@@ -17844,6 +17990,7 @@ Mld::Active::DefaultContext::Summary::Interface::~Interface()
 
 bool Mld::Active::DefaultContext::Summary::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| group_limit.is_set
 	|| group_count.is_set
@@ -18006,9 +18153,11 @@ bool Mld::Active::DefaultContext::Summary::Interface::has_leaf_or_child_of_name(
 }
 
 Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOns()
+    :
+    interface_state_on(this, {"interface_name"})
 {
 
-    yang_name = "interface-state-ons"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-ons"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::InterfaceStateOns::~InterfaceStateOns()
@@ -18017,7 +18166,8 @@ Mld::Active::DefaultContext::InterfaceStateOns::~InterfaceStateOns()
 
 bool Mld::Active::DefaultContext::InterfaceStateOns::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_data())
             return true;
@@ -18027,7 +18177,7 @@ bool Mld::Active::DefaultContext::InterfaceStateOns::has_data() const
 
 bool Mld::Active::DefaultContext::InterfaceStateOns::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_on.size(); index++)
+    for (std::size_t index=0; index<interface_state_on.len(); index++)
     {
         if(interface_state_on[index]->has_operation())
             return true;
@@ -18064,7 +18214,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::InterfaceStateOns::get_chil
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn>();
         c->parent = this;
-        interface_state_on.push_back(c);
+        interface_state_on.append(c);
         return c;
     }
 
@@ -18076,7 +18226,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_on)
+    for (auto c : interface_state_on.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18153,16 +18303,16 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::InterfaceState
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address>())
-	,querier_address(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-on"; yang_parent_name = "interface-state-ons"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::~InterfaceStateOn()
@@ -18171,6 +18321,7 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::~InterfaceStat
 
 bool Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -18292,7 +18443,8 @@ std::string Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::ge
 std::string Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-on" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-state-on";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -18920,7 +19072,7 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::Addre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::~Address()
@@ -18929,6 +19081,7 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::~Addr
 
 bool Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -19025,7 +19178,7 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::~QuerierAddress()
@@ -19034,6 +19187,7 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress
 
 bool Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -19130,7 +19284,7 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface-state-on"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::~SubscriberAddress()
@@ -19139,6 +19293,7 @@ Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddr
 
 bool Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -19229,9 +19384,11 @@ bool Mld::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn::Subscribe
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroups()
+    :
+    detail_group(this, {})
 {
 
-    yang_name = "detail-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::~DetailGroups()
@@ -19240,7 +19397,8 @@ Mld::Active::DefaultContext::DetailGroups::~DetailGroups()
 
 bool Mld::Active::DefaultContext::DetailGroups::has_data() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_data())
             return true;
@@ -19250,7 +19408,7 @@ bool Mld::Active::DefaultContext::DetailGroups::has_data() const
 
 bool Mld::Active::DefaultContext::DetailGroups::has_operation() const
 {
-    for (std::size_t index=0; index<detail_group.size(); index++)
+    for (std::size_t index=0; index<detail_group.len(); index++)
     {
         if(detail_group[index]->has_operation())
             return true;
@@ -19287,7 +19445,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::DetailGroups::get_child_by_
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup>();
         c->parent = this;
-        detail_group.push_back(c);
+        detail_group.append(c);
         return c;
     }
 
@@ -19299,7 +19457,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Deta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_group)
+    for (auto c : detail_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19332,12 +19490,13 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::DetailGroup()
     source_address{YType::str, "source-address"},
     is_router_exclude_mode{YType::boolean, "is-router-exclude-mode"},
     is_host_exclude_mode{YType::boolean, "is-host-exclude-mode"}
-    	,
+        ,
     group_info(std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo>())
+    , source(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-group"; yang_parent_name = "detail-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroup::~DetailGroup()
@@ -19346,7 +19505,8 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::~DetailGroup()
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::has_data() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_data())
             return true;
@@ -19361,7 +19521,7 @@ bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::has_data() const
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::has_operation() const
 {
-    for (std::size_t index=0; index<source.size(); index++)
+    for (std::size_t index=0; index<source.len(); index++)
     {
         if(source[index]->has_operation())
             return true;
@@ -19418,7 +19578,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::DetailGroups::DetailGroup::
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source>();
         c->parent = this;
-        source.push_back(c);
+        source.append(c);
         return c;
     }
 
@@ -19435,7 +19595,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Deta
     }
 
     count = 0;
-    for (auto const & c : source)
+    for (auto c : source.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19525,16 +19685,16 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupInfo()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-info"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
@@ -19543,6 +19703,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::~GroupInfo()
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -19811,7 +19972,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressX
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -19820,6 +19981,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressX
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -19923,7 +20085,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::~LastReporter()
@@ -19932,6 +20094,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter:
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -20035,7 +20198,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -20044,6 +20207,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -20150,12 +20314,12 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::Source()
     is_we_report{YType::boolean, "is-we-report"},
     flags{YType::int32, "flags"},
     is_added{YType::boolean, "is-added"}
-    	,
+        ,
     source_address(std::make_shared<Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress>())
 {
     source_address->parent = this;
 
-    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "detail-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::~Source()
@@ -20164,6 +20328,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::~Source()
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return uptime.is_set
 	|| expiration_time.is_set
 	|| is_local.is_set
@@ -20348,7 +20513,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::S
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::~SourceAddress()
@@ -20357,6 +20522,7 @@ Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::~
 
 bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -20454,9 +20620,11 @@ bool Mld::Active::DefaultContext::DetailGroups::DetailGroup::Source::SourceAddre
 }
 
 Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups()
+    :
+    non_active_groups(this, {})
 {
 
-    yang_name = "non-active-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "non-active-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::NonActiveGroups::~NonActiveGroups()
@@ -20465,7 +20633,8 @@ Mld::Active::DefaultContext::NonActiveGroups::~NonActiveGroups()
 
 bool Mld::Active::DefaultContext::NonActiveGroups::has_data() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_data())
             return true;
@@ -20475,7 +20644,7 @@ bool Mld::Active::DefaultContext::NonActiveGroups::has_data() const
 
 bool Mld::Active::DefaultContext::NonActiveGroups::has_operation() const
 {
-    for (std::size_t index=0; index<non_active_groups.size(); index++)
+    for (std::size_t index=0; index<non_active_groups.len(); index++)
     {
         if(non_active_groups[index]->has_operation())
             return true;
@@ -20512,7 +20681,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::NonActiveGroups::get_child_
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_>();
         c->parent = this;
-        non_active_groups.push_back(c);
+        non_active_groups.append(c);
         return c;
     }
 
@@ -20524,7 +20693,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::NonA
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : non_active_groups)
+    for (auto c : non_active_groups.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20554,14 +20723,14 @@ Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::NonActiveGroups_
     :
     interface{YType::str, "interface"},
     reason_for_non_activity{YType::str, "reason-for-non-activity"}
-    	,
+        ,
     group_address(std::make_shared<Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress>())
-	,source_address(std::make_shared<Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress>())
+    , source_address(std::make_shared<Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress>())
 {
     group_address->parent = this;
     source_address->parent = this;
 
-    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "non-active-groups"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::~NonActiveGroups_()
@@ -20570,6 +20739,7 @@ Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::~NonActiveGroups
 
 bool Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| reason_for_non_activity.is_set
 	|| (group_address !=  nullptr && group_address->has_data())
@@ -20692,7 +20862,7 @@ Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::Gr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::~GroupAddress()
@@ -20701,6 +20871,7 @@ Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::~G
 
 bool Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::GroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -20804,7 +20975,7 @@ Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::S
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "non-active-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::~SourceAddress()
@@ -20813,6 +20984,7 @@ Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::~
 
 bool Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -20910,9 +21082,11 @@ bool Mld::Active::DefaultContext::NonActiveGroups::NonActiveGroups_::SourceAddre
 }
 
 Mld::Active::DefaultContext::SsmMaps::SsmMaps()
+    :
+    ssm_map(this, {})
 {
 
-    yang_name = "ssm-maps"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-maps"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::SsmMaps::~SsmMaps()
@@ -20921,7 +21095,8 @@ Mld::Active::DefaultContext::SsmMaps::~SsmMaps()
 
 bool Mld::Active::DefaultContext::SsmMaps::has_data() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_data())
             return true;
@@ -20931,7 +21106,7 @@ bool Mld::Active::DefaultContext::SsmMaps::has_data() const
 
 bool Mld::Active::DefaultContext::SsmMaps::has_operation() const
 {
-    for (std::size_t index=0; index<ssm_map.size(); index++)
+    for (std::size_t index=0; index<ssm_map.len(); index++)
     {
         if(ssm_map[index]->has_operation())
             return true;
@@ -20968,7 +21143,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::SsmMaps::get_child_by_name(
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::SsmMaps::SsmMap>();
         c->parent = this;
-        ssm_map.push_back(c);
+        ssm_map.append(c);
         return c;
     }
 
@@ -20980,7 +21155,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::SsmM
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssm_map)
+    for (auto c : ssm_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21012,12 +21187,12 @@ Mld::Active::DefaultContext::SsmMaps::SsmMap::SsmMap()
     group_address{YType::str, "group-address"},
     map_type{YType::uint32, "map-type"},
     source_counts{YType::uint32, "source-counts"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssm-map"; yang_parent_name = "ssm-maps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::SsmMaps::SsmMap::~SsmMap()
@@ -21026,6 +21201,7 @@ Mld::Active::DefaultContext::SsmMaps::SsmMap::~SsmMap()
 
 bool Mld::Active::DefaultContext::SsmMaps::SsmMap::has_data() const
 {
+    if (is_presence_container) return true;
     return ssm_map_type.is_set
 	|| group_address.is_set
 	|| map_type.is_set
@@ -21158,7 +21334,7 @@ Mld::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "ssm-map"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
@@ -21167,6 +21343,7 @@ Mld::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::~GroupAddressXr()
 
 bool Mld::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -21264,9 +21441,11 @@ bool Mld::Active::DefaultContext::SsmMaps::SsmMap::GroupAddressXr::has_leaf_or_c
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroups()
+    :
+    explicit_group(this, {})
 {
 
-    yang_name = "explicit-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::~ExplicitGroups()
@@ -21275,7 +21454,8 @@ Mld::Active::DefaultContext::ExplicitGroups::~ExplicitGroups()
 
 bool Mld::Active::DefaultContext::ExplicitGroups::has_data() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_data())
             return true;
@@ -21285,7 +21465,7 @@ bool Mld::Active::DefaultContext::ExplicitGroups::has_data() const
 
 bool Mld::Active::DefaultContext::ExplicitGroups::has_operation() const
 {
-    for (std::size_t index=0; index<explicit_group.size(); index++)
+    for (std::size_t index=0; index<explicit_group.len(); index++)
     {
         if(explicit_group[index]->has_operation())
             return true;
@@ -21322,7 +21502,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::ExplicitGroups::get_child_b
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup>();
         c->parent = this;
-        explicit_group.push_back(c);
+        explicit_group.append(c);
         return c;
     }
 
@@ -21334,7 +21514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Expl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : explicit_group)
+    for (auto c : explicit_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21367,12 +21547,13 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::ExplicitGroup()
     source_address{YType::str, "source-address"},
     include_hosts{YType::uint32, "include-hosts"},
     exclude_hosts{YType::uint32, "exclude-hosts"}
-    	,
+        ,
     group_info(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo>())
+    , host(this, {})
 {
     group_info->parent = this;
 
-    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-group"; yang_parent_name = "explicit-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
@@ -21381,7 +21562,8 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::~ExplicitGroup()
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -21396,7 +21578,7 @@ bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::has_data() cons
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -21453,7 +21635,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::ExplicitGroups::ExplicitGro
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -21470,7 +21652,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Expl
     }
 
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21560,16 +21742,16 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupInfo
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr>())
-	,last_reporter(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
-	,source_address(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
+    , last_reporter(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter>())
+    , source_address(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-info"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupInfo()
@@ -21578,6 +21760,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::~GroupInf
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| uptime.is_set
 	|| expiration_time.is_set
@@ -21846,7 +22029,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::~GroupAddressXr()
@@ -21855,6 +22038,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddr
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -21958,7 +22142,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastRepor
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-reporter"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::~LastReporter()
@@ -21967,6 +22151,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastRepor
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22070,7 +22255,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "group-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::~SourceAddress()
@@ -22079,6 +22264,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAdd
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22181,12 +22367,13 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Host()
     is_exclude{YType::boolean, "is-exclude"},
     expiration_time{YType::uint32, "expiration-time"},
     source_count{YType::uint32, "source-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address>())
+    , source_address(this, {})
 {
     address->parent = this;
 
-    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "host"; yang_parent_name = "explicit-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::~Host()
@@ -22195,7 +22382,8 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::~Host()
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::has_data() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_data())
             return true;
@@ -22209,7 +22397,7 @@ bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::has_data(
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::has_operation() const
 {
-    for (std::size_t index=0; index<source_address.size(); index++)
+    for (std::size_t index=0; index<source_address.len(); index++)
     {
         if(source_address[index]->has_operation())
             return true;
@@ -22264,7 +22452,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::ExplicitGroups::ExplicitGro
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress>();
         c->parent = this;
-        source_address.push_back(c);
+        source_address.append(c);
         return c;
     }
 
@@ -22281,7 +22469,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Expl
     }
 
     count = 0;
-    for (auto const & c : source_address)
+    for (auto c : source_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22354,7 +22542,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::Addre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::~Address()
@@ -22363,6 +22551,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::~Addr
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22466,7 +22655,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::~SourceAddress()
@@ -22475,6 +22664,7 @@ Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress:
 
 bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22572,9 +22762,11 @@ bool Mld::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAdd
 }
 
 Mld::Active::DefaultContext::InterfaceTable::InterfaceTable()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interface-table"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-table"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::InterfaceTable::~InterfaceTable()
@@ -22583,7 +22775,8 @@ Mld::Active::DefaultContext::InterfaceTable::~InterfaceTable()
 
 bool Mld::Active::DefaultContext::InterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -22593,7 +22786,7 @@ bool Mld::Active::DefaultContext::InterfaceTable::has_data() const
 
 bool Mld::Active::DefaultContext::InterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -22630,7 +22823,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::InterfaceTable::get_child_b
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::InterfaceTable::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -22642,7 +22835,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22719,16 +22912,16 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::Interface()
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::DefaultContext::InterfaceTable::Interface::Address>())
-	,querier_address(std::make_shared<Mld::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interface-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::InterfaceTable::Interface::~Interface()
@@ -22737,6 +22930,7 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::~Interface()
 
 bool Mld::Active::DefaultContext::InterfaceTable::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -22858,7 +23052,8 @@ std::string Mld::Active::DefaultContext::InterfaceTable::Interface::get_absolute
 std::string Mld::Active::DefaultContext::InterfaceTable::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -23486,7 +23681,7 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::Address::Address()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceTable::Interface::Address::~Address()
@@ -23495,6 +23690,7 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::Address::~Address()
 
 bool Mld::Active::DefaultContext::InterfaceTable::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23591,7 +23787,7 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::QuerierA
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::~QuerierAddress()
@@ -23600,6 +23796,7 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::~Querier
 
 bool Mld::Active::DefaultContext::InterfaceTable::Interface::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23696,7 +23893,7 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::Subsc
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::~SubscriberAddress()
@@ -23705,6 +23902,7 @@ Mld::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::~Subs
 
 bool Mld::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23795,9 +23993,11 @@ bool Mld::Active::DefaultContext::InterfaceTable::Interface::SubscriberAddress::
 }
 
 Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjusts()
+    :
+    interface_unicast_qos_adjust(this, {"interface_name"})
 {
 
-    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-unicast-qos-adjusts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAdjusts()
@@ -23806,7 +24006,8 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::~InterfaceUnicastQosAdj
 
 bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::has_data() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_data())
             return true;
@@ -23816,7 +24017,7 @@ bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::has_data() const
 
 bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::has_operation() const
 {
-    for (std::size_t index=0; index<interface_unicast_qos_adjust.size(); index++)
+    for (std::size_t index=0; index<interface_unicast_qos_adjust.len(); index++)
     {
         if(interface_unicast_qos_adjust[index]->has_operation())
             return true;
@@ -23853,7 +24054,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts:
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust>();
         c->parent = this;
-        interface_unicast_qos_adjust.push_back(c);
+        interface_unicast_qos_adjust.append(c);
         return c;
     }
 
@@ -23865,7 +24066,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_unicast_qos_adjust)
+    for (auto c : interface_unicast_qos_adjust.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23898,9 +24099,11 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
     rate{YType::uint32, "rate"},
     rate_increments{YType::uint32, "rate-increments"},
     rate_decrements{YType::uint32, "rate-decrements"}
+        ,
+    update(this, {})
 {
 
-    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-unicast-qos-adjust"; yang_parent_name = "interface-unicast-qos-adjusts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::~InterfaceUnicastQosAdjust()
@@ -23909,7 +24112,8 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
 
 bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_data() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_data())
             return true;
@@ -23923,7 +24127,7 @@ bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQo
 
 bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::has_operation() const
 {
-    for (std::size_t index=0; index<update.size(); index++)
+    for (std::size_t index=0; index<update.len(); index++)
     {
         if(update[index]->has_operation())
             return true;
@@ -23946,7 +24150,8 @@ std::string Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUn
 std::string Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-unicast-qos-adjust" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-unicast-qos-adjust";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -23970,7 +24175,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts:
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update>();
         c->parent = this;
-        update.push_back(c);
+        update.append(c);
         return c;
     }
 
@@ -23982,7 +24187,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : update)
+    for (auto c : update.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -24063,14 +24268,14 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
     is_add{YType::boolean, "is-add"},
     weight{YType::uint32, "weight"},
     received_time{YType::uint64, "received-time"}
-    	,
+        ,
     source_address(std::make_shared<Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress>())
-	,group_address(std::make_shared<Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
+    , group_address(std::make_shared<Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress>())
 {
     source_address->parent = this;
     group_address->parent = this;
 
-    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update"; yang_parent_name = "interface-unicast-qos-adjust"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::~Update()
@@ -24079,6 +24284,7 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
 
 bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return is_add.is_set
 	|| weight.is_set
 	|| received_time.is_set
@@ -24207,7 +24413,7 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::~SourceAddress()
@@ -24216,6 +24422,7 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
 
 bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -24312,7 +24519,7 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::~GroupAddress()
@@ -24321,6 +24528,7 @@ Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdju
 
 bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -24411,9 +24619,11 @@ bool Mld::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQo
 }
 
 Mld::Active::DefaultContext::Ranges::Ranges()
+    :
+    range(this, {})
 {
 
-    yang_name = "ranges"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ranges"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Ranges::~Ranges()
@@ -24422,7 +24632,8 @@ Mld::Active::DefaultContext::Ranges::~Ranges()
 
 bool Mld::Active::DefaultContext::Ranges::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -24432,7 +24643,7 @@ bool Mld::Active::DefaultContext::Ranges::has_data() const
 
 bool Mld::Active::DefaultContext::Ranges::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -24469,7 +24680,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::Ranges::get_child_by_name(c
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::Ranges::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -24481,7 +24692,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Rang
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -24510,16 +24721,16 @@ bool Mld::Active::DefaultContext::Ranges::has_leaf_or_child_of_name(const std::s
 Mld::Active::DefaultContext::Ranges::Range::Range()
     :
     group_address{YType::str, "group-address"},
-    group_mask{YType::int32, "group-mask"},
+    group_mask{YType::uint32, "group-mask"},
     prefix_length{YType::uint32, "prefix-length"},
     protocol{YType::enumeration, "protocol"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::DefaultContext::Ranges::Range::GroupAddressXr>())
 {
     group_address_xr->parent = this;
 
-    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Ranges::Range::~Range()
@@ -24528,6 +24739,7 @@ Mld::Active::DefaultContext::Ranges::Range::~Range()
 
 bool Mld::Active::DefaultContext::Ranges::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| group_mask.is_set
 	|| prefix_length.is_set
@@ -24673,7 +24885,7 @@ Mld::Active::DefaultContext::Ranges::Range::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Ranges::Range::GroupAddressXr::~GroupAddressXr()
@@ -24682,6 +24894,7 @@ Mld::Active::DefaultContext::Ranges::Range::GroupAddressXr::~GroupAddressXr()
 
 bool Mld::Active::DefaultContext::Ranges::Range::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -24779,9 +24992,11 @@ bool Mld::Active::DefaultContext::Ranges::Range::GroupAddressXr::has_leaf_or_chi
 }
 
 Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterfaces()
+    :
+    ifrs_interface(this, {"interface_name"})
 {
 
-    yang_name = "ifrs-interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifrs-interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::IfrsInterfaces::~IfrsInterfaces()
@@ -24790,7 +25005,8 @@ Mld::Active::DefaultContext::IfrsInterfaces::~IfrsInterfaces()
 
 bool Mld::Active::DefaultContext::IfrsInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_data())
             return true;
@@ -24800,7 +25016,7 @@ bool Mld::Active::DefaultContext::IfrsInterfaces::has_data() const
 
 bool Mld::Active::DefaultContext::IfrsInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_operation())
             return true;
@@ -24837,7 +25053,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::IfrsInterfaces::get_child_b
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface>();
         c->parent = this;
-        ifrs_interface.push_back(c);
+        ifrs_interface.append(c);
         return c;
     }
 
@@ -24849,7 +25065,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Ifrs
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifrs_interface)
+    for (auto c : ifrs_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -24879,12 +25095,12 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IfrsInterface()
     :
     interface_name{YType::str, "interface-name"},
     join_group_count{YType::uint32, "join-group-count"}
-    	,
+        ,
     igmp_interface_entry(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry>())
 {
     igmp_interface_entry->parent = this;
 
-    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::~IfrsInterface()
@@ -24893,6 +25109,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::~IfrsInterface()
 
 bool Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| join_group_count.is_set
 	|| (igmp_interface_entry !=  nullptr && igmp_interface_entry->has_data());
@@ -24916,7 +25133,8 @@ std::string Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::get_abso
 std::string Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifrs-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "ifrs-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -25042,16 +25260,16 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
     time_since_last_report_in_seconds{YType::uint32, "time-since-last-report-in-seconds"},
     router_uptime_in_seconds{YType::uint32, "router-uptime-in-seconds"},
     mte_tuple_count{YType::uint32, "mte-tuple-count"}
-    	,
+        ,
     address(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address>())
-	,querier_address(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress>())
-	,subscriber_address(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>())
+    , querier_address(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress>())
+    , subscriber_address(std::make_shared<Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress>())
 {
     address->parent = this;
     querier_address->parent = this;
     subscriber_address->parent = this;
 
-    yang_name = "igmp-interface-entry"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp-interface-entry"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::~IgmpInterfaceEntry()
@@ -25060,6 +25278,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
 
 bool Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| state.is_set
 	|| prefix_length.is_set
@@ -25789,7 +26008,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::~Address()
@@ -25798,6 +26017,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
 
 bool Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -25894,7 +26114,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "querier-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::~QuerierAddress()
@@ -25903,6 +26123,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
 
 bool Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -25999,7 +26220,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-address"; yang_parent_name = "igmp-interface-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::~SubscriberAddress()
@@ -26008,6 +26229,7 @@ Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::
 
 bool Mld::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -26136,7 +26358,7 @@ Mld::Active::DefaultContext::TrafficCounters::TrafficCounters()
     input_no_platform_support_mtrace{YType::uint32, "input-no-platform-support-mtrace"}
 {
 
-    yang_name = "traffic-counters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic-counters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::TrafficCounters::~TrafficCounters()
@@ -26145,6 +26367,7 @@ Mld::Active::DefaultContext::TrafficCounters::~TrafficCounters()
 
 bool Mld::Active::DefaultContext::TrafficCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return elapsed_time.is_set
 	|| packets_in.is_set
 	|| packets_out.is_set
@@ -26658,9 +26881,11 @@ bool Mld::Active::DefaultContext::TrafficCounters::has_leaf_or_child_of_name(con
 }
 
 Mld::Active::DefaultContext::Groups::Groups()
+    :
+    group(this, {})
 {
 
-    yang_name = "groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Groups::~Groups()
@@ -26669,7 +26894,8 @@ Mld::Active::DefaultContext::Groups::~Groups()
 
 bool Mld::Active::DefaultContext::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -26679,7 +26905,7 @@ bool Mld::Active::DefaultContext::Groups::has_data() const
 
 bool Mld::Active::DefaultContext::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -26716,7 +26942,7 @@ std::shared_ptr<Entity> Mld::Active::DefaultContext::Groups::get_child_by_name(c
     {
         auto c = std::make_shared<Mld::Active::DefaultContext::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -26728,7 +26954,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Active::DefaultContext::Grou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -26770,16 +26996,16 @@ Mld::Active::DefaultContext::Groups::Group::Group()
     older_host_version2_timer{YType::uint32, "older-host-version2-timer"},
     is_added{YType::boolean, "is-added"},
     is_suppressed{YType::boolean, "is-suppressed"}
-    	,
+        ,
     group_address_xr(std::make_shared<Mld::Active::DefaultContext::Groups::Group::GroupAddressXr>())
-	,last_reporter(std::make_shared<Mld::Active::DefaultContext::Groups::Group::LastReporter>())
-	,source_address(std::make_shared<Mld::Active::DefaultContext::Groups::Group::SourceAddress>())
+    , last_reporter(std::make_shared<Mld::Active::DefaultContext::Groups::Group::LastReporter>())
+    , source_address(std::make_shared<Mld::Active::DefaultContext::Groups::Group::SourceAddress>())
 {
     group_address_xr->parent = this;
     last_reporter->parent = this;
     source_address->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Groups::Group::~Group()
@@ -26788,6 +27014,7 @@ Mld::Active::DefaultContext::Groups::Group::~Group()
 
 bool Mld::Active::DefaultContext::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set
 	|| interface_name.is_set
 	|| interface_name_xr.is_set
@@ -27082,7 +27309,7 @@ Mld::Active::DefaultContext::Groups::Group::GroupAddressXr::GroupAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Groups::Group::GroupAddressXr::~GroupAddressXr()
@@ -27091,6 +27318,7 @@ Mld::Active::DefaultContext::Groups::Group::GroupAddressXr::~GroupAddressXr()
 
 bool Mld::Active::DefaultContext::Groups::Group::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -27194,7 +27422,7 @@ Mld::Active::DefaultContext::Groups::Group::LastReporter::LastReporter()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-reporter"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Groups::Group::LastReporter::~LastReporter()
@@ -27203,6 +27431,7 @@ Mld::Active::DefaultContext::Groups::Group::LastReporter::~LastReporter()
 
 bool Mld::Active::DefaultContext::Groups::Group::LastReporter::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -27306,7 +27535,7 @@ Mld::Active::DefaultContext::Groups::Group::SourceAddress::SourceAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mld::Active::DefaultContext::Groups::Group::SourceAddress::~SourceAddress()
@@ -27315,6 +27544,7 @@ Mld::Active::DefaultContext::Groups::Group::SourceAddress::~SourceAddress()
 
 bool Mld::Active::DefaultContext::Groups::Group::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;

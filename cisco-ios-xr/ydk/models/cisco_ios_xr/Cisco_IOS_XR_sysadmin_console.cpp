@@ -17,7 +17,7 @@ Console::Console()
 {
     config->parent = this;
 
-    yang_name = "console"; yang_parent_name = "Cisco-IOS-XR-sysadmin-console"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "console"; yang_parent_name = "Cisco-IOS-XR-sysadmin-console"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Console::~Console()
@@ -26,6 +26,7 @@ Console::~Console()
 
 bool Console::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data());
 }
 
@@ -123,7 +124,7 @@ Console::Config::Config()
 {
     attach_sdr->parent = this;
 
-    yang_name = "config"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "console"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Console::Config::~Config()
@@ -132,6 +133,7 @@ Console::Config::~Config()
 
 bool Console::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return (attach_sdr !=  nullptr && attach_sdr->has_data());
 }
 
@@ -208,12 +210,12 @@ bool Console::Config::has_leaf_or_child_of_name(const std::string & name) const
 Console::Config::AttachSdr::AttachSdr()
     :
     runtime(std::make_shared<Console::Config::AttachSdr::Runtime>())
-	,boot(std::make_shared<Console::Config::AttachSdr::Boot>())
+    , boot(std::make_shared<Console::Config::AttachSdr::Boot>())
 {
     runtime->parent = this;
     boot->parent = this;
 
-    yang_name = "attach-sdr"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "attach-sdr"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Console::Config::AttachSdr::~AttachSdr()
@@ -222,6 +224,7 @@ Console::Config::AttachSdr::~AttachSdr()
 
 bool Console::Config::AttachSdr::has_data() const
 {
+    if (is_presence_container) return true;
     return (runtime !=  nullptr && runtime->has_data())
 	|| (boot !=  nullptr && boot->has_data());
 }
@@ -312,9 +315,11 @@ bool Console::Config::AttachSdr::has_leaf_or_child_of_name(const std::string & n
 }
 
 Console::Config::AttachSdr::Runtime::Runtime()
+    :
+    location(this, {"location_rp"})
 {
 
-    yang_name = "runtime"; yang_parent_name = "attach-sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "runtime"; yang_parent_name = "attach-sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Console::Config::AttachSdr::Runtime::~Runtime()
@@ -323,7 +328,8 @@ Console::Config::AttachSdr::Runtime::~Runtime()
 
 bool Console::Config::AttachSdr::Runtime::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -333,7 +339,7 @@ bool Console::Config::AttachSdr::Runtime::has_data() const
 
 bool Console::Config::AttachSdr::Runtime::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -370,7 +376,7 @@ std::shared_ptr<Entity> Console::Config::AttachSdr::Runtime::get_child_by_name(c
     {
         auto c = std::make_shared<Console::Config::AttachSdr::Runtime::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -382,7 +388,7 @@ std::map<std::string, std::shared_ptr<Entity>> Console::Config::AttachSdr::Runti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -411,9 +417,11 @@ bool Console::Config::AttachSdr::Runtime::has_leaf_or_child_of_name(const std::s
 Console::Config::AttachSdr::Runtime::Location::Location()
     :
     location_rp{YType::str, "location-rp"}
+        ,
+    tty_name(this, {"ttyname"})
 {
 
-    yang_name = "location"; yang_parent_name = "runtime"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "runtime"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Console::Config::AttachSdr::Runtime::Location::~Location()
@@ -422,7 +430,8 @@ Console::Config::AttachSdr::Runtime::Location::~Location()
 
 bool Console::Config::AttachSdr::Runtime::Location::has_data() const
 {
-    for (std::size_t index=0; index<tty_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tty_name.len(); index++)
     {
         if(tty_name[index]->has_data())
             return true;
@@ -432,7 +441,7 @@ bool Console::Config::AttachSdr::Runtime::Location::has_data() const
 
 bool Console::Config::AttachSdr::Runtime::Location::has_operation() const
 {
-    for (std::size_t index=0; index<tty_name.size(); index++)
+    for (std::size_t index=0; index<tty_name.len(); index++)
     {
         if(tty_name[index]->has_operation())
             return true;
@@ -451,7 +460,8 @@ std::string Console::Config::AttachSdr::Runtime::Location::get_absolute_path() c
 std::string Console::Config::AttachSdr::Runtime::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-rp='" <<location_rp <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_rp, "location-rp");
     return path_buffer.str();
 }
 
@@ -471,7 +481,7 @@ std::shared_ptr<Entity> Console::Config::AttachSdr::Runtime::Location::get_child
     {
         auto c = std::make_shared<Console::Config::AttachSdr::Runtime::Location::TtyName>();
         c->parent = this;
-        tty_name.push_back(c);
+        tty_name.append(c);
         return c;
     }
 
@@ -483,7 +493,7 @@ std::map<std::string, std::shared_ptr<Entity>> Console::Config::AttachSdr::Runti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tty_name)
+    for (auto c : tty_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -525,7 +535,7 @@ Console::Config::AttachSdr::Runtime::Location::TtyName::TtyName()
     sdr_name{YType::str, "sdr-name"}
 {
 
-    yang_name = "tty-name"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tty-name"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Console::Config::AttachSdr::Runtime::Location::TtyName::~TtyName()
@@ -534,6 +544,7 @@ Console::Config::AttachSdr::Runtime::Location::TtyName::~TtyName()
 
 bool Console::Config::AttachSdr::Runtime::Location::TtyName::has_data() const
 {
+    if (is_presence_container) return true;
     return ttyname.is_set
 	|| sdr_name.is_set;
 }
@@ -548,7 +559,8 @@ bool Console::Config::AttachSdr::Runtime::Location::TtyName::has_operation() con
 std::string Console::Config::AttachSdr::Runtime::Location::TtyName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tty-name" <<"[ttyname='" <<ttyname <<"']";
+    path_buffer << "tty-name";
+    ADD_KEY_TOKEN(ttyname, "ttyname");
     return path_buffer.str();
 }
 
@@ -611,9 +623,11 @@ bool Console::Config::AttachSdr::Runtime::Location::TtyName::has_leaf_or_child_o
 }
 
 Console::Config::AttachSdr::Boot::Boot()
+    :
+    location(this, {"location_rp"})
 {
 
-    yang_name = "boot"; yang_parent_name = "attach-sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boot"; yang_parent_name = "attach-sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Console::Config::AttachSdr::Boot::~Boot()
@@ -622,7 +636,8 @@ Console::Config::AttachSdr::Boot::~Boot()
 
 bool Console::Config::AttachSdr::Boot::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -632,7 +647,7 @@ bool Console::Config::AttachSdr::Boot::has_data() const
 
 bool Console::Config::AttachSdr::Boot::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -669,7 +684,7 @@ std::shared_ptr<Entity> Console::Config::AttachSdr::Boot::get_child_by_name(cons
     {
         auto c = std::make_shared<Console::Config::AttachSdr::Boot::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -681,7 +696,7 @@ std::map<std::string, std::shared_ptr<Entity>> Console::Config::AttachSdr::Boot:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -713,7 +728,7 @@ Console::Config::AttachSdr::Boot::Location::Location()
     sdr_name{YType::str, "sdr-name"}
 {
 
-    yang_name = "location"; yang_parent_name = "boot"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "boot"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Console::Config::AttachSdr::Boot::Location::~Location()
@@ -722,6 +737,7 @@ Console::Config::AttachSdr::Boot::Location::~Location()
 
 bool Console::Config::AttachSdr::Boot::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location_rp.is_set
 	|| sdr_name.is_set;
 }
@@ -743,7 +759,8 @@ std::string Console::Config::AttachSdr::Boot::Location::get_absolute_path() cons
 std::string Console::Config::AttachSdr::Boot::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-rp='" <<location_rp <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_rp, "location-rp");
     return path_buffer.str();
 }
 

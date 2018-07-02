@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ipv4_autorp_oper {
 AutoRp::AutoRp()
     :
     standby(std::make_shared<AutoRp::Standby>())
-	,active(std::make_shared<AutoRp::Active>())
+    , active(std::make_shared<AutoRp::Active>())
 {
     standby->parent = this;
     active->parent = this;
 
-    yang_name = "auto-rp"; yang_parent_name = "Cisco-IOS-XR-ipv4-autorp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "auto-rp"; yang_parent_name = "Cisco-IOS-XR-ipv4-autorp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AutoRp::~AutoRp()
@@ -28,6 +28,7 @@ AutoRp::~AutoRp()
 
 bool AutoRp::has_data() const
 {
+    if (is_presence_container) return true;
     return (standby !=  nullptr && standby->has_data())
 	|| (active !=  nullptr && active->has_data());
 }
@@ -138,12 +139,12 @@ bool AutoRp::has_leaf_or_child_of_name(const std::string & name) const
 AutoRp::Standby::Standby()
     :
     candidate_rp(std::make_shared<AutoRp::Standby::CandidateRp>())
-	,mapping_agent(std::make_shared<AutoRp::Standby::MappingAgent>())
+    , mapping_agent(std::make_shared<AutoRp::Standby::MappingAgent>())
 {
     candidate_rp->parent = this;
     mapping_agent->parent = this;
 
-    yang_name = "standby"; yang_parent_name = "auto-rp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby"; yang_parent_name = "auto-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::~Standby()
@@ -152,6 +153,7 @@ AutoRp::Standby::~Standby()
 
 bool AutoRp::Standby::has_data() const
 {
+    if (is_presence_container) return true;
     return (candidate_rp !=  nullptr && candidate_rp->has_data())
 	|| (mapping_agent !=  nullptr && mapping_agent->has_data());
 }
@@ -244,12 +246,12 @@ bool AutoRp::Standby::has_leaf_or_child_of_name(const std::string & name) const
 AutoRp::Standby::CandidateRp::CandidateRp()
     :
     traffic(std::make_shared<AutoRp::Standby::CandidateRp::Traffic>())
-	,rps(std::make_shared<AutoRp::Standby::CandidateRp::Rps>())
+    , rps(std::make_shared<AutoRp::Standby::CandidateRp::Rps>())
 {
     traffic->parent = this;
     rps->parent = this;
 
-    yang_name = "candidate-rp"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "candidate-rp"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::CandidateRp::~CandidateRp()
@@ -258,6 +260,7 @@ AutoRp::Standby::CandidateRp::~CandidateRp()
 
 bool AutoRp::Standby::CandidateRp::has_data() const
 {
+    if (is_presence_container) return true;
     return (traffic !=  nullptr && traffic->has_data())
 	|| (rps !=  nullptr && rps->has_data());
 }
@@ -353,7 +356,7 @@ AutoRp::Standby::CandidateRp::Traffic::Traffic()
     standby_sent_packets{YType::uint32, "standby-sent-packets"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::CandidateRp::Traffic::~Traffic()
@@ -362,6 +365,7 @@ AutoRp::Standby::CandidateRp::Traffic::~Traffic()
 
 bool AutoRp::Standby::CandidateRp::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sent_packets.is_set
 	|| standby_sent_packets.is_set;
 }
@@ -446,9 +450,11 @@ bool AutoRp::Standby::CandidateRp::Traffic::has_leaf_or_child_of_name(const std:
 }
 
 AutoRp::Standby::CandidateRp::Rps::Rps()
+    :
+    rp(this, {})
 {
 
-    yang_name = "rps"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rps"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::CandidateRp::Rps::~Rps()
@@ -457,7 +463,8 @@ AutoRp::Standby::CandidateRp::Rps::~Rps()
 
 bool AutoRp::Standby::CandidateRp::Rps::has_data() const
 {
-    for (std::size_t index=0; index<rp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rp.len(); index++)
     {
         if(rp[index]->has_data())
             return true;
@@ -467,7 +474,7 @@ bool AutoRp::Standby::CandidateRp::Rps::has_data() const
 
 bool AutoRp::Standby::CandidateRp::Rps::has_operation() const
 {
-    for (std::size_t index=0; index<rp.size(); index++)
+    for (std::size_t index=0; index<rp.len(); index++)
     {
         if(rp[index]->has_operation())
             return true;
@@ -504,7 +511,7 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::get_child_by_name(con
     {
         auto c = std::make_shared<AutoRp::Standby::CandidateRp::Rps::Rp>();
         c->parent = this;
-        rp.push_back(c);
+        rp.append(c);
         return c;
     }
 
@@ -516,7 +523,7 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rp)
+    for (auto c : rp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -553,7 +560,7 @@ AutoRp::Standby::CandidateRp::Rps::Rp::Rp()
     protocol_mode_xr{YType::enumeration, "protocol-mode-xr"}
 {
 
-    yang_name = "rp"; yang_parent_name = "rps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp"; yang_parent_name = "rps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::CandidateRp::Rps::Rp::~Rp()
@@ -562,6 +569,7 @@ AutoRp::Standby::CandidateRp::Rps::Rp::~Rp()
 
 bool AutoRp::Standby::CandidateRp::Rps::Rp::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| protocol_mode.is_set
 	|| access_list_name.is_set
@@ -713,14 +721,14 @@ bool AutoRp::Standby::CandidateRp::Rps::Rp::has_leaf_or_child_of_name(const std:
 AutoRp::Standby::MappingAgent::MappingAgent()
     :
     traffic(std::make_shared<AutoRp::Standby::MappingAgent::Traffic>())
-	,rp_addresses(std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses>())
-	,summary(std::make_shared<AutoRp::Standby::MappingAgent::Summary>())
+    , rp_addresses(std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses>())
+    , summary(std::make_shared<AutoRp::Standby::MappingAgent::Summary>())
 {
     traffic->parent = this;
     rp_addresses->parent = this;
     summary->parent = this;
 
-    yang_name = "mapping-agent"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping-agent"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::MappingAgent::~MappingAgent()
@@ -729,6 +737,7 @@ AutoRp::Standby::MappingAgent::~MappingAgent()
 
 bool AutoRp::Standby::MappingAgent::has_data() const
 {
+    if (is_presence_container) return true;
     return (traffic !=  nullptr && traffic->has_data())
 	|| (rp_addresses !=  nullptr && rp_addresses->has_data())
 	|| (summary !=  nullptr && summary->has_data());
@@ -842,7 +851,7 @@ AutoRp::Standby::MappingAgent::Traffic::Traffic()
     standby_received_packets{YType::uint32, "standby-received-packets"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::MappingAgent::Traffic::~Traffic()
@@ -851,6 +860,7 @@ AutoRp::Standby::MappingAgent::Traffic::~Traffic()
 
 bool AutoRp::Standby::MappingAgent::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sent_packets.is_set
 	|| standby_sent_packets.is_set
 	|| active_received_packets.is_set
@@ -961,9 +971,11 @@ bool AutoRp::Standby::MappingAgent::Traffic::has_leaf_or_child_of_name(const std
 }
 
 AutoRp::Standby::MappingAgent::RpAddresses::RpAddresses()
+    :
+    rp_address(this, {"rp_address"})
 {
 
-    yang_name = "rp-addresses"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-addresses"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::MappingAgent::RpAddresses::~RpAddresses()
@@ -972,7 +984,8 @@ AutoRp::Standby::MappingAgent::RpAddresses::~RpAddresses()
 
 bool AutoRp::Standby::MappingAgent::RpAddresses::has_data() const
 {
-    for (std::size_t index=0; index<rp_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rp_address.len(); index++)
     {
         if(rp_address[index]->has_data())
             return true;
@@ -982,7 +995,7 @@ bool AutoRp::Standby::MappingAgent::RpAddresses::has_data() const
 
 bool AutoRp::Standby::MappingAgent::RpAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<rp_address.size(); index++)
+    for (std::size_t index=0; index<rp_address.len(); index++)
     {
         if(rp_address[index]->has_operation())
             return true;
@@ -1019,7 +1032,7 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::get_child_by
     {
         auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress>();
         c->parent = this;
-        rp_address.push_back(c);
+        rp_address.append(c);
         return c;
     }
 
@@ -1031,7 +1044,7 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Rp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rp_address)
+    for (auto c : rp_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1063,9 +1076,11 @@ AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::RpAddress()
     rp_address_xr{YType::str, "rp-address-xr"},
     expiry_time{YType::uint64, "expiry-time"},
     pim_version{YType::uint8, "pim-version"}
+        ,
+    range(this, {})
 {
 
-    yang_name = "rp-address"; yang_parent_name = "rp-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address"; yang_parent_name = "rp-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::~RpAddress()
@@ -1074,7 +1089,8 @@ AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::~RpAddress()
 
 bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -1087,7 +1103,7 @@ bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::has_data() const
 
 bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -1109,7 +1125,8 @@ std::string AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_absolute_
 std::string AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rp-address" <<"[rp-address='" <<rp_address <<"']";
+    path_buffer << "rp-address";
+    ADD_KEY_TOKEN(rp_address, "rp-address");
     return path_buffer.str();
 }
 
@@ -1132,7 +1149,7 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::g
     {
         auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -1144,7 +1161,7 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Rp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1221,7 +1238,7 @@ AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::Range()
     uptime{YType::uint64, "uptime"}
 {
 
-    yang_name = "range"; yang_parent_name = "rp-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "rp-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::~Range()
@@ -1230,6 +1247,7 @@ AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::~Range()
 
 bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| protocol_mode.is_set
@@ -1378,7 +1396,7 @@ AutoRp::Standby::MappingAgent::Summary::Summary()
     cache_count{YType::uint32, "cache-count"}
 {
 
-    yang_name = "summary"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Standby::MappingAgent::Summary::~Summary()
@@ -1387,6 +1405,7 @@ AutoRp::Standby::MappingAgent::Summary::~Summary()
 
 bool AutoRp::Standby::MappingAgent::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return is_maximum_disabled.is_set
 	|| cache_limit.is_set
 	|| cache_count.is_set;
@@ -1486,12 +1505,12 @@ bool AutoRp::Standby::MappingAgent::Summary::has_leaf_or_child_of_name(const std
 AutoRp::Active::Active()
     :
     candidate_rp(std::make_shared<AutoRp::Active::CandidateRp>())
-	,mapping_agent(std::make_shared<AutoRp::Active::MappingAgent>())
+    , mapping_agent(std::make_shared<AutoRp::Active::MappingAgent>())
 {
     candidate_rp->parent = this;
     mapping_agent->parent = this;
 
-    yang_name = "active"; yang_parent_name = "auto-rp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "auto-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::~Active()
@@ -1500,6 +1519,7 @@ AutoRp::Active::~Active()
 
 bool AutoRp::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return (candidate_rp !=  nullptr && candidate_rp->has_data())
 	|| (mapping_agent !=  nullptr && mapping_agent->has_data());
 }
@@ -1592,12 +1612,12 @@ bool AutoRp::Active::has_leaf_or_child_of_name(const std::string & name) const
 AutoRp::Active::CandidateRp::CandidateRp()
     :
     traffic(std::make_shared<AutoRp::Active::CandidateRp::Traffic>())
-	,rps(std::make_shared<AutoRp::Active::CandidateRp::Rps>())
+    , rps(std::make_shared<AutoRp::Active::CandidateRp::Rps>())
 {
     traffic->parent = this;
     rps->parent = this;
 
-    yang_name = "candidate-rp"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "candidate-rp"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::CandidateRp::~CandidateRp()
@@ -1606,6 +1626,7 @@ AutoRp::Active::CandidateRp::~CandidateRp()
 
 bool AutoRp::Active::CandidateRp::has_data() const
 {
+    if (is_presence_container) return true;
     return (traffic !=  nullptr && traffic->has_data())
 	|| (rps !=  nullptr && rps->has_data());
 }
@@ -1701,7 +1722,7 @@ AutoRp::Active::CandidateRp::Traffic::Traffic()
     standby_sent_packets{YType::uint32, "standby-sent-packets"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::CandidateRp::Traffic::~Traffic()
@@ -1710,6 +1731,7 @@ AutoRp::Active::CandidateRp::Traffic::~Traffic()
 
 bool AutoRp::Active::CandidateRp::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sent_packets.is_set
 	|| standby_sent_packets.is_set;
 }
@@ -1794,9 +1816,11 @@ bool AutoRp::Active::CandidateRp::Traffic::has_leaf_or_child_of_name(const std::
 }
 
 AutoRp::Active::CandidateRp::Rps::Rps()
+    :
+    rp(this, {})
 {
 
-    yang_name = "rps"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rps"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::CandidateRp::Rps::~Rps()
@@ -1805,7 +1829,8 @@ AutoRp::Active::CandidateRp::Rps::~Rps()
 
 bool AutoRp::Active::CandidateRp::Rps::has_data() const
 {
-    for (std::size_t index=0; index<rp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rp.len(); index++)
     {
         if(rp[index]->has_data())
             return true;
@@ -1815,7 +1840,7 @@ bool AutoRp::Active::CandidateRp::Rps::has_data() const
 
 bool AutoRp::Active::CandidateRp::Rps::has_operation() const
 {
-    for (std::size_t index=0; index<rp.size(); index++)
+    for (std::size_t index=0; index<rp.len(); index++)
     {
         if(rp[index]->has_operation())
             return true;
@@ -1852,7 +1877,7 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::get_child_by_name(cons
     {
         auto c = std::make_shared<AutoRp::Active::CandidateRp::Rps::Rp>();
         c->parent = this;
-        rp.push_back(c);
+        rp.append(c);
         return c;
     }
 
@@ -1864,7 +1889,7 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rp)
+    for (auto c : rp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1901,7 +1926,7 @@ AutoRp::Active::CandidateRp::Rps::Rp::Rp()
     protocol_mode_xr{YType::enumeration, "protocol-mode-xr"}
 {
 
-    yang_name = "rp"; yang_parent_name = "rps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp"; yang_parent_name = "rps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::CandidateRp::Rps::Rp::~Rp()
@@ -1910,6 +1935,7 @@ AutoRp::Active::CandidateRp::Rps::Rp::~Rp()
 
 bool AutoRp::Active::CandidateRp::Rps::Rp::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| protocol_mode.is_set
 	|| access_list_name.is_set
@@ -2061,14 +2087,14 @@ bool AutoRp::Active::CandidateRp::Rps::Rp::has_leaf_or_child_of_name(const std::
 AutoRp::Active::MappingAgent::MappingAgent()
     :
     traffic(std::make_shared<AutoRp::Active::MappingAgent::Traffic>())
-	,rp_addresses(std::make_shared<AutoRp::Active::MappingAgent::RpAddresses>())
-	,summary(std::make_shared<AutoRp::Active::MappingAgent::Summary>())
+    , rp_addresses(std::make_shared<AutoRp::Active::MappingAgent::RpAddresses>())
+    , summary(std::make_shared<AutoRp::Active::MappingAgent::Summary>())
 {
     traffic->parent = this;
     rp_addresses->parent = this;
     summary->parent = this;
 
-    yang_name = "mapping-agent"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping-agent"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::MappingAgent::~MappingAgent()
@@ -2077,6 +2103,7 @@ AutoRp::Active::MappingAgent::~MappingAgent()
 
 bool AutoRp::Active::MappingAgent::has_data() const
 {
+    if (is_presence_container) return true;
     return (traffic !=  nullptr && traffic->has_data())
 	|| (rp_addresses !=  nullptr && rp_addresses->has_data())
 	|| (summary !=  nullptr && summary->has_data());
@@ -2190,7 +2217,7 @@ AutoRp::Active::MappingAgent::Traffic::Traffic()
     standby_received_packets{YType::uint32, "standby-received-packets"}
 {
 
-    yang_name = "traffic"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::MappingAgent::Traffic::~Traffic()
@@ -2199,6 +2226,7 @@ AutoRp::Active::MappingAgent::Traffic::~Traffic()
 
 bool AutoRp::Active::MappingAgent::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sent_packets.is_set
 	|| standby_sent_packets.is_set
 	|| active_received_packets.is_set
@@ -2309,9 +2337,11 @@ bool AutoRp::Active::MappingAgent::Traffic::has_leaf_or_child_of_name(const std:
 }
 
 AutoRp::Active::MappingAgent::RpAddresses::RpAddresses()
+    :
+    rp_address(this, {"rp_address"})
 {
 
-    yang_name = "rp-addresses"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-addresses"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::MappingAgent::RpAddresses::~RpAddresses()
@@ -2320,7 +2350,8 @@ AutoRp::Active::MappingAgent::RpAddresses::~RpAddresses()
 
 bool AutoRp::Active::MappingAgent::RpAddresses::has_data() const
 {
-    for (std::size_t index=0; index<rp_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rp_address.len(); index++)
     {
         if(rp_address[index]->has_data())
             return true;
@@ -2330,7 +2361,7 @@ bool AutoRp::Active::MappingAgent::RpAddresses::has_data() const
 
 bool AutoRp::Active::MappingAgent::RpAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<rp_address.size(); index++)
+    for (std::size_t index=0; index<rp_address.len(); index++)
     {
         if(rp_address[index]->has_operation())
             return true;
@@ -2367,7 +2398,7 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::get_child_by_
     {
         auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress>();
         c->parent = this;
-        rp_address.push_back(c);
+        rp_address.append(c);
         return c;
     }
 
@@ -2379,7 +2410,7 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpA
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rp_address)
+    for (auto c : rp_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2411,9 +2442,11 @@ AutoRp::Active::MappingAgent::RpAddresses::RpAddress::RpAddress()
     rp_address_xr{YType::str, "rp-address-xr"},
     expiry_time{YType::uint64, "expiry-time"},
     pim_version{YType::uint8, "pim-version"}
+        ,
+    range(this, {})
 {
 
-    yang_name = "rp-address"; yang_parent_name = "rp-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address"; yang_parent_name = "rp-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::MappingAgent::RpAddresses::RpAddress::~RpAddress()
@@ -2422,7 +2455,8 @@ AutoRp::Active::MappingAgent::RpAddresses::RpAddress::~RpAddress()
 
 bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -2435,7 +2469,7 @@ bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::has_data() const
 
 bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -2457,7 +2491,8 @@ std::string AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_absolute_p
 std::string AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rp-address" <<"[rp-address='" <<rp_address <<"']";
+    path_buffer << "rp-address";
+    ADD_KEY_TOKEN(rp_address, "rp-address");
     return path_buffer.str();
 }
 
@@ -2480,7 +2515,7 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::ge
     {
         auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -2492,7 +2527,7 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpA
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2569,7 +2604,7 @@ AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::Range()
     uptime{YType::uint64, "uptime"}
 {
 
-    yang_name = "range"; yang_parent_name = "rp-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "rp-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::~Range()
@@ -2578,6 +2613,7 @@ AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::~Range()
 
 bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| protocol_mode.is_set
@@ -2726,7 +2762,7 @@ AutoRp::Active::MappingAgent::Summary::Summary()
     cache_count{YType::uint32, "cache-count"}
 {
 
-    yang_name = "summary"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "mapping-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AutoRp::Active::MappingAgent::Summary::~Summary()
@@ -2735,6 +2771,7 @@ AutoRp::Active::MappingAgent::Summary::~Summary()
 
 bool AutoRp::Active::MappingAgent::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return is_maximum_disabled.is_set
 	|| cache_limit.is_set
 	|| cache_count.is_set;

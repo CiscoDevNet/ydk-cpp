@@ -35,7 +35,7 @@ class PppData : public ydk::Entity
         class PppStatistics; //type: PppData::PppStatistics
         class Pppoe; //type: PppData::Pppoe
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ppp_oper::PppData::PppInterface> > ppp_interface;
+        ydk::YList ppp_interface;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ppp_oper::PppData::PppStatistics> ppp_statistics; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ppp_oper::PppData::Pppoe> pppoe; // presence node
         
@@ -62,7 +62,7 @@ class PppData::PppInterface : public ydk::Entity
         ydk::YLeaf phy_ifname; //type: string
         class PppVa; //type: PppData::PppInterface::PppVa
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ppp_oper::PppData::PppInterface::PppVa> > ppp_va;
+        ydk::YList ppp_va;
         
 }; // PppData::PppInterface
 
@@ -140,7 +140,7 @@ class PppData::Pppoe : public ydk::Entity
         class PppoeSessionList; //type: PppData::Pppoe::PppoeSessionList
         class PppoeStatistics; //type: PppData::Pppoe::PppoeStatistics
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ppp_oper::PppData::Pppoe::PppoeSessionList> > pppoe_session_list;
+        ydk::YList pppoe_session_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ppp_oper::PppData::Pppoe::PppoeStatistics> pppoe_statistics; // presence node
         
 }; // PppData::Pppoe
@@ -166,7 +166,7 @@ class PppData::Pppoe::PppoeSessionList : public ydk::Entity
         ydk::YLeaf ifname; //type: string
         class Session; //type: PppData::Pppoe::PppoeSessionList::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ppp_oper::PppData::Pppoe::PppoeSessionList::Session> > session;
+        ydk::YList session;
         
 }; // PppData::Pppoe::PppoeSessionList
 

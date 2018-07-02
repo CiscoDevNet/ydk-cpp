@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_show_trace_instagt {
 
 Instagt::Instagt()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "instagt"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-trace-instagt"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "instagt"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-trace-instagt"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Instagt::~Instagt()
@@ -23,7 +25,8 @@ Instagt::~Instagt()
 
 bool Instagt::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Instagt::has_data() const
 
 bool Instagt::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Instagt::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<Instagt::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Instagt::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool Instagt::has_leaf_or_child_of_name(const std::string & name) const
 Instagt::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "instagt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "instagt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Instagt::Trace::~Trace()
@@ -140,7 +145,8 @@ Instagt::Trace::~Trace()
 
 bool Instagt::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool Instagt::Trace::has_data() const
 
 bool Instagt::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string Instagt::Trace::get_absolute_path() const
 std::string Instagt::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> Instagt::Trace::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Instagt::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Instagt::Trace::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -240,9 +247,11 @@ bool Instagt::Trace::has_leaf_or_child_of_name(const std::string & name) const
 Instagt::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Instagt::Trace::Location::~Location()
@@ -251,7 +260,8 @@ Instagt::Trace::Location::~Location()
 
 bool Instagt::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -261,7 +271,7 @@ bool Instagt::Trace::Location::has_data() const
 
 bool Instagt::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -273,7 +283,8 @@ bool Instagt::Trace::Location::has_operation() const
 std::string Instagt::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -293,7 +304,7 @@ std::shared_ptr<Entity> Instagt::Trace::Location::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Instagt::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -305,7 +316,7 @@ std::map<std::string, std::shared_ptr<Entity>> Instagt::Trace::Location::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -344,9 +355,11 @@ bool Instagt::Trace::Location::has_leaf_or_child_of_name(const std::string & nam
 Instagt::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Instagt::Trace::Location::AllOptions::~AllOptions()
@@ -355,7 +368,8 @@ Instagt::Trace::Location::AllOptions::~AllOptions()
 
 bool Instagt::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -365,7 +379,7 @@ bool Instagt::Trace::Location::AllOptions::has_data() const
 
 bool Instagt::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -377,7 +391,8 @@ bool Instagt::Trace::Location::AllOptions::has_operation() const
 std::string Instagt::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -397,7 +412,7 @@ std::shared_ptr<Entity> Instagt::Trace::Location::AllOptions::get_child_by_name(
     {
         auto c = std::make_shared<Instagt::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -409,7 +424,7 @@ std::map<std::string, std::shared_ptr<Entity>> Instagt::Trace::Location::AllOpti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -450,7 +465,7 @@ Instagt::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Instagt::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -459,6 +474,7 @@ Instagt::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Instagt::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 

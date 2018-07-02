@@ -13,10 +13,11 @@ namespace Cisco_IOS_XE_spanning_tree_oper {
 
 StpDetails::StpDetails()
     :
-    stp_global(nullptr) // presence node
+    stp_detail(this, {"instance"})
+    , stp_global(nullptr) // presence node
 {
 
-    yang_name = "stp-details"; yang_parent_name = "Cisco-IOS-XE-spanning-tree-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "stp-details"; yang_parent_name = "Cisco-IOS-XE-spanning-tree-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 StpDetails::~StpDetails()
@@ -25,7 +26,8 @@ StpDetails::~StpDetails()
 
 bool StpDetails::has_data() const
 {
-    for (std::size_t index=0; index<stp_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stp_detail.len(); index++)
     {
         if(stp_detail[index]->has_data())
             return true;
@@ -35,7 +37,7 @@ bool StpDetails::has_data() const
 
 bool StpDetails::has_operation() const
 {
-    for (std::size_t index=0; index<stp_detail.size(); index++)
+    for (std::size_t index=0; index<stp_detail.len(); index++)
     {
         if(stp_detail[index]->has_operation())
             return true;
@@ -66,7 +68,7 @@ std::shared_ptr<Entity> StpDetails::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<StpDetails::StpDetail>();
         c->parent = this;
-        stp_detail.push_back(c);
+        stp_detail.append(c);
         return c;
     }
 
@@ -87,7 +89,7 @@ std::map<std::string, std::shared_ptr<Entity>> StpDetails::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stp_detail)
+    for (auto c : stp_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -159,12 +161,12 @@ StpDetails::StpDetail::StpDetail()
     hold_time{YType::uint64, "hold-time"},
     topology_changes{YType::uint64, "topology-changes"},
     time_of_last_topology_change{YType::str, "time-of-last-topology-change"}
-    	,
+        ,
     interfaces(std::make_shared<StpDetails::StpDetail::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "stp-detail"; yang_parent_name = "stp-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stp-detail"; yang_parent_name = "stp-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StpDetails::StpDetail::~StpDetail()
@@ -173,6 +175,7 @@ StpDetails::StpDetail::~StpDetail()
 
 bool StpDetails::StpDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return instance.is_set
 	|| hello_time.is_set
 	|| max_age.is_set
@@ -220,7 +223,8 @@ std::string StpDetails::StpDetail::get_absolute_path() const
 std::string StpDetails::StpDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stp-detail" <<"[instance='" <<instance <<"']";
+    path_buffer << "stp-detail";
+    ADD_KEY_TOKEN(instance, "instance");
     return path_buffer.str();
 }
 
@@ -429,9 +433,11 @@ bool StpDetails::StpDetail::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 StpDetails::StpDetail::Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "stp-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "stp-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 StpDetails::StpDetail::Interfaces::~Interfaces()
@@ -440,7 +446,8 @@ StpDetails::StpDetail::Interfaces::~Interfaces()
 
 bool StpDetails::StpDetail::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -450,7 +457,7 @@ bool StpDetails::StpDetail::Interfaces::has_data() const
 
 bool StpDetails::StpDetail::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -480,7 +487,7 @@ std::shared_ptr<Entity> StpDetails::StpDetail::Interfaces::get_child_by_name(con
     {
         auto c = std::make_shared<StpDetails::StpDetail::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -492,7 +499,7 @@ std::map<std::string, std::shared_ptr<Entity>> StpDetails::StpDetail::Interfaces
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -542,7 +549,7 @@ StpDetails::StpDetail::Interfaces::Interface::Interface()
     bpdu_received{YType::uint64, "bpdu-received"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 StpDetails::StpDetail::Interfaces::Interface::~Interface()
@@ -551,6 +558,7 @@ StpDetails::StpDetail::Interfaces::Interface::~Interface()
 
 bool StpDetails::StpDetail::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| cost.is_set
 	|| port_priority.is_set
@@ -601,7 +609,8 @@ bool StpDetails::StpDetail::Interfaces::Interface::has_operation() const
 std::string StpDetails::StpDetail::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -869,12 +878,12 @@ StpDetails::StpGlobal::StpGlobal()
     bpdu_guard{YType::empty, "bpdu-guard"},
     bpdu_filter{YType::empty, "bpdu-filter"},
     etherchannel_misconfig_guard{YType::empty, "etherchannel-misconfig-guard"}
-    	,
+        ,
     mst_only(std::make_shared<StpDetails::StpGlobal::MstOnly>())
 {
     mst_only->parent = this;
 
-    yang_name = "stp-global"; yang_parent_name = "stp-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stp-global"; yang_parent_name = "stp-details"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 StpDetails::StpGlobal::~StpGlobal()
@@ -883,6 +892,7 @@ StpDetails::StpGlobal::~StpGlobal()
 
 bool StpDetails::StpGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| bridge_assurance.is_set
 	|| loop_guard.is_set
@@ -1041,7 +1051,7 @@ StpDetails::StpGlobal::MstOnly::MstOnly()
     max_hops{YType::uint16, "max-hops"}
 {
 
-    yang_name = "mst-only"; yang_parent_name = "stp-global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mst-only"; yang_parent_name = "stp-global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StpDetails::StpGlobal::MstOnly::~MstOnly()
@@ -1050,6 +1060,7 @@ StpDetails::StpGlobal::MstOnly::~MstOnly()
 
 bool StpDetails::StpGlobal::MstOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return mst_config_revision.is_set
 	|| mst_config_name.is_set
 	|| max_hops.is_set;
@@ -1146,6 +1157,24 @@ bool StpDetails::StpGlobal::MstOnly::has_leaf_or_child_of_name(const std::string
     return false;
 }
 
+const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_disable {0, "stp-port-bpduguard-disable"};
+const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_enable {1, "stp-port-bpduguard-enable"};
+const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_default {2, "stp-port-bpduguard-default"};
+
+const Enum::YLeaf StpLinkRole::stp_auto {0, "stp-auto"};
+const Enum::YLeaf StpLinkRole::stp_point_to_point {1, "stp-point-to-point"};
+const Enum::YLeaf StpLinkRole::stp_shared {2, "stp-shared"};
+
+const Enum::YLeaf StpMode::stp_mode_pvst {0, "stp-mode-pvst"};
+const Enum::YLeaf StpMode::stp_mode_rapid_pvst {1, "stp-mode-rapid-pvst"};
+const Enum::YLeaf StpMode::stp_mode_mst {2, "stp-mode-mst"};
+
+const Enum::YLeaf StpPortRole::stp_master {0, "stp-master"};
+const Enum::YLeaf StpPortRole::stp_alternate {1, "stp-alternate"};
+const Enum::YLeaf StpPortRole::stp_root {2, "stp-root"};
+const Enum::YLeaf StpPortRole::stp_designated {3, "stp-designated"};
+const Enum::YLeaf StpPortRole::stp_backup {4, "stp-backup"};
+
 const Enum::YLeaf StpPortState::stp_disabled {0, "stp-disabled"};
 const Enum::YLeaf StpPortState::stp_blocking {1, "stp-blocking"};
 const Enum::YLeaf StpPortState::stp_listening {2, "stp-listening"};
@@ -1154,32 +1183,14 @@ const Enum::YLeaf StpPortState::stp_forwarding {4, "stp-forwarding"};
 const Enum::YLeaf StpPortState::stp_broken {5, "stp-broken"};
 const Enum::YLeaf StpPortState::stp_invalid {6, "stp-invalid"};
 
-const Enum::YLeaf StpPortRole::stp_master {0, "stp-master"};
-const Enum::YLeaf StpPortRole::stp_alternate {1, "stp-alternate"};
-const Enum::YLeaf StpPortRole::stp_root {2, "stp-root"};
-const Enum::YLeaf StpPortRole::stp_designated {3, "stp-designated"};
-const Enum::YLeaf StpPortRole::stp_backup {4, "stp-backup"};
-
-const Enum::YLeaf StpLinkRole::stp_auto {0, "stp-auto"};
-const Enum::YLeaf StpLinkRole::stp_point_to_point {1, "stp-point-to-point"};
-const Enum::YLeaf StpLinkRole::stp_shared {2, "stp-shared"};
+const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_disable {0, "stp-port-bpdufilter-disable"};
+const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_enable {1, "stp-port-bpdufilter-enable"};
+const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_default {2, "stp-port-bpdufilter-default"};
 
 const Enum::YLeaf StpPortGuard::stp_port_guard_default {0, "stp-port-guard-default"};
 const Enum::YLeaf StpPortGuard::stp_port_guard_root {1, "stp-port-guard-root"};
 const Enum::YLeaf StpPortGuard::stp_port_guard_loop {2, "stp-port-guard-loop"};
 const Enum::YLeaf StpPortGuard::stp_port_guard_none {3, "stp-port-guard-none"};
-
-const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_disable {0, "stp-port-bpduguard-disable"};
-const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_enable {1, "stp-port-bpduguard-enable"};
-const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_default {2, "stp-port-bpduguard-default"};
-
-const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_disable {0, "stp-port-bpdufilter-disable"};
-const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_enable {1, "stp-port-bpdufilter-enable"};
-const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_default {2, "stp-port-bpdufilter-default"};
-
-const Enum::YLeaf StpMode::stp_mode_pvst {0, "stp-mode-pvst"};
-const Enum::YLeaf StpMode::stp_mode_rapid_pvst {1, "stp-mode-rapid-pvst"};
-const Enum::YLeaf StpMode::stp_mode_mst {2, "stp-mode-mst"};
 
 
 }

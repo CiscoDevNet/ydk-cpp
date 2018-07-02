@@ -19,14 +19,6 @@ class FsyncQlOption : public ydk::Enum
 
 };
 
-class FsyncClock : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sync;
-        static const ydk::Enum::YLeaf internal;
-
-};
-
 class FsyncQlValue : public ydk::Enum
 {
     public:
@@ -49,6 +41,34 @@ class FsyncQlValue : public ydk::Enum
         static const ydk::Enum::YLeaf o2_g2_st3e;
         static const ydk::Enum::YLeaf o2_g2_smc;
         static const ydk::Enum::YLeaf o2_g2_st4;
+
+};
+
+class FsyncClock : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sync;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf gnss;
+
+};
+
+class GnssConstellation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf gps;
+        static const ydk::Enum::YLeaf galileo;
+        static const ydk::Enum::YLeaf bei_dou;
+        static const ydk::Enum::YLeaf qzss;
+
+};
+
+class Gnss1ppsPolarity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf positive;
+        static const ydk::Enum::YLeaf negative;
 
 };
 

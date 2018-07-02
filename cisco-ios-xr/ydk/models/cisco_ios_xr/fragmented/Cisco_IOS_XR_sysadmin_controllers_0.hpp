@@ -34,7 +34,7 @@ class Gaspp : public ydk::Entity
 
         class Asic; //type: Gaspp::Asic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic> > asic;
+        ydk::YList asic;
         
 }; // Gaspp
 
@@ -59,7 +59,7 @@ class Gaspp::Asic : public ydk::Entity
         ydk::YLeaf asic_name; //type: string
         class Instance; //type: Gaspp::Asic::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance> > instance;
+        ydk::YList instance;
         
 }; // Gaspp::Asic
 
@@ -86,9 +86,9 @@ class Gaspp::Asic::Instance : public ydk::Entity
         class BlockName; //type: Gaspp::Asic::Instance::BlockName
         class BlockNumber; //type: Gaspp::Asic::Instance::BlockNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::Address> > address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockName> > block_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber> > block_number;
+        ydk::YList address;
+        ydk::YList block_name;
+        ydk::YList block_number;
         
 }; // Gaspp::Asic::Instance
 
@@ -115,7 +115,7 @@ class Gaspp::Asic::Instance::Address : public ydk::Entity
         ydk::YLeaf width; //type: uint32
         class Location; //type: Gaspp::Asic::Instance::Address::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::Address::Location> > location;
+        ydk::YList location;
         
 }; // Gaspp::Asic::Instance::Address
 
@@ -139,7 +139,7 @@ class Gaspp::Asic::Instance::Address::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class DirectData; //type: Gaspp::Asic::Instance::Address::Location::DirectData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::Address::Location::DirectData> > direct_data;
+        ydk::YList direct_data;
         
 }; // Gaspp::Asic::Instance::Address::Location
 
@@ -188,7 +188,7 @@ class Gaspp::Asic::Instance::BlockName : public ydk::Entity
         ydk::YLeaf block_num; //type: uint32
         class RegisterName; //type: Gaspp::Asic::Instance::BlockName::RegisterName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockName::RegisterName> > register_name;
+        ydk::YList register_name;
         
 }; // Gaspp::Asic::Instance::BlockName
 
@@ -213,7 +213,7 @@ class Gaspp::Asic::Instance::BlockName::RegisterName : public ydk::Entity
         ydk::YLeaf register_; //type: uint32
         class Data; //type: Gaspp::Asic::Instance::BlockName::RegisterName::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockName::RegisterName::Data> > data;
+        ydk::YList data;
         
 }; // Gaspp::Asic::Instance::BlockName::RegisterName
 
@@ -262,7 +262,7 @@ class Gaspp::Asic::Instance::BlockNumber : public ydk::Entity
         ydk::YLeaf block_nm; //type: string
         class RegisterNumber; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber> > register_number;
+        ydk::YList register_number;
         
 }; // Gaspp::Asic::Instance::BlockNumber
 
@@ -288,8 +288,8 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber : public ydk::Entity
         class RegisterOffsets; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
         class Location; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets> > register_offsets;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location> > location;
+        ydk::YList register_offsets;
+        ydk::YList location;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber
 
@@ -314,7 +314,7 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets : publ
         ydk::YLeaf num_entries; //type: uint32
         class Location; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location> > location;
+        ydk::YList location;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
 
@@ -338,7 +338,7 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Locat
         ydk::YLeaf location_name; //type: string
         class Data; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data> > data;
+        ydk::YList data;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
@@ -386,7 +386,7 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location : public ydk:
         ydk::YLeaf location_name; //type: string
         class Data; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data> > data;
+        ydk::YList data;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location
 
@@ -461,7 +461,7 @@ class Set::Controller : public ydk::Entity
 
         class Asic; //type: Set::Controller::Asic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic> > asic;
+        ydk::YList asic;
         
 }; // Set::Controller
 
@@ -486,7 +486,7 @@ class Set::Controller::Asic : public ydk::Entity
         ydk::YLeaf asic_name; //type: string
         class Instance; //type: Set::Controller::Asic::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance> > instance;
+        ydk::YList instance;
         
 }; // Set::Controller::Asic
 
@@ -533,7 +533,7 @@ class Set::Controller::Asic::Instance::FaultInjection : public ydk::Entity
 
         class Module; //type: Set::Controller::Asic::Instance::FaultInjection::Module
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module> > module;
+        ydk::YList module;
         
 }; // Set::Controller::Asic::Instance::FaultInjection
 
@@ -609,7 +609,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc : 
         class BlockNameLst; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc
 
@@ -633,8 +633,8 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::A
         class Threshold; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All
 
@@ -658,7 +658,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::A
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
 
@@ -753,7 +753,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One
 
@@ -776,7 +776,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate
 
@@ -800,7 +800,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber
 
@@ -824,7 +824,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -891,7 +891,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous
 
@@ -914,7 +914,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate
 
@@ -938,7 +938,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -962,7 +962,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1027,7 +1027,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
 
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop
 
@@ -1073,7 +1073,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class BlockNameLst; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
@@ -1097,8 +1097,8 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class Threshold; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All
 
@@ -1122,7 +1122,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold
 
@@ -1217,7 +1217,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One
 
@@ -1240,7 +1240,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate
 
@@ -1264,7 +1264,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber
 
@@ -1288,7 +1288,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -1355,7 +1355,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous
 
@@ -1378,7 +1378,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate
 
@@ -1402,7 +1402,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -1426,7 +1426,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1491,7 +1491,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop
 
@@ -1537,7 +1537,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other 
         class BlockNameLst; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other
 
@@ -1561,8 +1561,8 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         class Threshold; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All
 
@@ -1586,7 +1586,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold
 
@@ -1681,7 +1681,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
@@ -1704,7 +1704,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate
 
@@ -1728,7 +1728,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber
 
@@ -1752,7 +1752,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -1819,7 +1819,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous
 
@@ -1842,7 +1842,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate
 
@@ -1866,7 +1866,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -1890,7 +1890,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1955,7 +1955,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
 
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop
 
@@ -2012,7 +2012,7 @@ class Controller : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric> fabric;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper> sfe_oper;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic> > asic;
+        ydk::YList asic;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper> oper;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen> zen;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver> ccc_driver;
@@ -2094,7 +2094,7 @@ class Controller::Fabric::Fabric_::Fsdbagg : public ydk::Entity
         class Plane; //type: Controller::Fabric::Fabric_::Fsdbagg::Plane
         class Link; //type: Controller::Fabric::Fabric_::Fsdbagg::Link
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Plane> > plane;
+        ydk::YList plane;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Link> link;
         
 }; // Controller::Fabric::Fabric_::Fsdbagg
@@ -2123,8 +2123,8 @@ class Controller::Fabric::Fabric_::Fsdbagg::Plane : public ydk::Entity
         class Instance; //type: Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance
         class InstanceFolded; //type: Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance> > instance;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded> > instance_folded;
+        ydk::YList instance;
+        ydk::YList instance_folded;
         
 }; // Controller::Fabric::Fabric_::Fsdbagg::Plane
 
@@ -2216,7 +2216,7 @@ class Controller::Fabric::Fabric_::Fsdbagg::Link::Port : public ydk::Entity
 
         class Location; //type: Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Fabric_::Fsdbagg::Link::Port
 
@@ -2430,7 +2430,7 @@ class Controller::Fabric::Oper::Cxp::Dom : public ydk::Entity
 
         class Location; //type: Controller::Fabric::Oper::Cxp::Dom::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Dom::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::Cxp::Dom
 
@@ -2456,7 +2456,7 @@ class Controller::Fabric::Oper::Cxp::Dom::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Port; //type: Controller::Fabric::Oper::Cxp::Dom::Location::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Dom::Location::Port> > port;
+        ydk::YList port;
         
 }; // Controller::Fabric::Oper::Cxp::Dom::Location
 
@@ -2661,7 +2661,7 @@ class Controller::Fabric::Oper::Cxp::Summary : public ydk::Entity
 
         class Rack; //type: Controller::Fabric::Oper::Cxp::Summary::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Summary::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::Fabric::Oper::Cxp::Summary
 
@@ -2687,7 +2687,7 @@ class Controller::Fabric::Oper::Cxp::Summary::Rack : public ydk::Entity
         ydk::YLeaf description; //type: string
         class SplitTblFlag; //type: Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag> > split_tbl_flag;
+        ydk::YList split_tbl_flag;
         
 }; // Controller::Fabric::Oper::Cxp::Summary::Rack
 
@@ -2711,7 +2711,7 @@ class Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag : public ydk::E
         ydk::YLeaf tbl_splt; //type: uint32
         class SmryPerSlot; //type: Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot> > smry_per_slot;
+        ydk::YList smry_per_slot;
         
 }; // Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag
 
@@ -2788,7 +2788,7 @@ class Controller::Fabric::Oper::Fgid : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource> resource;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr> fgid_mgr;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::ProgramError> > program_error;
+        ydk::YList program_error;
         
 }; // Controller::Fabric::Oper::Fgid
 
@@ -2812,7 +2812,7 @@ class Controller::Fabric::Oper::Fgid::Information : public ydk::Entity
 
         class Id; //type: Controller::Fabric::Oper::Fgid::Information::Id
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id> > id;
+        ydk::YList id;
         
 }; // Controller::Fabric::Oper::Fgid::Information
 
@@ -2842,10 +2842,10 @@ class Controller::Fabric::Oper::Fgid::Information::Id : public ydk::Entity
         class AssoFabricqIds; //type: Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds
         class Drivers; //type: Controller::Fabric::Oper::Fgid::Information::Id::Drivers
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps> > hex_bitmaps;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps> > binary_bitmaps;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds> > asso_fabricq_ids;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::Drivers> > drivers;
+        ydk::YList hex_bitmaps;
+        ydk::YList binary_bitmaps;
+        ydk::YList asso_fabricq_ids;
+        ydk::YList drivers;
         
 }; // Controller::Fabric::Oper::Fgid::Information::Id
 
@@ -2934,7 +2934,7 @@ class Controller::Fabric::Oper::Fgid::Information::Id::Drivers : public ydk::Ent
         ydk::YLeaf rack_number; //type: int32
         class Clients; //type: Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients> > clients;
+        ydk::YList clients;
         
 }; // Controller::Fabric::Oper::Fgid::Information::Id::Drivers
 
@@ -3051,7 +3051,7 @@ class Controller::Fabric::Oper::Fgid::Resource : public ydk::Entity
 
         class Sdr; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr> > sdr;
+        ydk::YList sdr;
         
 }; // Controller::Fabric::Oper::Fgid::Resource
 
@@ -3077,7 +3077,7 @@ class Controller::Fabric::Oper::Fgid::Resource::Sdr : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Application; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr::Application> > application;
+        ydk::YList application;
         
 }; // Controller::Fabric::Oper::Fgid::Resource::Sdr
 
@@ -3102,7 +3102,7 @@ class Controller::Fabric::Oper::Fgid::Resource::Sdr::Application : public ydk::E
         ydk::YLeaf description; //type: string
         class IdsRange; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange> > ids_range;
+        ydk::YList ids_range;
         
 }; // Controller::Fabric::Oper::Fgid::Resource::Sdr::Application
 
@@ -3127,7 +3127,7 @@ class Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange : pub
         ydk::YLeaf elements; //type: int32
         class FgidIds; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds> > fgid_ids;
+        ydk::YList fgid_ids;
         
 }; // Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange
 
@@ -3207,9 +3207,9 @@ class Controller::Fabric::Oper::Fgid::Statistics::All : public ydk::Entity
         class SdrList; //type: Controller::Fabric::Oper::Fgid::Statistics::All::SdrList
         class PoolList; //type: Controller::Fabric::Oper::Fgid::Statistics::All::PoolList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::StatsList> > stats_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::SdrList> > sdr_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::PoolList> > pool_list;
+        ydk::YList stats_list;
+        ydk::YList sdr_list;
+        ydk::YList pool_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::All
 
@@ -3263,7 +3263,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::All::SdrList : public ydk::Ent
         ydk::YLeaf sdr_hwm_fgids; //type: uint32
         class Application; //type: Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application> > application;
+        ydk::YList application;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::All::SdrList
 
@@ -3341,7 +3341,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::Sdr : public ydk::Entity
 
         class SdrList; //type: Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList> > sdr_list;
+        ydk::YList sdr_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::Sdr
 
@@ -3370,7 +3370,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList : public ydk::Ent
         ydk::YLeaf sdr_hwm_fgids; //type: uint32
         class Application; //type: Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application> > application;
+        ydk::YList application;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList
 
@@ -3420,7 +3420,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::Pool : public ydk::Entity
 
         class PoolList; //type: Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList> > pool_list;
+        ydk::YList pool_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::Pool
 
@@ -3472,7 +3472,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::System : public ydk::Entity
 
         class StatsList; //type: Controller::Fabric::Oper::Fgid::Statistics::System::StatsList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::System::StatsList> > stats_list;
+        ydk::YList stats_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::System
 
@@ -3521,7 +3521,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr : public ydk::Entity
 
         class Trace; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr
 
@@ -3546,7 +3546,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr::Trace
 
@@ -3570,7 +3570,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location : public ydk::Ent
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location
 
@@ -3594,7 +3594,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions : pub
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions
 
@@ -3641,7 +3641,7 @@ class Controller::Fabric::Oper::Fgid::ProgramError : public ydk::Entity
         ydk::YLeaf end; //type: int32
         class Rack; //type: Controller::Fabric::Oper::Fgid::ProgramError::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::ProgramError::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::Fabric::Oper::Fgid::ProgramError
 
@@ -3694,7 +3694,7 @@ class Controller::Fabric::Oper::FsdbaggActive : public ydk::Entity
         class Bundle; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggActive::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Plane> > plane;
+        ydk::YList plane;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle> bundle;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Statistics> statistics;
         
@@ -3751,7 +3751,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Plane : public ydk::Entity
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Plane
 
@@ -3812,7 +3812,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary> summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::All> all;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port> port;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle
 
@@ -3836,7 +3836,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary : public ydk::Ent
 
         class BundleSummaryList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList> > bundle_summary_list;
+        ydk::YList bundle_summary_list;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary
 
@@ -3888,7 +3888,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::All : public ydk::Entity
 
         class BundleAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList> > bundle_all_list;
+        ydk::YList bundle_all_list;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::All
 
@@ -3943,7 +3943,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port : public ydk::Entity
         class Location; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port
 
@@ -3968,7 +3968,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All : public ydk::E
         class BportAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList> > bport_all_list;
+        ydk::YList bport_all_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics> statistics;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All

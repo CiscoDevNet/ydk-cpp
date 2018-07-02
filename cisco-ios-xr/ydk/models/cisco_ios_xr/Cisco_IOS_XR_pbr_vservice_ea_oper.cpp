@@ -17,7 +17,7 @@ ServiceFunctionChaining::ServiceFunctionChaining()
 {
     nodes->parent = this;
 
-    yang_name = "service-function-chaining"; yang_parent_name = "Cisco-IOS-XR-pbr-vservice-ea-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "service-function-chaining"; yang_parent_name = "Cisco-IOS-XR-pbr-vservice-ea-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ServiceFunctionChaining::~ServiceFunctionChaining()
@@ -26,6 +26,7 @@ ServiceFunctionChaining::~ServiceFunctionChaining()
 
 bool ServiceFunctionChaining::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool ServiceFunctionChaining::has_leaf_or_child_of_name(const std::string & name
 }
 
 ServiceFunctionChaining::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "service-function-chaining"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "service-function-chaining"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ServiceFunctionChaining::Nodes::~Nodes()
@@ -129,7 +132,8 @@ ServiceFunctionChaining::Nodes::~Nodes()
 
 bool ServiceFunctionChaining::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool ServiceFunctionChaining::Nodes::has_data() const
 
 bool ServiceFunctionChaining::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::get_child_by_name(const 
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool ServiceFunctionChaining::Nodes::has_leaf_or_child_of_name(const std::string
 ServiceFunctionChaining::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     process(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process>())
 {
     process->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ServiceFunctionChaining::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ ServiceFunctionChaining::Nodes::Node::~Node()
 
 bool ServiceFunctionChaining::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (process !=  nullptr && process->has_data());
 }
@@ -252,7 +257,8 @@ std::string ServiceFunctionChaining::Nodes::Node::get_absolute_path() const
 std::string ServiceFunctionChaining::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -320,14 +326,14 @@ bool ServiceFunctionChaining::Nodes::Node::has_leaf_or_child_of_name(const std::
 ServiceFunctionChaining::Nodes::Node::Process::Process()
     :
     service_function_path(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath>())
-	,service_function(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction>())
-	,service_function_forwarder(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder>())
+    , service_function(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction>())
+    , service_function_forwarder(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder>())
 {
     service_function_path->parent = this;
     service_function->parent = this;
     service_function_forwarder->parent = this;
 
-    yang_name = "process"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::~Process()
@@ -336,6 +342,7 @@ ServiceFunctionChaining::Nodes::Node::Process::~Process()
 
 bool ServiceFunctionChaining::Nodes::Node::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return (service_function_path !=  nullptr && service_function_path->has_data())
 	|| (service_function !=  nullptr && service_function->has_data())
 	|| (service_function_forwarder !=  nullptr && service_function_forwarder->has_data());
@@ -440,7 +447,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::ServiceFunct
 {
     path_ids->parent = this;
 
-    yang_name = "service-function-path"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-function-path"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::~ServiceFunctionPath()
@@ -449,6 +456,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::~ServiceFunc
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::has_data() const
 {
+    if (is_presence_container) return true;
     return (path_ids !=  nullptr && path_ids->has_data());
 }
 
@@ -516,9 +524,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::has_lea
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathIds()
+    :
+    path_id(this, {"id"})
 {
 
-    yang_name = "path-ids"; yang_parent_name = "service-function-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ids"; yang_parent_name = "service-function-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::~PathIds()
@@ -527,7 +537,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::~Pa
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::has_data() const
 {
-    for (std::size_t index=0; index<path_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_id.len(); index++)
     {
         if(path_id[index]->has_data())
             return true;
@@ -537,7 +548,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::has_operation() const
 {
-    for (std::size_t index=0; index<path_id.size(); index++)
+    for (std::size_t index=0; index<path_id.len(); index++)
     {
         if(path_id[index]->has_operation())
             return true;
@@ -567,7 +578,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId>();
         c->parent = this;
-        path_id.push_back(c);
+        path_id.append(c);
         return c;
     }
 
@@ -579,7 +590,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path_id)
+    for (auto c : path_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -608,14 +619,14 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::PathId()
     :
     id{YType::uint32, "id"}
-    	,
+        ,
     service_indexes(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes>())
-	,stats(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats>())
+    , stats(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats>())
 {
     service_indexes->parent = this;
     stats->parent = this;
 
-    yang_name = "path-id"; yang_parent_name = "path-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-id"; yang_parent_name = "path-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::~PathId()
@@ -624,6 +635,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (service_indexes !=  nullptr && service_indexes->has_data())
 	|| (stats !=  nullptr && stats->has_data());
@@ -640,7 +652,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path-id" <<"[id='" <<id <<"']";
+    path_buffer << "path-id";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -720,9 +733,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndexes()
+    :
+    service_index(this, {"index_"})
 {
 
-    yang_name = "service-indexes"; yang_parent_name = "path-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-indexes"; yang_parent_name = "path-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::~ServiceIndexes()
@@ -731,7 +746,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::has_data() const
 {
-    for (std::size_t index=0; index<service_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_index.len(); index++)
     {
         if(service_index[index]->has_data())
             return true;
@@ -741,7 +757,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<service_index.size(); index++)
+    for (std::size_t index=0; index<service_index.len(); index++)
     {
         if(service_index[index]->has_operation())
             return true;
@@ -771,7 +787,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex>();
         c->parent = this;
-        service_index.push_back(c);
+        service_index.append(c);
         return c;
     }
 
@@ -783,7 +799,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_index)
+    for (auto c : service_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -812,12 +828,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::ServiceIndex()
     :
     index_{YType::uint32, "index"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data>())
+    , si_arr(this, {})
 {
     data->parent = this;
 
-    yang_name = "service-index"; yang_parent_name = "service-indexes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-index"; yang_parent_name = "service-indexes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::~ServiceIndex()
@@ -826,7 +843,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::has_data() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_data())
             return true;
@@ -837,7 +855,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::has_operation() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_operation())
             return true;
@@ -850,7 +868,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-index" <<"[index='" <<index_ <<"']";
+    path_buffer << "service-index";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -879,7 +898,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr>();
         c->parent = this;
-        si_arr.push_back(c);
+        si_arr.append(c);
         return c;
     }
 
@@ -896,7 +915,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     }
 
     count = 0;
-    for (auto const & c : si_arr)
+    for (auto c : si_arr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -935,13 +954,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     sfp(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp>())
-	,spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term>())
-	,sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf>())
-	,sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff>())
-	,sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal>())
+    , spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term>())
+    , sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf>())
+    , sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff>())
+    , sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal>())
 {
     sfp->parent = this;
     spi_si->parent = this;
@@ -950,7 +969,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     sff->parent = this;
     sff_local->parent = this;
 
-    yang_name = "data"; yang_parent_name = "service-index"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "service-index"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::~Data()
@@ -959,6 +978,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sfp !=  nullptr && sfp->has_data())
 	|| (spi_si !=  nullptr && spi_si->has_data())
@@ -1121,12 +1141,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Sfp()
     :
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::~Sfp()
@@ -1135,6 +1155,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::has_data() const
 {
+    if (is_presence_container) return true;
     return (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
 }
@@ -1223,7 +1244,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::~SpiSi()
@@ -1232,6 +1253,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -1314,7 +1336,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::~Term()
@@ -1323,6 +1345,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -1405,7 +1428,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::~SpiSi()
@@ -1414,6 +1437,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -1496,7 +1520,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::~Term()
@@ -1505,6 +1529,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -1587,7 +1612,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::~Sf()
@@ -1596,6 +1621,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -1678,7 +1704,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::~Sff()
@@ -1687,6 +1713,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -1771,7 +1798,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     lookup_err_bytes{YType::uint64, "lookup-err-bytes"}
 {
 
-    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::~SffLocal()
@@ -1780,6 +1807,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::has_data() const
 {
+    if (is_presence_container) return true;
     return malformed_err_pkts.is_set
 	|| lookup_err_pkts.is_set
 	|| malformed_err_bytes.is_set
@@ -1885,12 +1913,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::SiArr()
     :
     si{YType::uint8, "si"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data>())
 {
     data->parent = this;
 
-    yang_name = "si-arr"; yang_parent_name = "service-index"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-arr"; yang_parent_name = "service-index"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::~SiArr()
@@ -1899,6 +1927,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::has_data() const
 {
+    if (is_presence_container) return true;
     return si.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -1981,14 +2010,14 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::~Data()
@@ -1997,6 +2026,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
@@ -2098,7 +2128,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::~SpiSi()
@@ -2107,6 +2137,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -2189,7 +2220,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::~Term()
@@ -2198,6 +2229,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -2277,12 +2309,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Stats()
     :
     detail(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail>())
-	,summarized(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized>())
+    , summarized(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized>())
 {
     detail->parent = this;
     summarized->parent = this;
 
-    yang_name = "stats"; yang_parent_name = "path-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "path-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::~Stats()
@@ -2291,6 +2323,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return (detail !=  nullptr && detail->has_data())
 	|| (summarized !=  nullptr && summarized->has_data());
 }
@@ -2376,10 +2409,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Detail()
     :
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data>())
+    , si_arr(this, {})
 {
     data->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::~Detail()
@@ -2388,7 +2422,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::has_data() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_data())
             return true;
@@ -2398,7 +2433,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_operation())
             return true;
@@ -2438,7 +2473,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr>();
         c->parent = this;
-        si_arr.push_back(c);
+        si_arr.append(c);
         return c;
     }
 
@@ -2455,7 +2490,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     }
 
     count = 0;
-    for (auto const & c : si_arr)
+    for (auto c : si_arr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2484,13 +2519,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     sfp(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp>())
-	,spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term>())
-	,sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf>())
-	,sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff>())
-	,sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal>())
+    , spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term>())
+    , sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf>())
+    , sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff>())
+    , sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal>())
 {
     sfp->parent = this;
     spi_si->parent = this;
@@ -2499,7 +2534,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     sff->parent = this;
     sff_local->parent = this;
 
-    yang_name = "data"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::~Data()
@@ -2508,6 +2543,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sfp !=  nullptr && sfp->has_data())
 	|| (spi_si !=  nullptr && spi_si->has_data())
@@ -2670,12 +2706,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Sfp()
     :
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::~Sfp()
@@ -2684,6 +2720,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::has_data() const
 {
+    if (is_presence_container) return true;
     return (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
 }
@@ -2772,7 +2809,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::~SpiSi()
@@ -2781,6 +2818,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -2863,7 +2901,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::~Term()
@@ -2872,6 +2910,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -2954,7 +2993,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::~SpiSi()
@@ -2963,6 +3002,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -3045,7 +3085,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::~Term()
@@ -3054,6 +3094,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -3136,7 +3177,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::~Sf()
@@ -3145,6 +3186,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -3227,7 +3269,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::~Sff()
@@ -3236,6 +3278,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -3320,7 +3363,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     lookup_err_bytes{YType::uint64, "lookup-err-bytes"}
 {
 
-    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::~SffLocal()
@@ -3329,6 +3372,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::has_data() const
 {
+    if (is_presence_container) return true;
     return malformed_err_pkts.is_set
 	|| lookup_err_pkts.is_set
 	|| malformed_err_bytes.is_set
@@ -3434,12 +3478,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::SiArr()
     :
     si{YType::uint8, "si"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data>())
 {
     data->parent = this;
 
-    yang_name = "si-arr"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-arr"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::~SiArr()
@@ -3448,6 +3492,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::has_data() const
 {
+    if (is_presence_container) return true;
     return si.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -3530,14 +3575,14 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::~Data()
@@ -3546,6 +3591,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
@@ -3647,7 +3693,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::~SpiSi()
@@ -3656,6 +3702,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -3738,7 +3785,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::~Term()
@@ -3747,6 +3794,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -3826,10 +3874,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Summarized()
     :
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data>())
+    , si_arr(this, {})
 {
     data->parent = this;
 
-    yang_name = "summarized"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summarized"; yang_parent_name = "stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::~Summarized()
@@ -3838,7 +3887,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::has_data() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_data())
             return true;
@@ -3848,7 +3898,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::has_operation() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_operation())
             return true;
@@ -3888,7 +3938,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr>();
         c->parent = this;
-        si_arr.push_back(c);
+        si_arr.append(c);
         return c;
     }
 
@@ -3905,7 +3955,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     }
 
     count = 0;
-    for (auto const & c : si_arr)
+    for (auto c : si_arr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3934,13 +3984,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     sfp(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp>())
-	,spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term>())
-	,sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf>())
-	,sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff>())
-	,sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal>())
+    , spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term>())
+    , sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf>())
+    , sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff>())
+    , sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal>())
 {
     sfp->parent = this;
     spi_si->parent = this;
@@ -3949,7 +3999,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     sff->parent = this;
     sff_local->parent = this;
 
-    yang_name = "data"; yang_parent_name = "summarized"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "summarized"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::~Data()
@@ -3958,6 +4008,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sfp !=  nullptr && sfp->has_data())
 	|| (spi_si !=  nullptr && spi_si->has_data())
@@ -4120,12 +4171,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Sfp()
     :
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::~Sfp()
@@ -4134,6 +4185,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::has_data() const
 {
+    if (is_presence_container) return true;
     return (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
 }
@@ -4222,7 +4274,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::~SpiSi()
@@ -4231,6 +4283,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -4313,7 +4366,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::~Term()
@@ -4322,6 +4375,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -4404,7 +4458,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::~SpiSi()
@@ -4413,6 +4467,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -4495,7 +4550,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::~Term()
@@ -4504,6 +4559,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -4586,7 +4642,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::~Sf()
@@ -4595,6 +4651,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -4677,7 +4734,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::~Sff()
@@ -4686,6 +4743,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -4770,7 +4828,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     lookup_err_bytes{YType::uint64, "lookup-err-bytes"}
 {
 
-    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::~SffLocal()
@@ -4779,6 +4837,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::has_data() const
 {
+    if (is_presence_container) return true;
     return malformed_err_pkts.is_set
 	|| lookup_err_pkts.is_set
 	|| malformed_err_bytes.is_set
@@ -4884,12 +4943,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::SiArr()
     :
     si{YType::uint8, "si"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data>())
 {
     data->parent = this;
 
-    yang_name = "si-arr"; yang_parent_name = "summarized"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-arr"; yang_parent_name = "summarized"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::~SiArr()
@@ -4898,6 +4957,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::has_data() const
 {
+    if (is_presence_container) return true;
     return si.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -4980,14 +5040,14 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::~Data()
@@ -4996,6 +5056,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
@@ -5097,7 +5158,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::~SpiSi()
@@ -5106,6 +5167,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -5188,7 +5250,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::~Term()
@@ -5197,6 +5259,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::Pat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -5279,7 +5342,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::ServiceFunction(
 {
     sf_names->parent = this;
 
-    yang_name = "service-function"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-function"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::~ServiceFunction()
@@ -5288,6 +5351,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::~ServiceFunction
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::has_data() const
 {
+    if (is_presence_container) return true;
     return (sf_names !=  nullptr && sf_names->has_data());
 }
 
@@ -5355,9 +5419,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::has_leaf_or
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfNames()
+    :
+    sf_name(this, {"name"})
 {
 
-    yang_name = "sf-names"; yang_parent_name = "service-function"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf-names"; yang_parent_name = "service-function"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::~SfNames()
@@ -5366,7 +5432,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::~SfName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::has_data() const
 {
-    for (std::size_t index=0; index<sf_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sf_name.len(); index++)
     {
         if(sf_name[index]->has_data())
             return true;
@@ -5376,7 +5443,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::ha
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::has_operation() const
 {
-    for (std::size_t index=0; index<sf_name.size(); index++)
+    for (std::size_t index=0; index<sf_name.len(); index++)
     {
         if(sf_name[index]->has_operation())
             return true;
@@ -5406,7 +5473,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName>();
         c->parent = this;
-        sf_name.push_back(c);
+        sf_name.append(c);
         return c;
     }
 
@@ -5418,7 +5485,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sf_name)
+    for (auto c : sf_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5447,12 +5514,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::ha
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SfName()
     :
     name{YType::str, "name"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data>())
+    , si_arr(this, {})
 {
     data->parent = this;
 
-    yang_name = "sf-name"; yang_parent_name = "sf-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf-name"; yang_parent_name = "sf-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::~SfName()
@@ -5461,7 +5529,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::has_data() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_data())
             return true;
@@ -5472,7 +5541,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::has_operation() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_operation())
             return true;
@@ -5485,7 +5554,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sf-name" <<"[name='" <<name <<"']";
+    path_buffer << "sf-name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5514,7 +5584,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr>();
         c->parent = this;
-        si_arr.push_back(c);
+        si_arr.append(c);
         return c;
     }
 
@@ -5531,7 +5601,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     }
 
     count = 0;
-    for (auto const & c : si_arr)
+    for (auto c : si_arr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5570,13 +5640,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     sfp(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp>())
-	,spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term>())
-	,sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf>())
-	,sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff>())
-	,sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal>())
+    , spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term>())
+    , sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf>())
+    , sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff>())
+    , sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal>())
 {
     sfp->parent = this;
     spi_si->parent = this;
@@ -5585,7 +5655,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     sff->parent = this;
     sff_local->parent = this;
 
-    yang_name = "data"; yang_parent_name = "sf-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "sf-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::~Data()
@@ -5594,6 +5664,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sfp !=  nullptr && sfp->has_data())
 	|| (spi_si !=  nullptr && spi_si->has_data())
@@ -5756,12 +5827,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Sfp()
     :
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::~Sfp()
@@ -5770,6 +5841,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::has_data() const
 {
+    if (is_presence_container) return true;
     return (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
 }
@@ -5858,7 +5930,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::~SpiSi()
@@ -5867,6 +5939,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -5949,7 +6022,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::~Term()
@@ -5958,6 +6031,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -6040,7 +6114,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::~SpiSi()
@@ -6049,6 +6123,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -6131,7 +6206,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::~Term()
@@ -6140,6 +6215,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -6222,7 +6298,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::~Sf()
@@ -6231,6 +6307,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -6313,7 +6390,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::~Sff()
@@ -6322,6 +6399,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -6406,7 +6484,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     lookup_err_bytes{YType::uint64, "lookup-err-bytes"}
 {
 
-    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::~SffLocal()
@@ -6415,6 +6493,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::has_data() const
 {
+    if (is_presence_container) return true;
     return malformed_err_pkts.is_set
 	|| lookup_err_pkts.is_set
 	|| malformed_err_bytes.is_set
@@ -6520,12 +6599,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::SiArr()
     :
     si{YType::uint8, "si"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data>())
 {
     data->parent = this;
 
-    yang_name = "si-arr"; yang_parent_name = "sf-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-arr"; yang_parent_name = "sf-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::~SiArr()
@@ -6534,6 +6613,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::has_data() const
 {
+    if (is_presence_container) return true;
     return si.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -6616,14 +6696,14 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::~Data()
@@ -6632,6 +6712,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
@@ -6733,7 +6814,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::~SpiSi()
@@ -6742,6 +6823,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -6824,7 +6906,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::~Term()
@@ -6833,6 +6915,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName:
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -6912,12 +6995,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::ServiceFunctionForwarder()
     :
     local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local>())
-	,sff_names(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames>())
+    , sff_names(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames>())
 {
     local->parent = this;
     sff_names->parent = this;
 
-    yang_name = "service-function-forwarder"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-function-forwarder"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::~ServiceFunctionForwarder()
@@ -6926,6 +7009,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::~Servic
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data())
 	|| (sff_names !=  nullptr && sff_names->has_data());
 }
@@ -7014,7 +7098,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 {
     error->parent = this;
 
-    yang_name = "local"; yang_parent_name = "service-function-forwarder"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "service-function-forwarder"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::~Local()
@@ -7023,6 +7107,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (error !=  nullptr && error->has_data());
 }
 
@@ -7092,10 +7177,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Error()
     :
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data>())
+    , si_arr(this, {})
 {
     data->parent = this;
 
-    yang_name = "error"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::~Error()
@@ -7104,7 +7190,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::has_data() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_data())
             return true;
@@ -7114,7 +7201,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::has_operation() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_operation())
             return true;
@@ -7154,7 +7241,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr>();
         c->parent = this;
-        si_arr.push_back(c);
+        si_arr.append(c);
         return c;
     }
 
@@ -7171,7 +7258,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     }
 
     count = 0;
-    for (auto const & c : si_arr)
+    for (auto c : si_arr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7200,13 +7287,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     sfp(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp>())
-	,spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term>())
-	,sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf>())
-	,sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff>())
-	,sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal>())
+    , spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term>())
+    , sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf>())
+    , sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff>())
+    , sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal>())
 {
     sfp->parent = this;
     spi_si->parent = this;
@@ -7215,7 +7302,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     sff->parent = this;
     sff_local->parent = this;
 
-    yang_name = "data"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::~Data()
@@ -7224,6 +7311,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sfp !=  nullptr && sfp->has_data())
 	|| (spi_si !=  nullptr && spi_si->has_data())
@@ -7386,12 +7474,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Sfp()
     :
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::~Sfp()
@@ -7400,6 +7488,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::has_data() const
 {
+    if (is_presence_container) return true;
     return (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
 }
@@ -7488,7 +7577,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::~SpiSi()
@@ -7497,6 +7586,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -7579,7 +7669,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::~Term()
@@ -7588,6 +7678,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -7670,7 +7761,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::~SpiSi()
@@ -7679,6 +7770,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -7761,7 +7853,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::~Term()
@@ -7770,6 +7862,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -7852,7 +7945,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::~Sf()
@@ -7861,6 +7954,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -7943,7 +8037,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::~Sff()
@@ -7952,6 +8046,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -8036,7 +8131,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     lookup_err_bytes{YType::uint64, "lookup-err-bytes"}
 {
 
-    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::~SffLocal()
@@ -8045,6 +8140,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::has_data() const
 {
+    if (is_presence_container) return true;
     return malformed_err_pkts.is_set
 	|| lookup_err_pkts.is_set
 	|| malformed_err_bytes.is_set
@@ -8150,12 +8246,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::SiArr()
     :
     si{YType::uint8, "si"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data>())
 {
     data->parent = this;
 
-    yang_name = "si-arr"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-arr"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::~SiArr()
@@ -8164,6 +8260,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::has_data() const
 {
+    if (is_presence_container) return true;
     return si.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -8246,14 +8343,14 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::~Data()
@@ -8262,6 +8359,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
@@ -8363,7 +8461,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::~SpiSi()
@@ -8372,6 +8470,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -8454,7 +8553,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::~Term()
@@ -8463,6 +8562,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -8540,9 +8640,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffNames()
+    :
+    sff_name(this, {"name"})
 {
 
-    yang_name = "sff-names"; yang_parent_name = "service-function-forwarder"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-names"; yang_parent_name = "service-function-forwarder"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::~SffNames()
@@ -8551,7 +8653,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::has_data() const
 {
-    for (std::size_t index=0; index<sff_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sff_name.len(); index++)
     {
         if(sff_name[index]->has_data())
             return true;
@@ -8561,7 +8664,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::has_operation() const
 {
-    for (std::size_t index=0; index<sff_name.size(); index++)
+    for (std::size_t index=0; index<sff_name.len(); index++)
     {
         if(sff_name[index]->has_operation())
             return true;
@@ -8591,7 +8694,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName>();
         c->parent = this;
-        sff_name.push_back(c);
+        sff_name.append(c);
         return c;
     }
 
@@ -8603,7 +8706,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sff_name)
+    for (auto c : sff_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8632,12 +8735,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SffName()
     :
     name{YType::str, "name"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data>())
+    , si_arr(this, {})
 {
     data->parent = this;
 
-    yang_name = "sff-name"; yang_parent_name = "sff-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-name"; yang_parent_name = "sff-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::~SffName()
@@ -8646,7 +8750,8 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::has_data() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_data())
             return true;
@@ -8657,7 +8762,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::has_operation() const
 {
-    for (std::size_t index=0; index<si_arr.size(); index++)
+    for (std::size_t index=0; index<si_arr.len(); index++)
     {
         if(si_arr[index]->has_operation())
             return true;
@@ -8670,7 +8775,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sff-name" <<"[name='" <<name <<"']";
+    path_buffer << "sff-name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -8699,7 +8805,7 @@ std::shared_ptr<Entity> ServiceFunctionChaining::Nodes::Node::Process::ServiceFu
     {
         auto c = std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr>();
         c->parent = this;
-        si_arr.push_back(c);
+        si_arr.append(c);
         return c;
     }
 
@@ -8716,7 +8822,7 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     }
 
     count = 0;
-    for (auto const & c : si_arr)
+    for (auto c : si_arr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8755,13 +8861,13 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     sfp(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp>())
-	,spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term>())
-	,sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf>())
-	,sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff>())
-	,sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal>())
+    , spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term>())
+    , sf(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf>())
+    , sff(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff>())
+    , sff_local(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal>())
 {
     sfp->parent = this;
     spi_si->parent = this;
@@ -8770,7 +8876,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     sff->parent = this;
     sff_local->parent = this;
 
-    yang_name = "data"; yang_parent_name = "sff-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "sff-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::~Data()
@@ -8779,6 +8885,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (sfp !=  nullptr && sfp->has_data())
 	|| (spi_si !=  nullptr && spi_si->has_data())
@@ -8941,12 +9048,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Sfp()
     :
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sfp"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::~Sfp()
@@ -8955,6 +9062,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::has_data() const
 {
+    if (is_presence_container) return true;
     return (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
 }
@@ -9043,7 +9151,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::~SpiSi()
@@ -9052,6 +9160,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -9134,7 +9243,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "sfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::~Term()
@@ -9143,6 +9252,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -9225,7 +9335,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::~SpiSi()
@@ -9234,6 +9344,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -9316,7 +9427,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::~Term()
@@ -9325,6 +9436,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }
@@ -9407,7 +9519,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sf"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::~Sf()
@@ -9416,6 +9528,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -9498,7 +9611,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::~Sff()
@@ -9507,6 +9620,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -9591,7 +9705,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     lookup_err_bytes{YType::uint64, "lookup-err-bytes"}
 {
 
-    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sff-local"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::~SffLocal()
@@ -9600,6 +9714,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::has_data() const
 {
+    if (is_presence_container) return true;
     return malformed_err_pkts.is_set
 	|| lookup_err_pkts.is_set
 	|| malformed_err_bytes.is_set
@@ -9705,12 +9820,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::SiArr()
     :
     si{YType::uint8, "si"}
-    	,
+        ,
     data(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data>())
 {
     data->parent = this;
 
-    yang_name = "si-arr"; yang_parent_name = "sff-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "si-arr"; yang_parent_name = "sff-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::~SiArr()
@@ -9719,6 +9834,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::has_data() const
 {
+    if (is_presence_container) return true;
     return si.is_set
 	|| (data !=  nullptr && data->has_data());
 }
@@ -9801,14 +9917,14 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Data()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     spi_si(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi>())
-	,term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term>())
+    , term(std::make_shared<ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term>())
 {
     spi_si->parent = this;
     term->parent = this;
 
-    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data"; yang_parent_name = "si-arr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::~Data()
@@ -9817,6 +9933,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (spi_si !=  nullptr && spi_si->has_data())
 	|| (term !=  nullptr && term->has_data());
@@ -9918,7 +10035,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     processed_bytes{YType::uint64, "processed-bytes"}
 {
 
-    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spi-si"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::~SpiSi()
@@ -9927,6 +10044,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::has_data() const
 {
+    if (is_presence_container) return true;
     return processed_pkts.is_set
 	|| processed_bytes.is_set;
 }
@@ -10009,7 +10127,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
     terminated_bytes{YType::uint64, "terminated-bytes"}
 {
 
-    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "term"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::~Term()
@@ -10018,6 +10136,7 @@ ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffName
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::has_data() const
 {
+    if (is_presence_container) return true;
     return terminated_pkts.is_set
 	|| terminated_bytes.is_set;
 }

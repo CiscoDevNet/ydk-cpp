@@ -57,7 +57,7 @@ class Ssrp::Profiles : public ydk::Entity
 
         class Profile; //type: Ssrp::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ppp_ma_ssrp_cfg::Ssrp::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ssrp::Profiles
 

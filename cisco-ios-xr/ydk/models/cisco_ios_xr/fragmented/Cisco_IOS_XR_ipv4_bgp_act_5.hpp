@@ -2212,11 +2212,11 @@ class ClearBgpVersionAfiSafiRdIpv4Prefix::Input : public ydk::Entity
 
 }; // ClearBgpVersionAfiSafiRdIpv4Prefix::Input
 
-class ClearBgpVersionAfiSafiMp2MpIpv4Prefix : public ydk::Entity
+class ClearBgpVersionAfiSafiMp2mpIpv4Prefix : public ydk::Entity
 {
     public:
-        ClearBgpVersionAfiSafiMp2MpIpv4Prefix();
-        ~ClearBgpVersionAfiSafiMp2MpIpv4Prefix();
+        ClearBgpVersionAfiSafiMp2mpIpv4Prefix();
+        ~ClearBgpVersionAfiSafiMp2mpIpv4Prefix();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2233,14 +2233,14 @@ class ClearBgpVersionAfiSafiMp2MpIpv4Prefix : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpVersionAfiSafiMp2MpIpv4Prefix::Input
+        class Input; //type: ClearBgpVersionAfiSafiMp2mpIpv4Prefix::Input
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpVersionAfiSafiMp2MpIpv4Prefix::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpVersionAfiSafiMp2mpIpv4Prefix::Input> input;
         
-}; // ClearBgpVersionAfiSafiMp2MpIpv4Prefix
+}; // ClearBgpVersionAfiSafiMp2mpIpv4Prefix
 
 
-class ClearBgpVersionAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
+class ClearBgpVersionAfiSafiMp2mpIpv4Prefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2261,7 +2261,7 @@ class ClearBgpVersionAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
         ydk::YLeaf mp2mp; //type: string
         ydk::YLeaf ipv4_prefix; //type: string
 
-}; // ClearBgpVersionAfiSafiMp2MpIpv4Prefix::Input
+}; // ClearBgpVersionAfiSafiMp2mpIpv4Prefix::Input
 
 class ClearBgpVersionAfiSafiVrfIpv4Prefix : public ydk::Entity
 {
@@ -3786,7 +3786,7 @@ class ClearBgpVrfAsGraceful::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_all; //type: one of string, enumeration
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpVrfAsGraceful::Input
 

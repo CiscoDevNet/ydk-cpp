@@ -14,11 +14,11 @@ namespace Cisco_IOS_XR_ethernet_link_oam_oper {
 EtherLinkOam::EtherLinkOam()
     :
     discovery_info_interfaces(std::make_shared<EtherLinkOam::DiscoveryInfoInterfaces>())
-	,interface_state_interfaces(std::make_shared<EtherLinkOam::InterfaceStateInterfaces>())
-	,running_config_interfaces(std::make_shared<EtherLinkOam::RunningConfigInterfaces>())
-	,nodes(std::make_shared<EtherLinkOam::Nodes>())
-	,event_log_entry_interfaces(std::make_shared<EtherLinkOam::EventLogEntryInterfaces>())
-	,stats_interfaces(std::make_shared<EtherLinkOam::StatsInterfaces>())
+    , interface_state_interfaces(std::make_shared<EtherLinkOam::InterfaceStateInterfaces>())
+    , running_config_interfaces(std::make_shared<EtherLinkOam::RunningConfigInterfaces>())
+    , nodes(std::make_shared<EtherLinkOam::Nodes>())
+    , event_log_entry_interfaces(std::make_shared<EtherLinkOam::EventLogEntryInterfaces>())
+    , stats_interfaces(std::make_shared<EtherLinkOam::StatsInterfaces>())
 {
     discovery_info_interfaces->parent = this;
     interface_state_interfaces->parent = this;
@@ -27,7 +27,7 @@ EtherLinkOam::EtherLinkOam()
     event_log_entry_interfaces->parent = this;
     stats_interfaces->parent = this;
 
-    yang_name = "ether-link-oam"; yang_parent_name = "Cisco-IOS-XR-ethernet-link-oam-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ether-link-oam"; yang_parent_name = "Cisco-IOS-XR-ethernet-link-oam-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EtherLinkOam::~EtherLinkOam()
@@ -36,6 +36,7 @@ EtherLinkOam::~EtherLinkOam()
 
 bool EtherLinkOam::has_data() const
 {
+    if (is_presence_container) return true;
     return (discovery_info_interfaces !=  nullptr && discovery_info_interfaces->has_data())
 	|| (interface_state_interfaces !=  nullptr && interface_state_interfaces->has_data())
 	|| (running_config_interfaces !=  nullptr && running_config_interfaces->has_data())
@@ -208,9 +209,11 @@ bool EtherLinkOam::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterfaces()
+    :
+    discovery_info_interface(this, {"member_interface"})
 {
 
-    yang_name = "discovery-info-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discovery-info-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::DiscoveryInfoInterfaces::~DiscoveryInfoInterfaces()
@@ -219,7 +222,8 @@ EtherLinkOam::DiscoveryInfoInterfaces::~DiscoveryInfoInterfaces()
 
 bool EtherLinkOam::DiscoveryInfoInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<discovery_info_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<discovery_info_interface.len(); index++)
     {
         if(discovery_info_interface[index]->has_data())
             return true;
@@ -229,7 +233,7 @@ bool EtherLinkOam::DiscoveryInfoInterfaces::has_data() const
 
 bool EtherLinkOam::DiscoveryInfoInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<discovery_info_interface.size(); index++)
+    for (std::size_t index=0; index<discovery_info_interface.len(); index++)
     {
         if(discovery_info_interface[index]->has_operation())
             return true;
@@ -266,7 +270,7 @@ std::shared_ptr<Entity> EtherLinkOam::DiscoveryInfoInterfaces::get_child_by_name
     {
         auto c = std::make_shared<EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface>();
         c->parent = this;
-        discovery_info_interface.push_back(c);
+        discovery_info_interface.append(c);
         return c;
     }
 
@@ -278,7 +282,7 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::DiscoveryInfoInterf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : discovery_info_interface)
+    for (auto c : discovery_info_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -358,7 +362,7 @@ EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::DiscoveryInfoInte
     received_at_risk_notification_time_remaining{YType::uint16, "received-at-risk-notification-time-remaining"}
 {
 
-    yang_name = "discovery-info-interface"; yang_parent_name = "discovery-info-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discovery-info-interface"; yang_parent_name = "discovery-info-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::~DiscoveryInfoInterface()
@@ -367,6 +371,7 @@ EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::~DiscoveryInfoInt
 
 bool EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| name.is_set
 	|| operational_status.is_set
@@ -484,7 +489,8 @@ std::string EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_a
 std::string EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "discovery-info-interface" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "discovery-info-interface";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -1075,9 +1081,11 @@ bool EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::has_leaf_or_
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterfaces()
+    :
+    interface_state_interface(this, {"member_interface"})
 {
 
-    yang_name = "interface-state-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::InterfaceStateInterfaces::~InterfaceStateInterfaces()
@@ -1086,7 +1094,8 @@ EtherLinkOam::InterfaceStateInterfaces::~InterfaceStateInterfaces()
 
 bool EtherLinkOam::InterfaceStateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface_state_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_state_interface.len(); index++)
     {
         if(interface_state_interface[index]->has_data())
             return true;
@@ -1096,7 +1105,7 @@ bool EtherLinkOam::InterfaceStateInterfaces::has_data() const
 
 bool EtherLinkOam::InterfaceStateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface_state_interface.size(); index++)
+    for (std::size_t index=0; index<interface_state_interface.len(); index++)
     {
         if(interface_state_interface[index]->has_operation())
             return true;
@@ -1133,7 +1142,7 @@ std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::get_child_by_nam
     {
         auto c = std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface>();
         c->parent = this;
-        interface_state_interface.push_back(c);
+        interface_state_interface.append(c);
         return c;
     }
 
@@ -1145,7 +1154,7 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_state_interface)
+    for (auto c : interface_state_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1179,14 +1188,14 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::InterfaceStateI
     local_mwd_key{YType::uint32, "local-mwd-key"},
     remote_mwd_key_present{YType::boolean, "remote-mwd-key-present"},
     remote_mwd_key{YType::uint32, "remote-mwd-key"}
-    	,
+        ,
     errors(std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors>())
-	,efd_triggers(std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers>())
+    , efd_triggers(std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers>())
 {
     errors->parent = this;
     efd_triggers->parent = this;
 
-    yang_name = "interface-state-interface"; yang_parent_name = "interface-state-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-state-interface"; yang_parent_name = "interface-state-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::~InterfaceStateInterface()
@@ -1195,6 +1204,7 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::~InterfaceState
 
 bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| protocol_code.is_set
 	|| rx_fault.is_set
@@ -1228,7 +1238,8 @@ std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get
 std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-state-interface" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "interface-state-interface";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -1376,7 +1387,7 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::Errors(
     caps_add_error_code{YType::uint32, "caps-add-error-code"}
 {
 
-    yang_name = "errors"; yang_parent_name = "interface-state-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "errors"; yang_parent_name = "interface-state-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::~Errors()
@@ -1385,6 +1396,7 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::~Errors
 
 bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::has_data() const
 {
+    if (is_presence_container) return true;
     return pfi_reason.is_set
 	|| pfi_error_code.is_set
 	|| platform_reason.is_set
@@ -1574,7 +1586,7 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::Ef
     session_down{YType::boolean, "session-down"}
 {
 
-    yang_name = "efd-triggers"; yang_parent_name = "interface-state-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "efd-triggers"; yang_parent_name = "interface-state-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::~EfdTriggers()
@@ -1583,6 +1595,7 @@ EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::~E
 
 bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_data() const
 {
+    if (is_presence_container) return true;
     return link_fault_received.is_set
 	|| discovery_timed_out.is_set
 	|| capabilities_conflict.is_set
@@ -1699,9 +1712,11 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTrigger
 }
 
 EtherLinkOam::RunningConfigInterfaces::RunningConfigInterfaces()
+    :
+    running_config_interface(this, {"member_interface"})
 {
 
-    yang_name = "running-config-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "running-config-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::RunningConfigInterfaces::~RunningConfigInterfaces()
@@ -1710,7 +1725,8 @@ EtherLinkOam::RunningConfigInterfaces::~RunningConfigInterfaces()
 
 bool EtherLinkOam::RunningConfigInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<running_config_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<running_config_interface.len(); index++)
     {
         if(running_config_interface[index]->has_data())
             return true;
@@ -1720,7 +1736,7 @@ bool EtherLinkOam::RunningConfigInterfaces::has_data() const
 
 bool EtherLinkOam::RunningConfigInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<running_config_interface.size(); index++)
+    for (std::size_t index=0; index<running_config_interface.len(); index++)
     {
         if(running_config_interface[index]->has_operation())
             return true;
@@ -1757,7 +1773,7 @@ std::shared_ptr<Entity> EtherLinkOam::RunningConfigInterfaces::get_child_by_name
     {
         auto c = std::make_shared<EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface>();
         c->parent = this;
-        running_config_interface.push_back(c);
+        running_config_interface.append(c);
         return c;
     }
 
@@ -1769,7 +1785,7 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::RunningConfigInterf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : running_config_interface)
+    for (auto c : running_config_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1878,7 +1894,7 @@ EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::RunningConfigInte
     require_link_monitoring_overridden{YType::boolean, "require-link-monitoring-overridden"}
 {
 
-    yang_name = "running-config-interface"; yang_parent_name = "running-config-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "running-config-interface"; yang_parent_name = "running-config-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::~RunningConfigInterface()
@@ -1887,6 +1903,7 @@ EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::~RunningConfigInt
 
 bool EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| fast_hello_interval_enabled.is_set
 	|| link_monitor_enabled.is_set
@@ -2062,7 +2079,8 @@ std::string EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_a
 std::string EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "running-config-interface" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "running-config-interface";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -2972,9 +2990,11 @@ bool EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::has_leaf_or_
 }
 
 EtherLinkOam::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::Nodes::~Nodes()
@@ -2983,7 +3003,8 @@ EtherLinkOam::Nodes::~Nodes()
 
 bool EtherLinkOam::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -2993,7 +3014,7 @@ bool EtherLinkOam::Nodes::has_data() const
 
 bool EtherLinkOam::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -3030,7 +3051,7 @@ std::shared_ptr<Entity> EtherLinkOam::Nodes::get_child_by_name(const std::string
     {
         auto c = std::make_shared<EtherLinkOam::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -3042,7 +3063,7 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3071,12 +3092,12 @@ bool EtherLinkOam::Nodes::has_leaf_or_child_of_name(const std::string & name) co
 EtherLinkOam::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     summary(std::make_shared<EtherLinkOam::Nodes::Node::Summary>())
 {
     summary->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::Nodes::Node::~Node()
@@ -3085,6 +3106,7 @@ EtherLinkOam::Nodes::Node::~Node()
 
 bool EtherLinkOam::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (summary !=  nullptr && summary->has_data());
 }
@@ -3106,7 +3128,8 @@ std::string EtherLinkOam::Nodes::Node::get_absolute_path() const
 std::string EtherLinkOam::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -3197,7 +3220,7 @@ EtherLinkOam::Nodes::Node::Summary::Summary()
     remote_frame_seconds{YType::uint64, "remote-frame-seconds"}
 {
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EtherLinkOam::Nodes::Node::Summary::~Summary()
@@ -3206,6 +3229,7 @@ EtherLinkOam::Nodes::Node::Summary::~Summary()
 
 bool EtherLinkOam::Nodes::Node::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return interfaces.is_set
 	|| port_down.is_set
 	|| passive_wait.is_set
@@ -3543,9 +3567,11 @@ bool EtherLinkOam::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::st
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterfaces()
+    :
+    event_log_entry_interface(this, {"member_interface"})
 {
 
-    yang_name = "event-log-entry-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "event-log-entry-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::EventLogEntryInterfaces::~EventLogEntryInterfaces()
@@ -3554,7 +3580,8 @@ EtherLinkOam::EventLogEntryInterfaces::~EventLogEntryInterfaces()
 
 bool EtherLinkOam::EventLogEntryInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<event_log_entry_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<event_log_entry_interface.len(); index++)
     {
         if(event_log_entry_interface[index]->has_data())
             return true;
@@ -3564,7 +3591,7 @@ bool EtherLinkOam::EventLogEntryInterfaces::has_data() const
 
 bool EtherLinkOam::EventLogEntryInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<event_log_entry_interface.size(); index++)
+    for (std::size_t index=0; index<event_log_entry_interface.len(); index++)
     {
         if(event_log_entry_interface[index]->has_operation())
             return true;
@@ -3601,7 +3628,7 @@ std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::get_child_by_name
     {
         auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface>();
         c->parent = this;
-        event_log_entry_interface.push_back(c);
+        event_log_entry_interface.append(c);
         return c;
     }
 
@@ -3613,7 +3640,7 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : event_log_entry_interface)
+    for (auto c : event_log_entry_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3642,12 +3669,12 @@ bool EtherLinkOam::EventLogEntryInterfaces::has_leaf_or_child_of_name(const std:
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInterface()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     event_log_entry_indexes(std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes>())
 {
     event_log_entry_indexes->parent = this;
 
-    yang_name = "event-log-entry-interface"; yang_parent_name = "event-log-entry-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "event-log-entry-interface"; yang_parent_name = "event-log-entry-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::~EventLogEntryInterface()
@@ -3656,6 +3683,7 @@ EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::~EventLogEntryInt
 
 bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (event_log_entry_indexes !=  nullptr && event_log_entry_indexes->has_data());
 }
@@ -3677,7 +3705,8 @@ std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_a
 std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "event-log-entry-interface" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "event-log-entry-interface";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -3743,9 +3772,11 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_leaf_or_
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndexes()
+    :
+    event_log_entry_index(this, {"event_log_entry_index"})
 {
 
-    yang_name = "event-log-entry-indexes"; yang_parent_name = "event-log-entry-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event-log-entry-indexes"; yang_parent_name = "event-log-entry-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::~EventLogEntryIndexes()
@@ -3754,7 +3785,8 @@ EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInde
 
 bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_data() const
 {
-    for (std::size_t index=0; index<event_log_entry_index.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<event_log_entry_index.len(); index++)
     {
         if(event_log_entry_index[index]->has_data())
             return true;
@@ -3764,7 +3796,7 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntr
 
 bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_operation() const
 {
-    for (std::size_t index=0; index<event_log_entry_index.size(); index++)
+    for (std::size_t index=0; index<event_log_entry_index.len(); index++)
     {
         if(event_log_entry_index[index]->has_operation())
             return true;
@@ -3794,7 +3826,7 @@ std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInte
     {
         auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex>();
         c->parent = this;
-        event_log_entry_index.push_back(c);
+        event_log_entry_index.append(c);
         return c;
     }
 
@@ -3806,7 +3838,7 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : event_log_entry_index)
+    for (auto c : event_log_entry_index.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3856,7 +3888,7 @@ EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInde
     value_config_units{YType::uint64, "value-config-units"}
 {
 
-    yang_name = "event-log-entry-index"; yang_parent_name = "event-log-entry-indexes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event-log-entry-index"; yang_parent_name = "event-log-entry-indexes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::~EventLogEntryIndex()
@@ -3865,6 +3897,7 @@ EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInde
 
 bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return event_log_entry_index.is_set
 	|| index_.is_set
 	|| handle.is_set
@@ -3915,7 +3948,8 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntr
 std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "event-log-entry-index" <<"[event-log-entry-index='" <<event_log_entry_index <<"']";
+    path_buffer << "event-log-entry-index";
+    ADD_KEY_TOKEN(event_log_entry_index, "event-log-entry-index");
     return path_buffer.str();
 }
 
@@ -4176,9 +4210,11 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntr
 }
 
 EtherLinkOam::StatsInterfaces::StatsInterfaces()
+    :
+    stats_interface(this, {"member_interface"})
 {
 
-    yang_name = "stats-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats-interfaces"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::StatsInterfaces::~StatsInterfaces()
@@ -4187,7 +4223,8 @@ EtherLinkOam::StatsInterfaces::~StatsInterfaces()
 
 bool EtherLinkOam::StatsInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<stats_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stats_interface.len(); index++)
     {
         if(stats_interface[index]->has_data())
             return true;
@@ -4197,7 +4234,7 @@ bool EtherLinkOam::StatsInterfaces::has_data() const
 
 bool EtherLinkOam::StatsInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<stats_interface.size(); index++)
+    for (std::size_t index=0; index<stats_interface.len(); index++)
     {
         if(stats_interface[index]->has_operation())
             return true;
@@ -4234,7 +4271,7 @@ std::shared_ptr<Entity> EtherLinkOam::StatsInterfaces::get_child_by_name(const s
     {
         auto c = std::make_shared<EtherLinkOam::StatsInterfaces::StatsInterface>();
         c->parent = this;
-        stats_interface.push_back(c);
+        stats_interface.append(c);
         return c;
     }
 
@@ -4246,7 +4283,7 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::StatsInterfaces::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stats_interface)
+    for (auto c : stats_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4303,7 +4340,7 @@ EtherLinkOam::StatsInterfaces::StatsInterface::StatsInterface()
     remote_error_frame_second_records{YType::uint32, "remote-error-frame-second-records"}
 {
 
-    yang_name = "stats-interface"; yang_parent_name = "stats-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats-interface"; yang_parent_name = "stats-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EtherLinkOam::StatsInterfaces::StatsInterface::~StatsInterface()
@@ -4312,6 +4349,7 @@ EtherLinkOam::StatsInterfaces::StatsInterface::~StatsInterface()
 
 bool EtherLinkOam::StatsInterfaces::StatsInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| information_tx.is_set
 	|| information_rx.is_set
@@ -4383,7 +4421,8 @@ std::string EtherLinkOam::StatsInterfaces::StatsInterface::get_absolute_path() c
 std::string EtherLinkOam::StatsInterfaces::StatsInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats-interface" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "stats-interface";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -4720,9 +4759,6 @@ bool EtherLinkOam::StatsInterfaces::StatsInterface::has_leaf_or_child_of_name(co
     return false;
 }
 
-const Enum::YLeaf LogLocation::log_location_local {1, "log-location-local"};
-const Enum::YLeaf LogLocation::log_location_remote {2, "log-location-remote"};
-
 const Enum::YLeaf Log::log_type_symbol_event {1, "log-type-symbol-event"};
 const Enum::YLeaf Log::log_type_period_event {2, "log-type-period-event"};
 const Enum::YLeaf Log::log_type_frame_event {3, "log-type-frame-event"};
@@ -4731,22 +4767,8 @@ const Enum::YLeaf Log::log_type_link_fault {256, "log-type-link-fault"};
 const Enum::YLeaf Log::log_type_dying_gasp {257, "log-type-dying-gasp"};
 const Enum::YLeaf Log::log_type_critical_event {258, "log-type-critical-event"};
 
-const Enum::YLeaf Action::no_action {1, "no-action"};
-const Enum::YLeaf Action::disable_interface {2, "disable-interface"};
-const Enum::YLeaf Action::log {3, "log"};
-const Enum::YLeaf Action::efd {4, "efd"};
-
-const Enum::YLeaf ProtocolState::protocol_state_inactive {0, "protocol-state-inactive"};
-const Enum::YLeaf ProtocolState::protocol_state_fault {1, "protocol-state-fault"};
-const Enum::YLeaf ProtocolState::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
-const Enum::YLeaf ProtocolState::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
-const Enum::YLeaf ProtocolState::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
-const Enum::YLeaf ProtocolState::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
-const Enum::YLeaf ProtocolState::protocol_state_send_any {6, "protocol-state-send-any"};
-
-const Enum::YLeaf Mode::passive {0, "passive"};
-const Enum::YLeaf Mode::active {1, "active"};
-const Enum::YLeaf Mode::dont_care {2, "dont-care"};
+const Enum::YLeaf LogLocation::log_location_local {1, "log-location-local"};
+const Enum::YLeaf LogLocation::log_location_remote {2, "log-location-remote"};
 
 const Enum::YLeaf LoopbackStatus::none {1, "none"};
 const Enum::YLeaf LoopbackStatus::initiating {2, "initiating"};
@@ -4765,6 +4787,23 @@ const Enum::YLeaf OperationalState::peering_locally_rejected {7, "peering-locall
 const Enum::YLeaf OperationalState::peering_remotely_rejected {8, "peering-remotely-rejected"};
 const Enum::YLeaf OperationalState::operational {9, "operational"};
 const Enum::YLeaf OperationalState::operational_half_duplex {10, "operational-half-duplex"};
+
+const Enum::YLeaf Mode::passive {0, "passive"};
+const Enum::YLeaf Mode::active {1, "active"};
+const Enum::YLeaf Mode::dont_care {2, "dont-care"};
+
+const Enum::YLeaf Action::no_action {1, "no-action"};
+const Enum::YLeaf Action::disable_interface {2, "disable-interface"};
+const Enum::YLeaf Action::log {3, "log"};
+const Enum::YLeaf Action::efd {4, "efd"};
+
+const Enum::YLeaf ProtocolState::protocol_state_inactive {0, "protocol-state-inactive"};
+const Enum::YLeaf ProtocolState::protocol_state_fault {1, "protocol-state-fault"};
+const Enum::YLeaf ProtocolState::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
+const Enum::YLeaf ProtocolState::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
+const Enum::YLeaf ProtocolState::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
+const Enum::YLeaf ProtocolState::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
+const Enum::YLeaf ProtocolState::protocol_state_send_any {6, "protocol-state-send-any"};
 
 
 }

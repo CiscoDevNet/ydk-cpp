@@ -32,22 +32,22 @@ class TUNNELMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Tunneliftable; //type: TUNNELMIB::Tunneliftable
-        class Tunnelconfigtable; //type: TUNNELMIB::Tunnelconfigtable
-        class Tunnelinetconfigtable; //type: TUNNELMIB::Tunnelinetconfigtable
+        class TunnelIfTable; //type: TUNNELMIB::TunnelIfTable
+        class TunnelConfigTable; //type: TUNNELMIB::TunnelConfigTable
+        class TunnelInetConfigTable; //type: TUNNELMIB::TunnelInetConfigTable
 
-        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunneliftable> tunneliftable;
-        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelconfigtable> tunnelconfigtable;
-        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelinetconfigtable> tunnelinetconfigtable;
+        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::TunnelIfTable> tunneliftable;
+        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::TunnelConfigTable> tunnelconfigtable;
+        std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::TunnelInetConfigTable> tunnelinetconfigtable;
         
 }; // TUNNELMIB
 
 
-class TUNNELMIB::Tunneliftable : public ydk::Entity
+class TUNNELMIB::TunnelIfTable : public ydk::Entity
 {
     public:
-        Tunneliftable();
-        ~Tunneliftable();
+        TunnelIfTable();
+        ~TunnelIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -60,18 +60,18 @@ class TUNNELMIB::Tunneliftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tunnelifentry; //type: TUNNELMIB::Tunneliftable::Tunnelifentry
+        class TunnelIfEntry; //type: TUNNELMIB::TunnelIfTable::TunnelIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunneliftable::Tunnelifentry> > tunnelifentry;
+        ydk::YList tunnelifentry;
         
-}; // TUNNELMIB::Tunneliftable
+}; // TUNNELMIB::TunnelIfTable
 
 
-class TUNNELMIB::Tunneliftable::Tunnelifentry : public ydk::Entity
+class TUNNELMIB::TunnelIfTable::TunnelIfEntry : public ydk::Entity
 {
     public:
-        Tunnelifentry();
-        ~Tunnelifentry();
+        TunnelIfEntry();
+        ~TunnelIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,29 +84,29 @@ class TUNNELMIB::Tunneliftable::Tunnelifentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf tunneliflocaladdress; //type: string
         ydk::YLeaf tunnelifremoteaddress; //type: string
         ydk::YLeaf tunnelifencapsmethod; //type: IANAtunnelType
         ydk::YLeaf tunnelifhoplimit; //type: int32
-        ydk::YLeaf tunnelifsecurity; //type: Tunnelifsecurity
+        ydk::YLeaf tunnelifsecurity; //type: TunnelIfSecurity
         ydk::YLeaf tunneliftos; //type: int32
         ydk::YLeaf tunnelifflowlabel; //type: int32
         ydk::YLeaf tunnelifaddresstype; //type: InetAddressType
         ydk::YLeaf tunneliflocalinetaddress; //type: binary
         ydk::YLeaf tunnelifremoteinetaddress; //type: binary
         ydk::YLeaf tunnelifencapslimit; //type: int32
-        class Tunnelifsecurity;
+        class TunnelIfSecurity;
 
-}; // TUNNELMIB::Tunneliftable::Tunnelifentry
+}; // TUNNELMIB::TunnelIfTable::TunnelIfEntry
 
 
-class TUNNELMIB::Tunnelconfigtable : public ydk::Entity
+class TUNNELMIB::TunnelConfigTable : public ydk::Entity
 {
     public:
-        Tunnelconfigtable();
-        ~Tunnelconfigtable();
+        TunnelConfigTable();
+        ~TunnelConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -119,18 +119,18 @@ class TUNNELMIB::Tunnelconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tunnelconfigentry; //type: TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry
+        class TunnelConfigEntry; //type: TUNNELMIB::TunnelConfigTable::TunnelConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry> > tunnelconfigentry;
+        ydk::YList tunnelconfigentry;
         
-}; // TUNNELMIB::Tunnelconfigtable
+}; // TUNNELMIB::TunnelConfigTable
 
 
-class TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry : public ydk::Entity
+class TUNNELMIB::TunnelConfigTable::TunnelConfigEntry : public ydk::Entity
 {
     public:
-        Tunnelconfigentry();
-        ~Tunnelconfigentry();
+        TunnelConfigEntry();
+        ~TunnelConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -150,14 +150,14 @@ class TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry : public ydk::Entity
         ydk::YLeaf tunnelconfigifindex; //type: int32
         ydk::YLeaf tunnelconfigstatus; //type: RowStatus
 
-}; // TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry
+}; // TUNNELMIB::TunnelConfigTable::TunnelConfigEntry
 
 
-class TUNNELMIB::Tunnelinetconfigtable : public ydk::Entity
+class TUNNELMIB::TunnelInetConfigTable : public ydk::Entity
 {
     public:
-        Tunnelinetconfigtable();
-        ~Tunnelinetconfigtable();
+        TunnelInetConfigTable();
+        ~TunnelInetConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -170,18 +170,18 @@ class TUNNELMIB::Tunnelinetconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tunnelinetconfigentry; //type: TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry
+        class TunnelInetConfigEntry; //type: TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TUNNEL_MIB::TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry> > tunnelinetconfigentry;
+        ydk::YList tunnelinetconfigentry;
         
-}; // TUNNELMIB::Tunnelinetconfigtable
+}; // TUNNELMIB::TunnelInetConfigTable
 
 
-class TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry : public ydk::Entity
+class TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry : public ydk::Entity
 {
     public:
-        Tunnelinetconfigentry();
-        ~Tunnelinetconfigentry();
+        TunnelInetConfigEntry();
+        ~TunnelInetConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -203,9 +203,9 @@ class TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry : public ydk::Enti
         ydk::YLeaf tunnelinetconfigstatus; //type: RowStatus
         ydk::YLeaf tunnelinetconfigstoragetype; //type: StorageType
 
-}; // TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry
+}; // TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry
 
-class TUNNELMIB::Tunneliftable::Tunnelifentry::Tunnelifsecurity : public ydk::Enum
+class TUNNELMIB::TunnelIfTable::TunnelIfEntry::TunnelIfSecurity : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

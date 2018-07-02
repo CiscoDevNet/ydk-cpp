@@ -12,50 +12,50 @@
 namespace cisco_ios_xe {
 namespace TOKENRING_MIB {
 
-class Dot5Testinsertfunc : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot5ChipSetTItms380 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot5Testinsertfunc();
-        ~Dot5Testinsertfunc();
+        Dot5ChipSetTItms380();
+        ~Dot5ChipSetTItms380();
 
 
-}; // Dot5Testinsertfunc
+}; // Dot5ChipSetTItms380
 
-class Dot5Testfullduplexloopback : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot5ChipSetTItms380c16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot5Testfullduplexloopback();
-        ~Dot5Testfullduplexloopback();
+        Dot5ChipSetTItms380c16();
+        ~Dot5ChipSetTItms380c16();
 
 
-}; // Dot5Testfullduplexloopback
+}; // Dot5ChipSetTItms380c16
 
-class Dot5Chipsetibm16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot5ChipSetIBM16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot5Chipsetibm16();
-        ~Dot5Chipsetibm16();
+        Dot5ChipSetIBM16();
+        ~Dot5ChipSetIBM16();
 
 
-}; // Dot5Chipsetibm16
+}; // Dot5ChipSetIBM16
 
-class Dot5Chipsettitms380 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot5TestInsertFunc : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot5Chipsettitms380();
-        ~Dot5Chipsettitms380();
+        Dot5TestInsertFunc();
+        ~Dot5TestInsertFunc();
 
 
-}; // Dot5Chipsettitms380
+}; // Dot5TestInsertFunc
 
-class Dot5Chipsettitms380C16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class Dot5TestFullDuplexLoopBack : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Dot5Chipsettitms380C16();
-        ~Dot5Chipsettitms380C16();
+        Dot5TestFullDuplexLoopBack();
+        ~Dot5TestFullDuplexLoopBack();
 
 
-}; // Dot5Chipsettitms380C16
+}; // Dot5TestFullDuplexLoopBack
 
 class TOKENRINGMIB : public ydk::Entity
 {
@@ -79,12 +79,12 @@ class TOKENRINGMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Dot5Table; //type: TOKENRINGMIB::Dot5Table
-        class Dot5Statstable; //type: TOKENRINGMIB::Dot5Statstable
-        class Dot5Timertable; //type: TOKENRINGMIB::Dot5Timertable
+        class Dot5StatsTable; //type: TOKENRINGMIB::Dot5StatsTable
+        class Dot5TimerTable; //type: TOKENRINGMIB::Dot5TimerTable
 
         std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Table> dot5table;
-        std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Statstable> dot5statstable;
-        std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Timertable> dot5timertable;
+        std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5StatsTable> dot5statstable;
+        std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5TimerTable> dot5timertable;
         
 }; // TOKENRINGMIB
 
@@ -108,7 +108,7 @@ class TOKENRINGMIB::Dot5Table : public ydk::Entity
 
         class Dot5Entry; //type: TOKENRINGMIB::Dot5Table::Dot5Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Table::Dot5Entry> > dot5entry;
+        ydk::YList dot5entry;
         
 }; // TOKENRINGMIB::Dot5Table
 
@@ -133,27 +133,27 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry : public ydk::Entity
         ydk::YLeaf dot5ifindex; //type: int32
         ydk::YLeaf dot5commands; //type: Dot5Commands
         ydk::YLeaf dot5ringstatus; //type: int32
-        ydk::YLeaf dot5ringstate; //type: Dot5Ringstate
-        ydk::YLeaf dot5ringopenstatus; //type: Dot5Ringopenstatus
-        ydk::YLeaf dot5ringspeed; //type: Dot5Ringspeed
+        ydk::YLeaf dot5ringstate; //type: Dot5RingState
+        ydk::YLeaf dot5ringopenstatus; //type: Dot5RingOpenStatus
+        ydk::YLeaf dot5ringspeed; //type: Dot5RingSpeed
         ydk::YLeaf dot5upstream; //type: string
-        ydk::YLeaf dot5actmonparticipate; //type: Dot5Actmonparticipate
+        ydk::YLeaf dot5actmonparticipate; //type: Dot5ActMonParticipate
         ydk::YLeaf dot5functional; //type: string
         ydk::YLeaf dot5lastbeaconsent; //type: uint32
         class Dot5Commands;
-        class Dot5Ringstate;
-        class Dot5Ringopenstatus;
-        class Dot5Ringspeed;
-        class Dot5Actmonparticipate;
+        class Dot5RingState;
+        class Dot5RingOpenStatus;
+        class Dot5RingSpeed;
+        class Dot5ActMonParticipate;
 
 }; // TOKENRINGMIB::Dot5Table::Dot5Entry
 
 
-class TOKENRINGMIB::Dot5Statstable : public ydk::Entity
+class TOKENRINGMIB::Dot5StatsTable : public ydk::Entity
 {
     public:
-        Dot5Statstable();
-        ~Dot5Statstable();
+        Dot5StatsTable();
+        ~Dot5StatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,18 +166,18 @@ class TOKENRINGMIB::Dot5Statstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot5Statsentry; //type: TOKENRINGMIB::Dot5Statstable::Dot5Statsentry
+        class Dot5StatsEntry; //type: TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Statstable::Dot5Statsentry> > dot5statsentry;
+        ydk::YList dot5statsentry;
         
-}; // TOKENRINGMIB::Dot5Statstable
+}; // TOKENRINGMIB::Dot5StatsTable
 
 
-class TOKENRINGMIB::Dot5Statstable::Dot5Statsentry : public ydk::Entity
+class TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry : public ydk::Entity
 {
     public:
-        Dot5Statsentry();
-        ~Dot5Statsentry();
+        Dot5StatsEntry();
+        ~Dot5StatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -210,14 +210,14 @@ class TOKENRINGMIB::Dot5Statstable::Dot5Statsentry : public ydk::Entity
         ydk::YLeaf dot5statssingles; //type: uint32
         ydk::YLeaf dot5statsfreqerrors; //type: uint32
 
-}; // TOKENRINGMIB::Dot5Statstable::Dot5Statsentry
+}; // TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry
 
 
-class TOKENRINGMIB::Dot5Timertable : public ydk::Entity
+class TOKENRINGMIB::Dot5TimerTable : public ydk::Entity
 {
     public:
-        Dot5Timertable();
-        ~Dot5Timertable();
+        Dot5TimerTable();
+        ~Dot5TimerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -230,18 +230,18 @@ class TOKENRINGMIB::Dot5Timertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot5Timerentry; //type: TOKENRINGMIB::Dot5Timertable::Dot5Timerentry
+        class Dot5TimerEntry; //type: TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKENRING_MIB::TOKENRINGMIB::Dot5Timertable::Dot5Timerentry> > dot5timerentry;
+        ydk::YList dot5timerentry;
         
-}; // TOKENRINGMIB::Dot5Timertable
+}; // TOKENRINGMIB::Dot5TimerTable
 
 
-class TOKENRINGMIB::Dot5Timertable::Dot5Timerentry : public ydk::Entity
+class TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry : public ydk::Entity
 {
     public:
-        Dot5Timerentry();
-        ~Dot5Timerentry();
+        Dot5TimerEntry();
+        ~Dot5TimerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -266,7 +266,7 @@ class TOKENRINGMIB::Dot5Timertable::Dot5Timerentry : public ydk::Entity
         ydk::YLeaf dot5timerbeacontransmit; //type: int32
         ydk::YLeaf dot5timerbeaconreceive; //type: int32
 
-}; // TOKENRINGMIB::Dot5Timertable::Dot5Timerentry
+}; // TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry
 
 class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Commands : public ydk::Enum
 {
@@ -278,7 +278,7 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Commands : public ydk::Enum
 
 };
 
-class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Ringstate : public ydk::Enum
+class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf opened;
@@ -290,7 +290,7 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Ringstate : public ydk::Enum
 
 };
 
-class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Ringopenstatus : public ydk::Enum
+class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingOpenStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noOpen;
@@ -307,7 +307,7 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Ringopenstatus : public ydk::Enum
 
 };
 
-class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Ringspeed : public ydk::Enum
+class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5RingSpeed : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -317,7 +317,7 @@ class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Ringspeed : public ydk::Enum
 
 };
 
-class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5Actmonparticipate : public ydk::Enum
+class TOKENRINGMIB::Dot5Table::Dot5Entry::Dot5ActMonParticipate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf true_;

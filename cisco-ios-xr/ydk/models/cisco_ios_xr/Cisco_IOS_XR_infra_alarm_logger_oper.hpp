@@ -85,7 +85,7 @@ class AlarmLogger::Alarms : public ydk::Entity
 
         class Alarm; //type: AlarmLogger::Alarms::Alarm
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_alarm_logger_oper::AlarmLogger::Alarms::Alarm> > alarm;
+        ydk::YList alarm;
         
 }; // AlarmLogger::Alarms
 
@@ -107,7 +107,7 @@ class AlarmLogger::Alarms::Alarm : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf event_id; //type: int32
+        ydk::YLeaf event_id; //type: uint32
         ydk::YLeaf source_id; //type: string
         ydk::YLeaf timestamp; //type: uint64
         ydk::YLeaf category; //type: string

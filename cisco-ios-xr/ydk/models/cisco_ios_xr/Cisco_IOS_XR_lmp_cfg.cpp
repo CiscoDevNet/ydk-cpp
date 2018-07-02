@@ -13,14 +13,13 @@ namespace Cisco_IOS_XR_lmp_cfg {
 
 Lmp::Lmp()
     :
-    enable{YType::empty, "enable"},
-    port{YType::uint16, "port"}
-    	,
+    enable{YType::empty, "enable"}
+        ,
     gmpls_uni(std::make_shared<Lmp::GmplsUni>())
 {
     gmpls_uni->parent = this;
 
-    yang_name = "lmp"; yang_parent_name = "Cisco-IOS-XR-lmp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lmp"; yang_parent_name = "Cisco-IOS-XR-lmp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Lmp::~Lmp()
@@ -29,8 +28,8 @@ Lmp::~Lmp()
 
 bool Lmp::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
-	|| port.is_set
 	|| (gmpls_uni !=  nullptr && gmpls_uni->has_data());
 }
 
@@ -38,7 +37,6 @@ bool Lmp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(port.yfilter)
 	|| (gmpls_uni !=  nullptr && gmpls_uni->has_operation());
 }
 
@@ -54,7 +52,6 @@ std::vector<std::pair<std::string, LeafData> > Lmp::get_name_leaf_data() const
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -94,12 +91,6 @@ void Lmp::set_value(const std::string & value_path, const std::string & value, c
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Lmp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -107,10 +98,6 @@ void Lmp::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
     }
 }
 
@@ -141,7 +128,7 @@ std::map<std::pair<std::string, std::string>, std::string> Lmp::get_namespace_id
 
 bool Lmp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "gmpls-uni" || name == "enable" || name == "port")
+    if(name == "gmpls-uni" || name == "enable")
         return true;
     return false;
 }
@@ -149,13 +136,13 @@ bool Lmp::has_leaf_or_child_of_name(const std::string & name) const
 Lmp::GmplsUni::GmplsUni()
     :
     neighbors(std::make_shared<Lmp::GmplsUni::Neighbors>())
-	,router_id(nullptr) // presence node
-	,controllers(std::make_shared<Lmp::GmplsUni::Controllers>())
+    , router_id(nullptr) // presence node
+    , controllers(std::make_shared<Lmp::GmplsUni::Controllers>())
 {
     neighbors->parent = this;
     controllers->parent = this;
 
-    yang_name = "gmpls-uni"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gmpls-uni"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::~GmplsUni()
@@ -164,6 +151,7 @@ Lmp::GmplsUni::~GmplsUni()
 
 bool Lmp::GmplsUni::has_data() const
 {
+    if (is_presence_container) return true;
     return (neighbors !=  nullptr && neighbors->has_data())
 	|| (router_id !=  nullptr && router_id->has_data())
 	|| (controllers !=  nullptr && controllers->has_data());
@@ -270,9 +258,11 @@ bool Lmp::GmplsUni::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Lmp::GmplsUni::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor_name"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::Neighbors::~Neighbors()
@@ -281,7 +271,8 @@ Lmp::GmplsUni::Neighbors::~Neighbors()
 
 bool Lmp::GmplsUni::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -291,7 +282,7 @@ bool Lmp::GmplsUni::Neighbors::has_data() const
 
 bool Lmp::GmplsUni::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -328,7 +319,7 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -340,7 +331,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -371,12 +362,12 @@ Lmp::GmplsUni::Neighbors::Neighbor::Neighbor()
     neighbor_name{YType::str, "neighbor-name"},
     enable{YType::empty, "enable"},
     neighbor_router_id{YType::str, "neighbor-router-id"}
-    	,
+        ,
     ipcc(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::Ipcc>())
 {
     ipcc->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::~Neighbor()
@@ -385,6 +376,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::~Neighbor()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_name.is_set
 	|| enable.is_set
 	|| neighbor_router_id.is_set
@@ -410,7 +402,8 @@ std::string Lmp::GmplsUni::Neighbors::Neighbor::get_absolute_path() const
 std::string Lmp::GmplsUni::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-name='" <<neighbor_name <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_name, "neighbor-name");
     return path_buffer.str();
 }
 
@@ -503,7 +496,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Ipcc()
 {
     routed->parent = this;
 
-    yang_name = "ipcc"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcc"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::~Ipcc()
@@ -512,6 +505,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::~Ipcc()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::has_data() const
 {
+    if (is_presence_container) return true;
     return (routed !=  nullptr && routed->has_data());
 }
 
@@ -583,7 +577,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::Routed()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "routed"; yang_parent_name = "ipcc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routed"; yang_parent_name = "ipcc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::~Routed()
@@ -592,6 +586,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::~Routed()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -661,7 +656,7 @@ Lmp::GmplsUni::RouterId::RouterId()
     address{YType::str, "address"}
 {
 
-    yang_name = "router-id"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "router-id"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Lmp::GmplsUni::RouterId::~RouterId()
@@ -670,6 +665,7 @@ Lmp::GmplsUni::RouterId::~RouterId()
 
 bool Lmp::GmplsUni::RouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| address.is_set;
 }
@@ -754,9 +750,11 @@ bool Lmp::GmplsUni::RouterId::has_leaf_or_child_of_name(const std::string & name
 }
 
 Lmp::GmplsUni::Controllers::Controllers()
+    :
+    controller(this, {"controller_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::Controllers::~Controllers()
@@ -765,7 +763,8 @@ Lmp::GmplsUni::Controllers::~Controllers()
 
 bool Lmp::GmplsUni::Controllers::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -775,7 +774,7 @@ bool Lmp::GmplsUni::Controllers::has_data() const
 
 bool Lmp::GmplsUni::Controllers::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -812,7 +811,7 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::get_child_by_name(const std:
     {
         auto c = std::make_shared<Lmp::GmplsUni::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -824,7 +823,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -854,14 +853,14 @@ Lmp::GmplsUni::Controllers::Controller::Controller()
     :
     controller_name{YType::str, "controller-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     local_link_id(std::make_shared<Lmp::GmplsUni::Controllers::Controller::LocalLinkId>())
-	,adjacency(std::make_shared<Lmp::GmplsUni::Controllers::Controller::Adjacency>())
+    , adjacency(std::make_shared<Lmp::GmplsUni::Controllers::Controller::Adjacency>())
 {
     local_link_id->parent = this;
     adjacency->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::Controllers::Controller::~Controller()
@@ -870,6 +869,7 @@ Lmp::GmplsUni::Controllers::Controller::~Controller()
 
 bool Lmp::GmplsUni::Controllers::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| enable.is_set
 	|| (local_link_id !=  nullptr && local_link_id->has_data())
@@ -895,7 +895,8 @@ std::string Lmp::GmplsUni::Controllers::Controller::get_absolute_path() const
 std::string Lmp::GmplsUni::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -988,11 +989,11 @@ bool Lmp::GmplsUni::Controllers::Controller::has_leaf_or_child_of_name(const std
 Lmp::GmplsUni::Controllers::Controller::LocalLinkId::LocalLinkId()
     :
     address_type{YType::enumeration, "address-type"},
-    unnumbered{YType::int32, "unnumbered"},
+    unnumbered{YType::uint32, "unnumbered"},
     address{YType::str, "address"}
 {
 
-    yang_name = "local-link-id"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-link-id"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Controllers::Controller::LocalLinkId::~LocalLinkId()
@@ -1001,6 +1002,7 @@ Lmp::GmplsUni::Controllers::Controller::LocalLinkId::~LocalLinkId()
 
 bool Lmp::GmplsUni::Controllers::Controller::LocalLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| unnumbered.is_set
 	|| address.is_set;
@@ -1096,7 +1098,7 @@ Lmp::GmplsUni::Controllers::Controller::Adjacency::Adjacency()
 {
     remote_neighbor->parent = this;
 
-    yang_name = "adjacency"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Controllers::Controller::Adjacency::~Adjacency()
@@ -1105,6 +1107,7 @@ Lmp::GmplsUni::Controllers::Controller::Adjacency::~Adjacency()
 
 bool Lmp::GmplsUni::Controllers::Controller::Adjacency::has_data() const
 {
+    if (is_presence_container) return true;
     return (remote_neighbor !=  nullptr && remote_neighbor->has_data());
 }
 
@@ -1175,15 +1178,15 @@ Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::RemoteNeighbo
     :
     neighbor_association{YType::str, "neighbor-association"},
     link_switching_capability{YType::enumeration, "link-switching-capability"},
-    flexi_grid_capable{YType::int32, "flexi-grid-capable"}
-    	,
+    flexi_grid_capable{YType::uint32, "flexi-grid-capable"}
+        ,
     interface_id(std::make_shared<Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId>())
-	,link_id(std::make_shared<Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId>())
+    , link_id(std::make_shared<Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId>())
 {
     interface_id->parent = this;
     link_id->parent = this;
 
-    yang_name = "remote-neighbor"; yang_parent_name = "adjacency"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-neighbor"; yang_parent_name = "adjacency"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::~RemoteNeighbor()
@@ -1192,6 +1195,7 @@ Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::~RemoteNeighb
 
 bool Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_association.is_set
 	|| link_switching_capability.is_set
 	|| flexi_grid_capable.is_set
@@ -1316,11 +1320,11 @@ bool Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::has_leaf
 Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::InterfaceId()
     :
     address_type{YType::enumeration, "address-type"},
-    unnumbered{YType::int32, "unnumbered"},
+    unnumbered{YType::uint32, "unnumbered"},
     address{YType::str, "address"}
 {
 
-    yang_name = "interface-id"; yang_parent_name = "remote-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-id"; yang_parent_name = "remote-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::~InterfaceId()
@@ -1329,6 +1333,7 @@ Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::
 
 bool Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| unnumbered.is_set
 	|| address.is_set;
@@ -1421,11 +1426,11 @@ bool Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::Interfac
 Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::LinkId()
     :
     address_type{YType::enumeration, "address-type"},
-    unnumbered{YType::int32, "unnumbered"},
+    unnumbered{YType::uint32, "unnumbered"},
     address{YType::str, "address"}
 {
 
-    yang_name = "link-id"; yang_parent_name = "remote-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-id"; yang_parent_name = "remote-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::~LinkId()
@@ -1434,6 +1439,7 @@ Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::~Link
 
 bool Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| unnumbered.is_set
 	|| address.is_set;
@@ -1523,13 +1529,13 @@ bool Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::
     return false;
 }
 
+const Enum::YLeaf OlmSwitchingCap::lsc {150, "lsc"};
+const Enum::YLeaf OlmSwitchingCap::fsc {200, "fsc"};
+
 const Enum::YLeaf OlmAddr::ipv4 {101, "ipv4"};
 const Enum::YLeaf OlmAddr::ipv6 {102, "ipv6"};
 const Enum::YLeaf OlmAddr::unnumbered {103, "unnumbered"};
 const Enum::YLeaf OlmAddr::nsap {104, "nsap"};
-
-const Enum::YLeaf OlmSwitchingCap::lsc {150, "lsc"};
-const Enum::YLeaf OlmSwitchingCap::fsc {200, "fsc"};
 
 
 }

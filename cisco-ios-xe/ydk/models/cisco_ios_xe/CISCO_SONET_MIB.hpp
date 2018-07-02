@@ -31,42 +31,42 @@ class CISCOSONETMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Csapsconfig; //type: CISCOSONETMIB::Csapsconfig
-        class Csnotifications; //type: CISCOSONETMIB::Csnotifications
-        class Csconfigtable; //type: CISCOSONETMIB::Csconfigtable
-        class Csapsconfigtable; //type: CISCOSONETMIB::Csapsconfigtable
-        class Csstotaltable; //type: CISCOSONETMIB::Csstotaltable
-        class Csstracetable; //type: CISCOSONETMIB::Csstracetable
-        class Csltotaltable; //type: CISCOSONETMIB::Csltotaltable
-        class Cslfarendtotaltable; //type: CISCOSONETMIB::Cslfarendtotaltable
-        class Csptotaltable; //type: CISCOSONETMIB::Csptotaltable
-        class Cspfarendtotaltable; //type: CISCOSONETMIB::Cspfarendtotaltable
-        class Csptracetable; //type: CISCOSONETMIB::Csptracetable
-        class Csstatstable; //type: CISCOSONETMIB::Csstatstable
-        class Csau4Tug3Configtable; //type: CISCOSONETMIB::Csau4Tug3Configtable
+        class CsApsConfig; //type: CISCOSONETMIB::CsApsConfig
+        class CsNotifications; //type: CISCOSONETMIB::CsNotifications
+        class CsConfigTable; //type: CISCOSONETMIB::CsConfigTable
+        class CsApsConfigTable; //type: CISCOSONETMIB::CsApsConfigTable
+        class CssTotalTable; //type: CISCOSONETMIB::CssTotalTable
+        class CssTraceTable; //type: CISCOSONETMIB::CssTraceTable
+        class CslTotalTable; //type: CISCOSONETMIB::CslTotalTable
+        class CslFarEndTotalTable; //type: CISCOSONETMIB::CslFarEndTotalTable
+        class CspTotalTable; //type: CISCOSONETMIB::CspTotalTable
+        class CspFarEndTotalTable; //type: CISCOSONETMIB::CspFarEndTotalTable
+        class CspTraceTable; //type: CISCOSONETMIB::CspTraceTable
+        class CsStatsTable; //type: CISCOSONETMIB::CsStatsTable
+        class CsAu4Tug3ConfigTable; //type: CISCOSONETMIB::CsAu4Tug3ConfigTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csapsconfig> csapsconfig;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csnotifications> csnotifications;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csconfigtable> csconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csapsconfigtable> csapsconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csstotaltable> csstotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csstracetable> csstracetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csltotaltable> csltotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Cslfarendtotaltable> cslfarendtotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csptotaltable> csptotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Cspfarendtotaltable> cspfarendtotaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csptracetable> csptracetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csstatstable> csstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csau4Tug3Configtable> csau4tug3configtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CsApsConfig> csapsconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CsNotifications> csnotifications;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CsConfigTable> csconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CsApsConfigTable> csapsconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CssTotalTable> csstotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CssTraceTable> csstracetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CslTotalTable> csltotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CslFarEndTotalTable> cslfarendtotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CspTotalTable> csptotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CspFarEndTotalTable> cspfarendtotaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CspTraceTable> csptracetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CsStatsTable> csstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::CsAu4Tug3ConfigTable> csau4tug3configtable;
         
 }; // CISCOSONETMIB
 
 
-class CISCOSONETMIB::Csapsconfig : public ydk::Entity
+class CISCOSONETMIB::CsApsConfig : public ydk::Entity
 {
     public:
-        Csapsconfig();
-        ~Csapsconfig();
+        CsApsConfig();
+        ~CsApsConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -82,14 +82,14 @@ class CISCOSONETMIB::Csapsconfig : public ydk::Entity
         ydk::YLeaf csapslinefailurecode; //type: CsApsLineFailureCode
         ydk::YLeaf csapslineswitchreason; //type: CsApsLineSwitchReason
 
-}; // CISCOSONETMIB::Csapsconfig
+}; // CISCOSONETMIB::CsApsConfig
 
 
-class CISCOSONETMIB::Csnotifications : public ydk::Entity
+class CISCOSONETMIB::CsNotifications : public ydk::Entity
 {
     public:
-        Csnotifications();
-        ~Csnotifications();
+        CsNotifications();
+        ~CsNotifications();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -104,14 +104,14 @@ class CISCOSONETMIB::Csnotifications : public ydk::Entity
 
         ydk::YLeaf csnotificationsenabled; //type: boolean
 
-}; // CISCOSONETMIB::Csnotifications
+}; // CISCOSONETMIB::CsNotifications
 
 
-class CISCOSONETMIB::Csconfigtable : public ydk::Entity
+class CISCOSONETMIB::CsConfigTable : public ydk::Entity
 {
     public:
-        Csconfigtable();
-        ~Csconfigtable();
+        CsConfigTable();
+        ~CsConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -124,18 +124,18 @@ class CISCOSONETMIB::Csconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csconfigentry; //type: CISCOSONETMIB::Csconfigtable::Csconfigentry
+        class CsConfigEntry; //type: CISCOSONETMIB::CsConfigTable::CsConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csconfigtable::Csconfigentry> > csconfigentry;
+        ydk::YList csconfigentry;
         
-}; // CISCOSONETMIB::Csconfigtable
+}; // CISCOSONETMIB::CsConfigTable
 
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry : public ydk::Entity
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry : public ydk::Entity
 {
     public:
-        Csconfigentry();
-        ~Csconfigentry();
+        CsConfigEntry();
+        ~CsConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -148,39 +148,39 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf csconfigloopbacktype; //type: Csconfigloopbacktype
-        ydk::YLeaf csconfigxmtclocksource; //type: Csconfigxmtclocksource
-        ydk::YLeaf csconfigframescramble; //type: Csconfigframescramble
-        ydk::YLeaf csconfigtype; //type: Csconfigtype
-        ydk::YLeaf csconfigrdivtype; //type: Csconfigrdivtype
-        ydk::YLeaf csconfigrdiptype; //type: Csconfigrdiptype
-        ydk::YLeaf cstributarytype; //type: Cstributarytype
-        ydk::YLeaf cstributarymappingtype; //type: Cstributarymappingtype
-        ydk::YLeaf cstributaryframingtype; //type: Cstributaryframingtype
-        ydk::YLeaf cssignallingtransportmode; //type: Cssignallingtransportmode
-        ydk::YLeaf cstributarygroupingtype; //type: Cstributarygroupingtype
-        class Csconfigloopbacktype;
-        class Csconfigxmtclocksource;
-        class Csconfigframescramble;
-        class Csconfigtype;
-        class Csconfigrdivtype;
-        class Csconfigrdiptype;
-        class Cstributarytype;
-        class Cstributarymappingtype;
-        class Cstributaryframingtype;
-        class Cssignallingtransportmode;
-        class Cstributarygroupingtype;
+        ydk::YLeaf csconfigloopbacktype; //type: CsConfigLoopbackType
+        ydk::YLeaf csconfigxmtclocksource; //type: CsConfigXmtClockSource
+        ydk::YLeaf csconfigframescramble; //type: CsConfigFrameScramble
+        ydk::YLeaf csconfigtype; //type: CsConfigType
+        ydk::YLeaf csconfigrdivtype; //type: CsConfigRDIVType
+        ydk::YLeaf csconfigrdiptype; //type: CsConfigRDIPType
+        ydk::YLeaf cstributarytype; //type: CsTributaryType
+        ydk::YLeaf cstributarymappingtype; //type: CsTributaryMappingType
+        ydk::YLeaf cstributaryframingtype; //type: CsTributaryFramingType
+        ydk::YLeaf cssignallingtransportmode; //type: CsSignallingTransportMode
+        ydk::YLeaf cstributarygroupingtype; //type: CsTributaryGroupingType
+        class CsConfigLoopbackType;
+        class CsConfigXmtClockSource;
+        class CsConfigFrameScramble;
+        class CsConfigType;
+        class CsConfigRDIVType;
+        class CsConfigRDIPType;
+        class CsTributaryType;
+        class CsTributaryMappingType;
+        class CsTributaryFramingType;
+        class CsSignallingTransportMode;
+        class CsTributaryGroupingType;
 
-}; // CISCOSONETMIB::Csconfigtable::Csconfigentry
+}; // CISCOSONETMIB::CsConfigTable::CsConfigEntry
 
 
-class CISCOSONETMIB::Csapsconfigtable : public ydk::Entity
+class CISCOSONETMIB::CsApsConfigTable : public ydk::Entity
 {
     public:
-        Csapsconfigtable();
-        ~Csapsconfigtable();
+        CsApsConfigTable();
+        ~CsApsConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -193,18 +193,18 @@ class CISCOSONETMIB::Csapsconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csapsconfigentry; //type: CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry
+        class CsApsConfigEntry; //type: CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry> > csapsconfigentry;
+        ydk::YList csapsconfigentry;
         
-}; // CISCOSONETMIB::Csapsconfigtable
+}; // CISCOSONETMIB::CsApsConfigTable
 
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry : public ydk::Entity
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry : public ydk::Entity
 {
     public:
-        Csapsconfigentry();
-        ~Csapsconfigentry();
+        CsApsConfigEntry();
+        ~CsApsConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -219,38 +219,38 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry : public ydk::Entity
 
         ydk::YLeaf csapsworkingindex; //type: int32
         ydk::YLeaf csapsprotectionindex; //type: int32
-        ydk::YLeaf csapsenable; //type: Csapsenable
-        ydk::YLeaf csapsarchmode; //type: Csapsarchmode
-        ydk::YLeaf csapsactiveline; //type: Csapsactiveline
+        ydk::YLeaf csapsenable; //type: CsApsEnable
+        ydk::YLeaf csapsarchmode; //type: CsApsArchMode
+        ydk::YLeaf csapsactiveline; //type: CsApsActiveLine
         ydk::YLeaf csapssigfaultber; //type: uint32
         ydk::YLeaf csapssigdegradeber; //type: uint32
         ydk::YLeaf csapswaittorestore; //type: uint32
-        ydk::YLeaf csapsdirection; //type: Csapsdirection
-        ydk::YLeaf csapsrevertive; //type: Csapsrevertive
-        ydk::YLeaf csapsdirectionoperational; //type: Csapsdirectionoperational
-        ydk::YLeaf csapsarchmodeoperational; //type: Csapsarchmodeoperational
-        ydk::YLeaf csapschannelprotocol; //type: Csapschannelprotocol
+        ydk::YLeaf csapsdirection; //type: CsApsDirection
+        ydk::YLeaf csapsrevertive; //type: CsApsRevertive
+        ydk::YLeaf csapsdirectionoperational; //type: CsApsDirectionOperational
+        ydk::YLeaf csapsarchmodeoperational; //type: CsApsArchModeOperational
+        ydk::YLeaf csapschannelprotocol; //type: CsApsChannelProtocol
         ydk::YLeaf csapsfailurestatus; //type: CsApsLineFailureStatus
         ydk::YLeaf csapsswitchreason; //type: CsApsLineSwitchReason
-        ydk::YLeaf csapsprimarysection; //type: Csapsprimarysection
-        class Csapsenable;
-        class Csapsarchmode;
-        class Csapsactiveline;
-        class Csapsdirection;
-        class Csapsrevertive;
-        class Csapsdirectionoperational;
-        class Csapsarchmodeoperational;
-        class Csapschannelprotocol;
-        class Csapsprimarysection;
+        ydk::YLeaf csapsprimarysection; //type: CsApsPrimarySection
+        class CsApsEnable;
+        class CsApsArchMode;
+        class CsApsActiveLine;
+        class CsApsDirection;
+        class CsApsRevertive;
+        class CsApsDirectionOperational;
+        class CsApsArchModeOperational;
+        class CsApsChannelProtocol;
+        class CsApsPrimarySection;
 
-}; // CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry
+}; // CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry
 
 
-class CISCOSONETMIB::Csstotaltable : public ydk::Entity
+class CISCOSONETMIB::CssTotalTable : public ydk::Entity
 {
     public:
-        Csstotaltable();
-        ~Csstotaltable();
+        CssTotalTable();
+        ~CssTotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -263,18 +263,18 @@ class CISCOSONETMIB::Csstotaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csstotalentry; //type: CISCOSONETMIB::Csstotaltable::Csstotalentry
+        class CssTotalEntry; //type: CISCOSONETMIB::CssTotalTable::CssTotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csstotaltable::Csstotalentry> > csstotalentry;
+        ydk::YList csstotalentry;
         
-}; // CISCOSONETMIB::Csstotaltable
+}; // CISCOSONETMIB::CssTotalTable
 
 
-class CISCOSONETMIB::Csstotaltable::Csstotalentry : public ydk::Entity
+class CISCOSONETMIB::CssTotalTable::CssTotalEntry : public ydk::Entity
 {
     public:
-        Csstotalentry();
-        ~Csstotalentry();
+        CssTotalEntry();
+        ~CssTotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,21 +287,21 @@ class CISCOSONETMIB::Csstotaltable::Csstotalentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf csstotaless; //type: uint32
         ydk::YLeaf csstotalsess; //type: uint32
         ydk::YLeaf csstotalsefss; //type: uint32
         ydk::YLeaf csstotalcvs; //type: uint32
 
-}; // CISCOSONETMIB::Csstotaltable::Csstotalentry
+}; // CISCOSONETMIB::CssTotalTable::CssTotalEntry
 
 
-class CISCOSONETMIB::Csstracetable : public ydk::Entity
+class CISCOSONETMIB::CssTraceTable : public ydk::Entity
 {
     public:
-        Csstracetable();
-        ~Csstracetable();
+        CssTraceTable();
+        ~CssTraceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -314,18 +314,18 @@ class CISCOSONETMIB::Csstracetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csstraceentry; //type: CISCOSONETMIB::Csstracetable::Csstraceentry
+        class CssTraceEntry; //type: CISCOSONETMIB::CssTraceTable::CssTraceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csstracetable::Csstraceentry> > csstraceentry;
+        ydk::YList csstraceentry;
         
-}; // CISCOSONETMIB::Csstracetable
+}; // CISCOSONETMIB::CssTraceTable
 
 
-class CISCOSONETMIB::Csstracetable::Csstraceentry : public ydk::Entity
+class CISCOSONETMIB::CssTraceTable::CssTraceEntry : public ydk::Entity
 {
     public:
-        Csstraceentry();
-        ~Csstraceentry();
+        CssTraceEntry();
+        ~CssTraceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -338,21 +338,21 @@ class CISCOSONETMIB::Csstracetable::Csstraceentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf csstracetotransmit; //type: binary
         ydk::YLeaf csstracetoexpect; //type: binary
         ydk::YLeaf csstracefailure; //type: boolean
         ydk::YLeaf csstracereceived; //type: binary
 
-}; // CISCOSONETMIB::Csstracetable::Csstraceentry
+}; // CISCOSONETMIB::CssTraceTable::CssTraceEntry
 
 
-class CISCOSONETMIB::Csltotaltable : public ydk::Entity
+class CISCOSONETMIB::CslTotalTable : public ydk::Entity
 {
     public:
-        Csltotaltable();
-        ~Csltotaltable();
+        CslTotalTable();
+        ~CslTotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -365,18 +365,18 @@ class CISCOSONETMIB::Csltotaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csltotalentry; //type: CISCOSONETMIB::Csltotaltable::Csltotalentry
+        class CslTotalEntry; //type: CISCOSONETMIB::CslTotalTable::CslTotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csltotaltable::Csltotalentry> > csltotalentry;
+        ydk::YList csltotalentry;
         
-}; // CISCOSONETMIB::Csltotaltable
+}; // CISCOSONETMIB::CslTotalTable
 
 
-class CISCOSONETMIB::Csltotaltable::Csltotalentry : public ydk::Entity
+class CISCOSONETMIB::CslTotalTable::CslTotalEntry : public ydk::Entity
 {
     public:
-        Csltotalentry();
-        ~Csltotalentry();
+        CslTotalEntry();
+        ~CslTotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -389,21 +389,21 @@ class CISCOSONETMIB::Csltotaltable::Csltotalentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf csltotaless; //type: uint32
         ydk::YLeaf csltotalsess; //type: uint32
         ydk::YLeaf csltotalcvs; //type: uint32
         ydk::YLeaf csltotaluass; //type: uint32
 
-}; // CISCOSONETMIB::Csltotaltable::Csltotalentry
+}; // CISCOSONETMIB::CslTotalTable::CslTotalEntry
 
 
-class CISCOSONETMIB::Cslfarendtotaltable : public ydk::Entity
+class CISCOSONETMIB::CslFarEndTotalTable : public ydk::Entity
 {
     public:
-        Cslfarendtotaltable();
-        ~Cslfarendtotaltable();
+        CslFarEndTotalTable();
+        ~CslFarEndTotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -416,18 +416,18 @@ class CISCOSONETMIB::Cslfarendtotaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cslfarendtotalentry; //type: CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry
+        class CslFarEndTotalEntry; //type: CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry> > cslfarendtotalentry;
+        ydk::YList cslfarendtotalentry;
         
-}; // CISCOSONETMIB::Cslfarendtotaltable
+}; // CISCOSONETMIB::CslFarEndTotalTable
 
 
-class CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry : public ydk::Entity
+class CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry : public ydk::Entity
 {
     public:
-        Cslfarendtotalentry();
-        ~Cslfarendtotalentry();
+        CslFarEndTotalEntry();
+        ~CslFarEndTotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -440,21 +440,21 @@ class CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cslfarendtotaless; //type: uint32
         ydk::YLeaf cslfarendtotalsess; //type: uint32
         ydk::YLeaf cslfarendtotalcvs; //type: uint32
         ydk::YLeaf cslfarendtotaluass; //type: uint32
 
-}; // CISCOSONETMIB::Cslfarendtotaltable::Cslfarendtotalentry
+}; // CISCOSONETMIB::CslFarEndTotalTable::CslFarEndTotalEntry
 
 
-class CISCOSONETMIB::Csptotaltable : public ydk::Entity
+class CISCOSONETMIB::CspTotalTable : public ydk::Entity
 {
     public:
-        Csptotaltable();
-        ~Csptotaltable();
+        CspTotalTable();
+        ~CspTotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -467,18 +467,18 @@ class CISCOSONETMIB::Csptotaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csptotalentry; //type: CISCOSONETMIB::Csptotaltable::Csptotalentry
+        class CspTotalEntry; //type: CISCOSONETMIB::CspTotalTable::CspTotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csptotaltable::Csptotalentry> > csptotalentry;
+        ydk::YList csptotalentry;
         
-}; // CISCOSONETMIB::Csptotaltable
+}; // CISCOSONETMIB::CspTotalTable
 
 
-class CISCOSONETMIB::Csptotaltable::Csptotalentry : public ydk::Entity
+class CISCOSONETMIB::CspTotalTable::CspTotalEntry : public ydk::Entity
 {
     public:
-        Csptotalentry();
-        ~Csptotalentry();
+        CspTotalEntry();
+        ~CspTotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -491,21 +491,21 @@ class CISCOSONETMIB::Csptotaltable::Csptotalentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf csptotaless; //type: uint32
         ydk::YLeaf csptotalsess; //type: uint32
         ydk::YLeaf csptotalcvs; //type: uint32
         ydk::YLeaf csptotaluass; //type: uint32
 
-}; // CISCOSONETMIB::Csptotaltable::Csptotalentry
+}; // CISCOSONETMIB::CspTotalTable::CspTotalEntry
 
 
-class CISCOSONETMIB::Cspfarendtotaltable : public ydk::Entity
+class CISCOSONETMIB::CspFarEndTotalTable : public ydk::Entity
 {
     public:
-        Cspfarendtotaltable();
-        ~Cspfarendtotaltable();
+        CspFarEndTotalTable();
+        ~CspFarEndTotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -518,18 +518,18 @@ class CISCOSONETMIB::Cspfarendtotaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cspfarendtotalentry; //type: CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry
+        class CspFarEndTotalEntry; //type: CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry> > cspfarendtotalentry;
+        ydk::YList cspfarendtotalentry;
         
-}; // CISCOSONETMIB::Cspfarendtotaltable
+}; // CISCOSONETMIB::CspFarEndTotalTable
 
 
-class CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry : public ydk::Entity
+class CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry : public ydk::Entity
 {
     public:
-        Cspfarendtotalentry();
-        ~Cspfarendtotalentry();
+        CspFarEndTotalEntry();
+        ~CspFarEndTotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -542,21 +542,21 @@ class CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cspfarendtotaless; //type: uint32
         ydk::YLeaf cspfarendtotalsess; //type: uint32
         ydk::YLeaf cspfarendtotalcvs; //type: uint32
         ydk::YLeaf cspfarendtotaluass; //type: uint32
 
-}; // CISCOSONETMIB::Cspfarendtotaltable::Cspfarendtotalentry
+}; // CISCOSONETMIB::CspFarEndTotalTable::CspFarEndTotalEntry
 
 
-class CISCOSONETMIB::Csptracetable : public ydk::Entity
+class CISCOSONETMIB::CspTraceTable : public ydk::Entity
 {
     public:
-        Csptracetable();
-        ~Csptracetable();
+        CspTraceTable();
+        ~CspTraceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -569,18 +569,18 @@ class CISCOSONETMIB::Csptracetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csptraceentry; //type: CISCOSONETMIB::Csptracetable::Csptraceentry
+        class CspTraceEntry; //type: CISCOSONETMIB::CspTraceTable::CspTraceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csptracetable::Csptraceentry> > csptraceentry;
+        ydk::YList csptraceentry;
         
-}; // CISCOSONETMIB::Csptracetable
+}; // CISCOSONETMIB::CspTraceTable
 
 
-class CISCOSONETMIB::Csptracetable::Csptraceentry : public ydk::Entity
+class CISCOSONETMIB::CspTraceTable::CspTraceEntry : public ydk::Entity
 {
     public:
-        Csptraceentry();
-        ~Csptraceentry();
+        CspTraceEntry();
+        ~CspTraceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -593,21 +593,21 @@ class CISCOSONETMIB::Csptracetable::Csptraceentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf csptracetotransmit; //type: binary
         ydk::YLeaf csptracetoexpect; //type: binary
         ydk::YLeaf csptracefailure; //type: boolean
         ydk::YLeaf csptracereceived; //type: binary
 
-}; // CISCOSONETMIB::Csptracetable::Csptraceentry
+}; // CISCOSONETMIB::CspTraceTable::CspTraceEntry
 
 
-class CISCOSONETMIB::Csstatstable : public ydk::Entity
+class CISCOSONETMIB::CsStatsTable : public ydk::Entity
 {
     public:
-        Csstatstable();
-        ~Csstatstable();
+        CsStatsTable();
+        ~CsStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -620,18 +620,18 @@ class CISCOSONETMIB::Csstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csstatsentry; //type: CISCOSONETMIB::Csstatstable::Csstatsentry
+        class CsStatsEntry; //type: CISCOSONETMIB::CsStatsTable::CsStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csstatstable::Csstatsentry> > csstatsentry;
+        ydk::YList csstatsentry;
         
-}; // CISCOSONETMIB::Csstatstable
+}; // CISCOSONETMIB::CsStatsTable
 
 
-class CISCOSONETMIB::Csstatstable::Csstatsentry : public ydk::Entity
+class CISCOSONETMIB::CsStatsTable::CsStatsEntry : public ydk::Entity
 {
     public:
-        Csstatsentry();
-        ~Csstatsentry();
+        CsStatsEntry();
+        ~CsStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -644,7 +644,7 @@ class CISCOSONETMIB::Csstatstable::Csstatsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cssloss; //type: uint32
         ydk::YLeaf csslofs; //type: uint32
@@ -653,14 +653,14 @@ class CISCOSONETMIB::Csstatstable::Csstatsentry : public ydk::Entity
         ydk::YLeaf cspaiss; //type: uint32
         ydk::YLeaf csprfis; //type: uint32
 
-}; // CISCOSONETMIB::Csstatstable::Csstatsentry
+}; // CISCOSONETMIB::CsStatsTable::CsStatsEntry
 
 
-class CISCOSONETMIB::Csau4Tug3Configtable : public ydk::Entity
+class CISCOSONETMIB::CsAu4Tug3ConfigTable : public ydk::Entity
 {
     public:
-        Csau4Tug3Configtable();
-        ~Csau4Tug3Configtable();
+        CsAu4Tug3ConfigTable();
+        ~CsAu4Tug3ConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -673,18 +673,18 @@ class CISCOSONETMIB::Csau4Tug3Configtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Csau4Tug3Configentry; //type: CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry
+        class CsAu4Tug3ConfigEntry; //type: CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SONET_MIB::CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry> > csau4tug3configentry;
+        ydk::YList csau4tug3configentry;
         
-}; // CISCOSONETMIB::Csau4Tug3Configtable
+}; // CISCOSONETMIB::CsAu4Tug3ConfigTable
 
 
-class CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry : public ydk::Entity
+class CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry : public ydk::Entity
 {
     public:
-        Csau4Tug3Configentry();
-        ~Csau4Tug3Configentry();
+        CsAu4Tug3ConfigEntry();
+        ~CsAu4Tug3ConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -697,23 +697,13 @@ class CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf csau4tug3; //type: int32
-        ydk::YLeaf csau4tug3payload; //type: Csau4Tug3Payload
-        class Csau4Tug3Payload;
+        ydk::YLeaf csau4tug3payload; //type: CsAu4Tug3Payload
+        class CsAu4Tug3Payload;
 
-}; // CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry
-
-class CsApsLineFailureCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf csApsChannelMismatch;
-        static const ydk::Enum::YLeaf csApsProtectionByteFail;
-        static const ydk::Enum::YLeaf csApsFEProtectionFailure;
-        static const ydk::Enum::YLeaf csApsModeMismatch;
-
-};
+}; // CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry
 
 class CsApsLineSwitchReason : public ydk::Enum
 {
@@ -731,7 +721,17 @@ class CsApsLineSwitchReason : public ydk::Enum
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigloopbacktype : public ydk::Enum
+class CsApsLineFailureCode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf csApsChannelMismatch;
+        static const ydk::Enum::YLeaf csApsProtectionByteFail;
+        static const ydk::Enum::YLeaf csApsFEProtectionFailure;
+        static const ydk::Enum::YLeaf csApsModeMismatch;
+
+};
+
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigLoopbackType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noLoopback;
@@ -740,7 +740,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigloopbacktype : public
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigxmtclocksource : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigXmtClockSource : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf loopTiming;
@@ -748,7 +748,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigxmtclocksource : publ
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigframescramble : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigFrameScramble : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -756,7 +756,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigframescramble : publi
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sonetSts3c;
@@ -771,7 +771,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigtype : public ydk::En
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdivtype : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIVType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf onebit;
@@ -779,7 +779,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdivtype : public ydk
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdiptype : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsConfigRDIPType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf onebit;
@@ -787,7 +787,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Csconfigrdiptype : public ydk
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarytype : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf vt15vc11;
@@ -795,7 +795,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarytype : public ydk:
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarymappingtype : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryMappingType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf asynchronous;
@@ -803,7 +803,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarymappingtype : publ
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributaryframingtype : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryFramingType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -812,7 +812,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributaryframingtype : publ
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cssignallingtransportmode : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsSignallingTransportMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -821,7 +821,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cssignallingtransportmode : p
 
 };
 
-class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarygroupingtype : public ydk::Enum
+class CISCOSONETMIB::CsConfigTable::CsConfigEntry::CsTributaryGroupingType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -830,7 +830,7 @@ class CISCOSONETMIB::Csconfigtable::Csconfigentry::Cstributarygroupingtype : pub
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsenable : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf csApsDisabled;
@@ -838,7 +838,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsenable : public yd
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmode : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf onePlusOne;
@@ -849,7 +849,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmode : public 
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsactiveline : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsActiveLine : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf csApsWorkingLine;
@@ -858,7 +858,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsactiveline : publi
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirection : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf uniDirectional;
@@ -866,7 +866,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirection : public
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsrevertive : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsRevertive : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nonrevertive;
@@ -874,7 +874,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsrevertive : public
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirectionoperational : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsDirectionOperational : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf uniDirectional;
@@ -882,7 +882,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsdirectionoperation
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperational : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsArchModeOperational : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf onePlusOne;
@@ -893,7 +893,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperationa
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapschannelprotocol : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsChannelProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bellcore;
@@ -901,7 +901,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapschannelprotocol : 
 
 };
 
-class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsprimarysection : public ydk::Enum
+class CISCOSONETMIB::CsApsConfigTable::CsApsConfigEntry::CsApsPrimarySection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf workingSection1;
@@ -910,7 +910,7 @@ class CISCOSONETMIB::Csapsconfigtable::Csapsconfigentry::Csapsprimarysection : p
 
 };
 
-class CISCOSONETMIB::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Payload : public ydk::Enum
+class CISCOSONETMIB::CsAu4Tug3ConfigTable::CsAu4Tug3ConfigEntry::CsAu4Tug3Payload : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

@@ -89,18 +89,18 @@ class Ssh::Client::ClientAlgo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class KeyExchange; //type: Ssh::Client::ClientAlgo::KeyExchange
+        class KeyExchanges; //type: Ssh::Client::ClientAlgo::KeyExchanges
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Client::ClientAlgo::KeyExchange> key_exchange; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Client::ClientAlgo::KeyExchanges> key_exchanges;
         
 }; // Ssh::Client::ClientAlgo
 
 
-class Ssh::Client::ClientAlgo::KeyExchange : public ydk::Entity
+class Ssh::Client::ClientAlgo::KeyExchanges : public ydk::Entity
 {
     public:
-        KeyExchange();
-        ~KeyExchange();
+        KeyExchanges();
+        ~KeyExchanges();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -113,13 +113,9 @@ class Ssh::Client::ClientAlgo::KeyExchange : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf kex_algo1st; //type: string
-        ydk::YLeaf kex_algo2nd; //type: string
-        ydk::YLeaf kex_algo3rd; //type: string
-        ydk::YLeaf kex_algo4th; //type: string
-        ydk::YLeaf kex_algo5th; //type: string
+        ydk::YLeafList key_exchange; //type: list of  string
 
-}; // Ssh::Client::ClientAlgo::KeyExchange
+}; // Ssh::Client::ClientAlgo::KeyExchanges
 
 
 class Ssh::Client::ClientEnable : public ydk::Entity
@@ -322,7 +318,7 @@ class Ssh::Server::VrfTable : public ydk::Entity
 
         class Vrf; //type: Ssh::Server::VrfTable::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Server::VrfTable::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ssh::Server::VrfTable
 
@@ -369,18 +365,18 @@ class Ssh::Server::ServerAlgo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class KeyExchange; //type: Ssh::Server::ServerAlgo::KeyExchange
+        class KeyExchanges; //type: Ssh::Server::ServerAlgo::KeyExchanges
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Server::ServerAlgo::KeyExchange> key_exchange; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Server::ServerAlgo::KeyExchanges> key_exchanges;
         
 }; // Ssh::Server::ServerAlgo
 
 
-class Ssh::Server::ServerAlgo::KeyExchange : public ydk::Entity
+class Ssh::Server::ServerAlgo::KeyExchanges : public ydk::Entity
 {
     public:
-        KeyExchange();
-        ~KeyExchange();
+        KeyExchanges();
+        ~KeyExchanges();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -393,13 +389,9 @@ class Ssh::Server::ServerAlgo::KeyExchange : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf kex_algo1st; //type: string
-        ydk::YLeaf kex_algo2nd; //type: string
-        ydk::YLeaf kex_algo3rd; //type: string
-        ydk::YLeaf kex_algo4th; //type: string
-        ydk::YLeaf kex_algo5th; //type: string
+        ydk::YLeafList key_exchange; //type: list of  string
 
-}; // Ssh::Server::ServerAlgo::KeyExchange
+}; // Ssh::Server::ServerAlgo::KeyExchanges
 
 
 class Ssh::Server::Capability : public ydk::Entity
@@ -443,7 +435,7 @@ class Ssh::Server::NetconfVrfTable : public ydk::Entity
 
         class Vrf; //type: Ssh::Server::NetconfVrfTable::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Server::NetconfVrfTable::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ssh::Server::NetconfVrfTable
 

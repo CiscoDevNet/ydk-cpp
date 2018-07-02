@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_fm {
 
 Fm::Fm()
+    :
+    agents(this, {"location", "process", "subsystem", "agent"})
 {
 
-    yang_name = "fm"; yang_parent_name = "Cisco-IOS-XR-sysadmin-fm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fm"; yang_parent_name = "Cisco-IOS-XR-sysadmin-fm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Fm::~Fm()
@@ -23,7 +25,8 @@ Fm::~Fm()
 
 bool Fm::has_data() const
 {
-    for (std::size_t index=0; index<agents.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<agents.len(); index++)
     {
         if(agents[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Fm::has_data() const
 
 bool Fm::has_operation() const
 {
-    for (std::size_t index=0; index<agents.size(); index++)
+    for (std::size_t index=0; index<agents.len(); index++)
     {
         if(agents[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Fm::get_child_by_name(const std::string & child_yang_nam
     {
         auto c = std::make_shared<Fm::Agents>();
         c->parent = this;
-        agents.push_back(c);
+        agents.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : agents)
+    for (auto c : agents.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -132,12 +135,12 @@ Fm::Agents::Agents()
     process{YType::str, "process"},
     subsystem{YType::str, "subsystem"},
     agent{YType::str, "agent"}
-    	,
+        ,
     fm_initials(std::make_shared<Fm::Agents::FmInitials>())
-	,fm_table(std::make_shared<Fm::Agents::FmTable>())
-	,fm_internals(std::make_shared<Fm::Agents::FmInternals>())
-	,fm_alarm_mapping(std::make_shared<Fm::Agents::FmAlarmMapping>())
-	,fm_statistics(std::make_shared<Fm::Agents::FmStatistics>())
+    , fm_table(std::make_shared<Fm::Agents::FmTable>())
+    , fm_internals(std::make_shared<Fm::Agents::FmInternals>())
+    , fm_alarm_mapping(std::make_shared<Fm::Agents::FmAlarmMapping>())
+    , fm_statistics(std::make_shared<Fm::Agents::FmStatistics>())
 {
     fm_initials->parent = this;
     fm_table->parent = this;
@@ -145,7 +148,7 @@ Fm::Agents::Agents()
     fm_alarm_mapping->parent = this;
     fm_statistics->parent = this;
 
-    yang_name = "agents"; yang_parent_name = "fm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agents"; yang_parent_name = "fm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fm::Agents::~Agents()
@@ -154,6 +157,7 @@ Fm::Agents::~Agents()
 
 bool Fm::Agents::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| process.is_set
 	|| subsystem.is_set
@@ -189,7 +193,11 @@ std::string Fm::Agents::get_absolute_path() const
 std::string Fm::Agents::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "agents" <<"[location='" <<location <<"']" <<"[process='" <<process <<"']" <<"[subsystem='" <<subsystem <<"']" <<"[agent='" <<agent <<"']";
+    path_buffer << "agents";
+    ADD_KEY_TOKEN(location, "location");
+    ADD_KEY_TOKEN(process, "process");
+    ADD_KEY_TOKEN(subsystem, "subsystem");
+    ADD_KEY_TOKEN(agent, "agent");
     return path_buffer.str();
 }
 
@@ -355,7 +363,7 @@ Fm::Agents::FmInitials::FmInitials()
     replica_cb{YType::uint64, "replica_cb"}
 {
 
-    yang_name = "fm_initials"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fm_initials"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmInitials::~FmInitials()
@@ -364,6 +372,7 @@ Fm::Agents::FmInitials::~FmInitials()
 
 bool Fm::Agents::FmInitials::has_data() const
 {
+    if (is_presence_container) return true;
     return levm.is_set
 	|| comp_id.is_set
 	|| process.is_set
@@ -519,9 +528,12 @@ bool Fm::Agents::FmInitials::has_leaf_or_child_of_name(const std::string & name)
 }
 
 Fm::Agents::FmTable::FmTable()
+    :
+    brief(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
+    , entry(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
 {
 
-    yang_name = "fm_table"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fm_table"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::~FmTable()
@@ -530,12 +542,13 @@ Fm::Agents::FmTable::~FmTable()
 
 bool Fm::Agents::FmTable::has_data() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -545,12 +558,12 @@ bool Fm::Agents::FmTable::has_data() const
 
 bool Fm::Agents::FmTable::has_operation() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -580,7 +593,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Brief>();
         c->parent = this;
-        brief.push_back(c);
+        brief.append(c);
         return c;
     }
 
@@ -588,7 +601,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -600,7 +613,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief)
+    for (auto c : brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -609,7 +622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::get_children
     }
 
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -643,7 +656,7 @@ Fm::Agents::FmTable::Brief::Brief()
     name{YType::str, "name"}
 {
 
-    yang_name = "brief"; yang_parent_name = "fm_table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "fm_table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Brief::~Brief()
@@ -652,6 +665,7 @@ Fm::Agents::FmTable::Brief::~Brief()
 
 bool Fm::Agents::FmTable::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -670,7 +684,10 @@ bool Fm::Agents::FmTable::Brief::has_operation() const
 std::string Fm::Agents::FmTable::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "brief";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -759,16 +776,21 @@ Fm::Agents::FmTable::Entry::Entry()
     fm_subsystem_id{YType::str, "fm_subsystem_id"},
     fm_fault_type{YType::str, "fm_fault_type"},
     fm_fault_tag{YType::str, "fm_fault_tag"}
-    	,
+        ,
     detail(std::make_shared<Fm::Agents::FmTable::Entry::Detail>())
-	,faults(std::make_shared<Fm::Agents::FmTable::Entry::Faults>())
-	,waiting_list(std::make_shared<Fm::Agents::FmTable::Entry::WaitingList>())
+    , causal_list(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
+    , dependency_list(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
+    , propagation_list(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
+    , notification_list(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
+    , escalation_list(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
+    , faults(std::make_shared<Fm::Agents::FmTable::Entry::Faults>())
+    , waiting_list(std::make_shared<Fm::Agents::FmTable::Entry::WaitingList>())
 {
     detail->parent = this;
     faults->parent = this;
     waiting_list->parent = this;
 
-    yang_name = "entry"; yang_parent_name = "fm_table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entry"; yang_parent_name = "fm_table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::~Entry()
@@ -777,27 +799,28 @@ Fm::Agents::FmTable::Entry::~Entry()
 
 bool Fm::Agents::FmTable::Entry::has_data() const
 {
-    for (std::size_t index=0; index<causal_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<causal_list.len(); index++)
     {
         if(causal_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dependency_list.size(); index++)
+    for (std::size_t index=0; index<dependency_list.len(); index++)
     {
         if(dependency_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<propagation_list.size(); index++)
+    for (std::size_t index=0; index<propagation_list.len(); index++)
     {
         if(propagation_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<notification_list.size(); index++)
+    for (std::size_t index=0; index<notification_list.len(); index++)
     {
         if(notification_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<escalation_list.size(); index++)
+    for (std::size_t index=0; index<escalation_list.len(); index++)
     {
         if(escalation_list[index]->has_data())
             return true;
@@ -812,27 +835,27 @@ bool Fm::Agents::FmTable::Entry::has_data() const
 
 bool Fm::Agents::FmTable::Entry::has_operation() const
 {
-    for (std::size_t index=0; index<causal_list.size(); index++)
+    for (std::size_t index=0; index<causal_list.len(); index++)
     {
         if(causal_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dependency_list.size(); index++)
+    for (std::size_t index=0; index<dependency_list.len(); index++)
     {
         if(dependency_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<propagation_list.size(); index++)
+    for (std::size_t index=0; index<propagation_list.len(); index++)
     {
         if(propagation_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<notification_list.size(); index++)
+    for (std::size_t index=0; index<notification_list.len(); index++)
     {
         if(notification_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<escalation_list.size(); index++)
+    for (std::size_t index=0; index<escalation_list.len(); index++)
     {
         if(escalation_list[index]->has_operation())
             return true;
@@ -849,7 +872,10 @@ bool Fm::Agents::FmTable::Entry::has_operation() const
 std::string Fm::Agents::FmTable::Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -880,7 +906,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std:
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::CausalList>();
         c->parent = this;
-        causal_list.push_back(c);
+        causal_list.append(c);
         return c;
     }
 
@@ -888,7 +914,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std:
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::DependencyList>();
         c->parent = this;
-        dependency_list.push_back(c);
+        dependency_list.append(c);
         return c;
     }
 
@@ -896,7 +922,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std:
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::PropagationList>();
         c->parent = this;
-        propagation_list.push_back(c);
+        propagation_list.append(c);
         return c;
     }
 
@@ -904,7 +930,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std:
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::NotificationList>();
         c->parent = this;
-        notification_list.push_back(c);
+        notification_list.append(c);
         return c;
     }
 
@@ -912,7 +938,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std:
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::EscalationList>();
         c->parent = this;
-        escalation_list.push_back(c);
+        escalation_list.append(c);
         return c;
     }
 
@@ -947,7 +973,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::get_c
     }
 
     count = 0;
-    for (auto const & c : causal_list)
+    for (auto c : causal_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -956,7 +982,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::get_c
     }
 
     count = 0;
-    for (auto const & c : dependency_list)
+    for (auto c : dependency_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -965,7 +991,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::get_c
     }
 
     count = 0;
-    for (auto const & c : propagation_list)
+    for (auto c : propagation_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -974,7 +1000,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::get_c
     }
 
     count = 0;
-    for (auto const & c : notification_list)
+    for (auto c : notification_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -983,7 +1009,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::get_c
     }
 
     count = 0;
-    for (auto const & c : escalation_list)
+    for (auto c : escalation_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1060,7 +1086,7 @@ Fm::Agents::FmTable::Entry::Detail::Detail()
     corr_obj_qualifier{YType::enumeration, "corr_obj_qualifier"}
 {
 
-    yang_name = "detail"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Detail::~Detail()
@@ -1069,6 +1095,7 @@ Fm::Agents::FmTable::Entry::Detail::~Detail()
 
 bool Fm::Agents::FmTable::Entry::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -1217,7 +1244,7 @@ Fm::Agents::FmTable::Entry::CausalList::CausalList()
     fm_fault_tag{YType::str, "fm_fault_tag"}
 {
 
-    yang_name = "causal_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "causal_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::CausalList::~CausalList()
@@ -1226,6 +1253,7 @@ Fm::Agents::FmTable::Entry::CausalList::~CausalList()
 
 bool Fm::Agents::FmTable::Entry::CausalList::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set;
@@ -1242,7 +1270,10 @@ bool Fm::Agents::FmTable::Entry::CausalList::has_operation() const
 std::string Fm::Agents::FmTable::Entry::CausalList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "causal_list" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "causal_list";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -1322,7 +1353,7 @@ Fm::Agents::FmTable::Entry::DependencyList::DependencyList()
     fm_fault_tag{YType::str, "fm_fault_tag"}
 {
 
-    yang_name = "dependency_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dependency_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::DependencyList::~DependencyList()
@@ -1331,6 +1362,7 @@ Fm::Agents::FmTable::Entry::DependencyList::~DependencyList()
 
 bool Fm::Agents::FmTable::Entry::DependencyList::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set;
@@ -1347,7 +1379,10 @@ bool Fm::Agents::FmTable::Entry::DependencyList::has_operation() const
 std::string Fm::Agents::FmTable::Entry::DependencyList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dependency_list" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "dependency_list";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -1428,7 +1463,7 @@ Fm::Agents::FmTable::Entry::PropagationList::PropagationList()
     remote_agent_id{YType::str, "remote_agent_id"}
 {
 
-    yang_name = "propagation_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "propagation_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::PropagationList::~PropagationList()
@@ -1437,6 +1472,7 @@ Fm::Agents::FmTable::Entry::PropagationList::~PropagationList()
 
 bool Fm::Agents::FmTable::Entry::PropagationList::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -1455,7 +1491,10 @@ bool Fm::Agents::FmTable::Entry::PropagationList::has_operation() const
 std::string Fm::Agents::FmTable::Entry::PropagationList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "propagation_list" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "propagation_list";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -1547,7 +1586,7 @@ Fm::Agents::FmTable::Entry::NotificationList::NotificationList()
     remote_agent_id{YType::str, "remote_agent_id"}
 {
 
-    yang_name = "notification_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "notification_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::NotificationList::~NotificationList()
@@ -1556,6 +1595,7 @@ Fm::Agents::FmTable::Entry::NotificationList::~NotificationList()
 
 bool Fm::Agents::FmTable::Entry::NotificationList::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -1574,7 +1614,10 @@ bool Fm::Agents::FmTable::Entry::NotificationList::has_operation() const
 std::string Fm::Agents::FmTable::Entry::NotificationList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "notification_list" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "notification_list";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -1666,7 +1709,7 @@ Fm::Agents::FmTable::Entry::EscalationList::EscalationList()
     remote_agent_id{YType::str, "remote_agent_id"}
 {
 
-    yang_name = "escalation_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "escalation_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::EscalationList::~EscalationList()
@@ -1675,6 +1718,7 @@ Fm::Agents::FmTable::Entry::EscalationList::~EscalationList()
 
 bool Fm::Agents::FmTable::Entry::EscalationList::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -1693,7 +1737,10 @@ bool Fm::Agents::FmTable::Entry::EscalationList::has_operation() const
 std::string Fm::Agents::FmTable::Entry::EscalationList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "escalation_list" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "escalation_list";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -1780,12 +1827,12 @@ bool Fm::Agents::FmTable::Entry::EscalationList::has_leaf_or_child_of_name(const
 Fm::Agents::FmTable::Entry::Faults::Faults()
     :
     active(std::make_shared<Fm::Agents::FmTable::Entry::Faults::Active>())
-	,history(std::make_shared<Fm::Agents::FmTable::Entry::Faults::History>())
+    , history(std::make_shared<Fm::Agents::FmTable::Entry::Faults::History>())
 {
     active->parent = this;
     history->parent = this;
 
-    yang_name = "faults"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "faults"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Faults::~Faults()
@@ -1794,6 +1841,7 @@ Fm::Agents::FmTable::Entry::Faults::~Faults()
 
 bool Fm::Agents::FmTable::Entry::Faults::has_data() const
 {
+    if (is_presence_container) return true;
     return (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data());
 }
@@ -1877,9 +1925,12 @@ bool Fm::Agents::FmTable::Entry::Faults::has_leaf_or_child_of_name(const std::st
 }
 
 Fm::Agents::FmTable::Entry::Faults::Active::Active()
+    :
+    brief(this, {"object_id"})
+    , detail(this, {"object_id"})
 {
 
-    yang_name = "active"; yang_parent_name = "faults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active"; yang_parent_name = "faults"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Faults::Active::~Active()
@@ -1888,12 +1939,13 @@ Fm::Agents::FmTable::Entry::Faults::Active::~Active()
 
 bool Fm::Agents::FmTable::Entry::Faults::Active::has_data() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -1903,12 +1955,12 @@ bool Fm::Agents::FmTable::Entry::Faults::Active::has_data() const
 
 bool Fm::Agents::FmTable::Entry::Faults::Active::has_operation() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -1938,7 +1990,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::Active::get_child_by
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::Active::Brief>();
         c->parent = this;
-        brief.push_back(c);
+        brief.append(c);
         return c;
     }
 
@@ -1946,7 +1998,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::Active::get_child_by
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::Active::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -1958,7 +2010,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Fault
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief)
+    for (auto c : brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1967,7 +2019,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Fault
     }
 
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1999,7 +2051,7 @@ Fm::Agents::FmTable::Entry::Faults::Active::Brief::Brief()
     fault_timestamp{YType::str, "fault_timestamp"}
 {
 
-    yang_name = "brief"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Faults::Active::Brief::~Brief()
@@ -2008,6 +2060,7 @@ Fm::Agents::FmTable::Entry::Faults::Active::Brief::~Brief()
 
 bool Fm::Agents::FmTable::Entry::Faults::Active::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return object_id.is_set
 	|| fault_timestamp.is_set;
 }
@@ -2022,7 +2075,8 @@ bool Fm::Agents::FmTable::Entry::Faults::Active::Brief::has_operation() const
 std::string Fm::Agents::FmTable::Entry::Faults::Active::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief" <<"[object_id='" <<object_id <<"']";
+    path_buffer << "brief";
+    ADD_KEY_TOKEN(object_id, "object_id");
     return path_buffer.str();
 }
 
@@ -2106,7 +2160,7 @@ Fm::Agents::FmTable::Entry::Faults::Active::Detail::Detail()
     history_state{YType::enumeration, "history_state"}
 {
 
-    yang_name = "detail"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Faults::Active::Detail::~Detail()
@@ -2115,6 +2169,7 @@ Fm::Agents::FmTable::Entry::Faults::Active::Detail::~Detail()
 
 bool Fm::Agents::FmTable::Entry::Faults::Active::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return object_id.is_set
 	|| fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
@@ -2161,7 +2216,8 @@ bool Fm::Agents::FmTable::Entry::Faults::Active::Detail::has_operation() const
 std::string Fm::Agents::FmTable::Entry::Faults::Active::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[object_id='" <<object_id <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(object_id, "object_id");
     return path_buffer.str();
 }
 
@@ -2400,9 +2456,12 @@ bool Fm::Agents::FmTable::Entry::Faults::Active::Detail::has_leaf_or_child_of_na
 }
 
 Fm::Agents::FmTable::Entry::Faults::History::History()
+    :
+    brief(this, {"object_id"})
+    , detail(this, {"object_id"})
 {
 
-    yang_name = "history"; yang_parent_name = "faults"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "faults"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Faults::History::~History()
@@ -2411,12 +2470,13 @@ Fm::Agents::FmTable::Entry::Faults::History::~History()
 
 bool Fm::Agents::FmTable::Entry::Faults::History::has_data() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -2426,12 +2486,12 @@ bool Fm::Agents::FmTable::Entry::Faults::History::has_data() const
 
 bool Fm::Agents::FmTable::Entry::Faults::History::has_operation() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -2461,7 +2521,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::History::get_child_b
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::History::Brief>();
         c->parent = this;
-        brief.push_back(c);
+        brief.append(c);
         return c;
     }
 
@@ -2469,7 +2529,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::History::get_child_b
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::History::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -2481,7 +2541,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Fault
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief)
+    for (auto c : brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2490,7 +2550,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Fault
     }
 
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2522,7 +2582,7 @@ Fm::Agents::FmTable::Entry::Faults::History::Brief::Brief()
     fault_timestamp{YType::str, "fault_timestamp"}
 {
 
-    yang_name = "brief"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Faults::History::Brief::~Brief()
@@ -2531,6 +2591,7 @@ Fm::Agents::FmTable::Entry::Faults::History::Brief::~Brief()
 
 bool Fm::Agents::FmTable::Entry::Faults::History::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return object_id.is_set
 	|| fault_timestamp.is_set;
 }
@@ -2545,7 +2606,8 @@ bool Fm::Agents::FmTable::Entry::Faults::History::Brief::has_operation() const
 std::string Fm::Agents::FmTable::Entry::Faults::History::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief" <<"[object_id='" <<object_id <<"']";
+    path_buffer << "brief";
+    ADD_KEY_TOKEN(object_id, "object_id");
     return path_buffer.str();
 }
 
@@ -2629,7 +2691,7 @@ Fm::Agents::FmTable::Entry::Faults::History::Detail::Detail()
     history_state{YType::enumeration, "history_state"}
 {
 
-    yang_name = "detail"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::Faults::History::Detail::~Detail()
@@ -2638,6 +2700,7 @@ Fm::Agents::FmTable::Entry::Faults::History::Detail::~Detail()
 
 bool Fm::Agents::FmTable::Entry::Faults::History::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return object_id.is_set
 	|| fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
@@ -2684,7 +2747,8 @@ bool Fm::Agents::FmTable::Entry::Faults::History::Detail::has_operation() const
 std::string Fm::Agents::FmTable::Entry::Faults::History::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[object_id='" <<object_id <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(object_id, "object_id");
     return path_buffer.str();
 }
 
@@ -2923,9 +2987,12 @@ bool Fm::Agents::FmTable::Entry::Faults::History::Detail::has_leaf_or_child_of_n
 }
 
 Fm::Agents::FmTable::Entry::WaitingList::WaitingList()
+    :
+    brief(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
+    , entry(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
 {
 
-    yang_name = "waiting_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "waiting_list"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::WaitingList::~WaitingList()
@@ -2934,12 +3001,13 @@ Fm::Agents::FmTable::Entry::WaitingList::~WaitingList()
 
 bool Fm::Agents::FmTable::Entry::WaitingList::has_data() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -2949,12 +3017,12 @@ bool Fm::Agents::FmTable::Entry::WaitingList::has_data() const
 
 bool Fm::Agents::FmTable::Entry::WaitingList::has_operation() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -2984,7 +3052,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::WaitingList::get_child_by_na
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::WaitingList::Brief>();
         c->parent = this;
-        brief.push_back(c);
+        brief.append(c);
         return c;
     }
 
@@ -2992,7 +3060,7 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::WaitingList::get_child_by_na
     {
         auto c = std::make_shared<Fm::Agents::FmTable::Entry::WaitingList::Entry_>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -3004,7 +3072,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Waiti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief)
+    for (auto c : brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3013,7 +3081,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Waiti
     }
 
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3051,7 +3119,7 @@ Fm::Agents::FmTable::Entry::WaitingList::Brief::Brief()
     fault_flag{YType::uint64, "fault_flag"}
 {
 
-    yang_name = "brief"; yang_parent_name = "waiting_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "waiting_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::WaitingList::Brief::~Brief()
@@ -3060,6 +3128,7 @@ Fm::Agents::FmTable::Entry::WaitingList::Brief::~Brief()
 
 bool Fm::Agents::FmTable::Entry::WaitingList::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -3086,7 +3155,10 @@ bool Fm::Agents::FmTable::Entry::WaitingList::Brief::has_operation() const
 std::string Fm::Agents::FmTable::Entry::WaitingList::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "brief";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -3226,7 +3298,7 @@ Fm::Agents::FmTable::Entry::WaitingList::Entry_::Entry_()
     fault_flag{YType::uint64, "fault_flag"}
 {
 
-    yang_name = "entry"; yang_parent_name = "waiting_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entry"; yang_parent_name = "waiting_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmTable::Entry::WaitingList::Entry_::~Entry_()
@@ -3235,6 +3307,7 @@ Fm::Agents::FmTable::Entry::WaitingList::Entry_::~Entry_()
 
 bool Fm::Agents::FmTable::Entry::WaitingList::Entry_::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -3261,7 +3334,10 @@ bool Fm::Agents::FmTable::Entry::WaitingList::Entry_::has_operation() const
 std::string Fm::Agents::FmTable::Entry::WaitingList::Entry_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -3390,9 +3466,11 @@ bool Fm::Agents::FmTable::Entry::WaitingList::Entry_::has_leaf_or_child_of_name(
 }
 
 Fm::Agents::FmInternals::FmInternals()
+    :
+    detail(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
 {
 
-    yang_name = "fm_internals"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fm_internals"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmInternals::~FmInternals()
@@ -3401,7 +3479,8 @@ Fm::Agents::FmInternals::~FmInternals()
 
 bool Fm::Agents::FmInternals::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -3411,7 +3490,7 @@ bool Fm::Agents::FmInternals::has_data() const
 
 bool Fm::Agents::FmInternals::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -3441,7 +3520,7 @@ std::shared_ptr<Entity> Fm::Agents::FmInternals::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Fm::Agents::FmInternals::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -3453,7 +3532,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmInternals::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3494,9 +3573,11 @@ Fm::Agents::FmInternals::Detail::Detail()
     has_causal_list{YType::boolean, "has_causal_list"},
     parser_tag{YType::uint64, "parser_tag"},
     parser_tag_string{YType::str, "parser_tag_string"}
+        ,
+    rules(this, {})
 {
 
-    yang_name = "detail"; yang_parent_name = "fm_internals"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "fm_internals"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmInternals::Detail::~Detail()
@@ -3505,7 +3586,8 @@ Fm::Agents::FmInternals::Detail::~Detail()
 
 bool Fm::Agents::FmInternals::Detail::has_data() const
 {
-    for (std::size_t index=0; index<rules.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rules.len(); index++)
     {
         if(rules[index]->has_data())
             return true;
@@ -3527,7 +3609,7 @@ bool Fm::Agents::FmInternals::Detail::has_data() const
 
 bool Fm::Agents::FmInternals::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<rules.size(); index++)
+    for (std::size_t index=0; index<rules.len(); index++)
     {
         if(rules[index]->has_operation())
             return true;
@@ -3551,7 +3633,10 @@ bool Fm::Agents::FmInternals::Detail::has_operation() const
 std::string Fm::Agents::FmInternals::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -3583,7 +3668,7 @@ std::shared_ptr<Entity> Fm::Agents::FmInternals::Detail::get_child_by_name(const
     {
         auto c = std::make_shared<Fm::Agents::FmInternals::Detail::Rules>();
         c->parent = this;
-        rules.push_back(c);
+        rules.append(c);
         return c;
     }
 
@@ -3595,7 +3680,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmInternals::Detail::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rules)
+    for (auto c : rules.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3757,7 +3842,7 @@ Fm::Agents::FmInternals::Detail::Rules::Rules()
     rule_cb{YType::uint64, "rule_cb"}
 {
 
-    yang_name = "rules"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rules"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmInternals::Detail::Rules::~Rules()
@@ -3766,6 +3851,7 @@ Fm::Agents::FmInternals::Detail::Rules::~Rules()
 
 bool Fm::Agents::FmInternals::Detail::Rules::has_data() const
 {
+    if (is_presence_container) return true;
     return fault_location.is_set
 	|| rule_cb.is_set;
 }
@@ -3843,9 +3929,11 @@ bool Fm::Agents::FmInternals::Detail::Rules::has_leaf_or_child_of_name(const std
 }
 
 Fm::Agents::FmAlarmMapping::FmAlarmMapping()
+    :
+    detail(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
 {
 
-    yang_name = "fm_alarm_mapping"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fm_alarm_mapping"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmAlarmMapping::~FmAlarmMapping()
@@ -3854,7 +3942,8 @@ Fm::Agents::FmAlarmMapping::~FmAlarmMapping()
 
 bool Fm::Agents::FmAlarmMapping::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -3864,7 +3953,7 @@ bool Fm::Agents::FmAlarmMapping::has_data() const
 
 bool Fm::Agents::FmAlarmMapping::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -3894,7 +3983,7 @@ std::shared_ptr<Entity> Fm::Agents::FmAlarmMapping::get_child_by_name(const std:
     {
         auto c = std::make_shared<Fm::Agents::FmAlarmMapping::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -3906,7 +3995,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmAlarmMapping::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3941,7 +4030,7 @@ Fm::Agents::FmAlarmMapping::Detail::Detail()
     alarm_severity{YType::uint16, "alarm_severity"}
 {
 
-    yang_name = "detail"; yang_parent_name = "fm_alarm_mapping"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "fm_alarm_mapping"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmAlarmMapping::Detail::~Detail()
@@ -3950,6 +4039,7 @@ Fm::Agents::FmAlarmMapping::Detail::~Detail()
 
 bool Fm::Agents::FmAlarmMapping::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -3970,7 +4060,10 @@ bool Fm::Agents::FmAlarmMapping::Detail::has_operation() const
 std::string Fm::Agents::FmAlarmMapping::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -4066,9 +4159,11 @@ bool Fm::Agents::FmAlarmMapping::Detail::has_leaf_or_child_of_name(const std::st
 }
 
 Fm::Agents::FmStatistics::FmStatistics()
+    :
+    detail(this, {"fm_subsystem_id", "fm_fault_type", "fm_fault_tag"})
 {
 
-    yang_name = "fm_statistics"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fm_statistics"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmStatistics::~FmStatistics()
@@ -4077,7 +4172,8 @@ Fm::Agents::FmStatistics::~FmStatistics()
 
 bool Fm::Agents::FmStatistics::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -4087,7 +4183,7 @@ bool Fm::Agents::FmStatistics::has_data() const
 
 bool Fm::Agents::FmStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -4117,7 +4213,7 @@ std::shared_ptr<Entity> Fm::Agents::FmStatistics::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Fm::Agents::FmStatistics::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -4129,7 +4225,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmStatistics::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4168,7 +4264,7 @@ Fm::Agents::FmStatistics::Detail::Detail()
     hold_time{YType::uint32, "hold_time"}
 {
 
-    yang_name = "detail"; yang_parent_name = "fm_statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "fm_statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fm::Agents::FmStatistics::Detail::~Detail()
@@ -4177,6 +4273,7 @@ Fm::Agents::FmStatistics::Detail::~Detail()
 
 bool Fm::Agents::FmStatistics::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return fm_subsystem_id.is_set
 	|| fm_fault_type.is_set
 	|| fm_fault_tag.is_set
@@ -4205,7 +4302,10 @@ bool Fm::Agents::FmStatistics::Detail::has_operation() const
 std::string Fm::Agents::FmStatistics::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[fm_subsystem_id='" <<fm_subsystem_id <<"']" <<"[fm_fault_type='" <<fm_fault_type <<"']" <<"[fm_fault_tag='" <<fm_fault_tag <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(fm_subsystem_id, "fm_subsystem_id");
+    ADD_KEY_TOKEN(fm_fault_type, "fm_fault_type");
+    ADD_KEY_TOKEN(fm_fault_tag, "fm_fault_tag");
     return path_buffer.str();
 }
 
@@ -4344,6 +4444,29 @@ bool Fm::Agents::FmStatistics::Detail::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
+const Enum::YLeaf FmActionT::ISOLATION {0, "ISOLATION"};
+const Enum::YLeaf FmActionT::MITIGATION {1, "MITIGATION"};
+const Enum::YLeaf FmActionT::RECOVERY {2, "RECOVERY"};
+const Enum::YLeaf FmActionT::CORRELATION {3, "CORRELATION"};
+const Enum::YLeaf FmActionT::ALARM {4, "ALARM"};
+const Enum::YLeaf FmActionT::REPORT {5, "REPORT"};
+
+const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_ACTIVE {0, "FM_HISTORY_STATE_ACTIVE"};
+const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_CLEARED {1, "FM_HISTORY_STATE_CLEARED"};
+const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_INVALID {2, "FM_HISTORY_STATE_INVALID"};
+
+const Enum::YLeaf FmServiceScopeT::FM_SERVICE_NODE_SCOPE {0, "FM_SERVICE_NODE_SCOPE"};
+const Enum::YLeaf FmServiceScopeT::FM_SERVICE_RACK_SCOPE {1, "FM_SERVICE_RACK_SCOPE"};
+const Enum::YLeaf FmServiceScopeT::FM_SERVICE_SYSTEM_SCOPE {2, "FM_SERVICE_SYSTEM_SCOPE"};
+
+const Enum::YLeaf FmActionResultT::SUCCESS {0, "SUCCESS"};
+const Enum::YLeaf FmActionResultT::FAILURE {1, "FAILURE"};
+const Enum::YLeaf FmActionResultT::NO_OP {2, "NO-OP"};
+
+const Enum::YLeaf GenericHaRole::no_ha_role {0, "no-ha-role"};
+const Enum::YLeaf GenericHaRole::Active {1, "Active"};
+const Enum::YLeaf GenericHaRole::Standby {2, "Standby"};
+
 const Enum::YLeaf FmFaultStateT::SET {0, "SET"};
 const Enum::YLeaf FmFaultStateT::CLEAR {1, "CLEAR"};
 const Enum::YLeaf FmFaultStateT::INFO {2, "INFO"};
@@ -4359,36 +4482,13 @@ const Enum::YLeaf FmFaultSeverityT::MAJOR {1, "MAJOR"};
 const Enum::YLeaf FmFaultSeverityT::MINOR {2, "MINOR"};
 const Enum::YLeaf FmFaultSeverityT::NR {3, "NR"};
 
-const Enum::YLeaf FmActionT::ISOLATION {0, "ISOLATION"};
-const Enum::YLeaf FmActionT::MITIGATION {1, "MITIGATION"};
-const Enum::YLeaf FmActionT::RECOVERY {2, "RECOVERY"};
-const Enum::YLeaf FmActionT::CORRELATION {3, "CORRELATION"};
-const Enum::YLeaf FmActionT::ALARM {4, "ALARM"};
-const Enum::YLeaf FmActionT::REPORT {5, "REPORT"};
-
-const Enum::YLeaf FmActionResultT::SUCCESS {0, "SUCCESS"};
-const Enum::YLeaf FmActionResultT::FAILURE {1, "FAILURE"};
-const Enum::YLeaf FmActionResultT::NO_OP {2, "NO-OP"};
-
 const Enum::YLeaf FmRuleEvalResultT::SUCCESS {0, "SUCCESS"};
 const Enum::YLeaf FmRuleEvalResultT::FAILURE {1, "FAILURE"};
-
-const Enum::YLeaf GenericHaRole::no_ha_role {0, "no-ha-role"};
-const Enum::YLeaf GenericHaRole::Active {1, "Active"};
-const Enum::YLeaf GenericHaRole::Standby {2, "Standby"};
 
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_IGNORED {0, "QUALIFIER_IGNORED"};
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_RACK {1, "QUALIFIER_RACK"};
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_SLOT {2, "QUALIFIER_SLOT"};
 const Enum::YLeaf FmCorrelationObjQualifierT::QUALIFIER_OBJECT {3, "QUALIFIER_OBJECT"};
-
-const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_ACTIVE {0, "FM_HISTORY_STATE_ACTIVE"};
-const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_CLEARED {1, "FM_HISTORY_STATE_CLEARED"};
-const Enum::YLeaf FmHistoryStateT::FM_HISTORY_STATE_INVALID {2, "FM_HISTORY_STATE_INVALID"};
-
-const Enum::YLeaf FmServiceScopeT::FM_SERVICE_NODE_SCOPE {0, "FM_SERVICE_NODE_SCOPE"};
-const Enum::YLeaf FmServiceScopeT::FM_SERVICE_RACK_SCOPE {1, "FM_SERVICE_RACK_SCOPE"};
-const Enum::YLeaf FmServiceScopeT::FM_SERVICE_SYSTEM_SCOPE {2, "FM_SERVICE_SYSTEM_SCOPE"};
 
 
 }

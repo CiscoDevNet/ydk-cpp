@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_wdsysmon_fd_oper {
 
 SystemMonitoring::SystemMonitoring()
+    :
+    cpu_utilization(this, {"node_name"})
 {
 
-    yang_name = "system-monitoring"; yang_parent_name = "Cisco-IOS-XR-wdsysmon-fd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "system-monitoring"; yang_parent_name = "Cisco-IOS-XR-wdsysmon-fd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SystemMonitoring::~SystemMonitoring()
@@ -23,7 +25,8 @@ SystemMonitoring::~SystemMonitoring()
 
 bool SystemMonitoring::has_data() const
 {
-    for (std::size_t index=0; index<cpu_utilization.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpu_utilization.len(); index++)
     {
         if(cpu_utilization[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool SystemMonitoring::has_data() const
 
 bool SystemMonitoring::has_operation() const
 {
-    for (std::size_t index=0; index<cpu_utilization.size(); index++)
+    for (std::size_t index=0; index<cpu_utilization.len(); index++)
     {
         if(cpu_utilization[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> SystemMonitoring::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<SystemMonitoring::CpuUtilization>();
         c->parent = this;
-        cpu_utilization.push_back(c);
+        cpu_utilization.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpu_utilization)
+    for (auto c : cpu_utilization.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -132,9 +135,11 @@ SystemMonitoring::CpuUtilization::CpuUtilization()
     total_cpu_one_minute{YType::uint32, "total-cpu-one-minute"},
     total_cpu_five_minute{YType::uint32, "total-cpu-five-minute"},
     total_cpu_fifteen_minute{YType::uint32, "total-cpu-fifteen-minute"}
+        ,
+    process_cpu(this, {})
 {
 
-    yang_name = "cpu-utilization"; yang_parent_name = "system-monitoring"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-utilization"; yang_parent_name = "system-monitoring"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SystemMonitoring::CpuUtilization::~CpuUtilization()
@@ -143,7 +148,8 @@ SystemMonitoring::CpuUtilization::~CpuUtilization()
 
 bool SystemMonitoring::CpuUtilization::has_data() const
 {
-    for (std::size_t index=0; index<process_cpu.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process_cpu.len(); index++)
     {
         if(process_cpu[index]->has_data())
             return true;
@@ -156,7 +162,7 @@ bool SystemMonitoring::CpuUtilization::has_data() const
 
 bool SystemMonitoring::CpuUtilization::has_operation() const
 {
-    for (std::size_t index=0; index<process_cpu.size(); index++)
+    for (std::size_t index=0; index<process_cpu.len(); index++)
     {
         if(process_cpu[index]->has_operation())
             return true;
@@ -178,7 +184,8 @@ std::string SystemMonitoring::CpuUtilization::get_absolute_path() const
 std::string SystemMonitoring::CpuUtilization::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpu-utilization" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "cpu-utilization";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -201,7 +208,7 @@ std::shared_ptr<Entity> SystemMonitoring::CpuUtilization::get_child_by_name(cons
     {
         auto c = std::make_shared<SystemMonitoring::CpuUtilization::ProcessCpu>();
         c->parent = this;
-        process_cpu.push_back(c);
+        process_cpu.append(c);
         return c;
     }
 
@@ -213,7 +220,7 @@ std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::CpuUtilization:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process_cpu)
+    for (auto c : process_cpu.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -288,7 +295,7 @@ SystemMonitoring::CpuUtilization::ProcessCpu::ProcessCpu()
     process_cpu_fifteen_minute{YType::uint32, "process-cpu-fifteen-minute"}
 {
 
-    yang_name = "process-cpu"; yang_parent_name = "cpu-utilization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process-cpu"; yang_parent_name = "cpu-utilization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SystemMonitoring::CpuUtilization::ProcessCpu::~ProcessCpu()
@@ -297,6 +304,7 @@ SystemMonitoring::CpuUtilization::ProcessCpu::~ProcessCpu()
 
 bool SystemMonitoring::CpuUtilization::ProcessCpu::has_data() const
 {
+    if (is_presence_container) return true;
     return process_name.is_set
 	|| process_id.is_set
 	|| process_cpu_one_minute.is_set

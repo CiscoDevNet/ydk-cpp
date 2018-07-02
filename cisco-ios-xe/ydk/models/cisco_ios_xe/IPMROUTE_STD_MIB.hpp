@@ -32,28 +32,28 @@ class IPMROUTESTDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ipmroute; //type: IPMROUTESTDMIB::Ipmroute
-        class Ipmroutetable; //type: IPMROUTESTDMIB::Ipmroutetable
-        class Ipmroutenexthoptable; //type: IPMROUTESTDMIB::Ipmroutenexthoptable
-        class Ipmrouteinterfacetable; //type: IPMROUTESTDMIB::Ipmrouteinterfacetable
-        class Ipmrouteboundarytable; //type: IPMROUTESTDMIB::Ipmrouteboundarytable
-        class Ipmroutescopenametable; //type: IPMROUTESTDMIB::Ipmroutescopenametable
+        class IpMRoute; //type: IPMROUTESTDMIB::IpMRoute
+        class IpMRouteTable; //type: IPMROUTESTDMIB::IpMRouteTable
+        class IpMRouteNextHopTable; //type: IPMROUTESTDMIB::IpMRouteNextHopTable
+        class IpMRouteInterfaceTable; //type: IPMROUTESTDMIB::IpMRouteInterfaceTable
+        class IpMRouteBoundaryTable; //type: IPMROUTESTDMIB::IpMRouteBoundaryTable
+        class IpMRouteScopeNameTable; //type: IPMROUTESTDMIB::IpMRouteScopeNameTable
 
-        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroute> ipmroute;
-        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable> ipmroutetable;
-        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable> ipmroutenexthoptable;
-        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmrouteinterfacetable> ipmrouteinterfacetable;
-        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmrouteboundarytable> ipmrouteboundarytable;
-        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutescopenametable> ipmroutescopenametable;
+        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRoute> ipmroute;
+        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteTable> ipmroutetable;
+        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteNextHopTable> ipmroutenexthoptable;
+        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteInterfaceTable> ipmrouteinterfacetable;
+        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteBoundaryTable> ipmrouteboundarytable;
+        std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteScopeNameTable> ipmroutescopenametable;
         
 }; // IPMROUTESTDMIB
 
 
-class IPMROUTESTDMIB::Ipmroute : public ydk::Entity
+class IPMROUTESTDMIB::IpMRoute : public ydk::Entity
 {
     public:
-        Ipmroute();
-        ~Ipmroute();
+        IpMRoute();
+        ~IpMRoute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -66,18 +66,18 @@ class IPMROUTESTDMIB::Ipmroute : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipmrouteenable; //type: Ipmrouteenable
+        ydk::YLeaf ipmrouteenable; //type: IpMRouteEnable
         ydk::YLeaf ipmrouteentrycount; //type: uint32
-        class Ipmrouteenable;
+        class IpMRouteEnable;
 
-}; // IPMROUTESTDMIB::Ipmroute
+}; // IPMROUTESTDMIB::IpMRoute
 
 
-class IPMROUTESTDMIB::Ipmroutetable : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteTable : public ydk::Entity
 {
     public:
-        Ipmroutetable();
-        ~Ipmroutetable();
+        IpMRouteTable();
+        ~IpMRouteTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -90,18 +90,18 @@ class IPMROUTESTDMIB::Ipmroutetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipmrouteentry; //type: IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry
+        class IpMRouteEntry; //type: IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry> > ipmrouteentry;
+        ydk::YList ipmrouteentry;
         
-}; // IPMROUTESTDMIB::Ipmroutetable
+}; // IPMROUTESTDMIB::IpMRouteTable
 
 
-class IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry : public ydk::Entity
 {
     public:
-        Ipmrouteentry();
-        ~Ipmrouteentry();
+        IpMRouteEntry();
+        ~IpMRouteEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -128,7 +128,7 @@ class IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry : public ydk::Entity
         ydk::YLeaf ipmroutertproto; //type: IANAipRouteProtocol
         ydk::YLeaf ipmroutertaddress; //type: string
         ydk::YLeaf ipmroutertmask; //type: string
-        ydk::YLeaf ipmrouterttype; //type: Ipmrouterttype
+        ydk::YLeaf ipmrouterttype; //type: IpMRouteRtType
         ydk::YLeaf ipmroutehcoctets; //type: uint64
         ydk::YLeaf ciscoipmroutepruneflag; //type: boolean
         ydk::YLeaf ciscoipmroutesparseflag; //type: boolean
@@ -151,16 +151,16 @@ class IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry : public ydk::Entity
         ydk::YLeaf ciscoipmrouteoctets; //type: uint64
         ydk::YLeaf ciscoipmroutebps2; //type: uint64
         ydk::YLeaf ciscoipmroutemetric2; //type: uint32
-        class Ipmrouterttype;
+        class IpMRouteRtType;
 
-}; // IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry
+}; // IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry
 
 
-class IPMROUTESTDMIB::Ipmroutenexthoptable : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteNextHopTable : public ydk::Entity
 {
     public:
-        Ipmroutenexthoptable();
-        ~Ipmroutenexthoptable();
+        IpMRouteNextHopTable();
+        ~IpMRouteNextHopTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -173,18 +173,18 @@ class IPMROUTESTDMIB::Ipmroutenexthoptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipmroutenexthopentry; //type: IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry
+        class IpMRouteNextHopEntry; //type: IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry> > ipmroutenexthopentry;
+        ydk::YList ipmroutenexthopentry;
         
-}; // IPMROUTESTDMIB::Ipmroutenexthoptable
+}; // IPMROUTESTDMIB::IpMRouteNextHopTable
 
 
-class IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry : public ydk::Entity
 {
     public:
-        Ipmroutenexthopentry();
-        ~Ipmroutenexthopentry();
+        IpMRouteNextHopEntry();
+        ~IpMRouteNextHopEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -202,7 +202,7 @@ class IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry : public ydk::E
         ydk::YLeaf ipmroutenexthopsourcemask; //type: string
         ydk::YLeaf ipmroutenexthopifindex; //type: int32
         ydk::YLeaf ipmroutenexthopaddress; //type: string
-        ydk::YLeaf ipmroutenexthopstate; //type: Ipmroutenexthopstate
+        ydk::YLeaf ipmroutenexthopstate; //type: IpMRouteNextHopState
         ydk::YLeaf ipmroutenexthopuptime; //type: uint32
         ydk::YLeaf ipmroutenexthopexpirytime; //type: uint32
         ydk::YLeaf ipmroutenexthopclosestmemberhops; //type: int32
@@ -211,16 +211,16 @@ class IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry : public ydk::E
         ydk::YLeaf ciscoipmroutenexthopoutlimit; //type: uint32
         ydk::YLeaf ciscoipmroutenexthopmachdr; //type: binary
         ydk::YLeaf ciscoipmroutenexthoppkts; //type: uint64
-        class Ipmroutenexthopstate;
+        class IpMRouteNextHopState;
 
-}; // IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry
+}; // IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry
 
 
-class IPMROUTESTDMIB::Ipmrouteinterfacetable : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteInterfaceTable : public ydk::Entity
 {
     public:
-        Ipmrouteinterfacetable();
-        ~Ipmrouteinterfacetable();
+        IpMRouteInterfaceTable();
+        ~IpMRouteInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -233,18 +233,18 @@ class IPMROUTESTDMIB::Ipmrouteinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipmrouteinterfaceentry; //type: IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry
+        class IpMRouteInterfaceEntry; //type: IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry> > ipmrouteinterfaceentry;
+        ydk::YList ipmrouteinterfaceentry;
         
-}; // IPMROUTESTDMIB::Ipmrouteinterfacetable
+}; // IPMROUTESTDMIB::IpMRouteInterfaceTable
 
 
-class IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry : public ydk::Entity
 {
     public:
-        Ipmrouteinterfaceentry();
-        ~Ipmrouteinterfaceentry();
+        IpMRouteInterfaceEntry();
+        ~IpMRouteInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -272,14 +272,14 @@ class IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry : public yd
         ydk::YLeaf ciscoipmrouteifoutmcastpkts; //type: uint32
         ydk::YLeaf ciscoipmrouteifhcoutmcastpkts; //type: uint64
 
-}; // IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry
+}; // IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry
 
 
-class IPMROUTESTDMIB::Ipmrouteboundarytable : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteBoundaryTable : public ydk::Entity
 {
     public:
-        Ipmrouteboundarytable();
-        ~Ipmrouteboundarytable();
+        IpMRouteBoundaryTable();
+        ~IpMRouteBoundaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -292,18 +292,18 @@ class IPMROUTESTDMIB::Ipmrouteboundarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipmrouteboundaryentry; //type: IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry
+        class IpMRouteBoundaryEntry; //type: IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry> > ipmrouteboundaryentry;
+        ydk::YList ipmrouteboundaryentry;
         
-}; // IPMROUTESTDMIB::Ipmrouteboundarytable
+}; // IPMROUTESTDMIB::IpMRouteBoundaryTable
 
 
-class IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry : public ydk::Entity
 {
     public:
-        Ipmrouteboundaryentry();
-        ~Ipmrouteboundaryentry();
+        IpMRouteBoundaryEntry();
+        ~IpMRouteBoundaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -321,14 +321,14 @@ class IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry : public ydk:
         ydk::YLeaf ipmrouteboundaryaddressmask; //type: string
         ydk::YLeaf ipmrouteboundarystatus; //type: RowStatus
 
-}; // IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry
+}; // IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry
 
 
-class IPMROUTESTDMIB::Ipmroutescopenametable : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteScopeNameTable : public ydk::Entity
 {
     public:
-        Ipmroutescopenametable();
-        ~Ipmroutescopenametable();
+        IpMRouteScopeNameTable();
+        ~IpMRouteScopeNameTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -341,18 +341,18 @@ class IPMROUTESTDMIB::Ipmroutescopenametable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipmroutescopenameentry; //type: IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry
+        class IpMRouteScopeNameEntry; //type: IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry> > ipmroutescopenameentry;
+        ydk::YList ipmroutescopenameentry;
         
-}; // IPMROUTESTDMIB::Ipmroutescopenametable
+}; // IPMROUTESTDMIB::IpMRouteScopeNameTable
 
 
-class IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry : public ydk::Entity
+class IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry : public ydk::Entity
 {
     public:
-        Ipmroutescopenameentry();
-        ~Ipmroutescopenameentry();
+        IpMRouteScopeNameEntry();
+        ~IpMRouteScopeNameEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -372,9 +372,9 @@ class IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry : public yd
         ydk::YLeaf ipmroutescopenamedefault; //type: boolean
         ydk::YLeaf ipmroutescopenamestatus; //type: RowStatus
 
-}; // IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry
+}; // IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry
 
-class IPMROUTESTDMIB::Ipmroute::Ipmrouteenable : public ydk::Enum
+class IPMROUTESTDMIB::IpMRoute::IpMRouteEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -382,7 +382,7 @@ class IPMROUTESTDMIB::Ipmroute::Ipmrouteenable : public ydk::Enum
 
 };
 
-class IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouterttype : public ydk::Enum
+class IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::IpMRouteRtType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
@@ -390,7 +390,7 @@ class IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouterttype : public ydk:
 
 };
 
-class IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate : public ydk::Enum
+class IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::IpMRouteNextHopState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pruned;

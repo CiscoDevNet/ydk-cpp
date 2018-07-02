@@ -11,33 +11,33 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace SNMP_FRAMEWORK_MIB {
 
-Snmpauthprotocols::Snmpauthprotocols()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpAuthProtocols")
-{
-
-}
-
-Snmpauthprotocols::~Snmpauthprotocols()
-{
-}
-
-Snmpprivprotocols::Snmpprivprotocols()
+SnmpPrivProtocols::SnmpPrivProtocols()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpPrivProtocols")
 {
 
 }
 
-Snmpprivprotocols::~Snmpprivprotocols()
+SnmpPrivProtocols::~SnmpPrivProtocols()
+{
+}
+
+SnmpAuthProtocols::SnmpAuthProtocols()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpAuthProtocols")
+{
+
+}
+
+SnmpAuthProtocols::~SnmpAuthProtocols()
 {
 }
 
 SNMPFRAMEWORKMIB::SNMPFRAMEWORKMIB()
     :
-    snmpengine(std::make_shared<SNMPFRAMEWORKMIB::Snmpengine>())
+    snmpengine(std::make_shared<SNMPFRAMEWORKMIB::SnmpEngine>())
 {
     snmpengine->parent = this;
 
-    yang_name = "SNMP-FRAMEWORK-MIB"; yang_parent_name = "SNMP-FRAMEWORK-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "SNMP-FRAMEWORK-MIB"; yang_parent_name = "SNMP-FRAMEWORK-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SNMPFRAMEWORKMIB::~SNMPFRAMEWORKMIB()
@@ -46,6 +46,7 @@ SNMPFRAMEWORKMIB::~SNMPFRAMEWORKMIB()
 
 bool SNMPFRAMEWORKMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (snmpengine !=  nullptr && snmpengine->has_data());
 }
 
@@ -77,7 +78,7 @@ std::shared_ptr<Entity> SNMPFRAMEWORKMIB::get_child_by_name(const std::string & 
     {
         if(snmpengine == nullptr)
         {
-            snmpengine = std::make_shared<SNMPFRAMEWORKMIB::Snmpengine>();
+            snmpengine = std::make_shared<SNMPFRAMEWORKMIB::SnmpEngine>();
         }
         return snmpengine;
     }
@@ -137,7 +138,7 @@ bool SNMPFRAMEWORKMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-SNMPFRAMEWORKMIB::Snmpengine::Snmpengine()
+SNMPFRAMEWORKMIB::SnmpEngine::SnmpEngine()
     :
     snmpengineid{YType::str, "snmpEngineID"},
     snmpengineboots{YType::int32, "snmpEngineBoots"},
@@ -145,22 +146,23 @@ SNMPFRAMEWORKMIB::Snmpengine::Snmpengine()
     snmpenginemaxmessagesize{YType::int32, "snmpEngineMaxMessageSize"}
 {
 
-    yang_name = "snmpEngine"; yang_parent_name = "SNMP-FRAMEWORK-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmpEngine"; yang_parent_name = "SNMP-FRAMEWORK-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPFRAMEWORKMIB::Snmpengine::~Snmpengine()
+SNMPFRAMEWORKMIB::SnmpEngine::~SnmpEngine()
 {
 }
 
-bool SNMPFRAMEWORKMIB::Snmpengine::has_data() const
+bool SNMPFRAMEWORKMIB::SnmpEngine::has_data() const
 {
+    if (is_presence_container) return true;
     return snmpengineid.is_set
 	|| snmpengineboots.is_set
 	|| snmpenginetime.is_set
 	|| snmpenginemaxmessagesize.is_set;
 }
 
-bool SNMPFRAMEWORKMIB::Snmpengine::has_operation() const
+bool SNMPFRAMEWORKMIB::SnmpEngine::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmpengineid.yfilter)
@@ -169,21 +171,21 @@ bool SNMPFRAMEWORKMIB::Snmpengine::has_operation() const
 	|| ydk::is_set(snmpenginemaxmessagesize.yfilter);
 }
 
-std::string SNMPFRAMEWORKMIB::Snmpengine::get_absolute_path() const
+std::string SNMPFRAMEWORKMIB::SnmpEngine::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMP-FRAMEWORK-MIB:SNMP-FRAMEWORK-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPFRAMEWORKMIB::Snmpengine::get_segment_path() const
+std::string SNMPFRAMEWORKMIB::SnmpEngine::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpEngine";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPFRAMEWORKMIB::Snmpengine::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPFRAMEWORKMIB::SnmpEngine::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -196,19 +198,19 @@ std::vector<std::pair<std::string, LeafData> > SNMPFRAMEWORKMIB::Snmpengine::get
 
 }
 
-std::shared_ptr<Entity> SNMPFRAMEWORKMIB::Snmpengine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPFRAMEWORKMIB::SnmpEngine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPFRAMEWORKMIB::Snmpengine::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPFRAMEWORKMIB::SnmpEngine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SNMPFRAMEWORKMIB::Snmpengine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPFRAMEWORKMIB::SnmpEngine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpEngineID")
     {
@@ -236,7 +238,7 @@ void SNMPFRAMEWORKMIB::Snmpengine::set_value(const std::string & value_path, con
     }
 }
 
-void SNMPFRAMEWORKMIB::Snmpengine::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPFRAMEWORKMIB::SnmpEngine::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpEngineID")
     {
@@ -256,7 +258,7 @@ void SNMPFRAMEWORKMIB::Snmpengine::set_filter(const std::string & value_path, YF
     }
 }
 
-bool SNMPFRAMEWORKMIB::Snmpengine::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPFRAMEWORKMIB::SnmpEngine::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpEngineID" || name == "snmpEngineBoots" || name == "snmpEngineTime" || name == "snmpEngineMaxMessageSize")
         return true;

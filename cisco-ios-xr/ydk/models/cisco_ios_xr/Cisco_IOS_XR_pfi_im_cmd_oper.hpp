@@ -67,7 +67,7 @@ class Interfaces::InterfaceXr : public ydk::Entity
 
         class Interface; //type: Interfaces::InterfaceXr::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface> > interface;
+        ydk::YList interface;
         
 }; // Interfaces::InterfaceXr
 
@@ -133,7 +133,6 @@ class Interfaces::InterfaceXr::Interface : public ydk::Entity
         class DataRates; //type: Interfaces::InterfaceXr::Interface::DataRates
         class InterfaceStatistics; //type: Interfaces::InterfaceXr::Interface::InterfaceStatistics
         class L2InterfaceStatistics; //type: Interfaces::InterfaceXr::Interface::L2InterfaceStatistics
-        class NvOptical; //type: Interfaces::InterfaceXr::Interface::NvOptical
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::DampeningInformation> dampening_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::MacAddress> mac_address;
@@ -146,7 +145,6 @@ class Interfaces::InterfaceXr::Interface : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::DataRates> data_rates;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceStatistics> interface_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics> l2_interface_statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::NvOptical> nv_optical;
         
 }; // Interfaces::InterfaceXr::Interface
 
@@ -306,11 +304,11 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation : public ydk:
 
         ydk::YLeaf encapsulation_type; //type: ImCmdEncapsEnum
         class FrameRelayInformation; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation
-        class Dot1QInformation; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation
+        class Dot1qInformation; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation
         class PppInformation; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation> frame_relay_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation> dot1q_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation> dot1q_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation> ppp_information;
         
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation
@@ -350,11 +348,11 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayIn
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation : public ydk::Entity
 {
     public:
-        Dot1QInformation();
-        ~Dot1QInformation();
+        Dot1qInformation();
+        ~Dot1qInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -366,14 +364,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class EncapsulationDetails; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails
+        class EncapsulationDetails; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails> encapsulation_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails> encapsulation_details;
         
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails : public ydk::Entity
 {
     public:
         EncapsulationDetails();
@@ -396,18 +394,18 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         ydk::YLeaf dot1ad_tag; //type: uint16
         ydk::YLeaf dot1ad_native_tag; //type: uint16
         ydk::YLeaf dot1ad_outer_tag; //type: uint16
-        class Stack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack
-        class ServiceInstanceDetails; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails
-        class Dot1AdDot1QStack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack
+        class Stack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack
+        class ServiceInstanceDetails; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails
+        class Dot1adDot1qStack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack> stack;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails> service_instance_details;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack> dot1ad_dot1q_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack> stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails> service_instance_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack> dot1ad_dot1q_stack;
         
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack : public ydk::Entity
 {
     public:
         Stack();
@@ -426,10 +424,10 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         ydk::YLeaf outer_tag; //type: uint16
         ydk::YLeaf second_tag; //type: uint16
 
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Stack
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails : public ydk::Entity
 {
     public:
         ServiceInstanceDetails();
@@ -452,18 +450,18 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         ydk::YLeaf is_native_preserving; //type: int32
         ydk::YLeaf source_mac_match; //type: string
         ydk::YLeaf destination_mac_match; //type: string
-        class LocalTrafficStack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
-        class TagsToMatch; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
-        class Pushe; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe
+        class LocalTrafficStack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
+        class TagsToMatch; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
+        class Pushe; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack> local_traffic_stack;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch> > tags_to_match;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe> > pushe;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack> local_traffic_stack;
+        ydk::YList tags_to_match;
+        ydk::YList pushe;
         
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack : public ydk::Entity
 {
     public:
         LocalTrafficStack();
@@ -479,14 +477,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LocalTrafficTag; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
+        class LocalTrafficTag; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag> > local_traffic_tag;
+        ydk::YList local_traffic_tag;
         
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag : public ydk::Entity
 {
     public:
         LocalTrafficTag();
@@ -505,10 +503,10 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         ydk::YLeaf ethertype; //type: EfpTagEtype
         ydk::YLeaf vlan_id; //type: uint16
 
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch : public ydk::Entity
 {
     public:
         TagsToMatch();
@@ -526,14 +524,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
 
         ydk::YLeaf ethertype; //type: EfpTagEtype
         ydk::YLeaf priority; //type: EfpTagPriority
-        class VlanRange; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
+        class VlanRange; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange> > vlan_range;
+        ydk::YList vlan_range;
         
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange : public ydk::Entity
 {
     public:
         VlanRange();
@@ -552,10 +550,10 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         ydk::YLeaf vlan_id_low; //type: uint16
         ydk::YLeaf vlan_id_high; //type: uint16
 
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe : public ydk::Entity
 {
     public:
         Pushe();
@@ -574,14 +572,14 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         ydk::YLeaf ethertype; //type: EfpTagEtype
         ydk::YLeaf vlan_id; //type: uint16
 
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe
 
 
-class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack : public ydk::Entity
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack : public ydk::Entity
 {
     public:
-        Dot1AdDot1QStack();
-        ~Dot1AdDot1QStack();
+        Dot1adDot1qStack();
+        ~Dot1adDot1qStack();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -596,7 +594,7 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInforma
         ydk::YLeaf outer_tag; //type: uint16
         ydk::YLeaf second_tag; //type: uint16
 
-}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1QInformation::EncapsulationDetails::Dot1AdDot1QStack
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack
 
 
 class Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation : public ydk::Entity
@@ -622,7 +620,7 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformati
         ydk::YLeaf is_multilink_open; //type: int32
         class NcpInfoArray; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray> > ncp_info_array;
+        ydk::YList ncp_info_array;
         
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation
 
@@ -762,7 +760,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         ydk::YLeaf is_admin_down; //type: int32
         class LocalInformation; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation> > local_information;
+        ydk::YList local_information;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo
 
@@ -831,7 +829,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         ydk::YLeaf delay_keep_alive_trigger; //type: uint32
         class AssertedFailure; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure> > asserted_failure;
+        ydk::YList asserted_failure;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA
 
@@ -898,7 +896,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         ydk::YLeaf delay_keep_alive_trigger; //type: uint32
         class AssertedFailure; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure> > asserted_failure;
+        ydk::YList asserted_failure;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB
 
@@ -948,7 +946,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         ydk::YLeaf is_admin_down; //type: int32
         class LocalInformation; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation> > local_information;
+        ydk::YList local_information;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo
 
@@ -976,7 +974,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         ydk::YLeaf number_of_nodes_on_ring; //type: uint16
         class RingNode; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode> > ring_node;
+        ydk::YList ring_node;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation
 
@@ -1027,7 +1025,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         ydk::YLeaf is_srr_enabled; //type: int32
         class SrrDetailedInfo; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo> > srr_detailed_info;
+        ydk::YList srr_detailed_info;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo
 
@@ -1067,8 +1065,8 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         class NodesOnRing; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing
         class NodesNotOnRing; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing> > nodes_on_ring;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing> > nodes_not_on_ring;
+        ydk::YList nodes_on_ring;
+        ydk::YList nodes_not_on_ring;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo
 
@@ -1146,7 +1144,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformati
         ydk::YLeaf is_admin_down; //type: int32
         class RateLimitDetailedInfo; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo> > rate_limit_detailed_info;
+        ydk::YList rate_limit_detailed_info;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo
 
@@ -1352,7 +1350,7 @@ class Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInform
 
         class Member; //type: Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member> > member;
+        ydk::YList member;
         
 }; // Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation
 
@@ -1901,8 +1899,8 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics : public ydk::En
         class ElementArray; //type: Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId> stats_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray> > block_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray> > element_array;
+        ydk::YList block_array;
+        ydk::YList element_array;
         
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics
 
@@ -1975,7 +1973,7 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray : 
         ydk::YLeaf key; //type: string
         class BlockArray; //type: Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray> > block_array;
+        ydk::YList block_array;
         
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray
 
@@ -2003,27 +2001,6 @@ class Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::B
 }; // Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray
 
 
-class Interfaces::InterfaceXr::Interface::NvOptical : public ydk::Entity
-{
-    public:
-        NvOptical();
-        ~NvOptical();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf controller; //type: string
-
-}; // Interfaces::InterfaceXr::Interface::NvOptical
-
-
 class Interfaces::NodeTypeSets : public ydk::Entity
 {
     public:
@@ -2043,7 +2020,7 @@ class Interfaces::NodeTypeSets : public ydk::Entity
 
         class NodeTypeSet; //type: Interfaces::NodeTypeSets::NodeTypeSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet> > node_type_set;
+        ydk::YList node_type_set;
         
 }; // Interfaces::NodeTypeSets
 
@@ -2095,7 +2072,7 @@ class Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary : public ydk::Enti
         class InterfaceType; //type: Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts> interface_counts;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType> > interface_type;
+        ydk::YList interface_type;
         
 }; // Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary
 
@@ -2195,7 +2172,7 @@ class Interfaces::InterfaceBriefs : public ydk::Entity
 
         class InterfaceBrief; //type: Interfaces::InterfaceBriefs::InterfaceBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceBriefs::InterfaceBrief> > interface_brief;
+        ydk::YList interface_brief;
         
 }; // Interfaces::InterfaceBriefs
 
@@ -2256,7 +2233,7 @@ class Interfaces::InventorySummary : public ydk::Entity
         class InterfaceType; //type: Interfaces::InventorySummary::InterfaceType
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InventorySummary::InterfaceCounts> interface_counts;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InventorySummary::InterfaceType> > interface_type;
+        ydk::YList interface_type;
         
 }; // Interfaces::InventorySummary
 
@@ -2356,7 +2333,7 @@ class Interfaces::Interfaces_ : public ydk::Entity
 
         class Interface; //type: Interfaces::Interfaces_::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::Interfaces_::Interface> > interface;
+        ydk::YList interface;
         
 }; // Interfaces::Interfaces_
 
@@ -2408,7 +2385,7 @@ class Interfaces::InterfaceSummary : public ydk::Entity
         class InterfaceType; //type: Interfaces::InterfaceSummary::InterfaceType
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceSummary::InterfaceCounts> interface_counts;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceSummary::InterfaceType> > interface_type;
+        ydk::YList interface_type;
         
 }; // Interfaces::InterfaceSummary
 
@@ -2488,35 +2465,92 @@ class Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts : public ydk:
 
 }; // Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts
 
-class InterfaceTypeSet : public ydk::Enum
+class ImCmdIntfTypeEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf hardware_interfaces;
+        static const ydk::Enum::YLeaf srp;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf bundle;
+        static const ydk::Enum::YLeaf serial;
+        static const ydk::Enum::YLeaf sonet_pos;
+        static const ydk::Enum::YLeaf tunnel_gre;
+        static const ydk::Enum::YLeaf pseudowire_head_end;
+        static const ydk::Enum::YLeaf cem;
+        static const ydk::Enum::YLeaf gcc;
 
 };
 
-class ImStateEnum : public ydk::Enum
+class ImCmdStatsEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf im_state_not_ready;
-        static const ydk::Enum::YLeaf im_state_admin_down;
-        static const ydk::Enum::YLeaf im_state_down;
-        static const ydk::Enum::YLeaf im_state_up;
-        static const ydk::Enum::YLeaf im_state_shutdown;
-        static const ydk::Enum::YLeaf im_state_err_disable;
-        static const ydk::Enum::YLeaf im_state_down_immediate;
-        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
-        static const ydk::Enum::YLeaf im_state_down_graceful;
-        static const ydk::Enum::YLeaf im_state_begin_shutdown;
-        static const ydk::Enum::YLeaf im_state_end_shutdown;
-        static const ydk::Enum::YLeaf im_state_begin_error_disable;
-        static const ydk::Enum::YLeaf im_state_end_error_disable;
-        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
-        static const ydk::Enum::YLeaf im_state_reset;
-        static const ydk::Enum::YLeaf im_state_operational;
-        static const ydk::Enum::YLeaf im_state_not_operational;
-        static const ydk::Enum::YLeaf im_state_unknown;
-        static const ydk::Enum::YLeaf im_state_last;
+        static const ydk::Enum::YLeaf full;
+        static const ydk::Enum::YLeaf basic;
+
+};
+
+class SrpMgmtFailureStateEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle_failure_state;
+        static const ydk::Enum::YLeaf wait_to_restore_failure_state;
+        static const ydk::Enum::YLeaf manual_switch_failure_state;
+        static const ydk::Enum::YLeaf signal_degrade_failure_state;
+        static const ydk::Enum::YLeaf signal_fail_failure_state;
+        static const ydk::Enum::YLeaf forced_switch_failure_state;
+        static const ydk::Enum::YLeaf shutdown_failure_state;
+        static const ydk::Enum::YLeaf invalid_failure_state;
+        static const ydk::Enum::YLeaf unknown_failure_state;
+
+};
+
+class GccDerState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in_service;
+        static const ydk::Enum::YLeaf out_of_service;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ais;
+
+};
+
+class EfpTagEtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf untagged;
+        static const ydk::Enum::YLeaf dot1q;
+        static const ydk::Enum::YLeaf dot1ad;
+
+};
+
+class TunnelGreMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf gr_eo_ipv4;
+        static const ydk::Enum::YLeaf gr_eo_ipv6;
+        static const ydk::Enum::YLeaf mgr_eo_ipv4;
+        static const ydk::Enum::YLeaf mgr_eo_ipv6;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class GccSecState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ais;
+
+};
+
+class SrpMgmtIpsWrapState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle_wrap_state;
+        static const ydk::Enum::YLeaf wrapped_state;
+        static const ydk::Enum::YLeaf locked_out_wrap_state;
+        static const ydk::Enum::YLeaf unknown_wrap_state;
 
 };
 
@@ -2545,11 +2579,145 @@ class StatsCounter : public ydk::Enum
 
 };
 
+class SonetApsEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_configured;
+        static const ydk::Enum::YLeaf working_active;
+        static const ydk::Enum::YLeaf protect_active;
+        static const ydk::Enum::YLeaf working_inactive;
+        static const ydk::Enum::YLeaf protect_inactive;
+
+};
+
+class ImAttrDuplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf im_attr_duplex_unknown;
+        static const ydk::Enum::YLeaf im_attr_duplex_half;
+        static const ydk::Enum::YLeaf im_attr_duplex_full;
+
+};
+
+class SrpMgmtIpsPathInd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf short_path;
+        static const ydk::Enum::YLeaf long_path;
+        static const ydk::Enum::YLeaf unknown_path;
+
+};
+
+class PppFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
+        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
+        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
+        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
+
+};
+
+class EfpTagPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf priority0;
+        static const ydk::Enum::YLeaf priority1;
+        static const ydk::Enum::YLeaf priority2;
+        static const ydk::Enum::YLeaf priority3;
+        static const ydk::Enum::YLeaf priority4;
+        static const ydk::Enum::YLeaf priority5;
+        static const ydk::Enum::YLeaf priority6;
+        static const ydk::Enum::YLeaf priority7;
+        static const ydk::Enum::YLeaf priority_any;
+
+};
+
+class ImCmdLoopbackEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_loopback;
+        static const ydk::Enum::YLeaf internal_loopback;
+        static const ydk::Enum::YLeaf external_loopback;
+        static const ydk::Enum::YLeaf line_loopback;
+
+};
+
+class ImCmdFrTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf frame_relay_cisco;
+        static const ydk::Enum::YLeaf frame_relay_ietf;
+
+};
+
+class ImCmdLmiTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lmi_type_auto;
+        static const ydk::Enum::YLeaf lmi_type_ansi;
+        static const ydk::Enum::YLeaf lmi_type_ccitt;
+        static const ydk::Enum::YLeaf lmi_type_cisco;
+
+};
+
+class SrpMgmtSrrFailure : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle_srr_failure;
+        static const ydk::Enum::YLeaf wait_to_restore_srr_failure;
+        static const ydk::Enum::YLeaf signal_fail_srr_failure;
+        static const ydk::Enum::YLeaf forced_switch_srr_failure;
+        static const ydk::Enum::YLeaf unknown_srr_failure;
+
+};
+
+class ImStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf im_state_not_ready;
+        static const ydk::Enum::YLeaf im_state_admin_down;
+        static const ydk::Enum::YLeaf im_state_down;
+        static const ydk::Enum::YLeaf im_state_up;
+        static const ydk::Enum::YLeaf im_state_shutdown;
+        static const ydk::Enum::YLeaf im_state_err_disable;
+        static const ydk::Enum::YLeaf im_state_down_immediate;
+        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
+        static const ydk::Enum::YLeaf im_state_down_graceful;
+        static const ydk::Enum::YLeaf im_state_begin_shutdown;
+        static const ydk::Enum::YLeaf im_state_end_shutdown;
+        static const ydk::Enum::YLeaf im_state_begin_error_disable;
+        static const ydk::Enum::YLeaf im_state_end_error_disable;
+        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
+        static const ydk::Enum::YLeaf im_state_reset;
+        static const ydk::Enum::YLeaf im_state_operational;
+        static const ydk::Enum::YLeaf im_state_not_operational;
+        static const ydk::Enum::YLeaf im_state_unknown;
+        static const ydk::Enum::YLeaf im_state_last;
+
+};
+
 class StatsTypeContents : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf stats_type_single;
         static const ydk::Enum::YLeaf stats_type_variable;
+
+};
+
+class ImAttrFlowControl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf im_attr_flow_control_off;
+        static const ydk::Enum::YLeaf im_attr_flow_control_on;
+        static const ydk::Enum::YLeaf im_attr_flow_control_not_sup;
+        static const ydk::Enum::YLeaf im_attr_flow_control_priority;
 
 };
 
@@ -2566,72 +2734,6 @@ class StatsId : public ydk::Enum
 
 };
 
-class ImCmdStatsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf full;
-        static const ydk::Enum::YLeaf basic;
-
-};
-
-class GccSecState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf maintainance;
-        static const ydk::Enum::YLeaf ais;
-
-};
-
-class GccDerState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in_service;
-        static const ydk::Enum::YLeaf out_of_service;
-        static const ydk::Enum::YLeaf maintainance;
-        static const ydk::Enum::YLeaf ais;
-
-};
-
-class TunnelKeyState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf absent;
-        static const ydk::Enum::YLeaf present;
-
-};
-
-class TunnelKaDfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
-class TunlIpModeDir : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tunl_ip_mode_dir_none;
-        static const ydk::Enum::YLeaf tunl_ip_mode_dir_decap;
-        static const ydk::Enum::YLeaf tunl_ip_mode_dir_encap;
-        static const ydk::Enum::YLeaf tunl_ip_mode_dir_max;
-
-};
-
-class TunnelGreMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf gr_eo_ipv4;
-        static const ydk::Enum::YLeaf gr_eo_ipv6;
-        static const ydk::Enum::YLeaf mgr_eo_ipv4;
-        static const ydk::Enum::YLeaf mgr_eo_ipv6;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class TunlPfiAfId : public ydk::Enum
 {
     public:
@@ -2641,14 +2743,11 @@ class TunlPfiAfId : public ydk::Enum
 
 };
 
-class SonetApsEt : public ydk::Enum
+class TunnelKaDfState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_configured;
-        static const ydk::Enum::YLeaf working_active;
-        static const ydk::Enum::YLeaf protect_active;
-        static const ydk::Enum::YLeaf working_inactive;
-        static const ydk::Enum::YLeaf protect_inactive;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
@@ -2661,60 +2760,11 @@ class BmdMemberTypeEnum : public ydk::Enum
 
 };
 
-class BmMuxreason : public ydk::Enum
+class TunnelKeyState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_mux_reason_no_reason;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_down;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_deleted;
-        static const ydk::Enum::YLeaf bm_mux_reason_duplex;
-        static const ydk::Enum::YLeaf bm_mux_reason_bandwidth;
-        static const ydk::Enum::YLeaf bm_mux_reason_loop_back;
-        static const ydk::Enum::YLeaf bm_mux_reason_activity_type;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_limit;
-        static const ydk::Enum::YLeaf bm_mux_reason_shared;
-        static const ydk::Enum::YLeaf bm_mux_reason_lagid;
-        static const ydk::Enum::YLeaf bm_mux_reason_no_bundle;
-        static const ydk::Enum::YLeaf bm_mux_reason_no_primary;
-        static const ydk::Enum::YLeaf bm_mux_reason_bundle_down;
-        static const ydk::Enum::YLeaf bm_mux_reason_individual;
-        static const ydk::Enum::YLeaf bm_mux_reason_defaulted;
-        static const ydk::Enum::YLeaf bm_mux_reason_in_sync;
-        static const ydk::Enum::YLeaf bm_mux_reason_collecting;
-        static const ydk::Enum::YLeaf bm_mux_reason_active_link_limit;
-        static const ydk::Enum::YLeaf bm_mux_reason_distributing;
-        static const ydk::Enum::YLeaf bm_mux_reason_count;
-
-};
-
-class BmdMemberState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_mbr_state_configured;
-        static const ydk::Enum::YLeaf bmd_mbr_state_standby;
-        static const ydk::Enum::YLeaf bmd_mbr_state_hot_standby;
-        static const ydk::Enum::YLeaf bmd_mbr_state_negotiating;
-        static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
-        static const ydk::Enum::YLeaf bmd_mbr_state_active;
-
-};
-
-class BmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf misconfiguration;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf error;
-
-};
-
-class BmStateReasonTarget : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf member_reason;
-        static const ydk::Enum::YLeaf bundle_reason;
+        static const ydk::Enum::YLeaf absent;
+        static const ydk::Enum::YLeaf present;
 
 };
 
@@ -2800,59 +2850,27 @@ class BmMbrStateReason : public ydk::Enum
 
 };
 
-class BmMuxstate : public ydk::Enum
+class BmSeverity : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf detached;
-        static const ydk::Enum::YLeaf waiting;
-        static const ydk::Enum::YLeaf attached;
-        static const ydk::Enum::YLeaf collecting;
-        static const ydk::Enum::YLeaf distributing;
-        static const ydk::Enum::YLeaf collecting_distributing;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf misconfiguration;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf error;
 
 };
 
-class SrpMgmtSrrFailure : public ydk::Enum
+class SrpMgmtIpsReq : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle_srr_failure;
-        static const ydk::Enum::YLeaf wait_to_restore_srr_failure;
-        static const ydk::Enum::YLeaf signal_fail_srr_failure;
-        static const ydk::Enum::YLeaf forced_switch_srr_failure;
-        static const ydk::Enum::YLeaf unknown_srr_failure;
-
-};
-
-class SrpMgmtSrrNodeState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf idle_srr_state;
-        static const ydk::Enum::YLeaf discovery_srr_state;
-        static const ydk::Enum::YLeaf unknown_srr_state;
-
-};
-
-class SrpMgmtIpsPathInd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf short_path;
-        static const ydk::Enum::YLeaf long_path;
-        static const ydk::Enum::YLeaf unknown_path;
-
-};
-
-class SrpMgmtFailureStateEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf idle_failure_state;
-        static const ydk::Enum::YLeaf wait_to_restore_failure_state;
-        static const ydk::Enum::YLeaf manual_switch_failure_state;
-        static const ydk::Enum::YLeaf signal_degrade_failure_state;
-        static const ydk::Enum::YLeaf signal_fail_failure_state;
-        static const ydk::Enum::YLeaf forced_switch_failure_state;
-        static const ydk::Enum::YLeaf shutdown_failure_state;
-        static const ydk::Enum::YLeaf invalid_failure_state;
-        static const ydk::Enum::YLeaf unknown_failure_state;
+        static const ydk::Enum::YLeaf idle_ips_request;
+        static const ydk::Enum::YLeaf wait_to_restore_ips_request;
+        static const ydk::Enum::YLeaf manual_switch_ips_request;
+        static const ydk::Enum::YLeaf signal_degrade_ips_request;
+        static const ydk::Enum::YLeaf signal_fail_ips_request;
+        static const ydk::Enum::YLeaf forced_switch_ips_request;
+        static const ydk::Enum::YLeaf unknown_ips_request;
 
 };
 
@@ -2870,41 +2888,47 @@ class SrpMgmtFailureEt : public ydk::Enum
 
 };
 
-class SrpMgmtIpsReq : public ydk::Enum
+class ImAttrTransportMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle_ips_request;
-        static const ydk::Enum::YLeaf wait_to_restore_ips_request;
-        static const ydk::Enum::YLeaf manual_switch_ips_request;
-        static const ydk::Enum::YLeaf signal_degrade_ips_request;
-        static const ydk::Enum::YLeaf signal_fail_ips_request;
-        static const ydk::Enum::YLeaf forced_switch_ips_request;
-        static const ydk::Enum::YLeaf unknown_ips_request;
+        static const ydk::Enum::YLeaf im_attr_transport_mode_unknown;
+        static const ydk::Enum::YLeaf im_attr_transport_mode_lan;
+        static const ydk::Enum::YLeaf im_attr_transport_mode_wan;
+        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_bt_opu1e;
+        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_bt_opu2e;
+        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_opu3;
+        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_opu4;
 
 };
 
-class SrpMgmtIpsWrapState : public ydk::Enum
+class TunlIpModeDir : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle_wrap_state;
-        static const ydk::Enum::YLeaf wrapped_state;
-        static const ydk::Enum::YLeaf locked_out_wrap_state;
-        static const ydk::Enum::YLeaf unknown_wrap_state;
+        static const ydk::Enum::YLeaf tunl_ip_mode_dir_none;
+        static const ydk::Enum::YLeaf tunl_ip_mode_dir_decap;
+        static const ydk::Enum::YLeaf tunl_ip_mode_dir_encap;
+        static const ydk::Enum::YLeaf tunl_ip_mode_dir_max;
 
 };
 
-class ImCmdIntfTypeEnum : public ydk::Enum
+class ImCmdEncapsEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf srp;
-        static const ydk::Enum::YLeaf tunnel;
-        static const ydk::Enum::YLeaf bundle;
-        static const ydk::Enum::YLeaf serial;
-        static const ydk::Enum::YLeaf sonet_pos;
-        static const ydk::Enum::YLeaf tunnel_gre;
-        static const ydk::Enum::YLeaf pseudowire_head_end;
-        static const ydk::Enum::YLeaf cem;
-        static const ydk::Enum::YLeaf gcc;
+        static const ydk::Enum::YLeaf frame_relay;
+        static const ydk::Enum::YLeaf vlan;
+        static const ydk::Enum::YLeaf ppp;
+
+};
+
+class BmMuxstate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf detached;
+        static const ydk::Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf collecting;
+        static const ydk::Enum::YLeaf distributing;
+        static const ydk::Enum::YLeaf collecting_distributing;
 
 };
 
@@ -2920,52 +2944,49 @@ class NcpIdent : public ydk::Enum
 
 };
 
-class PppFsmState : public ydk::Enum
+class BmdMemberState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
-        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
-        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
-        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
+        static const ydk::Enum::YLeaf bmd_mbr_state_configured;
+        static const ydk::Enum::YLeaf bmd_mbr_state_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_hot_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_negotiating;
+        static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
+        static const ydk::Enum::YLeaf bmd_mbr_state_active;
 
 };
 
-class EfpPayloadEtype : public ydk::Enum
+class BmMuxreason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf payload_ethertype_any;
-        static const ydk::Enum::YLeaf payload_ethertype_ip;
-        static const ydk::Enum::YLeaf payload_ethertype_pppoe;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_reason;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_deleted;
+        static const ydk::Enum::YLeaf bm_mux_reason_duplex;
+        static const ydk::Enum::YLeaf bm_mux_reason_bandwidth;
+        static const ydk::Enum::YLeaf bm_mux_reason_loop_back;
+        static const ydk::Enum::YLeaf bm_mux_reason_activity_type;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_shared;
+        static const ydk::Enum::YLeaf bm_mux_reason_lagid;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_bundle;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_primary;
+        static const ydk::Enum::YLeaf bm_mux_reason_bundle_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_individual;
+        static const ydk::Enum::YLeaf bm_mux_reason_defaulted;
+        static const ydk::Enum::YLeaf bm_mux_reason_in_sync;
+        static const ydk::Enum::YLeaf bm_mux_reason_collecting;
+        static const ydk::Enum::YLeaf bm_mux_reason_active_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_distributing;
+        static const ydk::Enum::YLeaf bm_mux_reason_count;
 
 };
 
-class EfpTagPriority : public ydk::Enum
+class ImAttrLink : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf priority0;
-        static const ydk::Enum::YLeaf priority1;
-        static const ydk::Enum::YLeaf priority2;
-        static const ydk::Enum::YLeaf priority3;
-        static const ydk::Enum::YLeaf priority4;
-        static const ydk::Enum::YLeaf priority5;
-        static const ydk::Enum::YLeaf priority6;
-        static const ydk::Enum::YLeaf priority7;
-        static const ydk::Enum::YLeaf priority_any;
-
-};
-
-class EfpTagEtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf untagged;
-        static const ydk::Enum::YLeaf dot1q;
-        static const ydk::Enum::YLeaf dot1ad;
+        static const ydk::Enum::YLeaf im_attr_link_type_auto;
+        static const ydk::Enum::YLeaf im_attr_link_type_force;
 
 };
 
@@ -2985,71 +3006,27 @@ class VlanEncaps : public ydk::Enum
 
 };
 
-class ImCmdLmiTypeEnum : public ydk::Enum
+class EfpPayloadEtype : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf lmi_type_auto;
-        static const ydk::Enum::YLeaf lmi_type_ansi;
-        static const ydk::Enum::YLeaf lmi_type_ccitt;
-        static const ydk::Enum::YLeaf lmi_type_cisco;
+        static const ydk::Enum::YLeaf payload_ethertype_any;
+        static const ydk::Enum::YLeaf payload_ethertype_ip;
+        static const ydk::Enum::YLeaf payload_ethertype_pppoe;
 
 };
 
-class ImCmdFrTypeEnum : public ydk::Enum
+class InterfaceTypeSet : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf frame_relay_cisco;
-        static const ydk::Enum::YLeaf frame_relay_ietf;
+        static const ydk::Enum::YLeaf hardware_interfaces;
 
 };
 
-class ImCmdEncapsEnum : public ydk::Enum
+class BmStateReasonTarget : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf frame_relay;
-        static const ydk::Enum::YLeaf vlan;
-        static const ydk::Enum::YLeaf ppp;
-
-};
-
-class ImAttrTransportMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf im_attr_transport_mode_unknown;
-        static const ydk::Enum::YLeaf im_attr_transport_mode_lan;
-        static const ydk::Enum::YLeaf im_attr_transport_mode_wan;
-        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_bt_opu1e;
-        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_bt_opu2e;
-        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_opu3;
-        static const ydk::Enum::YLeaf im_attr_transport_mode_otn_opu4;
-
-};
-
-class ImCmdLoopbackEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_loopback;
-        static const ydk::Enum::YLeaf internal_loopback;
-        static const ydk::Enum::YLeaf external_loopback;
-        static const ydk::Enum::YLeaf line_loopback;
-
-};
-
-class ImAttrFlowControl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf im_attr_flow_control_off;
-        static const ydk::Enum::YLeaf im_attr_flow_control_on;
-        static const ydk::Enum::YLeaf im_attr_flow_control_not_sup;
-        static const ydk::Enum::YLeaf im_attr_flow_control_priority;
-
-};
-
-class ImAttrLink : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf im_attr_link_type_auto;
-        static const ydk::Enum::YLeaf im_attr_link_type_force;
+        static const ydk::Enum::YLeaf member_reason;
+        static const ydk::Enum::YLeaf bundle_reason;
 
 };
 
@@ -3418,16 +3395,15 @@ class ImAttrMedia : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_media_10gbase_cu5m;
         static const ydk::Enum::YLeaf im_attr_media_10gbase_acu7m;
         static const ydk::Enum::YLeaf im_attr_media_10gbase_acu10m;
-        static const ydk::Enum::YLeaf im_attr_media_4x10g_base_lr;
 
 };
 
-class ImAttrDuplex : public ydk::Enum
+class SrpMgmtSrrNodeState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf im_attr_duplex_unknown;
-        static const ydk::Enum::YLeaf im_attr_duplex_half;
-        static const ydk::Enum::YLeaf im_attr_duplex_full;
+        static const ydk::Enum::YLeaf idle_srr_state;
+        static const ydk::Enum::YLeaf discovery_srr_state;
+        static const ydk::Enum::YLeaf unknown_srr_state;
 
 };
 

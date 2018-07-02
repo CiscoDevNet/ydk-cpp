@@ -398,7 +398,7 @@ class Native::Crypto::Gkm : public ydk::Entity
 
         class Group; //type: Native::Crypto::Gkm::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group> > group;
+        ydk::YList group;
         
 }; // Native::Crypto::Gkm
 
@@ -1550,22 +1550,22 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf receive_only; //type: empty
-        class D3P; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::D3P
+        class D3p; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::D3p
         class Ipsec; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec
         class PairWiseKeying; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::PairWiseKeying
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::D3P> d3p;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec> > ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::D3p> d3p;
+        ydk::YList ipsec;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::PairWiseKeying> pair_wise_keying;
         
 }; // Native::Crypto::Gkm::Group::Server::Local::Sa
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Sa::D3P : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Sa::D3p : public ydk::Entity
 {
     public:
-        D3P();
-        ~D3P();
+        D3p();
+        ~D3p();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1577,14 +1577,14 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::D3P : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Window; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::Window
+        class Window; //type: Native::Crypto::Gkm::Group::Server::Local::Sa::D3p::Window
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::Window> window;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Sa::D3p::Window> window;
         
-}; // Native::Crypto::Gkm::Group::Server::Local::Sa::D3P
+}; // Native::Crypto::Gkm::Group::Server::Local::Sa::D3p
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::Window : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Sa::D3p::Window : public ydk::Entity
 {
     public:
         Window();
@@ -1603,7 +1603,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::Window : public ydk::E
         ydk::YLeaf msec; //type: uint32
         ydk::YLeaf sec; //type: uint8
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::Window
+}; // Native::Crypto::Gkm::Group::Server::Local::Sa::D3p::Window
 
 
 class Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec : public ydk::Entity
@@ -2378,22 +2378,22 @@ class Native::Crypto::Gkm::Group::Server::Local::Default::Sa : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf receive_only; //type: empty
-        class D3P; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P
+        class D3p; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3p
         class Ipsec; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa::Ipsec
         class PairWiseKeying; //type: Native::Crypto::Gkm::Group::Server::Local::Default::Sa::PairWiseKeying
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P> d3p; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa::Ipsec> > ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3p> d3p; // presence node
+        ydk::YList ipsec;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm::Group::Server::Local::Default::Sa::PairWiseKeying> pair_wise_keying; // presence node
         
 }; // Native::Crypto::Gkm::Group::Server::Local::Default::Sa
 
 
-class Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P : public ydk::Entity
+class Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3p : public ydk::Entity
 {
     public:
-        D3P();
-        ~D3P();
+        D3p();
+        ~D3p();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2406,7 +2406,7 @@ class Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3P
+}; // Native::Crypto::Gkm::Group::Server::Local::Default::Sa::D3p
 
 
 class Native::Crypto::Gkm::Group::Server::Local::Default::Sa::Ipsec : public ydk::Entity
@@ -2848,9 +2848,9 @@ class Native::Crypto::Ipsec : public ydk::Entity
         class TransformSet; //type: Native::Crypto::Ipsec::TransformSet
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Optional> optional; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::Profile> > profile;
+        ydk::YList profile;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::SecurityAssociation> security_association;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec::TransformSet> > transform_set;
+        ydk::YList transform_set;
                 class DfBit;
         class Fragmentation;
         class Ipv4Deny;

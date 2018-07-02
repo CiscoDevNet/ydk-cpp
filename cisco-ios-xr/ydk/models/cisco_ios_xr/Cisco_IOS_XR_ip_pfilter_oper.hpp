@@ -57,7 +57,7 @@ class PfilterMa::Nodes : public ydk::Entity
 
         class Node; //type: PfilterMa::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_pfilter_oper::PfilterMa::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PfilterMa::Nodes
 
@@ -176,7 +176,7 @@ class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos : publ
 
         class InterfaceInfo; //type: PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_pfilter_oper::PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo> > interface_info;
+        ydk::YList interface_info;
         
 }; // PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos
 
@@ -267,7 +267,7 @@ class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos : publ
 
         class InterfaceInfo; //type: PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_pfilter_oper::PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo> > interface_info;
+        ydk::YList interface_info;
         
 }; // PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos
 

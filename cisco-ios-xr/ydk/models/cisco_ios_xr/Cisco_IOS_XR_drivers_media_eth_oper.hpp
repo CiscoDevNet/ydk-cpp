@@ -61,7 +61,7 @@ class EthernetInterface::Statistics : public ydk::Entity
 
         class Statistic; //type: EthernetInterface::Statistics::Statistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Statistics::Statistic> > statistic;
+        ydk::YList statistic;
         
 }; // EthernetInterface::Statistics
 
@@ -162,7 +162,7 @@ class EthernetInterface::Interfaces : public ydk::Entity
 
         class Interface; //type: EthernetInterface::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // EthernetInterface::Interfaces
 
@@ -225,7 +225,7 @@ class EthernetInterface::Interfaces::Interface::PhyInfo : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails> phy_details;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails> fec_details;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback> > extended_loopback;
+        ydk::YList extended_loopback;
         
 }; // EthernetInterface::Interfaces::Interface::PhyInfo
 
@@ -265,7 +265,7 @@ class EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails : public ydk
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity> lane_field_validity;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds> dig_opt_mon_alarm_thresholds;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms> dig_opt_mon_alarms;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane> > lane;
+        ydk::YList lane;
         
 }; // EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails
 
@@ -848,7 +848,7 @@ class EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters : p
         ydk::YLeaf multicast_promiscuous; //type: boolean
         class MulticastMacAddress; //type: EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress> > multicast_mac_address;
+        ydk::YList multicast_mac_address;
         
 }; // EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters
 
@@ -918,7 +918,7 @@ class EthernetInterface::Berts : public ydk::Entity
 
         class Bert; //type: EthernetInterface::Berts::Bert
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_media_eth_oper::EthernetInterface::Berts::Bert> > bert;
+        ydk::YList bert;
         
 }; // EthernetInterface::Berts
 
@@ -978,26 +978,37 @@ class EthernetInterface::Berts::Bert::BertStatus : public ydk::Entity
 
 }; // EthernetInterface::Berts::Bert::BertStatus
 
-class EthernetDevIf : public ydk::Enum
+class EtherLinkState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_interface;
-        static const ydk::Enum::YLeaf xgmii;
-        static const ydk::Enum::YLeaf xaui;
-        static const ydk::Enum::YLeaf ethernet_num_dev_if;
-
-};
-
-class EthernetDev : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_device;
-        static const ydk::Enum::YLeaf pma_pmd;
-        static const ydk::Enum::YLeaf wis;
-        static const ydk::Enum::YLeaf pcs;
-        static const ydk::Enum::YLeaf phy_xs;
-        static const ydk::Enum::YLeaf dte_xs;
-        static const ydk::Enum::YLeaf ethernet_num_dev;
+        static const ydk::Enum::YLeaf state_undefined;
+        static const ydk::Enum::YLeaf unknown_state;
+        static const ydk::Enum::YLeaf available;
+        static const ydk::Enum::YLeaf not_available;
+        static const ydk::Enum::YLeaf remote_fault;
+        static const ydk::Enum::YLeaf invalid_signal;
+        static const ydk::Enum::YLeaf remote_jabber;
+        static const ydk::Enum::YLeaf link_loss;
+        static const ydk::Enum::YLeaf remote_test;
+        static const ydk::Enum::YLeaf offline;
+        static const ydk::Enum::YLeaf auto_neg_error;
+        static const ydk::Enum::YLeaf pmd_link_fault;
+        static const ydk::Enum::YLeaf frame_loss;
+        static const ydk::Enum::YLeaf signal_loss;
+        static const ydk::Enum::YLeaf link_fault;
+        static const ydk::Enum::YLeaf excessive_ber;
+        static const ydk::Enum::YLeaf dxs_link_fault;
+        static const ydk::Enum::YLeaf pxs_link_fault;
+        static const ydk::Enum::YLeaf security;
+        static const ydk::Enum::YLeaf phy_not_present;
+        static const ydk::Enum::YLeaf no_optic_license;
+        static const ydk::Enum::YLeaf unsupported_module;
+        static const ydk::Enum::YLeaf dwdm_laser_shut;
+        static const ydk::Enum::YLeaf wanphy_laser_shut;
+        static const ydk::Enum::YLeaf incompatible_config;
+        static const ydk::Enum::YLeaf system_error;
+        static const ydk::Enum::YLeaf wan_framing_error;
+        static const ydk::Enum::YLeaf otn_framing_error;
 
 };
 
@@ -1021,31 +1032,13 @@ class EthernetBertPattern : public ydk::Enum
 
 };
 
-class EthernetBertErrCnt : public ydk::Enum
+class EthernetPortEnable : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_count_type;
-        static const ydk::Enum::YLeaf bit_error_count;
-        static const ydk::Enum::YLeaf frame_error_count;
-        static const ydk::Enum::YLeaf block_error_count;
-        static const ydk::Enum::YLeaf ethernet_bert_err_cnt_types;
-
-};
-
-class EtherAinsStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ains_soak_status_none;
-        static const ydk::Enum::YLeaf ains_soak_status_pending;
-        static const ydk::Enum::YLeaf ains_soak_status_running;
-
-};
-
-class EtherPfc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_pfc;
-        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf rx_enabled;
+        static const ydk::Enum::YLeaf tx_enabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 
@@ -1058,11 +1051,35 @@ class EthCtrlrAlarmState : public ydk::Enum
 
 };
 
-class EthernetIpg : public ydk::Enum
+class EthernetDev : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf non_standard;
+        static const ydk::Enum::YLeaf no_device;
+        static const ydk::Enum::YLeaf pma_pmd;
+        static const ydk::Enum::YLeaf wis;
+        static const ydk::Enum::YLeaf pcs;
+        static const ydk::Enum::YLeaf phy_xs;
+        static const ydk::Enum::YLeaf dte_xs;
+        static const ydk::Enum::YLeaf ethernet_num_dev;
+
+};
+
+class EtherPhyPresent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf phy_not_present;
+        static const ydk::Enum::YLeaf phy_present;
+        static const ydk::Enum::YLeaf no_information;
+
+};
+
+class EthernetDevIf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_interface;
+        static const ydk::Enum::YLeaf xgmii;
+        static const ydk::Enum::YLeaf xaui;
+        static const ydk::Enum::YLeaf ethernet_num_dev_if;
 
 };
 
@@ -1076,12 +1093,51 @@ class EtherFlowcontrol : public ydk::Enum
 
 };
 
+class EtherDomAlarm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_information;
+        static const ydk::Enum::YLeaf alarm_high;
+        static const ydk::Enum::YLeaf warning_high;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf warning_low;
+        static const ydk::Enum::YLeaf alarm_low;
+
+};
+
+class EtherPfc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_pfc;
+        static const ydk::Enum::YLeaf on;
+
+};
+
+class EthernetBertErrCnt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_count_type;
+        static const ydk::Enum::YLeaf bit_error_count;
+        static const ydk::Enum::YLeaf frame_error_count;
+        static const ydk::Enum::YLeaf block_error_count;
+        static const ydk::Enum::YLeaf ethernet_bert_err_cnt_types;
+
+};
+
 class EthernetDuplex : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ethernet_duplex_invalid;
         static const ydk::Enum::YLeaf half_duplex;
         static const ydk::Enum::YLeaf full_duplex;
+
+};
+
+class EthernetIpg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf non_standard;
 
 };
 
@@ -1117,41 +1173,6 @@ class EtherLedState : public ydk::Enum
 
 };
 
-class EtherLinkState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_undefined;
-        static const ydk::Enum::YLeaf unknown_state;
-        static const ydk::Enum::YLeaf available;
-        static const ydk::Enum::YLeaf not_available;
-        static const ydk::Enum::YLeaf remote_fault;
-        static const ydk::Enum::YLeaf invalid_signal;
-        static const ydk::Enum::YLeaf remote_jabber;
-        static const ydk::Enum::YLeaf link_loss;
-        static const ydk::Enum::YLeaf remote_test;
-        static const ydk::Enum::YLeaf offline;
-        static const ydk::Enum::YLeaf auto_neg_error;
-        static const ydk::Enum::YLeaf pmd_link_fault;
-        static const ydk::Enum::YLeaf frame_loss;
-        static const ydk::Enum::YLeaf signal_loss;
-        static const ydk::Enum::YLeaf link_fault;
-        static const ydk::Enum::YLeaf excessive_ber;
-        static const ydk::Enum::YLeaf dxs_link_fault;
-        static const ydk::Enum::YLeaf pxs_link_fault;
-        static const ydk::Enum::YLeaf security;
-        static const ydk::Enum::YLeaf phy_not_present;
-        static const ydk::Enum::YLeaf no_optic_license;
-        static const ydk::Enum::YLeaf unsupported_module;
-        static const ydk::Enum::YLeaf dwdm_laser_shut;
-        static const ydk::Enum::YLeaf wanphy_laser_shut;
-        static const ydk::Enum::YLeaf incompatible_config;
-        static const ydk::Enum::YLeaf system_error;
-        static const ydk::Enum::YLeaf wan_framing_error;
-        static const ydk::Enum::YLeaf otn_framing_error;
-        static const ydk::Enum::YLeaf shutdown;
-
-};
-
 class EthernetFec : public ydk::Enum
 {
     public:
@@ -1159,37 +1180,6 @@ class EthernetFec : public ydk::Enum
         static const ydk::Enum::YLeaf standard;
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf base_r;
-
-};
-
-class EthernetLoopback : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_loopback;
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf external;
-
-};
-
-class EtherDomAlarm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_information;
-        static const ydk::Enum::YLeaf alarm_high;
-        static const ydk::Enum::YLeaf warning_high;
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf warning_low;
-        static const ydk::Enum::YLeaf alarm_low;
-
-};
-
-class EtherPhyPresent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf phy_not_present;
-        static const ydk::Enum::YLeaf phy_present;
-        static const ydk::Enum::YLeaf no_information;
 
 };
 
@@ -1551,19 +1541,26 @@ class EthernetMedia : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet_10gbase_cu5m;
         static const ydk::Enum::YLeaf ethernet_10gbase_acu7m;
         static const ydk::Enum::YLeaf ethernet_10gbase_acu10m;
-        static const ydk::Enum::YLeaf ethernet_40gbase_aoc;
-        static const ydk::Enum::YLeaf ethernet_4x10g_base_lr;
         static const ydk::Enum::YLeaf ethernet_base_max;
 
 };
 
-class EthernetPortEnable : public ydk::Enum
+class EtherAinsStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf rx_enabled;
-        static const ydk::Enum::YLeaf tx_enabled;
-        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf ains_soak_status_none;
+        static const ydk::Enum::YLeaf ains_soak_status_pending;
+        static const ydk::Enum::YLeaf ains_soak_status_running;
+
+};
+
+class EthernetLoopback : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_loopback;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf external;
 
 };
 

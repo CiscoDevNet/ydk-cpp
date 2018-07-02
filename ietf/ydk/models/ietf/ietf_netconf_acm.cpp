@@ -21,12 +21,13 @@ Nacm::Nacm()
     denied_operations{YType::uint32, "denied-operations"},
     denied_data_writes{YType::uint32, "denied-data-writes"},
     denied_notifications{YType::uint32, "denied-notifications"}
-    	,
+        ,
     groups(std::make_shared<Nacm::Groups>())
+    , rule_list(this, {"name"})
 {
     groups->parent = this;
 
-    yang_name = "nacm"; yang_parent_name = "ietf-netconf-acm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nacm"; yang_parent_name = "ietf-netconf-acm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Nacm::~Nacm()
@@ -35,7 +36,8 @@ Nacm::~Nacm()
 
 bool Nacm::has_data() const
 {
-    for (std::size_t index=0; index<rule_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_list.len(); index++)
     {
         if(rule_list[index]->has_data())
             return true;
@@ -53,7 +55,7 @@ bool Nacm::has_data() const
 
 bool Nacm::has_operation() const
 {
-    for (std::size_t index=0; index<rule_list.size(); index++)
+    for (std::size_t index=0; index<rule_list.len(); index++)
     {
         if(rule_list[index]->has_operation())
             return true;
@@ -109,7 +111,7 @@ std::shared_ptr<Entity> Nacm::get_child_by_name(const std::string & child_yang_n
     {
         auto c = std::make_shared<Nacm::RuleList>();
         c->parent = this;
-        rule_list.push_back(c);
+        rule_list.append(c);
         return c;
     }
 
@@ -126,7 +128,7 @@ std::map<std::string, std::shared_ptr<Entity>> Nacm::get_children() const
     }
 
     count = 0;
-    for (auto const & c : rule_list)
+    for (auto c : rule_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -258,9 +260,11 @@ bool Nacm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Nacm::Groups::Groups()
+    :
+    group(this, {"name"})
 {
 
-    yang_name = "groups"; yang_parent_name = "nacm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "nacm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nacm::Groups::~Groups()
@@ -269,7 +273,8 @@ Nacm::Groups::~Groups()
 
 bool Nacm::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -279,7 +284,7 @@ bool Nacm::Groups::has_data() const
 
 bool Nacm::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -316,7 +321,7 @@ std::shared_ptr<Entity> Nacm::Groups::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Nacm::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -328,7 +333,7 @@ std::map<std::string, std::shared_ptr<Entity>> Nacm::Groups::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -360,7 +365,7 @@ Nacm::Groups::Group::Group()
     user_name{YType::str, "user-name"}
 {
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nacm::Groups::Group::~Group()
@@ -369,6 +374,7 @@ Nacm::Groups::Group::~Group()
 
 bool Nacm::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : user_name.getYLeafs())
     {
         if(leaf.is_set)
@@ -399,7 +405,8 @@ std::string Nacm::Groups::Group::get_absolute_path() const
 std::string Nacm::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[name='" <<name <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -464,9 +471,11 @@ Nacm::RuleList::RuleList()
     :
     name{YType::str, "name"},
     group{YType::str, "group"}
+        ,
+    rule(this, {"name"})
 {
 
-    yang_name = "rule-list"; yang_parent_name = "nacm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-list"; yang_parent_name = "nacm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nacm::RuleList::~RuleList()
@@ -475,7 +484,8 @@ Nacm::RuleList::~RuleList()
 
 bool Nacm::RuleList::has_data() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_data())
             return true;
@@ -490,7 +500,7 @@ bool Nacm::RuleList::has_data() const
 
 bool Nacm::RuleList::has_operation() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_operation())
             return true;
@@ -515,7 +525,8 @@ std::string Nacm::RuleList::get_absolute_path() const
 std::string Nacm::RuleList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-list" <<"[name='" <<name <<"']";
+    path_buffer << "rule-list";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -537,7 +548,7 @@ std::shared_ptr<Entity> Nacm::RuleList::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Nacm::RuleList::Rule>();
         c->parent = this;
-        rule.push_back(c);
+        rule.append(c);
         return c;
     }
 
@@ -549,7 +560,7 @@ std::map<std::string, std::shared_ptr<Entity>> Nacm::RuleList::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule)
+    for (auto c : rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -605,7 +616,7 @@ Nacm::RuleList::Rule::Rule()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "rule"; yang_parent_name = "rule-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rule"; yang_parent_name = "rule-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Nacm::RuleList::Rule::~Rule()
@@ -614,6 +625,7 @@ Nacm::RuleList::Rule::~Rule()
 
 bool Nacm::RuleList::Rule::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| module_name.is_set
 	|| rpc_name.is_set
@@ -640,7 +652,8 @@ bool Nacm::RuleList::Rule::has_operation() const
 std::string Nacm::RuleList::Rule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule" <<"[name='" <<name <<"']";
+    path_buffer << "rule";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

@@ -17,7 +17,7 @@ ShowUsers::ShowUsers()
 {
     sessions->parent = this;
 
-    yang_name = "show-users"; yang_parent_name = "Cisco-IOS-XR-tty-management-cmd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "show-users"; yang_parent_name = "Cisco-IOS-XR-tty-management-cmd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ShowUsers::~ShowUsers()
@@ -26,6 +26,7 @@ ShowUsers::~ShowUsers()
 
 bool ShowUsers::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
@@ -118,9 +119,11 @@ bool ShowUsers::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ShowUsers::Sessions::Sessions()
+    :
+    session(this, {"session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "show-users"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "show-users"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowUsers::Sessions::~Sessions()
@@ -129,7 +132,8 @@ ShowUsers::Sessions::~Sessions()
 
 bool ShowUsers::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool ShowUsers::Sessions::has_data() const
 
 bool ShowUsers::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> ShowUsers::Sessions::get_child_by_name(const std::string
     {
         auto c = std::make_shared<ShowUsers::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowUsers::Sessions::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -225,7 +229,7 @@ ShowUsers::Sessions::Session::Session()
     location{YType::str, "location"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ShowUsers::Sessions::Session::~Session()
@@ -234,6 +238,7 @@ ShowUsers::Sessions::Session::~Session()
 
 bool ShowUsers::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| line.is_set
 	|| user.is_set
@@ -265,7 +270,8 @@ std::string ShowUsers::Sessions::Session::get_absolute_path() const
 std::string ShowUsers::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 

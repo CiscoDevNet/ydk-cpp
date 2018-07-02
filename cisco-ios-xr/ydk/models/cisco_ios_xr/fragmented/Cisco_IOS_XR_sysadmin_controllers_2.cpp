@@ -14,17 +14,18 @@ namespace Cisco_IOS_XR_sysadmin_controllers {
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Rx()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail>())
-	,state(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State>())
-	,statistics(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail>())
+    , state(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State>())
+    , statistics(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics>())
 {
     brief->parent = this;
     detail->parent = this;
     state->parent = this;
     statistics->parent = this;
 
-    yang_name = "rx"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::~Rx()
@@ -33,7 +34,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::~Rx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -46,7 +48,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -80,7 +82,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::get_chil
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -128,7 +130,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -185,9 +187,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::~DataIdx()
@@ -196,7 +200,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -214,7 +219,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -234,7 +239,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::has_operation() co
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -262,7 +268,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx:
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -274,7 +280,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -399,7 +405,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History::History()
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History::~History()
@@ -408,6 +414,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History::~History()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -428,7 +435,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History::has_opera
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -524,9 +532,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History::has_leaf_
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::~Brief()
@@ -535,7 +545,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -545,7 +556,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -575,7 +586,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::g
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -587,7 +598,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -624,9 +635,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::~DataIdx()
@@ -635,7 +648,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -653,7 +667,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::has_data() 
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -673,7 +687,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::has_operati
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -701,7 +716,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -713,7 +728,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -838,7 +853,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History::History
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History::~History()
@@ -847,6 +862,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History::~Histor
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -867,7 +883,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History::ha
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -963,9 +980,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History::ha
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::~Detail()
@@ -974,7 +993,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -984,7 +1004,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -1014,7 +1034,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -1026,7 +1046,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1063,9 +1083,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::~DataIdx()
@@ -1074,7 +1096,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -1092,7 +1115,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::has_data()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -1112,7 +1135,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::has_operat
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -1140,7 +1164,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -1152,7 +1176,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1277,7 +1301,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History::Histor
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History::~History()
@@ -1286,6 +1310,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History::~Histo
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -1306,7 +1331,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History::h
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -1404,16 +1430,16 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History::h
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::State()
     :
     up(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up>())
-	,down(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down>())
-	,er(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er>())
-	,mismatch(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch>())
+    , down(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down>())
+    , er(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er>())
+    , mismatch(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch>())
 {
     up->parent = this;
     down->parent = this;
     er->parent = this;
     mismatch->parent = this;
 
-    yang_name = "state"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::~State()
@@ -1422,6 +1448,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::~State()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::has_data() const
 {
+    if (is_presence_container) return true;
     return (up !=  nullptr && up->has_data())
 	|| (down !=  nullptr && down->has_data())
 	|| (er !=  nullptr && er->has_data())
@@ -1538,13 +1565,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::has_leaf_or_child_of
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Up()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "up"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "up"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::~Up()
@@ -1553,7 +1581,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::~Up()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -1564,7 +1593,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -1596,7 +1625,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -1626,7 +1655,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1673,9 +1702,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::~DataIdx()
@@ -1684,7 +1715,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -1702,7 +1734,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -1722,7 +1754,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::has_ope
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -1750,7 +1783,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -1762,7 +1795,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1887,7 +1920,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History::His
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History::~History()
@@ -1896,6 +1929,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History::~Hi
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -1916,7 +1950,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -2012,9 +2047,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::~Brief()
@@ -2023,7 +2060,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -2033,7 +2071,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::has_data(
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -2063,7 +2101,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -2075,7 +2113,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2112,9 +2150,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::DataI
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::~DataIdx()
@@ -2123,7 +2163,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::~Data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -2141,7 +2182,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -2161,7 +2202,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -2189,7 +2231,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -2201,7 +2243,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2326,7 +2368,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::Histo
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::History::~History()
@@ -2335,6 +2377,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::Histo
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -2355,7 +2398,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -2451,9 +2495,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::~Detail()
@@ -2462,7 +2508,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -2472,7 +2519,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::has_data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -2502,7 +2549,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -2514,7 +2561,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2551,9 +2598,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::Data
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::~DataIdx()
@@ -2562,7 +2611,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::~Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -2580,7 +2630,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -2600,7 +2650,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -2628,7 +2679,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -2640,7 +2691,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2765,7 +2816,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::Hist
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::History::~History()
@@ -2774,6 +2825,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::Hist
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -2794,7 +2846,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -2891,13 +2944,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx:
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Down()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "down"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "down"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::~Down()
@@ -2906,7 +2960,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::~Down()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -2917,7 +2972,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::has_data() con
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -2949,7 +3004,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -2979,7 +3034,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3026,9 +3081,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::~DataIdx()
@@ -3037,7 +3094,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -3055,7 +3113,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::has_d
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -3075,7 +3133,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::has_o
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -3103,7 +3162,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -3115,7 +3174,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3240,7 +3299,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History::H
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History::~History()
@@ -3249,6 +3308,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History::~
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -3269,7 +3329,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::Histo
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -3365,9 +3426,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::Histo
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::~Brief()
@@ -3376,7 +3439,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -3386,7 +3450,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -3416,7 +3480,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -3428,7 +3492,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3465,9 +3529,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::Dat
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::~DataIdx()
@@ -3476,7 +3542,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::~Da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -3494,7 +3561,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -3514,7 +3581,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -3542,7 +3610,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -3554,7 +3622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3679,7 +3747,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::His
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::History::~History()
@@ -3688,6 +3756,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::His
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -3708,7 +3777,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -3804,9 +3874,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::~Detail()
@@ -3815,7 +3887,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -3825,7 +3898,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::has_da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -3855,7 +3928,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -3867,7 +3940,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3904,9 +3977,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::Da
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::~DataIdx()
@@ -3915,7 +3990,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::~D
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -3933,7 +4009,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataId
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -3953,7 +4029,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataId
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -3981,7 +4058,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -3993,7 +4070,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4118,7 +4195,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::Hi
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::History::~History()
@@ -4127,6 +4204,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::Hi
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -4147,7 +4225,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataId
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -4244,13 +4323,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataId
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Er()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "er"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "er"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::~Er()
@@ -4259,7 +4339,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::~Er()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -4270,7 +4351,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -4302,7 +4383,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -4332,7 +4413,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4379,9 +4460,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::~DataIdx()
@@ -4390,7 +4473,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -4408,7 +4492,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -4428,7 +4512,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::has_ope
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -4456,7 +4541,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -4468,7 +4553,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4593,7 +4678,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History::His
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History::~History()
@@ -4602,6 +4687,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History::~Hi
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -4622,7 +4708,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -4718,9 +4805,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::~Brief()
@@ -4729,7 +4818,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -4739,7 +4829,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::has_data(
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -4769,7 +4859,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -4781,7 +4871,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4818,9 +4908,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::DataI
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::~DataIdx()
@@ -4829,7 +4921,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::~Data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -4847,7 +4940,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -4867,7 +4960,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -4895,7 +4989,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -4907,7 +5001,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5032,7 +5126,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::Histo
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::History::~History()
@@ -5041,6 +5135,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::Histo
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -5061,7 +5156,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -5157,9 +5253,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::~Detail()
@@ -5168,7 +5266,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -5178,7 +5277,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::has_data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -5208,7 +5307,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -5220,7 +5319,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5257,9 +5356,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::Data
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::~DataIdx()
@@ -5268,7 +5369,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::~Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -5286,7 +5388,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -5306,7 +5408,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -5334,7 +5437,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -5346,7 +5449,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5471,7 +5574,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::Hist
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::History::~History()
@@ -5480,6 +5583,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::Hist
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -5500,7 +5604,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -5597,13 +5702,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx:
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Mismatch()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "mismatch"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mismatch"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::~Mismatch()
@@ -5612,7 +5718,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::~Mismatch()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -5623,7 +5730,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::has_data()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -5655,7 +5762,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -5685,7 +5792,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5732,9 +5839,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::DataId
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::~DataIdx()
@@ -5743,7 +5852,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::~DataI
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -5761,7 +5871,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::h
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -5781,7 +5891,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::h
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -5809,7 +5920,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -5821,7 +5932,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5946,7 +6057,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::Histor
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::History::~History()
@@ -5955,6 +6066,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::Histor
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -5975,7 +6087,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::H
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -6071,9 +6184,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::H
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::~Brief()
@@ -6082,7 +6197,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -6092,7 +6208,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::has
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -6122,7 +6238,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -6134,7 +6250,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6171,9 +6287,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx:
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::~DataIdx()
@@ -6182,7 +6300,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -6200,7 +6319,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -6220,7 +6339,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::Dat
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -6248,7 +6368,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -6260,7 +6380,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6385,7 +6505,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx:
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::History::~History()
@@ -6394,6 +6514,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -6414,7 +6535,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::Dat
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -6510,9 +6632,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::Dat
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::~Detail()
@@ -6521,7 +6645,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::~Detail
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -6531,7 +6656,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::ha
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -6561,7 +6686,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -6573,7 +6698,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6610,9 +6735,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::~DataIdx()
@@ -6621,7 +6748,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -6639,7 +6767,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::Da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -6659,7 +6787,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::Da
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -6687,7 +6816,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -6699,7 +6828,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6824,7 +6953,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::History::~History()
@@ -6833,6 +6962,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -6853,7 +6983,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::Da
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -6950,13 +7081,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::Da
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Statistics()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "rx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::~Statistics()
@@ -6965,7 +7097,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::~Statistics()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -6976,7 +7109,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::has_data() cons
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -7008,7 +7141,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::Statisti
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -7038,7 +7171,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7104,7 +7237,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx::DataIdx()
     error_token_count{YType::uint32, "error_token_count"}
 {
 
-    yang_name = "data_idx"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx::~DataIdx()
@@ -7113,6 +7246,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx::has_data() const
 {
+    if (is_presence_container) return true;
     return port_data_idx.is_set
 	|| rack_num.is_set
 	|| sfe_port.is_set
@@ -7175,7 +7309,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx::has_op
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -7502,9 +7637,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx::has_le
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::~Brief()
@@ -7513,7 +7650,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -7523,7 +7661,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::has_data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -7553,7 +7691,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::Statisti
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -7565,7 +7703,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7621,7 +7759,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx::Data
     error_token_count{YType::uint32, "error_token_count"}
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx::~DataIdx()
@@ -7630,6 +7768,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx::~Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx::has_data() const
 {
+    if (is_presence_container) return true;
     return port_data_idx.is_set
 	|| rack_num.is_set
 	|| sfe_port.is_set
@@ -7692,7 +7831,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -8019,9 +8159,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx:
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::~Detail()
@@ -8030,7 +8172,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -8040,7 +8183,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -8070,7 +8213,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Rx::Statisti
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -8082,7 +8225,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8138,7 +8281,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx::Dat
     error_token_count{YType::uint32, "error_token_count"}
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx::~DataIdx()
@@ -8147,6 +8290,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx::~Da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx::has_data() const
 {
+    if (is_presence_container) return true;
     return port_data_idx.is_set
 	|| rack_num.is_set
 	|| sfe_port.is_set
@@ -8209,7 +8353,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx
 std::string Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -8537,17 +8682,18 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Tx()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail>())
-	,state(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State>())
-	,statistics(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail>())
+    , state(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State>())
+    , statistics(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics>())
 {
     brief->parent = this;
     detail->parent = this;
     state->parent = this;
     statistics->parent = this;
 
-    yang_name = "tx"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::~Tx()
@@ -8556,7 +8702,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::~Tx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -8569,7 +8716,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -8603,7 +8750,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::get_chil
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -8651,7 +8798,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8708,9 +8855,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::~DataIdx()
@@ -8719,7 +8868,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -8737,7 +8887,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -8757,7 +8907,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::has_operation() co
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -8785,7 +8936,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx:
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -8797,7 +8948,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8922,7 +9073,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History::History()
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History::~History()
@@ -8931,6 +9082,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History::~History()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -8951,7 +9103,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History::has_opera
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -9047,9 +9200,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History::has_leaf_
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::~Brief()
@@ -9058,7 +9213,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -9068,7 +9224,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -9098,7 +9254,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::g
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -9110,7 +9266,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9147,9 +9303,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::~DataIdx()
@@ -9158,7 +9316,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -9176,7 +9335,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::has_data() 
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -9196,7 +9355,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::has_operati
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -9224,7 +9384,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -9236,7 +9396,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9361,7 +9521,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History::History
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History::~History()
@@ -9370,6 +9530,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History::~Histor
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -9390,7 +9551,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History::ha
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -9486,9 +9648,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History::ha
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::~Detail()
@@ -9497,7 +9661,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -9507,7 +9672,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -9537,7 +9702,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -9549,7 +9714,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9586,9 +9751,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::~DataIdx()
@@ -9597,7 +9764,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -9615,7 +9783,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::has_data()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -9635,7 +9803,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::has_operat
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -9663,7 +9832,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -9675,7 +9844,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9800,7 +9969,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History::Histor
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History::~History()
@@ -9809,6 +9978,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History::~Histo
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -9829,7 +9999,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History::h
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -9927,16 +10098,16 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History::h
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::State()
     :
     up(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up>())
-	,down(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down>())
-	,er(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er>())
-	,mismatch(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch>())
+    , down(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down>())
+    , er(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er>())
+    , mismatch(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch>())
 {
     up->parent = this;
     down->parent = this;
     er->parent = this;
     mismatch->parent = this;
 
-    yang_name = "state"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::~State()
@@ -9945,6 +10116,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::~State()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::has_data() const
 {
+    if (is_presence_container) return true;
     return (up !=  nullptr && up->has_data())
 	|| (down !=  nullptr && down->has_data())
 	|| (er !=  nullptr && er->has_data())
@@ -10061,13 +10233,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::has_leaf_or_child_of
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Up()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "up"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "up"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::~Up()
@@ -10076,7 +10249,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::~Up()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -10087,7 +10261,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -10119,7 +10293,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -10149,7 +10323,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10196,9 +10370,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::~DataIdx()
@@ -10207,7 +10383,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -10225,7 +10402,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -10245,7 +10422,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::has_ope
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -10273,7 +10451,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -10285,7 +10463,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10410,7 +10588,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History::His
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History::~History()
@@ -10419,6 +10597,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History::~Hi
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -10439,7 +10618,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -10535,9 +10715,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::~Brief()
@@ -10546,7 +10728,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -10556,7 +10739,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::has_data(
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -10586,7 +10769,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -10598,7 +10781,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10635,9 +10818,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::DataI
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::~DataIdx()
@@ -10646,7 +10831,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::~Data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -10664,7 +10850,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -10684,7 +10870,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -10712,7 +10899,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -10724,7 +10911,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10849,7 +11036,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::Histo
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::History::~History()
@@ -10858,6 +11045,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::Histo
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -10878,7 +11066,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -10974,9 +11163,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "up"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::~Detail()
@@ -10985,7 +11176,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -10995,7 +11187,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::has_data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -11025,7 +11217,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -11037,7 +11229,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11074,9 +11266,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::Data
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::~DataIdx()
@@ -11085,7 +11279,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::~Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -11103,7 +11298,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -11123,7 +11318,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -11151,7 +11347,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::U
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -11163,7 +11359,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11288,7 +11484,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::Hist
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::History::~History()
@@ -11297,6 +11493,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::Hist
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -11317,7 +11514,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -11414,13 +11612,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx:
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Down()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "down"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "down"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::~Down()
@@ -11429,7 +11628,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::~Down()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -11440,7 +11640,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::has_data() con
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -11472,7 +11672,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -11502,7 +11702,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11549,9 +11749,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::~DataIdx()
@@ -11560,7 +11762,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -11578,7 +11781,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::has_d
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -11598,7 +11801,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::has_o
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -11626,7 +11830,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -11638,7 +11842,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11763,7 +11967,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History::H
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History::~History()
@@ -11772,6 +11976,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History::~
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -11792,7 +11997,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::Histo
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -11888,9 +12094,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::Histo
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::~Brief()
@@ -11899,7 +12107,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -11909,7 +12118,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -11939,7 +12148,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -11951,7 +12160,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11988,9 +12197,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::Dat
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::~DataIdx()
@@ -11999,7 +12210,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::~Da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -12017,7 +12229,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -12037,7 +12249,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -12065,7 +12278,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -12077,7 +12290,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12202,7 +12415,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::His
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::History::~History()
@@ -12211,6 +12424,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::His
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -12231,7 +12445,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -12327,9 +12542,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "down"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::~Detail()
@@ -12338,7 +12555,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -12348,7 +12566,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::has_da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -12378,7 +12596,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -12390,7 +12608,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12427,9 +12645,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::Da
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::~DataIdx()
@@ -12438,7 +12658,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::~D
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -12456,7 +12677,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataId
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -12476,7 +12697,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataId
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -12504,7 +12726,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::D
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -12516,7 +12738,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12641,7 +12863,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::Hi
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::History::~History()
@@ -12650,6 +12872,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::Hi
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -12670,7 +12893,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataId
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -12767,13 +12991,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataId
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Er()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "er"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "er"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::~Er()
@@ -12782,7 +13007,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::~Er()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -12793,7 +13019,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::has_data() const
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -12825,7 +13051,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -12855,7 +13081,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12902,9 +13128,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::DataIdx()
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::~DataIdx()
@@ -12913,7 +13141,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -12931,7 +13160,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -12951,7 +13180,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::has_ope
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -12979,7 +13209,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -12991,7 +13221,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13116,7 +13346,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History::His
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History::~History()
@@ -13125,6 +13355,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History::~Hi
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -13145,7 +13376,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -13241,9 +13473,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::~Brief()
@@ -13252,7 +13486,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -13262,7 +13497,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::has_data(
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -13292,7 +13527,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -13304,7 +13539,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13341,9 +13576,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::DataI
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::~DataIdx()
@@ -13352,7 +13589,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::~Data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -13370,7 +13608,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -13390,7 +13628,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -13418,7 +13657,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -13430,7 +13669,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13555,7 +13794,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::Histo
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::History::~History()
@@ -13564,6 +13803,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::Histo
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -13584,7 +13824,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -13680,9 +13921,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "er"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::~Detail()
@@ -13691,7 +13934,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -13701,7 +13945,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::has_data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -13731,7 +13975,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -13743,7 +13987,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13780,9 +14024,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::Data
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::~DataIdx()
@@ -13791,7 +14037,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::~Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -13809,7 +14056,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -13829,7 +14076,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -13857,7 +14105,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::E
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -13869,7 +14117,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13994,7 +14242,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::Hist
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::History::~History()
@@ -14003,6 +14251,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::Hist
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -14023,7 +14272,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -14120,13 +14370,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx:
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Mismatch()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "mismatch"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mismatch"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::~Mismatch()
@@ -14135,7 +14386,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::~Mismatch()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -14146,7 +14398,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::has_data()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -14178,7 +14430,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -14208,7 +14460,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14255,9 +14507,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::DataId
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::~DataIdx()
@@ -14266,7 +14520,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::~DataI
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -14284,7 +14539,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::h
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -14304,7 +14559,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::h
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -14332,7 +14588,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -14344,7 +14600,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14469,7 +14725,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::Histor
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::History::~History()
@@ -14478,6 +14734,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::Histor
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -14498,7 +14755,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::H
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -14594,9 +14852,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::H
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::~Brief()
@@ -14605,7 +14865,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -14615,7 +14876,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::has
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -14645,7 +14906,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -14657,7 +14918,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14694,9 +14955,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx:
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::~DataIdx()
@@ -14705,7 +14968,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -14723,7 +14987,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -14743,7 +15007,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::Dat
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -14771,7 +15036,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -14783,7 +15048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14908,7 +15173,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx:
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::History::~History()
@@ -14917,6 +15182,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx:
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -14937,7 +15203,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::Dat
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -15033,9 +15300,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::Dat
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "mismatch"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::~Detail()
@@ -15044,7 +15313,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::~Detail
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -15054,7 +15324,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::ha
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -15084,7 +15354,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -15096,7 +15366,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15133,9 +15403,11 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx
     far_end_cxp_ch{YType::str, "far_end_cxp_ch"},
     far_end_cdr_ln{YType::str, "far_end_cdr_ln"},
     neighbor_link{YType::str, "neighbor_link"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::~DataIdx()
@@ -15144,7 +15416,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -15162,7 +15435,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::Da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -15182,7 +15455,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::Da
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -15210,7 +15484,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::State::M
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -15222,7 +15496,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15347,7 +15621,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "data_idx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::History::~History()
@@ -15356,6 +15630,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -15376,7 +15651,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::Da
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -15473,13 +15749,14 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::Da
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Statistics()
     :
-    brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail>())
+    data_idx(this, {"port_data_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "tx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::~Statistics()
@@ -15488,7 +15765,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::~Statistics()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -15499,7 +15777,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::has_data() cons
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -15531,7 +15809,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::Statisti
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -15561,7 +15839,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15627,7 +15905,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx::DataIdx()
     error_token_count{YType::uint32, "error_token_count"}
 {
 
-    yang_name = "data_idx"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx::~DataIdx()
@@ -15636,6 +15914,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx::~DataIdx()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx::has_data() const
 {
+    if (is_presence_container) return true;
     return port_data_idx.is_set
 	|| rack_num.is_set
 	|| sfe_port.is_set
@@ -15698,7 +15977,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx::has_op
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -16025,9 +16305,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx::has_le
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::Brief()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::~Brief()
@@ -16036,7 +16318,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -16046,7 +16329,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::has_data
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -16076,7 +16359,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::Statisti
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -16088,7 +16371,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16144,7 +16427,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx::Data
     error_token_count{YType::uint32, "error_token_count"}
 {
 
-    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx::~DataIdx()
@@ -16153,6 +16436,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx::~Dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx::has_data() const
 {
+    if (is_presence_container) return true;
     return port_data_idx.is_set
 	|| rack_num.is_set
 	|| sfe_port.is_set
@@ -16215,7 +16499,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx:
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -16542,9 +16827,11 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx:
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::Detail()
+    :
+    data_idx(this, {"port_data_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::~Detail()
@@ -16553,7 +16840,8 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::has_data() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_data())
             return true;
@@ -16563,7 +16851,7 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::has_dat
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<data_idx.size(); index++)
+    for (std::size_t index=0; index<data_idx.len(); index++)
     {
         if(data_idx[index]->has_operation())
             return true;
@@ -16593,7 +16881,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Link::Rack::Port::Tx::Statisti
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx>();
         c->parent = this;
-        data_idx.push_back(c);
+        data_idx.append(c);
         return c;
     }
 
@@ -16605,7 +16893,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Link::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_idx)
+    for (auto c : data_idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16661,7 +16949,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx::Dat
     error_token_count{YType::uint32, "error_token_count"}
 {
 
-    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data_idx"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx::~DataIdx()
@@ -16670,6 +16958,7 @@ Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx::~Da
 
 bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx::has_data() const
 {
+    if (is_presence_container) return true;
     return port_data_idx.is_set
 	|| rack_num.is_set
 	|| sfe_port.is_set
@@ -16732,7 +17021,8 @@ bool Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx
 std::string Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "data_idx" <<"[port_data_idx='" <<port_data_idx <<"']";
+    path_buffer << "data_idx";
+    ADD_KEY_TOKEN(port_data_idx, "port_data_idx");
     return path_buffer.str();
 }
 
@@ -17063,7 +17353,7 @@ Controller::Fabric::Oper::Link::NodeLocation::NodeLocation()
     node_str{YType::str, "node_str"}
 {
 
-    yang_name = "node_location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node_location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Link::NodeLocation::~NodeLocation()
@@ -17072,6 +17362,7 @@ Controller::Fabric::Oper::Link::NodeLocation::~NodeLocation()
 
 bool Controller::Fabric::Oper::Link::NodeLocation::has_data() const
 {
+    if (is_presence_container) return true;
     return node_str.is_set;
 }
 
@@ -17091,7 +17382,8 @@ std::string Controller::Fabric::Oper::Link::NodeLocation::get_absolute_path() co
 std::string Controller::Fabric::Oper::Link::NodeLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node_location" <<"[node_str='" <<node_str <<"']";
+    path_buffer << "node_location";
+    ADD_KEY_TOKEN(node_str, "node_str");
     return path_buffer.str();
 }
 
@@ -17143,9 +17435,11 @@ bool Controller::Fabric::Oper::Link::NodeLocation::has_leaf_or_child_of_name(con
 }
 
 Controller::Fabric::Oper::Sfe::Sfe()
+    :
+    rack(this, {"rack_number"})
 {
 
-    yang_name = "sfe"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sfe"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Sfe::~Sfe()
@@ -17154,7 +17448,8 @@ Controller::Fabric::Oper::Sfe::~Sfe()
 
 bool Controller::Fabric::Oper::Sfe::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -17164,7 +17459,7 @@ bool Controller::Fabric::Oper::Sfe::has_data() const
 
 bool Controller::Fabric::Oper::Sfe::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -17201,7 +17496,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::get_child_by_name(const s
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -17213,7 +17508,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17242,9 +17537,11 @@ bool Controller::Fabric::Oper::Sfe::has_leaf_or_child_of_name(const std::string 
 Controller::Fabric::Oper::Sfe::Rack::Rack()
     :
     rack_number{YType::int32, "rack_number"}
+        ,
+    asic_stages(this, {"asic_stage_name"})
 {
 
-    yang_name = "rack"; yang_parent_name = "sfe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "sfe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::~Rack()
@@ -17253,7 +17550,8 @@ Controller::Fabric::Oper::Sfe::Rack::~Rack()
 
 bool Controller::Fabric::Oper::Sfe::Rack::has_data() const
 {
-    for (std::size_t index=0; index<asic_stages.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_stages.len(); index++)
     {
         if(asic_stages[index]->has_data())
             return true;
@@ -17263,7 +17561,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::has_data() const
 
 bool Controller::Fabric::Oper::Sfe::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<asic_stages.size(); index++)
+    for (std::size_t index=0; index<asic_stages.len(); index++)
     {
         if(asic_stages[index]->has_operation())
             return true;
@@ -17282,7 +17580,8 @@ std::string Controller::Fabric::Oper::Sfe::Rack::get_absolute_path() const
 std::string Controller::Fabric::Oper::Sfe::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack_number='" <<rack_number <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_number, "rack_number");
     return path_buffer.str();
 }
 
@@ -17302,7 +17601,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::get_child_by_name(c
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages>();
         c->parent = this;
-        asic_stages.push_back(c);
+        asic_stages.append(c);
         return c;
     }
 
@@ -17314,7 +17613,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_stages)
+    for (auto c : asic_stages.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17353,14 +17652,16 @@ bool Controller::Fabric::Oper::Sfe::Rack::has_leaf_or_child_of_name(const std::s
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicStages()
     :
     asic_stage_name{YType::str, "asic_stage_name"}
-    	,
-    brief(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail>())
+        ,
+    location(this, {"loc_str"})
+    , asic_list(this, {"asic_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "asic_stages"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_stages"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::~AsicStages()
@@ -17369,12 +17670,13 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::~AsicStages()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_data())
             return true;
@@ -17386,12 +17688,12 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::has_data() const
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_operation())
             return true;
@@ -17405,7 +17707,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::has_operation() const
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_stages" <<"[asic_stage_name='" <<asic_stage_name <<"']";
+    path_buffer << "asic_stages";
+    ADD_KEY_TOKEN(asic_stage_name, "asic_stage_name");
     return path_buffer.str();
 }
 
@@ -17425,7 +17728,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -17433,7 +17736,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::get_chi
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList>();
         c->parent = this;
-        asic_list.push_back(c);
+        asic_list.append(c);
         return c;
     }
 
@@ -17463,7 +17766,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17472,7 +17775,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     }
 
     count = 0;
-    for (auto const & c : asic_list)
+    for (auto c : asic_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17521,14 +17824,15 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::has_leaf_or_child_of_name(
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Location()
     :
     loc_str{YType::str, "loc_str"}
-    	,
-    brief(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief>())
-	,detail(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail>())
+        ,
+    asic_list(this, {"asic_idx"})
+    , brief(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief>())
+    , detail(std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "location"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::~Location()
@@ -17537,7 +17841,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::~Location()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::has_data() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_data())
             return true;
@@ -17549,7 +17854,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::has_data() const
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::has_operation() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_operation())
             return true;
@@ -17563,7 +17868,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::has_operation() 
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc_str='" <<loc_str <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc_str, "loc_str");
     return path_buffer.str();
 }
 
@@ -17583,7 +17889,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Locatio
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList>();
         c->parent = this;
-        asic_list.push_back(c);
+        asic_list.append(c);
         return c;
     }
 
@@ -17613,7 +17919,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_list)
+    for (auto c : asic_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17667,9 +17973,11 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::AsicList()
     oper_state{YType::str, "oper_state"},
     down_flags{YType::str, "down_flags"},
     fab_group{YType::str, "fab_group"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "asic_list"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_list"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::~AsicList()
@@ -17678,7 +17986,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::~AsicList()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -17693,7 +18002,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::has_da
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -17710,7 +18019,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::has_op
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_list" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asic_list";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -17735,7 +18045,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Locatio
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -17747,7 +18057,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17842,7 +18152,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History::Hi
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History::~History()
@@ -17851,6 +18161,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History::~H
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -17871,7 +18182,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::Histor
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -17967,9 +18279,11 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::Histor
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::Brief()
+    :
+    asic_list(this, {"asic_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::~Brief()
@@ -17978,7 +18292,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::has_data() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_data())
             return true;
@@ -17988,7 +18303,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::has_data(
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_operation())
             return true;
@@ -18018,7 +18333,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Locatio
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList>();
         c->parent = this;
-        asic_list.push_back(c);
+        asic_list.append(c);
         return c;
     }
 
@@ -18030,7 +18345,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_list)
+    for (auto c : asic_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18064,9 +18379,11 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::Asic
     oper_state{YType::str, "oper_state"},
     down_flags{YType::str, "down_flags"},
     fab_group{YType::str, "fab_group"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "asic_list"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_list"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::~AsicList()
@@ -18075,7 +18392,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::~Asi
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -18090,7 +18408,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList:
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -18107,7 +18425,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList:
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_list" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asic_list";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -18132,7 +18451,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Locatio
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -18144,7 +18463,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18239,7 +18558,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::Hist
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::History::~History()
@@ -18248,6 +18567,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::Hist
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -18268,7 +18588,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList:
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -18364,9 +18685,11 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList:
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::Detail()
+    :
+    asic_list(this, {"asic_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::~Detail()
@@ -18375,7 +18698,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::has_data() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_data())
             return true;
@@ -18385,7 +18709,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::has_data
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_operation())
             return true;
@@ -18415,7 +18739,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Locatio
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList>();
         c->parent = this;
-        asic_list.push_back(c);
+        asic_list.append(c);
         return c;
     }
 
@@ -18427,7 +18751,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_list)
+    for (auto c : asic_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18461,9 +18785,11 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::Asi
     oper_state{YType::str, "oper_state"},
     down_flags{YType::str, "down_flags"},
     fab_group{YType::str, "fab_group"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "asic_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::~AsicList()
@@ -18472,7 +18798,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::~As
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -18487,7 +18814,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -18504,7 +18831,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_list" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asic_list";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -18529,7 +18857,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Locatio
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -18541,7 +18869,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18636,7 +18964,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::His
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::History::~History()
@@ -18645,6 +18973,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::His
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -18665,7 +18994,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -18768,9 +19098,11 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::AsicList()
     oper_state{YType::str, "oper_state"},
     down_flags{YType::str, "down_flags"},
     fab_group{YType::str, "fab_group"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "asic_list"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_list"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::~AsicList()
@@ -18779,7 +19111,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::~AsicList()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -18794,7 +19127,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::has_data() const
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -18811,7 +19144,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::has_operation() 
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_list" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asic_list";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -18836,7 +19170,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicLis
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -18848,7 +19182,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18943,7 +19277,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History::History()
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History::~History()
@@ -18952,6 +19286,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History::~History()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -18972,7 +19307,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History::has_ope
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -19068,9 +19404,11 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History::has_lea
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::Brief()
+    :
+    asic_list(this, {"asic_idx"})
 {
 
-    yang_name = "brief"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::~Brief()
@@ -19079,7 +19417,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::~Brief()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::has_data() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_data())
             return true;
@@ -19089,7 +19428,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::has_data() const
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_operation())
             return true;
@@ -19119,7 +19458,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList>();
         c->parent = this;
-        asic_list.push_back(c);
+        asic_list.append(c);
         return c;
     }
 
@@ -19131,7 +19470,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_list)
+    for (auto c : asic_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19165,9 +19504,11 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::AsicList()
     oper_state{YType::str, "oper_state"},
     down_flags{YType::str, "down_flags"},
     fab_group{YType::str, "fab_group"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "asic_list"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_list"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::~AsicList()
@@ -19176,7 +19517,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::~AsicList()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -19191,7 +19533,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::has_data(
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -19208,7 +19550,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::has_opera
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_list" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asic_list";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -19233,7 +19576,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -19245,7 +19588,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19340,7 +19683,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History::Histo
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History::~History()
@@ -19349,6 +19692,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History::~Hist
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -19369,7 +19713,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History::
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -19465,9 +19810,11 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History::
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::Detail()
+    :
+    asic_list(this, {"asic_idx"})
 {
 
-    yang_name = "detail"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::~Detail()
@@ -19476,7 +19823,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::~Detail()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::has_data() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_data())
             return true;
@@ -19486,7 +19834,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::has_data() const
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_operation())
             return true;
@@ -19516,7 +19864,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail:
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList>();
         c->parent = this;
-        asic_list.push_back(c);
+        asic_list.append(c);
         return c;
     }
 
@@ -19528,7 +19876,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_list)
+    for (auto c : asic_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19562,9 +19910,11 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::AsicList()
     oper_state{YType::str, "oper_state"},
     down_flags{YType::str, "down_flags"},
     fab_group{YType::str, "fab_group"}
+        ,
+    history(this, {"history_idx"})
 {
 
-    yang_name = "asic_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::~AsicList()
@@ -19573,7 +19923,8 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::~AsicList()
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::has_data() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
@@ -19588,7 +19939,7 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::has_data
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::has_operation() const
 {
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
@@ -19605,7 +19956,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::has_oper
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_list" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asic_list";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -19630,7 +19982,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail:
     {
         auto c = std::make_shared<Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -19642,7 +19994,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::Sfe::Ra
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19737,7 +20089,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History::Hist
     error_state{YType::str, "error_state"}
 {
 
-    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "asic_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History::~History()
@@ -19746,6 +20098,7 @@ Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History::~His
 
 bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History::has_data() const
 {
+    if (is_presence_container) return true;
     return history_idx.is_set
 	|| time_stamp.is_set
 	|| admin_state.is_set
@@ -19766,7 +20119,8 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History:
 std::string Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[history_idx='" <<history_idx <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(history_idx, "history_idx");
     return path_buffer.str();
 }
 
@@ -19862,9 +20216,11 @@ bool Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History:
 }
 
 Controller::Fabric::Oper::FsdbPla::FsdbPla()
+    :
+    rack(this, {"rack_number"})
 {
 
-    yang_name = "fsdb_pla"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fsdb_pla"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbPla::~FsdbPla()
@@ -19873,7 +20229,8 @@ Controller::Fabric::Oper::FsdbPla::~FsdbPla()
 
 bool Controller::Fabric::Oper::FsdbPla::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -19883,7 +20240,7 @@ bool Controller::Fabric::Oper::FsdbPla::has_data() const
 
 bool Controller::Fabric::Oper::FsdbPla::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -19920,7 +20277,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::get_child_by_name(con
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -19932,7 +20289,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19961,9 +20318,11 @@ bool Controller::Fabric::Oper::FsdbPla::has_leaf_or_child_of_name(const std::str
 Controller::Fabric::Oper::FsdbPla::Rack::Rack()
     :
     rack_number{YType::int32, "rack_number"}
+        ,
+    asic_stages(this, {"asic_stage_idx"})
 {
 
-    yang_name = "rack"; yang_parent_name = "fsdb_pla"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "fsdb_pla"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::~Rack()
@@ -19972,7 +20331,8 @@ Controller::Fabric::Oper::FsdbPla::Rack::~Rack()
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::has_data() const
 {
-    for (std::size_t index=0; index<asic_stages.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_stages.len(); index++)
     {
         if(asic_stages[index]->has_data())
             return true;
@@ -19982,7 +20342,7 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::has_data() const
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<asic_stages.size(); index++)
+    for (std::size_t index=0; index<asic_stages.len(); index++)
     {
         if(asic_stages[index]->has_operation())
             return true;
@@ -20001,7 +20361,8 @@ std::string Controller::Fabric::Oper::FsdbPla::Rack::get_absolute_path() const
 std::string Controller::Fabric::Oper::FsdbPla::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack_number='" <<rack_number <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_number, "rack_number");
     return path_buffer.str();
 }
 
@@ -20021,7 +20382,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::Rack::get_child_by_na
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack::AsicStages>();
         c->parent = this;
-        asic_stages.push_back(c);
+        asic_stages.append(c);
         return c;
     }
 
@@ -20033,7 +20394,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_stages)
+    for (auto c : asic_stages.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20075,9 +20436,13 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::AsicStages()
     asic_stage_name{YType::str, "asic_stage_name"},
     rack_number{YType::str, "rack_number"},
     plane_number{YType::int32, "plane_number"}
+        ,
+    fabids(this, {"idx"})
+    , down_fabids(this, {"idx"})
+    , destination(this, {"amba_id"})
 {
 
-    yang_name = "asic_stages"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_stages"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::~AsicStages()
@@ -20086,17 +20451,18 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::~AsicStages()
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::has_data() const
 {
-    for (std::size_t index=0; index<fabids.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fabids.len(); index++)
     {
         if(fabids[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<down_fabids.size(); index++)
+    for (std::size_t index=0; index<down_fabids.len(); index++)
     {
         if(down_fabids[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<destination.size(); index++)
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_data())
             return true;
@@ -20109,17 +20475,17 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::has_data() const
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::has_operation() const
 {
-    for (std::size_t index=0; index<fabids.size(); index++)
+    for (std::size_t index=0; index<fabids.len(); index++)
     {
         if(fabids[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<down_fabids.size(); index++)
+    for (std::size_t index=0; index<down_fabids.len(); index++)
     {
         if(down_fabids[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<destination.size(); index++)
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_operation())
             return true;
@@ -20134,7 +20500,8 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::has_operation() const
 std::string Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_stages" <<"[asic_stage_idx='" <<asic_stage_idx <<"']";
+    path_buffer << "asic_stages";
+    ADD_KEY_TOKEN(asic_stage_idx, "asic_stage_idx");
     return path_buffer.str();
 }
 
@@ -20157,7 +20524,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::get
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids>();
         c->parent = this;
-        fabids.push_back(c);
+        fabids.append(c);
         return c;
     }
 
@@ -20165,7 +20532,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::get
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids>();
         c->parent = this;
-        down_fabids.push_back(c);
+        down_fabids.append(c);
         return c;
     }
 
@@ -20173,7 +20540,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::get
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination>();
         c->parent = this;
-        destination.push_back(c);
+        destination.append(c);
         return c;
     }
 
@@ -20185,7 +20552,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fabids)
+    for (auto c : fabids.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20194,7 +20561,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     }
 
     count = 0;
-    for (auto const & c : down_fabids)
+    for (auto c : down_fabids.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20203,7 +20570,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     }
 
     count = 0;
-    for (auto const & c : destination)
+    for (auto c : destination.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20288,7 +20655,7 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids::Fabids()
     total_up_links{YType::int32, "total_up_links"}
 {
 
-    yang_name = "fabids"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fabids"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids::~Fabids()
@@ -20297,6 +20664,7 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids::~Fabids()
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids::has_data() const
 {
+    if (is_presence_container) return true;
     return idx.is_set
 	|| fabid_address.is_set
 	|| plane_num.is_set
@@ -20337,7 +20705,8 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids::has_operation(
 std::string Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fabids" <<"[idx='" <<idx <<"']";
+    path_buffer << "fabids";
+    ADD_KEY_TOKEN(idx, "idx");
     return path_buffer.str();
 }
 
@@ -20549,7 +20918,7 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids::DownFabids()
     fabid_status{YType::str, "fabid_status"}
 {
 
-    yang_name = "down_fabids"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "down_fabids"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids::~DownFabids()
@@ -20558,6 +20927,7 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids::~DownFabids()
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids::has_data() const
 {
+    if (is_presence_container) return true;
     return idx.is_set
 	|| fabid_address.is_set
 	|| fabid_status.is_set;
@@ -20574,7 +20944,8 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids::has_operat
 std::string Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "down_fabids" <<"[idx='" <<idx <<"']";
+    path_buffer << "down_fabids";
+    ADD_KEY_TOKEN(idx, "idx");
     return path_buffer.str();
 }
 
@@ -20650,9 +21021,11 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids::has_leaf_o
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Destination()
     :
     amba_id{YType::str, "amba_id"}
+        ,
+    planes(this, {"plane_idx"})
 {
 
-    yang_name = "destination"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "asic_stages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::~Destination()
@@ -20661,7 +21034,8 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::~Destination()
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::has_data() const
 {
-    for (std::size_t index=0; index<planes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<planes.len(); index++)
     {
         if(planes[index]->has_data())
             return true;
@@ -20671,7 +21045,7 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::has_data(
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::has_operation() const
 {
-    for (std::size_t index=0; index<planes.size(); index++)
+    for (std::size_t index=0; index<planes.len(); index++)
     {
         if(planes[index]->has_operation())
             return true;
@@ -20683,7 +21057,8 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::has_opera
 std::string Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination" <<"[amba_id='" <<amba_id <<"']";
+    path_buffer << "destination";
+    ADD_KEY_TOKEN(amba_id, "amba_id");
     return path_buffer.str();
 }
 
@@ -20703,7 +21078,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Des
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes>();
         c->parent = this;
-        planes.push_back(c);
+        planes.append(c);
         return c;
     }
 
@@ -20715,7 +21090,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : planes)
+    for (auto c : planes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20758,9 +21133,11 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Planes
     fabid_name{YType::str, "fabid_name"},
     show_fabid{YType::boolean, "show_fabid"},
     asic_stage{YType::str, "asic_stage"}
+        ,
+    cards(this, {"card_idx"})
 {
 
-    yang_name = "planes"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "planes"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::~Planes()
@@ -20769,7 +21146,8 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::~Plane
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::has_data() const
 {
-    for (std::size_t index=0; index<cards.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cards.len(); index++)
     {
         if(cards[index]->has_data())
             return true;
@@ -20783,7 +21161,7 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::h
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::has_operation() const
 {
-    for (std::size_t index=0; index<cards.size(); index++)
+    for (std::size_t index=0; index<cards.len(); index++)
     {
         if(cards[index]->has_operation())
             return true;
@@ -20799,7 +21177,8 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::h
 std::string Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "planes" <<"[plane_idx='" <<plane_idx <<"']";
+    path_buffer << "planes";
+    ADD_KEY_TOKEN(plane_idx, "plane_idx");
     return path_buffer.str();
 }
 
@@ -20823,7 +21202,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Des
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards>();
         c->parent = this;
-        cards.push_back(c);
+        cards.append(c);
         return c;
     }
 
@@ -20835,7 +21214,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cards)
+    for (auto c : cards.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20914,9 +21293,11 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::h
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::Cards()
     :
     card_idx{YType::int32, "card_idx"}
+        ,
+    asics(this, {"asic_idx"})
 {
 
-    yang_name = "cards"; yang_parent_name = "planes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cards"; yang_parent_name = "planes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::~Cards()
@@ -20925,7 +21306,8 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards:
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::has_data() const
 {
-    for (std::size_t index=0; index<asics.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asics.len(); index++)
     {
         if(asics[index]->has_data())
             return true;
@@ -20935,7 +21317,7 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::C
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::has_operation() const
 {
-    for (std::size_t index=0; index<asics.size(); index++)
+    for (std::size_t index=0; index<asics.len(); index++)
     {
         if(asics[index]->has_operation())
             return true;
@@ -20947,7 +21329,8 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::C
 std::string Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cards" <<"[card_idx='" <<card_idx <<"']";
+    path_buffer << "cards";
+    ADD_KEY_TOKEN(card_idx, "card_idx");
     return path_buffer.str();
 }
 
@@ -20967,7 +21350,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Des
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::Asics>();
         c->parent = this;
-        asics.push_back(c);
+        asics.append(c);
         return c;
     }
 
@@ -20979,7 +21362,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbPla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asics)
+    for (auto c : asics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21028,7 +21411,7 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards:
     asic_stage_name{YType::str, "asic_stage_name"}
 {
 
-    yang_name = "asics"; yang_parent_name = "cards"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asics"; yang_parent_name = "cards"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::Asics::~Asics()
@@ -21037,6 +21420,7 @@ Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards:
 
 bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::Asics::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_idx.is_set
 	|| asic_rsa.is_set
 	|| reachability_mask.is_set
@@ -21065,7 +21449,8 @@ bool Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::C
 std::string Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::Asics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asics" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asics";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -21210,7 +21595,7 @@ Controller::Fabric::Oper::FsdbSrvr::FsdbSrvr()
 {
     fsdb_server->parent = this;
 
-    yang_name = "fsdb_srvr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fsdb_srvr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbSrvr::~FsdbSrvr()
@@ -21219,6 +21604,7 @@ Controller::Fabric::Oper::FsdbSrvr::~FsdbSrvr()
 
 bool Controller::Fabric::Oper::FsdbSrvr::has_data() const
 {
+    if (is_presence_container) return true;
     return (fsdb_server !=  nullptr && fsdb_server->has_data());
 }
 
@@ -21293,9 +21679,11 @@ bool Controller::Fabric::Oper::FsdbSrvr::has_leaf_or_child_of_name(const std::st
 }
 
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::FsdbServer()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "fsdb_server"; yang_parent_name = "fsdb_srvr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fsdb_server"; yang_parent_name = "fsdb_srvr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::~FsdbServer()
@@ -21304,7 +21692,8 @@ Controller::Fabric::Oper::FsdbSrvr::FsdbServer::~FsdbServer()
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -21314,7 +21703,7 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::has_data() const
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -21351,7 +21740,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbSrvr::FsdbServer::get_chil
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -21363,7 +21752,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbSrv
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21392,9 +21781,11 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::has_leaf_or_child_of_name(c
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "fsdb_server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "fsdb_server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::~Trace()
@@ -21403,7 +21794,8 @@ Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::~Trace()
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -21413,7 +21805,7 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::has_data() const
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -21432,7 +21824,8 @@ std::string Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::get_absolute_
 std::string Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -21452,7 +21845,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::g
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -21464,7 +21857,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbSrv
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21503,9 +21896,11 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::has_leaf_or_child_of
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::~Location()
@@ -21514,7 +21909,8 @@ Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::~Location()
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -21524,7 +21920,7 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::has_data()
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -21536,7 +21932,8 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::has_operat
 std::string Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -21556,7 +21953,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::L
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -21568,7 +21965,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbSrv
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21607,9 +22004,11 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::has_leaf_o
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::~AllOptions()
@@ -21618,7 +22017,8 @@ Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::~Al
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -21628,7 +22028,7 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -21640,7 +22040,8 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions
 std::string Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -21660,7 +22061,7 @@ std::shared_ptr<Entity> Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::L
     {
         auto c = std::make_shared<Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -21672,7 +22073,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Fabric::Oper::FsdbSrv
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21713,7 +22114,7 @@ Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::Tra
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -21722,6 +22123,7 @@ Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::Tra
 
 bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -21788,12 +22190,12 @@ bool Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions
 Controller::SfeOper::SfeOper()
     :
     sfe(std::make_shared<Controller::SfeOper::Sfe>())
-	,sfe_trace(std::make_shared<Controller::SfeOper::SfeTrace>())
+    , sfe_trace(std::make_shared<Controller::SfeOper::SfeTrace>())
 {
     sfe->parent = this;
     sfe_trace->parent = this;
 
-    yang_name = "sfe_oper"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sfe_oper"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::SfeOper::~SfeOper()
@@ -21802,6 +22204,7 @@ Controller::SfeOper::~SfeOper()
 
 bool Controller::SfeOper::has_data() const
 {
+    if (is_presence_container) return true;
     return (sfe !=  nullptr && sfe->has_data())
 	|| (sfe_trace !=  nullptr && sfe_trace->has_data());
 }
@@ -21894,12 +22297,12 @@ bool Controller::SfeOper::has_leaf_or_child_of_name(const std::string & name) co
 Controller::SfeOper::Sfe::Sfe()
     :
     driver(std::make_shared<Controller::SfeOper::Sfe::Driver>())
-	,statistics(std::make_shared<Controller::SfeOper::Sfe::Statistics>())
-	,link_info(std::make_shared<Controller::SfeOper::Sfe::LinkInfo>())
-	,diagshell(std::make_shared<Controller::SfeOper::Sfe::Diagshell>())
-	,register_(std::make_shared<Controller::SfeOper::Sfe::Register>())
-	,dump_file(std::make_shared<Controller::SfeOper::Sfe::DumpFile>())
-	,parse(std::make_shared<Controller::SfeOper::Sfe::Parse>())
+    , statistics(std::make_shared<Controller::SfeOper::Sfe::Statistics>())
+    , link_info(std::make_shared<Controller::SfeOper::Sfe::LinkInfo>())
+    , diagshell(std::make_shared<Controller::SfeOper::Sfe::Diagshell>())
+    , register_(std::make_shared<Controller::SfeOper::Sfe::Register>())
+    , dump_file(std::make_shared<Controller::SfeOper::Sfe::DumpFile>())
+    , parse(std::make_shared<Controller::SfeOper::Sfe::Parse>())
 {
     driver->parent = this;
     statistics->parent = this;
@@ -21909,7 +22312,7 @@ Controller::SfeOper::Sfe::Sfe()
     dump_file->parent = this;
     parse->parent = this;
 
-    yang_name = "sfe"; yang_parent_name = "sfe_oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sfe"; yang_parent_name = "sfe_oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::SfeOper::Sfe::~Sfe()
@@ -21918,6 +22321,7 @@ Controller::SfeOper::Sfe::~Sfe()
 
 bool Controller::SfeOper::Sfe::has_data() const
 {
+    if (is_presence_container) return true;
     return (driver !=  nullptr && driver->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (link_info !=  nullptr && link_info->has_data())
@@ -22088,9 +22492,11 @@ bool Controller::SfeOper::Sfe::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Controller::SfeOper::Sfe::Driver::Driver()
+    :
+    rack(this, {"rack_num"})
 {
 
-    yang_name = "driver"; yang_parent_name = "sfe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "driver"; yang_parent_name = "sfe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::SfeOper::Sfe::Driver::~Driver()
@@ -22099,7 +22505,8 @@ Controller::SfeOper::Sfe::Driver::~Driver()
 
 bool Controller::SfeOper::Sfe::Driver::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -22109,7 +22516,7 @@ bool Controller::SfeOper::Sfe::Driver::has_data() const
 
 bool Controller::SfeOper::Sfe::Driver::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -22146,7 +22553,7 @@ std::shared_ptr<Entity> Controller::SfeOper::Sfe::Driver::get_child_by_name(cons
     {
         auto c = std::make_shared<Controller::SfeOper::Sfe::Driver::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -22158,7 +22565,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Driver:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22188,9 +22595,11 @@ Controller::SfeOper::Sfe::Driver::Rack::Rack()
     :
     rack_num{YType::str, "rack_num"},
     description{YType::str, "description"}
+        ,
+    drvr_info(this, {"idx"})
 {
 
-    yang_name = "rack"; yang_parent_name = "driver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "driver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::SfeOper::Sfe::Driver::Rack::~Rack()
@@ -22199,7 +22608,8 @@ Controller::SfeOper::Sfe::Driver::Rack::~Rack()
 
 bool Controller::SfeOper::Sfe::Driver::Rack::has_data() const
 {
-    for (std::size_t index=0; index<drvr_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<drvr_info.len(); index++)
     {
         if(drvr_info[index]->has_data())
             return true;
@@ -22210,7 +22620,7 @@ bool Controller::SfeOper::Sfe::Driver::Rack::has_data() const
 
 bool Controller::SfeOper::Sfe::Driver::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<drvr_info.size(); index++)
+    for (std::size_t index=0; index<drvr_info.len(); index++)
     {
         if(drvr_info[index]->has_operation())
             return true;
@@ -22230,7 +22640,8 @@ std::string Controller::SfeOper::Sfe::Driver::Rack::get_absolute_path() const
 std::string Controller::SfeOper::Sfe::Driver::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack_num='" <<rack_num <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_num, "rack_num");
     return path_buffer.str();
 }
 
@@ -22251,7 +22662,7 @@ std::shared_ptr<Entity> Controller::SfeOper::Sfe::Driver::Rack::get_child_by_nam
     {
         auto c = std::make_shared<Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo>();
         c->parent = this;
-        drvr_info.push_back(c);
+        drvr_info.append(c);
         return c;
     }
 
@@ -22263,7 +22674,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Driver:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : drvr_info)
+    for (auto c : drvr_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22355,9 +22766,11 @@ Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::DrvrInfo()
     is_gaspp_registered{YType::boolean, "is_gaspp_registered"},
     is_cih_registered{YType::boolean, "is_cih_registered"},
     startup_time{YType::str, "startup_time"}
+        ,
+    asic_list(this, {"asic_idx"})
 {
 
-    yang_name = "drvr_info"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drvr_info"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::~DrvrInfo()
@@ -22366,7 +22779,8 @@ Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::~DrvrInfo()
 
 bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::has_data() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_data())
             return true;
@@ -22419,7 +22833,7 @@ bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::has_data() const
 
 bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::has_operation() const
 {
-    for (std::size_t index=0; index<asic_list.size(); index++)
+    for (std::size_t index=0; index<asic_list.len(); index++)
     {
         if(asic_list[index]->has_operation())
             return true;
@@ -22474,7 +22888,8 @@ bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::has_operation() const
 std::string Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "drvr_info" <<"[idx='" <<idx <<"']";
+    path_buffer << "drvr_info";
+    ADD_KEY_TOKEN(idx, "idx");
     return path_buffer.str();
 }
 
@@ -22537,7 +22952,7 @@ std::shared_ptr<Entity> Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::get_ch
     {
         auto c = std::make_shared<Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList>();
         c->parent = this;
-        asic_list.push_back(c);
+        asic_list.append(c);
         return c;
     }
 
@@ -22549,7 +22964,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Driver:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_list)
+    for (auto c : asic_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23023,6 +23438,7 @@ Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::AsicList()
     card_powered{YType::str, "card_powered"},
     hotplug_event{YType::uint32, "hotplug_event"},
     asic_type{YType::str, "asic_type"},
+    asic_cardname{YType::str, "asic_cardname"},
     admin_state{YType::str, "admin-state"},
     oper_state{YType::str, "oper_state"},
     fab_plane{YType::str, "fab_plane"},
@@ -23035,7 +23451,7 @@ Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::AsicList()
     num_hard_resets{YType::uint32, "num_hard_resets"}
 {
 
-    yang_name = "asic_list"; yang_parent_name = "drvr_info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_list"; yang_parent_name = "drvr_info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::~AsicList()
@@ -23044,12 +23460,14 @@ Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::~AsicList()
 
 bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_idx.is_set
 	|| asic_instance.is_set
 	|| card_present.is_set
 	|| card_powered.is_set
 	|| hotplug_event.is_set
 	|| asic_type.is_set
+	|| asic_cardname.is_set
 	|| admin_state.is_set
 	|| oper_state.is_set
 	|| fab_plane.is_set
@@ -23071,6 +23489,7 @@ bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::has_operation()
 	|| ydk::is_set(card_powered.yfilter)
 	|| ydk::is_set(hotplug_event.yfilter)
 	|| ydk::is_set(asic_type.yfilter)
+	|| ydk::is_set(asic_cardname.yfilter)
 	|| ydk::is_set(admin_state.yfilter)
 	|| ydk::is_set(oper_state.yfilter)
 	|| ydk::is_set(fab_plane.yfilter)
@@ -23086,7 +23505,8 @@ bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::has_operation()
 std::string Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic_list" <<"[asic_idx='" <<asic_idx <<"']";
+    path_buffer << "asic_list";
+    ADD_KEY_TOKEN(asic_idx, "asic_idx");
     return path_buffer.str();
 }
 
@@ -23100,6 +23520,7 @@ std::vector<std::pair<std::string, LeafData> > Controller::SfeOper::Sfe::Driver:
     if (card_powered.is_set || is_set(card_powered.yfilter)) leaf_name_data.push_back(card_powered.get_name_leafdata());
     if (hotplug_event.is_set || is_set(hotplug_event.yfilter)) leaf_name_data.push_back(hotplug_event.get_name_leafdata());
     if (asic_type.is_set || is_set(asic_type.yfilter)) leaf_name_data.push_back(asic_type.get_name_leafdata());
+    if (asic_cardname.is_set || is_set(asic_cardname.yfilter)) leaf_name_data.push_back(asic_cardname.get_name_leafdata());
     if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
     if (oper_state.is_set || is_set(oper_state.yfilter)) leaf_name_data.push_back(oper_state.get_name_leafdata());
     if (fab_plane.is_set || is_set(fab_plane.yfilter)) leaf_name_data.push_back(fab_plane.get_name_leafdata());
@@ -23164,6 +23585,12 @@ void Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::set_value(const
         asic_type = value;
         asic_type.value_namespace = name_space;
         asic_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asic_cardname")
+    {
+        asic_cardname = value;
+        asic_cardname.value_namespace = name_space;
+        asic_cardname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-state")
     {
@@ -23253,6 +23680,10 @@ void Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::set_filter(cons
     {
         asic_type.yfilter = yfilter;
     }
+    if(value_path == "asic_cardname")
+    {
+        asic_cardname.yfilter = yfilter;
+    }
     if(value_path == "admin-state")
     {
         admin_state.yfilter = yfilter;
@@ -23297,15 +23728,17 @@ void Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::set_filter(cons
 
 bool Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "asic_idx" || name == "asic_instance" || name == "card_present" || name == "card_powered" || name == "hotplug_event" || name == "asic_type" || name == "admin-state" || name == "oper_state" || name == "fab_plane" || name == "fab_group" || name == "fgid_download" || name == "asic_state" || name == "asic_disconnect_signal" || name == "last_init_cause" || name == "num_pon_resets" || name == "num_hard_resets")
+    if(name == "asic_idx" || name == "asic_instance" || name == "card_present" || name == "card_powered" || name == "hotplug_event" || name == "asic_type" || name == "asic_cardname" || name == "admin-state" || name == "oper_state" || name == "fab_plane" || name == "fab_group" || name == "fgid_download" || name == "asic_state" || name == "asic_disconnect_signal" || name == "last_init_cause" || name == "num_pon_resets" || name == "num_hard_resets")
         return true;
     return false;
 }
 
 Controller::SfeOper::Sfe::Statistics::Statistics()
+    :
+    location(this, {"loc_str"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "sfe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "sfe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::SfeOper::Sfe::Statistics::~Statistics()
@@ -23314,7 +23747,8 @@ Controller::SfeOper::Sfe::Statistics::~Statistics()
 
 bool Controller::SfeOper::Sfe::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -23324,7 +23758,7 @@ bool Controller::SfeOper::Sfe::Statistics::has_data() const
 
 bool Controller::SfeOper::Sfe::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -23361,7 +23795,7 @@ std::shared_ptr<Entity> Controller::SfeOper::Sfe::Statistics::get_child_by_name(
     {
         auto c = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -23373,7 +23807,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23403,12 +23837,11 @@ Controller::SfeOper::Sfe::Statistics::Location::Location()
     :
     loc_str{YType::str, "loc_str"},
     description{YType::str, "description"}
-    	,
-    asic(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic>())
+        ,
+    asic_types(this, {"asicname"})
 {
-    asic->parent = this;
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::SfeOper::Sfe::Statistics::Location::~Location()
@@ -23417,17 +23850,26 @@ Controller::SfeOper::Sfe::Statistics::Location::~Location()
 
 bool Controller::SfeOper::Sfe::Statistics::Location::has_data() const
 {
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_types.len(); index++)
+    {
+        if(asic_types[index]->has_data())
+            return true;
+    }
     return loc_str.is_set
-	|| description.is_set
-	|| (asic !=  nullptr && asic->has_data());
+	|| description.is_set;
 }
 
 bool Controller::SfeOper::Sfe::Statistics::Location::has_operation() const
 {
+    for (std::size_t index=0; index<asic_types.len(); index++)
+    {
+        if(asic_types[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(loc_str.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| (asic !=  nullptr && asic->has_operation());
+	|| ydk::is_set(description.yfilter);
 }
 
 std::string Controller::SfeOper::Sfe::Statistics::Location::get_absolute_path() const
@@ -23440,7 +23882,8 @@ std::string Controller::SfeOper::Sfe::Statistics::Location::get_absolute_path() 
 std::string Controller::SfeOper::Sfe::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[loc_str='" <<loc_str <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc_str, "loc_str");
     return path_buffer.str();
 }
 
@@ -23457,13 +23900,12 @@ std::vector<std::pair<std::string, LeafData> > Controller::SfeOper::Sfe::Statist
 
 std::shared_ptr<Entity> Controller::SfeOper::Sfe::Statistics::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "asic")
+    if(child_yang_name == "asic_types")
     {
-        if(asic == nullptr)
-        {
-            asic = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic>();
-        }
-        return asic;
+        auto c = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::AsicTypes>();
+        c->parent = this;
+        asic_types.append(c);
+        return c;
     }
 
     return nullptr;
@@ -23473,9 +23915,13 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Statist
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(asic != nullptr)
+    count = 0;
+    for (auto c : asic_types.entities())
     {
-        children["asic"] = asic;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -23511,319 +23957,84 @@ void Controller::SfeOper::Sfe::Statistics::Location::set_filter(const std::strin
 
 bool Controller::SfeOper::Sfe::Statistics::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "asic" || name == "loc_str" || name == "description")
+    if(name == "asic_types" || name == "loc_str" || name == "description")
         return true;
     return false;
 }
 
-Controller::SfeOper::Sfe::Statistics::Location::Asic::Asic()
+Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::AsicTypes()
     :
-    ccs(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS>())
-	,dch(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH>())
-	,dcl(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl>())
-	,dcma(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA>())
-	,dcmb(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB>())
-	,eci(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI>())
-	,fmac(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC>())
-	,gck(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK>())
-	,rtp(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP>())
-	,all(std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::All>())
+    asicname{YType::str, "asicname"}
+        ,
+    block(this, {"blockname"})
 {
-    ccs->parent = this;
-    dch->parent = this;
-    dcl->parent = this;
-    dcma->parent = this;
-    dcmb->parent = this;
-    eci->parent = this;
-    fmac->parent = this;
-    gck->parent = this;
-    rtp->parent = this;
-    all->parent = this;
 
-    yang_name = "asic"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic_types"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Controller::SfeOper::Sfe::Statistics::Location::Asic::~Asic()
+Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::~AsicTypes()
 {
 }
 
-bool Controller::SfeOper::Sfe::Statistics::Location::Asic::has_data() const
+bool Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::has_data() const
 {
-    return (ccs !=  nullptr && ccs->has_data())
-	|| (dch !=  nullptr && dch->has_data())
-	|| (dcl !=  nullptr && dcl->has_data())
-	|| (dcma !=  nullptr && dcma->has_data())
-	|| (dcmb !=  nullptr && dcmb->has_data())
-	|| (eci !=  nullptr && eci->has_data())
-	|| (fmac !=  nullptr && fmac->has_data())
-	|| (gck !=  nullptr && gck->has_data())
-	|| (rtp !=  nullptr && rtp->has_data())
-	|| (all !=  nullptr && all->has_data());
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block.len(); index++)
+    {
+        if(block[index]->has_data())
+            return true;
+    }
+    return asicname.is_set;
 }
 
-bool Controller::SfeOper::Sfe::Statistics::Location::Asic::has_operation() const
+bool Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::has_operation() const
 {
+    for (std::size_t index=0; index<block.len(); index++)
+    {
+        if(block[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
-	|| (ccs !=  nullptr && ccs->has_operation())
-	|| (dch !=  nullptr && dch->has_operation())
-	|| (dcl !=  nullptr && dcl->has_operation())
-	|| (dcma !=  nullptr && dcma->has_operation())
-	|| (dcmb !=  nullptr && dcmb->has_operation())
-	|| (eci !=  nullptr && eci->has_operation())
-	|| (fmac !=  nullptr && fmac->has_operation())
-	|| (gck !=  nullptr && gck->has_operation())
-	|| (rtp !=  nullptr && rtp->has_operation())
-	|| (all !=  nullptr && all->has_operation());
+	|| ydk::is_set(asicname.yfilter);
 }
 
-std::string Controller::SfeOper::Sfe::Statistics::Location::Asic::get_segment_path() const
+std::string Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic";
+    path_buffer << "asic_types";
+    ADD_KEY_TOKEN(asicname, "asicname");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Controller::SfeOper::Sfe::Statistics::Location::Asic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (asicname.is_set || is_set(asicname.yfilter)) leaf_name_data.push_back(asicname.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Controller::SfeOper::Sfe::Statistics::Location::Asic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "CCS")
+    if(child_yang_name == "block")
     {
-        if(ccs == nullptr)
-        {
-            ccs = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS>();
-        }
-        return ccs;
-    }
-
-    if(child_yang_name == "DCH")
-    {
-        if(dch == nullptr)
-        {
-            dch = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH>();
-        }
-        return dch;
-    }
-
-    if(child_yang_name == "DCl")
-    {
-        if(dcl == nullptr)
-        {
-            dcl = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl>();
-        }
-        return dcl;
-    }
-
-    if(child_yang_name == "DCMA")
-    {
-        if(dcma == nullptr)
-        {
-            dcma = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA>();
-        }
-        return dcma;
-    }
-
-    if(child_yang_name == "DCMB")
-    {
-        if(dcmb == nullptr)
-        {
-            dcmb = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB>();
-        }
-        return dcmb;
-    }
-
-    if(child_yang_name == "ECI")
-    {
-        if(eci == nullptr)
-        {
-            eci = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI>();
-        }
-        return eci;
-    }
-
-    if(child_yang_name == "FMAC")
-    {
-        if(fmac == nullptr)
-        {
-            fmac = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC>();
-        }
-        return fmac;
-    }
-
-    if(child_yang_name == "GCK")
-    {
-        if(gck == nullptr)
-        {
-            gck = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK>();
-        }
-        return gck;
-    }
-
-    if(child_yang_name == "RTP")
-    {
-        if(rtp == nullptr)
-        {
-            rtp = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP>();
-        }
-        return rtp;
-    }
-
-    if(child_yang_name == "all")
-    {
-        if(all == nullptr)
-        {
-            all = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::All>();
-        }
-        return all;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Statistics::Location::Asic::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(ccs != nullptr)
-    {
-        children["CCS"] = ccs;
-    }
-
-    if(dch != nullptr)
-    {
-        children["DCH"] = dch;
-    }
-
-    if(dcl != nullptr)
-    {
-        children["DCl"] = dcl;
-    }
-
-    if(dcma != nullptr)
-    {
-        children["DCMA"] = dcma;
-    }
-
-    if(dcmb != nullptr)
-    {
-        children["DCMB"] = dcmb;
-    }
-
-    if(eci != nullptr)
-    {
-        children["ECI"] = eci;
-    }
-
-    if(fmac != nullptr)
-    {
-        children["FMAC"] = fmac;
-    }
-
-    if(gck != nullptr)
-    {
-        children["GCK"] = gck;
-    }
-
-    if(rtp != nullptr)
-    {
-        children["RTP"] = rtp;
-    }
-
-    if(all != nullptr)
-    {
-        children["all"] = all;
-    }
-
-    return children;
-}
-
-void Controller::SfeOper::Sfe::Statistics::Location::Asic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Controller::SfeOper::Sfe::Statistics::Location::Asic::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Controller::SfeOper::Sfe::Statistics::Location::Asic::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "CCS" || name == "DCH" || name == "DCl" || name == "DCMA" || name == "DCMB" || name == "ECI" || name == "FMAC" || name == "GCK" || name == "RTP" || name == "all")
-        return true;
-    return false;
-}
-
-Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::CCS()
-{
-
-    yang_name = "CCS"; yang_parent_name = "asic"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::~CCS()
-{
-}
-
-bool Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::has_data() const
-{
-    for (std::size_t index=0; index<instance.size(); index++)
-    {
-        if(instance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::has_operation() const
-{
-    for (std::size_t index=0; index<instance.size(); index++)
-    {
-        if(instance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "CCS";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "instance")
-    {
-        auto c = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance>();
+        auto c = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block>();
         c->parent = this;
-        instance.push_back(c);
+        block.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : block.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23834,17 +24045,135 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Statist
     return children;
 }
 
-void Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asicname")
+    {
+        asicname = value;
+        asicname.value_namespace = name_space;
+        asicname.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asicname")
+    {
+        asicname.yfilter = yfilter;
+    }
+}
+
+bool Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "block" || name == "asicname")
+        return true;
+    return false;
+}
+
+Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::Block()
+    :
+    blockname{YType::str, "blockname"}
+        ,
+    instance(this, {"instance_id"})
+{
+
+    yang_name = "block"; yang_parent_name = "asic_types"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::~Block()
 {
 }
 
-void Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::set_filter(const std::string & value_path, YFilter yfilter)
+bool Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::has_data() const
 {
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
+    {
+        if(instance[index]->has_data())
+            return true;
+    }
+    return blockname.is_set;
 }
 
-bool Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::has_leaf_or_child_of_name(const std::string & name) const
+bool Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::has_operation() const
 {
-    if(name == "instance")
+    for (std::size_t index=0; index<instance.len(); index++)
+    {
+        if(instance[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(blockname.yfilter);
+}
+
+std::string Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "block";
+    ADD_KEY_TOKEN(blockname, "blockname");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (blockname.is_set || is_set(blockname.yfilter)) leaf_name_data.push_back(blockname.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "instance")
+    {
+        auto c = std::make_shared<Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::Instance>();
+        c->parent = this;
+        instance.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : instance.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "blockname")
+    {
+        blockname = value;
+        blockname.value_namespace = name_space;
+        blockname.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blockname")
+    {
+        blockname.yfilter = yfilter;
+    }
+}
+
+bool Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance" || name == "blockname")
         return true;
     return false;
 }

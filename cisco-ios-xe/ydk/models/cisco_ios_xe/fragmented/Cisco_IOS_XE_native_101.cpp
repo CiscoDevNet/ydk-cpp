@@ -13,357 +13,94 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::Minimum()
+Native::Interface::VirtualTemplate::Crypto::Ipsec::Ipsec()
     :
-    minimum_value{YType::uint8, "minimum-value"},
-    mandatory{YType::empty, "mandatory"}
+    df_bit{YType::enumeration, "df-bit"},
+    fragmentation{YType::enumeration, "fragmentation"}
 {
 
-    yang_name = "minimum"; yang_parent_name = "links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipsec"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::~Minimum()
+Native::Interface::VirtualTemplate::Crypto::Ipsec::~Ipsec()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::has_data() const
+bool Native::Interface::VirtualTemplate::Crypto::Ipsec::has_data() const
 {
-    return minimum_value.is_set
-	|| mandatory.is_set;
+    if (is_presence_container) return true;
+    return df_bit.is_set
+	|| fragmentation.is_set;
 }
 
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::has_operation() const
+bool Native::Interface::VirtualTemplate::Crypto::Ipsec::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(minimum_value.yfilter)
-	|| ydk::is_set(mandatory.yfilter);
+	|| ydk::is_set(df_bit.yfilter)
+	|| ydk::is_set(fragmentation.yfilter);
 }
 
-std::string Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Crypto::Ipsec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "minimum";
+    path_buffer << "ipsec";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Crypto::Ipsec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minimum_value.is_set || is_set(minimum_value.yfilter)) leaf_name_data.push_back(minimum_value.get_name_leafdata());
-    if (mandatory.is_set || is_set(mandatory.yfilter)) leaf_name_data.push_back(mandatory.get_name_leafdata());
+    if (df_bit.is_set || is_set(df_bit.yfilter)) leaf_name_data.push_back(df_bit.get_name_leafdata());
+    if (fragmentation.is_set || is_set(fragmentation.yfilter)) leaf_name_data.push_back(fragmentation.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Crypto::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Crypto::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Crypto::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "minimum-value")
+    if(value_path == "df-bit")
     {
-        minimum_value = value;
-        minimum_value.value_namespace = name_space;
-        minimum_value.value_namespace_prefix = name_space_prefix;
+        df_bit = value;
+        df_bit.value_namespace = name_space;
+        df_bit.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mandatory")
+    if(value_path == "fragmentation")
     {
-        mandatory = value;
-        mandatory.value_namespace = name_space;
-        mandatory.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minimum-value")
-    {
-        minimum_value.yfilter = yfilter;
-    }
-    if(value_path == "mandatory")
-    {
-        mandatory.yfilter = yfilter;
+        fragmentation = value;
+        fragmentation.value_namespace = name_space;
+        fragmentation.value_namespace_prefix = name_space_prefix;
     }
 }
 
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum::has_leaf_or_child_of_name(const std::string & name) const
+void Native::Interface::VirtualTemplate::Crypto::Ipsec::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(name == "minimum-value" || name == "mandatory")
-        return true;
-    return false;
-}
-
-Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::Endpoint()
-    :
-    string{YType::str, "string"}
-{
-
-    yang_name = "endpoint"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::~Endpoint()
-{
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::has_data() const
-{
-    return string.is_set;
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(string.yfilter);
-}
-
-std::string Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "endpoint";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "string")
+    if(value_path == "df-bit")
     {
-        string = value;
-        string.value_namespace = name_space;
-        string.value_namespace_prefix = name_space_prefix;
+        df_bit.yfilter = yfilter;
+    }
+    if(value_path == "fragmentation")
+    {
+        fragmentation.yfilter = yfilter;
     }
 }
 
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::set_filter(const std::string & value_path, YFilter yfilter)
+bool Native::Interface::VirtualTemplate::Crypto::Ipsec::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(value_path == "string")
-    {
-        string.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "string")
-        return true;
-    return false;
-}
-
-Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Fragment()
-    :
-    disable{YType::empty, "disable"}
-    	,
-    delay(std::make_shared<Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay>())
-{
-    delay->parent = this;
-
-    yang_name = "fragment"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::~Fragment()
-{
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::has_data() const
-{
-    return disable.is_set
-	|| (delay !=  nullptr && delay->has_data());
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| (delay !=  nullptr && delay->has_operation());
-}
-
-std::string Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fragment";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "delay")
-    {
-        if(delay == nullptr)
-        {
-            delay = std::make_shared<Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay>();
-        }
-        return delay;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(delay != nullptr)
-    {
-        children["delay"] = delay;
-    }
-
-    return children;
-}
-
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "delay" || name == "disable")
-        return true;
-    return false;
-}
-
-Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::Delay()
-    :
-    delay_value{YType::uint16, "delay-value"},
-    additional_delay_value{YType::uint16, "additional-delay-value"}
-{
-
-    yang_name = "delay"; yang_parent_name = "fragment"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::~Delay()
-{
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::has_data() const
-{
-    return delay_value.is_set
-	|| additional_delay_value.is_set;
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(delay_value.yfilter)
-	|| ydk::is_set(additional_delay_value.yfilter);
-}
-
-std::string Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delay";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (delay_value.is_set || is_set(delay_value.yfilter)) leaf_name_data.push_back(delay_value.get_name_leafdata());
-    if (additional_delay_value.is_set || is_set(additional_delay_value.yfilter)) leaf_name_data.push_back(additional_delay_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "delay-value")
-    {
-        delay_value = value;
-        delay_value.value_namespace = name_space;
-        delay_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "additional-delay-value")
-    {
-        additional_delay_value = value;
-        additional_delay_value.value_namespace = name_space;
-        additional_delay_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "delay-value")
-    {
-        delay_value.yfilter = yfilter;
-    }
-    if(value_path == "additional-delay-value")
-    {
-        additional_delay_value.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "delay-value" || name == "additional-delay-value")
+    if(name == "df-bit" || name == "fragmentation")
         return true;
     return false;
 }
@@ -373,7 +110,7 @@ Native::Interface::VirtualTemplate::Mab::Mab()
     eap{YType::empty, "eap"}
 {
 
-    yang_name = "mab"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mab"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualTemplate::Mab::~Mab()
@@ -382,6 +119,7 @@ Native::Interface::VirtualTemplate::Mab::~Mab()
 
 bool Native::Interface::VirtualTemplate::Mab::has_data() const
 {
+    if (is_presence_container) return true;
     return eap.is_set;
 }
 
@@ -445,128 +183,300 @@ bool Native::Interface::VirtualTemplate::Mab::has_leaf_or_child_of_name(const st
     return false;
 }
 
-Native::Interface::VirtualTemplate::Umbrella::Umbrella()
+Native::Interface::VirtualTemplate::Ntp::Ntp()
     :
-    out{YType::empty, "out"},
-    in{YType::str, "in"}
+    broadcast{YType::empty, "broadcast"}
+        ,
+    broadcast_option(std::make_shared<Native::Interface::VirtualTemplate::Ntp::BroadcastOption>())
 {
+    broadcast_option->parent = this;
 
-    yang_name = "umbrella"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ntp"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualTemplate::Umbrella::~Umbrella()
+Native::Interface::VirtualTemplate::Ntp::~Ntp()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Umbrella::has_data() const
+bool Native::Interface::VirtualTemplate::Ntp::has_data() const
 {
-    return out.is_set
-	|| in.is_set;
+    if (is_presence_container) return true;
+    return broadcast.is_set
+	|| (broadcast_option !=  nullptr && broadcast_option->has_data());
 }
 
-bool Native::Interface::VirtualTemplate::Umbrella::has_operation() const
+bool Native::Interface::VirtualTemplate::Ntp::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(out.yfilter)
-	|| ydk::is_set(in.yfilter);
+	|| ydk::is_set(broadcast.yfilter)
+	|| (broadcast_option !=  nullptr && broadcast_option->has_operation());
 }
 
-std::string Native::Interface::VirtualTemplate::Umbrella::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Ntp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-umbrella:umbrella";
+    path_buffer << "Cisco-IOS-XE-ntp:ntp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Umbrella::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ntp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (out.is_set || is_set(out.yfilter)) leaf_name_data.push_back(out.get_name_leafdata());
-    if (in.is_set || is_set(in.yfilter)) leaf_name_data.push_back(in.get_name_leafdata());
+    if (broadcast.is_set || is_set(broadcast.yfilter)) leaf_name_data.push_back(broadcast.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Umbrella::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "broadcast-option")
+    {
+        if(broadcast_option == nullptr)
+        {
+            broadcast_option = std::make_shared<Native::Interface::VirtualTemplate::Ntp::BroadcastOption>();
+        }
+        return broadcast_option;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ntp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(broadcast_option != nullptr)
+    {
+        children["broadcast-option"] = broadcast_option;
+    }
+
+    return children;
+}
+
+void Native::Interface::VirtualTemplate::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "broadcast")
+    {
+        broadcast = value;
+        broadcast.value_namespace = name_space;
+        broadcast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::VirtualTemplate::Ntp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast")
+    {
+        broadcast.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::VirtualTemplate::Ntp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast-option" || name == "broadcast")
+        return true;
+    return false;
+}
+
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::BroadcastOption()
+    :
+    broadcast(std::make_shared<Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast>())
+{
+    broadcast->parent = this;
+
+    yang_name = "broadcast-option"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::~BroadcastOption()
+{
+}
+
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::has_data() const
+{
+    if (is_presence_container) return true;
+    return (broadcast !=  nullptr && broadcast->has_data());
+}
+
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::has_operation() const
+{
+    return is_set(yfilter)
+	|| (broadcast !=  nullptr && broadcast->has_operation());
+}
+
+std::string Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "broadcast-option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "broadcast")
+    {
+        if(broadcast == nullptr)
+        {
+            broadcast = std::make_shared<Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast>();
+        }
+        return broadcast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(broadcast != nullptr)
+    {
+        children["broadcast"] = broadcast;
+    }
+
+    return children;
+}
+
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast")
+        return true;
+    return false;
+}
+
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::Broadcast()
+    :
+    client{YType::empty, "client"}
+{
+
+    yang_name = "broadcast"; yang_parent_name = "broadcast-option"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::~Broadcast()
+{
+}
+
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::has_data() const
+{
+    if (is_presence_container) return true;
+    return client.is_set;
+}
+
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(client.yfilter);
+}
+
+std::string Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "broadcast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (client.is_set || is_set(client.yfilter)) leaf_name_data.push_back(client.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Umbrella::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Umbrella::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "out")
+    if(value_path == "client")
     {
-        out = value;
-        out.value_namespace = name_space;
-        out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in")
-    {
-        in = value;
-        in.value_namespace = name_space;
-        in.value_namespace_prefix = name_space_prefix;
+        client = value;
+        client.value_namespace = name_space;
+        client.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::VirtualTemplate::Umbrella::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "out")
+    if(value_path == "client")
     {
-        out.yfilter = yfilter;
-    }
-    if(value_path == "in")
-    {
-        in.yfilter = yfilter;
+        client.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::VirtualTemplate::Umbrella::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "out" || name == "in")
+    if(name == "client")
         return true;
     return false;
 }
 
-Native::Interface::VirtualTemplate::Utd::Utd()
+Native::Interface::VirtualTemplate::Cdp::Cdp()
     :
-    enable{YType::empty, "enable"}
+    enable{YType::boolean, "enable"}
+        ,
+    tlv(std::make_shared<Native::Interface::VirtualTemplate::Cdp::Tlv>())
 {
+    tlv->parent = this;
 
-    yang_name = "utd"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cdp"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualTemplate::Utd::~Utd()
+Native::Interface::VirtualTemplate::Cdp::~Cdp()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Utd::has_data() const
+bool Native::Interface::VirtualTemplate::Cdp::has_data() const
 {
-    return enable.is_set;
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| (tlv !=  nullptr && tlv->has_data());
 }
 
-bool Native::Interface::VirtualTemplate::Utd::has_operation() const
+bool Native::Interface::VirtualTemplate::Cdp::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
+	|| ydk::is_set(enable.yfilter)
+	|| (tlv !=  nullptr && tlv->has_operation());
 }
 
-std::string Native::Interface::VirtualTemplate::Utd::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Cdp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-utd:utd";
+    path_buffer << "Cisco-IOS-XE-cdp:cdp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Utd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cdp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -576,19 +486,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplat
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "tlv")
+    {
+        if(tlv == nullptr)
+        {
+            tlv = std::make_shared<Native::Interface::VirtualTemplate::Cdp::Tlv>();
+        }
+        return tlv;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Utd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(tlv != nullptr)
+    {
+        children["tlv"] = tlv;
+    }
+
     return children;
 }
 
-void Native::Interface::VirtualTemplate::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Cdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -598,7 +522,7 @@ void Native::Interface::VirtualTemplate::Utd::set_value(const std::string & valu
     }
 }
 
-void Native::Interface::VirtualTemplate::Utd::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Cdp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -606,86 +530,211 @@ void Native::Interface::VirtualTemplate::Utd::set_filter(const std::string & val
     }
 }
 
-bool Native::Interface::VirtualTemplate::Utd::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Cdp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable")
+    if(name == "tlv" || name == "enable")
         return true;
     return false;
 }
 
-Native::Interface::VirtualTemplate::ZoneMember::ZoneMember()
+Native::Interface::VirtualTemplate::Cdp::Tlv::Tlv()
     :
-    security{YType::str, "security"}
+    server_location{YType::empty, "server-location"},
+    location{YType::empty, "location"}
+        ,
+    app(nullptr) // presence node
 {
 
-    yang_name = "zone-member"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv"; yang_parent_name = "cdp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualTemplate::ZoneMember::~ZoneMember()
+Native::Interface::VirtualTemplate::Cdp::Tlv::~Tlv()
 {
 }
 
-bool Native::Interface::VirtualTemplate::ZoneMember::has_data() const
+bool Native::Interface::VirtualTemplate::Cdp::Tlv::has_data() const
 {
-    return security.is_set;
+    if (is_presence_container) return true;
+    return server_location.is_set
+	|| location.is_set
+	|| (app !=  nullptr && app->has_data());
 }
 
-bool Native::Interface::VirtualTemplate::ZoneMember::has_operation() const
+bool Native::Interface::VirtualTemplate::Cdp::Tlv::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(security.yfilter);
+	|| ydk::is_set(server_location.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| (app !=  nullptr && app->has_operation());
 }
 
-std::string Native::Interface::VirtualTemplate::ZoneMember::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Cdp::Tlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-zone:zone-member";
+    path_buffer << "tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::ZoneMember::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cdp::Tlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (security.is_set || is_set(security.yfilter)) leaf_name_data.push_back(security.get_name_leafdata());
+    if (server_location.is_set || is_set(server_location.yfilter)) leaf_name_data.push_back(server_location.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualTemplate::ZoneMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cdp::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "app")
+    {
+        if(app == nullptr)
+        {
+            app = std::make_shared<Native::Interface::VirtualTemplate::Cdp::Tlv::App>();
+        }
+        return app;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cdp::Tlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(app != nullptr)
+    {
+        children["app"] = app;
+    }
+
+    return children;
+}
+
+void Native::Interface::VirtualTemplate::Cdp::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "server-location")
+    {
+        server_location = value;
+        server_location.value_namespace = name_space;
+        server_location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::VirtualTemplate::Cdp::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "server-location")
+    {
+        server_location.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::VirtualTemplate::Cdp::Tlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "app" || name == "server-location" || name == "location")
+        return true;
+    return false;
+}
+
+Native::Interface::VirtualTemplate::Cdp::Tlv::App::App()
+    :
+    tlvtype{YType::uint16, "tlvtype"},
+    value_{YType::str, "value"}
+{
+
+    yang_name = "app"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::VirtualTemplate::Cdp::Tlv::App::~App()
+{
+}
+
+bool Native::Interface::VirtualTemplate::Cdp::Tlv::App::has_data() const
+{
+    if (is_presence_container) return true;
+    return tlvtype.is_set
+	|| value_.is_set;
+}
+
+bool Native::Interface::VirtualTemplate::Cdp::Tlv::App::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tlvtype.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::VirtualTemplate::Cdp::Tlv::App::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "app";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cdp::Tlv::App::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tlvtype.is_set || is_set(tlvtype.yfilter)) leaf_name_data.push_back(tlvtype.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Interface::VirtualTemplate::Cdp::Tlv::App::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::ZoneMember::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualTemplate::Cdp::Tlv::App::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::VirtualTemplate::ZoneMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Cdp::Tlv::App::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "security")
+    if(value_path == "tlvtype")
     {
-        security = value;
-        security.value_namespace = name_space;
-        security.value_namespace_prefix = name_space_prefix;
+        tlvtype = value;
+        tlvtype.value_namespace = name_space;
+        tlvtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::VirtualTemplate::ZoneMember::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Cdp::Tlv::App::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "security")
+    if(value_path == "tlvtype")
     {
-        security.yfilter = yfilter;
+        tlvtype.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::VirtualTemplate::ZoneMember::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Cdp::Tlv::App::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "security")
+    if(name == "tlvtype" || name == "value")
         return true;
     return false;
 }
@@ -705,57 +754,58 @@ Native::Interface::VirtualPortGroup::VirtualPortGroup()
     service_insertion{YType::enumeration, "service-insertion"},
     channel_protocol{YType::enumeration, "Cisco-IOS-XE-ethernet:channel-protocol"},
     duplex{YType::enumeration, "Cisco-IOS-XE-ethernet:duplex"}
-    	,
+        ,
     switchport_conf(std::make_shared<Native::Interface::VirtualPortGroup::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::VirtualPortGroup::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::VirtualPortGroup::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::VirtualPortGroup::Arp>())
-	,backup(std::make_shared<Native::Interface::VirtualPortGroup::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::VirtualPortGroup::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::VirtualPortGroup::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::VirtualPortGroup::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::VirtualPortGroup::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::VirtualPortGroup::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::VirtualPortGroup::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::VirtualPortGroup::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::VirtualPortGroup::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::VirtualPortGroup::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::VirtualPortGroup::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::VirtualPortGroup::Dampening>())
-	,domain(std::make_shared<Native::Interface::VirtualPortGroup::Domain>())
-	,mpls(std::make_shared<Native::Interface::VirtualPortGroup::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::VirtualPortGroup::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::VirtualPortGroup::Vrf>())
-	,ip(std::make_shared<Native::Interface::VirtualPortGroup::Ip>())
-	,ipv6(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6>())
-	,logging(std::make_shared<Native::Interface::VirtualPortGroup::Logging>())
-	,mdix(std::make_shared<Native::Interface::VirtualPortGroup::Mdix>())
-	,mop(std::make_shared<Native::Interface::VirtualPortGroup::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::VirtualPortGroup::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::VirtualPortGroup::Standby>())
-	,access_session(std::make_shared<Native::Interface::VirtualPortGroup::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::VirtualPortGroup::StormControl>())
-	,trust(std::make_shared<Native::Interface::VirtualPortGroup::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::VirtualPortGroup::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::VirtualPortGroup::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::VirtualPortGroup::Peer>())
-	,pm_path(std::make_shared<Native::Interface::VirtualPortGroup::PmPath>())
-	,carrier_delay(std::make_shared<Native::Interface::VirtualPortGroup::CarrierDelay>())
-	,channel_group(std::make_shared<Native::Interface::VirtualPortGroup::ChannelGroup>())
-	,ethernet(std::make_shared<Native::Interface::VirtualPortGroup::Ethernet>())
-	,negotiation(std::make_shared<Native::Interface::VirtualPortGroup::Negotiation>())
-	,eapol(std::make_shared<Native::Interface::VirtualPortGroup::Eapol>())
-	,synchronous(std::make_shared<Native::Interface::VirtualPortGroup::Synchronous>())
-	,speed(std::make_shared<Native::Interface::VirtualPortGroup::Speed>())
-	,plim(std::make_shared<Native::Interface::VirtualPortGroup::Plim>())
-	,pppoe(std::make_shared<Native::Interface::VirtualPortGroup::Pppoe>())
-	,service(std::make_shared<Native::Interface::VirtualPortGroup::Service>())
-	,lacp(std::make_shared<Native::Interface::VirtualPortGroup::Lacp>())
-	,snmp(std::make_shared<Native::Interface::VirtualPortGroup::Snmp>())
-	,cts(std::make_shared<Native::Interface::VirtualPortGroup::Cts>())
-	,service_policy(std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>())
-	,mab(nullptr) // presence node
+    , switchport(std::make_shared<Native::Interface::VirtualPortGroup::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::VirtualPortGroup::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::VirtualPortGroup::Arp>())
+    , backup(std::make_shared<Native::Interface::VirtualPortGroup::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::VirtualPortGroup::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::VirtualPortGroup::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::VirtualPortGroup::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::VirtualPortGroup::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::VirtualPortGroup::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::VirtualPortGroup::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::VirtualPortGroup::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::VirtualPortGroup::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::VirtualPortGroup::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::VirtualPortGroup::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::VirtualPortGroup::Dampening>())
+    , domain(std::make_shared<Native::Interface::VirtualPortGroup::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::VirtualPortGroup::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::VirtualPortGroup::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::VirtualPortGroup::Vrf>())
+    , ip(std::make_shared<Native::Interface::VirtualPortGroup::Ip>())
+    , ipv6(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6>())
+    , logging(std::make_shared<Native::Interface::VirtualPortGroup::Logging>())
+    , mdix(std::make_shared<Native::Interface::VirtualPortGroup::Mdix>())
+    , mop(std::make_shared<Native::Interface::VirtualPortGroup::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::VirtualPortGroup::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::VirtualPortGroup::Standby>())
+    , access_session(std::make_shared<Native::Interface::VirtualPortGroup::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::VirtualPortGroup::StormControl>())
+    , trust(std::make_shared<Native::Interface::VirtualPortGroup::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::VirtualPortGroup::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::VirtualPortGroup::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::VirtualPortGroup::Peer>())
+    , pm_path(std::make_shared<Native::Interface::VirtualPortGroup::PmPath>())
+    , service_policy(std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>())
+    , cts(std::make_shared<Native::Interface::VirtualPortGroup::Cts>())
+    , snmp(std::make_shared<Native::Interface::VirtualPortGroup::Snmp>())
+    , carrier_delay(std::make_shared<Native::Interface::VirtualPortGroup::CarrierDelay>())
+    , channel_group(std::make_shared<Native::Interface::VirtualPortGroup::ChannelGroup>())
+    , ethernet(std::make_shared<Native::Interface::VirtualPortGroup::Ethernet>())
+    , negotiation(std::make_shared<Native::Interface::VirtualPortGroup::Negotiation>())
+    , eapol(std::make_shared<Native::Interface::VirtualPortGroup::Eapol>())
+    , synchronous(std::make_shared<Native::Interface::VirtualPortGroup::Synchronous>())
+    , speed(std::make_shared<Native::Interface::VirtualPortGroup::Speed>())
+    , plim(std::make_shared<Native::Interface::VirtualPortGroup::Plim>())
+    , pppoe(std::make_shared<Native::Interface::VirtualPortGroup::Pppoe>())
+    , service(std::make_shared<Native::Interface::VirtualPortGroup::Service>())
+    , lacp(std::make_shared<Native::Interface::VirtualPortGroup::Lacp>())
+    , mab(nullptr) // presence node
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -791,6 +841,9 @@ Native::Interface::VirtualPortGroup::VirtualPortGroup()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
+    service_policy->parent = this;
+    cts->parent = this;
+    snmp->parent = this;
     carrier_delay->parent = this;
     channel_group->parent = this;
     ethernet->parent = this;
@@ -802,11 +855,8 @@ Native::Interface::VirtualPortGroup::VirtualPortGroup()
     pppoe->parent = this;
     service->parent = this;
     lacp->parent = this;
-    snmp->parent = this;
-    cts->parent = this;
-    service_policy->parent = this;
 
-    yang_name = "VirtualPortGroup"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "VirtualPortGroup"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::VirtualPortGroup::~VirtualPortGroup()
@@ -815,7 +865,8 @@ Native::Interface::VirtualPortGroup::~VirtualPortGroup()
 
 bool Native::Interface::VirtualPortGroup::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
@@ -868,6 +919,9 @@ bool Native::Interface::VirtualPortGroup::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (snmp !=  nullptr && snmp->has_data())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_data())
 	|| (channel_group !=  nullptr && channel_group->has_data())
 	|| (ethernet !=  nullptr && ethernet->has_data())
@@ -879,15 +933,12 @@ bool Native::Interface::VirtualPortGroup::has_data() const
 	|| (pppoe !=  nullptr && pppoe->has_data())
 	|| (service !=  nullptr && service->has_data())
 	|| (lacp !=  nullptr && lacp->has_data())
-	|| (snmp !=  nullptr && snmp->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (mab !=  nullptr && mab->has_data());
 }
 
 bool Native::Interface::VirtualPortGroup::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
@@ -941,6 +992,9 @@ bool Native::Interface::VirtualPortGroup::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (snmp !=  nullptr && snmp->has_operation())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_operation())
 	|| (channel_group !=  nullptr && channel_group->has_operation())
 	|| (ethernet !=  nullptr && ethernet->has_operation())
@@ -952,9 +1006,6 @@ bool Native::Interface::VirtualPortGroup::has_operation() const
 	|| (pppoe !=  nullptr && pppoe->has_operation())
 	|| (service !=  nullptr && service->has_operation())
 	|| (lacp !=  nullptr && lacp->has_operation())
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (mab !=  nullptr && mab->has_operation());
 }
 
@@ -968,7 +1019,8 @@ std::string Native::Interface::VirtualPortGroup::get_absolute_path() const
 std::string Native::Interface::VirtualPortGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "VirtualPortGroup" <<"[name='" <<name <<"']";
+    path_buffer << "VirtualPortGroup";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1063,7 +1115,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::get_child_by_name(c
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::VirtualPortGroup::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::VirtualPortGroup::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -1162,7 +1214,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -1319,6 +1371,33 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::get_child_by_name(c
         return pm_path;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::VirtualPortGroup::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
+    {
+        if(snmp == nullptr)
+        {
+            snmp = std::make_shared<Native::Interface::VirtualPortGroup::Snmp>();
+        }
+        return snmp;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-ethernet:carrier-delay")
     {
         if(carrier_delay == nullptr)
@@ -1416,33 +1495,6 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::get_child_by_name(c
             lacp = std::make_shared<Native::Interface::VirtualPortGroup::Lacp>();
         }
         return lacp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
-    {
-        if(snmp == nullptr)
-        {
-            snmp = std::make_shared<Native::Interface::VirtualPortGroup::Snmp>();
-        }
-        return snmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::VirtualPortGroup::Cts>();
-        }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>();
-        }
-        return service_policy;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-sanet:mab")
@@ -1552,7 +1604,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1645,6 +1697,21 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
         children["pm-path"] = pm_path;
     }
 
+    if(service_policy != nullptr)
+    {
+        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
+    if(cts != nullptr)
+    {
+        children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(snmp != nullptr)
+    {
+        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+    }
+
     if(carrier_delay != nullptr)
     {
         children["Cisco-IOS-XE-ethernet:carrier-delay"] = carrier_delay;
@@ -1698,21 +1765,6 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     if(lacp != nullptr)
     {
         children["Cisco-IOS-XE-ethernet:lacp"] = lacp;
-    }
-
-    if(snmp != nullptr)
-    {
-        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
-    }
-
-    if(cts != nullptr)
-    {
-        children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(service_policy != nullptr)
-    {
-        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
     if(mab != nullptr)
@@ -1863,7 +1915,7 @@ void Native::Interface::VirtualPortGroup::set_filter(const std::string & value_p
 
 bool Native::Interface::VirtualPortGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "snmp" || name == "cts" || name == "service-policy" || name == "mab" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "service-policy" || name == "cts" || name == "snmp" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "mab" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex")
         return true;
     return false;
 }
@@ -1873,7 +1925,7 @@ Native::Interface::VirtualPortGroup::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::SwitchportConf::~SwitchportConf()
@@ -1882,6 +1934,7 @@ Native::Interface::VirtualPortGroup::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::VirtualPortGroup::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -1948,7 +2001,7 @@ bool Native::Interface::VirtualPortGroup::SwitchportConf::has_leaf_or_child_of_n
 Native::Interface::VirtualPortGroup::Switchport::Switchport()
 {
 
-    yang_name = "switchport"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Switchport::~Switchport()
@@ -1957,6 +2010,7 @@ Native::Interface::VirtualPortGroup::Switchport::~Switchport()
 
 bool Native::Interface::VirtualPortGroup::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2012,7 +2066,7 @@ Native::Interface::VirtualPortGroup::StackwiseVirtual::StackwiseVirtual()
     dual_active_detection{YType::empty, "dual-active-detection"}
 {
 
-    yang_name = "stackwise-virtual"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stackwise-virtual"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::StackwiseVirtual::~StackwiseVirtual()
@@ -2021,6 +2075,7 @@ Native::Interface::VirtualPortGroup::StackwiseVirtual::~StackwiseVirtual()
 
 bool Native::Interface::VirtualPortGroup::StackwiseVirtual::has_data() const
 {
+    if (is_presence_container) return true;
     return link.is_set
 	|| dual_active_detection.is_set;
 }
@@ -2102,7 +2157,7 @@ Native::Interface::VirtualPortGroup::Arp::Arp()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "arp"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Arp::~Arp()
@@ -2111,6 +2166,7 @@ Native::Interface::VirtualPortGroup::Arp::~Arp()
 
 bool Native::Interface::VirtualPortGroup::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -2177,14 +2233,14 @@ bool Native::Interface::VirtualPortGroup::Arp::has_leaf_or_child_of_name(const s
 Native::Interface::VirtualPortGroup::Backup::Backup()
     :
     delay(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Delay>())
-	,interface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_>())
-	,load(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Load>())
+    , interface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_>())
+    , load(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Load>())
 {
     delay->parent = this;
     interface->parent = this;
     load->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::~Backup()
@@ -2193,6 +2249,7 @@ Native::Interface::VirtualPortGroup::Backup::~Backup()
 
 bool Native::Interface::VirtualPortGroup::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data())
 	|| (interface !=  nullptr && interface->has_data())
 	|| (load !=  nullptr && load->has_data());
@@ -2297,7 +2354,7 @@ Native::Interface::VirtualPortGroup::Backup::Delay::Delay()
     secondary_disable{YType::str, "secondary-disable"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::Delay::~Delay()
@@ -2306,6 +2363,7 @@ Native::Interface::VirtualPortGroup::Backup::Delay::~Delay()
 
 bool Native::Interface::VirtualPortGroup::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return failure.is_set
 	|| secondary_disable.is_set;
 }
@@ -2416,18 +2474,18 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::Interface_()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::VirtualPortGroup::Backup::Interface_::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::Interface_::~Interface_()
@@ -2436,6 +2494,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::~Interface_()
 
 bool Native::Interface::VirtualPortGroup::Backup::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -2971,7 +3030,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::ATMSubinterface::ATMSub
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::Interface_::ATMSubinterface::~ATMSubinterface()
@@ -2980,6 +3039,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::ATMSubinterface::~ATMSu
 
 bool Native::Interface::VirtualPortGroup::Backup::Interface_::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -3048,7 +3108,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::ATMACRsubinterface::ATM
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::Interface_::ATMACRsubinterface::~ATMACRsubinterface()
@@ -3057,6 +3117,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::ATMACRsubinterface::~AT
 
 bool Native::Interface::VirtualPortGroup::Backup::Interface_::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -3125,7 +3186,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::LISPSubinterface::LISPS
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::Interface_::LISPSubinterface::~LISPSubinterface()
@@ -3134,6 +3195,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::LISPSubinterface::~LISP
 
 bool Native::Interface::VirtualPortGroup::Backup::Interface_::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -3202,7 +3264,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::PortChannelSubinterface
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::Interface_::PortChannelSubinterface::~PortChannelSubinterface()
@@ -3211,6 +3273,7 @@ Native::Interface::VirtualPortGroup::Backup::Interface_::PortChannelSubinterface
 
 bool Native::Interface::VirtualPortGroup::Backup::Interface_::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -3280,7 +3343,7 @@ Native::Interface::VirtualPortGroup::Backup::Load::Load()
     kickout{YType::str, "kickout"}
 {
 
-    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Backup::Load::~Load()
@@ -3289,6 +3352,7 @@ Native::Interface::VirtualPortGroup::Backup::Load::~Load()
 
 bool Native::Interface::VirtualPortGroup::Backup::Load::has_data() const
 {
+    if (is_presence_container) return true;
     return kickin.is_set
 	|| kickout.is_set;
 }
@@ -3371,7 +3435,7 @@ Native::Interface::VirtualPortGroup::Cemoudp::Cemoudp()
 {
     reserve->parent = this;
 
-    yang_name = "cemoudp"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cemoudp"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Cemoudp::~Cemoudp()
@@ -3380,6 +3444,7 @@ Native::Interface::VirtualPortGroup::Cemoudp::~Cemoudp()
 
 bool Native::Interface::VirtualPortGroup::Cemoudp::has_data() const
 {
+    if (is_presence_container) return true;
     return (reserve !=  nullptr && reserve->has_data());
 }
 
@@ -3451,7 +3516,7 @@ Native::Interface::VirtualPortGroup::Cemoudp::Reserve::Reserve()
     acr{YType::uint8, "acr"}
 {
 
-    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Cemoudp::Reserve::~Reserve()
@@ -3460,6 +3525,7 @@ Native::Interface::VirtualPortGroup::Cemoudp::Reserve::~Reserve()
 
 bool Native::Interface::VirtualPortGroup::Cemoudp::Reserve::has_data() const
 {
+    if (is_presence_container) return true;
     return acr.is_set;
 }
 
@@ -3526,12 +3592,12 @@ bool Native::Interface::VirtualPortGroup::Cemoudp::Reserve::has_leaf_or_child_of
 Native::Interface::VirtualPortGroup::CwsTunnel::CwsTunnel()
     :
     in{YType::empty, "in"}
-    	,
+        ,
     out(std::make_shared<Native::Interface::VirtualPortGroup::CwsTunnel::Out>())
 {
     out->parent = this;
 
-    yang_name = "cws-tunnel"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cws-tunnel"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::CwsTunnel::~CwsTunnel()
@@ -3540,6 +3606,7 @@ Native::Interface::VirtualPortGroup::CwsTunnel::~CwsTunnel()
 
 bool Native::Interface::VirtualPortGroup::CwsTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return in.is_set
 	|| (out !=  nullptr && out->has_data());
 }
@@ -3624,7 +3691,7 @@ Native::Interface::VirtualPortGroup::CwsTunnel::Out::Out()
     tunnel_number{YType::uint16, "tunnel-number"}
 {
 
-    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::CwsTunnel::Out::~Out()
@@ -3633,6 +3700,7 @@ Native::Interface::VirtualPortGroup::CwsTunnel::Out::~Out()
 
 bool Native::Interface::VirtualPortGroup::CwsTunnel::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_number.is_set;
 }
 
@@ -3696,27 +3764,28 @@ bool Native::Interface::VirtualPortGroup::CwsTunnel::Out::has_leaf_or_child_of_n
     return false;
 }
 
-Native::Interface::VirtualPortGroup::L2ProtocolTunnel::L2ProtocolTunnel()
+Native::Interface::VirtualPortGroup::L2protocolTunnel::L2protocolTunnel()
     :
     cdp{YType::empty, "cdp"},
     stp{YType::empty, "stp"},
     vtp{YType::empty, "vtp"}
-    	,
-    drop_threshold(std::make_shared<Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold>())
-	,shutdown_threshold(std::make_shared<Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold>())
+        ,
+    drop_threshold(std::make_shared<Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold>())
+    , shutdown_threshold(std::make_shared<Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold>())
 {
     drop_threshold->parent = this;
     shutdown_threshold->parent = this;
 
-    yang_name = "l2protocol-tunnel"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol-tunnel"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::VirtualPortGroup::L2ProtocolTunnel::~L2ProtocolTunnel()
+Native::Interface::VirtualPortGroup::L2protocolTunnel::~L2protocolTunnel()
 {
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::has_data() const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set
@@ -3724,7 +3793,7 @@ bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::has_data() const
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_data());
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::has_operation() const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdp.yfilter)
@@ -3734,14 +3803,14 @@ bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::has_operation() cons
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_operation());
 }
 
-std::string Native::Interface::VirtualPortGroup::L2ProtocolTunnel::get_segment_path() const
+std::string Native::Interface::VirtualPortGroup::L2protocolTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGroup::L2ProtocolTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGroup::L2protocolTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3753,13 +3822,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGro
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2protocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "drop-threshold")
     {
         if(drop_threshold == nullptr)
         {
-            drop_threshold = std::make_shared<Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold>();
+            drop_threshold = std::make_shared<Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold>();
         }
         return drop_threshold;
     }
@@ -3768,7 +3837,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::g
     {
         if(shutdown_threshold == nullptr)
         {
-            shutdown_threshold = std::make_shared<Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold>();
+            shutdown_threshold = std::make_shared<Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold>();
         }
         return shutdown_threshold;
     }
@@ -3776,7 +3845,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::L2protocolTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3793,7 +3862,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     return children;
 }
 
-void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualPortGroup::L2protocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdp")
     {
@@ -3815,7 +3884,7 @@ void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::set_value(const std:
     }
 }
 
-void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualPortGroup::L2protocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdp")
     {
@@ -3831,14 +3900,14 @@ void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::set_filter(const std
     }
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "drop-threshold" || name == "shutdown-threshold" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::DropThreshold()
+Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::DropThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -3846,22 +3915,23 @@ Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::DropThresh
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::~DropThreshold()
+Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::~DropThreshold()
 {
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::has_data() const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::has_operation() const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -3870,14 +3940,14 @@ bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::has_o
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::get_segment_path() const
+std::string Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3890,19 +3960,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGro
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -3930,7 +4000,7 @@ void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::set_v
     }
 }
 
-void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -3950,14 +4020,14 @@ void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::set_f
     }
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::ShutdownThreshold()
+Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::ShutdownThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -3965,22 +4035,23 @@ Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::Shutdo
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::~ShutdownThreshold()
+Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::~ShutdownThreshold()
 {
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::has_data() const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::has_operation() const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -3989,14 +4060,14 @@ bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::h
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::get_segment_path() const
+std::string Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4009,19 +4080,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualPortGro
 
 }
 
-std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -4049,7 +4120,7 @@ void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::s
     }
 }
 
-void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -4069,7 +4140,7 @@ void Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::s
     }
 }
 
-bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
@@ -4079,15 +4150,15 @@ bool Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold::h
 Native::Interface::VirtualPortGroup::Encapsulation::Encapsulation()
     :
     dot1q(std::make_shared<Native::Interface::VirtualPortGroup::Encapsulation::Dot1Q>())
-	,isl(std::make_shared<Native::Interface::VirtualPortGroup::Encapsulation::Isl>())
-	,ppp(nullptr) // presence node
-	,slip(nullptr) // presence node
-	,frame_relay(nullptr) // presence node
+    , isl(std::make_shared<Native::Interface::VirtualPortGroup::Encapsulation::Isl>())
+    , ppp(nullptr) // presence node
+    , slip(nullptr) // presence node
+    , frame_relay(nullptr) // presence node
 {
     dot1q->parent = this;
     isl->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Encapsulation::~Encapsulation()
@@ -4096,6 +4167,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::~Encapsulation()
 
 bool Native::Interface::VirtualPortGroup::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1q !=  nullptr && dot1q->has_data())
 	|| (isl !=  nullptr && isl->has_data())
 	|| (ppp !=  nullptr && ppp->has_data())
@@ -4232,7 +4304,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::Dot1Q::Dot1Q()
     native{YType::empty, "native"}
 {
 
-    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Encapsulation::Dot1Q::~Dot1Q()
@@ -4241,6 +4313,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::Dot1Q::~Dot1Q()
 
 bool Native::Interface::VirtualPortGroup::Encapsulation::Dot1Q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| native.is_set;
 }
@@ -4322,7 +4395,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::Isl::Isl()
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Encapsulation::Isl::~Isl()
@@ -4331,6 +4404,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::Isl::~Isl()
 
 bool Native::Interface::VirtualPortGroup::Encapsulation::Isl::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -4397,7 +4471,7 @@ bool Native::Interface::VirtualPortGroup::Encapsulation::Isl::has_leaf_or_child_
 Native::Interface::VirtualPortGroup::Encapsulation::Ppp::Ppp()
 {
 
-    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Encapsulation::Ppp::~Ppp()
@@ -4406,6 +4480,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::Ppp::~Ppp()
 
 bool Native::Interface::VirtualPortGroup::Encapsulation::Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4458,7 +4533,7 @@ bool Native::Interface::VirtualPortGroup::Encapsulation::Ppp::has_leaf_or_child_
 Native::Interface::VirtualPortGroup::Encapsulation::Slip::Slip()
 {
 
-    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Encapsulation::Slip::~Slip()
@@ -4467,6 +4542,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::Slip::~Slip()
 
 bool Native::Interface::VirtualPortGroup::Encapsulation::Slip::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4521,7 +4597,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::FrameRelay::FrameRelay()
     ietf{YType::empty, "ietf"}
 {
 
-    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Encapsulation::FrameRelay::~FrameRelay()
@@ -4530,6 +4606,7 @@ Native::Interface::VirtualPortGroup::Encapsulation::FrameRelay::~FrameRelay()
 
 bool Native::Interface::VirtualPortGroup::Encapsulation::FrameRelay::has_data() const
 {
+    if (is_presence_container) return true;
     return ietf.is_set;
 }
 
@@ -4598,7 +4675,7 @@ Native::Interface::VirtualPortGroup::FairQueueConf::FairQueueConf()
     fair_queue{YType::boolean, "fair-queue"}
 {
 
-    yang_name = "fair-queue-conf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue-conf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::FairQueueConf::~FairQueueConf()
@@ -4607,6 +4684,7 @@ Native::Interface::VirtualPortGroup::FairQueueConf::~FairQueueConf()
 
 bool Native::Interface::VirtualPortGroup::FairQueueConf::has_data() const
 {
+    if (is_presence_container) return true;
     return fair_queue.is_set;
 }
 
@@ -4675,7 +4753,7 @@ Native::Interface::VirtualPortGroup::FairQueue::FairQueue()
     incomplete{YType::empty, "incomplete"}
 {
 
-    yang_name = "fair-queue"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::FairQueue::~FairQueue()
@@ -4684,6 +4762,7 @@ Native::Interface::VirtualPortGroup::FairQueue::~FairQueue()
 
 bool Native::Interface::VirtualPortGroup::FairQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete.is_set;
 }
 
@@ -4753,7 +4832,7 @@ Native::Interface::VirtualPortGroup::Flowcontrol::Flowcontrol()
     send{YType::enumeration, "send"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Flowcontrol::~Flowcontrol()
@@ -4762,6 +4841,7 @@ Native::Interface::VirtualPortGroup::Flowcontrol::~Flowcontrol()
 
 bool Native::Interface::VirtualPortGroup::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| send.is_set;
 }
@@ -4841,7 +4921,7 @@ bool Native::Interface::VirtualPortGroup::Flowcontrol::has_leaf_or_child_of_name
 Native::Interface::VirtualPortGroup::Isis::Isis()
 {
 
-    yang_name = "isis"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Isis::~Isis()
@@ -4850,6 +4930,7 @@ Native::Interface::VirtualPortGroup::Isis::~Isis()
 
 bool Native::Interface::VirtualPortGroup::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4904,7 +4985,7 @@ Native::Interface::VirtualPortGroup::KeepaliveSettings::KeepaliveSettings()
     keepalive(nullptr) // presence node
 {
 
-    yang_name = "keepalive-settings"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive-settings"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::KeepaliveSettings::~KeepaliveSettings()
@@ -4913,6 +4994,7 @@ Native::Interface::VirtualPortGroup::KeepaliveSettings::~KeepaliveSettings()
 
 bool Native::Interface::VirtualPortGroup::KeepaliveSettings::has_data() const
 {
+    if (is_presence_container) return true;
     return (keepalive !=  nullptr && keepalive->has_data());
 }
 
@@ -4985,7 +5067,7 @@ Native::Interface::VirtualPortGroup::KeepaliveSettings::Keepalive::Keepalive()
     retries{YType::uint8, "retries"}
 {
 
-    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::KeepaliveSettings::Keepalive::~Keepalive()
@@ -4994,6 +5076,7 @@ Native::Interface::VirtualPortGroup::KeepaliveSettings::Keepalive::~Keepalive()
 
 bool Native::Interface::VirtualPortGroup::KeepaliveSettings::Keepalive::has_data() const
 {
+    if (is_presence_container) return true;
     return period.is_set
 	|| retries.is_set;
 }
@@ -5074,12 +5157,12 @@ Native::Interface::VirtualPortGroup::Bfd::Bfd()
     :
     template_{YType::str, "Cisco-IOS-XE-bfd:template"},
     echo{YType::boolean, "Cisco-IOS-XE-bfd:echo"}
-    	,
+        ,
     interval(std::make_shared<Native::Interface::VirtualPortGroup::Bfd::Interval>())
 {
     interval->parent = this;
 
-    yang_name = "bfd"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Bfd::~Bfd()
@@ -5088,6 +5171,7 @@ Native::Interface::VirtualPortGroup::Bfd::~Bfd()
 
 bool Native::Interface::VirtualPortGroup::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return template_.is_set
 	|| echo.is_set
 	|| (interval !=  nullptr && interval->has_data());
@@ -5187,7 +5271,7 @@ Native::Interface::VirtualPortGroup::Bfd::Interval::Interval()
     multiplier{YType::uint8, "multiplier"}
 {
 
-    yang_name = "interval"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interval"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Bfd::Interval::~Interval()
@@ -5196,6 +5280,7 @@ Native::Interface::VirtualPortGroup::Bfd::Interval::~Interval()
 
 bool Native::Interface::VirtualPortGroup::Bfd::Interval::has_data() const
 {
+    if (is_presence_container) return true;
     return msecs.is_set
 	|| min_rx.is_set
 	|| multiplier.is_set;
@@ -5289,13 +5374,13 @@ Native::Interface::VirtualPortGroup::Bandwidth::Bandwidth()
     :
     qos_reference{YType::uint32, "qos-reference"},
     kilobits{YType::uint32, "kilobits"}
-    	,
+        ,
     receive(std::make_shared<Native::Interface::VirtualPortGroup::Bandwidth::Receive>())
-	,inherit(nullptr) // presence node
+    , inherit(nullptr) // presence node
 {
     receive->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Bandwidth::~Bandwidth()
@@ -5304,6 +5389,7 @@ Native::Interface::VirtualPortGroup::Bandwidth::~Bandwidth()
 
 bool Native::Interface::VirtualPortGroup::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_reference.is_set
 	|| kilobits.is_set
 	|| (receive !=  nullptr && receive->has_data())
@@ -5418,7 +5504,7 @@ Native::Interface::VirtualPortGroup::Bandwidth::Receive::Receive()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Bandwidth::Receive::~Receive()
@@ -5427,6 +5513,7 @@ Native::Interface::VirtualPortGroup::Bandwidth::Receive::~Receive()
 
 bool Native::Interface::VirtualPortGroup::Bandwidth::Receive::has_data() const
 {
+    if (is_presence_container) return true;
     return inherit.is_set
 	|| kilobits.is_set;
 }
@@ -5508,7 +5595,7 @@ Native::Interface::VirtualPortGroup::Bandwidth::Inherit::Inherit()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Bandwidth::Inherit::~Inherit()
@@ -5517,6 +5604,7 @@ Native::Interface::VirtualPortGroup::Bandwidth::Inherit::~Inherit()
 
 bool Native::Interface::VirtualPortGroup::Bandwidth::Inherit::has_data() const
 {
+    if (is_presence_container) return true;
     return kilobits.is_set;
 }
 
@@ -5586,12 +5674,12 @@ Native::Interface::VirtualPortGroup::Dampening::Dampening()
     start_reusing_time{YType::uint16, "start-reusing-time"},
     start_supressing_time{YType::uint16, "start-supressing-time"},
     maximum_supressing_time{YType::uint16, "maximum-supressing-time"}
-    	,
+        ,
     restart(std::make_shared<Native::Interface::VirtualPortGroup::Dampening::Restart>())
 {
     restart->parent = this;
 
-    yang_name = "dampening"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Dampening::~Dampening()
@@ -5600,6 +5688,7 @@ Native::Interface::VirtualPortGroup::Dampening::~Dampening()
 
 bool Native::Interface::VirtualPortGroup::Dampening::has_data() const
 {
+    if (is_presence_container) return true;
     return dampening_time.is_set
 	|| start_reusing_time.is_set
 	|| start_supressing_time.is_set
@@ -5724,7 +5813,7 @@ Native::Interface::VirtualPortGroup::Dampening::Restart::Restart()
     restart_penalty{YType::uint16, "restart-penalty"}
 {
 
-    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Dampening::Restart::~Restart()
@@ -5733,6 +5822,7 @@ Native::Interface::VirtualPortGroup::Dampening::Restart::~Restart()
 
 bool Native::Interface::VirtualPortGroup::Dampening::Restart::has_data() const
 {
+    if (is_presence_container) return true;
     return restart.is_set
 	|| restart_penalty.is_set;
 }
@@ -5819,7 +5909,7 @@ Native::Interface::VirtualPortGroup::Domain::Domain()
     zero_sla{YType::empty, "zero-sla"}
 {
 
-    yang_name = "domain"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Domain::~Domain()
@@ -5828,6 +5918,7 @@ Native::Interface::VirtualPortGroup::Domain::~Domain()
 
 bool Native::Interface::VirtualPortGroup::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| path.is_set
 	|| internet_bound.is_set
@@ -5962,7 +6053,7 @@ Native::Interface::VirtualPortGroup::HoldQueue::HoldQueue()
     queue_length{YType::uint16, "queue-length"}
 {
 
-    yang_name = "hold-queue"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-queue"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::HoldQueue::~HoldQueue()
@@ -5971,6 +6062,7 @@ Native::Interface::VirtualPortGroup::HoldQueue::~HoldQueue()
 
 bool Native::Interface::VirtualPortGroup::HoldQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| queue_length.is_set;
 }
@@ -5985,7 +6077,8 @@ bool Native::Interface::VirtualPortGroup::HoldQueue::has_operation() const
 std::string Native::Interface::VirtualPortGroup::HoldQueue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hold-queue" <<"[direction='" <<direction <<"']";
+    path_buffer << "hold-queue";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -6050,7 +6143,7 @@ bool Native::Interface::VirtualPortGroup::HoldQueue::has_leaf_or_child_of_name(c
 Native::Interface::VirtualPortGroup::Mpls::Mpls()
 {
 
-    yang_name = "mpls"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Mpls::~Mpls()
@@ -6059,6 +6152,7 @@ Native::Interface::VirtualPortGroup::Mpls::~Mpls()
 
 bool Native::Interface::VirtualPortGroup::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -6114,7 +6208,7 @@ Native::Interface::VirtualPortGroup::IpVrf::IpVrf()
 {
     ip->parent = this;
 
-    yang_name = "ip-vrf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-vrf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::IpVrf::~IpVrf()
@@ -6123,6 +6217,7 @@ Native::Interface::VirtualPortGroup::IpVrf::~IpVrf()
 
 bool Native::Interface::VirtualPortGroup::IpVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -6195,7 +6290,7 @@ Native::Interface::VirtualPortGroup::IpVrf::Ip::Ip()
 {
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::IpVrf::Ip::~Ip()
@@ -6204,6 +6299,7 @@ Native::Interface::VirtualPortGroup::IpVrf::Ip::~Ip()
 
 bool Native::Interface::VirtualPortGroup::IpVrf::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data());
 }
 
@@ -6275,7 +6371,7 @@ Native::Interface::VirtualPortGroup::IpVrf::Ip::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::IpVrf::Ip::Vrf::~Vrf()
@@ -6284,6 +6380,7 @@ Native::Interface::VirtualPortGroup::IpVrf::Ip::Vrf::~Vrf()
 
 bool Native::Interface::VirtualPortGroup::IpVrf::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -6352,7 +6449,7 @@ Native::Interface::VirtualPortGroup::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Vrf::~Vrf()
@@ -6361,6 +6458,7 @@ Native::Interface::VirtualPortGroup::Vrf::~Vrf()
 
 bool Native::Interface::VirtualPortGroup::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -6434,27 +6532,28 @@ Native::Interface::VirtualPortGroup::Ip::Ip()
     redirects{YType::boolean, "redirects"},
     mtu{YType::uint16, "mtu"},
     mroute_cache{YType::boolean, "mroute-cache"}
-    	,
+        ,
     access_group(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup>())
-	,arp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Arp>())
-	,vrf(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Vrf>())
-	,no_address(std::make_shared<Native::Interface::VirtualPortGroup::Ip::NoAddress>())
-	,address(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Address>())
-	,hello_interval(std::make_shared<Native::Interface::VirtualPortGroup::Ip::HelloInterval>())
-	,authentication(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Authentication>())
-	,hold_time(std::make_shared<Native::Interface::VirtualPortGroup::Ip::HoldTime>())
-	,pim(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Pim>())
-	,policy(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Policy>())
-	,rip(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Rip>())
-	,route_cache_conf(std::make_shared<Native::Interface::VirtualPortGroup::Ip::RouteCacheConf>())
-	,route_cache(nullptr) // presence node
-	,router(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Router>())
-	,tcp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Tcp>())
-	,virtual_reassembly(std::make_shared<Native::Interface::VirtualPortGroup::Ip::VirtualReassembly>())
-	,dhcp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Dhcp>())
-	,summary_address(std::make_shared<Native::Interface::VirtualPortGroup::Ip::SummaryAddress>())
-	,verify(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Verify>())
-	,igmp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Igmp>())
+    , arp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Arp>())
+    , vrf(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Vrf>())
+    , no_address(std::make_shared<Native::Interface::VirtualPortGroup::Ip::NoAddress>())
+    , address(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Address>())
+    , hello_interval(std::make_shared<Native::Interface::VirtualPortGroup::Ip::HelloInterval>())
+    , authentication(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Authentication>())
+    , hold_time(std::make_shared<Native::Interface::VirtualPortGroup::Ip::HoldTime>())
+    , helper_address(this, {"address"})
+    , pim(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Pim>())
+    , policy(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Policy>())
+    , rip(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Rip>())
+    , route_cache_conf(std::make_shared<Native::Interface::VirtualPortGroup::Ip::RouteCacheConf>())
+    , route_cache(nullptr) // presence node
+    , router(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Router>())
+    , tcp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Tcp>())
+    , virtual_reassembly(std::make_shared<Native::Interface::VirtualPortGroup::Ip::VirtualReassembly>())
+    , dhcp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Dhcp>())
+    , summary_address(std::make_shared<Native::Interface::VirtualPortGroup::Ip::SummaryAddress>())
+    , verify(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Verify>())
+    , igmp(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Igmp>())
 {
     access_group->parent = this;
     arp->parent = this;
@@ -6476,7 +6575,7 @@ Native::Interface::VirtualPortGroup::Ip::Ip()
     verify->parent = this;
     igmp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::~Ip()
@@ -6485,7 +6584,8 @@ Native::Interface::VirtualPortGroup::Ip::~Ip()
 
 bool Native::Interface::VirtualPortGroup::Ip::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -6522,7 +6622,7 @@ bool Native::Interface::VirtualPortGroup::Ip::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Ip::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -6660,7 +6760,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ip::get_child_by_na
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ip::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -6820,7 +6920,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6989,12 +7089,12 @@ bool Native::Interface::VirtualPortGroup::Ip::has_leaf_or_child_of_name(const st
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::AccessGroup()
     :
     in(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::In>())
-	,out(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out>())
+    , out(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out>())
 {
     in->parent = this;
     out->parent = this;
 
-    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::~AccessGroup()
@@ -7003,6 +7103,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::~AccessGroup()
 
 bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data())
 	|| (out !=  nullptr && out->has_data());
 }
@@ -7088,12 +7189,12 @@ bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::has_leaf_or_child_of_
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::In()
     :
     common_acl(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::Acl>())
+    , acl(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::~In()
@@ -7102,6 +7203,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::~In()
 
 bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -7190,7 +7292,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::CommonAcl::CommonAcl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::CommonAcl::~CommonAcl()
@@ -7199,6 +7301,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::CommonAcl::~CommonAcl(
 
 bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| in.is_set;
 }
@@ -7281,7 +7384,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::Acl::Acl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::Acl::~Acl()
@@ -7290,6 +7393,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::Acl::~Acl()
 
 bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set;
 }
@@ -7369,12 +7473,12 @@ bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::In::Acl::has_leaf_or_
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::Out()
     :
     common_acl(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::Acl>())
+    , acl(std::make_shared<Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::~Out()
@@ -7383,6 +7487,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::~Out()
 
 bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -7471,7 +7576,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::CommonAcl::CommonAcl(
     out{YType::empty, "out"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::CommonAcl::~CommonAcl()
@@ -7480,6 +7585,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::CommonAcl::~CommonAcl
 
 bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| out.is_set;
 }
@@ -7562,7 +7668,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::Acl::Acl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::Acl::~Acl()
@@ -7571,6 +7677,7 @@ Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::Acl::~Acl()
 
 bool Native::Interface::VirtualPortGroup::Ip::AccessGroup::Out::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| out.is_set;
 }
@@ -7653,7 +7760,7 @@ Native::Interface::VirtualPortGroup::Ip::Arp::Arp()
 {
     inspection->parent = this;
 
-    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Arp::~Arp()
@@ -7662,6 +7769,7 @@ Native::Interface::VirtualPortGroup::Ip::Arp::~Arp()
 
 bool Native::Interface::VirtualPortGroup::Ip::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return (inspection !=  nullptr && inspection->has_data());
 }
 
@@ -7731,12 +7839,12 @@ bool Native::Interface::VirtualPortGroup::Ip::Arp::has_leaf_or_child_of_name(con
 Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::Inspection()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::~Inspection()
@@ -7745,6 +7853,7 @@ Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::~Inspection()
 
 bool Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -7830,7 +7939,7 @@ Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::Limit::Limit()
     rate{YType::uint32, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::Limit::~Limit()
@@ -7839,6 +7948,7 @@ Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::Limit::~Limit()
 
 bool Native::Interface::VirtualPortGroup::Ip::Arp::Inspection::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| rate.is_set;
 }
@@ -7919,12 +8029,12 @@ Native::Interface::VirtualPortGroup::Ip::Vrf::Vrf()
     :
     receive{YType::str, "receive"},
     sitemap{YType::str, "sitemap"}
-    	,
+        ,
     forwarding(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Vrf::Forwarding>())
 {
     forwarding->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Vrf::~Vrf()
@@ -7933,6 +8043,7 @@ Native::Interface::VirtualPortGroup::Ip::Vrf::~Vrf()
 
 bool Native::Interface::VirtualPortGroup::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| sitemap.is_set
 	|| (forwarding !=  nullptr && forwarding->has_data());
@@ -8032,7 +8143,7 @@ Native::Interface::VirtualPortGroup::Ip::Vrf::Forwarding::Forwarding()
     word{YType::str, "word"}
 {
 
-    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Vrf::Forwarding::~Forwarding()
@@ -8041,6 +8152,7 @@ Native::Interface::VirtualPortGroup::Ip::Vrf::Forwarding::~Forwarding()
 
 bool Native::Interface::VirtualPortGroup::Ip::Vrf::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return liin_vrf.is_set
 	|| mgmtvrf.is_set
 	|| word.is_set;
@@ -8135,7 +8247,7 @@ Native::Interface::VirtualPortGroup::Ip::NoAddress::NoAddress()
     address{YType::boolean, "address"}
 {
 
-    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::NoAddress::~NoAddress()
@@ -8144,6 +8256,7 @@ Native::Interface::VirtualPortGroup::Ip::NoAddress::~NoAddress()
 
 bool Native::Interface::VirtualPortGroup::Ip::NoAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -8210,13 +8323,14 @@ bool Native::Interface::VirtualPortGroup::Ip::NoAddress::has_leaf_or_child_of_na
 Native::Interface::VirtualPortGroup::Ip::Address::Address()
     :
     negotiated{YType::empty, "negotiated"}
-    	,
+        ,
     primary(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Address::Primary>())
-	,dhcp(nullptr) // presence node
+    , secondary(this, {"address"})
+    , dhcp(nullptr) // presence node
 {
     primary->parent = this;
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Address::~Address()
@@ -8225,7 +8339,8 @@ Native::Interface::VirtualPortGroup::Ip::Address::~Address()
 
 bool Native::Interface::VirtualPortGroup::Ip::Address::has_data() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_data())
             return true;
@@ -8237,7 +8352,7 @@ bool Native::Interface::VirtualPortGroup::Ip::Address::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Ip::Address::has_operation() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_operation())
             return true;
@@ -8280,7 +8395,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ip::Address::get_ch
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ip::Address::Secondary>();
         c->parent = this;
-        secondary.push_back(c);
+        secondary.append(c);
         return c;
     }
 
@@ -8306,7 +8421,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : secondary)
+    for (auto c : secondary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8353,7 +8468,7 @@ Native::Interface::VirtualPortGroup::Ip::Address::Primary::Primary()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Address::Primary::~Primary()
@@ -8362,6 +8477,7 @@ Native::Interface::VirtualPortGroup::Ip::Address::Primary::~Primary()
 
 bool Native::Interface::VirtualPortGroup::Ip::Address::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
@@ -8445,7 +8561,7 @@ Native::Interface::VirtualPortGroup::Ip::Address::Secondary::Secondary()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Address::Secondary::~Secondary()
@@ -8454,6 +8570,7 @@ Native::Interface::VirtualPortGroup::Ip::Address::Secondary::~Secondary()
 
 bool Native::Interface::VirtualPortGroup::Ip::Address::Secondary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set
 	|| secondary.is_set;
@@ -8470,7 +8587,8 @@ bool Native::Interface::VirtualPortGroup::Ip::Address::Secondary::has_operation(
 std::string Native::Interface::VirtualPortGroup::Ip::Address::Secondary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary" <<"[address='" <<address <<"']";
+    path_buffer << "secondary";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -8546,12 +8664,12 @@ bool Native::Interface::VirtualPortGroup::Ip::Address::Secondary::has_leaf_or_ch
 Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::Dhcp()
     :
     hostname{YType::str, "hostname"}
-    	,
+        ,
     client_id(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::ClientId>())
 {
     client_id->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::~Dhcp()
@@ -8560,6 +8678,7 @@ Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| (client_id !=  nullptr && client_id->has_data());
 }
@@ -8653,7 +8772,7 @@ Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::ClientId::ClientId()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::ClientId::~ClientId()
@@ -8662,6 +8781,7 @@ Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::ClientId::~ClientId()
 
 bool Native::Interface::VirtualPortGroup::Ip::Address::Dhcp::ClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return fastethernet.is_set
 	|| gigabitethernet.is_set
 	|| fivegigabitethernet.is_set
@@ -8848,7 +8968,7 @@ Native::Interface::VirtualPortGroup::Ip::HelloInterval::HelloInterval()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::HelloInterval::~HelloInterval()
@@ -8857,6 +8977,7 @@ Native::Interface::VirtualPortGroup::Ip::HelloInterval::~HelloInterval()
 
 bool Native::Interface::VirtualPortGroup::Ip::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -8936,12 +9057,12 @@ bool Native::Interface::VirtualPortGroup::Ip::HelloInterval::has_leaf_or_child_o
 Native::Interface::VirtualPortGroup::Ip::Authentication::Authentication()
     :
     key_chain(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Authentication::KeyChain>())
-	,mode(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Authentication::Mode>())
+    , mode(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Authentication::Mode>())
 {
     key_chain->parent = this;
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Authentication::~Authentication()
@@ -8950,6 +9071,7 @@ Native::Interface::VirtualPortGroup::Ip::Authentication::~Authentication()
 
 bool Native::Interface::VirtualPortGroup::Ip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (key_chain !=  nullptr && key_chain->has_data())
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -9038,7 +9160,7 @@ Native::Interface::VirtualPortGroup::Ip::Authentication::KeyChain::KeyChain()
     name{YType::str, "name"}
 {
 
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Authentication::KeyChain::~KeyChain()
@@ -9047,6 +9169,7 @@ Native::Interface::VirtualPortGroup::Ip::Authentication::KeyChain::~KeyChain()
 
 bool Native::Interface::VirtualPortGroup::Ip::Authentication::KeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| name.is_set;
 }
@@ -9129,7 +9252,7 @@ Native::Interface::VirtualPortGroup::Ip::Authentication::Mode::Mode()
     md5{YType::empty, "md5"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Authentication::Mode::~Mode()
@@ -9138,6 +9261,7 @@ Native::Interface::VirtualPortGroup::Ip::Authentication::Mode::~Mode()
 
 bool Native::Interface::VirtualPortGroup::Ip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| md5.is_set;
 }
@@ -9220,7 +9344,7 @@ Native::Interface::VirtualPortGroup::Ip::HoldTime::HoldTime()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::HoldTime::~HoldTime()
@@ -9229,6 +9353,7 @@ Native::Interface::VirtualPortGroup::Ip::HoldTime::~HoldTime()
 
 bool Native::Interface::VirtualPortGroup::Ip::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -9312,7 +9437,7 @@ Native::Interface::VirtualPortGroup::Ip::HelperAddress::HelperAddress()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::HelperAddress::~HelperAddress()
@@ -9321,6 +9446,7 @@ Native::Interface::VirtualPortGroup::Ip::HelperAddress::~HelperAddress()
 
 bool Native::Interface::VirtualPortGroup::Ip::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| global.is_set
 	|| vrf.is_set;
@@ -9337,7 +9463,8 @@ bool Native::Interface::VirtualPortGroup::Ip::HelperAddress::has_operation() con
 std::string Native::Interface::VirtualPortGroup::Ip::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[address='" <<address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -9413,7 +9540,7 @@ bool Native::Interface::VirtualPortGroup::Ip::HelperAddress::has_leaf_or_child_o
 Native::Interface::VirtualPortGroup::Ip::Pim::Pim()
 {
 
-    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Pim::~Pim()
@@ -9422,6 +9549,7 @@ Native::Interface::VirtualPortGroup::Ip::Pim::~Pim()
 
 bool Native::Interface::VirtualPortGroup::Ip::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -9476,7 +9604,7 @@ Native::Interface::VirtualPortGroup::Ip::Policy::Policy()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Policy::~Policy()
@@ -9485,6 +9613,7 @@ Native::Interface::VirtualPortGroup::Ip::Policy::~Policy()
 
 bool Native::Interface::VirtualPortGroup::Ip::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set;
 }
 
@@ -9554,7 +9683,7 @@ Native::Interface::VirtualPortGroup::Ip::Rip::Rip()
 {
     authentication->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Rip::~Rip()
@@ -9563,6 +9692,7 @@ Native::Interface::VirtualPortGroup::Ip::Rip::~Rip()
 
 bool Native::Interface::VirtualPortGroup::Ip::Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -9632,12 +9762,12 @@ bool Native::Interface::VirtualPortGroup::Ip::Rip::has_leaf_or_child_of_name(con
 Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     mode(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::~Authentication()
@@ -9646,6 +9776,7 @@ Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::~Authentication()
 
 bool Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -9731,7 +9862,7 @@ Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::Mode::Mode()
     text{YType::empty, "text"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::Mode::~Mode()
@@ -9740,6 +9871,7 @@ Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::Mode::~Mode()
 
 bool Native::Interface::VirtualPortGroup::Ip::Rip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return md5.is_set
 	|| text.is_set;
 }
@@ -9821,7 +9953,7 @@ Native::Interface::VirtualPortGroup::Ip::RouteCacheConf::RouteCacheConf()
     route_cache{YType::boolean, "route-cache"}
 {
 
-    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::RouteCacheConf::~RouteCacheConf()
@@ -9830,6 +9962,7 @@ Native::Interface::VirtualPortGroup::Ip::RouteCacheConf::~RouteCacheConf()
 
 bool Native::Interface::VirtualPortGroup::Ip::RouteCacheConf::has_data() const
 {
+    if (is_presence_container) return true;
     return route_cache.is_set;
 }
 
@@ -9901,7 +10034,7 @@ Native::Interface::VirtualPortGroup::Ip::RouteCache::RouteCache()
     same_interface{YType::boolean, "same-interface"}
 {
 
-    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ip::RouteCache::~RouteCache()
@@ -9910,6 +10043,7 @@ Native::Interface::VirtualPortGroup::Ip::RouteCache::~RouteCache()
 
 bool Native::Interface::VirtualPortGroup::Ip::RouteCache::has_data() const
 {
+    if (is_presence_container) return true;
     return cef.is_set
 	|| flow.is_set
 	|| policy.is_set
@@ -10017,7 +10151,7 @@ Native::Interface::VirtualPortGroup::Ip::Router::Router()
     isis(nullptr) // presence node
 {
 
-    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Router::~Router()
@@ -10026,6 +10160,7 @@ Native::Interface::VirtualPortGroup::Ip::Router::~Router()
 
 bool Native::Interface::VirtualPortGroup::Ip::Router::has_data() const
 {
+    if (is_presence_container) return true;
     return (isis !=  nullptr && isis->has_data());
 }
 
@@ -10097,7 +10232,7 @@ Native::Interface::VirtualPortGroup::Ip::Router::Isis::Isis()
     tag{YType::str, "tag"}
 {
 
-    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ip::Router::Isis::~Isis()
@@ -10106,6 +10241,7 @@ Native::Interface::VirtualPortGroup::Ip::Router::Isis::~Isis()
 
 bool Native::Interface::VirtualPortGroup::Ip::Router::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -10174,7 +10310,7 @@ Native::Interface::VirtualPortGroup::Ip::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Tcp::~Tcp()
@@ -10183,6 +10319,7 @@ Native::Interface::VirtualPortGroup::Ip::Tcp::~Tcp()
 
 bool Native::Interface::VirtualPortGroup::Ip::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -10255,7 +10392,7 @@ Native::Interface::VirtualPortGroup::Ip::VirtualReassembly::VirtualReassembly()
     in{YType::empty, "in"}
 {
 
-    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::VirtualReassembly::~VirtualReassembly()
@@ -10264,6 +10401,7 @@ Native::Interface::VirtualPortGroup::Ip::VirtualReassembly::~VirtualReassembly()
 
 bool Native::Interface::VirtualPortGroup::Ip::VirtualReassembly::has_data() const
 {
+    if (is_presence_container) return true;
     return max_reassemblies.is_set
 	|| max_fragments.is_set
 	|| timeout.is_set
@@ -10382,7 +10520,7 @@ bool Native::Interface::VirtualPortGroup::Ip::VirtualReassembly::has_leaf_or_chi
 Native::Interface::VirtualPortGroup::Ip::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Dhcp::~Dhcp()
@@ -10391,6 +10529,7 @@ Native::Interface::VirtualPortGroup::Ip::Dhcp::~Dhcp()
 
 bool Native::Interface::VirtualPortGroup::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -10441,9 +10580,11 @@ bool Native::Interface::VirtualPortGroup::Ip::Dhcp::has_leaf_or_child_of_name(co
 }
 
 Native::Interface::VirtualPortGroup::Ip::SummaryAddress::SummaryAddress()
+    :
+    eigrp(this, {"id"})
 {
 
-    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::SummaryAddress::~SummaryAddress()
@@ -10452,7 +10593,8 @@ Native::Interface::VirtualPortGroup::Ip::SummaryAddress::~SummaryAddress()
 
 bool Native::Interface::VirtualPortGroup::Ip::SummaryAddress::has_data() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -10462,7 +10604,7 @@ bool Native::Interface::VirtualPortGroup::Ip::SummaryAddress::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Ip::SummaryAddress::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -10492,7 +10634,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ip::SummaryAddress:
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -10504,7 +10646,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10538,7 +10680,7 @@ Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp::Eigrp()
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp::~Eigrp()
@@ -10547,6 +10689,7 @@ Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp::~Eigrp()
 
 bool Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| ip.is_set
 	|| mask.is_set
@@ -10565,7 +10708,8 @@ bool Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp::has_operati
 std::string Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[id='" <<id <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -10652,11 +10796,11 @@ bool Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp::has_leaf_or
 Native::Interface::VirtualPortGroup::Ip::Verify::Verify()
     :
     source(nullptr) // presence node
-	,unicast(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Verify::Unicast>())
+    , unicast(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Verify::Unicast>())
 {
     unicast->parent = this;
 
-    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Verify::~Verify()
@@ -10665,6 +10809,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::~Verify()
 
 bool Native::Interface::VirtualPortGroup::Ip::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data())
 	|| (unicast !=  nullptr && unicast->has_data());
 }
@@ -10753,7 +10898,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Source::Source()
 {
     vlan->parent = this;
 
-    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ip::Verify::Source::~Source()
@@ -10762,6 +10907,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Source::~Source()
 
 bool Native::Interface::VirtualPortGroup::Ip::Verify::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -10833,7 +10979,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::Vlan()
     dhcp_snooping(nullptr) // presence node
 {
 
-    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::~Vlan()
@@ -10842,6 +10988,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::~Vlan()
 
 bool Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp_snooping !=  nullptr && dhcp_snooping->has_data());
 }
 
@@ -10913,7 +11060,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::DhcpSnooping::Dhc
     port_security{YType::empty, "port-security"}
 {
 
-    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::DhcpSnooping::~DhcpSnooping()
@@ -10922,6 +11069,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::DhcpSnooping::~Dh
 
 bool Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::DhcpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return port_security.is_set;
 }
 
@@ -10988,11 +11136,11 @@ bool Native::Interface::VirtualPortGroup::Ip::Verify::Source::Vlan::DhcpSnooping
 Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Unicast()
     :
     reverse_path(nullptr) // presence node
-	,source(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Source>())
+    , source(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Source>())
 {
     source->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::~Unicast()
@@ -11001,6 +11149,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::~Unicast()
 
 bool Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (reverse_path !=  nullptr && reverse_path->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -11086,7 +11235,7 @@ bool Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::has_leaf_or_child
 Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::ReversePath::ReversePath()
 {
 
-    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::ReversePath::~ReversePath()
@@ -11095,6 +11244,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::ReversePath::~ReverseP
 
 bool Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::ReversePath::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -11151,7 +11301,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Source::Source()
     allow_default{YType::empty, "allow-default"}
 {
 
-    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Source::~Source()
@@ -11160,6 +11310,7 @@ Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Source::~Source()
 
 bool Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return reachable_via.is_set
 	|| allow_self_ping.is_set
 	|| allow_default.is_set;
@@ -11252,12 +11403,13 @@ bool Native::Interface::VirtualPortGroup::Ip::Verify::Unicast::Source::has_leaf_
 Native::Interface::VirtualPortGroup::Ip::Igmp::Igmp()
     :
     version{YType::uint8, "version"}
-    	,
+        ,
     static_group(std::make_shared<Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup>())
+    , join_group(this, {"ip_group_address"})
 {
     static_group->parent = this;
 
-    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Igmp::~Igmp()
@@ -11266,7 +11418,8 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::~Igmp()
 
 bool Native::Interface::VirtualPortGroup::Ip::Igmp::has_data() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_data())
             return true;
@@ -11277,7 +11430,7 @@ bool Native::Interface::VirtualPortGroup::Ip::Igmp::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Ip::Igmp::has_operation() const
 {
-    for (std::size_t index=0; index<join_group.size(); index++)
+    for (std::size_t index=0; index<join_group.len(); index++)
     {
         if(join_group[index]->has_operation())
             return true;
@@ -11319,7 +11472,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ip::Igmp::get_child
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup>();
         c->parent = this;
-        join_group.push_back(c);
+        join_group.append(c);
         return c;
     }
 
@@ -11336,7 +11489,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : join_group)
+    for (auto c : join_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11373,9 +11526,12 @@ bool Native::Interface::VirtualPortGroup::Ip::Igmp::has_leaf_or_child_of_name(co
 }
 
 Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::StaticGroup()
+    :
+    groups(this, {"name"})
+    , class_map(this, {"id"})
 {
 
-    yang_name = "static-group"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-group"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::~StaticGroup()
@@ -11384,12 +11540,13 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::~StaticGroup()
 
 bool Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::has_data() const
 {
-    for (std::size_t index=0; index<groups.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<groups.len(); index++)
     {
         if(groups[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<class_map.size(); index++)
+    for (std::size_t index=0; index<class_map.len(); index++)
     {
         if(class_map[index]->has_data())
             return true;
@@ -11399,12 +11556,12 @@ bool Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::has_data() cons
 
 bool Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::has_operation() const
 {
-    for (std::size_t index=0; index<groups.size(); index++)
+    for (std::size_t index=0; index<groups.len(); index++)
     {
         if(groups[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<class_map.size(); index++)
+    for (std::size_t index=0; index<class_map.len(); index++)
     {
         if(class_map[index]->has_operation())
             return true;
@@ -11434,7 +11591,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGro
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups>();
         c->parent = this;
-        groups.push_back(c);
+        groups.append(c);
         return c;
     }
 
@@ -11442,7 +11599,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGro
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap>();
         c->parent = this;
-        class_map.push_back(c);
+        class_map.append(c);
         return c;
     }
 
@@ -11454,7 +11611,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : groups)
+    for (auto c : groups.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11463,7 +11620,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : class_map)
+    for (auto c : class_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11495,7 +11652,7 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups::Groups()
     source{YType::str, "source"}
 {
 
-    yang_name = "groups"; yang_parent_name = "static-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "groups"; yang_parent_name = "static-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups::~Groups()
@@ -11504,6 +11661,7 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups::~Groups()
 
 bool Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : source.getYLeafs())
     {
         if(leaf.is_set)
@@ -11527,7 +11685,8 @@ bool Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups::has_ope
 std::string Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "groups" <<"[name='" <<name <<"']";
+    path_buffer << "groups";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11593,7 +11752,7 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap::ClassMap()
     id{YType::str, "id"}
 {
 
-    yang_name = "class-map"; yang_parent_name = "static-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-map"; yang_parent_name = "static-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap::~ClassMap()
@@ -11602,6 +11761,7 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap::~ClassMap(
 
 bool Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set;
 }
 
@@ -11614,7 +11774,8 @@ bool Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap::has_o
 std::string Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class-map" <<"[id='" <<id <<"']";
+    path_buffer << "class-map";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -11671,7 +11832,7 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup::JoinGroup()
     source{YType::str, "source"}
 {
 
-    yang_name = "join-group"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-group"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup::~JoinGroup()
@@ -11680,6 +11841,7 @@ Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup::~JoinGroup()
 
 bool Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_group_address.is_set
 	|| source.is_set;
 }
@@ -11694,7 +11856,8 @@ bool Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup::has_operation() c
 std::string Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "join-group" <<"[ip-group-address='" <<ip_group_address <<"']";
+    path_buffer << "join-group";
+    ADD_KEY_TOKEN(ip_group_address, "ip-group-address");
     return path_buffer.str();
 }
 
@@ -11762,20 +11925,21 @@ Native::Interface::VirtualPortGroup::Ipv6::Ipv6()
     enable{YType::empty, "enable"},
     mtu{YType::uint16, "mtu"},
     redirects{YType::boolean, "redirects"}
-    	,
+        ,
     destination_guard(nullptr) // presence node
-	,source_guard(nullptr) // presence node
-	,dhcp(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Dhcp>())
-	,address(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Address>())
-	,nd(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Nd>())
-	,tcp(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Tcp>())
+    , source_guard(nullptr) // presence node
+    , dhcp(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Dhcp>())
+    , address(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Address>())
+    , nd(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Nd>())
+    , tcp(std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Tcp>())
+    , traffic_filter(this, {"direction"})
 {
     dhcp->parent = this;
     address->parent = this;
     nd->parent = this;
     tcp->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::~Ipv6()
@@ -11784,7 +11948,8 @@ Native::Interface::VirtualPortGroup::Ipv6::~Ipv6()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_data())
             return true;
@@ -11803,7 +11968,7 @@ bool Native::Interface::VirtualPortGroup::Ipv6::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_operation())
             return true;
@@ -11901,7 +12066,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ipv6::get_child_by_
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter>();
         c->parent = this;
-        traffic_filter.push_back(c);
+        traffic_filter.append(c);
         return c;
     }
 
@@ -11943,7 +12108,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : traffic_filter)
+    for (auto c : traffic_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12014,7 +12179,7 @@ Native::Interface::VirtualPortGroup::Ipv6::DestinationGuard::DestinationGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::DestinationGuard::~DestinationGuard()
@@ -12023,6 +12188,7 @@ Native::Interface::VirtualPortGroup::Ipv6::DestinationGuard::~DestinationGuard()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::DestinationGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -12091,7 +12257,7 @@ Native::Interface::VirtualPortGroup::Ipv6::SourceGuard::SourceGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::SourceGuard::~SourceGuard()
@@ -12100,6 +12266,7 @@ Native::Interface::VirtualPortGroup::Ipv6::SourceGuard::~SourceGuard()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::SourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -12166,7 +12333,7 @@ bool Native::Interface::VirtualPortGroup::Ipv6::SourceGuard::has_leaf_or_child_o
 Native::Interface::VirtualPortGroup::Ipv6::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Dhcp::~Dhcp()
@@ -12175,6 +12342,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Dhcp::~Dhcp()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -12227,10 +12395,12 @@ bool Native::Interface::VirtualPortGroup::Ipv6::Dhcp::has_leaf_or_child_of_name(
 Native::Interface::VirtualPortGroup::Ipv6::Address::Address()
     :
     dhcp(nullptr) // presence node
-	,autoconfig(nullptr) // presence node
+    , autoconfig(nullptr) // presence node
+    , prefix_list(this, {"prefix"})
+    , link_local_address(this, {"address"})
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Address::~Address()
@@ -12239,12 +12409,13 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::~Address()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Address::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_data())
             return true;
@@ -12255,12 +12426,12 @@ bool Native::Interface::VirtualPortGroup::Ipv6::Address::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Address::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_operation())
             return true;
@@ -12310,7 +12481,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ipv6::Address::get_
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -12318,7 +12489,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Ipv6::Address::get_
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
-        link_local_address.push_back(c);
+        link_local_address.append(c);
         return c;
     }
 
@@ -12340,7 +12511,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12349,7 +12520,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : link_local_address)
+    for (auto c : link_local_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12380,7 +12551,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::Dhcp::Dhcp()
     rapid_commit{YType::empty, "rapid-commit"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Address::Dhcp::~Dhcp()
@@ -12389,6 +12560,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return rapid_commit.is_set;
 }
 
@@ -12457,7 +12629,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::Autoconfig::Autoconfig()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Address::Autoconfig::~Autoconfig()
@@ -12466,6 +12638,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::Autoconfig::~Autoconfig()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Address::Autoconfig::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -12536,7 +12709,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList::PrefixList()
     eui_64{YType::empty, "eui-64"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList::~PrefixList()
@@ -12545,6 +12718,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList::~PrefixList()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| anycast.is_set
 	|| eui_64.is_set;
@@ -12561,7 +12735,8 @@ bool Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList::has_operati
 std::string Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -12640,7 +12815,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress::LinkLocalA
     link_local{YType::empty, "link-local"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress::~LinkLocalAddress()
@@ -12649,6 +12824,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress::~LinkLocal
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| link_local.is_set;
 }
@@ -12663,7 +12839,8 @@ bool Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress::has_o
 std::string Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-local-address" <<"[address='" <<address <<"']";
+    path_buffer << "link-local-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -12728,7 +12905,7 @@ bool Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress::has_l
 Native::Interface::VirtualPortGroup::Ipv6::Nd::Nd()
 {
 
-    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Nd::~Nd()
@@ -12737,6 +12914,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Nd::~Nd()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -12791,7 +12969,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::Tcp::~Tcp()
@@ -12800,6 +12978,7 @@ Native::Interface::VirtualPortGroup::Ipv6::Tcp::~Tcp()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -12869,7 +13048,7 @@ Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter::TrafficFilter()
     access_list{YType::str, "access-list"}
 {
 
-    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter::~TrafficFilter()
@@ -12878,6 +13057,7 @@ Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter::~TrafficFilter()
 
 bool Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| access_list.is_set;
 }
@@ -12892,7 +13072,8 @@ bool Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter::has_operation() c
 std::string Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-filter" <<"[direction='" <<direction <<"']";
+    path_buffer << "traffic-filter";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -12960,7 +13141,7 @@ Native::Interface::VirtualPortGroup::Logging::Logging()
 {
     event->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Logging::~Logging()
@@ -12969,6 +13150,7 @@ Native::Interface::VirtualPortGroup::Logging::~Logging()
 
 bool Native::Interface::VirtualPortGroup::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (event !=  nullptr && event->has_data());
 }
 
@@ -13043,12 +13225,12 @@ Native::Interface::VirtualPortGroup::Logging::Event::Event()
     nfas_status{YType::empty, "nfas-status"},
     power_inline_status{YType::empty, "power-inline-status"},
     status{YType::empty, "status"}
-    	,
+        ,
     spanning_tree(nullptr) // presence node
-	,subif_link_status(nullptr) // presence node
+    , subif_link_status(nullptr) // presence node
 {
 
-    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Logging::Event::~Event()
@@ -13057,6 +13239,7 @@ Native::Interface::VirtualPortGroup::Logging::Event::~Event()
 
 bool Native::Interface::VirtualPortGroup::Logging::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| link_status.is_set
 	|| trunk_status.is_set
@@ -13222,7 +13405,7 @@ Native::Interface::VirtualPortGroup::Logging::Event::SpanningTree::SpanningTree(
     status{YType::empty, "status"}
 {
 
-    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Logging::Event::SpanningTree::~SpanningTree()
@@ -13231,6 +13414,7 @@ Native::Interface::VirtualPortGroup::Logging::Event::SpanningTree::~SpanningTree
 
 bool Native::Interface::VirtualPortGroup::Logging::Event::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -13299,7 +13483,7 @@ Native::Interface::VirtualPortGroup::Logging::Event::SubifLinkStatus::SubifLinkS
     ignore_bulk{YType::empty, "ignore-bulk"}
 {
 
-    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Logging::Event::SubifLinkStatus::~SubifLinkStatus()
@@ -13308,6 +13492,7 @@ Native::Interface::VirtualPortGroup::Logging::Event::SubifLinkStatus::~SubifLink
 
 bool Native::Interface::VirtualPortGroup::Logging::Event::SubifLinkStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_bulk.is_set;
 }
 
@@ -13376,7 +13561,7 @@ Native::Interface::VirtualPortGroup::Mdix::Mdix()
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "mdix"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdix"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Mdix::~Mdix()
@@ -13385,6 +13570,7 @@ Native::Interface::VirtualPortGroup::Mdix::~Mdix()
 
 bool Native::Interface::VirtualPortGroup::Mdix::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -13454,7 +13640,7 @@ Native::Interface::VirtualPortGroup::Mop::Mop()
     sysid{YType::boolean, "sysid"}
 {
 
-    yang_name = "mop"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mop"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Mop::~Mop()
@@ -13463,6 +13649,7 @@ Native::Interface::VirtualPortGroup::Mop::~Mop()
 
 bool Native::Interface::VirtualPortGroup::Mop::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| sysid.is_set;
 }
@@ -13545,7 +13732,7 @@ Native::Interface::VirtualPortGroup::InterfaceQos::InterfaceQos()
 {
     trust->parent = this;
 
-    yang_name = "interface_qos"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface_qos"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::InterfaceQos::~InterfaceQos()
@@ -13554,6 +13741,7 @@ Native::Interface::VirtualPortGroup::InterfaceQos::~InterfaceQos()
 
 bool Native::Interface::VirtualPortGroup::InterfaceQos::has_data() const
 {
+    if (is_presence_container) return true;
     return (trust !=  nullptr && trust->has_data());
 }
 
@@ -13625,7 +13813,7 @@ Native::Interface::VirtualPortGroup::InterfaceQos::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::InterfaceQos::Trust::~Trust()
@@ -13634,6 +13822,7 @@ Native::Interface::VirtualPortGroup::InterfaceQos::Trust::~Trust()
 
 bool Native::Interface::VirtualPortGroup::InterfaceQos::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -13702,13 +13891,14 @@ Native::Interface::VirtualPortGroup::Standby::Standby()
     version{YType::enumeration, "version"},
     bfd{YType::empty, "bfd"},
     mac_refresh{YType::uint8, "mac-refresh"}
-    	,
+        ,
     delay(std::make_shared<Native::Interface::VirtualPortGroup::Standby::Delay>())
-	,use_bia(nullptr) // presence node
+    , use_bia(nullptr) // presence node
+    , standby_list(this, {"group_number"})
 {
     delay->parent = this;
 
-    yang_name = "standby"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::~Standby()
@@ -13717,7 +13907,8 @@ Native::Interface::VirtualPortGroup::Standby::~Standby()
 
 bool Native::Interface::VirtualPortGroup::Standby::has_data() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_data())
             return true;
@@ -13731,7 +13922,7 @@ bool Native::Interface::VirtualPortGroup::Standby::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Standby::has_operation() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_operation())
             return true;
@@ -13787,7 +13978,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Standby::get_child_
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList>();
         c->parent = this;
-        standby_list.push_back(c);
+        standby_list.append(c);
         return c;
     }
 
@@ -13809,7 +14000,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : standby_list)
+    for (auto c : standby_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13871,7 +14062,7 @@ Native::Interface::VirtualPortGroup::Standby::Delay::Delay()
     reload{YType::uint16, "reload"}
 {
 
-    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::Delay::~Delay()
@@ -13880,6 +14071,7 @@ Native::Interface::VirtualPortGroup::Standby::Delay::~Delay()
 
 bool Native::Interface::VirtualPortGroup::Standby::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set;
 }
@@ -13962,7 +14154,7 @@ Native::Interface::VirtualPortGroup::Standby::UseBia::UseBia()
 {
     scope->parent = this;
 
-    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Standby::UseBia::~UseBia()
@@ -13971,6 +14163,7 @@ Native::Interface::VirtualPortGroup::Standby::UseBia::~UseBia()
 
 bool Native::Interface::VirtualPortGroup::Standby::UseBia::has_data() const
 {
+    if (is_presence_container) return true;
     return (scope !=  nullptr && scope->has_data());
 }
 
@@ -14042,7 +14235,7 @@ Native::Interface::VirtualPortGroup::Standby::UseBia::Scope::Scope()
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::UseBia::Scope::~Scope()
@@ -14051,6 +14244,7 @@ Native::Interface::VirtualPortGroup::Standby::UseBia::Scope::~Scope()
 
 bool Native::Interface::VirtualPortGroup::Standby::UseBia::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -14122,18 +14316,19 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::StandbyList()
     mac_address{YType::str, "mac-address"},
     name{YType::str, "name"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     authentication(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication>())
-	,ip(nullptr) // presence node
-	,preempt(nullptr) // presence node
-	,redirect(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect>())
-	,timers(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers>())
+    , ip(nullptr) // presence node
+    , preempt(nullptr) // presence node
+    , redirect(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect>())
+    , timers(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers>())
+    , track(this, {"number"})
 {
     authentication->parent = this;
     redirect->parent = this;
     timers->parent = this;
 
-    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::~StandbyList()
@@ -14142,7 +14337,8 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::~StandbyList()
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::has_data() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_data())
             return true;
@@ -14162,7 +14358,7 @@ bool Native::Interface::VirtualPortGroup::Standby::StandbyList::has_data() const
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::has_operation() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_operation())
             return true;
@@ -14184,7 +14380,8 @@ bool Native::Interface::VirtualPortGroup::Standby::StandbyList::has_operation() 
 std::string Native::Interface::VirtualPortGroup::Standby::StandbyList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "standby-list" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "standby-list";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -14254,7 +14451,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Standby::StandbyLis
     {
         auto c = std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Track>();
         c->parent = this;
-        track.push_back(c);
+        track.append(c);
         return c;
     }
 
@@ -14291,7 +14488,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGro
     }
 
     count = 0;
-    for (auto const & c : track)
+    for (auto c : track.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14381,12 +14578,12 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Authe
     :
     word{YType::str, "word"},
     text{YType::str, "text"}
-    	,
+        ,
     md5(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5>())
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::~Authentication()
@@ -14395,6 +14592,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::~Auth
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| text.is_set
 	|| (md5 !=  nullptr && md5->has_data());
@@ -14490,12 +14688,12 @@ bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::~Md5()
@@ -14504,6 +14702,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -14590,7 +14789,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::KeyString::~KeyString()
@@ -14599,6 +14798,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -14694,7 +14894,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Ip::Ip()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Ip::~Ip()
@@ -14703,6 +14903,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Ip::~Ip()
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| secondary.is_set;
 }
@@ -14785,7 +14986,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::Preempt()
 {
     delay->parent = this;
 
-    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::~Preempt()
@@ -14794,6 +14995,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::~Preempt()
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data());
 }
 
@@ -14867,7 +15069,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::Delay::Delay
     sync{YType::uint16, "sync"}
 {
 
-    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::Delay::~Delay()
@@ -14876,6 +15078,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::Delay::~Dela
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set
 	|| sync.is_set;
@@ -14968,14 +15171,14 @@ bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt::Delay::
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Redirect()
     :
     unknown{YType::empty, "unknown"}
-    	,
+        ,
     advertisement(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement>())
-	,timers(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Timers>())
+    , timers(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Timers>())
 {
     advertisement->parent = this;
     timers->parent = this;
 
-    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::~Redirect()
@@ -14984,6 +15187,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::~Redirect()
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown.is_set
 	|| (advertisement !=  nullptr && advertisement->has_data())
 	|| (timers !=  nullptr && timers->has_data());
@@ -15085,7 +15289,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertiseme
 {
     authentication->parent = this;
 
-    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::~Advertisement()
@@ -15094,6 +15298,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -15166,7 +15371,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertiseme
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::~Authentication()
@@ -15175,6 +15380,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (md5 !=  nullptr && md5->has_data());
 }
 
@@ -15244,12 +15450,12 @@ bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advert
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::~Md5()
@@ -15258,6 +15464,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -15344,7 +15551,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertiseme
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::~KeyString()
@@ -15353,6 +15560,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -15448,7 +15656,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Timers::Tim
     holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Timers::~Timers()
@@ -15457,6 +15665,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Timers::~Ti
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return advertisement.is_set
 	|| holddown.is_set;
 }
@@ -15536,12 +15745,12 @@ bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect::Timers
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::Timers()
     :
     hello_interval(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HelloInterval>())
-	,hold_time(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HoldTime>())
+    , hold_time(std::make_shared<Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HoldTime>())
 {
     hello_interval->parent = this;
     hold_time->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::~Timers()
@@ -15550,6 +15759,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::~Timers()
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (hello_interval !=  nullptr && hello_interval->has_data())
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -15638,7 +15848,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HelloInterval
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HelloInterval::~HelloInterval()
@@ -15647,6 +15857,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HelloInterval
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -15729,7 +15940,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HoldTime::Hol
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HoldTime::~HoldTime()
@@ -15738,6 +15949,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HoldTime::~Ho
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -15821,7 +16033,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Track::Track()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::Standby::StandbyList::Track::~Track()
@@ -15830,6 +16042,7 @@ Native::Interface::VirtualPortGroup::Standby::StandbyList::Track::~Track()
 
 bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Track::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| decrement.is_set
 	|| shutdown.is_set;
@@ -15846,7 +16059,8 @@ bool Native::Interface::VirtualPortGroup::Standby::StandbyList::Track::has_opera
 std::string Native::Interface::VirtualPortGroup::Standby::StandbyList::Track::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track" <<"[number='" <<number <<"']";
+    path_buffer << "track";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -15923,12 +16137,12 @@ Native::Interface::VirtualPortGroup::AccessSession::AccessSession()
     :
     closed{YType::empty, "closed"},
     host_mode{YType::enumeration, "host-mode"}
-    	,
+        ,
     port_control(std::make_shared<Native::Interface::VirtualPortGroup::AccessSession::PortControl>())
 {
     port_control->parent = this;
 
-    yang_name = "access-session"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-session"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::AccessSession::~AccessSession()
@@ -15937,6 +16151,7 @@ Native::Interface::VirtualPortGroup::AccessSession::~AccessSession()
 
 bool Native::Interface::VirtualPortGroup::AccessSession::has_data() const
 {
+    if (is_presence_container) return true;
     return closed.is_set
 	|| host_mode.is_set
 	|| (port_control !=  nullptr && port_control->has_data());
@@ -16034,7 +16249,7 @@ Native::Interface::VirtualPortGroup::AccessSession::PortControl::PortControl()
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::AccessSession::PortControl::~PortControl()
@@ -16043,6 +16258,7 @@ Native::Interface::VirtualPortGroup::AccessSession::PortControl::~PortControl()
 
 bool Native::Interface::VirtualPortGroup::AccessSession::PortControl::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -16109,16 +16325,16 @@ bool Native::Interface::VirtualPortGroup::AccessSession::PortControl::has_leaf_o
 Native::Interface::VirtualPortGroup::StormControl::StormControl()
     :
     action(std::make_shared<Native::Interface::VirtualPortGroup::StormControl::Action>())
-	,broadcast(std::make_shared<Native::Interface::VirtualPortGroup::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Interface::VirtualPortGroup::StormControl::Multicast>())
-	,unicast(std::make_shared<Native::Interface::VirtualPortGroup::StormControl::Unicast>())
+    , broadcast(std::make_shared<Native::Interface::VirtualPortGroup::StormControl::Broadcast>())
+    , multicast(std::make_shared<Native::Interface::VirtualPortGroup::StormControl::Multicast>())
+    , unicast(std::make_shared<Native::Interface::VirtualPortGroup::StormControl::Unicast>())
 {
     action->parent = this;
     broadcast->parent = this;
     multicast->parent = this;
     unicast->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "VirtualPortGroup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::StormControl::~StormControl()
@@ -16127,6 +16343,7 @@ Native::Interface::VirtualPortGroup::StormControl::~StormControl()
 
 bool Native::Interface::VirtualPortGroup::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
@@ -16248,7 +16465,7 @@ Native::Interface::VirtualPortGroup::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::VirtualPortGroup::StormControl::Action::~Action()
@@ -16257,6 +16474,7 @@ Native::Interface::VirtualPortGroup::StormControl::Action::~Action()
 
 bool Native::Interface::VirtualPortGroup::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| shutdown.is_set
 	|| trap.is_set;
@@ -16345,6 +16563,13 @@ bool Native::Interface::VirtualPortGroup::StormControl::Action::has_leaf_or_chil
         return true;
     return false;
 }
+
+const Enum::YLeaf Native::Interface::VirtualTemplate::Crypto::Ipsec::DfBit::clear {0, "clear"};
+const Enum::YLeaf Native::Interface::VirtualTemplate::Crypto::Ipsec::DfBit::copy {1, "copy"};
+const Enum::YLeaf Native::Interface::VirtualTemplate::Crypto::Ipsec::DfBit::set {2, "set"};
+
+const Enum::YLeaf Native::Interface::VirtualTemplate::Crypto::Ipsec::Fragmentation::after_encryption {0, "after-encryption"};
+const Enum::YLeaf Native::Interface::VirtualTemplate::Crypto::Ipsec::Fragmentation::before_encryption {1, "before-encryption"};
 
 const Enum::YLeaf Native::Interface::VirtualPortGroup::IfState::nhrp {0, "nhrp"};
 

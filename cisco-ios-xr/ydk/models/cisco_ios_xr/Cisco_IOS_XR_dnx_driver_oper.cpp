@@ -17,7 +17,7 @@ Fia::Fia()
 {
     nodes->parent = this;
 
-    yang_name = "fia"; yang_parent_name = "Cisco-IOS-XR-dnx-driver-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fia"; yang_parent_name = "Cisco-IOS-XR-dnx-driver-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Fia::~Fia()
@@ -26,6 +26,7 @@ Fia::~Fia()
 
 bool Fia::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Fia::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Fia::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "fia"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "fia"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fia::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Fia::Nodes::~Nodes()
 
 bool Fia::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Fia::Nodes::has_data() const
 
 bool Fia::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Fia::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Fia::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool Fia::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Fia::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     rx_link_information(std::make_shared<Fia::Nodes::Node::RxLinkInformation>())
-	,driver_information(std::make_shared<Fia::Nodes::Node::DriverInformation>())
-	,clear_statistics(std::make_shared<Fia::Nodes::Node::ClearStatistics>())
-	,tx_link_information(std::make_shared<Fia::Nodes::Node::TxLinkInformation>())
-	,diag_shell(std::make_shared<Fia::Nodes::Node::DiagShell>())
-	,oir_history(std::make_shared<Fia::Nodes::Node::OirHistory>())
-	,asic_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics>())
+    , driver_information(std::make_shared<Fia::Nodes::Node::DriverInformation>())
+    , clear_statistics(std::make_shared<Fia::Nodes::Node::ClearStatistics>())
+    , tx_link_information(std::make_shared<Fia::Nodes::Node::TxLinkInformation>())
+    , diag_shell(std::make_shared<Fia::Nodes::Node::DiagShell>())
+    , oir_history(std::make_shared<Fia::Nodes::Node::OirHistory>())
+    , asic_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics>())
 {
     rx_link_information->parent = this;
     driver_information->parent = this;
@@ -234,7 +238,7 @@ Fia::Nodes::Node::Node()
     oir_history->parent = this;
     asic_statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Fia::Nodes::Node::~Node()
@@ -243,6 +247,7 @@ Fia::Nodes::Node::~Node()
 
 bool Fia::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (rx_link_information !=  nullptr && rx_link_information->has_data())
 	|| (driver_information !=  nullptr && driver_information->has_data())
@@ -276,7 +281,8 @@ std::string Fia::Nodes::Node::get_absolute_path() const
 std::string Fia::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -431,7 +437,7 @@ Fia::Nodes::Node::RxLinkInformation::RxLinkInformation()
 {
     link_options->parent = this;
 
-    yang_name = "rx-link-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-link-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::~RxLinkInformation()
@@ -440,6 +446,7 @@ Fia::Nodes::Node::RxLinkInformation::~RxLinkInformation()
 
 bool Fia::Nodes::Node::RxLinkInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (link_options !=  nullptr && link_options->has_data());
 }
 
@@ -507,9 +514,11 @@ bool Fia::Nodes::Node::RxLinkInformation::has_leaf_or_child_of_name(const std::s
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOptions()
+    :
+    link_option(this, {"option"})
 {
 
-    yang_name = "link-options"; yang_parent_name = "rx-link-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-options"; yang_parent_name = "rx-link-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::~LinkOptions()
@@ -518,7 +527,8 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::~LinkOptions()
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_data() const
 {
-    for (std::size_t index=0; index<link_option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_option.len(); index++)
     {
         if(link_option[index]->has_data())
             return true;
@@ -528,7 +538,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_data() const
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_operation() const
 {
-    for (std::size_t index=0; index<link_option.size(); index++)
+    for (std::size_t index=0; index<link_option.len(); index++)
     {
         if(link_option[index]->has_operation())
             return true;
@@ -558,7 +568,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_ch
     {
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption>();
         c->parent = this;
-        link_option.push_back(c);
+        link_option.append(c);
         return c;
     }
 
@@ -570,7 +580,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_option)
+    for (auto c : link_option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -599,12 +609,12 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::has_leaf_or_child_of_name
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::LinkOption()
     :
     option{YType::str, "option"}
-    	,
+        ,
     rx_asic_instances(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances>())
 {
     rx_asic_instances->parent = this;
 
-    yang_name = "link-option"; yang_parent_name = "link-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-option"; yang_parent_name = "link-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::~LinkOption()
@@ -613,6 +623,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::~LinkOption()
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_data() const
 {
+    if (is_presence_container) return true;
     return option.is_set
 	|| (rx_asic_instances !=  nullptr && rx_asic_instances->has_data());
 }
@@ -627,7 +638,8 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_operation
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-option" <<"[option='" <<option <<"']";
+    path_buffer << "link-option";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -693,9 +705,11 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_leaf_or_c
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstances()
+    :
+    rx_asic_instance(this, {"instance"})
 {
 
-    yang_name = "rx-asic-instances"; yang_parent_name = "link-option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-asic-instances"; yang_parent_name = "link-option"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::~RxAsicInstances()
@@ -704,7 +718,8 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::~
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_data() const
 {
-    for (std::size_t index=0; index<rx_asic_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rx_asic_instance.len(); index++)
     {
         if(rx_asic_instance[index]->has_data())
             return true;
@@ -714,7 +729,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::has_operation() const
 {
-    for (std::size_t index=0; index<rx_asic_instance.size(); index++)
+    for (std::size_t index=0; index<rx_asic_instance.len(); index++)
     {
         if(rx_asic_instance[index]->has_operation())
             return true;
@@ -744,7 +759,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
     {
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance>();
         c->parent = this;
-        rx_asic_instance.push_back(c);
+        rx_asic_instance.append(c);
         return c;
     }
 
@@ -756,7 +771,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rx_asic_instance)
+    for (auto c : rx_asic_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -785,12 +800,12 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxAsicInstance()
     :
     instance{YType::uint32, "instance"}
-    	,
+        ,
     rx_links(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks>())
 {
     rx_links->parent = this;
 
-    yang_name = "rx-asic-instance"; yang_parent_name = "rx-asic-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-asic-instance"; yang_parent_name = "rx-asic-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::~RxAsicInstance()
@@ -799,6 +814,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance.is_set
 	|| (rx_links !=  nullptr && rx_links->has_data());
 }
@@ -813,7 +829,8 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rx-asic-instance" <<"[instance='" <<instance <<"']";
+    path_buffer << "rx-asic-instance";
+    ADD_KEY_TOKEN(instance, "instance");
     return path_buffer.str();
 }
 
@@ -879,9 +896,11 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLinks()
+    :
+    rx_link(this, {})
 {
 
-    yang_name = "rx-links"; yang_parent_name = "rx-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-links"; yang_parent_name = "rx-asic-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::~RxLinks()
@@ -890,7 +909,8 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_data() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rx_link.len(); index++)
     {
         if(rx_link[index]->has_data())
             return true;
@@ -900,7 +920,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::has_operation() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    for (std::size_t index=0; index<rx_link.len(); index++)
     {
         if(rx_link[index]->has_operation())
             return true;
@@ -930,7 +950,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
     {
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink>();
         c->parent = this;
-        rx_link.push_back(c);
+        rx_link.append(c);
         return c;
     }
 
@@ -942,7 +962,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rx_link)
+    for (auto c : rx_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -973,9 +993,11 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     start_number{YType::uint32, "start-number"},
     end_number{YType::uint32, "end-number"},
     status_option{YType::str, "status-option"}
+        ,
+    rx_link(this, {"link"})
 {
 
-    yang_name = "rx-link"; yang_parent_name = "rx-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-link"; yang_parent_name = "rx-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::~RxLink()
@@ -984,7 +1006,8 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_data() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rx_link.len(); index++)
     {
         if(rx_link[index]->has_data())
             return true;
@@ -996,7 +1019,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::has_operation() const
 {
-    for (std::size_t index=0; index<rx_link.size(); index++)
+    for (std::size_t index=0; index<rx_link.len(); index++)
     {
         if(rx_link[index]->has_operation())
             return true;
@@ -1032,7 +1055,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
     {
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_>();
         c->parent = this;
-        rx_link.push_back(c);
+        rx_link.append(c);
         return c;
     }
 
@@ -1044,7 +1067,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rx_link)
+    for (auto c : rx_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1115,18 +1138,18 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     num_admin_shuts{YType::uint32, "num-admin-shuts"},
     correctable_errors{YType::uint64, "correctable-errors"},
     uncorrectable_errors{YType::uint64, "uncorrectable-errors"}
-    	,
+        ,
     this_link(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink>())
-	,far_end_link(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink>())
-	,far_end_link_in_hw(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw>())
-	,history(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History>())
+    , far_end_link(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink>())
+    , far_end_link_in_hw(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw>())
+    , history(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History>())
 {
     this_link->parent = this;
     far_end_link->parent = this;
     far_end_link_in_hw->parent = this;
     history->parent = this;
 
-    yang_name = "rx-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::~RxLink_()
@@ -1135,6 +1158,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::has_data() const
 {
+    if (is_presence_container) return true;
     return link.is_set
 	|| speed.is_set
 	|| stage.is_set
@@ -1179,7 +1203,8 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rx-link" <<"[link='" <<link <<"']";
+    path_buffer << "rx-link";
+    ADD_KEY_TOKEN(link, "link");
     return path_buffer.str();
 }
 
@@ -1424,12 +1449,12 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     link_stage{YType::enumeration, "link-stage"},
     link_num{YType::uint32, "link-num"},
     phy_link_num{YType::uint32, "phy-link-num"}
-    	,
+        ,
     asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "this-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "this-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::~ThisLink()
@@ -1438,6 +1463,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::has_data() const
 {
+    if (is_presence_container) return true;
     return link_type.is_set
 	|| link_stage.is_set
 	|| link_num.is_set
@@ -1565,7 +1591,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     asic_instance{YType::uint32, "asic-instance"}
 {
 
-    yang_name = "asic-id"; yang_parent_name = "this-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-id"; yang_parent_name = "this-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::~AsicId()
@@ -1574,6 +1600,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::AsicId::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_type.is_set
 	|| asic_type.is_set
 	|| rack_num.is_set
@@ -1695,12 +1722,12 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     link_stage{YType::enumeration, "link-stage"},
     link_num{YType::uint32, "link-num"},
     phy_link_num{YType::uint32, "phy-link-num"}
-    	,
+        ,
     asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "far-end-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-link"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::~FarEndLink()
@@ -1709,6 +1736,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::has_data() const
 {
+    if (is_presence_container) return true;
     return link_type.is_set
 	|| link_stage.is_set
 	|| link_num.is_set
@@ -1836,7 +1864,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     asic_instance{YType::uint32, "asic-instance"}
 {
 
-    yang_name = "asic-id"; yang_parent_name = "far-end-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-id"; yang_parent_name = "far-end-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::~AsicId()
@@ -1845,6 +1873,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::AsicId::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_type.is_set
 	|| asic_type.is_set
 	|| rack_num.is_set
@@ -1966,12 +1995,12 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     link_stage{YType::enumeration, "link-stage"},
     link_num{YType::uint32, "link-num"},
     phy_link_num{YType::uint32, "phy-link-num"}
-    	,
+        ,
     asic_id(std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "far-end-link-in-hw"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-link-in-hw"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::~FarEndLinkInHw()
@@ -1980,6 +2009,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::has_data() const
 {
+    if (is_presence_container) return true;
     return link_type.is_set
 	|| link_stage.is_set
 	|| link_num.is_set
@@ -2107,7 +2137,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     asic_instance{YType::uint32, "asic-instance"}
 {
 
-    yang_name = "asic-id"; yang_parent_name = "far-end-link-in-hw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-id"; yang_parent_name = "far-end-link-in-hw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::~AsicId()
@@ -2116,6 +2146,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::AsicId::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_type.is_set
 	|| asic_type.is_set
 	|| rack_num.is_set
@@ -2235,9 +2266,11 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     :
     histnum{YType::uint8, "histnum"},
     start_index{YType::uint8, "start-index"}
+        ,
+    hist(this, {})
 {
 
-    yang_name = "history"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "rx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::~History()
@@ -2246,7 +2279,8 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_data() const
 {
-    for (std::size_t index=0; index<hist.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hist.len(); index++)
     {
         if(hist[index]->has_data())
             return true;
@@ -2257,7 +2291,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::has_operation() const
 {
-    for (std::size_t index=0; index<hist.size(); index++)
+    for (std::size_t index=0; index<hist.len(); index++)
     {
         if(hist[index]->has_operation())
             return true;
@@ -2291,7 +2325,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOp
     {
         auto c = std::make_shared<Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist>();
         c->parent = this;
-        hist.push_back(c);
+        hist.append(c);
         return c;
     }
 
@@ -2303,7 +2337,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::RxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hist)
+    for (auto c : hist.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2358,7 +2392,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
     reasons{YType::str, "reasons"}
 {
 
-    yang_name = "hist"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hist"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::~Hist()
@@ -2367,6 +2401,7 @@ Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::R
 
 bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_state.is_set
 	|| oper_state.is_set
 	|| error_state.is_set
@@ -2528,9 +2563,12 @@ Fia::Nodes::Node::DriverInformation::DriverInformation()
     fabric_mode{YType::uint8, "fabric-mode"},
     fc_mode{YType::enumeration, "fc-mode"},
     board_rev_id{YType::uint32, "board-rev-id"}
+        ,
+    device_info(this, {})
+    , card_info(this, {})
 {
 
-    yang_name = "driver-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "driver-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DriverInformation::~DriverInformation()
@@ -2539,12 +2577,13 @@ Fia::Nodes::Node::DriverInformation::~DriverInformation()
 
 bool Fia::Nodes::Node::DriverInformation::has_data() const
 {
-    for (std::size_t index=0; index<device_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<device_info.len(); index++)
     {
         if(device_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<card_info.size(); index++)
+    for (std::size_t index=0; index<card_info.len(); index++)
     {
         if(card_info[index]->has_data())
             return true;
@@ -2597,12 +2636,12 @@ bool Fia::Nodes::Node::DriverInformation::has_data() const
 
 bool Fia::Nodes::Node::DriverInformation::has_operation() const
 {
-    for (std::size_t index=0; index<device_info.size(); index++)
+    for (std::size_t index=0; index<device_info.len(); index++)
     {
         if(device_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<card_info.size(); index++)
+    for (std::size_t index=0; index<card_info.len(); index++)
     {
         if(card_info[index]->has_operation())
             return true;
@@ -2720,7 +2759,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::get_child_by_name(c
     {
         auto c = std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo>();
         c->parent = this;
-        device_info.push_back(c);
+        device_info.append(c);
         return c;
     }
 
@@ -2728,7 +2767,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::get_child_by_name(c
     {
         auto c = std::make_shared<Fia::Nodes::Node::DriverInformation::CardInfo>();
         c->parent = this;
-        card_info.push_back(c);
+        card_info.append(c);
         return c;
     }
 
@@ -2740,7 +2779,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : device_info)
+    for (auto c : device_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2749,7 +2788,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformati
     }
 
     count = 0;
-    for (auto const & c : card_info)
+    for (auto c : card_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3228,12 +3267,12 @@ Fia::Nodes::Node::DriverInformation::DeviceInfo::DeviceInfo()
     num_pon_resets{YType::uint32, "num-pon-resets"},
     num_hard_resets{YType::uint32, "num-hard-resets"},
     local_switch_state{YType::boolean, "local-switch-state"}
-    	,
+        ,
     asic_id(std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "device-info"; yang_parent_name = "driver-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "device-info"; yang_parent_name = "driver-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DriverInformation::DeviceInfo::~DeviceInfo()
@@ -3242,6 +3281,7 @@ Fia::Nodes::Node::DriverInformation::DeviceInfo::~DeviceInfo()
 
 bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return is_valid.is_set
 	|| fapid.is_set
 	|| hotplug_event.is_set
@@ -3460,7 +3500,7 @@ Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::AsicId()
     asic_instance{YType::uint32, "asic-instance"}
 {
 
-    yang_name = "asic-id"; yang_parent_name = "device-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-id"; yang_parent_name = "device-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::~AsicId()
@@ -3469,6 +3509,7 @@ Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::~AsicId()
 
 bool Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_type.is_set
 	|| asic_type.is_set
 	|| rack_num.is_set
@@ -3601,12 +3642,12 @@ Fia::Nodes::Node::DriverInformation::CardInfo::CardInfo()
     num_ilkns_per_asic{YType::uint32, "num-ilkns-per-asic"},
     num_local_ports_per_ilkn{YType::uint32, "num-local-ports-per-ilkn"},
     num_cos_per_port{YType::uint8, "num-cos-per-port"}
-    	,
+        ,
     oir_circular_buffer(std::make_shared<Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer>())
 {
     oir_circular_buffer->parent = this;
 
-    yang_name = "card-info"; yang_parent_name = "driver-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-info"; yang_parent_name = "driver-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DriverInformation::CardInfo::~CardInfo()
@@ -3615,6 +3656,7 @@ Fia::Nodes::Node::DriverInformation::CardInfo::~CardInfo()
 
 bool Fia::Nodes::Node::DriverInformation::CardInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_type.is_set
 	|| card_name.is_set
 	|| slot_no.is_set
@@ -3881,9 +3923,11 @@ Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::OirCircularBuf
     count{YType::int32, "count"},
     start{YType::int32, "start"},
     end{YType::int32, "end"}
+        ,
+    fia_oir_info(this, {})
 {
 
-    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::~OirCircularBuffer()
@@ -3892,7 +3936,8 @@ Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::~OirCircularBu
 
 bool Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::has_data() const
 {
-    for (std::size_t index=0; index<fia_oir_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fia_oir_info.len(); index++)
     {
         if(fia_oir_info[index]->has_data())
             return true;
@@ -3904,7 +3949,7 @@ bool Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::has_data(
 
 bool Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::has_operation() const
 {
-    for (std::size_t index=0; index<fia_oir_info.size(); index++)
+    for (std::size_t index=0; index<fia_oir_info.len(); index++)
     {
         if(fia_oir_info[index]->has_operation())
             return true;
@@ -3940,7 +3985,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DriverInformation::CardInfo::OirCircul
     {
         auto c = std::make_shared<Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo>();
         c->parent = this;
-        fia_oir_info.push_back(c);
+        fia_oir_info.append(c);
         return c;
     }
 
@@ -3952,7 +3997,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DriverInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fia_oir_info)
+    for (auto c : fia_oir_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4019,7 +4064,7 @@ Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::Fi
     cur_card_state{YType::int32, "cur-card-state"}
 {
 
-    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::~FiaOirInfo()
@@ -4028,6 +4073,7 @@ Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::~F
 
 bool Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_flag.is_set
 	|| card_type.is_set
 	|| reg_flag.is_set
@@ -4175,7 +4221,7 @@ Fia::Nodes::Node::ClearStatistics::ClearStatistics()
 {
     asic_instances->parent = this;
 
-    yang_name = "clear-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clear-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::ClearStatistics::~ClearStatistics()
@@ -4184,6 +4230,7 @@ Fia::Nodes::Node::ClearStatistics::~ClearStatistics()
 
 bool Fia::Nodes::Node::ClearStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (asic_instances !=  nullptr && asic_instances->has_data());
 }
 
@@ -4251,9 +4298,11 @@ bool Fia::Nodes::Node::ClearStatistics::has_leaf_or_child_of_name(const std::str
 }
 
 Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstances()
+    :
+    asic_instance(this, {"asic_instance"})
 {
 
-    yang_name = "asic-instances"; yang_parent_name = "clear-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-instances"; yang_parent_name = "clear-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::ClearStatistics::AsicInstances::~AsicInstances()
@@ -4262,7 +4311,8 @@ Fia::Nodes::Node::ClearStatistics::AsicInstances::~AsicInstances()
 
 bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_data() const
 {
-    for (std::size_t index=0; index<asic_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<asic_instance.len(); index++)
     {
         if(asic_instance[index]->has_data())
             return true;
@@ -4272,7 +4322,7 @@ bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_data() const
 
 bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_operation() const
 {
-    for (std::size_t index=0; index<asic_instance.size(); index++)
+    for (std::size_t index=0; index<asic_instance.len(); index++)
     {
         if(asic_instance[index]->has_operation())
             return true;
@@ -4302,7 +4352,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::ClearStatistics::AsicInstances::get_ch
     {
         auto c = std::make_shared<Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance>();
         c->parent = this;
-        asic_instance.push_back(c);
+        asic_instance.append(c);
         return c;
     }
 
@@ -4314,7 +4364,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::ClearStatistics
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : asic_instance)
+    for (auto c : asic_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4346,7 +4396,7 @@ Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::AsicInstance()
     instance{YType::int32, "instance"}
 {
 
-    yang_name = "asic-instance"; yang_parent_name = "asic-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-instance"; yang_parent_name = "asic-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::~AsicInstance()
@@ -4355,6 +4405,7 @@ Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::~AsicInstance()
 
 bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_instance.is_set
 	|| instance.is_set;
 }
@@ -4369,7 +4420,8 @@ bool Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::has_operati
 std::string Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "asic-instance" <<"[asic-instance='" <<asic_instance <<"']";
+    path_buffer << "asic-instance";
+    ADD_KEY_TOKEN(asic_instance, "asic-instance");
     return path_buffer.str();
 }
 
@@ -4437,7 +4489,7 @@ Fia::Nodes::Node::TxLinkInformation::TxLinkInformation()
 {
     tx_status_option_table->parent = this;
 
-    yang_name = "tx-link-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-link-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::~TxLinkInformation()
@@ -4446,6 +4498,7 @@ Fia::Nodes::Node::TxLinkInformation::~TxLinkInformation()
 
 bool Fia::Nodes::Node::TxLinkInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (tx_status_option_table !=  nullptr && tx_status_option_table->has_data());
 }
 
@@ -4518,7 +4571,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOptionTable()
 {
     tx_status_option->parent = this;
 
-    yang_name = "tx-status-option-table"; yang_parent_name = "tx-link-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-status-option-table"; yang_parent_name = "tx-link-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::~TxStatusOptionTable()
@@ -4527,6 +4580,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::~TxStatusOptionTable()
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (tx_status_option !=  nullptr && tx_status_option->has_data());
 }
 
@@ -4599,7 +4653,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxStat
 {
     tx_asic_instances->parent = this;
 
-    yang_name = "tx-status-option"; yang_parent_name = "tx-status-option-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-status-option"; yang_parent_name = "tx-status-option-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::~TxStatusOption()
@@ -4608,6 +4662,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::~TxSta
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_data() const
 {
+    if (is_presence_container) return true;
     return (tx_asic_instances !=  nullptr && tx_asic_instances->has_data());
 }
 
@@ -4675,9 +4730,11 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::h
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstances()
+    :
+    tx_asic_instance(this, {"instance"})
 {
 
-    yang_name = "tx-asic-instances"; yang_parent_name = "tx-status-option"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-asic-instances"; yang_parent_name = "tx-status-option"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::~TxAsicInstances()
@@ -4686,7 +4743,8 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_data() const
 {
-    for (std::size_t index=0; index<tx_asic_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tx_asic_instance.len(); index++)
     {
         if(tx_asic_instance[index]->has_data())
             return true;
@@ -4696,7 +4754,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::has_operation() const
 {
-    for (std::size_t index=0; index<tx_asic_instance.size(); index++)
+    for (std::size_t index=0; index<tx_asic_instance.len(); index++)
     {
         if(tx_asic_instance[index]->has_operation())
             return true;
@@ -4726,7 +4784,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
     {
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance>();
         c->parent = this;
-        tx_asic_instance.push_back(c);
+        tx_asic_instance.append(c);
         return c;
     }
 
@@ -4738,7 +4796,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tx_asic_instance)
+    for (auto c : tx_asic_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4767,12 +4825,12 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxAsicInstance()
     :
     instance{YType::uint32, "instance"}
-    	,
+        ,
     tx_links(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks>())
 {
     tx_links->parent = this;
 
-    yang_name = "tx-asic-instance"; yang_parent_name = "tx-asic-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-asic-instance"; yang_parent_name = "tx-asic-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::~TxAsicInstance()
@@ -4781,6 +4839,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance.is_set
 	|| (tx_links !=  nullptr && tx_links->has_data());
 }
@@ -4795,7 +4854,8 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tx-asic-instance" <<"[instance='" <<instance <<"']";
+    path_buffer << "tx-asic-instance";
+    ADD_KEY_TOKEN(instance, "instance");
     return path_buffer.str();
 }
 
@@ -4861,9 +4921,11 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLinks()
+    :
+    tx_link(this, {})
 {
 
-    yang_name = "tx-links"; yang_parent_name = "tx-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-links"; yang_parent_name = "tx-asic-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::~TxLinks()
@@ -4872,7 +4934,8 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_data() const
 {
-    for (std::size_t index=0; index<tx_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tx_link.len(); index++)
     {
         if(tx_link[index]->has_data())
             return true;
@@ -4882,7 +4945,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::has_operation() const
 {
-    for (std::size_t index=0; index<tx_link.size(); index++)
+    for (std::size_t index=0; index<tx_link.len(); index++)
     {
         if(tx_link[index]->has_operation())
             return true;
@@ -4912,7 +4975,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
     {
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink>();
         c->parent = this;
-        tx_link.push_back(c);
+        tx_link.append(c);
         return c;
     }
 
@@ -4924,7 +4987,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tx_link)
+    for (auto c : tx_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4954,9 +5017,11 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     :
     start_number{YType::uint32, "start-number"},
     end_number{YType::uint32, "end-number"}
+        ,
+    tx_link(this, {"link"})
 {
 
-    yang_name = "tx-link"; yang_parent_name = "tx-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-link"; yang_parent_name = "tx-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::~TxLink()
@@ -4965,7 +5030,8 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_data() const
 {
-    for (std::size_t index=0; index<tx_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tx_link.len(); index++)
     {
         if(tx_link[index]->has_data())
             return true;
@@ -4976,7 +5042,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::has_operation() const
 {
-    for (std::size_t index=0; index<tx_link.size(); index++)
+    for (std::size_t index=0; index<tx_link.len(); index++)
     {
         if(tx_link[index]->has_operation())
             return true;
@@ -5010,7 +5076,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
     {
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_>();
         c->parent = this;
-        tx_link.push_back(c);
+        tx_link.append(c);
         return c;
     }
 
@@ -5022,7 +5088,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tx_link)
+    for (auto c : tx_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5082,18 +5148,18 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     oper_state{YType::enumeration, "oper-state"},
     error_state{YType::enumeration, "error-state"},
     num_admin_shuts{YType::uint32, "num-admin-shuts"}
-    	,
+        ,
     this_link(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink>())
-	,far_end_link(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink>())
-	,stats(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats>())
-	,history(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History>())
+    , far_end_link(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink>())
+    , stats(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats>())
+    , history(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History>())
 {
     this_link->parent = this;
     far_end_link->parent = this;
     stats->parent = this;
     history->parent = this;
 
-    yang_name = "tx-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::~TxLink_()
@@ -5102,6 +5168,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::has_data() const
 {
+    if (is_presence_container) return true;
     return link.is_set
 	|| speed.is_set
 	|| stage.is_set
@@ -5144,7 +5211,8 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tx-link" <<"[link='" <<link <<"']";
+    path_buffer << "tx-link";
+    ADD_KEY_TOKEN(link, "link");
     return path_buffer.str();
 }
 
@@ -5378,12 +5446,12 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     link_stage{YType::enumeration, "link-stage"},
     link_num{YType::uint32, "link-num"},
     phy_link_num{YType::uint32, "phy-link-num"}
-    	,
+        ,
     asic_id(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "this-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "this-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::~ThisLink()
@@ -5392,6 +5460,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::has_data() const
 {
+    if (is_presence_container) return true;
     return link_type.is_set
 	|| link_stage.is_set
 	|| link_num.is_set
@@ -5519,7 +5588,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     asic_instance{YType::uint32, "asic-instance"}
 {
 
-    yang_name = "asic-id"; yang_parent_name = "this-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-id"; yang_parent_name = "this-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::~AsicId()
@@ -5528,6 +5597,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::AsicId::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_type.is_set
 	|| asic_type.is_set
 	|| rack_num.is_set
@@ -5649,12 +5719,12 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     link_stage{YType::enumeration, "link-stage"},
     link_num{YType::uint32, "link-num"},
     phy_link_num{YType::uint32, "phy-link-num"}
-    	,
+        ,
     asic_id(std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "far-end-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-link"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::~FarEndLink()
@@ -5663,6 +5733,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::has_data() const
 {
+    if (is_presence_container) return true;
     return link_type.is_set
 	|| link_stage.is_set
 	|| link_num.is_set
@@ -5790,7 +5861,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     asic_instance{YType::uint32, "asic-instance"}
 {
 
-    yang_name = "asic-id"; yang_parent_name = "far-end-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-id"; yang_parent_name = "far-end-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::~AsicId()
@@ -5799,6 +5870,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::AsicId::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_type.is_set
 	|| asic_type.is_set
 	|| rack_num.is_set
@@ -5919,7 +5991,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     dummy{YType::uint32, "dummy"}
 {
 
-    yang_name = "stats"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::~Stats()
@@ -5928,6 +6000,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return dummy.is_set;
 }
 
@@ -5995,9 +6068,11 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     :
     histnum{YType::uint8, "histnum"},
     start_index{YType::uint8, "start-index"}
+        ,
+    hist(this, {})
 {
 
-    yang_name = "history"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "tx-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::~History()
@@ -6006,7 +6081,8 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_data() const
 {
-    for (std::size_t index=0; index<hist.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hist.len(); index++)
     {
         if(hist[index]->has_data())
             return true;
@@ -6017,7 +6093,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::has_operation() const
 {
-    for (std::size_t index=0; index<hist.size(); index++)
+    for (std::size_t index=0; index<hist.len(); index++)
     {
         if(hist[index]->has_operation())
             return true;
@@ -6051,7 +6127,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable
     {
         auto c = std::make_shared<Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist>();
         c->parent = this;
-        hist.push_back(c);
+        hist.append(c);
         return c;
     }
 
@@ -6063,7 +6139,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::TxLinkInformati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hist)
+    for (auto c : hist.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6118,7 +6194,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
     reasons{YType::str, "reasons"}
 {
 
-    yang_name = "hist"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hist"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::~Hist()
@@ -6127,6 +6203,7 @@ Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsic
 
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_state.is_set
 	|| oper_state.is_set
 	|| error_state.is_set
@@ -6248,7 +6325,7 @@ Fia::Nodes::Node::DiagShell::DiagShell()
 {
     diag_shell_units->parent = this;
 
-    yang_name = "diag-shell"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diag-shell"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DiagShell::~DiagShell()
@@ -6257,6 +6334,7 @@ Fia::Nodes::Node::DiagShell::~DiagShell()
 
 bool Fia::Nodes::Node::DiagShell::has_data() const
 {
+    if (is_presence_container) return true;
     return (diag_shell_units !=  nullptr && diag_shell_units->has_data());
 }
 
@@ -6324,9 +6402,11 @@ bool Fia::Nodes::Node::DiagShell::has_leaf_or_child_of_name(const std::string & 
 }
 
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnits()
+    :
+    diag_shell_unit(this, {"unit"})
 {
 
-    yang_name = "diag-shell-units"; yang_parent_name = "diag-shell"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diag-shell-units"; yang_parent_name = "diag-shell"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DiagShell::DiagShellUnits::~DiagShellUnits()
@@ -6335,7 +6415,8 @@ Fia::Nodes::Node::DiagShell::DiagShellUnits::~DiagShellUnits()
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_data() const
 {
-    for (std::size_t index=0; index<diag_shell_unit.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diag_shell_unit.len(); index++)
     {
         if(diag_shell_unit[index]->has_data())
             return true;
@@ -6345,7 +6426,7 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_data() const
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_operation() const
 {
-    for (std::size_t index=0; index<diag_shell_unit.size(); index++)
+    for (std::size_t index=0; index<diag_shell_unit.len(); index++)
     {
         if(diag_shell_unit[index]->has_operation())
             return true;
@@ -6375,7 +6456,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::get_child_b
     {
         auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit>();
         c->parent = this;
-        diag_shell_unit.push_back(c);
+        diag_shell_unit.append(c);
         return c;
     }
 
@@ -6387,7 +6468,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::Diag
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diag_shell_unit)
+    for (auto c : diag_shell_unit.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6416,12 +6497,12 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::has_leaf_or_child_of_name(cons
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::DiagShellUnit()
     :
     unit{YType::uint32, "unit"}
-    	,
+        ,
     commands(std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands>())
 {
     commands->parent = this;
 
-    yang_name = "diag-shell-unit"; yang_parent_name = "diag-shell-units"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diag-shell-unit"; yang_parent_name = "diag-shell-units"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::~DiagShellUnit()
@@ -6430,6 +6511,7 @@ Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::~DiagShellUnit()
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_data() const
 {
+    if (is_presence_container) return true;
     return unit.is_set
 	|| (commands !=  nullptr && commands->has_data());
 }
@@ -6444,7 +6526,8 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_operation()
 std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diag-shell-unit" <<"[unit='" <<unit <<"']";
+    path_buffer << "diag-shell-unit";
+    ADD_KEY_TOKEN(unit, "unit");
     return path_buffer.str();
 }
 
@@ -6510,9 +6593,11 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_leaf_or_chi
 }
 
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Commands()
+    :
+    command(this, {"cmd"})
 {
 
-    yang_name = "commands"; yang_parent_name = "diag-shell-unit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "commands"; yang_parent_name = "diag-shell-unit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::~Commands()
@@ -6521,7 +6606,8 @@ Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::~Commands(
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_data() const
 {
-    for (std::size_t index=0; index<command.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<command.len(); index++)
     {
         if(command[index]->has_data())
             return true;
@@ -6531,7 +6617,7 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_d
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_operation() const
 {
-    for (std::size_t index=0; index<command.size(); index++)
+    for (std::size_t index=0; index<command.len(); index++)
     {
         if(command[index]->has_operation())
             return true;
@@ -6561,7 +6647,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
     {
         auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command>();
         c->parent = this;
-        command.push_back(c);
+        command.append(c);
         return c;
     }
 
@@ -6573,7 +6659,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::Diag
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : command)
+    for (auto c : command.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6602,9 +6688,11 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::has_l
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Command()
     :
     cmd{YType::str, "cmd"}
+        ,
+    output(this, {"output"})
 {
 
-    yang_name = "command"; yang_parent_name = "commands"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "command"; yang_parent_name = "commands"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::~Command()
@@ -6613,7 +6701,8 @@ Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::~
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_data() const
 {
-    for (std::size_t index=0; index<output.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_data())
             return true;
@@ -6623,7 +6712,7 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Comma
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::has_operation() const
 {
-    for (std::size_t index=0; index<output.size(); index++)
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_operation())
             return true;
@@ -6635,7 +6724,8 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Comma
 std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "command" <<"[cmd='" <<cmd <<"']";
+    path_buffer << "command";
+    ADD_KEY_TOKEN(cmd, "cmd");
     return path_buffer.str();
 }
 
@@ -6655,7 +6745,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUn
     {
         auto c = std::make_shared<Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output>();
         c->parent = this;
-        output.push_back(c);
+        output.append(c);
         return c;
     }
 
@@ -6667,7 +6757,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::DiagShell::Diag
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : output)
+    for (auto c : output.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6709,7 +6799,7 @@ Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::O
     output_xr{YType::str, "output-xr"}
 {
 
-    yang_name = "output"; yang_parent_name = "command"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "command"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::~Output()
@@ -6718,6 +6808,7 @@ Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::O
 
 bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return output.is_set
 	|| output_xr.is_set;
 }
@@ -6732,7 +6823,8 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Comma
 std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output" <<"[output='" <<output <<"']";
+    path_buffer << "output";
+    ADD_KEY_TOKEN(output, "output");
     return path_buffer.str();
 }
 
@@ -6800,7 +6892,7 @@ Fia::Nodes::Node::OirHistory::OirHistory()
 {
     flags->parent = this;
 
-    yang_name = "oir-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oir-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::~OirHistory()
@@ -6809,6 +6901,7 @@ Fia::Nodes::Node::OirHistory::~OirHistory()
 
 bool Fia::Nodes::Node::OirHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (flags !=  nullptr && flags->has_data());
 }
 
@@ -6876,9 +6969,11 @@ bool Fia::Nodes::Node::OirHistory::has_leaf_or_child_of_name(const std::string &
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flags()
+    :
+    flag(this, {"flag"})
 {
 
-    yang_name = "flags"; yang_parent_name = "oir-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "oir-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::~Flags()
@@ -6887,7 +6982,8 @@ Fia::Nodes::Node::OirHistory::Flags::~Flags()
 
 bool Fia::Nodes::Node::OirHistory::Flags::has_data() const
 {
-    for (std::size_t index=0; index<flag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flag.len(); index++)
     {
         if(flag[index]->has_data())
             return true;
@@ -6897,7 +6993,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::has_data() const
 
 bool Fia::Nodes::Node::OirHistory::Flags::has_operation() const
 {
-    for (std::size_t index=0; index<flag.size(); index++)
+    for (std::size_t index=0; index<flag.len(); index++)
     {
         if(flag[index]->has_operation())
             return true;
@@ -6927,7 +7023,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::get_child_by_name(c
     {
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag>();
         c->parent = this;
-        flag.push_back(c);
+        flag.append(c);
         return c;
     }
 
@@ -6939,7 +7035,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Fla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flag)
+    for (auto c : flag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6968,12 +7064,12 @@ bool Fia::Nodes::Node::OirHistory::Flags::has_leaf_or_child_of_name(const std::s
 Fia::Nodes::Node::OirHistory::Flags::Flag::Flag()
     :
     flag{YType::int32, "flag"}
-    	,
+        ,
     slots(std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "flag"; yang_parent_name = "flags"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flag"; yang_parent_name = "flags"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::~Flag()
@@ -6982,6 +7078,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::~Flag()
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::has_data() const
 {
+    if (is_presence_container) return true;
     return flag.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
@@ -6996,7 +7093,8 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::has_operation() const
 std::string Fia::Nodes::Node::OirHistory::Flags::Flag::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flag" <<"[flag='" <<flag <<"']";
+    path_buffer << "flag";
+    ADD_KEY_TOKEN(flag, "flag");
     return path_buffer.str();
 }
 
@@ -7062,9 +7160,11 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::has_leaf_or_child_of_name(const 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slots()
+    :
+    slot(this, {"slot"})
 {
 
-    yang_name = "slots"; yang_parent_name = "flag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "flag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::~Slots()
@@ -7073,7 +7173,8 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::~Slots()
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -7083,7 +7184,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::has_data() const
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -7113,7 +7214,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_ch
     {
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -7125,7 +7226,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Fla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7198,9 +7299,12 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::Slot()
     fabric_mode{YType::uint8, "fabric-mode"},
     fc_mode{YType::enumeration, "fc-mode"},
     board_rev_id{YType::uint32, "board-rev-id"}
+        ,
+    device_info(this, {})
+    , card_info(this, {})
 {
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::~Slot()
@@ -7209,12 +7313,13 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::~Slot()
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_data() const
 {
-    for (std::size_t index=0; index<device_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<device_info.len(); index++)
     {
         if(device_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<card_info.size(); index++)
+    for (std::size_t index=0; index<card_info.len(); index++)
     {
         if(card_info[index]->has_data())
             return true;
@@ -7268,12 +7373,12 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_data() const
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_operation() const
 {
-    for (std::size_t index=0; index<device_info.size(); index++)
+    for (std::size_t index=0; index<device_info.len(); index++)
     {
         if(device_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<card_info.size(); index++)
+    for (std::size_t index=0; index<card_info.len(); index++)
     {
         if(card_info[index]->has_operation())
             return true;
@@ -7329,7 +7434,8 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_operation() con
 std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot='" <<slot <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
@@ -7393,7 +7499,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
     {
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo>();
         c->parent = this;
-        device_info.push_back(c);
+        device_info.append(c);
         return c;
     }
 
@@ -7401,7 +7507,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
     {
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo>();
         c->parent = this;
-        card_info.push_back(c);
+        card_info.append(c);
         return c;
     }
 
@@ -7413,7 +7519,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Fla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : device_info)
+    for (auto c : device_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7422,7 +7528,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Fla
     }
 
     count = 0;
-    for (auto const & c : card_info)
+    for (auto c : card_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7911,12 +8017,12 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::DeviceInfo()
     num_pon_resets{YType::uint32, "num-pon-resets"},
     num_hard_resets{YType::uint32, "num-hard-resets"},
     local_switch_state{YType::boolean, "local-switch-state"}
-    	,
+        ,
     asic_id(std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId>())
 {
     asic_id->parent = this;
 
-    yang_name = "device-info"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "device-info"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::~DeviceInfo()
@@ -7925,6 +8031,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::~DeviceInfo(
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return is_valid.is_set
 	|| fapid.is_set
 	|| hotplug_event.is_set
@@ -8143,7 +8250,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::Asic
     asic_instance{YType::uint32, "asic-instance"}
 {
 
-    yang_name = "asic-id"; yang_parent_name = "device-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-id"; yang_parent_name = "device-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::~AsicId()
@@ -8152,6 +8259,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::~Asi
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_type.is_set
 	|| asic_type.is_set
 	|| rack_num.is_set
@@ -8284,12 +8392,12 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::CardInfo()
     num_ilkns_per_asic{YType::uint32, "num-ilkns-per-asic"},
     num_local_ports_per_ilkn{YType::uint32, "num-local-ports-per-ilkn"},
     num_cos_per_port{YType::uint8, "num-cos-per-port"}
-    	,
+        ,
     oir_circular_buffer(std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer>())
 {
     oir_circular_buffer->parent = this;
 
-    yang_name = "card-info"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-info"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::~CardInfo()
@@ -8298,6 +8406,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::~CardInfo()
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_type.is_set
 	|| card_name.is_set
 	|| slot_no.is_set
@@ -8564,9 +8673,11 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuf
     count{YType::int32, "count"},
     start{YType::int32, "start"},
     end{YType::int32, "end"}
+        ,
+    fia_oir_info(this, {})
 {
 
-    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oir-circular-buffer"; yang_parent_name = "card-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::~OirCircularBuffer()
@@ -8575,7 +8686,8 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuf
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::has_data() const
 {
-    for (std::size_t index=0; index<fia_oir_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fia_oir_info.len(); index++)
     {
         if(fia_oir_info[index]->has_data())
             return true;
@@ -8587,7 +8699,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircul
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::has_operation() const
 {
-    for (std::size_t index=0; index<fia_oir_info.size(); index++)
+    for (std::size_t index=0; index<fia_oir_info.len(); index++)
     {
         if(fia_oir_info[index]->has_operation())
             return true;
@@ -8623,7 +8735,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::
     {
         auto c = std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo>();
         c->parent = this;
-        fia_oir_info.push_back(c);
+        fia_oir_info.append(c);
         return c;
     }
 
@@ -8635,7 +8747,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::OirHistory::Fla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fia_oir_info)
+    for (auto c : fia_oir_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8702,7 +8814,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuf
     cur_card_state{YType::int32, "cur-card-state"}
 {
 
-    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fia-oir-info"; yang_parent_name = "oir-circular-buffer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo::~FiaOirInfo()
@@ -8711,6 +8823,7 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuf
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return card_flag.is_set
 	|| card_type.is_set
 	|| reg_flag.is_set
@@ -8858,7 +8971,7 @@ Fia::Nodes::Node::AsicStatistics::AsicStatistics()
 {
     statistics_asic_instances->parent = this;
 
-    yang_name = "asic-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "asic-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::~AsicStatistics()
@@ -8867,6 +8980,7 @@ Fia::Nodes::Node::AsicStatistics::~AsicStatistics()
 
 bool Fia::Nodes::Node::AsicStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics_asic_instances !=  nullptr && statistics_asic_instances->has_data());
 }
 
@@ -8934,9 +9048,11 @@ bool Fia::Nodes::Node::AsicStatistics::has_leaf_or_child_of_name(const std::stri
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstances()
+    :
+    statistics_asic_instance(this, {"instance"})
 {
 
-    yang_name = "statistics-asic-instances"; yang_parent_name = "asic-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics-asic-instances"; yang_parent_name = "asic-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::~StatisticsAsicInstances()
@@ -8945,7 +9061,8 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::~StatisticsAsicInstan
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_data() const
 {
-    for (std::size_t index=0; index<statistics_asic_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistics_asic_instance.len(); index++)
     {
         if(statistics_asic_instance[index]->has_data())
             return true;
@@ -8955,7 +9072,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_data() const
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_operation() const
 {
-    for (std::size_t index=0; index<statistics_asic_instance.size(); index++)
+    for (std::size_t index=0; index<statistics_asic_instance.len(); index++)
     {
         if(statistics_asic_instance[index]->has_operation())
             return true;
@@ -8985,7 +9102,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
     {
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance>();
         c->parent = this;
-        statistics_asic_instance.push_back(c);
+        statistics_asic_instance.append(c);
         return c;
     }
 
@@ -8997,7 +9114,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistics_asic_instance)
+    for (auto c : statistics_asic_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9026,14 +9143,14 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::has_leaf_or_chil
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::StatisticsAsicInstance()
     :
     instance{YType::uint32, "instance"}
-    	,
+        ,
     pbc_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics>())
-	,fmac_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics>())
+    , fmac_statistics(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics>())
 {
     pbc_statistics->parent = this;
     fmac_statistics->parent = this;
 
-    yang_name = "statistics-asic-instance"; yang_parent_name = "statistics-asic-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics-asic-instance"; yang_parent_name = "statistics-asic-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::~StatisticsAsicInstance()
@@ -9042,6 +9159,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance.is_set
 	|| (pbc_statistics !=  nullptr && pbc_statistics->has_data())
 	|| (fmac_statistics !=  nullptr && fmac_statistics->has_data());
@@ -9058,7 +9176,8 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistics-asic-instance" <<"[instance='" <<instance <<"']";
+    path_buffer << "statistics-asic-instance";
+    ADD_KEY_TOKEN(instance, "instance");
     return path_buffer.str();
 }
 
@@ -9143,7 +9262,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 {
     pbc_stats->parent = this;
 
-    yang_name = "pbc-statistics"; yang_parent_name = "statistics-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbc-statistics"; yang_parent_name = "statistics-asic-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::~PbcStatistics()
@@ -9152,6 +9271,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (pbc_stats !=  nullptr && pbc_stats->has_data());
 }
 
@@ -9225,12 +9345,12 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     slot_no{YType::uint32, "slot-no"},
     asic_instance{YType::uint32, "asic-instance"},
     chip_ver{YType::uint16, "chip-ver"}
-    	,
+        ,
     stats_info(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo>())
 {
     stats_info->parent = this;
 
-    yang_name = "pbc-stats"; yang_parent_name = "pbc-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbc-stats"; yang_parent_name = "pbc-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::~PbcStats()
@@ -9239,6 +9359,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| rack_no.is_set
 	|| slot_no.is_set
@@ -9373,9 +9494,11 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::StatsInfo()
     :
     num_blocks{YType::uint8, "num-blocks"}
+        ,
+    block_info(this, {})
 {
 
-    yang_name = "stats-info"; yang_parent_name = "pbc-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats-info"; yang_parent_name = "pbc-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::~StatsInfo()
@@ -9384,7 +9507,8 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_data() const
 {
-    for (std::size_t index=0; index<block_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<block_info.len(); index++)
     {
         if(block_info[index]->has_data())
             return true;
@@ -9394,7 +9518,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::has_operation() const
 {
-    for (std::size_t index=0; index<block_info.size(); index++)
+    for (std::size_t index=0; index<block_info.len(); index++)
     {
         if(block_info[index]->has_operation())
             return true;
@@ -9426,7 +9550,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
     {
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo>();
         c->parent = this;
-        block_info.push_back(c);
+        block_info.append(c);
         return c;
     }
 
@@ -9438,7 +9562,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : block_info)
+    for (auto c : block_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9478,9 +9602,11 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     :
     block_name{YType::str, "block-name"},
     num_fields{YType::uint8, "num-fields"}
+        ,
+    field_info(this, {})
 {
 
-    yang_name = "block-info"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block-info"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::~BlockInfo()
@@ -9489,7 +9615,8 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_data() const
 {
-    for (std::size_t index=0; index<field_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<field_info.len(); index++)
     {
         if(field_info[index]->has_data())
             return true;
@@ -9500,7 +9627,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::has_operation() const
 {
-    for (std::size_t index=0; index<field_info.size(); index++)
+    for (std::size_t index=0; index<field_info.len(); index++)
     {
         if(field_info[index]->has_operation())
             return true;
@@ -9534,7 +9661,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
     {
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo>();
         c->parent = this;
-        field_info.push_back(c);
+        field_info.append(c);
         return c;
     }
 
@@ -9546,7 +9673,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : field_info)
+    for (auto c : field_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9599,7 +9726,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     is_ovf{YType::boolean, "is-ovf"}
 {
 
-    yang_name = "field-info"; yang_parent_name = "block-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "field-info"; yang_parent_name = "block-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::~FieldInfo()
@@ -9608,6 +9735,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return field_name.is_set
 	|| field_value.is_set
 	|| is_ovf.is_set;
@@ -9703,7 +9831,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 {
     fmac_links->parent = this;
 
-    yang_name = "fmac-statistics"; yang_parent_name = "statistics-asic-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fmac-statistics"; yang_parent_name = "statistics-asic-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::~FmacStatistics()
@@ -9712,6 +9840,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (fmac_links !=  nullptr && fmac_links->has_data());
 }
 
@@ -9779,9 +9908,11 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLinks()
+    :
+    fmac_link(this, {"link"})
 {
 
-    yang_name = "fmac-links"; yang_parent_name = "fmac-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fmac-links"; yang_parent_name = "fmac-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::~FmacLinks()
@@ -9790,7 +9921,8 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_data() const
 {
-    for (std::size_t index=0; index<fmac_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fmac_link.len(); index++)
     {
         if(fmac_link[index]->has_data())
             return true;
@@ -9800,7 +9932,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::has_operation() const
 {
-    for (std::size_t index=0; index<fmac_link.size(); index++)
+    for (std::size_t index=0; index<fmac_link.len(); index++)
     {
         if(fmac_link[index]->has_operation())
             return true;
@@ -9830,7 +9962,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
     {
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink>();
         c->parent = this;
-        fmac_link.push_back(c);
+        fmac_link.append(c);
         return c;
     }
 
@@ -9842,7 +9974,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fmac_link)
+    for (auto c : fmac_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9871,9 +10003,11 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacLink()
     :
     link{YType::int32, "link"}
+        ,
+    fmac_asic(this, {"asic"})
 {
 
-    yang_name = "fmac-link"; yang_parent_name = "fmac-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fmac-link"; yang_parent_name = "fmac-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::~FmacLink()
@@ -9882,7 +10016,8 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_data() const
 {
-    for (std::size_t index=0; index<fmac_asic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fmac_asic.len(); index++)
     {
         if(fmac_asic[index]->has_data())
             return true;
@@ -9892,7 +10027,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::has_operation() const
 {
-    for (std::size_t index=0; index<fmac_asic.size(); index++)
+    for (std::size_t index=0; index<fmac_asic.len(); index++)
     {
         if(fmac_asic[index]->has_operation())
             return true;
@@ -9904,7 +10039,8 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fmac-link" <<"[link='" <<link <<"']";
+    path_buffer << "fmac-link";
+    ADD_KEY_TOKEN(link, "link");
     return path_buffer.str();
 }
 
@@ -9924,7 +10060,7 @@ std::shared_ptr<Entity> Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstance
     {
         auto c = std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic>();
         c->parent = this;
-        fmac_asic.push_back(c);
+        fmac_asic.append(c);
         return c;
     }
 
@@ -9936,7 +10072,7 @@ std::map<std::string, std::shared_ptr<Entity>> Fia::Nodes::Node::AsicStatistics:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fmac_asic)
+    for (auto c : fmac_asic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9981,14 +10117,14 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     asic_instance{YType::uint32, "asic-instance"},
     link_no{YType::uint32, "link-no"},
     link_valid{YType::boolean, "link-valid"}
-    	,
+        ,
     aggr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats>())
-	,incr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats>())
+    , incr_stats(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats>())
 {
     aggr_stats->parent = this;
     incr_stats->parent = this;
 
-    yang_name = "fmac-asic"; yang_parent_name = "fmac-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fmac-asic"; yang_parent_name = "fmac-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::~FmacAsic()
@@ -9997,6 +10133,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::has_data() const
 {
+    if (is_presence_container) return true;
     return asic.is_set
 	|| valid.is_set
 	|| rack_no.is_set
@@ -10025,7 +10162,8 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fmac-asic" <<"[asic='" <<asic <<"']";
+    path_buffer << "fmac-asic";
+    ADD_KEY_TOKEN(asic, "asic");
     return path_buffer.str();
 }
 
@@ -10173,14 +10311,14 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::AggrStats()
     :
     link_error_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus>())
-	,link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters>())
-	,ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus>())
+    , link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters>())
+    , ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus>())
 {
     link_error_status->parent = this;
     link_counters->parent = this;
     ovf_status->parent = this;
 
-    yang_name = "aggr-stats"; yang_parent_name = "fmac-asic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggr-stats"; yang_parent_name = "fmac-asic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::~AggrStats()
@@ -10189,6 +10327,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_data() const
 {
+    if (is_presence_container) return true;
     return (link_error_status !=  nullptr && link_error_status->has_data())
 	|| (link_counters !=  nullptr && link_counters->has_data())
 	|| (ovf_status !=  nullptr && ovf_status->has_data());
@@ -10299,7 +10438,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     error_token_count{YType::uint32, "error-token-count"}
 {
 
-    yang_name = "link-error-status"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-error-status"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::~LinkErrorStatus()
@@ -10308,6 +10447,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkErrorStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return link_crc_error.is_set
 	|| link_size_error.is_set
 	|| link_mis_align_error.is_set
@@ -10480,7 +10620,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     rx_8b_10b_code_errors{YType::uint64, "rx-8b-10b-code-errors"}
 {
 
-    yang_name = "link-counters"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-counters"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::~LinkCounters()
@@ -10489,6 +10629,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::LinkCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_control_cells_counter.is_set
 	|| tx_data_cell_counter.is_set
 	|| tx_data_byte_counter.is_set
@@ -10739,7 +10880,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     rx_8b_10b_code_errors{YType::str, "rx-8b-10b-code-errors"}
 {
 
-    yang_name = "ovf-status"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ovf-status"; yang_parent_name = "aggr-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::~OvfStatus()
@@ -10748,6 +10889,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::OvfStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_control_cells_counter.is_set
 	|| tx_data_cell_counter.is_set
 	|| tx_data_byte_counter.is_set
@@ -10983,14 +11125,14 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::IncrStats()
     :
     link_error_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus>())
-	,link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters>())
-	,ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus>())
+    , link_counters(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters>())
+    , ovf_status(std::make_shared<Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus>())
 {
     link_error_status->parent = this;
     link_counters->parent = this;
     ovf_status->parent = this;
 
-    yang_name = "incr-stats"; yang_parent_name = "fmac-asic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incr-stats"; yang_parent_name = "fmac-asic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::~IncrStats()
@@ -10999,6 +11141,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_data() const
 {
+    if (is_presence_container) return true;
     return (link_error_status !=  nullptr && link_error_status->has_data())
 	|| (link_counters !=  nullptr && link_counters->has_data())
 	|| (ovf_status !=  nullptr && ovf_status->has_data());
@@ -11109,7 +11252,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     error_token_count{YType::uint32, "error-token-count"}
 {
 
-    yang_name = "link-error-status"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-error-status"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::~LinkErrorStatus()
@@ -11118,6 +11261,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkErrorStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return link_crc_error.is_set
 	|| link_size_error.is_set
 	|| link_mis_align_error.is_set
@@ -11290,7 +11434,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     rx_8b_10b_code_errors{YType::uint64, "rx-8b-10b-code-errors"}
 {
 
-    yang_name = "link-counters"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-counters"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::~LinkCounters()
@@ -11299,6 +11443,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::LinkCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_control_cells_counter.is_set
 	|| tx_data_cell_counter.is_set
 	|| tx_data_byte_counter.is_set
@@ -11549,7 +11694,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
     rx_8b_10b_code_errors{YType::str, "rx-8b-10b-code-errors"}
 {
 
-    yang_name = "ovf-status"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ovf-status"; yang_parent_name = "incr-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::~OvfStatus()
@@ -11558,6 +11703,7 @@ Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstanc
 
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_control_cells_counter.is_set
 	|| tx_data_cell_counter.is_set
 	|| tx_data_byte_counter.is_set
@@ -11790,24 +11936,10 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
     return false;
 }
 
-const Enum::YLeaf AsicInitMethod::asic_init_method_unset {-1, "asic-init-method-unset"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_no_reset {0, "asic-init-method-no-reset"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_pon_reset {1, "asic-init-method-pon-reset"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_pon_reset_on_intr {2, "asic-init-method-pon-reset-on-intr"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_hard_reset {3, "asic-init-method-hard-reset"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_warmboot {4, "asic-init-method-warmboot"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_issu_wb {5, "asic-init-method-issu-wb"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_pci_shutdown {6, "asic-init-method-pci-shutdown"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_quiesce {7, "asic-init-method-quiesce"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_issu_started {8, "asic-init-method-issu-started"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_issu_rollback {9, "asic-init-method-issu-rollback"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_issu_abort {10, "asic-init-method-issu-abort"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_slice_cleanup {11, "asic-init-method-slice-cleanup"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_lc_remove {12, "asic-init-method-lc-remove"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_node_down {13, "asic-init-method-node-down"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_intr {14, "asic-init-method-intr"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_board_reload {15, "asic-init-method-board-reload"};
-const Enum::YLeaf AsicInitMethod::asic_init_method_max {16, "asic-init-method-max"};
+const Enum::YLeaf SliceState::slice_oper_unset {-1, "slice-oper-unset"};
+const Enum::YLeaf SliceState::slice_oper_down {0, "slice-oper-down"};
+const Enum::YLeaf SliceState::slice_oper_up {1, "slice-oper-up"};
+const Enum::YLeaf SliceState::slice_oper_na {2, "slice-oper-na"};
 
 const Enum::YLeaf AsicAccessState::asic_state_unset {-1, "asic-state-unset"};
 const Enum::YLeaf AsicAccessState::asic_state_none {0, "asic-state-none"};
@@ -11836,32 +11968,60 @@ const Enum::YLeaf AsicAccessState::asic_state_issu_started_nn {22, "asic-state-i
 const Enum::YLeaf AsicAccessState::asic_state_issu_abort {23, "asic-state-issu-abort"};
 const Enum::YLeaf AsicAccessState::asic_state_max {24, "asic-state-max"};
 
-const Enum::YLeaf AsicOperState::asic_oper_unset {-1, "asic-oper-unset"};
-const Enum::YLeaf AsicOperState::asic_oper_unknown {0, "asic-oper-unknown"};
-const Enum::YLeaf AsicOperState::asic_oper_up {1, "asic-oper-up"};
-const Enum::YLeaf AsicOperState::asic_oper_down {2, "asic-oper-down"};
-const Enum::YLeaf AsicOperState::asic_card_down {3, "asic-card-down"};
-
-const Enum::YLeaf SliceState::slice_oper_unset {-1, "slice-oper-unset"};
-const Enum::YLeaf SliceState::slice_oper_down {0, "slice-oper-down"};
-const Enum::YLeaf SliceState::slice_oper_up {1, "slice-oper-up"};
-const Enum::YLeaf SliceState::slice_oper_na {2, "slice-oper-na"};
+const Enum::YLeaf LinkErrorState::link_error_unset {-1, "link-error-unset"};
+const Enum::YLeaf LinkErrorState::link_error_none {0, "link-error-none"};
+const Enum::YLeaf LinkErrorState::link_error_shut {1, "link-error-shut"};
+const Enum::YLeaf LinkErrorState::link_error_max {2, "link-error-max"};
 
 const Enum::YLeaf FcMode::fc_mode_unset {-1, "fc-mode-unset"};
 const Enum::YLeaf FcMode::fc_mode_unavail {0, "fc-mode-unavail"};
 const Enum::YLeaf FcMode::fc_mode_inband {1, "fc-mode-inband"};
 const Enum::YLeaf FcMode::fc_mode_oob {2, "fc-mode-oob"};
 
-const Enum::YLeaf LinkErrorState::link_error_unset {-1, "link-error-unset"};
-const Enum::YLeaf LinkErrorState::link_error_none {0, "link-error-none"};
-const Enum::YLeaf LinkErrorState::link_error_shut {1, "link-error-shut"};
-const Enum::YLeaf LinkErrorState::link_error_max {2, "link-error-max"};
+const Enum::YLeaf Asic::asic_unset {-1, "asic-unset"};
+const Enum::YLeaf Asic::asic_unavail {0, "asic-unavail"};
+const Enum::YLeaf Asic::asic_fia {1, "asic-fia"};
+const Enum::YLeaf Asic::asic_s123 {2, "asic-s123"};
+const Enum::YLeaf Asic::asic_s13 {3, "asic-s13"};
+const Enum::YLeaf Asic::asic_s2 {4, "asic-s2"};
+const Enum::YLeaf Asic::asic_b2b {5, "asic-b2b"};
+const Enum::YLeaf Asic::asic_type_unknown {6, "asic-type-unknown"};
+
+const Enum::YLeaf AsicOperState::asic_oper_unset {-1, "asic-oper-unset"};
+const Enum::YLeaf AsicOperState::asic_oper_unknown {0, "asic-oper-unknown"};
+const Enum::YLeaf AsicOperState::asic_oper_up {1, "asic-oper-up"};
+const Enum::YLeaf AsicOperState::asic_oper_down {2, "asic-oper-down"};
+const Enum::YLeaf AsicOperState::asic_card_down {3, "asic-card-down"};
+
+const Enum::YLeaf Link::link_type_unset {-1, "link-type-unset"};
+const Enum::YLeaf Link::link_type_unavail {0, "link-type-unavail"};
+const Enum::YLeaf Link::link_type_tx {1, "link-type-tx"};
+const Enum::YLeaf Link::link_type_rx {2, "link-type-rx"};
 
 const Enum::YLeaf OperState::oper_unset {-1, "oper-unset"};
 const Enum::YLeaf OperState::oper_unknown {0, "oper-unknown"};
 const Enum::YLeaf OperState::oper_up {1, "oper-up"};
 const Enum::YLeaf OperState::oper_down {2, "oper-down"};
 const Enum::YLeaf OperState::card_down {3, "card-down"};
+
+const Enum::YLeaf AsicInitMethod::asic_init_method_unset {-1, "asic-init-method-unset"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_no_reset {0, "asic-init-method-no-reset"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_pon_reset {1, "asic-init-method-pon-reset"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_pon_reset_on_intr {2, "asic-init-method-pon-reset-on-intr"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_hard_reset {3, "asic-init-method-hard-reset"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_warmboot {4, "asic-init-method-warmboot"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_issu_wb {5, "asic-init-method-issu-wb"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_pci_shutdown {6, "asic-init-method-pci-shutdown"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_quiesce {7, "asic-init-method-quiesce"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_issu_started {8, "asic-init-method-issu-started"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_issu_rollback {9, "asic-init-method-issu-rollback"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_issu_abort {10, "asic-init-method-issu-abort"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_slice_cleanup {11, "asic-init-method-slice-cleanup"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_lc_remove {12, "asic-init-method-lc-remove"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_node_down {13, "asic-init-method-node-down"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_intr {14, "asic-init-method-intr"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_board_reload {15, "asic-init-method-board-reload"};
+const Enum::YLeaf AsicInitMethod::asic_init_method_max {16, "asic-init-method-max"};
 
 const Enum::YLeaf AdminState::admin_unset {-1, "admin-unset"};
 const Enum::YLeaf AdminState::admin_up {0, "admin-up"};
@@ -11874,20 +12034,6 @@ const Enum::YLeaf LinkStage::link_stage_s1 {2, "link-stage-s1"};
 const Enum::YLeaf LinkStage::link_stage_s2 {3, "link-stage-s2"};
 const Enum::YLeaf LinkStage::link_stage_s3 {4, "link-stage-s3"};
 const Enum::YLeaf LinkStage::link_stage_unknown {5, "link-stage-unknown"};
-
-const Enum::YLeaf Link::link_type_unset {-1, "link-type-unset"};
-const Enum::YLeaf Link::link_type_unavail {0, "link-type-unavail"};
-const Enum::YLeaf Link::link_type_tx {1, "link-type-tx"};
-const Enum::YLeaf Link::link_type_rx {2, "link-type-rx"};
-
-const Enum::YLeaf Asic::asic_unset {-1, "asic-unset"};
-const Enum::YLeaf Asic::asic_unavail {0, "asic-unavail"};
-const Enum::YLeaf Asic::asic_fia {1, "asic-fia"};
-const Enum::YLeaf Asic::asic_s123 {2, "asic-s123"};
-const Enum::YLeaf Asic::asic_s13 {3, "asic-s13"};
-const Enum::YLeaf Asic::asic_s2 {4, "asic-s2"};
-const Enum::YLeaf Asic::asic_b2b {5, "asic-b2b"};
-const Enum::YLeaf Asic::asic_type_unknown {6, "asic-type-unknown"};
 
 const Enum::YLeaf Rack::rack_type_unset {-1, "rack-type-unset"};
 const Enum::YLeaf Rack::rack_type_lcc {0, "rack-type-lcc"};

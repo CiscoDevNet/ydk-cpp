@@ -58,7 +58,7 @@ class SpanMonitorSession::Sessions : public ydk::Entity
 
         class Session; //type: SpanMonitorSession::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // SpanMonitorSession::Sessions
 
@@ -82,6 +82,7 @@ class SpanMonitorSession::Sessions::Session : public ydk::Entity
 
         ydk::YLeaf session; //type: string
         ydk::YLeaf class_; //type: SpanSessionClass
+        ydk::YLeaf inject_interface; //type: string
         class Destination; //type: SpanMonitorSession::Sessions::Session::Destination
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session::Destination> destination;

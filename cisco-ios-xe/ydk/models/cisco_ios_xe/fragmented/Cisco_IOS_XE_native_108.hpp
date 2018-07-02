@@ -297,11 +297,11 @@ class Native::PseudowireClass::ProtocolMpls : public ydk::Entity
 }; // Native::PseudowireClass::ProtocolMpls
 
 
-class Native::PseudowireClass::ProtocolL2Tpv2 : public ydk::Entity
+class Native::PseudowireClass::ProtocolL2tpv2 : public ydk::Entity
 {
     public:
-        ProtocolL2Tpv2();
-        ~ProtocolL2Tpv2();
+        ProtocolL2tpv2();
+        ~ProtocolL2tpv2();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -316,14 +316,14 @@ class Native::PseudowireClass::ProtocolL2Tpv2 : public ydk::Entity
         ydk::YLeaf protocol; //type: Protocol
         class Protocol;
 
-}; // Native::PseudowireClass::ProtocolL2Tpv2
+}; // Native::PseudowireClass::ProtocolL2tpv2
 
 
-class Native::PseudowireClass::ProtocolL2Tpv3 : public ydk::Entity
+class Native::PseudowireClass::ProtocolL2tpv3 : public ydk::Entity
 {
     public:
-        ProtocolL2Tpv3();
-        ~ProtocolL2Tpv3();
+        ProtocolL2tpv3();
+        ~ProtocolL2tpv3();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -338,7 +338,7 @@ class Native::PseudowireClass::ProtocolL2Tpv3 : public ydk::Entity
         ydk::YLeaf protocol; //type: Protocol
         class Protocol;
 
-}; // Native::PseudowireClass::ProtocolL2Tpv3
+}; // Native::PseudowireClass::ProtocolL2tpv3
 
 
 class Native::PseudowireClass::Status : public ydk::Entity
@@ -613,7 +613,7 @@ class Native::ControlPlaneHost::ControlPlane::Host : public ydk::Entity
 
         class ManagementInterface; //type: Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface> > management_interface;
+        ydk::YList management_interface;
         
 }; // Native::ControlPlaneHost::ControlPlane::Host
 
@@ -810,7 +810,7 @@ class Native::Logging : public ydk::Entity
 
         ydk::YLeaf alarm; //type: one of uint8, enumeration
         ydk::YLeaf facility; //type: Facility
-        ydk::YLeaf hostip; //type: one of string, union
+        ydk::YLeaf hostip; //type: one of union, string
         ydk::YLeaf snmp_authfail; //type: empty
         ydk::YLeaf buginf; //type: empty
         ydk::YLeaf userinfo; //type: empty
@@ -833,7 +833,7 @@ class Native::Logging : public ydk::Entity
         class Trap; //type: Native::Logging::Trap
         class File; //type: Native::Logging::File
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Discriminator> > discriminator;
+        ydk::YList discriminator;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Persistent> persistent; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::MonitorConf> monitor_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Monitor> monitor; // presence node
@@ -847,7 +847,7 @@ class Native::Logging : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::OriginId> origin_id;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimitConf> rate_limit_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit> rate_limit; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::SourceInterface> > source_interface;
+        ydk::YList source_interface;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::SnmpTrap> snmp_trap;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Trap> trap; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::File> file;
@@ -976,7 +976,7 @@ class Native::Logging::Monitor : public ydk::Entity
         ydk::YLeaf severity; //type: one of uint16, enumeration
         class Discriminator; //type: Native::Logging::Monitor::Discriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Monitor::Discriminator> > discriminator;
+        ydk::YList discriminator;
         
 }; // Native::Logging::Monitor
 
@@ -1026,7 +1026,7 @@ class Native::Logging::Buffered : public ydk::Entity
         class Discriminator; //type: Native::Logging::Buffered::Discriminator
         class Size; //type: Native::Logging::Buffered::Size
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Buffered::Discriminator> > discriminator;
+        ydk::YList discriminator;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Buffered::Size> size;
         
 }; // Native::Logging::Buffered
@@ -1124,7 +1124,7 @@ class Native::Logging::Console : public ydk::Entity
         ydk::YLeaf severity; //type: one of uint16, enumeration
         class Discriminator; //type: Native::Logging::Console::Discriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Console::Discriminator> > discriminator;
+        ydk::YList discriminator;
         
 }; // Native::Logging::Console
 
@@ -1269,10 +1269,10 @@ class Native::Logging::Host : public ydk::Entity
         class Ipv4HostVrfTransportList; //type: Native::Logging::Host::Ipv4HostVrfTransportList
         class Ipv6; //type: Native::Logging::Host::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv4HostList> > ipv4_host_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv4HostTransportList> > ipv4_host_transport_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv4HostVrfList> > ipv4_host_vrf_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv4HostVrfTransportList> > ipv4_host_vrf_transport_list;
+        ydk::YList ipv4_host_list;
+        ydk::YList ipv4_host_transport_list;
+        ydk::YList ipv4_host_vrf_list;
+        ydk::YList ipv4_host_vrf_transport_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv6> ipv6;
         
 }; // Native::Logging::Host
@@ -1295,7 +1295,7 @@ class Native::Logging::Host::Ipv4HostList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
 
 }; // Native::Logging::Host::Ipv4HostList
 
@@ -1317,7 +1317,7 @@ class Native::Logging::Host::Ipv4HostTransportList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
         ydk::YLeaf discriminator; //type: string
         class Transport; //type: Native::Logging::Host::Ipv4HostTransportList::Transport
 
@@ -1410,7 +1410,7 @@ class Native::Logging::Host::Ipv4HostVrfList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf discriminator; //type: string
 
@@ -1434,7 +1434,7 @@ class Native::Logging::Host::Ipv4HostVrfTransportList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipv4_host; //type: one of string, union
+        ydk::YLeaf ipv4_host; //type: one of union, string
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf discriminator; //type: string
         class Transport; //type: Native::Logging::Host::Ipv4HostVrfTransportList::Transport
@@ -1533,10 +1533,10 @@ class Native::Logging::Host::Ipv6 : public ydk::Entity
         class Ipv6HostVrfList; //type: Native::Logging::Host::Ipv6::Ipv6HostVrfList
         class Ipv6HostVrfTransportList; //type: Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv6::Ipv6HostList> > ipv6_host_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv6::Ipv6HostTransportList> > ipv6_host_transport_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv6::Ipv6HostVrfList> > ipv6_host_vrf_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::Host::Ipv6::Ipv6HostVrfTransportList> > ipv6_host_vrf_transport_list;
+        ydk::YList ipv6_host_list;
+        ydk::YList ipv6_host_transport_list;
+        ydk::YList ipv6_host_vrf_list;
+        ydk::YList ipv6_host_vrf_transport_list;
         
 }; // Native::Logging::Host::Ipv6
 
@@ -1841,7 +1841,7 @@ class Native::Logging::RateLimit : public ydk::Entity
         class Console; //type: Native::Logging::RateLimit::Console
         class All; //type: Native::Logging::RateLimit::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit::Ranges> > ranges;
+        ydk::YList ranges;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit::Console> console;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit::All> all;
         
@@ -1914,7 +1914,7 @@ class Native::Logging::RateLimit::Console : public ydk::Entity
         class Ranges; //type: Native::Logging::RateLimit::Console::Ranges
         class All; //type: Native::Logging::RateLimit::Console::All
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit::Console::Ranges> > ranges;
+        ydk::YList ranges;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit::Console::All> all;
         
 }; // Native::Logging::RateLimit::Console
@@ -1985,7 +1985,7 @@ class Native::Logging::RateLimit::Console::All : public ydk::Entity
 
         class Ranges; //type: Native::Logging::RateLimit::Console::All::Ranges
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit::Console::All::Ranges> > ranges;
+        ydk::YList ranges;
         
 }; // Native::Logging::RateLimit::Console::All
 
@@ -2055,7 +2055,7 @@ class Native::Logging::RateLimit::All : public ydk::Entity
 
         class Ranges; //type: Native::Logging::RateLimit::All::Ranges
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging::RateLimit::All::Ranges> > ranges;
+        ydk::YList ranges;
         
 }; // Native::Logging::RateLimit::All
 
@@ -2304,9 +2304,9 @@ class Native::Aaa::Group::Server : public ydk::Entity
         class Tacacs; //type: Native::Aaa::Group::Server::Tacacs
         class Radius; //type: Native::Aaa::Group::Server::Radius
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Tacacsplus> > tacacsplus;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Tacacs> > tacacs;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius> > radius;
+        ydk::YList tacacsplus;
+        ydk::YList tacacs;
+        ydk::YList radius;
         
 }; // Native::Aaa::Group::Server
 
@@ -2334,7 +2334,7 @@ class Native::Aaa::Group::Server::Tacacsplus : public ydk::Entity
         class Ip; //type: Native::Aaa::Group::Server::Tacacsplus::Ip
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Tacacsplus::Server_> server;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Tacacsplus::ServerPrivate> > server_private;
+        ydk::YList server_private;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Tacacsplus::Ip> ip;
         
 }; // Native::Aaa::Group::Server::Tacacsplus
@@ -2359,8 +2359,8 @@ class Native::Aaa::Group::Server::Tacacsplus::Server_ : public ydk::Entity
         class Name; //type: Native::Aaa::Group::Server::Tacacsplus::Server_::Name
         class Direct; //type: Native::Aaa::Group::Server::Tacacsplus::Server_::Direct
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Tacacsplus::Server_::Name> > name;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Tacacsplus::Server_::Direct> > direct;
+        ydk::YList name;
+        ydk::YList direct;
         
 }; // Native::Aaa::Group::Server::Tacacsplus::Server_
 
@@ -2402,7 +2402,7 @@ class Native::Aaa::Group::Server::Tacacsplus::Server_::Direct : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
 
 }; // Native::Aaa::Group::Server::Tacacsplus::Server_::Direct
 
@@ -2423,7 +2423,7 @@ class Native::Aaa::Group::Server::Tacacsplus::ServerPrivate : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf timeout; //type: uint16
         class Key; //type: Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key
@@ -2720,7 +2720,7 @@ class Native::Aaa::Group::Server::Radius : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius::Server_> server;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius::Subscriber> subscriber;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius::ServerPrivate> > server_private;
+        ydk::YList server_private;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius::LoadBalance> load_balance;
                 class MacDelimiter;
@@ -2747,8 +2747,8 @@ class Native::Aaa::Group::Server::Radius::Server_ : public ydk::Entity
         class Name; //type: Native::Aaa::Group::Server::Radius::Server_::Name
         class Direct; //type: Native::Aaa::Group::Server::Radius::Server_::Direct
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius::Server_::Name> > name;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Group::Server::Radius::Server_::Direct> > direct;
+        ydk::YList name;
+        ydk::YList direct;
         
 }; // Native::Aaa::Group::Server::Radius::Server_
 
@@ -2790,7 +2790,7 @@ class Native::Aaa::Group::Server::Radius::Server_::Direct : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf auth_port; //type: uint16
         ydk::YLeaf acct_port; //type: uint16
 
@@ -2858,7 +2858,7 @@ class Native::Aaa::Group::Server::Radius::ServerPrivate : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf auth_port; //type: uint16
         ydk::YLeaf acct_port; //type: uint16
         ydk::YLeaf timeout; //type: uint16
@@ -3194,7 +3194,7 @@ class Native::Aaa::Attribute : public ydk::Entity
 
         class List; //type: Native::Aaa::Attribute::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Attribute::List> > list;
+        ydk::YList list;
         
 }; // Native::Aaa::Attribute
 
@@ -3288,7 +3288,7 @@ class Native::Aaa::Authentication : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class Attempts; //type: Native::Aaa::Authentication::Attempts
-        class Dot1X; //type: Native::Aaa::Authentication::Dot1X
+        class Dot1x; //type: Native::Aaa::Authentication::Dot1x
         class Enable; //type: Native::Aaa::Authentication::Enable
         class Eou; //type: Native::Aaa::Authentication::Eou
         class Login; //type: Native::Aaa::Authentication::Login
@@ -3296,12 +3296,12 @@ class Native::Aaa::Authentication : public ydk::Entity
         class Ppp; //type: Native::Aaa::Authentication::Ppp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Attempts> attempts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1X> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1x> dot1x;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Enable> enable;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Eou> eou;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Login> > login;
+        ydk::YList login;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Onep> onep;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Ppp> > ppp;
+        ydk::YList ppp;
         
 }; // Native::Aaa::Authentication
 
@@ -3328,11 +3328,11 @@ class Native::Aaa::Authentication::Attempts : public ydk::Entity
 }; // Native::Aaa::Authentication::Attempts
 
 
-class Native::Aaa::Authentication::Dot1X : public ydk::Entity
+class Native::Aaa::Authentication::Dot1x : public ydk::Entity
 {
     public:
-        Dot1X();
-        ~Dot1X();
+        Dot1x();
+        ~Dot1x();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3345,20 +3345,20 @@ class Native::Aaa::Authentication::Dot1X : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1XList; //type: Native::Aaa::Authentication::Dot1X::Dot1XList
-        class Default; //type: Native::Aaa::Authentication::Dot1X::Default
+        class Dot1xList; //type: Native::Aaa::Authentication::Dot1x::Dot1xList
+        class Default; //type: Native::Aaa::Authentication::Dot1x::Default
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1X::Dot1XList> > dot1x_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1X::Default> default_;
+        ydk::YList dot1x_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1x::Default> default_;
         
-}; // Native::Aaa::Authentication::Dot1X
+}; // Native::Aaa::Authentication::Dot1x
 
 
-class Native::Aaa::Authentication::Dot1X::Dot1XList : public ydk::Entity
+class Native::Aaa::Authentication::Dot1x::Dot1xList : public ydk::Entity
 {
     public:
-        Dot1XList();
-        ~Dot1XList();
+        Dot1xList();
+        ~Dot1xList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3372,16 +3372,16 @@ class Native::Aaa::Authentication::Dot1X::Dot1XList : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
         ydk::YLeaf local; //type: empty
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf cache; //type: one of string, enumeration
         class Group;
         class Cache;
 
-}; // Native::Aaa::Authentication::Dot1X::Dot1XList
+}; // Native::Aaa::Authentication::Dot1x::Dot1xList
 
 
-class Native::Aaa::Authentication::Dot1X::Default : public ydk::Entity
+class Native::Aaa::Authentication::Dot1x::Default : public ydk::Entity
 {
     public:
         Default();
@@ -3398,13 +3398,13 @@ class Native::Aaa::Authentication::Dot1X::Default : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
         ydk::YLeaf local; //type: empty
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf cache; //type: one of string, enumeration
         class Group;
         class Cache;
 
-}; // Native::Aaa::Authentication::Dot1X::Default
+}; // Native::Aaa::Authentication::Dot1x::Default
 
 
 class Native::Aaa::Authentication::Enable : public ydk::Entity
@@ -3448,7 +3448,7 @@ class Native::Aaa::Authentication::Enable::Default : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf line; //type: empty
         ydk::YLeaf none; //type: empty
@@ -3544,7 +3544,7 @@ class Native::Aaa::Authentication::Login : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of enumeration, string
+        ydk::YLeaf name; //type: one of string, enumeration
         class A1; //type: Native::Aaa::Authentication::Login::A1
         class A2; //type: Native::Aaa::Authentication::Login::A2
         class A3; //type: Native::Aaa::Authentication::Login::A3
@@ -3582,8 +3582,8 @@ class Native::Aaa::Authentication::Login::A1 : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf local; //type: empty
         ydk::YLeaf local_case; //type: empty
-        ydk::YLeaf group; //type: one of enumeration, string
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf cache; //type: one of string, enumeration
         class Group;
         class Cache;
 
@@ -3606,8 +3606,8 @@ class Native::Aaa::Authentication::Login::A2 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf cache; //type: one of string, enumeration
         ydk::YLeaf none; //type: empty
         ydk::YLeaf krb5; //type: empty
         ydk::YLeaf krb5_telnet; //type: empty
@@ -3637,8 +3637,8 @@ class Native::Aaa::Authentication::Login::A3 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf cache; //type: one of string, enumeration
         ydk::YLeaf none; //type: empty
         ydk::YLeaf krb5; //type: empty
         ydk::YLeaf krb5_telnet; //type: empty
@@ -3668,8 +3668,8 @@ class Native::Aaa::Authentication::Login::A4 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf cache; //type: one of string, enumeration
         ydk::YLeaf none; //type: empty
         ydk::YLeaf krb5; //type: empty
         ydk::YLeaf krb5_telnet; //type: empty
@@ -3804,8 +3804,8 @@ class Native::Aaa::Authentication::Ppp::A1 : public ydk::Entity
         ydk::YLeaf krb5; //type: empty
         ydk::YLeaf local; //type: empty
         ydk::YLeaf local_case; //type: empty
-        ydk::YLeaf group; //type: one of enumeration, string
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf cache; //type: one of string, enumeration
         class Group;
         class Cache;
 
@@ -3828,8 +3828,8 @@ class Native::Aaa::Authentication::Ppp::A2 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of enumeration, string
-        ydk::YLeaf cache; //type: one of enumeration, string
+        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf cache; //type: one of string, enumeration
         ydk::YLeaf none; //type: empty
         ydk::YLeaf krb5; //type: empty
         ydk::YLeaf local; //type: empty
@@ -3847,7 +3847,7 @@ class Native::PseudowireClass::ProtocolMpls::Protocol : public ydk::Enum
 
 };
 
-class Native::PseudowireClass::ProtocolL2Tpv2::Protocol : public ydk::Enum
+class Native::PseudowireClass::ProtocolL2tpv2::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf l2tpv2;
@@ -3855,7 +3855,7 @@ class Native::PseudowireClass::ProtocolL2Tpv2::Protocol : public ydk::Enum
 
 };
 
-class Native::PseudowireClass::ProtocolL2Tpv3::Protocol : public ydk::Enum
+class Native::PseudowireClass::ProtocolL2tpv3::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf l2tpv3;
@@ -4023,7 +4023,7 @@ class Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Encryption : publi
 
 };
 
-class Native::Aaa::Authentication::Dot1X::Dot1XList::Group : public ydk::Enum
+class Native::Aaa::Authentication::Dot1x::Dot1xList::Group : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;
@@ -4031,7 +4031,7 @@ class Native::Aaa::Authentication::Dot1X::Dot1XList::Group : public ydk::Enum
 
 };
 
-class Native::Aaa::Authentication::Dot1X::Dot1XList::Cache : public ydk::Enum
+class Native::Aaa::Authentication::Dot1x::Dot1xList::Cache : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;
@@ -4039,7 +4039,7 @@ class Native::Aaa::Authentication::Dot1X::Dot1XList::Cache : public ydk::Enum
 
 };
 
-class Native::Aaa::Authentication::Dot1X::Default::Group : public ydk::Enum
+class Native::Aaa::Authentication::Dot1x::Default::Group : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;
@@ -4047,7 +4047,7 @@ class Native::Aaa::Authentication::Dot1X::Default::Group : public ydk::Enum
 
 };
 
-class Native::Aaa::Authentication::Dot1X::Default::Cache : public ydk::Enum
+class Native::Aaa::Authentication::Dot1x::Default::Cache : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;

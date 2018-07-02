@@ -57,7 +57,7 @@ class LacpBundles::Bundles : public ydk::Entity
 
         class Bundle; //type: LacpBundles::Bundles::Bundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle> > bundle;
+        ydk::YList bundle;
         
 }; // LacpBundles::Bundles
 
@@ -176,7 +176,7 @@ class LacpBundles::Bundles::Bundle::Data::ActorBundleData : public ydk::Entity
         class BfdConfig; //type: LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress> mac_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig> > bfd_config;
+        ydk::YList bfd_config;
         
 }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData
 
@@ -319,7 +319,7 @@ class LacpBundles::Bundles::Bundle::Members : public ydk::Entity
 
         class Member; //type: LacpBundles::Bundles::Bundle::Members::Member
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Members::Member> > member;
+        ydk::YList member;
         
 }; // LacpBundles::Bundles::Bundle::Members
 
@@ -605,7 +605,7 @@ class BundleInformation::BfdCounters::BfdCountersBundles : public ydk::Entity
 
         class BfdCountersBundle; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle> > bfd_counters_bundle;
+        ydk::YList bfd_counters_bundle;
         
 }; // BundleInformation::BfdCounters::BfdCountersBundles
 
@@ -659,7 +659,7 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
         class BfdCounter; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName> bundle_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter> > bfd_counter;
+        ydk::YList bfd_counter;
         
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant
 
@@ -732,7 +732,7 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 
         class BfdCountersBundleChildrenMember; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember> > bfd_counters_bundle_children_member;
+        ydk::YList bfd_counters_bundle_children_member;
         
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers
 
@@ -807,7 +807,7 @@ class BundleInformation::BfdCounters::BfdCountersMembers : public ydk::Entity
 
         class BfdCountersMember; //type: BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember> > bfd_counters_member;
+        ydk::YList bfd_counters_member;
         
 }; // BundleInformation::BfdCounters::BfdCountersMembers
 
@@ -909,7 +909,7 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles : public ydk:
 
         class ScheduledActionsBundle; //type: BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle> > scheduled_actions_bundle;
+        ydk::YList scheduled_actions_bundle;
         
 }; // BundleInformation::ScheduledActions::ScheduledActionsBundles
 
@@ -958,7 +958,7 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledAct
         ydk::YLeaf bundle_name; //type: string
         class ScheduledAction; //type: BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction> > scheduled_action;
+        ydk::YList scheduled_action;
         
 }; // BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem
 
@@ -1031,7 +1031,7 @@ class BundleInformation::Bundle::BundleBundles : public ydk::Entity
 
         class BundleBundle; //type: BundleInformation::Bundle::BundleBundles::BundleBundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle> > bundle_bundle;
+        ydk::YList bundle_bundle;
         
 }; // BundleInformation::Bundle::BundleBundles
 
@@ -1085,7 +1085,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
         class MemberData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData> bundle_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData> > member_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant
 
@@ -1148,7 +1148,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
         class BfdConfig; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress> mac_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig> > bfd_config;
+        ydk::YList bfd_config;
         
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData
 
@@ -1422,7 +1422,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         class BundleBundleChildrenMember; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember> > bundle_bundle_children_member;
+        ydk::YList bundle_bundle_children_member;
         
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers
 
@@ -1662,7 +1662,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem :
         class BfdConfig; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress> mac_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig> > bfd_config;
+        ydk::YList bfd_config;
         
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem
 
@@ -1761,7 +1761,7 @@ class BundleInformation::Bundle::BundleMembers : public ydk::Entity
 
         class BundleMember; //type: BundleInformation::Bundle::BundleMembers::BundleMember
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember> > bundle_member;
+        ydk::YList bundle_member;
         
 }; // BundleInformation::Bundle::BundleMembers
 
@@ -1813,7 +1813,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
         class MemberData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData> bundle_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData> > member_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor
 
@@ -1876,7 +1876,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
         class BfdConfig; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress> mac_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig> > bfd_config;
+        ydk::YList bfd_config;
         
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData
 
@@ -2355,7 +2355,7 @@ class BundleInformation::EventsRg::EventsRgMembers : public ydk::Entity
 
         class EventsRgMember; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember> > events_rg_member;
+        ydk::YList events_rg_member;
         
 }; // BundleInformation::EventsRg::EventsRgMembers
 
@@ -2404,7 +2404,7 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
         ydk::YLeaf item_name; //type: string
         class Items; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items> > items;
+        ydk::YList items;
         
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor
 
@@ -2603,7 +2603,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups : public ydk::Entity
 
         class EventsRgIccpGroup; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup> > events_rg_iccp_group;
+        ydk::YList events_rg_iccp_group;
         
 }; // BundleInformation::EventsRg::EventsRgIccpGroups
 
@@ -2652,7 +2652,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
         ydk::YLeaf item_name; //type: string
         class Items; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items> > items;
+        ydk::YList items;
         
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup
 
@@ -2851,7 +2851,7 @@ class BundleInformation::EventsRg::EventsRgBundles : public ydk::Entity
 
         class EventsRgBundle; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle> > events_rg_bundle;
+        ydk::YList events_rg_bundle;
         
 }; // BundleInformation::EventsRg::EventsRgBundles
 
@@ -2900,7 +2900,7 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
         ydk::YLeaf item_name; //type: string
         class Items; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items> > items;
+        ydk::YList items;
         
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor
 
@@ -3125,7 +3125,7 @@ class BundleInformation::Lacp::LacpBundles : public ydk::Entity
 
         class LacpBundle; //type: BundleInformation::Lacp::LacpBundles::LacpBundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle> > lacp_bundle;
+        ydk::YList lacp_bundle;
         
 }; // BundleInformation::Lacp::LacpBundles
 
@@ -3246,7 +3246,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBun
         class BfdConfig; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress> mac_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig> > bfd_config;
+        ydk::YList bfd_config;
         
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData
 
@@ -3391,7 +3391,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant : p
         class MemberData; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData> bundle_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData> > member_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant
 
@@ -3483,7 +3483,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
         class BfdConfig; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress> mac_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig> > bfd_config;
+        ydk::YList bfd_config;
         
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData
 
@@ -3967,7 +3967,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         class LacpBundleChildrenMember; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember> > lacp_bundle_children_member;
+        ydk::YList lacp_bundle_children_member;
         
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
@@ -4150,16 +4150,63 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
         
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo
 
-class BmdMlacpMbrStateEnum : public ydk::Enum
+class BmdMlacpSwitchover : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mbr_state_nak;
-        static const ydk::Enum::YLeaf mbr_state_unknown;
-        static const ydk::Enum::YLeaf mbr_state_up;
-        static const ydk::Enum::YLeaf mbr_state_down;
-        static const ydk::Enum::YLeaf mbr_state_admin_down;
-        static const ydk::Enum::YLeaf mbr_state_test;
-        static const ydk::Enum::YLeaf mbr_state_error;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_nonrevertive;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_brute_force;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_revertive;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_count;
+
+};
+
+class LoadBalance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf source_ip;
+        static const ydk::Enum::YLeaf destination_ip;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
+class BmBdlState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_bdl_state_admin_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_client_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_ptnr_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_bundle_shutdown;
+        static const ydk::Enum::YLeaf bm_bdl_state_pe_isolated;
+        static const ydk::Enum::YLeaf bm_bdl_state_nak;
+        static const ydk::Enum::YLeaf bm_bdl_state_up_active;
+        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_hot_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_cold_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_unknown;
+        static const ydk::Enum::YLeaf bm_bdl_state_cold_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_error_disabled;
+        static const ydk::Enum::YLeaf bm_bdl_state_efd_disabled;
+
+};
+
+class LacpPeriodState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf period_s_low;
+        static const ydk::Enum::YLeaf period_fast;
+        static const ydk::Enum::YLeaf period_none;
+
+};
+
+class BundleMedia : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bundle_media_ethernet;
+        static const ydk::Enum::YLeaf bundle_media_pos;
+        static const ydk::Enum::YLeaf bundle_media_count;
 
 };
 
@@ -4178,43 +4225,11 @@ class BmdMlacpBdlStateEnum : public ydk::Enum
 
 };
 
-class BmdMlacpNodeSyncEnum : public ydk::Enum
+class BundleMedia1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf node_sync_req;
-        static const ydk::Enum::YLeaf node_sync_done;
-        static const ydk::Enum::YLeaf node_sync_start;
-        static const ydk::Enum::YLeaf node_sync_init;
-        static const ydk::Enum::YLeaf node_sync_singleton;
-
-};
-
-class BmdMlacpNodeStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf node_state_incomplete;
-        static const ydk::Enum::YLeaf node_state_conn_rejected;
-        static const ydk::Enum::YLeaf node_state_connect_sent;
-        static const ydk::Enum::YLeaf node_state_unconfigured;
-        static const ydk::Enum::YLeaf node_state_unreachable;
-        static const ydk::Enum::YLeaf node_state_iccp_down;
-        static const ydk::Enum::YLeaf node_state_nak;
-        static const ydk::Enum::YLeaf node_state_unknown;
-        static const ydk::Enum::YLeaf node_state_mlacp_down;
-        static const ydk::Enum::YLeaf node_state_admin_down;
-        static const ydk::Enum::YLeaf node_state_pe_isolated;
-        static const ydk::Enum::YLeaf node_state_error;
-        static const ydk::Enum::YLeaf node_state_test;
-        static const ydk::Enum::YLeaf node_state_up;
-
-};
-
-class LacpChurnstates : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_churn;
-        static const ydk::Enum::YLeaf churn;
-        static const ydk::Enum::YLeaf churn_monitor;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf pos;
 
 };
 
@@ -4230,67 +4245,12 @@ class Rxstates : public ydk::Enum
 
 };
 
-class LacpPeriodState : public ydk::Enum
+class LacpChurnstates : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf period_s_low;
-        static const ydk::Enum::YLeaf period_fast;
-        static const ydk::Enum::YLeaf period_none;
-
-};
-
-class LacpSelState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unselected;
-        static const ydk::Enum::YLeaf standby;
-        static const ydk::Enum::YLeaf selected;
-
-};
-
-class BmdBagEventRgItem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_event_rg_idb_create;
-        static const ydk::Enum::YLeaf bmd_event_rg_configured;
-        static const ydk::Enum::YLeaf bmd_event_rg_user_config;
-        static const ydk::Enum::YLeaf bmd_event_rg_connect_ion;
-        static const ydk::Enum::YLeaf bmd_event_rg_data;
-        static const ydk::Enum::YLeaf bmd_event_rg_sync;
-        static const ydk::Enum::YLeaf bmd_event_rg_first_retry;
-        static const ydk::Enum::YLeaf bmd_event_rg_error;
-        static const ydk::Enum::YLeaf bmd_event_rg_mlacp_tlv;
-        static const ydk::Enum::YLeaf bmd_event_rg_iccp_event;
-        static const ydk::Enum::YLeaf bmd_event_rg_count;
-
-};
-
-class BmdBagEventBdlItem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_event_bdl_idb_create;
-        static const ydk::Enum::YLeaf bmd_event_bdl_configured;
-        static const ydk::Enum::YLeaf bmd_event_bdl_im_state;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_added;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_deleted;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mac_addr;
-        static const ydk::Enum::YLeaf bmd_event_bdl_first_retry;
-        static const ydk::Enum::YLeaf bmd_event_bdl_user_config;
-        static const ydk::Enum::YLeaf bmd_event_bdl_error;
-        static const ydk::Enum::YLeaf bmd_event_bdl_mlacp_tlv;
-        static const ydk::Enum::YLeaf bmd_event_bdl_redundancy_role;
-        static const ydk::Enum::YLeaf bdl_bfd_state_change;
-        static const ydk::Enum::YLeaf bmd_event_bdl_icl;
-        static const ydk::Enum::YLeaf bmd_event_bdl_count;
-
-};
-
-class BmdBagEventData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_bag_evt_data_none;
-        static const ydk::Enum::YLeaf bmd_bag_evt_data_error;
-        static const ydk::Enum::YLeaf bmd_bag_evt_data_string;
+        static const ydk::Enum::YLeaf no_churn;
+        static const ydk::Enum::YLeaf churn;
+        static const ydk::Enum::YLeaf churn_monitor;
 
 };
 
@@ -4314,13 +4274,12 @@ class BmdBagEventMbrItem : public ydk::Enum
 
 };
 
-class BmdBagTarget : public ydk::Enum
+class BmdBagEventData : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_bag_target_mbr;
-        static const ydk::Enum::YLeaf bm_bag_target_bdl;
-        static const ydk::Enum::YLeaf bm_bag_target_node;
-        static const ydk::Enum::YLeaf bm_bag_target_rg;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_none;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_error;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_string;
 
 };
 
@@ -4339,14 +4298,6 @@ class BmdSwitchReason : public ydk::Enum
 
 };
 
-class BmdBagMlacpSchActionItem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf switchover;
-        static const ydk::Enum::YLeaf switchback;
-
-};
-
 class BmdMemberTypeEnum : public ydk::Enum
 {
     public:
@@ -4356,60 +4307,11 @@ class BmdMemberTypeEnum : public ydk::Enum
 
 };
 
-class BmMuxreason : public ydk::Enum
+class BmAfId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_mux_reason_no_reason;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_down;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_deleted;
-        static const ydk::Enum::YLeaf bm_mux_reason_duplex;
-        static const ydk::Enum::YLeaf bm_mux_reason_bandwidth;
-        static const ydk::Enum::YLeaf bm_mux_reason_loop_back;
-        static const ydk::Enum::YLeaf bm_mux_reason_activity_type;
-        static const ydk::Enum::YLeaf bm_mux_reason_link_limit;
-        static const ydk::Enum::YLeaf bm_mux_reason_shared;
-        static const ydk::Enum::YLeaf bm_mux_reason_lagid;
-        static const ydk::Enum::YLeaf bm_mux_reason_no_bundle;
-        static const ydk::Enum::YLeaf bm_mux_reason_no_primary;
-        static const ydk::Enum::YLeaf bm_mux_reason_bundle_down;
-        static const ydk::Enum::YLeaf bm_mux_reason_individual;
-        static const ydk::Enum::YLeaf bm_mux_reason_defaulted;
-        static const ydk::Enum::YLeaf bm_mux_reason_in_sync;
-        static const ydk::Enum::YLeaf bm_mux_reason_collecting;
-        static const ydk::Enum::YLeaf bm_mux_reason_active_link_limit;
-        static const ydk::Enum::YLeaf bm_mux_reason_distributing;
-        static const ydk::Enum::YLeaf bm_mux_reason_count;
-
-};
-
-class BmdMemberState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bmd_mbr_state_configured;
-        static const ydk::Enum::YLeaf bmd_mbr_state_standby;
-        static const ydk::Enum::YLeaf bmd_mbr_state_hot_standby;
-        static const ydk::Enum::YLeaf bmd_mbr_state_negotiating;
-        static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
-        static const ydk::Enum::YLeaf bmd_mbr_state_active;
-
-};
-
-class BmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf misconfiguration;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf error;
-
-};
-
-class BmStateReasonTarget : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf member_reason;
-        static const ydk::Enum::YLeaf bundle_reason;
+        static const ydk::Enum::YLeaf bm_af_id_ipv4;
+        static const ydk::Enum::YLeaf bm_af_id_ipv6;
 
 };
 
@@ -4495,73 +4397,68 @@ class BmMbrStateReason : public ydk::Enum
 
 };
 
-class BmMuxstate : public ydk::Enum
+class BmdBagEventBdlItem : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf detached;
-        static const ydk::Enum::YLeaf waiting;
-        static const ydk::Enum::YLeaf attached;
-        static const ydk::Enum::YLeaf collecting;
-        static const ydk::Enum::YLeaf distributing;
-        static const ydk::Enum::YLeaf collecting_distributing;
+        static const ydk::Enum::YLeaf bmd_event_bdl_idb_create;
+        static const ydk::Enum::YLeaf bmd_event_bdl_configured;
+        static const ydk::Enum::YLeaf bmd_event_bdl_im_state;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_added;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_deleted;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mac_addr;
+        static const ydk::Enum::YLeaf bmd_event_bdl_first_retry;
+        static const ydk::Enum::YLeaf bmd_event_bdl_user_config;
+        static const ydk::Enum::YLeaf bmd_event_bdl_error;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mlacp_tlv;
+        static const ydk::Enum::YLeaf bmd_event_bdl_redundancy_role;
+        static const ydk::Enum::YLeaf bdl_bfd_state_change;
+        static const ydk::Enum::YLeaf bmd_event_bdl_icl;
+        static const ydk::Enum::YLeaf bmd_event_bdl_count;
 
 };
 
-class BmdMlacpSwitchover : public ydk::Enum
+class BmdMlacpNodeStateEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_nonrevertive;
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_brute_force;
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_revertive;
-        static const ydk::Enum::YLeaf bmd_mlacp_switchover_count;
+        static const ydk::Enum::YLeaf node_state_incomplete;
+        static const ydk::Enum::YLeaf node_state_conn_rejected;
+        static const ydk::Enum::YLeaf node_state_connect_sent;
+        static const ydk::Enum::YLeaf node_state_unconfigured;
+        static const ydk::Enum::YLeaf node_state_unreachable;
+        static const ydk::Enum::YLeaf node_state_iccp_down;
+        static const ydk::Enum::YLeaf node_state_nak;
+        static const ydk::Enum::YLeaf node_state_unknown;
+        static const ydk::Enum::YLeaf node_state_mlacp_down;
+        static const ydk::Enum::YLeaf node_state_admin_down;
+        static const ydk::Enum::YLeaf node_state_pe_isolated;
+        static const ydk::Enum::YLeaf node_state_error;
+        static const ydk::Enum::YLeaf node_state_test;
+        static const ydk::Enum::YLeaf node_state_up;
 
 };
 
-class BmFeatureStatus : public ydk::Enum
+class BmdBagEventRgItem : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_feature_not_configured;
-        static const ydk::Enum::YLeaf bm_feature_not_operational;
-        static const ydk::Enum::YLeaf bm_feature_operational;
+        static const ydk::Enum::YLeaf bmd_event_rg_idb_create;
+        static const ydk::Enum::YLeaf bmd_event_rg_configured;
+        static const ydk::Enum::YLeaf bmd_event_rg_user_config;
+        static const ydk::Enum::YLeaf bmd_event_rg_connect_ion;
+        static const ydk::Enum::YLeaf bmd_event_rg_data;
+        static const ydk::Enum::YLeaf bmd_event_rg_sync;
+        static const ydk::Enum::YLeaf bmd_event_rg_first_retry;
+        static const ydk::Enum::YLeaf bmd_event_rg_error;
+        static const ydk::Enum::YLeaf bmd_event_rg_mlacp_tlv;
+        static const ydk::Enum::YLeaf bmd_event_rg_iccp_event;
+        static const ydk::Enum::YLeaf bmd_event_rg_count;
 
 };
 
-class BmBdlMacSource : public ydk::Enum
+class BmWhichSystem : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_bdl_mac_source_unknown;
-        static const ydk::Enum::YLeaf bm_bdl_mac_source_chassis;
-        static const ydk::Enum::YLeaf bm_bdl_mac_source_configured;
-        static const ydk::Enum::YLeaf bm_bdl_mac_source_member;
-        static const ydk::Enum::YLeaf bm_bdl_mac_source_peer;
-
-};
-
-class BmBdlState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bm_bdl_state_admin_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_client_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_ptnr_down;
-        static const ydk::Enum::YLeaf bm_bdl_state_bundle_shutdown;
-        static const ydk::Enum::YLeaf bm_bdl_state_pe_isolated;
-        static const ydk::Enum::YLeaf bm_bdl_state_nak;
-        static const ydk::Enum::YLeaf bm_bdl_state_up_active;
-        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_hot_standby;
-        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_cold_standby;
-        static const ydk::Enum::YLeaf bm_bdl_state_unknown;
-        static const ydk::Enum::YLeaf bm_bdl_state_cold_standby;
-        static const ydk::Enum::YLeaf bm_bdl_state_error_disabled;
-        static const ydk::Enum::YLeaf bm_bdl_state_efd_disabled;
-
-};
-
-class BmAfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bm_af_id_ipv4;
-        static const ydk::Enum::YLeaf bm_af_id_ipv6;
+        static const ydk::Enum::YLeaf bm_which_system_actr;
+        static const ydk::Enum::YLeaf bm_which_system_ptnr;
 
 };
 
@@ -4575,40 +4472,105 @@ class BmdBfdBdlState : public ydk::Enum
 
 };
 
-class BmWhichSystem : public ydk::Enum
+class BmdMlacpMbrStateEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bm_which_system_actr;
-        static const ydk::Enum::YLeaf bm_which_system_ptnr;
+        static const ydk::Enum::YLeaf mbr_state_nak;
+        static const ydk::Enum::YLeaf mbr_state_unknown;
+        static const ydk::Enum::YLeaf mbr_state_up;
+        static const ydk::Enum::YLeaf mbr_state_down;
+        static const ydk::Enum::YLeaf mbr_state_admin_down;
+        static const ydk::Enum::YLeaf mbr_state_test;
+        static const ydk::Enum::YLeaf mbr_state_error;
 
 };
 
-class BundleMedia1 : public ydk::Enum
+class BmdBagTarget : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf pos;
+        static const ydk::Enum::YLeaf bm_bag_target_mbr;
+        static const ydk::Enum::YLeaf bm_bag_target_bdl;
+        static const ydk::Enum::YLeaf bm_bag_target_node;
+        static const ydk::Enum::YLeaf bm_bag_target_rg;
 
 };
 
-class LoadBalance : public ydk::Enum
+class BmMuxstate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf auto_;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf source_ip;
-        static const ydk::Enum::YLeaf destination_ip;
-        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf detached;
+        static const ydk::Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf collecting;
+        static const ydk::Enum::YLeaf distributing;
+        static const ydk::Enum::YLeaf collecting_distributing;
 
 };
 
-class BundleMedia : public ydk::Enum
+class LacpSelState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bundle_media_ethernet;
-        static const ydk::Enum::YLeaf bundle_media_pos;
-        static const ydk::Enum::YLeaf bundle_media_count;
+        static const ydk::Enum::YLeaf unselected;
+        static const ydk::Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf selected;
+
+};
+
+class BmdMemberState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bmd_mbr_state_configured;
+        static const ydk::Enum::YLeaf bmd_mbr_state_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_hot_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_negotiating;
+        static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
+        static const ydk::Enum::YLeaf bmd_mbr_state_active;
+
+};
+
+class BmMuxreason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_mux_reason_no_reason;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_deleted;
+        static const ydk::Enum::YLeaf bm_mux_reason_duplex;
+        static const ydk::Enum::YLeaf bm_mux_reason_bandwidth;
+        static const ydk::Enum::YLeaf bm_mux_reason_loop_back;
+        static const ydk::Enum::YLeaf bm_mux_reason_activity_type;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_shared;
+        static const ydk::Enum::YLeaf bm_mux_reason_lagid;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_bundle;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_primary;
+        static const ydk::Enum::YLeaf bm_mux_reason_bundle_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_individual;
+        static const ydk::Enum::YLeaf bm_mux_reason_defaulted;
+        static const ydk::Enum::YLeaf bm_mux_reason_in_sync;
+        static const ydk::Enum::YLeaf bm_mux_reason_collecting;
+        static const ydk::Enum::YLeaf bm_mux_reason_active_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_distributing;
+        static const ydk::Enum::YLeaf bm_mux_reason_count;
+
+};
+
+class BmFeatureStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_feature_not_configured;
+        static const ydk::Enum::YLeaf bm_feature_not_operational;
+        static const ydk::Enum::YLeaf bm_feature_operational;
+
+};
+
+class BmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf misconfiguration;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf error;
 
 };
 
@@ -4618,6 +4580,44 @@ class BundleMlacpMode : public ydk::Enum
         static const ydk::Enum::YLeaf bundle_mlacp_mode_standby;
         static const ydk::Enum::YLeaf bundle_mlacp_mode_active;
         static const ydk::Enum::YLeaf bundle_mlacp_mode_count;
+
+};
+
+class BmdBagMlacpSchActionItem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf switchover;
+        static const ydk::Enum::YLeaf switchback;
+
+};
+
+class BmStateReasonTarget : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf member_reason;
+        static const ydk::Enum::YLeaf bundle_reason;
+
+};
+
+class BmdMlacpNodeSyncEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf node_sync_req;
+        static const ydk::Enum::YLeaf node_sync_done;
+        static const ydk::Enum::YLeaf node_sync_start;
+        static const ydk::Enum::YLeaf node_sync_init;
+        static const ydk::Enum::YLeaf node_sync_singleton;
+
+};
+
+class BmBdlMacSource : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_unknown;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_chassis;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_configured;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_member;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_peer;
 
 };
 

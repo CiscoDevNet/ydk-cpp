@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_config_cfgmgr_exec_oper {
 
 CfgHistGl::CfgHistGl()
+    :
+    record_type(this, {"record_type"})
 {
 
-    yang_name = "cfg-hist-gl"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-exec-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cfg-hist-gl"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-exec-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CfgHistGl::~CfgHistGl()
@@ -23,7 +25,8 @@ CfgHistGl::~CfgHistGl()
 
 bool CfgHistGl::has_data() const
 {
-    for (std::size_t index=0; index<record_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<record_type.len(); index++)
     {
         if(record_type[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool CfgHistGl::has_data() const
 
 bool CfgHistGl::has_operation() const
 {
-    for (std::size_t index=0; index<record_type.size(); index++)
+    for (std::size_t index=0; index<record_type.len(); index++)
     {
         if(record_type[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> CfgHistGl::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<CfgHistGl::RecordType>();
         c->parent = this;
-        record_type.push_back(c);
+        record_type.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : record_type)
+    for (auto c : record_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool CfgHistGl::has_leaf_or_child_of_name(const std::string & name) const
 CfgHistGl::RecordType::RecordType()
     :
     record_type{YType::str, "record-type"}
+        ,
+    record(this, {"record"})
 {
 
-    yang_name = "record-type"; yang_parent_name = "cfg-hist-gl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "record-type"; yang_parent_name = "cfg-hist-gl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CfgHistGl::RecordType::~RecordType()
@@ -140,7 +145,8 @@ CfgHistGl::RecordType::~RecordType()
 
 bool CfgHistGl::RecordType::has_data() const
 {
-    for (std::size_t index=0; index<record.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<record.len(); index++)
     {
         if(record[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool CfgHistGl::RecordType::has_data() const
 
 bool CfgHistGl::RecordType::has_operation() const
 {
-    for (std::size_t index=0; index<record.size(); index++)
+    for (std::size_t index=0; index<record.len(); index++)
     {
         if(record[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string CfgHistGl::RecordType::get_absolute_path() const
 std::string CfgHistGl::RecordType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "record-type" <<"[record-type='" <<record_type <<"']";
+    path_buffer << "record-type";
+    ADD_KEY_TOKEN(record_type, "record-type");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<CfgHistGl::RecordType::Record>();
         c->parent = this;
-        record.push_back(c);
+        record.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : record)
+    for (auto c : record.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -239,15 +246,15 @@ bool CfgHistGl::RecordType::has_leaf_or_child_of_name(const std::string & name) 
 
 CfgHistGl::RecordType::Record::Record()
     :
-    record{YType::int32, "record"},
+    record{YType::uint32, "record"},
     timestamp{YType::uint32, "timestamp"},
     record_type{YType::enumeration, "record-type"}
-    	,
+        ,
     info(std::make_shared<CfgHistGl::RecordType::Record::Info>())
 {
     info->parent = this;
 
-    yang_name = "record"; yang_parent_name = "record-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "record"; yang_parent_name = "record-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::~Record()
@@ -256,6 +263,7 @@ CfgHistGl::RecordType::Record::~Record()
 
 bool CfgHistGl::RecordType::Record::has_data() const
 {
+    if (is_presence_container) return true;
     return record.is_set
 	|| timestamp.is_set
 	|| record_type.is_set
@@ -274,7 +282,8 @@ bool CfgHistGl::RecordType::Record::has_operation() const
 std::string CfgHistGl::RecordType::Record::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "record" <<"[record='" <<record <<"']";
+    path_buffer << "record";
+    ADD_KEY_TOKEN(record, "record");
     return path_buffer.str();
 }
 
@@ -365,14 +374,14 @@ CfgHistGl::RecordType::Record::Info::Info()
     :
     type{YType::enumeration, "type"},
     a{YType::uint32, "a"}
-    	,
+        ,
     alarm_info(std::make_shared<CfgHistGl::RecordType::Record::Info::AlarmInfo>())
-	,cfscheck_info(std::make_shared<CfgHistGl::RecordType::Record::Info::CfscheckInfo>())
-	,commit_info(std::make_shared<CfgHistGl::RecordType::Record::Info::CommitInfo>())
-	,oir_info(std::make_shared<CfgHistGl::RecordType::Record::Info::OirInfo>())
-	,shutdown_info(std::make_shared<CfgHistGl::RecordType::Record::Info::ShutdownInfo>())
-	,startup_info(std::make_shared<CfgHistGl::RecordType::Record::Info::StartupInfo>())
-	,backup_info(std::make_shared<CfgHistGl::RecordType::Record::Info::BackupInfo>())
+    , cfscheck_info(std::make_shared<CfgHistGl::RecordType::Record::Info::CfscheckInfo>())
+    , commit_info(std::make_shared<CfgHistGl::RecordType::Record::Info::CommitInfo>())
+    , oir_info(std::make_shared<CfgHistGl::RecordType::Record::Info::OirInfo>())
+    , shutdown_info(std::make_shared<CfgHistGl::RecordType::Record::Info::ShutdownInfo>())
+    , startup_info(std::make_shared<CfgHistGl::RecordType::Record::Info::StartupInfo>())
+    , backup_info(std::make_shared<CfgHistGl::RecordType::Record::Info::BackupInfo>())
 {
     alarm_info->parent = this;
     cfscheck_info->parent = this;
@@ -382,7 +391,7 @@ CfgHistGl::RecordType::Record::Info::Info()
     startup_info->parent = this;
     backup_info->parent = this;
 
-    yang_name = "info"; yang_parent_name = "record"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "info"; yang_parent_name = "record"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::~Info()
@@ -391,6 +400,7 @@ CfgHistGl::RecordType::Record::Info::~Info()
 
 bool CfgHistGl::RecordType::Record::Info::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| a.is_set
 	|| (alarm_info !=  nullptr && alarm_info->has_data())
@@ -585,7 +595,7 @@ CfgHistGl::RecordType::Record::Info::AlarmInfo::AlarmInfo()
     where{YType::str, "where"}
 {
 
-    yang_name = "alarm-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::AlarmInfo::~AlarmInfo()
@@ -594,6 +604,7 @@ CfgHistGl::RecordType::Record::Info::AlarmInfo::~AlarmInfo()
 
 bool CfgHistGl::RecordType::Record::Info::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| where.is_set;
 }
@@ -676,7 +687,7 @@ CfgHistGl::RecordType::Record::Info::CfscheckInfo::CfscheckInfo()
     line{YType::str, "line"}
 {
 
-    yang_name = "cfscheck-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cfscheck-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::CfscheckInfo::~CfscheckInfo()
@@ -685,6 +696,7 @@ CfgHistGl::RecordType::Record::Info::CfscheckInfo::~CfscheckInfo()
 
 bool CfgHistGl::RecordType::Record::Info::CfscheckInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return user_id.is_set
 	|| line.is_set;
 }
@@ -771,7 +783,7 @@ CfgHistGl::RecordType::Record::Info::CommitInfo::CommitInfo()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "commit-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "commit-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::CommitInfo::~CommitInfo()
@@ -780,6 +792,7 @@ CfgHistGl::RecordType::Record::Info::CommitInfo::~CommitInfo()
 
 bool CfgHistGl::RecordType::Record::Info::CommitInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return commit_id.is_set
 	|| user_id.is_set
 	|| line.is_set
@@ -915,7 +928,7 @@ CfgHistGl::RecordType::Record::Info::OirInfo::OirInfo()
     config_name{YType::str, "config-name"}
 {
 
-    yang_name = "oir-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oir-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::OirInfo::~OirInfo()
@@ -924,6 +937,7 @@ CfgHistGl::RecordType::Record::Info::OirInfo::~OirInfo()
 
 bool CfgHistGl::RecordType::Record::Info::OirInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return config_type.is_set
 	|| operation_.is_set
 	|| config_name.is_set;
@@ -1018,7 +1032,7 @@ CfgHistGl::RecordType::Record::Info::ShutdownInfo::ShutdownInfo()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "shutdown-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::ShutdownInfo::~ShutdownInfo()
@@ -1027,6 +1041,7 @@ CfgHistGl::RecordType::Record::Info::ShutdownInfo::~ShutdownInfo()
 
 bool CfgHistGl::RecordType::Record::Info::ShutdownInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return comment.is_set;
 }
 
@@ -1096,7 +1111,7 @@ CfgHistGl::RecordType::Record::Info::StartupInfo::StartupInfo()
     boot_path{YType::str, "boot-path"}
 {
 
-    yang_name = "startup-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "startup-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::StartupInfo::~StartupInfo()
@@ -1105,6 +1120,7 @@ CfgHistGl::RecordType::Record::Info::StartupInfo::~StartupInfo()
 
 bool CfgHistGl::RecordType::Record::Info::StartupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return how_booted.is_set
 	|| boot_path.is_set;
 }
@@ -1186,7 +1202,7 @@ CfgHistGl::RecordType::Record::Info::BackupInfo::BackupInfo()
     comment{YType::str, "comment"}
 {
 
-    yang_name = "backup-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-info"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CfgHistGl::RecordType::Record::Info::BackupInfo::~BackupInfo()
@@ -1195,6 +1211,7 @@ CfgHistGl::RecordType::Record::Info::BackupInfo::~BackupInfo()
 
 bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return comment.is_set;
 }
 

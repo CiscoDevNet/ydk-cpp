@@ -5,6 +5,7 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_5.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_7.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_6.hpp"
 
 using namespace ydk;
@@ -12,630 +13,12 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pmengine_oper {
 
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::PathESs()
-    :
-    data{YType::uint32, "data"},
-    threshold{YType::uint32, "threshold"},
-    tca_report{YType::boolean, "tca-report"}
-{
-
-    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::~PathESs()
-{
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set;
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path-e-ss";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::PathSeSs()
-    :
-    data{YType::uint32, "data"},
-    threshold{YType::uint32, "threshold"},
-    tca_report{YType::boolean, "tca-report"}
-{
-
-    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::~PathSeSs()
-{
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set;
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path-se-ss";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::PathCVs()
-    :
-    data{YType::uint32, "data"},
-    threshold{YType::uint32, "threshold"},
-    tca_report{YType::boolean, "tca-report"}
-{
-
-    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::~PathCVs()
-{
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set;
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path-c-vs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::PathUaSs()
-    :
-    data{YType::uint32, "data"},
-    threshold{YType::uint32, "threshold"},
-    tca_report{YType::boolean, "tca-report"}
-{
-
-    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::~PathUaSs()
-{
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_data() const
-{
-    return data.is_set
-	|| threshold.is_set
-	|| tca_report.is_set;
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path-ua-ss";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data")
-    {
-        data = value;
-        data.value_namespace = name_space;
-        data.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report = value;
-        tca_report.value_namespace = name_space;
-        tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data")
-    {
-        data.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "tca-report")
-    {
-        tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "data" || name == "threshold" || name == "tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::FePath()
-    :
-    far_end_path_e_ss{YType::uint32, "far-end-path-e-ss"},
-    far_end_path_se_ss{YType::uint32, "far-end-path-se-ss"},
-    far_end_path_c_vs{YType::uint32, "far-end-path-c-vs"},
-    far_end_path_ua_ss{YType::uint32, "far-end-path-ua-ss"}
-{
-
-    yang_name = "fe-path"; yang_parent_name = "sts-minute15-path"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::~FePath()
-{
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_data() const
-{
-    return far_end_path_e_ss.is_set
-	|| far_end_path_se_ss.is_set
-	|| far_end_path_c_vs.is_set
-	|| far_end_path_ua_ss.is_set;
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(far_end_path_e_ss.yfilter)
-	|| ydk::is_set(far_end_path_se_ss.yfilter)
-	|| ydk::is_set(far_end_path_c_vs.yfilter)
-	|| ydk::is_set(far_end_path_ua_ss.yfilter);
-}
-
-std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fe-path";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "far-end-path-e-ss")
-    {
-        far_end_path_e_ss = value;
-        far_end_path_e_ss.value_namespace = name_space;
-        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "far-end-path-se-ss")
-    {
-        far_end_path_se_ss = value;
-        far_end_path_se_ss.value_namespace = name_space;
-        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "far-end-path-c-vs")
-    {
-        far_end_path_c_vs = value;
-        far_end_path_c_vs.value_namespace = name_space;
-        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "far-end-path-ua-ss")
-    {
-        far_end_path_ua_ss = value;
-        far_end_path_ua_ss.value_namespace = name_space;
-        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "far-end-path-e-ss")
-    {
-        far_end_path_e_ss.yfilter = yfilter;
-    }
-    if(value_path == "far-end-path-se-ss")
-    {
-        far_end_path_se_ss.yfilter = yfilter;
-    }
-    if(value_path == "far-end-path-c-vs")
-    {
-        far_end_path_c_vs.yfilter = yfilter;
-    }
-    if(value_path == "far-end-path-ua-ss")
-    {
-        far_end_path_ua_ss.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-c-vs" || name == "far-end-path-ua-ss")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24()
-    :
-    sts_hour24_paths(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths>())
-{
-    sts_hour24_paths->parent = this;
-
-    yang_name = "sts-hour24"; yang_parent_name = "sts-current"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::~StsHour24()
-{
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_data() const
-{
-    return (sts_hour24_paths !=  nullptr && sts_hour24_paths->has_data());
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_operation() const
-{
-    return is_set(yfilter)
-	|| (sts_hour24_paths !=  nullptr && sts_hour24_paths->has_operation());
-}
-
-std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sts-hour24";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sts-hour24-paths")
-    {
-        if(sts_hour24_paths == nullptr)
-        {
-            sts_hour24_paths = std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths>();
-        }
-        return sts_hour24_paths;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(sts_hour24_paths != nullptr)
-    {
-        children["sts-hour24-paths"] = sts_hour24_paths;
-    }
-
-    return children;
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sts-hour24-paths")
-        return true;
-    return false;
-}
-
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Paths()
+    :
+    sts_hour24_path(this, {"number"})
 {
 
-    yang_name = "sts-hour24-paths"; yang_parent_name = "sts-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sts-hour24-paths"; yang_parent_name = "sts-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::~StsHour24Paths()
@@ -644,7 +27,8 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::has_data() const
 {
-    for (std::size_t index=0; index<sts_hour24_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sts_hour24_path.len(); index++)
     {
         if(sts_hour24_path[index]->has_data())
             return true;
@@ -654,7 +38,7 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::has_operation() const
 {
-    for (std::size_t index=0; index<sts_hour24_path.size(); index++)
+    for (std::size_t index=0; index<sts_hour24_path.len(); index++)
     {
         if(sts_hour24_path[index]->has_operation())
             return true;
@@ -684,7 +68,7 @@ std::shared_ptr<Entity> PerformanceManagement::Sts::StsPorts::StsPort::StsCurren
     {
         auto c = std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path>();
         c->parent = this;
-        sts_hour24_path.push_back(c);
+        sts_hour24_path.append(c);
         return c;
     }
 
@@ -696,7 +80,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sts_hour24_path)
+    for (auto c : sts_hour24_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -731,14 +115,14 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
+        ,
     path(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path>())
-	,fe_path(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath>())
+    , fe_path(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath>())
 {
     path->parent = this;
     fe_path->parent = this;
 
-    yang_name = "sts-hour24-path"; yang_parent_name = "sts-hour24-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sts-hour24-path"; yang_parent_name = "sts-hour24-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::~StsHour24Path()
@@ -747,6 +131,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -775,7 +160,8 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sts-hour24-path" <<"[number='" <<number <<"']";
+    path_buffer << "sts-hour24-path";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -924,18 +310,18 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
     :
     path_width{YType::enumeration, "path-width"},
     path_status{YType::int32, "path-status"}
-    	,
+        ,
     path_e_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs>())
-	,path_se_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs>())
-	,path_c_vs(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs>())
-	,path_ua_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs>())
+    , path_se_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs>())
+    , path_c_vs(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs>())
+    , path_ua_ss(std::make_shared<PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs>())
 {
     path_e_ss->parent = this;
     path_se_ss->parent = this;
     path_c_vs->parent = this;
     path_ua_ss->parent = this;
 
-    yang_name = "path"; yang_parent_name = "sts-hour24-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "sts-hour24-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::~Path()
@@ -944,6 +330,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_width.is_set
 	|| path_status.is_set
 	|| (path_e_ss !=  nullptr && path_e_ss->has_data())
@@ -1091,7 +478,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::~PathESs()
@@ -1100,6 +487,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -1196,7 +584,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::~PathSeSs()
@@ -1205,6 +593,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -1301,7 +690,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-c-vs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::~PathCVs()
@@ -1310,6 +699,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -1406,7 +796,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::~PathUaSs()
@@ -1415,6 +805,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -1512,7 +903,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
     far_end_path_ua_ss{YType::uint32, "far-end-path-ua-ss"}
 {
 
-    yang_name = "fe-path"; yang_parent_name = "sts-hour24-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-path"; yang_parent_name = "sts-hour24-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::~FePath()
@@ -1521,6 +912,7 @@ PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24P
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::has_data() const
 {
+    if (is_presence_container) return true;
     return far_end_path_e_ss.is_set
 	|| far_end_path_se_ss.is_set
 	|| far_end_path_c_vs.is_set
@@ -1629,7 +1021,7 @@ PerformanceManagement::Dwdm::Dwdm()
 {
     dwdm_ports->parent = this;
 
-    yang_name = "dwdm"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dwdm"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Dwdm::~Dwdm()
@@ -1638,6 +1030,7 @@ PerformanceManagement::Dwdm::~Dwdm()
 
 bool PerformanceManagement::Dwdm::has_data() const
 {
+    if (is_presence_container) return true;
     return (dwdm_ports !=  nullptr && dwdm_ports->has_data());
 }
 
@@ -1712,9 +1105,11 @@ bool PerformanceManagement::Dwdm::has_leaf_or_child_of_name(const std::string & 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPorts()
+    :
+    dwdm_port(this, {"name"})
 {
 
-    yang_name = "dwdm-ports"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dwdm-ports"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::~DwdmPorts()
@@ -1723,7 +1118,8 @@ PerformanceManagement::Dwdm::DwdmPorts::~DwdmPorts()
 
 bool PerformanceManagement::Dwdm::DwdmPorts::has_data() const
 {
-    for (std::size_t index=0; index<dwdm_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_port.len(); index++)
     {
         if(dwdm_port[index]->has_data())
             return true;
@@ -1733,7 +1129,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::has_data() const
 
 bool PerformanceManagement::Dwdm::DwdmPorts::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_port.size(); index++)
+    for (std::size_t index=0; index<dwdm_port.len(); index++)
     {
         if(dwdm_port[index]->has_operation())
             return true;
@@ -1770,7 +1166,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::get_child_by_nam
     {
         auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort>();
         c->parent = this;
-        dwdm_port.push_back(c);
+        dwdm_port.append(c);
         return c;
     }
 
@@ -1782,7 +1178,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_port)
+    for (auto c : dwdm_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1811,12 +1207,12 @@ bool PerformanceManagement::Dwdm::DwdmPorts::has_leaf_or_child_of_name(const std
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     dwdm_current(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent>())
 {
     dwdm_current->parent = this;
 
-    yang_name = "dwdm-port"; yang_parent_name = "dwdm-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dwdm-port"; yang_parent_name = "dwdm-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::~DwdmPort()
@@ -1825,6 +1221,7 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::~DwdmPort()
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (dwdm_current !=  nullptr && dwdm_current->has_data());
 }
@@ -1846,7 +1243,8 @@ std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::get_absolute_path(
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dwdm-port" <<"[name='" <<name <<"']";
+    path_buffer << "dwdm-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1914,12 +1312,12 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::has_leaf_or_child_of_name
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmCurrent()
     :
     dwdm_minute15(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15>())
-	,dwdm_hour24(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24>())
+    , dwdm_hour24(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24>())
 {
     dwdm_minute15->parent = this;
     dwdm_hour24->parent = this;
 
-    yang_name = "dwdm-current"; yang_parent_name = "dwdm-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-current"; yang_parent_name = "dwdm-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::~DwdmCurrent()
@@ -1928,6 +1326,7 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::~DwdmCurrent()
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (dwdm_minute15 !=  nullptr && dwdm_minute15->has_data())
 	|| (dwdm_hour24 !=  nullptr && dwdm_hour24->has_data());
 }
@@ -2012,15 +1411,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::has_leaf_or_
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15()
     :
-    dwdm_minute15fecs(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs>())
-	,dwdm_minute15_optics(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics>())
-	,dwdm_minute15otns(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns>())
+    dwdm_minute15fecs(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs>())
+    , dwdm_minute15_optics(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics>())
+    , dwdm_minute15otns(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns>())
 {
     dwdm_minute15fecs->parent = this;
     dwdm_minute15_optics->parent = this;
     dwdm_minute15otns->parent = this;
 
-    yang_name = "dwdm-minute15"; yang_parent_name = "dwdm-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-minute15"; yang_parent_name = "dwdm-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::~DwdmMinute15()
@@ -2029,6 +1428,7 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::~Dw
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (dwdm_minute15fecs !=  nullptr && dwdm_minute15fecs->has_data())
 	|| (dwdm_minute15_optics !=  nullptr && dwdm_minute15_optics->has_data())
 	|| (dwdm_minute15otns !=  nullptr && dwdm_minute15otns->has_data());
@@ -2064,7 +1464,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(dwdm_minute15fecs == nullptr)
         {
-            dwdm_minute15fecs = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs>();
+            dwdm_minute15fecs = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs>();
         }
         return dwdm_minute15fecs;
     }
@@ -2082,7 +1482,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(dwdm_minute15otns == nullptr)
         {
-            dwdm_minute15otns = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns>();
+            dwdm_minute15otns = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns>();
         }
         return dwdm_minute15otns;
     }
@@ -2127,19 +1527,22 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fecs()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fecs()
+    :
+    dwdm_minute15fec(this, {"number"})
 {
 
-    yang_name = "dwdm-minute15fecs"; yang_parent_name = "dwdm-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-minute15fecs"; yang_parent_name = "dwdm-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::~DwdmMinute15Fecs()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::~DwdmMinute15fecs()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::has_data() const
 {
-    for (std::size_t index=0; index<dwdm_minute15fec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_minute15fec.len(); index++)
     {
         if(dwdm_minute15fec[index]->has_data())
             return true;
@@ -2147,9 +1550,9 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     return false;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_minute15fec.size(); index++)
+    for (std::size_t index=0; index<dwdm_minute15fec.len(); index++)
     {
         if(dwdm_minute15fec[index]->has_operation())
             return true;
@@ -2157,14 +1560,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-minute15fecs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2173,25 +1576,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-minute15fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec>();
+        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec>();
         c->parent = this;
-        dwdm_minute15fec.push_back(c);
+        dwdm_minute15fec.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_minute15fec)
+    for (auto c : dwdm_minute15fec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2202,22 +1605,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dwdm-minute15fec")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::DwdmMinute15Fec()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::DwdmMinute15fec()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -2228,13 +1631,13 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    ec_bits(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits>())
-	,uc_words(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords>())
-	,pre_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer>())
-	,post_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer>())
-	,q(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q>())
-	,qmargin(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin>())
+        ,
+    ec_bits(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits>())
+    , uc_words(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords>())
+    , pre_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer>())
+    , post_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer>())
+    , q(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q>())
+    , qmargin(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin>())
 {
     ec_bits->parent = this;
     uc_words->parent = this;
@@ -2243,15 +1646,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     q->parent = this;
     qmargin->parent = this;
 
-    yang_name = "dwdm-minute15fec"; yang_parent_name = "dwdm-minute15fecs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-minute15fec"; yang_parent_name = "dwdm-minute15fecs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::~DwdmMinute15Fec()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::~DwdmMinute15fec()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -2269,7 +1673,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| (qmargin !=  nullptr && qmargin->has_data());
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -2289,14 +1693,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| (qmargin !=  nullptr && qmargin->has_operation());
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dwdm-minute15fec" <<"[number='" <<number <<"']";
+    path_buffer << "dwdm-minute15fec";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2314,13 +1719,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
         if(ec_bits == nullptr)
         {
-            ec_bits = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits>();
+            ec_bits = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits>();
         }
         return ec_bits;
     }
@@ -2329,7 +1734,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(uc_words == nullptr)
         {
-            uc_words = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords>();
+            uc_words = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords>();
         }
         return uc_words;
     }
@@ -2338,7 +1743,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(pre_fec_ber == nullptr)
         {
-            pre_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer>();
+            pre_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer>();
         }
         return pre_fec_ber;
     }
@@ -2347,7 +1752,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(post_fec_ber == nullptr)
         {
-            post_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer>();
+            post_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer>();
         }
         return post_fec_ber;
     }
@@ -2356,7 +1761,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(q == nullptr)
         {
-            q = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q>();
+            q = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q>();
         }
         return q;
     }
@@ -2365,7 +1770,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(qmargin == nullptr)
         {
-            qmargin = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin>();
+            qmargin = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin>();
         }
         return qmargin;
     }
@@ -2373,7 +1778,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2410,7 +1815,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -2468,7 +1873,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -2508,14 +1913,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ec-bits" || name == "uc-words" || name == "pre-fec-ber" || name == "post-fec-ber" || name == "q" || name == "qmargin" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::EcBits()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::EcBits()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2523,22 +1928,23 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ec-bits"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec-bits"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::~EcBits()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::~EcBits()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2547,14 +1953,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ec-bits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2567,19 +1973,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2607,7 +2013,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2627,14 +2033,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::UcWords()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::UcWords()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2642,22 +2048,23 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "uc-words"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc-words"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::~UcWords()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::~UcWords()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2666,14 +2073,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uc-words";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2686,19 +2093,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2726,7 +2133,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2746,14 +2153,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::PreFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::PreFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -2765,15 +2172,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "pre-fec-ber"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-fec-ber"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::~PreFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::~PreFecBer()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -2784,7 +2192,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -2797,14 +2205,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pre-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2821,19 +2229,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -2885,7 +2293,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -2921,14 +2329,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::PostFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::PostFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -2940,15 +2348,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "post-fec-ber"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "post-fec-ber"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::~PostFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::~PostFecBer()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -2959,7 +2368,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -2972,14 +2381,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "post-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2996,19 +2405,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -3060,7 +2469,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -3096,14 +2505,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::Q()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::Q()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -3115,15 +2524,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "q"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "q"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::~Q()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::~Q()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -3134,7 +2544,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -3147,14 +2557,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3171,19 +2581,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -3235,7 +2645,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -3271,14 +2681,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::Qmargin()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::Qmargin()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -3290,15 +2700,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "qmargin"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qmargin"; yang_parent_name = "dwdm-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::~Qmargin()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::~Qmargin()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -3309,7 +2720,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -3322,14 +2733,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qmargin";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3346,19 +2757,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -3410,7 +2821,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -3446,7 +2857,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15fecs::DwdmMinute15fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
@@ -3454,9 +2865,11 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optics()
+    :
+    dwdm_minute15_optic(this, {"number"})
 {
 
-    yang_name = "dwdm-minute15-optics"; yang_parent_name = "dwdm-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-minute15-optics"; yang_parent_name = "dwdm-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::~DwdmMinute15Optics()
@@ -3465,7 +2878,8 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::has_data() const
 {
-    for (std::size_t index=0; index<dwdm_minute15_optic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_minute15_optic.len(); index++)
     {
         if(dwdm_minute15_optic[index]->has_data())
             return true;
@@ -3475,7 +2889,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_minute15_optic.size(); index++)
+    for (std::size_t index=0; index<dwdm_minute15_optic.len(); index++)
     {
         if(dwdm_minute15_optic[index]->has_operation())
             return true;
@@ -3505,7 +2919,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic>();
         c->parent = this;
-        dwdm_minute15_optic.push_back(c);
+        dwdm_minute15_optic.append(c);
         return c;
     }
 
@@ -3517,7 +2931,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_minute15_optic)
+    for (auto c : dwdm_minute15_optic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3554,23 +2968,21 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
+        ,
     lbc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc>())
-	,lbc_pc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc>())
-	,opt(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt>())
-	,opr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr>())
-	,cd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd>())
-	,dgd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd>())
-	,pmd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd>())
-	,osnr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr>())
-	,center_wavelength(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength>())
-	,pdl(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl>())
-	,pcr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr>())
-	,pn(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn>())
-	,rx_sig_pow(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow>())
-	,low_sig_freq_off(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff>())
-	,ampli_gain(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain>())
-	,ampli_gain_tilt(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt>())
+    , lbc_pc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc>())
+    , opt(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt>())
+    , opr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr>())
+    , cd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd>())
+    , dgd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd>())
+    , pmd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd>())
+    , osnr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr>())
+    , center_wavelength(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength>())
+    , pdl(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl>())
+    , pcr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr>())
+    , pn(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn>())
+    , rx_sig_pow(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow>())
+    , low_sig_freq_off(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff>())
 {
     lbc->parent = this;
     lbc_pc->parent = this;
@@ -3586,10 +2998,8 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     pn->parent = this;
     rx_sig_pow->parent = this;
     low_sig_freq_off->parent = this;
-    ampli_gain->parent = this;
-    ampli_gain_tilt->parent = this;
 
-    yang_name = "dwdm-minute15-optic"; yang_parent_name = "dwdm-minute15-optics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-minute15-optic"; yang_parent_name = "dwdm-minute15-optics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::~DwdmMinute15Optic()
@@ -3598,6 +3008,7 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -3620,9 +3031,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| (pcr !=  nullptr && pcr->has_data())
 	|| (pn !=  nullptr && pn->has_data())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_data())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_data())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_data());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data());
 }
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::has_operation() const
@@ -3650,15 +3059,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| (pcr !=  nullptr && pcr->has_operation())
 	|| (pn !=  nullptr && pn->has_operation())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_operation())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_operation())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_operation());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation());
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dwdm-minute15-optic" <<"[number='" <<number <<"']";
+    path_buffer << "dwdm-minute15-optic";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -3808,24 +3216,6 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
         return low_sig_freq_off;
     }
 
-    if(child_yang_name == "ampli-gain")
-    {
-        if(ampli_gain == nullptr)
-        {
-            ampli_gain = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain>();
-        }
-        return ampli_gain;
-    }
-
-    if(child_yang_name == "ampli-gain-tilt")
-    {
-        if(ampli_gain_tilt == nullptr)
-        {
-            ampli_gain_tilt = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt>();
-        }
-        return ampli_gain_tilt;
-    }
-
     return nullptr;
 }
 
@@ -3901,16 +3291,6 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     if(low_sig_freq_off != nullptr)
     {
         children["low-sig-freq-off"] = low_sig_freq_off;
-    }
-
-    if(ampli_gain != nullptr)
-    {
-        children["ampli-gain"] = ampli_gain;
-    }
-
-    if(ampli_gain_tilt != nullptr)
-    {
-        children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
     return children;
@@ -4016,7 +3396,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "ampli-gain" || name == "ampli-gain-tilt" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
@@ -4028,14 +3408,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::~Lbc()
@@ -4044,15 +3422,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -4064,10 +3441,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -4087,10 +3462,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -4141,12 +3514,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -4158,12 +3525,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4195,10 +3556,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -4206,10 +3563,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4219,7 +3572,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -4231,14 +3584,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc-pc"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc-pc"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::~LbcPc()
@@ -4247,15 +3598,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -4267,10 +3617,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -4290,10 +3638,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -4344,12 +3690,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -4361,12 +3701,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4398,10 +3732,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -4409,10 +3739,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4422,7 +3748,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -4434,14 +3760,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opt"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opt"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::~Opt()
@@ -4450,15 +3774,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -4470,10 +3793,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -4493,10 +3814,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -4547,12 +3866,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -4564,12 +3877,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4601,10 +3908,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -4612,10 +3915,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4625,7 +3924,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -4637,14 +3936,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opr"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opr"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::~Opr()
@@ -4653,15 +3950,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -4673,10 +3969,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -4696,10 +3990,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -4750,12 +4042,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -4767,12 +4053,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4804,10 +4084,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -4815,10 +4091,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -4828,7 +4100,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -4840,14 +4112,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "cd"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cd"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::~Cd()
@@ -4856,15 +4126,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -4876,10 +4145,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -4899,10 +4166,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -4953,12 +4218,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -4970,12 +4229,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5007,10 +4260,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -5018,10 +4267,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5031,7 +4276,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -5043,14 +4288,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "dgd"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dgd"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::~Dgd()
@@ -5059,15 +4302,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -5079,10 +4321,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -5102,10 +4342,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -5156,12 +4394,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -5173,12 +4405,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5210,10 +4436,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -5221,10 +4443,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5234,7 +4452,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -5246,14 +4464,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pmd"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmd"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::~Pmd()
@@ -5262,15 +4478,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -5282,10 +4497,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -5305,10 +4518,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -5359,12 +4570,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -5376,12 +4581,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5413,10 +4612,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -5424,10 +4619,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5437,7 +4628,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -5449,14 +4640,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "osnr"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "osnr"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::~Osnr()
@@ -5465,15 +4654,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -5485,10 +4673,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -5508,10 +4694,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -5562,12 +4746,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -5579,12 +4757,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5616,10 +4788,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -5627,10 +4795,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5640,7 +4804,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -5652,14 +4816,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "center-wavelength"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "center-wavelength"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::~CenterWavelength()
@@ -5668,15 +4830,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -5688,10 +4849,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -5711,10 +4870,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -5765,12 +4922,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -5782,12 +4933,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5819,10 +4964,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -5830,10 +4971,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -5843,7 +4980,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -5855,14 +4992,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pdl"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pdl"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::~Pdl()
@@ -5871,15 +5006,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -5891,10 +5025,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -5914,10 +5046,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -5968,12 +5098,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -5985,12 +5109,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6022,10 +5140,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -6033,10 +5147,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6046,7 +5156,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -6058,14 +5168,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pcr"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcr"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::~Pcr()
@@ -6074,15 +5182,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -6094,10 +5201,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -6117,10 +5222,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -6171,12 +5274,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -6188,12 +5285,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6225,10 +5316,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -6236,10 +5323,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6249,7 +5332,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -6261,14 +5344,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pn"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pn"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::~Pn()
@@ -6277,15 +5358,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -6297,10 +5377,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -6320,10 +5398,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -6374,12 +5450,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -6391,12 +5461,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6428,10 +5492,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -6439,10 +5499,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6452,7 +5508,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -6464,14 +5520,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "rx-sig-pow"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-sig-pow"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::~RxSigPow()
@@ -6480,15 +5534,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -6500,10 +5553,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -6523,10 +5574,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -6577,12 +5626,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -6594,12 +5637,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6631,10 +5668,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -6642,10 +5675,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6655,7 +5684,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -6667,14 +5696,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "low-sig-freq-off"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-sig-freq-off"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::~LowSigFreqOff()
@@ -6683,15 +5710,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -6703,10 +5729,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -6726,10 +5750,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -6780,12 +5802,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -6797,12 +5813,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6834,10 +5844,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -6845,10 +5851,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -6858,430 +5860,27 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::AmpliGain()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otns()
     :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+    dwdm_minute15otn(this, {"number"})
 {
 
-    yang_name = "ampli-gain"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-minute15otns"; yang_parent_name = "dwdm-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::~AmpliGain()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::~DwdmMinute15otns()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::has_data() const
 {
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::AmpliGainTilt()
-    :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
-{
-
-    yang_name = "ampli-gain-tilt"; yang_parent_name = "dwdm-minute15-optic"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::~AmpliGainTilt()
-{
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::has_data() const
-{
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain-tilt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otns()
-{
-
-    yang_name = "dwdm-minute15otns"; yang_parent_name = "dwdm-minute15"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::~DwdmMinute15Otns()
-{
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::has_data() const
-{
-    for (std::size_t index=0; index<dwdm_minute15otn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_minute15otn.len(); index++)
     {
         if(dwdm_minute15otn[index]->has_data())
             return true;
@@ -7289,9 +5888,9 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     return false;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_minute15otn.size(); index++)
+    for (std::size_t index=0; index<dwdm_minute15otn.len(); index++)
     {
         if(dwdm_minute15otn[index]->has_operation())
             return true;
@@ -7299,14 +5898,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-minute15otns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7315,25 +5914,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-minute15otn")
     {
-        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn>();
+        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn>();
         c->parent = this;
-        dwdm_minute15otn.push_back(c);
+        dwdm_minute15otn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_minute15otn)
+    for (auto c : dwdm_minute15otn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7344,22 +5943,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dwdm-minute15otn")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::DwdmMinute15Otn()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::DwdmMinute15otn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -7370,24 +5969,24 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    lbc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc>())
-	,es_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe>())
-	,esr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe>())
-	,ses_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe>())
-	,sesr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe>())
-	,uas_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe>())
-	,bbe_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe>())
-	,bber_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe>())
-	,fc_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe>())
-	,es_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe>())
-	,esr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe>())
-	,ses_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe>())
-	,sesr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe>())
-	,uas_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe>())
-	,bbe_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe>())
-	,bber_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe>())
-	,fc_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe>())
+        ,
+    lbc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc>())
+    , es_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe>())
+    , esr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe>())
+    , ses_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe>())
+    , sesr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe>())
+    , uas_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe>())
+    , bbe_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe>())
+    , bber_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe>())
+    , fc_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe>())
+    , es_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe>())
+    , esr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe>())
+    , ses_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe>())
+    , sesr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe>())
+    , uas_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe>())
+    , bbe_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe>())
+    , bber_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe>())
+    , fc_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe>())
 {
     lbc->parent = this;
     es_ne->parent = this;
@@ -7407,15 +6006,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::Dwd
     bber_fe->parent = this;
     fc_fe->parent = this;
 
-    yang_name = "dwdm-minute15otn"; yang_parent_name = "dwdm-minute15otns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-minute15otn"; yang_parent_name = "dwdm-minute15otns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::~DwdmMinute15Otn()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::~DwdmMinute15otn()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -7444,7 +6044,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| (fc_fe !=  nullptr && fc_fe->has_data());
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -7475,14 +6075,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| (fc_fe !=  nullptr && fc_fe->has_operation());
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dwdm-minute15otn" <<"[number='" <<number <<"']";
+    path_buffer << "dwdm-minute15otn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7500,13 +6101,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
         if(lbc == nullptr)
         {
-            lbc = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc>();
+            lbc = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc>();
         }
         return lbc;
     }
@@ -7515,7 +6116,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(es_ne == nullptr)
         {
-            es_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe>();
+            es_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe>();
         }
         return es_ne;
     }
@@ -7524,7 +6125,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(esr_ne == nullptr)
         {
-            esr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe>();
+            esr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe>();
         }
         return esr_ne;
     }
@@ -7533,7 +6134,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(ses_ne == nullptr)
         {
-            ses_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe>();
+            ses_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe>();
         }
         return ses_ne;
     }
@@ -7542,7 +6143,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(sesr_ne == nullptr)
         {
-            sesr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe>();
+            sesr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe>();
         }
         return sesr_ne;
     }
@@ -7551,7 +6152,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(uas_ne == nullptr)
         {
-            uas_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe>();
+            uas_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe>();
         }
         return uas_ne;
     }
@@ -7560,7 +6161,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bbe_ne == nullptr)
         {
-            bbe_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe>();
+            bbe_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe>();
         }
         return bbe_ne;
     }
@@ -7569,7 +6170,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bber_ne == nullptr)
         {
-            bber_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe>();
+            bber_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe>();
         }
         return bber_ne;
     }
@@ -7578,7 +6179,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(fc_ne == nullptr)
         {
-            fc_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe>();
+            fc_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe>();
         }
         return fc_ne;
     }
@@ -7587,7 +6188,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(es_fe == nullptr)
         {
-            es_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe>();
+            es_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe>();
         }
         return es_fe;
     }
@@ -7596,7 +6197,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(esr_fe == nullptr)
         {
-            esr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe>();
+            esr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe>();
         }
         return esr_fe;
     }
@@ -7605,7 +6206,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(ses_fe == nullptr)
         {
-            ses_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe>();
+            ses_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe>();
         }
         return ses_fe;
     }
@@ -7614,7 +6215,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(sesr_fe == nullptr)
         {
-            sesr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe>();
+            sesr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe>();
         }
         return sesr_fe;
     }
@@ -7623,7 +6224,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(uas_fe == nullptr)
         {
-            uas_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe>();
+            uas_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe>();
         }
         return uas_fe;
     }
@@ -7632,7 +6233,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bbe_fe == nullptr)
         {
-            bbe_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe>();
+            bbe_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe>();
         }
         return bbe_fe;
     }
@@ -7641,7 +6242,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bber_fe == nullptr)
         {
-            bber_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe>();
+            bber_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe>();
         }
         return bber_fe;
     }
@@ -7650,7 +6251,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(fc_fe == nullptr)
         {
-            fc_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe>();
+            fc_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe>();
         }
         return fc_fe;
     }
@@ -7658,7 +6259,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7750,7 +6351,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -7808,7 +6409,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -7848,35 +6449,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lbc" || name == "es-ne" || name == "esr-ne" || name == "ses-ne" || name == "sesr-ne" || name == "uas-ne" || name == "bbe-ne" || name == "bber-ne" || name == "fc-ne" || name == "es-fe" || name == "esr-fe" || name == "ses-fe" || name == "sesr-fe" || name == "uas-fe" || name == "bbe-fe" || name == "bber-fe" || name == "fc-fe" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::Lbc()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::Lbc()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::~Lbc()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::~Lbc()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -7884,14 +6486,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7903,19 +6505,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -7937,7 +6539,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -7953,35 +6555,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::EsNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::EsNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::~EsNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::~EsNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -7989,14 +6592,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8008,19 +6611,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8042,7 +6645,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8058,35 +6661,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::EsrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::EsrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::~EsrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::~EsrNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8094,14 +6698,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8113,19 +6717,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8147,7 +6751,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8163,35 +6767,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::SesNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::SesNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::~SesNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::~SesNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8199,14 +6804,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8218,19 +6823,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8252,7 +6857,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8268,35 +6873,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::SesrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::SesrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::~SesrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::~SesrNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8304,14 +6910,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8323,19 +6929,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8357,7 +6963,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8373,35 +6979,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::UasNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::UasNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::~UasNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::~UasNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8409,14 +7016,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8428,19 +7035,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8462,7 +7069,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8478,35 +7085,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::BbeNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::BbeNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::~BbeNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::~BbeNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8514,14 +7122,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8533,19 +7141,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8567,7 +7175,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8583,35 +7191,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::BberNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::BberNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::~BberNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::~BberNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8619,14 +7228,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8638,19 +7247,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8672,7 +7281,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8688,35 +7297,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::FcNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::FcNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-ne"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::~FcNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::~FcNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8724,14 +7334,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8743,19 +7353,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8777,7 +7387,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8793,35 +7403,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::EsFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::EsFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::~EsFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::~EsFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8829,14 +7440,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8848,19 +7459,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8882,7 +7493,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -8898,35 +7509,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::EsrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::EsrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::~EsrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::~EsrFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -8934,14 +7546,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8953,19 +7565,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -8987,7 +7599,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -9003,35 +7615,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::SesFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::SesFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::~SesFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::~SesFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -9039,14 +7652,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9058,19 +7671,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -9092,7 +7705,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -9108,35 +7721,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::SesrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::SesrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::~SesrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::~SesrFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -9144,14 +7758,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9163,19 +7777,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -9197,7 +7811,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -9213,35 +7827,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::UasFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::UasFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::~UasFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::~UasFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -9249,14 +7864,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9268,19 +7883,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -9302,7 +7917,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -9318,35 +7933,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::BbeFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::BbeFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::~BbeFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::~BbeFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -9354,14 +7970,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9373,19 +7989,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -9407,7 +8023,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -9423,35 +8039,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::BberFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::BberFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::~BberFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::~BberFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -9459,14 +8076,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9478,19 +8095,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -9512,7 +8129,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -9528,35 +8145,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::FcFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::FcFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-fe"; yang_parent_name = "dwdm-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::~FcFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::~FcFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -9564,14 +8182,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9583,19 +8201,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -9617,7 +8235,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -9633,7 +8251,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns::DwdmMinute15otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
@@ -9643,14 +8261,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24()
     :
     dwdm_hour24_optics(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics>())
-	,dwdm_hour24fecs(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs>())
-	,dwdm_hour24otns(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns>())
+    , dwdm_hour24fecs(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs>())
+    , dwdm_hour24otns(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns>())
 {
     dwdm_hour24_optics->parent = this;
     dwdm_hour24fecs->parent = this;
     dwdm_hour24otns->parent = this;
 
-    yang_name = "dwdm-hour24"; yang_parent_name = "dwdm-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-hour24"; yang_parent_name = "dwdm-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::~DwdmHour24()
@@ -9659,6 +8277,7 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::~Dwdm
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::has_data() const
 {
+    if (is_presence_container) return true;
     return (dwdm_hour24_optics !=  nullptr && dwdm_hour24_optics->has_data())
 	|| (dwdm_hour24fecs !=  nullptr && dwdm_hour24fecs->has_data())
 	|| (dwdm_hour24otns !=  nullptr && dwdm_hour24otns->has_data());
@@ -9703,7 +8322,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(dwdm_hour24fecs == nullptr)
         {
-            dwdm_hour24fecs = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs>();
+            dwdm_hour24fecs = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs>();
         }
         return dwdm_hour24fecs;
     }
@@ -9712,7 +8331,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(dwdm_hour24otns == nullptr)
         {
-            dwdm_hour24otns = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns>();
+            dwdm_hour24otns = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns>();
         }
         return dwdm_hour24otns;
     }
@@ -9758,9 +8377,11 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optics()
+    :
+    dwdm_hour24_optic(this, {"number"})
 {
 
-    yang_name = "dwdm-hour24-optics"; yang_parent_name = "dwdm-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-hour24-optics"; yang_parent_name = "dwdm-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::~DwdmHour24Optics()
@@ -9769,7 +8390,8 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::has_data() const
 {
-    for (std::size_t index=0; index<dwdm_hour24_optic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_hour24_optic.len(); index++)
     {
         if(dwdm_hour24_optic[index]->has_data())
             return true;
@@ -9779,7 +8401,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_hour24_optic.size(); index++)
+    for (std::size_t index=0; index<dwdm_hour24_optic.len(); index++)
     {
         if(dwdm_hour24_optic[index]->has_operation())
             return true;
@@ -9809,7 +8431,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic>();
         c->parent = this;
-        dwdm_hour24_optic.push_back(c);
+        dwdm_hour24_optic.append(c);
         return c;
     }
 
@@ -9821,7 +8443,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_hour24_optic)
+    for (auto c : dwdm_hour24_optic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9858,23 +8480,21 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
+        ,
     lbc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Lbc>())
-	,lbc_pc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LbcPc>())
-	,opt(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opt>())
-	,opr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opr>())
-	,cd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Cd>())
-	,dgd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Dgd>())
-	,pmd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pmd>())
-	,osnr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Osnr>())
-	,center_wavelength(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::CenterWavelength>())
-	,pdl(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pdl>())
-	,pcr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pcr>())
-	,pn(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn>())
-	,rx_sig_pow(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow>())
-	,low_sig_freq_off(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff>())
-	,ampli_gain(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain>())
-	,ampli_gain_tilt(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt>())
+    , lbc_pc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LbcPc>())
+    , opt(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opt>())
+    , opr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opr>())
+    , cd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Cd>())
+    , dgd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Dgd>())
+    , pmd(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pmd>())
+    , osnr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Osnr>())
+    , center_wavelength(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::CenterWavelength>())
+    , pdl(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pdl>())
+    , pcr(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pcr>())
+    , pn(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn>())
+    , rx_sig_pow(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow>())
+    , low_sig_freq_off(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff>())
 {
     lbc->parent = this;
     lbc_pc->parent = this;
@@ -9890,10 +8510,8 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     pn->parent = this;
     rx_sig_pow->parent = this;
     low_sig_freq_off->parent = this;
-    ampli_gain->parent = this;
-    ampli_gain_tilt->parent = this;
 
-    yang_name = "dwdm-hour24-optic"; yang_parent_name = "dwdm-hour24-optics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-hour24-optic"; yang_parent_name = "dwdm-hour24-optics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::~DwdmHour24Optic()
@@ -9902,6 +8520,7 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -9924,9 +8543,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| (pcr !=  nullptr && pcr->has_data())
 	|| (pn !=  nullptr && pn->has_data())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_data())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_data())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_data());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_data());
 }
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::has_operation() const
@@ -9954,15 +8571,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| (pcr !=  nullptr && pcr->has_operation())
 	|| (pn !=  nullptr && pn->has_operation())
 	|| (rx_sig_pow !=  nullptr && rx_sig_pow->has_operation())
-	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation())
-	|| (ampli_gain !=  nullptr && ampli_gain->has_operation())
-	|| (ampli_gain_tilt !=  nullptr && ampli_gain_tilt->has_operation());
+	|| (low_sig_freq_off !=  nullptr && low_sig_freq_off->has_operation());
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dwdm-hour24-optic" <<"[number='" <<number <<"']";
+    path_buffer << "dwdm-hour24-optic";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -10112,24 +8728,6 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
         return low_sig_freq_off;
     }
 
-    if(child_yang_name == "ampli-gain")
-    {
-        if(ampli_gain == nullptr)
-        {
-            ampli_gain = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain>();
-        }
-        return ampli_gain;
-    }
-
-    if(child_yang_name == "ampli-gain-tilt")
-    {
-        if(ampli_gain_tilt == nullptr)
-        {
-            ampli_gain_tilt = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt>();
-        }
-        return ampli_gain_tilt;
-    }
-
     return nullptr;
 }
 
@@ -10205,16 +8803,6 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     if(low_sig_freq_off != nullptr)
     {
         children["low-sig-freq-off"] = low_sig_freq_off;
-    }
-
-    if(ampli_gain != nullptr)
-    {
-        children["ampli-gain"] = ampli_gain;
-    }
-
-    if(ampli_gain_tilt != nullptr)
-    {
-        children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
     return children;
@@ -10320,7 +8908,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "ampli-gain" || name == "ampli-gain-tilt" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
+    if(name == "lbc" || name == "lbc-pc" || name == "opt" || name == "opr" || name == "cd" || name == "dgd" || name == "pmd" || name == "osnr" || name == "center-wavelength" || name == "pdl" || name == "pcr" || name == "pn" || name == "rx-sig-pow" || name == "low-sig-freq-off" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
@@ -10332,14 +8920,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Lbc::~Lbc()
@@ -10348,15 +8934,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -10368,10 +8953,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -10391,10 +8974,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -10445,12 +9026,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -10462,12 +9037,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10499,10 +9068,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -10510,10 +9075,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10523,7 +9084,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -10535,14 +9096,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "lbc-pc"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc-pc"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LbcPc::~LbcPc()
@@ -10551,15 +9110,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LbcPc::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -10571,10 +9129,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -10594,10 +9150,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -10648,12 +9202,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -10665,12 +9213,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10702,10 +9244,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -10713,10 +9251,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10726,7 +9260,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -10738,14 +9272,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opt"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opt"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opt::~Opt()
@@ -10754,15 +9286,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opt::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -10774,10 +9305,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -10797,10 +9326,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -10851,12 +9378,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -10868,12 +9389,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10905,10 +9420,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -10916,10 +9427,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -10929,7 +9436,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -10941,14 +9448,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "opr"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opr"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opr::~Opr()
@@ -10957,15 +9462,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -10977,10 +9481,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -11000,10 +9502,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -11054,12 +9554,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -11071,12 +9565,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11108,10 +9596,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -11119,10 +9603,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11132,7 +9612,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -11144,14 +9624,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "cd"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cd"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Cd::~Cd()
@@ -11160,15 +9638,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Cd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -11180,10 +9657,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -11203,10 +9678,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -11257,12 +9730,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -11274,12 +9741,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11311,10 +9772,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -11322,10 +9779,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11335,7 +9788,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -11347,14 +9800,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "dgd"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dgd"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Dgd::~Dgd()
@@ -11363,15 +9814,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Dgd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -11383,10 +9833,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -11406,10 +9854,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -11460,12 +9906,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -11477,12 +9917,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11514,10 +9948,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -11525,10 +9955,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11538,7 +9964,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -11550,14 +9976,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pmd"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmd"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pmd::~Pmd()
@@ -11566,15 +9990,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pmd::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -11586,10 +10009,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -11609,10 +10030,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -11663,12 +10082,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -11680,12 +10093,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11717,10 +10124,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -11728,10 +10131,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11741,7 +10140,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -11753,14 +10152,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "osnr"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "osnr"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Osnr::~Osnr()
@@ -11769,15 +10166,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Osnr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -11789,10 +10185,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -11812,10 +10206,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -11866,12 +10258,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -11883,12 +10269,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11920,10 +10300,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -11931,10 +10307,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -11944,7 +10316,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -11956,14 +10328,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "center-wavelength"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "center-wavelength"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::CenterWavelength::~CenterWavelength()
@@ -11972,15 +10342,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::CenterWavelength::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -11992,10 +10361,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -12015,10 +10382,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -12069,12 +10434,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -12086,12 +10445,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12123,10 +10476,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -12134,10 +10483,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12147,7 +10492,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -12159,14 +10504,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pdl"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pdl"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pdl::~Pdl()
@@ -12175,15 +10518,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pdl::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -12195,10 +10537,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -12218,10 +10558,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -12272,12 +10610,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -12289,12 +10621,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12326,10 +10652,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -12337,10 +10659,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12350,7 +10668,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -12362,14 +10680,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pcr"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcr"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pcr::~Pcr()
@@ -12378,15 +10694,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pcr::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -12398,10 +10713,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -12421,10 +10734,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -12475,12 +10786,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -12492,12 +10797,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12529,10 +10828,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -12540,10 +10835,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12553,7 +10844,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -12565,14 +10856,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "pn"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pn"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn::~Pn()
@@ -12581,15 +10870,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -12601,10 +10889,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -12624,10 +10910,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -12678,12 +10962,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -12695,12 +10973,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12732,10 +11004,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -12743,10 +11011,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12756,7 +11020,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -12768,14 +11032,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::str, "average"},
     maximum{YType::str, "maximum"},
     minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "rx-sig-pow"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-sig-pow"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow::~RxSigPow()
@@ -12784,15 +11046,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -12804,10 +11065,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -12827,10 +11086,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -12881,12 +11138,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -12898,12 +11149,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12935,10 +11180,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -12946,10 +11187,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -12959,7 +11196,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
@@ -12971,14 +11208,12 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     average{YType::int32, "average"},
     maximum{YType::int32, "maximum"},
     minimum_threshold{YType::int32, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
     minimum_tca_report{YType::boolean, "minimum-tca-report"},
     maximum_threshold{YType::int32, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
     maximum_tca_report{YType::boolean, "maximum-tca-report"}
 {
 
-    yang_name = "low-sig-freq-off"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-sig-freq-off"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff::~LowSigFreqOff()
@@ -12987,15 +11222,14 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
 	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
 	|| minimum_tca_report.is_set
 	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
 	|| maximum_tca_report.is_set;
 }
 
@@ -13007,10 +11241,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(average.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
 	|| ydk::is_set(minimum_tca_report.yfilter)
 	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
 	|| ydk::is_set(maximum_tca_report.yfilter);
 }
 
@@ -13030,10 +11262,8 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
     if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
     if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
     if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
     if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
 
     return leaf_name_data;
@@ -13084,12 +11314,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         minimum_threshold.value_namespace = name_space;
         minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
@@ -13101,12 +11325,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
         maximum_threshold = value;
         maximum_threshold.value_namespace = name_space;
         maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13138,10 +11356,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     {
         minimum_threshold.yfilter = yfilter;
     }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report.yfilter = yfilter;
@@ -13149,10 +11363,6 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     if(value_path == "maximum-threshold")
     {
         maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
     }
     if(value_path == "maximum-tca-report")
     {
@@ -13162,430 +11372,27 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
+    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::AmpliGain()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fecs()
     :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
+    dwdm_hour24fec(this, {"number"})
 {
 
-    yang_name = "ampli-gain"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-hour24fecs"; yang_parent_name = "dwdm-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::~AmpliGain()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::~DwdmHour24fecs()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::has_data() const
 {
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::AmpliGainTilt()
-    :
-    valid{YType::boolean, "valid"},
-    minimum{YType::str, "minimum"},
-    average{YType::str, "average"},
-    maximum{YType::str, "maximum"},
-    minimum_threshold{YType::str, "minimum-threshold"},
-    configured_min_thresh{YType::str, "configured-min-thresh"},
-    minimum_tca_report{YType::boolean, "minimum-tca-report"},
-    maximum_threshold{YType::str, "maximum-threshold"},
-    configured_max_thresh{YType::str, "configured-max-thresh"},
-    maximum_tca_report{YType::boolean, "maximum-tca-report"}
-{
-
-    yang_name = "ampli-gain-tilt"; yang_parent_name = "dwdm-hour24-optic"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::~AmpliGainTilt()
-{
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::has_data() const
-{
-    return valid.is_set
-	|| minimum.is_set
-	|| average.is_set
-	|| maximum.is_set
-	|| minimum_threshold.is_set
-	|| configured_min_thresh.is_set
-	|| minimum_tca_report.is_set
-	|| maximum_threshold.is_set
-	|| configured_max_thresh.is_set
-	|| maximum_tca_report.is_set;
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(valid.yfilter)
-	|| ydk::is_set(minimum.yfilter)
-	|| ydk::is_set(average.yfilter)
-	|| ydk::is_set(maximum.yfilter)
-	|| ydk::is_set(minimum_threshold.yfilter)
-	|| ydk::is_set(configured_min_thresh.yfilter)
-	|| ydk::is_set(minimum_tca_report.yfilter)
-	|| ydk::is_set(maximum_threshold.yfilter)
-	|| ydk::is_set(configured_max_thresh.yfilter)
-	|| ydk::is_set(maximum_tca_report.yfilter);
-}
-
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ampli-gain-tilt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (configured_min_thresh.is_set || is_set(configured_min_thresh.yfilter)) leaf_name_data.push_back(configured_min_thresh.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (configured_max_thresh.is_set || is_set(configured_max_thresh.yfilter)) leaf_name_data.push_back(configured_max_thresh.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "valid")
-    {
-        valid = value;
-        valid.value_namespace = name_space;
-        valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum")
-    {
-        minimum = value;
-        minimum.value_namespace = name_space;
-        minimum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "average")
-    {
-        average = value;
-        average.value_namespace = name_space;
-        average.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum")
-    {
-        maximum = value;
-        maximum.value_namespace = name_space;
-        maximum.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold = value;
-        minimum_threshold.value_namespace = name_space;
-        minimum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh = value;
-        configured_min_thresh.value_namespace = name_space;
-        configured_min_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report = value;
-        minimum_tca_report.value_namespace = name_space;
-        minimum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold = value;
-        maximum_threshold.value_namespace = name_space;
-        maximum_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh = value;
-        configured_max_thresh.value_namespace = name_space;
-        configured_max_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report = value;
-        maximum_tca_report.value_namespace = name_space;
-        maximum_tca_report.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "valid")
-    {
-        valid.yfilter = yfilter;
-    }
-    if(value_path == "minimum")
-    {
-        minimum.yfilter = yfilter;
-    }
-    if(value_path == "average")
-    {
-        average.yfilter = yfilter;
-    }
-    if(value_path == "maximum")
-    {
-        maximum.yfilter = yfilter;
-    }
-    if(value_path == "minimum-threshold")
-    {
-        minimum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-min-thresh")
-    {
-        configured_min_thresh.yfilter = yfilter;
-    }
-    if(value_path == "minimum-tca-report")
-    {
-        minimum_tca_report.yfilter = yfilter;
-    }
-    if(value_path == "maximum-threshold")
-    {
-        maximum_threshold.yfilter = yfilter;
-    }
-    if(value_path == "configured-max-thresh")
-    {
-        configured_max_thresh.yfilter = yfilter;
-    }
-    if(value_path == "maximum-tca-report")
-    {
-        maximum_tca_report.yfilter = yfilter;
-    }
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "valid" || name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "configured-min-thresh" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "configured-max-thresh" || name == "maximum-tca-report")
-        return true;
-    return false;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fecs()
-{
-
-    yang_name = "dwdm-hour24fecs"; yang_parent_name = "dwdm-hour24"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::~DwdmHour24Fecs()
-{
-}
-
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::has_data() const
-{
-    for (std::size_t index=0; index<dwdm_hour24fec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_hour24fec.len(); index++)
     {
         if(dwdm_hour24fec[index]->has_data())
             return true;
@@ -13593,9 +11400,9 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     return false;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_hour24fec.size(); index++)
+    for (std::size_t index=0; index<dwdm_hour24fec.len(); index++)
     {
         if(dwdm_hour24fec[index]->has_operation())
             return true;
@@ -13603,14 +11410,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-hour24fecs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13619,25 +11426,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-hour24fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec>();
+        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec>();
         c->parent = this;
-        dwdm_hour24fec.push_back(c);
+        dwdm_hour24fec.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_hour24fec)
+    for (auto c : dwdm_hour24fec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13648,22 +11455,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dwdm-hour24fec")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::DwdmHour24Fec()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::DwdmHour24fec()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -13674,13 +11481,13 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    ec_bits(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits>())
-	,uc_words(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords>())
-	,pre_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer>())
-	,post_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer>())
-	,q(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q>())
-	,qmargin(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin>())
+        ,
+    ec_bits(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits>())
+    , uc_words(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords>())
+    , pre_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer>())
+    , post_fec_ber(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer>())
+    , q(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q>())
+    , qmargin(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin>())
 {
     ec_bits->parent = this;
     uc_words->parent = this;
@@ -13689,15 +11496,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     q->parent = this;
     qmargin->parent = this;
 
-    yang_name = "dwdm-hour24fec"; yang_parent_name = "dwdm-hour24fecs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-hour24fec"; yang_parent_name = "dwdm-hour24fecs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::~DwdmHour24Fec()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::~DwdmHour24fec()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -13715,7 +11523,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| (qmargin !=  nullptr && qmargin->has_data());
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -13735,14 +11543,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| (qmargin !=  nullptr && qmargin->has_operation());
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dwdm-hour24fec" <<"[number='" <<number <<"']";
+    path_buffer << "dwdm-hour24fec";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13760,13 +11569,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
         if(ec_bits == nullptr)
         {
-            ec_bits = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits>();
+            ec_bits = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits>();
         }
         return ec_bits;
     }
@@ -13775,7 +11584,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(uc_words == nullptr)
         {
-            uc_words = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords>();
+            uc_words = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords>();
         }
         return uc_words;
     }
@@ -13784,7 +11593,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(pre_fec_ber == nullptr)
         {
-            pre_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer>();
+            pre_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer>();
         }
         return pre_fec_ber;
     }
@@ -13793,7 +11602,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(post_fec_ber == nullptr)
         {
-            post_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer>();
+            post_fec_ber = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer>();
         }
         return post_fec_ber;
     }
@@ -13802,7 +11611,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(q == nullptr)
         {
-            q = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q>();
+            q = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q>();
         }
         return q;
     }
@@ -13811,7 +11620,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(qmargin == nullptr)
         {
-            qmargin = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin>();
+            qmargin = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin>();
         }
         return qmargin;
     }
@@ -13819,7 +11628,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13856,7 +11665,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -13914,7 +11723,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -13954,14 +11763,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ec-bits" || name == "uc-words" || name == "pre-fec-ber" || name == "post-fec-ber" || name == "q" || name == "qmargin" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::EcBits()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::EcBits()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -13969,22 +11778,23 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ec-bits"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec-bits"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::~EcBits()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::~EcBits()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -13993,14 +11803,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ec-bits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14013,19 +11823,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14053,7 +11863,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14073,14 +11883,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::UcWords()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::UcWords()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -14088,22 +11898,23 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "uc-words"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc-words"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::~UcWords()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::~UcWords()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -14112,14 +11923,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uc-words";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14132,19 +11943,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14172,7 +11983,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14192,14 +12003,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::PreFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::PreFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -14211,15 +12022,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "pre-fec-ber"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-fec-ber"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::~PreFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::~PreFecBer()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -14230,7 +12042,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -14243,14 +12055,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pre-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14267,19 +12079,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -14331,7 +12143,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -14367,14 +12179,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::PostFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::PostFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -14386,15 +12198,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "post-fec-ber"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "post-fec-ber"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::~PostFecBer()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::~PostFecBer()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -14405,7 +12218,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -14418,14 +12231,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "post-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14442,19 +12255,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -14506,7 +12319,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -14542,14 +12355,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::Q()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::Q()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -14561,15 +12374,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "q"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "q"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::~Q()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::~Q()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -14580,7 +12394,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -14593,14 +12407,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14617,19 +12431,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -14681,7 +12495,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -14717,14 +12531,14 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::Qmargin()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::Qmargin()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -14736,15 +12550,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "qmargin"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qmargin"; yang_parent_name = "dwdm-hour24fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::~Qmargin()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::~Qmargin()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -14755,7 +12570,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -14768,14 +12583,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qmargin";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14792,19 +12607,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -14856,7 +12671,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -14892,26 +12707,29 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Fecs::DwdmHour24Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs::DwdmHour24fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otns()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otns()
+    :
+    dwdm_hour24otn(this, {"number"})
 {
 
-    yang_name = "dwdm-hour24otns"; yang_parent_name = "dwdm-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-hour24otns"; yang_parent_name = "dwdm-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::~DwdmHour24Otns()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::~DwdmHour24otns()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::has_data() const
 {
-    for (std::size_t index=0; index<dwdm_hour24otn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_hour24otn.len(); index++)
     {
         if(dwdm_hour24otn[index]->has_data())
             return true;
@@ -14919,9 +12737,9 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     return false;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_hour24otn.size(); index++)
+    for (std::size_t index=0; index<dwdm_hour24otn.len(); index++)
     {
         if(dwdm_hour24otn[index]->has_operation())
             return true;
@@ -14929,14 +12747,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-hour24otns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14945,25 +12763,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-hour24otn")
     {
-        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn>();
+        auto c = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn>();
         c->parent = this;
-        dwdm_hour24otn.push_back(c);
+        dwdm_hour24otn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_hour24otn)
+    for (auto c : dwdm_hour24otn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14974,22 +12792,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dwdm-hour24otn")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::DwdmHour24Otn()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::DwdmHour24otn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -15000,24 +12818,24 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    lbc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc>())
-	,es_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe>())
-	,esr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe>())
-	,ses_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe>())
-	,sesr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe>())
-	,uas_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe>())
-	,bbe_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe>())
-	,bber_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe>())
-	,fc_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe>())
-	,es_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe>())
-	,esr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe>())
-	,ses_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe>())
-	,sesr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe>())
-	,uas_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe>())
-	,bbe_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe>())
-	,bber_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe>())
-	,fc_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe>())
+        ,
+    lbc(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc>())
+    , es_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe>())
+    , esr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe>())
+    , ses_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe>())
+    , sesr_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe>())
+    , uas_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe>())
+    , bbe_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe>())
+    , bber_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe>())
+    , fc_ne(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe>())
+    , es_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe>())
+    , esr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe>())
+    , ses_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe>())
+    , sesr_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe>())
+    , uas_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe>())
+    , bbe_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe>())
+    , bber_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe>())
+    , fc_fe(std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe>())
 {
     lbc->parent = this;
     es_ne->parent = this;
@@ -15037,15 +12855,16 @@ PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmH
     bber_fe->parent = this;
     fc_fe->parent = this;
 
-    yang_name = "dwdm-hour24otn"; yang_parent_name = "dwdm-hour24otns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-hour24otn"; yang_parent_name = "dwdm-hour24otns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::~DwdmHour24Otn()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::~DwdmHour24otn()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -15074,7 +12893,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| (fc_fe !=  nullptr && fc_fe->has_data());
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -15105,14 +12924,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| (fc_fe !=  nullptr && fc_fe->has_operation());
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dwdm-hour24otn" <<"[number='" <<number <<"']";
+    path_buffer << "dwdm-hour24otn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15130,13 +12950,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
         if(lbc == nullptr)
         {
-            lbc = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc>();
+            lbc = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc>();
         }
         return lbc;
     }
@@ -15145,7 +12965,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(es_ne == nullptr)
         {
-            es_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe>();
+            es_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe>();
         }
         return es_ne;
     }
@@ -15154,7 +12974,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(esr_ne == nullptr)
         {
-            esr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe>();
+            esr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe>();
         }
         return esr_ne;
     }
@@ -15163,7 +12983,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(ses_ne == nullptr)
         {
-            ses_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe>();
+            ses_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe>();
         }
         return ses_ne;
     }
@@ -15172,7 +12992,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(sesr_ne == nullptr)
         {
-            sesr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe>();
+            sesr_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe>();
         }
         return sesr_ne;
     }
@@ -15181,7 +13001,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(uas_ne == nullptr)
         {
-            uas_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe>();
+            uas_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe>();
         }
         return uas_ne;
     }
@@ -15190,7 +13010,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bbe_ne == nullptr)
         {
-            bbe_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe>();
+            bbe_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe>();
         }
         return bbe_ne;
     }
@@ -15199,7 +13019,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bber_ne == nullptr)
         {
-            bber_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe>();
+            bber_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe>();
         }
         return bber_ne;
     }
@@ -15208,7 +13028,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(fc_ne == nullptr)
         {
-            fc_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe>();
+            fc_ne = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe>();
         }
         return fc_ne;
     }
@@ -15217,7 +13037,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(es_fe == nullptr)
         {
-            es_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe>();
+            es_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe>();
         }
         return es_fe;
     }
@@ -15226,7 +13046,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(esr_fe == nullptr)
         {
-            esr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe>();
+            esr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe>();
         }
         return esr_fe;
     }
@@ -15235,7 +13055,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(ses_fe == nullptr)
         {
-            ses_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe>();
+            ses_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe>();
         }
         return ses_fe;
     }
@@ -15244,7 +13064,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(sesr_fe == nullptr)
         {
-            sesr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe>();
+            sesr_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe>();
         }
         return sesr_fe;
     }
@@ -15253,7 +13073,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(uas_fe == nullptr)
         {
-            uas_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe>();
+            uas_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe>();
         }
         return uas_fe;
     }
@@ -15262,7 +13082,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bbe_fe == nullptr)
         {
-            bbe_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe>();
+            bbe_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe>();
         }
         return bbe_fe;
     }
@@ -15271,7 +13091,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(bber_fe == nullptr)
         {
-            bber_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe>();
+            bber_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe>();
         }
         return bber_fe;
     }
@@ -15280,7 +13100,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     {
         if(fc_fe == nullptr)
         {
-            fc_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe>();
+            fc_fe = std::make_shared<PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe>();
         }
         return fc_fe;
     }
@@ -15288,7 +13108,7 @@ std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15380,7 +13200,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -15438,7 +13258,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -15478,35 +13298,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lbc" || name == "es-ne" || name == "esr-ne" || name == "ses-ne" || name == "sesr-ne" || name == "uas-ne" || name == "bbe-ne" || name == "bber-ne" || name == "fc-ne" || name == "es-fe" || name == "esr-fe" || name == "ses-fe" || name == "sesr-fe" || name == "uas-fe" || name == "bbe-fe" || name == "bber-fe" || name == "fc-fe" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::Lbc()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::Lbc()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::~Lbc()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::~Lbc()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15514,14 +13335,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15533,19 +13354,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15567,7 +13388,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15583,35 +13404,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::EsNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::EsNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::~EsNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::~EsNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15619,14 +13441,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15638,19 +13460,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15672,7 +13494,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15688,35 +13510,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::EsrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::EsrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::~EsrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::~EsrNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15724,14 +13547,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15743,19 +13566,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15777,7 +13600,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15793,35 +13616,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::SesNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::SesNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::~SesNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::~SesNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15829,14 +13653,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15848,19 +13672,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15882,7 +13706,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15898,35 +13722,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::SesrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::SesrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::~SesrNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::~SesrNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15934,14 +13759,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15953,19 +13778,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15987,7 +13812,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16003,35 +13828,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::UasNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::UasNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::~UasNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::~UasNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16039,14 +13865,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16058,19 +13884,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16092,7 +13918,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16108,35 +13934,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::BbeNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::BbeNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::~BbeNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::~BbeNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16144,14 +13971,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16163,19 +13990,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16197,7 +14024,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16213,35 +14040,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::BberNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::BberNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::~BberNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::~BberNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16249,14 +14077,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16268,19 +14096,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16302,7 +14130,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16318,35 +14146,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::FcNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::FcNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-ne"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::~FcNe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::~FcNe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16354,14 +14183,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16373,19 +14202,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16407,7 +14236,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16423,35 +14252,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::EsFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::EsFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::~EsFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::~EsFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16459,14 +14289,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16478,19 +14308,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16512,7 +14342,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16528,35 +14358,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::EsrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::EsrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::~EsrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::~EsrFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16564,14 +14395,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16583,19 +14414,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16617,7 +14448,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16633,35 +14464,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::SesFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::SesFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::~SesFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::~SesFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16669,14 +14501,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16688,19 +14520,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16722,7 +14554,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16738,35 +14570,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::SesrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::SesrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::~SesrFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::~SesrFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16774,14 +14607,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16793,19 +14626,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16827,7 +14660,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16843,35 +14676,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::UasFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::UasFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::~UasFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::~UasFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16879,14 +14713,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16898,19 +14732,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16932,7 +14766,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16948,35 +14782,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::BbeFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::BbeFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::~BbeFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::~BbeFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16984,14 +14819,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17003,19 +14838,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17037,7 +14872,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17053,35 +14888,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::BberFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::BberFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::~BberFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::~BberFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17089,14 +14925,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17108,19 +14944,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17142,7 +14978,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17158,35 +14994,36 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::FcFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::FcFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-fe"; yang_parent_name = "dwdm-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::~FcFe()
+PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::~FcFe()
 {
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::has_data() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::has_operation() const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17194,14 +15031,14 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::get_segment_path() const
+std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17213,19 +15050,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Dwdm::Dwdm
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17247,7 +15084,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17263,7 +15100,7 @@ void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::
     }
 }
 
-bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Otns::DwdmHour24Otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24otns::DwdmHour24otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
@@ -17276,7 +15113,7 @@ PerformanceManagement::Oc::Oc()
 {
     oc_ports->parent = this;
 
-    yang_name = "oc"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oc"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Oc::~Oc()
@@ -17285,6 +15122,7 @@ PerformanceManagement::Oc::~Oc()
 
 bool PerformanceManagement::Oc::has_data() const
 {
+    if (is_presence_container) return true;
     return (oc_ports !=  nullptr && oc_ports->has_data());
 }
 
@@ -17359,9 +15197,11 @@ bool PerformanceManagement::Oc::has_leaf_or_child_of_name(const std::string & na
 }
 
 PerformanceManagement::Oc::OcPorts::OcPorts()
+    :
+    oc_port(this, {"name"})
 {
 
-    yang_name = "oc-ports"; yang_parent_name = "oc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oc-ports"; yang_parent_name = "oc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Oc::OcPorts::~OcPorts()
@@ -17370,7 +15210,8 @@ PerformanceManagement::Oc::OcPorts::~OcPorts()
 
 bool PerformanceManagement::Oc::OcPorts::has_data() const
 {
-    for (std::size_t index=0; index<oc_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<oc_port.len(); index++)
     {
         if(oc_port[index]->has_data())
             return true;
@@ -17380,7 +15221,7 @@ bool PerformanceManagement::Oc::OcPorts::has_data() const
 
 bool PerformanceManagement::Oc::OcPorts::has_operation() const
 {
-    for (std::size_t index=0; index<oc_port.size(); index++)
+    for (std::size_t index=0; index<oc_port.len(); index++)
     {
         if(oc_port[index]->has_operation())
             return true;
@@ -17417,7 +15258,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::get_child_by_name(co
     {
         auto c = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort>();
         c->parent = this;
-        oc_port.push_back(c);
+        oc_port.append(c);
         return c;
     }
 
@@ -17429,7 +15270,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : oc_port)
+    for (auto c : oc_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17458,12 +15299,12 @@ bool PerformanceManagement::Oc::OcPorts::has_leaf_or_child_of_name(const std::st
 PerformanceManagement::Oc::OcPorts::OcPort::OcPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     oc_current(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent>())
 {
     oc_current->parent = this;
 
-    yang_name = "oc-port"; yang_parent_name = "oc-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oc-port"; yang_parent_name = "oc-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Oc::OcPorts::OcPort::~OcPort()
@@ -17472,6 +15313,7 @@ PerformanceManagement::Oc::OcPorts::OcPort::~OcPort()
 
 bool PerformanceManagement::Oc::OcPorts::OcPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (oc_current !=  nullptr && oc_current->has_data());
 }
@@ -17493,7 +15335,8 @@ std::string PerformanceManagement::Oc::OcPorts::OcPort::get_absolute_path() cons
 std::string PerformanceManagement::Oc::OcPorts::OcPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "oc-port" <<"[name='" <<name <<"']";
+    path_buffer << "oc-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -17561,12 +15404,12 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::has_leaf_or_child_of_name(const
 PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcCurrent()
     :
     oc_hour24(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24>())
-	,oc_minute15(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15>())
+    , oc_minute15(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15>())
 {
     oc_hour24->parent = this;
     oc_minute15->parent = this;
 
-    yang_name = "oc-current"; yang_parent_name = "oc-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oc-current"; yang_parent_name = "oc-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::~OcCurrent()
@@ -17575,6 +15418,7 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::~OcCurrent()
 
 bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (oc_hour24 !=  nullptr && oc_hour24->has_data())
 	|| (oc_minute15 !=  nullptr && oc_minute15->has_data());
 }
@@ -17659,11 +15503,11 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::has_leaf_or_child_of
 
 PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24()
     :
-    oc_hour24ocns(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns>())
+    oc_hour24ocns(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns>())
 {
     oc_hour24ocns->parent = this;
 
-    yang_name = "oc-hour24"; yang_parent_name = "oc-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oc-hour24"; yang_parent_name = "oc-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::~OcHour24()
@@ -17672,6 +15516,7 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::~OcHour24()
 
 bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::has_data() const
 {
+    if (is_presence_container) return true;
     return (oc_hour24ocns !=  nullptr && oc_hour24ocns->has_data());
 }
 
@@ -17703,7 +15548,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(oc_hour24ocns == nullptr)
         {
-            oc_hour24ocns = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns>();
+            oc_hour24ocns = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns>();
         }
         return oc_hour24ocns;
     }
@@ -17738,19 +15583,22 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::has_leaf_o
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocns()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocns()
+    :
+    oc_hour24ocn(this, {"number"})
 {
 
-    yang_name = "oc-hour24ocns"; yang_parent_name = "oc-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oc-hour24ocns"; yang_parent_name = "oc-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::~OcHour24Ocns()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::~OcHour24ocns()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::has_data() const
 {
-    for (std::size_t index=0; index<oc_hour24ocn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<oc_hour24ocn.len(); index++)
     {
         if(oc_hour24ocn[index]->has_data())
             return true;
@@ -17758,9 +15606,9 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     return false;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::has_operation() const
 {
-    for (std::size_t index=0; index<oc_hour24ocn.size(); index++)
+    for (std::size_t index=0; index<oc_hour24ocn.len(); index++)
     {
         if(oc_hour24ocn[index]->has_operation())
             return true;
@@ -17768,14 +15616,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oc-hour24ocns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17784,25 +15632,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-hour24ocn")
     {
-        auto c = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn>();
+        auto c = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn>();
         c->parent = this;
-        oc_hour24ocn.push_back(c);
+        oc_hour24ocn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : oc_hour24ocn)
+    for (auto c : oc_hour24ocn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17813,22 +15661,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oc-hour24ocn")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::OcHour24Ocn()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::OcHour24ocn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -17837,24 +15685,25 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::O
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
-    section(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section>())
-	,line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line>())
-	,fe_line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine>())
+        ,
+    section(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section>())
+    , line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line>())
+    , fe_line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine>())
 {
     section->parent = this;
     line->parent = this;
     fe_line->parent = this;
 
-    yang_name = "oc-hour24ocn"; yang_parent_name = "oc-hour24ocns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oc-hour24ocn"; yang_parent_name = "oc-hour24ocns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::~OcHour24Ocn()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::~OcHour24ocn()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -17867,7 +15716,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (fe_line !=  nullptr && fe_line->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -17882,14 +15731,15 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (fe_line !=  nullptr && fe_line->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "oc-hour24ocn" <<"[number='" <<number <<"']";
+    path_buffer << "oc-hour24ocn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17905,13 +15755,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
         if(section == nullptr)
         {
-            section = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section>();
+            section = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section>();
         }
         return section;
     }
@@ -17920,7 +15770,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line == nullptr)
         {
-            line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line>();
+            line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line>();
         }
         return line;
     }
@@ -17929,7 +15779,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(fe_line == nullptr)
         {
-            fe_line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine>();
+            fe_line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine>();
         }
         return fe_line;
     }
@@ -17937,7 +15787,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17959,7 +15809,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -18005,7 +15855,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -18037,36 +15887,37 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section" || name == "line" || name == "fe-line" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear24-hr-time")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::Section()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::Section()
     :
     section_status{YType::int32, "section-status"}
-    	,
-    section_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs>())
-	,section_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs>())
-	,section_sef_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs>())
-	,section_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs>())
+        ,
+    section_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs>())
+    , section_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs>())
+    , section_sef_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs>())
+    , section_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs>())
 {
     section_e_ss->parent = this;
     section_se_ss->parent = this;
     section_sef_ss->parent = this;
     section_c_vs->parent = this;
 
-    yang_name = "section"; yang_parent_name = "oc-hour24ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section"; yang_parent_name = "oc-hour24ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::~Section()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::~Section()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::has_data() const
 {
+    if (is_presence_container) return true;
     return section_status.is_set
 	|| (section_e_ss !=  nullptr && section_e_ss->has_data())
 	|| (section_se_ss !=  nullptr && section_se_ss->has_data())
@@ -18074,7 +15925,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (section_c_vs !=  nullptr && section_c_vs->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(section_status.yfilter)
@@ -18084,14 +15935,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (section_c_vs !=  nullptr && section_c_vs->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18101,13 +15952,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
         if(section_e_ss == nullptr)
         {
-            section_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs>();
+            section_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs>();
         }
         return section_e_ss;
     }
@@ -18116,7 +15967,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(section_se_ss == nullptr)
         {
-            section_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs>();
+            section_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs>();
         }
         return section_se_ss;
     }
@@ -18125,7 +15976,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(section_sef_ss == nullptr)
         {
-            section_sef_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs>();
+            section_sef_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs>();
         }
         return section_sef_ss;
     }
@@ -18134,7 +15985,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(section_c_vs == nullptr)
         {
-            section_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs>();
+            section_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs>();
         }
         return section_c_vs;
     }
@@ -18142,7 +15993,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18169,7 +16020,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "section-status")
     {
@@ -18179,7 +16030,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "section-status")
     {
@@ -18187,35 +16038,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section-e-ss" || name == "section-se-ss" || name == "section-sef-ss" || name == "section-c-vs" || name == "section-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::SectionESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::SectionESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::~SectionESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::~SectionESs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18223,14 +16075,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18242,19 +16094,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18276,7 +16128,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18292,35 +16144,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::SectionSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::SectionSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::~SectionSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::~SectionSeSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18328,14 +16181,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18347,19 +16200,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18381,7 +16234,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18397,35 +16250,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::SectionSefSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::SectionSefSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::~SectionSefSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::~SectionSefSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18433,14 +16287,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-sef-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18452,19 +16306,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18486,7 +16340,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18502,35 +16356,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::SectionCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::SectionCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::~SectionCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::~SectionCVs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18538,14 +16393,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18557,19 +16412,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18591,7 +16446,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18607,22 +16462,22 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::Line()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::Line()
     :
     line_status{YType::int32, "line-status"}
-    	,
-    line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs>())
-	,line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs>())
-	,line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs>())
-	,line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs>())
-	,line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs>())
+        ,
+    line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs>())
+    , line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs>())
+    , line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs>())
+    , line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs>())
+    , line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs>())
 {
     line_e_ss->parent = this;
     line_se_ss->parent = this;
@@ -18630,15 +16485,16 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::O
     line_ua_ss->parent = this;
     line_fc_ls->parent = this;
 
-    yang_name = "line"; yang_parent_name = "oc-hour24ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line"; yang_parent_name = "oc-hour24ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::~Line()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::~Line()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::has_data() const
 {
+    if (is_presence_container) return true;
     return line_status.is_set
 	|| (line_e_ss !=  nullptr && line_e_ss->has_data())
 	|| (line_se_ss !=  nullptr && line_se_ss->has_data())
@@ -18647,7 +16503,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(line_status.yfilter)
@@ -18658,14 +16514,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18675,13 +16531,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
         if(line_e_ss == nullptr)
         {
-            line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs>();
+            line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs>();
         }
         return line_e_ss;
     }
@@ -18690,7 +16546,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_se_ss == nullptr)
         {
-            line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs>();
+            line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs>();
         }
         return line_se_ss;
     }
@@ -18699,7 +16555,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_c_vs == nullptr)
         {
-            line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs>();
+            line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs>();
         }
         return line_c_vs;
     }
@@ -18708,7 +16564,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_ua_ss == nullptr)
         {
-            line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs>();
+            line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs>();
         }
         return line_ua_ss;
     }
@@ -18717,7 +16573,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_fc_ls == nullptr)
         {
-            line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs>();
+            line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs>();
         }
         return line_fc_ls;
     }
@@ -18725,7 +16581,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18757,7 +16613,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-status")
     {
@@ -18767,7 +16623,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "line-status")
     {
@@ -18775,35 +16631,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "line-e-ss" || name == "line-se-ss" || name == "line-c-vs" || name == "line-ua-ss" || name == "line-fc-ls" || name == "line-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::LineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::LineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::~LineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::~LineESs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18811,14 +16668,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18830,19 +16687,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18864,7 +16721,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18880,35 +16737,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::LineSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::LineSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::~LineSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::~LineSeSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18916,14 +16774,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18935,19 +16793,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18969,7 +16827,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18985,35 +16843,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::LineCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::LineCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::~LineCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::~LineCVs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19021,14 +16880,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19040,19 +16899,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19074,7 +16933,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19090,35 +16949,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::LineUaSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::LineUaSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::~LineUaSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::~LineUaSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19126,14 +16986,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-ua-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19145,19 +17005,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19179,7 +17039,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19195,35 +17055,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::LineFcLs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::LineFcLs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::~LineFcLs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::~LineFcLs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19231,14 +17092,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-fc-ls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19250,19 +17111,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19284,7 +17145,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19300,20 +17161,20 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FeLine()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FeLine()
     :
-    far_end_line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs>())
-	,far_end_line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs>())
-	,far_end_line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs>())
-	,far_end_line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs>())
-	,far_end_line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs>())
+    far_end_line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs>())
+    , far_end_line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs>())
+    , far_end_line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs>())
+    , far_end_line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs>())
+    , far_end_line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs>())
 {
     far_end_line_e_ss->parent = this;
     far_end_line_se_ss->parent = this;
@@ -19321,15 +17182,16 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::O
     far_end_line_ua_ss->parent = this;
     far_end_line_fc_ls->parent = this;
 
-    yang_name = "fe-line"; yang_parent_name = "oc-hour24ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-line"; yang_parent_name = "oc-hour24ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::~FeLine()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::~FeLine()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::has_data() const
 {
+    if (is_presence_container) return true;
     return (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_data())
 	|| (far_end_line_se_ss !=  nullptr && far_end_line_se_ss->has_data())
 	|| (far_end_line_c_vs !=  nullptr && far_end_line_c_vs->has_data())
@@ -19337,7 +17199,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::has_operation() const
 {
     return is_set(yfilter)
 	|| (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_operation())
@@ -19347,14 +17209,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fe-line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19363,13 +17225,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
         if(far_end_line_e_ss == nullptr)
         {
-            far_end_line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs>();
+            far_end_line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs>();
         }
         return far_end_line_e_ss;
     }
@@ -19378,7 +17240,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_se_ss == nullptr)
         {
-            far_end_line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs>();
+            far_end_line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs>();
         }
         return far_end_line_se_ss;
     }
@@ -19387,7 +17249,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_c_vs == nullptr)
         {
-            far_end_line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs>();
+            far_end_line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs>();
         }
         return far_end_line_c_vs;
     }
@@ -19396,7 +17258,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_ua_ss == nullptr)
         {
-            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs>();
+            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs>();
         }
         return far_end_line_ua_ss;
     }
@@ -19405,7 +17267,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_fc_ls == nullptr)
         {
-            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs>();
+            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs>();
         }
         return far_end_line_fc_ls;
     }
@@ -19413,7 +17275,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -19445,43 +17307,44 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "far-end-line-e-ss" || name == "far-end-line-se-ss" || name == "far-end-line-c-vs" || name == "far-end-line-ua-ss" || name == "far-end-line-fc-ls")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::FarEndLineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::FarEndLineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::~FarEndLineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::~FarEndLineESs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19489,14 +17352,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19508,19 +17371,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19542,7 +17405,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19558,35 +17421,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19594,14 +17458,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19613,19 +17477,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19647,7 +17511,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19663,35 +17527,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19699,14 +17564,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19718,19 +17583,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19752,7 +17617,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19768,35 +17633,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19804,14 +17670,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-ua-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19823,19 +17689,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19857,7 +17723,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19873,35 +17739,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19909,14 +17776,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-fc-ls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19928,19 +17795,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19962,7 +17829,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19978,7 +17845,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Ocns::OcHour24Ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24ocns::OcHour24ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
@@ -19987,11 +17854,11 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24Oc
 
 PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15()
     :
-    oc_minute15ocns(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns>())
+    oc_minute15ocns(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns>())
 {
     oc_minute15ocns->parent = this;
 
-    yang_name = "oc-minute15"; yang_parent_name = "oc-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oc-minute15"; yang_parent_name = "oc-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::~OcMinute15()
@@ -20000,6 +17867,7 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::~OcMinute15()
 
 bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (oc_minute15ocns !=  nullptr && oc_minute15ocns->has_data());
 }
 
@@ -20031,7 +17899,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(oc_minute15ocns == nullptr)
         {
-            oc_minute15ocns = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns>();
+            oc_minute15ocns = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns>();
         }
         return oc_minute15ocns;
     }
@@ -20066,19 +17934,22 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::has_leaf
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocns()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocns()
+    :
+    oc_minute15ocn(this, {"number"})
 {
 
-    yang_name = "oc-minute15ocns"; yang_parent_name = "oc-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oc-minute15ocns"; yang_parent_name = "oc-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::~OcMinute15Ocns()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::~OcMinute15ocns()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::has_data() const
 {
-    for (std::size_t index=0; index<oc_minute15ocn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<oc_minute15ocn.len(); index++)
     {
         if(oc_minute15ocn[index]->has_data())
             return true;
@@ -20086,9 +17957,9 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     return false;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::has_operation() const
 {
-    for (std::size_t index=0; index<oc_minute15ocn.size(); index++)
+    for (std::size_t index=0; index<oc_minute15ocn.len(); index++)
     {
         if(oc_minute15ocn[index]->has_operation())
             return true;
@@ -20096,14 +17967,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oc-minute15ocns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20112,25 +17983,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-minute15ocn")
     {
-        auto c = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn>();
+        auto c = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn>();
         c->parent = this;
-        oc_minute15ocn.push_back(c);
+        oc_minute15ocn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : oc_minute15ocn)
+    for (auto c : oc_minute15ocn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20141,22 +18012,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oc-minute15ocn")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::OcMinute15Ocn()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::OcMinute15ocn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -20165,24 +18036,25 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocn
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
-    section(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section>())
-	,line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line>())
-	,fe_line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine>())
+        ,
+    section(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section>())
+    , line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line>())
+    , fe_line(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine>())
 {
     section->parent = this;
     line->parent = this;
     fe_line->parent = this;
 
-    yang_name = "oc-minute15ocn"; yang_parent_name = "oc-minute15ocns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oc-minute15ocn"; yang_parent_name = "oc-minute15ocns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::~OcMinute15Ocn()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::~OcMinute15ocn()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -20195,7 +18067,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (fe_line !=  nullptr && fe_line->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -20210,14 +18082,15 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (fe_line !=  nullptr && fe_line->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "oc-minute15ocn" <<"[number='" <<number <<"']";
+    path_buffer << "oc-minute15ocn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20233,13 +18106,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
         if(section == nullptr)
         {
-            section = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section>();
+            section = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section>();
         }
         return section;
     }
@@ -20248,7 +18121,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line == nullptr)
         {
-            line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line>();
+            line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line>();
         }
         return line;
     }
@@ -20257,7 +18130,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(fe_line == nullptr)
         {
-            fe_line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine>();
+            fe_line = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine>();
         }
         return fe_line;
     }
@@ -20265,7 +18138,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -20287,7 +18160,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -20333,7 +18206,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -20365,36 +18238,37 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section" || name == "line" || name == "fe-line" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear24-hr-time")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::Section()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::Section()
     :
     section_status{YType::int32, "section-status"}
-    	,
-    section_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs>())
-	,section_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs>())
-	,section_sef_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs>())
-	,section_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs>())
+        ,
+    section_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs>())
+    , section_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs>())
+    , section_sef_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs>())
+    , section_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs>())
 {
     section_e_ss->parent = this;
     section_se_ss->parent = this;
     section_sef_ss->parent = this;
     section_c_vs->parent = this;
 
-    yang_name = "section"; yang_parent_name = "oc-minute15ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section"; yang_parent_name = "oc-minute15ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::~Section()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::~Section()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::has_data() const
 {
+    if (is_presence_container) return true;
     return section_status.is_set
 	|| (section_e_ss !=  nullptr && section_e_ss->has_data())
 	|| (section_se_ss !=  nullptr && section_se_ss->has_data())
@@ -20402,7 +18276,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (section_c_vs !=  nullptr && section_c_vs->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(section_status.yfilter)
@@ -20412,14 +18286,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (section_c_vs !=  nullptr && section_c_vs->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20429,13 +18303,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
         if(section_e_ss == nullptr)
         {
-            section_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs>();
+            section_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs>();
         }
         return section_e_ss;
     }
@@ -20444,7 +18318,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(section_se_ss == nullptr)
         {
-            section_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs>();
+            section_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs>();
         }
         return section_se_ss;
     }
@@ -20453,7 +18327,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(section_sef_ss == nullptr)
         {
-            section_sef_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs>();
+            section_sef_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs>();
         }
         return section_sef_ss;
     }
@@ -20462,7 +18336,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(section_c_vs == nullptr)
         {
-            section_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs>();
+            section_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs>();
         }
         return section_c_vs;
     }
@@ -20470,7 +18344,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -20497,7 +18371,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "section-status")
     {
@@ -20507,7 +18381,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "section-status")
     {
@@ -20515,35 +18389,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "section-e-ss" || name == "section-se-ss" || name == "section-sef-ss" || name == "section-c-vs" || name == "section-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::SectionESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::SectionESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-e-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::~SectionESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::~SectionESs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -20551,14 +18426,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20570,19 +18445,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -20604,7 +18479,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -20620,35 +18495,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::SectionSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::SectionSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-se-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::~SectionSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::~SectionSeSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -20656,14 +18532,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20675,19 +18551,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -20709,7 +18585,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -20725,35 +18601,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::SectionSefSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::SectionSefSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-sef-ss"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::~SectionSefSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::~SectionSefSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -20761,14 +18638,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-sef-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20780,19 +18657,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -20814,7 +18691,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -20830,35 +18707,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::SectionCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::SectionCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "section-c-vs"; yang_parent_name = "section"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::~SectionCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::~SectionCVs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -20866,14 +18744,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "section-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20885,19 +18763,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -20919,7 +18797,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -20935,22 +18813,22 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::Line()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::Line()
     :
     line_status{YType::int32, "line-status"}
-    	,
-    line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs>())
-	,line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs>())
-	,line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs>())
-	,line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs>())
-	,line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs>())
+        ,
+    line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs>())
+    , line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs>())
+    , line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs>())
+    , line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs>())
+    , line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs>())
 {
     line_e_ss->parent = this;
     line_se_ss->parent = this;
@@ -20958,15 +18836,16 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocn
     line_ua_ss->parent = this;
     line_fc_ls->parent = this;
 
-    yang_name = "line"; yang_parent_name = "oc-minute15ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line"; yang_parent_name = "oc-minute15ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::~Line()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::~Line()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::has_data() const
 {
+    if (is_presence_container) return true;
     return line_status.is_set
 	|| (line_e_ss !=  nullptr && line_e_ss->has_data())
 	|| (line_se_ss !=  nullptr && line_se_ss->has_data())
@@ -20975,7 +18854,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(line_status.yfilter)
@@ -20986,14 +18865,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21003,13 +18882,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
         if(line_e_ss == nullptr)
         {
-            line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs>();
+            line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs>();
         }
         return line_e_ss;
     }
@@ -21018,7 +18897,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_se_ss == nullptr)
         {
-            line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs>();
+            line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs>();
         }
         return line_se_ss;
     }
@@ -21027,7 +18906,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_c_vs == nullptr)
         {
-            line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs>();
+            line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs>();
         }
         return line_c_vs;
     }
@@ -21036,7 +18915,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_ua_ss == nullptr)
         {
-            line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs>();
+            line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs>();
         }
         return line_ua_ss;
     }
@@ -21045,7 +18924,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(line_fc_ls == nullptr)
         {
-            line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs>();
+            line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs>();
         }
         return line_fc_ls;
     }
@@ -21053,7 +18932,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -21085,7 +18964,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-status")
     {
@@ -21095,7 +18974,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "line-status")
     {
@@ -21103,35 +18982,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "line-e-ss" || name == "line-se-ss" || name == "line-c-vs" || name == "line-ua-ss" || name == "line-fc-ls" || name == "line-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::LineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::LineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-e-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::~LineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::~LineESs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -21139,14 +19019,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21158,19 +19038,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -21192,7 +19072,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -21208,35 +19088,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::LineSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::LineSeSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-se-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::~LineSeSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::~LineSeSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -21244,14 +19125,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-se-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21263,19 +19144,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -21297,7 +19178,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -21313,35 +19194,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::LineCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::LineCVs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-c-vs"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::~LineCVs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::~LineCVs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -21349,14 +19231,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-c-vs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21368,19 +19250,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -21402,7 +19284,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -21418,35 +19300,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::LineUaSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::LineUaSs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-ua-ss"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::~LineUaSs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::~LineUaSs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -21454,14 +19337,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-ua-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21473,19 +19356,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -21507,7 +19390,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -21523,35 +19406,36 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::LineFcLs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::LineFcLs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-fc-ls"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::~LineFcLs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::~LineFcLs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -21559,14 +19443,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "line-fc-ls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21578,19 +19462,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -21612,7 +19496,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -21628,20 +19512,20 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FeLine()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FeLine()
     :
-    far_end_line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs>())
-	,far_end_line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs>())
-	,far_end_line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs>())
-	,far_end_line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs>())
-	,far_end_line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs>())
+    far_end_line_e_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs>())
+    , far_end_line_se_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs>())
+    , far_end_line_c_vs(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs>())
+    , far_end_line_ua_ss(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs>())
+    , far_end_line_fc_ls(std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs>())
 {
     far_end_line_e_ss->parent = this;
     far_end_line_se_ss->parent = this;
@@ -21649,15 +19533,16 @@ PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocn
     far_end_line_ua_ss->parent = this;
     far_end_line_fc_ls->parent = this;
 
-    yang_name = "fe-line"; yang_parent_name = "oc-minute15ocn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-line"; yang_parent_name = "oc-minute15ocn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::~FeLine()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::~FeLine()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::has_data() const
 {
+    if (is_presence_container) return true;
     return (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_data())
 	|| (far_end_line_se_ss !=  nullptr && far_end_line_se_ss->has_data())
 	|| (far_end_line_c_vs !=  nullptr && far_end_line_c_vs->has_data())
@@ -21665,7 +19550,7 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_data());
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::has_operation() const
 {
     return is_set(yfilter)
 	|| (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_operation())
@@ -21675,14 +19560,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_operation());
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fe-line";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21691,13 +19576,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
         if(far_end_line_e_ss == nullptr)
         {
-            far_end_line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs>();
+            far_end_line_e_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs>();
         }
         return far_end_line_e_ss;
     }
@@ -21706,7 +19591,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_se_ss == nullptr)
         {
-            far_end_line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineSeSs>();
+            far_end_line_se_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs>();
         }
         return far_end_line_se_ss;
     }
@@ -21715,7 +19600,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_c_vs == nullptr)
         {
-            far_end_line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineCVs>();
+            far_end_line_c_vs = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs>();
         }
         return far_end_line_c_vs;
     }
@@ -21724,7 +19609,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_ua_ss == nullptr)
         {
-            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineUaSs>();
+            far_end_line_ua_ss = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs>();
         }
         return far_end_line_ua_ss;
     }
@@ -21733,7 +19618,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     {
         if(far_end_line_fc_ls == nullptr)
         {
-            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineFcLs>();
+            far_end_line_fc_ls = std::make_shared<PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs>();
         }
         return far_end_line_fc_ls;
     }
@@ -21741,7 +19626,7 @@ std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -21773,43 +19658,44 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPort
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "far-end-line-e-ss" || name == "far-end-line-se-ss" || name == "far-end-line-c-vs" || name == "far-end-line-ua-ss" || name == "far-end-line-fc-ls")
         return true;
     return false;
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::FarEndLineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::FarEndLineESs()
     :
     data{YType::uint32, "data"},
     threshold{YType::uint32, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "far-end-line-e-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::~FarEndLineESs()
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::~FarEndLineESs()
 {
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::has_data() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::has_operation() const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -21817,14 +19703,14 @@ bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::get_segment_path() const
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "far-end-line-e-ss";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21836,19 +19722,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPort
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -21870,7 +19756,7 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -21886,9 +19772,1020 @@ void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute
     }
 }
 
-bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15Ocns::OcMinute15Ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::FarEndLineSeSs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-se-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::~FarEndLineSeSs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-se-ss";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::FarEndLineCVs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-c-vs"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::~FarEndLineCVs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-c-vs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::FarEndLineUaSs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-ua-ss"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::~FarEndLineUaSs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-ua-ss";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::FarEndLineFcLs()
+    :
+    data{YType::uint32, "data"},
+    threshold{YType::uint32, "threshold"},
+    tca_report{YType::boolean, "tca-report"}
+{
+
+    yang_name = "far-end-line-fc-ls"; yang_parent_name = "fe-line"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::~FarEndLineFcLs()
+{
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::has_data() const
+{
+    if (is_presence_container) return true;
+    return data.is_set
+	|| threshold.is_set
+	|| tca_report.is_set;
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(tca_report.yfilter);
+}
+
+std::string PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "far-end-line-fc-ls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "data")
+    {
+        data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "threshold" || name == "tca-report")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::Ethernet()
+    :
+    ethernet_ports(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts>())
+{
+    ethernet_ports->parent = this;
+
+    yang_name = "ethernet"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+PerformanceManagement::Ethernet::~Ethernet()
+{
+}
+
+bool PerformanceManagement::Ethernet::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ethernet_ports !=  nullptr && ethernet_ports->has_data());
+}
+
+bool PerformanceManagement::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ethernet_ports !=  nullptr && ethernet_ports->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pmengine-oper:performance-management/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PerformanceManagement::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-ports")
+    {
+        if(ethernet_ports == nullptr)
+        {
+            ethernet_ports = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts>();
+        }
+        return ethernet_ports;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet_ports != nullptr)
+    {
+        children["ethernet-ports"] = ethernet_ports;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-ports")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPorts()
+    :
+    ethernet_port(this, {"name"})
+{
+
+    yang_name = "ethernet-ports"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::~EthernetPorts()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ethernet_port.len(); index++)
+    {
+        if(ethernet_port[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::has_operation() const
+{
+    for (std::size_t index=0; index<ethernet_port.len(); index++)
+    {
+        if(ethernet_port[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pmengine-oper:performance-management/ethernet/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-ports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-port")
+    {
+        auto c = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort>();
+        c->parent = this;
+        ethernet_port.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : ethernet_port.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-port")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetPort()
+    :
+    name{YType::str, "name"}
+        ,
+    ethernet_current(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent>())
+{
+    ethernet_current->parent = this;
+
+    yang_name = "ethernet-port"; yang_parent_name = "ethernet-ports"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::~EthernetPort()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| (ethernet_current !=  nullptr && ethernet_current->has_data());
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (ethernet_current !=  nullptr && ethernet_current->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pmengine-oper:performance-management/ethernet/ethernet-ports/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-port";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-current")
+    {
+        if(ethernet_current == nullptr)
+        {
+            ethernet_current = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent>();
+        }
+        return ethernet_current;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet_current != nullptr)
+    {
+        children["ethernet-current"] = ethernet_current;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-current" || name == "name")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetCurrent()
+    :
+    ethernet_second30(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30>())
+    , ethernet_hour24(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24>())
+    , minute15(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15>())
+{
+    ethernet_second30->parent = this;
+    ethernet_hour24->parent = this;
+    minute15->parent = this;
+
+    yang_name = "ethernet-current"; yang_parent_name = "ethernet-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::~EthernetCurrent()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ethernet_second30 !=  nullptr && ethernet_second30->has_data())
+	|| (ethernet_hour24 !=  nullptr && ethernet_hour24->has_data())
+	|| (minute15 !=  nullptr && minute15->has_data());
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ethernet_second30 !=  nullptr && ethernet_second30->has_operation())
+	|| (ethernet_hour24 !=  nullptr && ethernet_hour24->has_operation())
+	|| (minute15 !=  nullptr && minute15->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-current";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet-second30")
+    {
+        if(ethernet_second30 == nullptr)
+        {
+            ethernet_second30 = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30>();
+        }
+        return ethernet_second30;
+    }
+
+    if(child_yang_name == "ethernet-hour24")
+    {
+        if(ethernet_hour24 == nullptr)
+        {
+            ethernet_hour24 = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24>();
+        }
+        return ethernet_hour24;
+    }
+
+    if(child_yang_name == "minute15")
+    {
+        if(minute15 == nullptr)
+        {
+            minute15 = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15>();
+        }
+        return minute15;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet_second30 != nullptr)
+    {
+        children["ethernet-second30"] = ethernet_second30;
+    }
+
+    if(ethernet_hour24 != nullptr)
+    {
+        children["ethernet-hour24"] = ethernet_hour24;
+    }
+
+    if(minute15 != nullptr)
+    {
+        children["minute15"] = minute15;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-second30" || name == "ethernet-hour24" || name == "minute15")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::EthernetSecond30()
+    :
+    second30_ethers(std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers>())
+{
+    second30_ethers->parent = this;
+
+    yang_name = "ethernet-second30"; yang_parent_name = "ethernet-current"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::~EthernetSecond30()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::has_data() const
+{
+    if (is_presence_container) return true;
+    return (second30_ethers !=  nullptr && second30_ethers->has_data());
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::has_operation() const
+{
+    return is_set(yfilter)
+	|| (second30_ethers !=  nullptr && second30_ethers->has_operation());
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-second30";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ethers")
+    {
+        if(second30_ethers == nullptr)
+        {
+            second30_ethers = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers>();
+        }
+        return second30_ethers;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(second30_ethers != nullptr)
+    {
+        children["second30-ethers"] = second30_ethers;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ethers")
+        return true;
+    return false;
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ethers()
+    :
+    second30_ether(this, {"slot_number"})
+{
+
+    yang_name = "second30-ethers"; yang_parent_name = "ethernet-second30"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::~Second30Ethers()
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<second30_ether.len(); index++)
+    {
+        if(second30_ether[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::has_operation() const
+{
+    for (std::size_t index=0; index<second30_ether.len(); index++)
+    {
+        if(second30_ether[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "second30-ethers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ether")
+    {
+        auto c = std::make_shared<PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether>();
+        c->parent = this;
+        second30_ether.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : second30_ether.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether")
         return true;
     return false;
 }

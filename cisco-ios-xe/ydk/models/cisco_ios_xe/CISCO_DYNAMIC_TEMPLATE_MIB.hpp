@@ -32,36 +32,36 @@ class CISCODYNAMICTEMPLATEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cdttemplatetable; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplatetable
-        class Cdttemplatetargettable; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable
-        class Cdttemplateassociationtable; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable
-        class Cdttemplateusagetable; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable
-        class Cdttemplatecommontable; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable
-        class Cdtiftemplatetable; //type: CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable
-        class Cdtppptemplatetable; //type: CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable
-        class Cdtppppeeripaddrpooltable; //type: CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable
-        class Cdtethernettemplatetable; //type: CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable
-        class Cdtsrvtemplatetable; //type: CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable
+        class CdtTemplateTable; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateTable
+        class CdtTemplateTargetTable; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable
+        class CdtTemplateAssociationTable; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable
+        class CdtTemplateUsageTable; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable
+        class CdtTemplateCommonTable; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable
+        class CdtIfTemplateTable; //type: CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable
+        class CdtPppTemplateTable; //type: CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable
+        class CdtPppPeerIpAddrPoolTable; //type: CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable
+        class CdtEthernetTemplateTable; //type: CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable
+        class CdtSrvTemplateTable; //type: CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable> cdttemplatetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable> cdttemplatetargettable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable> cdttemplateassociationtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable> cdttemplateusagetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable> cdttemplatecommontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable> cdtiftemplatetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable> cdtppptemplatetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable> cdtppppeeripaddrpooltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable> cdtethernettemplatetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable> cdtsrvtemplatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable> cdttemplatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable> cdttemplatetargettable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable> cdttemplateassociationtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable> cdttemplateusagetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable> cdttemplatecommontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable> cdtiftemplatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable> cdtppptemplatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable> cdtppppeeripaddrpooltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable> cdtethernettemplatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable> cdtsrvtemplatetable;
         
 }; // CISCODYNAMICTEMPLATEMIB
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplatetable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateTable : public ydk::Entity
 {
     public:
-        Cdttemplatetable();
-        ~Cdttemplatetable();
+        CdtTemplateTable();
+        ~CdtTemplateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -74,18 +74,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdttemplateentry; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry
+        class CdtTemplateEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry> > cdttemplateentry;
+        ydk::YList cdttemplateentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplatetable
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry : public ydk::Entity
 {
     public:
-        Cdttemplateentry();
-        ~Cdttemplateentry();
+        CdtTemplateEntry();
+        ~CdtTemplateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -102,18 +102,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry : public ydk::
         ydk::YLeaf cdttemplatestatus; //type: RowStatus
         ydk::YLeaf cdttemplatestorage; //type: StorageType
         ydk::YLeaf cdttemplatetype; //type: DynamicTemplateType
-        ydk::YLeaf cdttemplatesrc; //type: Cdttemplatesrc
+        ydk::YLeaf cdttemplatesrc; //type: CdtTemplateSrc
         ydk::YLeaf cdttemplateusagecount; //type: uint32
-        class Cdttemplatesrc;
+        class CdtTemplateSrc;
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable : public ydk::Entity
 {
     public:
-        Cdttemplatetargettable();
-        ~Cdttemplatetargettable();
+        CdtTemplateTargetTable();
+        ~CdtTemplateTargetTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -126,18 +126,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdttemplatetargetentry; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry
+        class CdtTemplateTargetEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry> > cdttemplatetargetentry;
+        ydk::YList cdttemplatetargetentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry : public ydk::Entity
 {
     public:
-        Cdttemplatetargetentry();
-        ~Cdttemplatetargetentry();
+        CdtTemplateTargetEntry();
+        ~CdtTemplateTargetEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -155,14 +155,14 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry : 
         ydk::YLeaf cdttemplatetargetstatus; //type: RowStatus
         ydk::YLeaf cdttemplatetargetstorage; //type: StorageType
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable : public ydk::Entity
 {
     public:
-        Cdttemplateassociationtable();
-        ~Cdttemplateassociationtable();
+        CdtTemplateAssociationTable();
+        ~CdtTemplateAssociationTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -175,18 +175,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdttemplateassociationentry; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry
+        class CdtTemplateAssociationEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry> > cdttemplateassociationentry;
+        ydk::YList cdttemplateassociationentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry : public ydk::Entity
 {
     public:
-        Cdttemplateassociationentry();
-        ~Cdttemplateassociationentry();
+        CdtTemplateAssociationEntry();
+        ~CdtTemplateAssociationEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -200,19 +200,19 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociati
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cdttemplatetargettype; //type: DynamicTemplateTargetType
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::cdttemplatetargetid)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry::cdttemplatetargetid)
         ydk::YLeaf cdttemplatetargetid;
         ydk::YLeaf cdttemplateassociationname; //type: binary
         ydk::YLeaf cdttemplateassociationprecedence; //type: uint32
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable : public ydk::Entity
 {
     public:
-        Cdttemplateusagetable();
-        ~Cdttemplateusagetable();
+        CdtTemplateUsageTable();
+        ~CdtTemplateUsageTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -225,18 +225,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdttemplateusageentry; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry
+        class CdtTemplateUsageEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry> > cdttemplateusageentry;
+        ydk::YList cdttemplateusageentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry : public ydk::Entity
 {
     public:
-        Cdttemplateusageentry();
-        ~Cdttemplateusageentry();
+        CdtTemplateUsageEntry();
+        ~CdtTemplateUsageEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -249,19 +249,19 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::cdttemplatename)
         ydk::YLeaf cdttemplatename;
         ydk::YLeaf cdttemplateusagetargettype; //type: DynamicTemplateTargetType
         ydk::YLeaf cdttemplateusagetargetid; //type: binary
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable : public ydk::Entity
 {
     public:
-        Cdttemplatecommontable();
-        ~Cdttemplatecommontable();
+        CdtTemplateCommonTable();
+        ~CdtTemplateCommonTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -274,18 +274,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdttemplatecommonentry; //type: CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry
+        class CdtTemplateCommonEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry> > cdttemplatecommonentry;
+        ydk::YList cdttemplatecommonentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry : public ydk::Entity
 {
     public:
-        Cdttemplatecommonentry();
-        ~Cdttemplatecommonentry();
+        CdtTemplateCommonEntry();
+        ~CdtTemplateCommonEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -298,9 +298,9 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::cdttemplatename)
         ydk::YLeaf cdttemplatename;
-        ydk::YLeaf cdtcommonvalid; //type: Cdtcommonvalid
+        ydk::YLeaf cdtcommonvalid; //type: CdtCommonValid
         ydk::YLeaf cdtcommondescr; //type: string
         ydk::YLeaf cdtcommonkeepaliveint; //type: uint32
         ydk::YLeaf cdtcommonkeepaliveretries; //type: uint32
@@ -316,14 +316,14 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry : 
         ydk::YLeaf cdtcommonsrvqos; //type: string
         ydk::YLeaf cdtcommonsrvnetflow; //type: string
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable : public ydk::Entity
 {
     public:
-        Cdtiftemplatetable();
-        ~Cdtiftemplatetable();
+        CdtIfTemplateTable();
+        ~CdtIfTemplateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -336,18 +336,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdtiftemplateentry; //type: CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry
+        class CdtIfTemplateEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry> > cdtiftemplateentry;
+        ydk::YList cdtiftemplateentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable
+}; // CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry : public ydk::Entity
 {
     public:
-        Cdtiftemplateentry();
-        ~Cdtiftemplateentry();
+        CdtIfTemplateEntry();
+        ~CdtIfTemplateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -360,9 +360,9 @@ class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::cdttemplatename)
         ydk::YLeaf cdttemplatename;
-        ydk::YLeaf cdtifvalid; //type: Cdtifvalid
+        ydk::YLeaf cdtifvalid; //type: CdtIfValid
         ydk::YLeaf cdtifmtu; //type: uint32
         ydk::YLeaf cdtifcdpenable; //type: boolean
         ydk::YLeaf cdtifflowmonitor; //type: string
@@ -383,26 +383,26 @@ class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry : public y
         ydk::YLeaf cdtifipv6ndprefixlength; //type: uint32
         ydk::YLeaf cdtifipv6ndvalidlife; //type: uint32
         ydk::YLeaf cdtifipv6ndpreferredlife; //type: uint32
-        ydk::YLeaf cdtifipv6ndopts; //type: Cdtifipv6Ndopts
+        ydk::YLeaf cdtifipv6ndopts; //type: CdtIfIpv6NdOpts
         ydk::YLeaf cdtifipv6nddadattempts; //type: uint32
         ydk::YLeaf cdtifipv6ndnsinterval; //type: uint32
         ydk::YLeaf cdtifipv6ndreachabletime; //type: uint32
-        ydk::YLeaf cdtifipv6ndraintervalunits; //type: Cdtifipv6Ndraintervalunits
+        ydk::YLeaf cdtifipv6ndraintervalunits; //type: CdtIfIpv6NdRaIntervalUnits
         ydk::YLeaf cdtifipv6ndraintervalmax; //type: uint32
         ydk::YLeaf cdtifipv6ndraintervalmin; //type: uint32
         ydk::YLeaf cdtifipv6ndralife; //type: uint32
-        ydk::YLeaf cdtifipv6ndrouterpreference; //type: Cdtifipv6Ndrouterpreference
-        class Cdtifipv6Ndraintervalunits;
-        class Cdtifipv6Ndrouterpreference;
+        ydk::YLeaf cdtifipv6ndrouterpreference; //type: CdtIfIpv6NdRouterPreference
+        class CdtIfIpv6NdRaIntervalUnits;
+        class CdtIfIpv6NdRouterPreference;
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable : public ydk::Entity
 {
     public:
-        Cdtppptemplatetable();
-        ~Cdtppptemplatetable();
+        CdtPppTemplateTable();
+        ~CdtPppTemplateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -415,18 +415,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdtppptemplateentry; //type: CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry
+        class CdtPppTemplateEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry> > cdtppptemplateentry;
+        ydk::YList cdtppptemplateentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable
+}; // CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry : public ydk::Entity
 {
     public:
-        Cdtppptemplateentry();
-        ~Cdtppptemplateentry();
+        CdtPppTemplateEntry();
+        ~CdtPppTemplateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -439,11 +439,11 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::cdttemplatename)
         ydk::YLeaf cdttemplatename;
-        ydk::YLeaf cdtpppvalid; //type: Cdtpppvalid
+        ydk::YLeaf cdtpppvalid; //type: CdtPppValid
         ydk::YLeaf cdtpppaccounting; //type: boolean
-        ydk::YLeaf cdtpppauthentication; //type: Cdtpppauthentication
+        ydk::YLeaf cdtpppauthentication; //type: CdtPppAuthentication
         ydk::YLeaf cdtpppauthenticationmethods; //type: string
         ydk::YLeaf cdtpppauthorization; //type: boolean
         ydk::YLeaf cdtppploopbackignore; //type: boolean
@@ -453,47 +453,47 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry : public
         ydk::YLeaf cdtpppmaxterminate; //type: uint32
         ydk::YLeaf cdtppptimeoutauthentication; //type: uint32
         ydk::YLeaf cdtppptimeoutretry; //type: uint32
-        ydk::YLeaf cdtpppchapopts; //type: Cdtpppchapopts
+        ydk::YLeaf cdtpppchapopts; //type: CdtPppChapOpts
         ydk::YLeaf cdtpppchaphostname; //type: string
         ydk::YLeaf cdtpppchappassword; //type: string
-        ydk::YLeaf cdtpppmschapv1opts; //type: Cdtpppmschapv1Opts
+        ydk::YLeaf cdtpppmschapv1opts; //type: CdtPppMsChapV1Opts
         ydk::YLeaf cdtpppmschapv1hostname; //type: string
         ydk::YLeaf cdtpppmschapv1password; //type: string
-        ydk::YLeaf cdtpppmschapv2opts; //type: Cdtpppmschapv2Opts
+        ydk::YLeaf cdtpppmschapv2opts; //type: CdtPppMsChapV2Opts
         ydk::YLeaf cdtpppmschapv2hostname; //type: string
         ydk::YLeaf cdtpppmschapv2password; //type: string
-        ydk::YLeaf cdtppppapopts; //type: Cdtppppapopts
+        ydk::YLeaf cdtppppapopts; //type: CdtPppPapOpts
         ydk::YLeaf cdtppppapusername; //type: string
         ydk::YLeaf cdtppppappassword; //type: string
-        ydk::YLeaf cdtpppeapopts; //type: Cdtpppeapopts
+        ydk::YLeaf cdtpppeapopts; //type: CdtPppEapOpts
         ydk::YLeaf cdtpppeapidentity; //type: string
         ydk::YLeaf cdtpppeappassword; //type: string
-        ydk::YLeaf cdtpppipcpaddroption; //type: Cdtpppipcpaddroption
-        ydk::YLeaf cdtpppipcpdnsoption; //type: Cdtpppipcpdnsoption
+        ydk::YLeaf cdtpppipcpaddroption; //type: CdtPppIpcpAddrOption
+        ydk::YLeaf cdtpppipcpdnsoption; //type: CdtPppIpcpDnsOption
         ydk::YLeaf cdtpppipcpdnsprimary; //type: string
         ydk::YLeaf cdtpppipcpdnssecondary; //type: string
-        ydk::YLeaf cdtpppipcpwinsoption; //type: Cdtpppipcpwinsoption
+        ydk::YLeaf cdtpppipcpwinsoption; //type: CdtPppIpcpWinsOption
         ydk::YLeaf cdtpppipcpwinsprimary; //type: string
         ydk::YLeaf cdtpppipcpwinssecondary; //type: string
-        ydk::YLeaf cdtpppipcpmaskoption; //type: Cdtpppipcpmaskoption
+        ydk::YLeaf cdtpppipcpmaskoption; //type: CdtPppIpcpMaskOption
         ydk::YLeaf cdtpppipcpmask; //type: string
-        ydk::YLeaf cdtppppeerdefipaddropts; //type: Cdtppppeerdefipaddropts
-        ydk::YLeaf cdtppppeerdefipaddrsrc; //type: Cdtppppeerdefipaddrsrc
+        ydk::YLeaf cdtppppeerdefipaddropts; //type: CdtPppPeerDefIpAddrOpts
+        ydk::YLeaf cdtppppeerdefipaddrsrc; //type: CdtPppPeerDefIpAddrSrc
         ydk::YLeaf cdtppppeerdefipaddr; //type: string
-        class Cdtpppipcpaddroption;
-        class Cdtpppipcpdnsoption;
-        class Cdtpppipcpwinsoption;
-        class Cdtpppipcpmaskoption;
-        class Cdtppppeerdefipaddrsrc;
+        class CdtPppIpcpAddrOption;
+        class CdtPppIpcpDnsOption;
+        class CdtPppIpcpWinsOption;
+        class CdtPppIpcpMaskOption;
+        class CdtPppPeerDefIpAddrSrc;
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable : public ydk::Entity
 {
     public:
-        Cdtppppeeripaddrpooltable();
-        ~Cdtppppeeripaddrpooltable();
+        CdtPppPeerIpAddrPoolTable();
+        ~CdtPppPeerIpAddrPoolTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -506,18 +506,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdtppppeeripaddrpoolentry; //type: CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry
+        class CdtPppPeerIpAddrPoolEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry> > cdtppppeeripaddrpoolentry;
+        ydk::YList cdtppppeeripaddrpoolentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable
+}; // CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry : public ydk::Entity
 {
     public:
-        Cdtppppeeripaddrpoolentry();
-        ~Cdtppppeeripaddrpoolentry();
+        CdtPppPeerIpAddrPoolEntry();
+        ~CdtPppPeerIpAddrPoolEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -530,21 +530,21 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolen
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::cdttemplatename)
         ydk::YLeaf cdttemplatename;
         ydk::YLeaf cdtppppeeripaddrpoolpriority; //type: uint32
         ydk::YLeaf cdtppppeeripaddrpoolstatus; //type: RowStatus
         ydk::YLeaf cdtppppeeripaddrpoolstorage; //type: StorageType
         ydk::YLeaf cdtppppeeripaddrpoolname; //type: string
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable : public ydk::Entity
 {
     public:
-        Cdtethernettemplatetable();
-        ~Cdtethernettemplatetable();
+        CdtEthernetTemplateTable();
+        ~CdtEthernetTemplateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -557,18 +557,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdtethernettemplateentry; //type: CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry
+        class CdtEthernetTemplateEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry> > cdtethernettemplateentry;
+        ydk::YList cdtethernettemplateentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable
+}; // CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry : public ydk::Entity
 {
     public:
-        Cdtethernettemplateentry();
-        ~Cdtethernettemplateentry();
+        CdtEthernetTemplateEntry();
+        ~CdtEthernetTemplateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -581,22 +581,22 @@ class CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::cdttemplatename)
         ydk::YLeaf cdttemplatename;
-        ydk::YLeaf cdtethernetvalid; //type: Cdtethernetvalid
+        ydk::YLeaf cdtethernetvalid; //type: CdtEthernetValid
         ydk::YLeaf cdtethernetbridgedomain; //type: string
         ydk::YLeaf cdtethernetpppoeenable; //type: boolean
         ydk::YLeaf cdtethernetipv4pointtopoint; //type: boolean
         ydk::YLeaf cdtethernetmacaddr; //type: string
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable : public ydk::Entity
 {
     public:
-        Cdtsrvtemplatetable();
-        ~Cdtsrvtemplatetable();
+        CdtSrvTemplateTable();
+        ~CdtSrvTemplateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -609,18 +609,18 @@ class CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cdtsrvtemplateentry; //type: CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry
+        class CdtSrvTemplateEntry; //type: CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry> > cdtsrvtemplateentry;
+        ydk::YList cdtsrvtemplateentry;
         
-}; // CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable
+}; // CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable
 
 
-class CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry : public ydk::Entity
+class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry : public ydk::Entity
 {
     public:
-        Cdtsrvtemplateentry();
-        ~Cdtsrvtemplateentry();
+        CdtSrvTemplateEntry();
+        ~CdtSrvTemplateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -633,20 +633,20 @@ class CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
+        //type: binary (refers to cisco_ios_xe::CISCO_DYNAMIC_TEMPLATE_MIB::CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::cdttemplatename)
         ydk::YLeaf cdttemplatename;
-        ydk::YLeaf cdtsrvvalid; //type: Cdtsrvvalid
-        ydk::YLeaf cdtsrvnetworksrv; //type: Cdtsrvnetworksrv
+        ydk::YLeaf cdtsrvvalid; //type: CdtSrvValid
+        ydk::YLeaf cdtsrvnetworksrv; //type: CdtSrvNetworkSrv
         ydk::YLeaf cdtsrvvpdngroup; //type: string
         ydk::YLeaf cdtsrvsgsrvgroup; //type: string
-        ydk::YLeaf cdtsrvsgsrvtype; //type: Cdtsrvsgsrvtype
+        ydk::YLeaf cdtsrvsgsrvtype; //type: CdtSrvSgSrvType
         ydk::YLeaf cdtsrvmulticast; //type: boolean
-        class Cdtsrvnetworksrv;
-        class Cdtsrvsgsrvtype;
+        class CdtSrvNetworkSrv;
+        class CdtSrvSgSrvType;
 
-}; // CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry
+}; // CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry
 
-class CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::CdtTemplateSrc : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -657,7 +657,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::Cdttemplatesr
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndraintervalunits : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::CdtIfIpv6NdRaIntervalUnits : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf seconds;
@@ -665,7 +665,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::CdtIfIpv6NdRouterPreference : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf high;
@@ -674,7 +674,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpAddrOption : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -684,7 +684,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppi
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpDnsOption : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -694,7 +694,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppi
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpWinsOption : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -704,7 +704,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppi
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppIpcpMaskOption : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -713,7 +713,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppi
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::CdtPppPeerDefIpAddrSrc : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf static_;
@@ -722,7 +722,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppp
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::CdtSrvNetworkSrv : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -732,7 +732,7 @@ class CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvn
 
 };
 
-class CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvsgsrvtype : public ydk::Enum
+class CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::CdtSrvSgSrvType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf primary;

@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_tty_server_oper {
 Tty::Tty()
     :
     console_nodes(std::make_shared<Tty::ConsoleNodes>())
-	,vty_lines(std::make_shared<Tty::VtyLines>())
-	,auxiliary_nodes(std::make_shared<Tty::AuxiliaryNodes>())
+    , vty_lines(std::make_shared<Tty::VtyLines>())
+    , auxiliary_nodes(std::make_shared<Tty::AuxiliaryNodes>())
 {
     console_nodes->parent = this;
     vty_lines->parent = this;
     auxiliary_nodes->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "Cisco-IOS-XR-tty-server-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "tty"; yang_parent_name = "Cisco-IOS-XR-tty-server-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Tty::~Tty()
@@ -30,6 +30,7 @@ Tty::~Tty()
 
 bool Tty::has_data() const
 {
+    if (is_presence_container) return true;
     return (console_nodes !=  nullptr && console_nodes->has_data())
 	|| (vty_lines !=  nullptr && vty_lines->has_data())
 	|| (auxiliary_nodes !=  nullptr && auxiliary_nodes->has_data());
@@ -154,9 +155,11 @@ bool Tty::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Tty::ConsoleNodes::ConsoleNodes()
+    :
+    console_node(this, {"id"})
 {
 
-    yang_name = "console-nodes"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console-nodes"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::ConsoleNodes::~ConsoleNodes()
@@ -165,7 +168,8 @@ Tty::ConsoleNodes::~ConsoleNodes()
 
 bool Tty::ConsoleNodes::has_data() const
 {
-    for (std::size_t index=0; index<console_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<console_node.len(); index++)
     {
         if(console_node[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool Tty::ConsoleNodes::has_data() const
 
 bool Tty::ConsoleNodes::has_operation() const
 {
-    for (std::size_t index=0; index<console_node.size(); index++)
+    for (std::size_t index=0; index<console_node.len(); index++)
     {
         if(console_node[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Tty::ConsoleNodes::ConsoleNode>();
         c->parent = this;
-        console_node.push_back(c);
+        console_node.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : console_node)
+    for (auto c : console_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,12 +257,12 @@ bool Tty::ConsoleNodes::has_leaf_or_child_of_name(const std::string & name) cons
 Tty::ConsoleNodes::ConsoleNode::ConsoleNode()
     :
     id{YType::str, "id"}
-    	,
+        ,
     console_line(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine>())
 {
     console_line->parent = this;
 
-    yang_name = "console-node"; yang_parent_name = "console-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console-node"; yang_parent_name = "console-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::~ConsoleNode()
@@ -267,6 +271,7 @@ Tty::ConsoleNodes::ConsoleNode::~ConsoleNode()
 
 bool Tty::ConsoleNodes::ConsoleNode::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (console_line !=  nullptr && console_line->has_data());
 }
@@ -288,7 +293,8 @@ std::string Tty::ConsoleNodes::ConsoleNode::get_absolute_path() const
 std::string Tty::ConsoleNodes::ConsoleNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "console-node" <<"[id='" <<id <<"']";
+    path_buffer << "console-node";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -356,14 +362,14 @@ bool Tty::ConsoleNodes::ConsoleNode::has_leaf_or_child_of_name(const std::string
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleLine()
     :
     console_statistics(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics>())
-	,state(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State>())
-	,configuration(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration>())
+    , state(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State>())
+    , configuration(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration>())
 {
     console_statistics->parent = this;
     state->parent = this;
     configuration->parent = this;
 
-    yang_name = "console-line"; yang_parent_name = "console-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "console-line"; yang_parent_name = "console-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::~ConsoleLine()
@@ -372,6 +378,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::~ConsoleLine()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::has_data() const
 {
+    if (is_presence_container) return true;
     return (console_statistics !=  nullptr && console_statistics->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (configuration !=  nullptr && configuration->has_data());
@@ -473,16 +480,16 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::has_leaf_or_child_of_name(cons
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::ConsoleStatistics()
     :
     rs232(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232>())
-	,general_statistics(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics>())
-	,exec(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec>())
-	,aaa(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa>())
+    , general_statistics(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics>())
+    , exec(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec>())
+    , aaa(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa>())
 {
     rs232->parent = this;
     general_statistics->parent = this;
     exec->parent = this;
     aaa->parent = this;
 
-    yang_name = "console-statistics"; yang_parent_name = "console-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "console-statistics"; yang_parent_name = "console-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::~ConsoleStatistics()
@@ -491,6 +498,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::~ConsoleStatisti
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (rs232 !=  nullptr && rs232->has_data())
 	|| (general_statistics !=  nullptr && general_statistics->has_data())
 	|| (exec !=  nullptr && exec->has_data())
@@ -618,7 +626,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::Rs232()
     parity_error_count{YType::uint32, "parity-error-count"}
 {
 
-    yang_name = "rs232"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rs232"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::~Rs232()
@@ -627,6 +635,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::~Rs232()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::has_data() const
 {
+    if (is_presence_container) return true;
     return data_bits.is_set
 	|| exec_disabled.is_set
 	|| hardware_flow_control_status.is_set
@@ -809,7 +818,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistic
     idle_time{YType::uint32, "idle-time"}
 {
 
-    yang_name = "general-statistics"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-statistics"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::~GeneralStatistics()
@@ -818,6 +827,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistic
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return terminal_length.is_set
 	|| terminal_width.is_set
 	|| async_interface.is_set
@@ -1016,7 +1026,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::Exec()
     time_stamp_enabled{YType::boolean, "time-stamp-enabled"}
 {
 
-    yang_name = "exec"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::~Exec()
@@ -1025,6 +1035,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::~Exec()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return time_stamp_enabled.is_set;
 }
 
@@ -1093,7 +1104,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::Aaa()
     user_name{YType::str, "user-name"}
 {
 
-    yang_name = "aaa"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa"; yang_parent_name = "console-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::~Aaa()
@@ -1102,6 +1113,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::~Aaa()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return user_name.is_set;
 }
 
@@ -1168,12 +1180,12 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::has_le
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::State()
     :
     template_(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template>())
-	,general(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General>())
+    , general(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General>())
 {
     template_->parent = this;
     general->parent = this;
 
-    yang_name = "state"; yang_parent_name = "console-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "console-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::~State()
@@ -1182,6 +1194,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::~State()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::has_data() const
 {
+    if (is_presence_container) return true;
     return (template_ !=  nullptr && template_->has_data())
 	|| (general !=  nullptr && general->has_data());
 }
@@ -1269,7 +1282,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::Template()
     name{YType::str, "name"}
 {
 
-    yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::~Template()
@@ -1278,6 +1291,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::~Template()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -1347,7 +1361,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::General()
     general_state{YType::enumeration, "general-state"}
 {
 
-    yang_name = "general"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::~General()
@@ -1356,6 +1370,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::~General()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_.is_set
 	|| general_state.is_set;
 }
@@ -1438,7 +1453,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::Configuration()
 {
     connection_configuration->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "console-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "console-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::~Configuration()
@@ -1447,6 +1462,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::~Configuration()
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return (connection_configuration !=  nullptr && connection_configuration->has_data());
 }
 
@@ -1517,12 +1533,12 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfigurat
     :
     acl_out{YType::str, "acl-out"},
     acl_in{YType::str, "acl-in"}
-    	,
+        ,
     transport_input(std::make_shared<Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput>())
 {
     transport_input->parent = this;
 
-    yang_name = "connection-configuration"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection-configuration"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::~ConnectionConfiguration()
@@ -1531,6 +1547,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfigurat
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_out.is_set
 	|| acl_in.is_set
 	|| (transport_input !=  nullptr && transport_input->has_data());
@@ -1631,7 +1648,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfigurat
     none{YType::int32, "none"}
 {
 
-    yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::~TransportInput()
@@ -1640,6 +1657,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfigurat
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::has_data() const
 {
+    if (is_presence_container) return true;
     return select.is_set
 	|| protocol1.is_set
 	|| protocol2.is_set
@@ -1743,9 +1761,11 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfi
 }
 
 Tty::VtyLines::VtyLines()
+    :
+    vty_line(this, {"line_number"})
 {
 
-    yang_name = "vty-lines"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vty-lines"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::VtyLines::~VtyLines()
@@ -1754,7 +1774,8 @@ Tty::VtyLines::~VtyLines()
 
 bool Tty::VtyLines::has_data() const
 {
-    for (std::size_t index=0; index<vty_line.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vty_line.len(); index++)
     {
         if(vty_line[index]->has_data())
             return true;
@@ -1764,7 +1785,7 @@ bool Tty::VtyLines::has_data() const
 
 bool Tty::VtyLines::has_operation() const
 {
-    for (std::size_t index=0; index<vty_line.size(); index++)
+    for (std::size_t index=0; index<vty_line.len(); index++)
     {
         if(vty_line[index]->has_operation())
             return true;
@@ -1801,7 +1822,7 @@ std::shared_ptr<Entity> Tty::VtyLines::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Tty::VtyLines::VtyLine>();
         c->parent = this;
-        vty_line.push_back(c);
+        vty_line.append(c);
         return c;
     }
 
@@ -1813,7 +1834,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vty_line)
+    for (auto c : vty_line.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1842,18 +1863,18 @@ bool Tty::VtyLines::has_leaf_or_child_of_name(const std::string & name) const
 Tty::VtyLines::VtyLine::VtyLine()
     :
     line_number{YType::int32, "line-number"}
-    	,
+        ,
     vty_statistics(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics>())
-	,state(std::make_shared<Tty::VtyLines::VtyLine::State>())
-	,configuration(std::make_shared<Tty::VtyLines::VtyLine::Configuration>())
-	,sessions(std::make_shared<Tty::VtyLines::VtyLine::Sessions>())
+    , state(std::make_shared<Tty::VtyLines::VtyLine::State>())
+    , configuration(std::make_shared<Tty::VtyLines::VtyLine::Configuration>())
+    , sessions(std::make_shared<Tty::VtyLines::VtyLine::Sessions>())
 {
     vty_statistics->parent = this;
     state->parent = this;
     configuration->parent = this;
     sessions->parent = this;
 
-    yang_name = "vty-line"; yang_parent_name = "vty-lines"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vty-line"; yang_parent_name = "vty-lines"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::VtyLines::VtyLine::~VtyLine()
@@ -1862,6 +1883,7 @@ Tty::VtyLines::VtyLine::~VtyLine()
 
 bool Tty::VtyLines::VtyLine::has_data() const
 {
+    if (is_presence_container) return true;
     return line_number.is_set
 	|| (vty_statistics !=  nullptr && vty_statistics->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -1889,7 +1911,8 @@ std::string Tty::VtyLines::VtyLine::get_absolute_path() const
 std::string Tty::VtyLines::VtyLine::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vty-line" <<"[line-number='" <<line_number <<"']";
+    path_buffer << "vty-line";
+    ADD_KEY_TOKEN(line_number, "line-number");
     return path_buffer.str();
 }
 
@@ -1999,16 +2022,16 @@ bool Tty::VtyLines::VtyLine::has_leaf_or_child_of_name(const std::string & name)
 Tty::VtyLines::VtyLine::VtyStatistics::VtyStatistics()
     :
     connection(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics::Connection>())
-	,general_statistics(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics>())
-	,exec(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics::Exec>())
-	,aaa(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics::Aaa>())
+    , general_statistics(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics>())
+    , exec(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics::Exec>())
+    , aaa(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics::Aaa>())
 {
     connection->parent = this;
     general_statistics->parent = this;
     exec->parent = this;
     aaa->parent = this;
 
-    yang_name = "vty-statistics"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vty-statistics"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::~VtyStatistics()
@@ -2017,6 +2040,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::~VtyStatistics()
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (connection !=  nullptr && connection->has_data())
 	|| (general_statistics !=  nullptr && general_statistics->has_data())
 	|| (exec !=  nullptr && exec->has_data())
@@ -2138,7 +2162,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::Connection::Connection()
     service{YType::uint32, "service"}
 {
 
-    yang_name = "connection"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::Connection::~Connection()
@@ -2147,6 +2171,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::Connection::~Connection()
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::Connection::has_data() const
 {
+    if (is_presence_container) return true;
     return incoming_host_address.is_set
 	|| host_address_family.is_set
 	|| service.is_set;
@@ -2251,7 +2276,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::GeneralStatistics()
     idle_time{YType::uint32, "idle-time"}
 {
 
-    yang_name = "general-statistics"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-statistics"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::~GeneralStatistics()
@@ -2260,6 +2285,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::~GeneralStatistics()
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return terminal_length.is_set
 	|| terminal_width.is_set
 	|| async_interface.is_set
@@ -2458,7 +2484,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::Exec::Exec()
     time_stamp_enabled{YType::boolean, "time-stamp-enabled"}
 {
 
-    yang_name = "exec"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::Exec::~Exec()
@@ -2467,6 +2493,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::Exec::~Exec()
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return time_stamp_enabled.is_set;
 }
 
@@ -2535,7 +2562,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::Aaa::Aaa()
     user_name{YType::str, "user-name"}
 {
 
-    yang_name = "aaa"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa"; yang_parent_name = "vty-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::Aaa::~Aaa()
@@ -2544,6 +2571,7 @@ Tty::VtyLines::VtyLine::VtyStatistics::Aaa::~Aaa()
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return user_name.is_set;
 }
 
@@ -2610,12 +2638,12 @@ bool Tty::VtyLines::VtyLine::VtyStatistics::Aaa::has_leaf_or_child_of_name(const
 Tty::VtyLines::VtyLine::State::State()
     :
     template_(std::make_shared<Tty::VtyLines::VtyLine::State::Template>())
-	,general(std::make_shared<Tty::VtyLines::VtyLine::State::General>())
+    , general(std::make_shared<Tty::VtyLines::VtyLine::State::General>())
 {
     template_->parent = this;
     general->parent = this;
 
-    yang_name = "state"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::State::~State()
@@ -2624,6 +2652,7 @@ Tty::VtyLines::VtyLine::State::~State()
 
 bool Tty::VtyLines::VtyLine::State::has_data() const
 {
+    if (is_presence_container) return true;
     return (template_ !=  nullptr && template_->has_data())
 	|| (general !=  nullptr && general->has_data());
 }
@@ -2711,7 +2740,7 @@ Tty::VtyLines::VtyLine::State::Template::Template()
     name{YType::str, "name"}
 {
 
-    yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::State::Template::~Template()
@@ -2720,6 +2749,7 @@ Tty::VtyLines::VtyLine::State::Template::~Template()
 
 bool Tty::VtyLines::VtyLine::State::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -2789,7 +2819,7 @@ Tty::VtyLines::VtyLine::State::General::General()
     general_state{YType::enumeration, "general-state"}
 {
 
-    yang_name = "general"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::State::General::~General()
@@ -2798,6 +2828,7 @@ Tty::VtyLines::VtyLine::State::General::~General()
 
 bool Tty::VtyLines::VtyLine::State::General::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_.is_set
 	|| general_state.is_set;
 }
@@ -2880,7 +2911,7 @@ Tty::VtyLines::VtyLine::Configuration::Configuration()
 {
     connection_configuration->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::Configuration::~Configuration()
@@ -2889,6 +2920,7 @@ Tty::VtyLines::VtyLine::Configuration::~Configuration()
 
 bool Tty::VtyLines::VtyLine::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return (connection_configuration !=  nullptr && connection_configuration->has_data());
 }
 
@@ -2959,12 +2991,12 @@ Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::ConnectionConfig
     :
     acl_out{YType::str, "acl-out"},
     acl_in{YType::str, "acl-in"}
-    	,
+        ,
     transport_input(std::make_shared<Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput>())
 {
     transport_input->parent = this;
 
-    yang_name = "connection-configuration"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection-configuration"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::~ConnectionConfiguration()
@@ -2973,6 +3005,7 @@ Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::~ConnectionConfi
 
 bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_out.is_set
 	|| acl_in.is_set
 	|| (transport_input !=  nullptr && transport_input->has_data());
@@ -3073,7 +3106,7 @@ Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::
     none{YType::int32, "none"}
 {
 
-    yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::~TransportInput()
@@ -3082,6 +3115,7 @@ Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::
 
 bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::has_data() const
 {
+    if (is_presence_container) return true;
     return select.is_set
 	|| protocol1.is_set
 	|| protocol2.is_set
@@ -3185,9 +3219,11 @@ bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportIn
 }
 
 Tty::VtyLines::VtyLine::Sessions::Sessions()
+    :
+    outgoing_connection(this, {})
 {
 
-    yang_name = "sessions"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "vty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::Sessions::~Sessions()
@@ -3196,7 +3232,8 @@ Tty::VtyLines::VtyLine::Sessions::~Sessions()
 
 bool Tty::VtyLines::VtyLine::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<outgoing_connection.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<outgoing_connection.len(); index++)
     {
         if(outgoing_connection[index]->has_data())
             return true;
@@ -3206,7 +3243,7 @@ bool Tty::VtyLines::VtyLine::Sessions::has_data() const
 
 bool Tty::VtyLines::VtyLine::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<outgoing_connection.size(); index++)
+    for (std::size_t index=0; index<outgoing_connection.len(); index++)
     {
         if(outgoing_connection[index]->has_operation())
             return true;
@@ -3236,7 +3273,7 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::get_child_by_name(cons
     {
         auto c = std::make_shared<Tty::VtyLines::VtyLine::Sessions::OutgoingConnection>();
         c->parent = this;
-        outgoing_connection.push_back(c);
+        outgoing_connection.append(c);
         return c;
     }
 
@@ -3248,7 +3285,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : outgoing_connection)
+    for (auto c : outgoing_connection.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3281,12 +3318,12 @@ Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::OutgoingConnection()
     transport_protocol{YType::enumeration, "transport-protocol"},
     is_last_active_session{YType::boolean, "is-last-active-session"},
     idle_time{YType::uint32, "idle-time"}
-    	,
+        ,
     host_address(std::make_shared<Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress>())
 {
     host_address->parent = this;
 
-    yang_name = "outgoing-connection"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-connection"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::~OutgoingConnection()
@@ -3295,6 +3332,7 @@ Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::~OutgoingConnection()
 
 bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::has_data() const
 {
+    if (is_presence_container) return true;
     return connection_id.is_set
 	|| host_name.is_set
 	|| transport_protocol.is_set
@@ -3433,7 +3471,7 @@ Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::HostAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "host-address"; yang_parent_name = "outgoing-connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-address"; yang_parent_name = "outgoing-connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::~HostAddress()
@@ -3442,6 +3480,7 @@ Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::~HostAddress(
 
 bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3532,9 +3571,11 @@ bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::has_leaf
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNodes()
+    :
+    auxiliary_node(this, {"id"})
 {
 
-    yang_name = "auxiliary-nodes"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auxiliary-nodes"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::AuxiliaryNodes::~AuxiliaryNodes()
@@ -3543,7 +3584,8 @@ Tty::AuxiliaryNodes::~AuxiliaryNodes()
 
 bool Tty::AuxiliaryNodes::has_data() const
 {
-    for (std::size_t index=0; index<auxiliary_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<auxiliary_node.len(); index++)
     {
         if(auxiliary_node[index]->has_data())
             return true;
@@ -3553,7 +3595,7 @@ bool Tty::AuxiliaryNodes::has_data() const
 
 bool Tty::AuxiliaryNodes::has_operation() const
 {
-    for (std::size_t index=0; index<auxiliary_node.size(); index++)
+    for (std::size_t index=0; index<auxiliary_node.len(); index++)
     {
         if(auxiliary_node[index]->has_operation())
             return true;
@@ -3590,7 +3632,7 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode>();
         c->parent = this;
-        auxiliary_node.push_back(c);
+        auxiliary_node.append(c);
         return c;
     }
 
@@ -3602,7 +3644,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : auxiliary_node)
+    for (auto c : auxiliary_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3631,12 +3673,12 @@ bool Tty::AuxiliaryNodes::has_leaf_or_child_of_name(const std::string & name) co
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryNode()
     :
     id{YType::str, "id"}
-    	,
+        ,
     auxiliary_line(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine>())
 {
     auxiliary_line->parent = this;
 
-    yang_name = "auxiliary-node"; yang_parent_name = "auxiliary-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auxiliary-node"; yang_parent_name = "auxiliary-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::~AuxiliaryNode()
@@ -3645,6 +3687,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::~AuxiliaryNode()
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (auxiliary_line !=  nullptr && auxiliary_line->has_data());
 }
@@ -3666,7 +3709,8 @@ std::string Tty::AuxiliaryNodes::AuxiliaryNode::get_absolute_path() const
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "auxiliary-node" <<"[id='" <<id <<"']";
+    path_buffer << "auxiliary-node";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -3734,14 +3778,14 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::has_leaf_or_child_of_name(const std::st
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryLine()
     :
     auxiliary_statistics(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics>())
-	,state(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State>())
-	,configuration(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration>())
+    , state(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State>())
+    , configuration(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration>())
 {
     auxiliary_statistics->parent = this;
     state->parent = this;
     configuration->parent = this;
 
-    yang_name = "auxiliary-line"; yang_parent_name = "auxiliary-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auxiliary-line"; yang_parent_name = "auxiliary-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::~AuxiliaryLine()
@@ -3750,6 +3794,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::~AuxiliaryLine()
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::has_data() const
 {
+    if (is_presence_container) return true;
     return (auxiliary_statistics !=  nullptr && auxiliary_statistics->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (configuration !=  nullptr && configuration->has_data());
@@ -3851,16 +3896,16 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::has_leaf_or_child_of_nam
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::AuxiliaryStatistics()
     :
     rs232(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232>())
-	,general_statistics(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics>())
-	,exec(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec>())
-	,aaa(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa>())
+    , general_statistics(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics>())
+    , exec(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec>())
+    , aaa(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa>())
 {
     rs232->parent = this;
     general_statistics->parent = this;
     exec->parent = this;
     aaa->parent = this;
 
-    yang_name = "auxiliary-statistics"; yang_parent_name = "auxiliary-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auxiliary-statistics"; yang_parent_name = "auxiliary-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::~AuxiliaryStatistics()
@@ -3869,6 +3914,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::~Auxilia
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (rs232 !=  nullptr && rs232->has_data())
 	|| (general_statistics !=  nullptr && general_statistics->has_data())
 	|| (exec !=  nullptr && exec->has_data())
@@ -3996,7 +4042,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::R
     parity_error_count{YType::uint32, "parity-error-count"}
 {
 
-    yang_name = "rs232"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rs232"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::~Rs232()
@@ -4005,6 +4051,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::~
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::has_data() const
 {
+    if (is_presence_container) return true;
     return data_bits.is_set
 	|| exec_disabled.is_set
 	|| hardware_flow_control_status.is_set
@@ -4187,7 +4234,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralS
     idle_time{YType::uint32, "idle-time"}
 {
 
-    yang_name = "general-statistics"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general-statistics"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::~GeneralStatistics()
@@ -4196,6 +4243,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralS
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return terminal_length.is_set
 	|| terminal_width.is_set
 	|| async_interface.is_set
@@ -4394,7 +4442,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::Ex
     time_stamp_enabled{YType::boolean, "time-stamp-enabled"}
 {
 
-    yang_name = "exec"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::~Exec()
@@ -4403,6 +4451,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::~E
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return time_stamp_enabled.is_set;
 }
 
@@ -4471,7 +4520,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::Aaa
     user_name{YType::str, "user-name"}
 {
 
-    yang_name = "aaa"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa"; yang_parent_name = "auxiliary-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::~Aaa()
@@ -4480,6 +4529,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::~Aa
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return user_name.is_set;
 }
 
@@ -4546,12 +4596,12 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::State()
     :
     template_(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template>())
-	,general(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General>())
+    , general(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General>())
 {
     template_->parent = this;
     general->parent = this;
 
-    yang_name = "state"; yang_parent_name = "auxiliary-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "auxiliary-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::~State()
@@ -4560,6 +4610,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::~State()
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::has_data() const
 {
+    if (is_presence_container) return true;
     return (template_ !=  nullptr && template_->has_data())
 	|| (general !=  nullptr && general->has_data());
 }
@@ -4647,7 +4698,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::Template()
     name{YType::str, "name"}
 {
 
-    yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "template"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::~Template()
@@ -4656,6 +4707,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::~Template()
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -4725,7 +4777,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::General()
     general_state{YType::enumeration, "general-state"}
 {
 
-    yang_name = "general"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::~General()
@@ -4734,6 +4786,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::~General()
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_.is_set
 	|| general_state.is_set;
 }
@@ -4816,7 +4869,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::Configuration(
 {
     connection_configuration->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "auxiliary-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "auxiliary-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::~Configuration()
@@ -4825,6 +4878,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::~Configuration
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return (connection_configuration !=  nullptr && connection_configuration->has_data());
 }
 
@@ -4895,12 +4949,12 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConf
     :
     acl_out{YType::str, "acl-out"},
     acl_in{YType::str, "acl-in"}
-    	,
+        ,
     transport_input(std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput>())
 {
     transport_input->parent = this;
 
-    yang_name = "connection-configuration"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection-configuration"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::~ConnectionConfiguration()
@@ -4909,6 +4963,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConf
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_out.is_set
 	|| acl_in.is_set
 	|| (transport_input !=  nullptr && transport_input->has_data());
@@ -5009,7 +5064,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConf
     none{YType::int32, "none"}
 {
 
-    yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::~TransportInput()
@@ -5018,6 +5073,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConf
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::has_data() const
 {
+    if (is_presence_container) return true;
     return select.is_set
 	|| protocol1.is_set
 	|| protocol2.is_set

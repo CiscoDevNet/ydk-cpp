@@ -16,7 +16,7 @@ Fpd::Fpd()
     auto_upgrade{YType::enumeration, "auto-upgrade"}
 {
 
-    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-spirit-fpd-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fpd"; yang_parent_name = "Cisco-IOS-XR-spirit-fpd-infra-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Fpd::~Fpd()
@@ -25,6 +25,7 @@ Fpd::~Fpd()
 
 bool Fpd::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_upgrade.is_set;
 }
 

@@ -33,7 +33,7 @@ class Wdmon : public ydk::Entity
 
         class Trace; //type: Wdmon::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_wdmon::Wdmon::Trace> > trace;
+        ydk::YList trace;
         
 }; // Wdmon
 
@@ -58,7 +58,7 @@ class Wdmon::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Wdmon::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_wdmon::Wdmon::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Wdmon::Trace
 
@@ -82,7 +82,7 @@ class Wdmon::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Wdmon::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_wdmon::Wdmon::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Wdmon::Trace::Location
 
@@ -106,7 +106,7 @@ class Wdmon::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Wdmon::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_wdmon::Wdmon::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Wdmon::Trace::Location::AllOptions
 
@@ -154,7 +154,7 @@ class WdmonInfo : public ydk::Entity
 
         class AllLocations; //type: WdmonInfo::AllLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_wdmon::WdmonInfo::AllLocations> > all_locations;
+        ydk::YList all_locations;
         
 }; // WdmonInfo
 

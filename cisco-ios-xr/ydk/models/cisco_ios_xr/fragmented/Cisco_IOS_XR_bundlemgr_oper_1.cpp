@@ -16,14 +16,14 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::~PortInfo()
@@ -32,6 +32,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -143,12 +144,12 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System::~System()
@@ -157,6 +158,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -241,7 +243,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -250,6 +252,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -319,7 +322,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::Port::~Port()
@@ -328,6 +331,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -407,14 +411,14 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::AdditionalInfo()
     :
     mbr_type{YType::enumeration, "mbr-type"}
-    	,
+        ,
     local(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Local>())
-	,foreign(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Foreign>())
+    , foreign(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Foreign>())
 {
     local->parent = this;
     foreign->parent = this;
 
-    yang_name = "additional-info"; yang_parent_name = "lacp-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "additional-info"; yang_parent_name = "lacp-bundle-children-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::~AdditionalInfo()
@@ -423,6 +427,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return mbr_type.is_set
 	|| (local !=  nullptr && local->has_data())
 	|| (foreign !=  nullptr && foreign->has_data());
@@ -523,7 +528,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     interface_handle{YType::str, "interface-handle"}
 {
 
-    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Local::~Local()
@@ -532,6 +537,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set;
 }
 
@@ -601,7 +607,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
     member_name{YType::str, "member-name"}
 {
 
-    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Foreign::~Foreign()
@@ -610,6 +616,7 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::Lac
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::Foreign::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| member_name.is_set;
 }
@@ -687,9 +694,11 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMembers()
+    :
+    lacp_member(this, {"member_interface"})
 {
 
-    yang_name = "lacp-members"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lacp-members"; yang_parent_name = "lacp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Lacp::LacpMembers::~LacpMembers()
@@ -698,7 +707,8 @@ BundleInformation::Lacp::LacpMembers::~LacpMembers()
 
 bool BundleInformation::Lacp::LacpMembers::has_data() const
 {
-    for (std::size_t index=0; index<lacp_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lacp_member.len(); index++)
     {
         if(lacp_member[index]->has_data())
             return true;
@@ -708,7 +718,7 @@ bool BundleInformation::Lacp::LacpMembers::has_data() const
 
 bool BundleInformation::Lacp::LacpMembers::has_operation() const
 {
-    for (std::size_t index=0; index<lacp_member.size(); index++)
+    for (std::size_t index=0; index<lacp_member.len(); index++)
     {
         if(lacp_member[index]->has_operation())
             return true;
@@ -745,7 +755,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpMembers::get_child_by_name(
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember>();
         c->parent = this;
-        lacp_member.push_back(c);
+        lacp_member.append(c);
         return c;
     }
 
@@ -757,7 +767,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpMemb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lacp_member)
+    for (auto c : lacp_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -786,14 +796,14 @@ bool BundleInformation::Lacp::LacpMembers::has_leaf_or_child_of_name(const std::
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMember()
     :
     member_interface{YType::str, "member-interface"}
-    	,
+        ,
     lacp_member_ancestor(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor>())
-	,lacp_member_item(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem>())
+    , lacp_member_item(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem>())
 {
     lacp_member_ancestor->parent = this;
     lacp_member_item->parent = this;
 
-    yang_name = "lacp-member"; yang_parent_name = "lacp-members"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lacp-member"; yang_parent_name = "lacp-members"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::~LacpMember()
@@ -802,6 +812,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::~LacpMember()
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::has_data() const
 {
+    if (is_presence_container) return true;
     return member_interface.is_set
 	|| (lacp_member_ancestor !=  nullptr && lacp_member_ancestor->has_data())
 	|| (lacp_member_item !=  nullptr && lacp_member_item->has_data());
@@ -825,7 +836,8 @@ std::string BundleInformation::Lacp::LacpMembers::LacpMember::get_absolute_path(
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lacp-member" <<"[member-interface='" <<member_interface <<"']";
+    path_buffer << "lacp-member";
+    ADD_KEY_TOKEN(member_interface, "member-interface");
     return path_buffer.str();
 }
 
@@ -907,10 +919,11 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::has_leaf_or_child_of_name
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::LacpMemberAncestor()
     :
     bundle_data(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData>())
+    , member_data(this, {})
 {
     bundle_data->parent = this;
 
-    yang_name = "lacp-member-ancestor"; yang_parent_name = "lacp-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lacp-member-ancestor"; yang_parent_name = "lacp-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::~LacpMemberAncestor()
@@ -919,7 +932,8 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::~LacpMembe
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::has_data() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_data())
             return true;
@@ -929,7 +943,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::has_d
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::has_operation() const
 {
-    for (std::size_t index=0; index<member_data.size(); index++)
+    for (std::size_t index=0; index<member_data.len(); index++)
     {
         if(member_data[index]->has_operation())
             return true;
@@ -969,7 +983,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpMembers::LacpMember::LacpMe
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData>();
         c->parent = this;
-        member_data.push_back(c);
+        member_data.append(c);
         return c;
     }
 
@@ -986,7 +1000,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpMemb
     }
 
     count = 0;
-    for (auto const & c : member_data)
+    for (auto c : member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1018,14 +1032,14 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
     partner_operational_key{YType::uint16, "partner-operational-key"}
-    	,
+        ,
     actor_bundle_data(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData>())
-	,bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId>())
+    , bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId>())
 {
     actor_bundle_data->parent = this;
     bundle_system_id->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "lacp-member-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "lacp-member-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::~BundleData()
@@ -1034,6 +1048,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return actor_operational_key.is_set
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
@@ -1208,12 +1223,13 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
     mlacp_mode{YType::enumeration, "mlacp-mode"},
     recovery_delay{YType::uint16, "recovery-delay"},
     singleton{YType::boolean, "singleton"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::MacAddress>())
+    , bfd_config(this, {})
 {
     mac_address->parent = this;
 
-    yang_name = "actor-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::~ActorBundleData()
@@ -1222,7 +1238,8 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::has_data() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_data())
             return true;
@@ -1270,7 +1287,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_config.size(); index++)
+    for (std::size_t index=0; index<bfd_config.len(); index++)
     {
         if(bfd_config[index]->has_operation())
             return true;
@@ -1386,7 +1403,7 @@ std::shared_ptr<Entity> BundleInformation::Lacp::LacpMembers::LacpMember::LacpMe
     {
         auto c = std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig>();
         c->parent = this;
-        bfd_config.push_back(c);
+        bfd_config.append(c);
         return c;
     }
 
@@ -1403,7 +1420,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpMemb
     }
 
     count = 0;
-    for (auto const & c : bfd_config)
+    for (auto c : bfd_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1814,7 +1831,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::MacAddress::~MacAddress()
@@ -1823,6 +1840,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1896,12 +1914,12 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
     pref_echo_min_interval{YType::uint32, "pref-echo-min-interval"},
     fast_detect{YType::boolean, "fast-detect"},
     mode_info{YType::uint32, "mode-info"}
-    	,
+        ,
     destination_address(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::DestinationAddress>())
 {
     destination_address->parent = this;
 
-    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-config"; yang_parent_name = "actor-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::~BfdConfig()
@@ -1910,6 +1928,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| start_timer.is_set
 	|| nbr_unconfig_timer.is_set
@@ -2087,7 +2106,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "bfd-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::DestinationAddress::~DestinationAddress()
@@ -2096,6 +2115,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
@@ -2188,12 +2208,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId::BundleSystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "bundle-system-id"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-system-id"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId::~BundleSystemId()
@@ -2202,6 +2222,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -2286,7 +2307,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "bundle-system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId::SystemMacAddr::~SystemMacAddr()
@@ -2295,6 +2316,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -2369,16 +2391,16 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     actor_churn_state{YType::enumeration, "actor-churn-state"},
     partner_churn_state{YType::enumeration, "partner-churn-state"},
     iccp_group_id{YType::uint32, "iccp-group-id"}
-    	,
+        ,
     actor_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo>())
-	,partner_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo>())
-	,additional_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo>())
+    , partner_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo>())
+    , additional_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo>())
 {
     actor_info->parent = this;
     partner_info->parent = this;
     additional_info->parent = this;
 
-    yang_name = "member-data"; yang_parent_name = "lacp-member-ancestor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-data"; yang_parent_name = "lacp-member-ancestor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::~MemberData()
@@ -2387,6 +2409,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return selected_aggregator_id.is_set
 	|| attached_aggregator_id.is_set
 	|| selection_state.is_set
@@ -2605,12 +2628,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::ActorInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "actor-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::~ActorInfo()
@@ -2619,6 +2642,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -2702,14 +2726,14 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::~PortInfo()
@@ -2718,6 +2742,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -2829,12 +2854,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System::~System()
@@ -2843,6 +2868,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -2927,7 +2953,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -2936,6 +2962,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -3005,7 +3032,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::Port::~Port()
@@ -3014,6 +3041,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -3093,12 +3121,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PartnerInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "partner-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "partner-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::~PartnerInfo()
@@ -3107,6 +3135,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -3190,14 +3219,14 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::~PortInfo()
@@ -3206,6 +3235,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -3317,12 +3347,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System::~System()
@@ -3331,6 +3361,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -3415,7 +3446,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -3424,6 +3455,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -3493,7 +3525,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::Port::~Port()
@@ -3502,6 +3534,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -3581,14 +3614,14 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::AdditionalInfo()
     :
     mbr_type{YType::enumeration, "mbr-type"}
-    	,
+        ,
     local(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Local>())
-	,foreign(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Foreign>())
+    , foreign(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Foreign>())
 {
     local->parent = this;
     foreign->parent = this;
 
-    yang_name = "additional-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "additional-info"; yang_parent_name = "member-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::~AdditionalInfo()
@@ -3597,6 +3630,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return mbr_type.is_set
 	|| (local !=  nullptr && local->has_data())
 	|| (foreign !=  nullptr && foreign->has_data());
@@ -3697,7 +3731,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     interface_handle{YType::str, "interface-handle"}
 {
 
-    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Local::~Local()
@@ -3706,6 +3740,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set;
 }
 
@@ -3775,7 +3810,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
     member_name{YType::str, "member-name"}
 {
 
-    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Foreign::~Foreign()
@@ -3784,6 +3819,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::Foreign::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| member_name.is_set;
 }
@@ -3871,16 +3907,16 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::LacpMemberItem
     actor_churn_state{YType::enumeration, "actor-churn-state"},
     partner_churn_state{YType::enumeration, "partner-churn-state"},
     iccp_group_id{YType::uint32, "iccp-group-id"}
-    	,
+        ,
     actor_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo>())
-	,partner_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo>())
-	,additional_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo>())
+    , partner_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo>())
+    , additional_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo>())
 {
     actor_info->parent = this;
     partner_info->parent = this;
     additional_info->parent = this;
 
-    yang_name = "lacp-member-item"; yang_parent_name = "lacp-member"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lacp-member-item"; yang_parent_name = "lacp-member"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::~LacpMemberItem()
@@ -3889,6 +3925,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::~LacpMemberIte
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::has_data() const
 {
+    if (is_presence_container) return true;
     return selected_aggregator_id.is_set
 	|| attached_aggregator_id.is_set
 	|| selection_state.is_set
@@ -4107,12 +4144,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::has_leaf_
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::ActorInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "actor-info"; yang_parent_name = "lacp-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actor-info"; yang_parent_name = "lacp-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::~ActorInfo()
@@ -4121,6 +4158,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::~Ac
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -4204,14 +4242,14 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::Por
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "actor-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::~PortInfo()
@@ -4220,6 +4258,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::Por
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -4331,12 +4370,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System::~System()
@@ -4345,6 +4384,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::Por
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -4429,7 +4469,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::Por
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -4438,6 +4478,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::Por
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -4507,7 +4548,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::Por
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::Port::~Port()
@@ -4516,6 +4557,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::Por
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -4595,12 +4637,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PartnerInfo()
     :
     tx_period{YType::uint32, "tx-period"}
-    	,
+        ,
     port_info(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo>())
 {
     port_info->parent = this;
 
-    yang_name = "partner-info"; yang_parent_name = "lacp-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "partner-info"; yang_parent_name = "lacp-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::~PartnerInfo()
@@ -4609,6 +4651,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::~
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return tx_period.is_set
 	|| (port_info !=  nullptr && port_info->has_data());
 }
@@ -4692,14 +4735,14 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::P
     :
     key{YType::uint16, "key"},
     state{YType::uint8, "state"}
-    	,
+        ,
     system(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System>())
-	,port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::Port>())
+    , port(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::Port>())
 {
     system->parent = this;
     port->parent = this;
 
-    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-info"; yang_parent_name = "partner-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::~PortInfo()
@@ -4708,6 +4751,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::P
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| state.is_set
 	|| (system !=  nullptr && system->has_data())
@@ -4819,12 +4863,12 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerIn
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System::System()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System::~System()
@@ -4833,6 +4877,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::P
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -4917,7 +4962,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::P
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System::SystemMacAddr::~SystemMacAddr()
@@ -4926,6 +4971,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::P
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -4995,7 +5041,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::P
     link_number{YType::uint16, "link-number"}
 {
 
-    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "port-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::Port::~Port()
@@ -5004,6 +5050,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::P
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return link_priority.is_set
 	|| link_number.is_set;
 }
@@ -5083,14 +5130,14 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerIn
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::AdditionalInfo()
     :
     mbr_type{YType::enumeration, "mbr-type"}
-    	,
+        ,
     local(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Local>())
-	,foreign(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Foreign>())
+    , foreign(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Foreign>())
 {
     local->parent = this;
     foreign->parent = this;
 
-    yang_name = "additional-info"; yang_parent_name = "lacp-member-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "additional-info"; yang_parent_name = "lacp-member-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::~AdditionalInfo()
@@ -5099,6 +5146,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return mbr_type.is_set
 	|| (local !=  nullptr && local->has_data())
 	|| (foreign !=  nullptr && foreign->has_data());
@@ -5199,7 +5247,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo
     interface_handle{YType::str, "interface-handle"}
 {
 
-    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Local::~Local()
@@ -5208,6 +5256,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set;
 }
 
@@ -5277,7 +5326,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo
     member_name{YType::str, "member-name"}
 {
 
-    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign"; yang_parent_name = "additional-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Foreign::~Foreign()
@@ -5286,6 +5335,7 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::Foreign::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| member_name.is_set;
 }
@@ -5365,14 +5415,14 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Additiona
 BundleInformation::MlacpBundleCounters::MlacpBundleCounters()
     :
     iccp_groups(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups>())
-	,bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles>())
-	,nodes(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes>())
+    , bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles>())
+    , nodes(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes>())
 {
     iccp_groups->parent = this;
     bundles->parent = this;
     nodes->parent = this;
 
-    yang_name = "mlacp-bundle-counters"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-bundle-counters"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBundleCounters::~MlacpBundleCounters()
@@ -5381,6 +5431,7 @@ BundleInformation::MlacpBundleCounters::~MlacpBundleCounters()
 
 bool BundleInformation::MlacpBundleCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (iccp_groups !=  nullptr && iccp_groups->has_data())
 	|| (bundles !=  nullptr && bundles->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
@@ -5487,9 +5538,11 @@ bool BundleInformation::MlacpBundleCounters::has_leaf_or_child_of_name(const std
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroups()
+    :
+    iccp_group(this, {"iccp_group"})
 {
 
-    yang_name = "iccp-groups"; yang_parent_name = "mlacp-bundle-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "iccp-groups"; yang_parent_name = "mlacp-bundle-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::~IccpGroups()
@@ -5498,7 +5551,8 @@ BundleInformation::MlacpBundleCounters::IccpGroups::~IccpGroups()
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iccp_group.len(); index++)
     {
         if(iccp_group[index]->has_data())
             return true;
@@ -5508,7 +5562,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::has_data() const
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_group.size(); index++)
+    for (std::size_t index=0; index<iccp_group.len(); index++)
     {
         if(iccp_group[index]->has_operation())
             return true;
@@ -5545,7 +5599,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::IccpGroups::get_
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup>();
         c->parent = this;
-        iccp_group.push_back(c);
+        iccp_group.append(c);
         return c;
     }
 
@@ -5557,7 +5611,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iccp_group)
+    for (auto c : iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5586,12 +5640,12 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::has_leaf_or_child_of_na
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroup()
     :
     iccp_group{YType::uint32, "iccp-group"}
-    	,
+        ,
     iccp_group_item(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem>())
 {
     iccp_group_item->parent = this;
 
-    yang_name = "iccp-group"; yang_parent_name = "iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "iccp-group"; yang_parent_name = "iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::~IccpGroup()
@@ -5600,6 +5654,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::~IccpGroup()
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_group.is_set
 	|| (iccp_group_item !=  nullptr && iccp_group_item->has_data());
 }
@@ -5621,7 +5676,8 @@ std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::get_a
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iccp-group" <<"[iccp-group='" <<iccp_group <<"']";
+    path_buffer << "iccp-group";
+    ADD_KEY_TOKEN(iccp_group, "iccp-group");
     return path_buffer.str();
 }
 
@@ -5689,10 +5745,11 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::has_leaf_or_
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupItem()
     :
     iccp_group_data(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData>())
+    , node_data(this, {})
 {
     iccp_group_data->parent = this;
 
-    yang_name = "iccp-group-item"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-item"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::~IccpGroupItem()
@@ -5701,7 +5758,8 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::~I
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::has_data() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_data())
             return true;
@@ -5711,7 +5769,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::has_operation() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_operation())
             return true;
@@ -5751,7 +5809,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::IccpGroups::Iccp
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData>();
         c->parent = this;
-        node_data.push_back(c);
+        node_data.append(c);
         return c;
     }
 
@@ -5768,7 +5826,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : node_data)
+    for (auto c : node_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5797,14 +5855,15 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::IccpGroupData()
     :
     iccp_group_id{YType::uint32, "iccp-group-id"}
-    	,
+        ,
     mlacp_sync_requests_on_all_local_ports(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts>())
-	,mlacp_sync_requests_on_all_local_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles>())
+    , mlacp_sync_requests_on_all_local_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles>())
+    , bundle_data(this, {})
 {
     mlacp_sync_requests_on_all_local_ports->parent = this;
     mlacp_sync_requests_on_all_local_bundles->parent = this;
 
-    yang_name = "iccp-group-data"; yang_parent_name = "iccp-group-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-data"; yang_parent_name = "iccp-group-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::~IccpGroupData()
@@ -5813,7 +5872,8 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -5825,7 +5885,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -5877,7 +5937,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::IccpGroups::Iccp
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -5899,7 +5959,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5939,12 +5999,12 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-local-ports"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-local-ports"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::~MlacpSyncRequestsOnAllLocalPorts()
@@ -5953,6 +6013,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -6052,7 +6113,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -6061,6 +6122,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -6154,12 +6216,12 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-local-bundles"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-local-bundles"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::~MlacpSyncRequestsOnAllLocalBundles()
@@ -6168,6 +6230,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -6267,7 +6330,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-bundles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-bundles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -6276,6 +6339,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -6368,12 +6432,12 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::BundleData()
     :
     bundle_name{YType::str, "bundle-name"}
-    	,
+        ,
     mlacp_tlv_counters(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::MlacpTlvCounters>())
 {
     mlacp_tlv_counters->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::~BundleData()
@@ -6382,6 +6446,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_data());
 }
@@ -6471,12 +6536,12 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"},
     last_unexpected_event{YType::uint64, "last-unexpected-event"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::MlacpTlvCounters::~MlacpTlvCounters()
@@ -6485,6 +6550,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::MlacpTlvCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_config_tl_vs.is_set
 	|| sent_state_tl_vs.is_set
 	|| sent_priority_tl_vs.is_set
@@ -6662,7 +6728,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -6671,6 +6737,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::Ic
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -6763,10 +6830,11 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData()
     :
     node_data(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_>())
+    , bundle_data(this, {})
 {
     node_data->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "iccp-group-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "iccp-group-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::~NodeData()
@@ -6775,7 +6843,8 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -6785,7 +6854,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -6825,7 +6894,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::IccpGroups::Iccp
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -6842,7 +6911,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6871,14 +6940,14 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::NodeData_()
     :
     node_id{YType::uint32, "node-id"}
-    	,
+        ,
     mlacp_sync_requests_on_all_foreign_ports(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts>())
-	,mlacp_sync_requests_on_all_foreign_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles>())
+    , mlacp_sync_requests_on_all_foreign_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles>())
 {
     mlacp_sync_requests_on_all_foreign_ports->parent = this;
     mlacp_sync_requests_on_all_foreign_bundles->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::~NodeData_()
@@ -6887,6 +6956,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_data())
 	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && mlacp_sync_requests_on_all_foreign_bundles->has_data());
@@ -6986,12 +7056,12 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-foreign-ports"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-foreign-ports"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::~MlacpSyncRequestsOnAllForeignPorts()
@@ -7000,6 +7070,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -7099,7 +7170,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -7108,6 +7179,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -7201,12 +7273,12 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-foreign-bundles"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-foreign-bundles"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::~MlacpSyncRequestsOnAllForeignBundles()
@@ -7215,6 +7287,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -7314,7 +7387,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-bundles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-bundles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -7323,6 +7396,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -7415,12 +7489,12 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::BundleData()
     :
     bundle_name{YType::str, "bundle-name"}
-    	,
+        ,
     mlacp_tlv_counters(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::MlacpTlvCounters>())
 {
     mlacp_tlv_counters->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::~BundleData()
@@ -7429,6 +7503,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_data());
 }
@@ -7518,12 +7593,12 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"},
     last_unexpected_event{YType::uint64, "last-unexpected-event"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::MlacpTlvCounters::~MlacpTlvCounters()
@@ -7532,6 +7607,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::MlacpTlvCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_config_tl_vs.is_set
 	|| sent_state_tl_vs.is_set
 	|| sent_priority_tl_vs.is_set
@@ -7709,7 +7785,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -7718,6 +7794,7 @@ BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::No
 
 bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -7808,9 +7885,11 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundles()
+    :
+    bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "bundles"; yang_parent_name = "mlacp-bundle-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundles"; yang_parent_name = "mlacp-bundle-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::~Bundles()
@@ -7819,7 +7898,8 @@ BundleInformation::MlacpBundleCounters::Bundles::~Bundles()
 
 bool BundleInformation::MlacpBundleCounters::Bundles::has_data() const
 {
-    for (std::size_t index=0; index<bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle.len(); index++)
     {
         if(bundle[index]->has_data())
             return true;
@@ -7829,7 +7909,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::has_data() const
 
 bool BundleInformation::MlacpBundleCounters::Bundles::has_operation() const
 {
-    for (std::size_t index=0; index<bundle.size(); index++)
+    for (std::size_t index=0; index<bundle.len(); index++)
     {
         if(bundle[index]->has_operation())
             return true;
@@ -7866,7 +7946,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Bundles::get_chi
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle>();
         c->parent = this;
-        bundle.push_back(c);
+        bundle.append(c);
         return c;
     }
 
@@ -7878,7 +7958,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle)
+    for (auto c : bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7907,12 +7987,12 @@ bool BundleInformation::MlacpBundleCounters::Bundles::has_leaf_or_child_of_name(
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::Bundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     bundle_item(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem>())
 {
     bundle_item->parent = this;
 
-    yang_name = "bundle"; yang_parent_name = "bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle"; yang_parent_name = "bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::~Bundle()
@@ -7921,6 +8001,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::~Bundle()
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (bundle_item !=  nullptr && bundle_item->has_data());
 }
@@ -7942,7 +8023,8 @@ std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::get_absolut
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -8008,9 +8090,11 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::has_leaf_or_child_
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::BundleItem()
+    :
+    iccp_group(this, {})
 {
 
-    yang_name = "bundle-item"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-item"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::~BundleItem()
@@ -8019,7 +8103,8 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::~BundleItem
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::has_data() const
 {
-    for (std::size_t index=0; index<iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iccp_group.len(); index++)
     {
         if(iccp_group[index]->has_data())
             return true;
@@ -8029,7 +8114,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::has_da
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_group.size(); index++)
+    for (std::size_t index=0; index<iccp_group.len(); index++)
     {
         if(iccp_group[index]->has_operation())
             return true;
@@ -8059,7 +8144,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Bundles::Bundle:
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup>();
         c->parent = this;
-        iccp_group.push_back(c);
+        iccp_group.append(c);
         return c;
     }
 
@@ -8071,7 +8156,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iccp_group)
+    for (auto c : iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8100,10 +8185,11 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::has_le
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroup()
     :
     iccp_group_data(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData>())
+    , node_data(this, {})
 {
     iccp_group_data->parent = this;
 
-    yang_name = "iccp-group"; yang_parent_name = "bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group"; yang_parent_name = "bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::~IccpGroup()
@@ -8112,7 +8198,8 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::has_data() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_data())
             return true;
@@ -8122,7 +8209,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::has_operation() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_operation())
             return true;
@@ -8162,7 +8249,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Bundles::Bundle:
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData>();
         c->parent = this;
-        node_data.push_back(c);
+        node_data.append(c);
         return c;
     }
 
@@ -8179,7 +8266,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : node_data)
+    for (auto c : node_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8208,14 +8295,15 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::IccpGroupData()
     :
     iccp_group_id{YType::uint32, "iccp-group-id"}
-    	,
+        ,
     mlacp_sync_requests_on_all_local_ports(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts>())
-	,mlacp_sync_requests_on_all_local_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles>())
+    , mlacp_sync_requests_on_all_local_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles>())
+    , bundle_data(this, {})
 {
     mlacp_sync_requests_on_all_local_ports->parent = this;
     mlacp_sync_requests_on_all_local_bundles->parent = this;
 
-    yang_name = "iccp-group-data"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-data"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::~IccpGroupData()
@@ -8224,7 +8312,8 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -8236,7 +8325,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -8288,7 +8377,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Bundles::Bundle:
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -8310,7 +8399,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8350,12 +8439,12 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-local-ports"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-local-ports"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::~MlacpSyncRequestsOnAllLocalPorts()
@@ -8364,6 +8453,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -8463,7 +8553,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -8472,6 +8562,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -8565,12 +8656,12 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-local-bundles"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-local-bundles"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::~MlacpSyncRequestsOnAllLocalBundles()
@@ -8579,6 +8670,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -8678,7 +8770,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-bundles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-bundles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -8687,6 +8779,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -8779,12 +8872,12 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::BundleData()
     :
     bundle_name{YType::str, "bundle-name"}
-    	,
+        ,
     mlacp_tlv_counters(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::MlacpTlvCounters>())
 {
     mlacp_tlv_counters->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::~BundleData()
@@ -8793,6 +8886,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_data());
 }
@@ -8882,12 +8976,12 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"},
     last_unexpected_event{YType::uint64, "last-unexpected-event"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::MlacpTlvCounters::~MlacpTlvCounters()
@@ -8896,6 +8990,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::MlacpTlvCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_config_tl_vs.is_set
 	|| sent_state_tl_vs.is_set
 	|| sent_priority_tl_vs.is_set
@@ -9073,7 +9168,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -9082,6 +9177,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -9174,10 +9270,11 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData()
     :
     node_data(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_>())
+    , bundle_data(this, {})
 {
     node_data->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::~NodeData()
@@ -9186,7 +9283,8 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -9196,7 +9294,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -9236,7 +9334,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Bundles::Bundle:
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -9253,7 +9351,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9282,14 +9380,14 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::NodeData_()
     :
     node_id{YType::uint32, "node-id"}
-    	,
+        ,
     mlacp_sync_requests_on_all_foreign_ports(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts>())
-	,mlacp_sync_requests_on_all_foreign_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles>())
+    , mlacp_sync_requests_on_all_foreign_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles>())
 {
     mlacp_sync_requests_on_all_foreign_ports->parent = this;
     mlacp_sync_requests_on_all_foreign_bundles->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::~NodeData_()
@@ -9298,6 +9396,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_data())
 	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && mlacp_sync_requests_on_all_foreign_bundles->has_data());
@@ -9397,12 +9496,12 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-foreign-ports"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-foreign-ports"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::~MlacpSyncRequestsOnAllForeignPorts()
@@ -9411,6 +9510,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -9510,7 +9610,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -9519,6 +9619,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -9612,12 +9713,12 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-foreign-bundles"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-foreign-bundles"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::~MlacpSyncRequestsOnAllForeignBundles()
@@ -9626,6 +9727,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -9725,7 +9827,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-bundles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-bundles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -9734,6 +9836,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -9826,12 +9929,12 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::BundleData()
     :
     bundle_name{YType::str, "bundle-name"}
-    	,
+        ,
     mlacp_tlv_counters(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::MlacpTlvCounters>())
 {
     mlacp_tlv_counters->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::~BundleData()
@@ -9840,6 +9943,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_data());
 }
@@ -9929,12 +10033,12 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"},
     last_unexpected_event{YType::uint64, "last-unexpected-event"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::MlacpTlvCounters::~MlacpTlvCounters()
@@ -9943,6 +10047,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::MlacpTlvCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_config_tl_vs.is_set
 	|| sent_state_tl_vs.is_set
 	|| sent_priority_tl_vs.is_set
@@ -10120,7 +10225,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -10129,6 +10234,7 @@ BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::
 
 bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -10219,9 +10325,11 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "mlacp-bundle-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "mlacp-bundle-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::~Nodes()
@@ -10230,7 +10338,8 @@ BundleInformation::MlacpBundleCounters::Nodes::~Nodes()
 
 bool BundleInformation::MlacpBundleCounters::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -10240,7 +10349,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::has_data() const
 
 bool BundleInformation::MlacpBundleCounters::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -10277,7 +10386,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Nodes::get_child
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -10289,7 +10398,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10318,12 +10427,12 @@ bool BundleInformation::MlacpBundleCounters::Nodes::has_leaf_or_child_of_name(co
 BundleInformation::MlacpBundleCounters::Nodes::Node::Node()
     :
     node{YType::str, "node"}
-    	,
+        ,
     node_item(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem>())
 {
     node_item->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::~Node()
@@ -10332,6 +10441,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::~Node()
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (node_item !=  nullptr && node_item->has_data());
 }
@@ -10353,7 +10463,8 @@ std::string BundleInformation::MlacpBundleCounters::Nodes::Node::get_absolute_pa
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -10421,10 +10532,11 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::has_leaf_or_child_of_n
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeItem()
     :
     iccp_group_data(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData>())
+    , node_data(this, {})
 {
     iccp_group_data->parent = this;
 
-    yang_name = "node-item"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-item"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::~NodeItem()
@@ -10433,7 +10545,8 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::~NodeItem()
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::has_data() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_data())
             return true;
@@ -10443,7 +10556,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::has_data() c
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::has_operation() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_operation())
             return true;
@@ -10483,7 +10596,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Nodes::Node::Nod
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData>();
         c->parent = this;
-        node_data.push_back(c);
+        node_data.append(c);
         return c;
     }
 
@@ -10500,7 +10613,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : node_data)
+    for (auto c : node_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10529,14 +10642,15 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::has_leaf_or_
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::IccpGroupData()
     :
     iccp_group_id{YType::uint32, "iccp-group-id"}
-    	,
+        ,
     mlacp_sync_requests_on_all_local_ports(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts>())
-	,mlacp_sync_requests_on_all_local_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles>())
+    , mlacp_sync_requests_on_all_local_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles>())
+    , bundle_data(this, {})
 {
     mlacp_sync_requests_on_all_local_ports->parent = this;
     mlacp_sync_requests_on_all_local_bundles->parent = this;
 
-    yang_name = "iccp-group-data"; yang_parent_name = "node-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-data"; yang_parent_name = "node-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::~IccpGroupData()
@@ -10545,7 +10659,8 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::~I
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -10557,7 +10672,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -10609,7 +10724,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Nodes::Node::Nod
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -10631,7 +10746,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10671,12 +10786,12 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-local-ports"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-local-ports"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::~MlacpSyncRequestsOnAllLocalPorts()
@@ -10685,6 +10800,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -10784,7 +10900,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -10793,6 +10909,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -10886,12 +11003,12 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-local-bundles"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-local-bundles"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::~MlacpSyncRequestsOnAllLocalBundles()
@@ -10900,6 +11017,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -10999,7 +11117,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-bundles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-local-bundles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -11008,6 +11126,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Ml
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -11100,12 +11219,12 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::BundleData()
     :
     bundle_name{YType::str, "bundle-name"}
-    	,
+        ,
     mlacp_tlv_counters(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::MlacpTlvCounters>())
 {
     mlacp_tlv_counters->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::~BundleData()
@@ -11114,6 +11233,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Bu
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_data());
 }
@@ -11203,12 +11323,12 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Bu
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"},
     last_unexpected_event{YType::uint64, "last-unexpected-event"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::MlacpTlvCounters::~MlacpTlvCounters()
@@ -11217,6 +11337,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Bu
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::MlacpTlvCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_config_tl_vs.is_set
 	|| sent_state_tl_vs.is_set
 	|| sent_priority_tl_vs.is_set
@@ -11394,7 +11515,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Bu
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -11403,6 +11524,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::Bu
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -11495,10 +11617,11 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData()
     :
     node_data(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_>())
+    , bundle_data(this, {})
 {
     node_data->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "node-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "node-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::~NodeData()
@@ -11507,7 +11630,8 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::~NodeDa
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -11517,7 +11641,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::ha
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -11557,7 +11681,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBundleCounters::Nodes::Node::Nod
     {
         auto c = std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -11574,7 +11698,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBundleCou
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11603,14 +11727,14 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::ha
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::NodeData_()
     :
     node_id{YType::uint32, "node-id"}
-    	,
+        ,
     mlacp_sync_requests_on_all_foreign_ports(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts>())
-	,mlacp_sync_requests_on_all_foreign_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles>())
+    , mlacp_sync_requests_on_all_foreign_bundles(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles>())
 {
     mlacp_sync_requests_on_all_foreign_ports->parent = this;
     mlacp_sync_requests_on_all_foreign_bundles->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::~NodeData_()
@@ -11619,6 +11743,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_data())
 	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && mlacp_sync_requests_on_all_foreign_bundles->has_data());
@@ -11718,12 +11843,12 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-foreign-ports"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-foreign-ports"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::~MlacpSyncRequestsOnAllForeignPorts()
@@ -11732,6 +11857,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -11831,7 +11957,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -11840,6 +11966,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -11933,12 +12060,12 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
     :
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-sync-requests-on-all-foreign-bundles"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-sync-requests-on-all-foreign-bundles"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::~MlacpSyncRequestsOnAllForeignBundles()
@@ -11947,6 +12074,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::has_data() const
 {
+    if (is_presence_container) return true;
     return last_time_cleared.is_set
 	|| time_since_cleared.is_set
 	|| (received_sync_requests !=  nullptr && received_sync_requests->has_data());
@@ -12046,7 +12174,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-bundles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-sync-requests-on-all-foreign-bundles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -12055,6 +12183,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeDat
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -12147,12 +12276,12 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::No
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::BundleData()
     :
     bundle_name{YType::str, "bundle-name"}
-    	,
+        ,
     mlacp_tlv_counters(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::MlacpTlvCounters>())
 {
     mlacp_tlv_counters->parent = this;
 
-    yang_name = "bundle-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::~BundleData()
@@ -12161,6 +12290,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleD
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_data());
 }
@@ -12250,12 +12380,12 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleD
     last_time_cleared{YType::uint64, "last-time-cleared"},
     time_since_cleared{YType::uint64, "time-since-cleared"},
     last_unexpected_event{YType::uint64, "last-unexpected-event"}
-    	,
+        ,
     received_sync_requests(std::make_shared<BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests>())
 {
     received_sync_requests->parent = this;
 
-    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-tlv-counters"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::MlacpTlvCounters::~MlacpTlvCounters()
@@ -12264,6 +12394,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleD
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::MlacpTlvCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_config_tl_vs.is_set
 	|| sent_state_tl_vs.is_set
 	|| sent_priority_tl_vs.is_set
@@ -12441,7 +12572,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleD
     state_syncs{YType::uint32, "state-syncs"}
 {
 
-    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-sync-requests"; yang_parent_name = "mlacp-tlv-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::~ReceivedSyncRequests()
@@ -12450,6 +12581,7 @@ BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleD
 
 bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::MlacpTlvCounters::ReceivedSyncRequests::has_data() const
 {
+    if (is_presence_container) return true;
     return all_syncs.is_set
 	|| config_syncs.is_set
 	|| state_syncs.is_set;
@@ -12545,7 +12677,7 @@ BundleInformation::Protect::Protect()
 {
     protect_bundles->parent = this;
 
-    yang_name = "protect"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protect"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Protect::~Protect()
@@ -12554,6 +12686,7 @@ BundleInformation::Protect::~Protect()
 
 bool BundleInformation::Protect::has_data() const
 {
+    if (is_presence_container) return true;
     return (protect_bundles !=  nullptr && protect_bundles->has_data());
 }
 
@@ -12628,9 +12761,11 @@ bool BundleInformation::Protect::has_leaf_or_child_of_name(const std::string & n
 }
 
 BundleInformation::Protect::ProtectBundles::ProtectBundles()
+    :
+    protect_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "protect-bundles"; yang_parent_name = "protect"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protect-bundles"; yang_parent_name = "protect"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Protect::ProtectBundles::~ProtectBundles()
@@ -12639,7 +12774,8 @@ BundleInformation::Protect::ProtectBundles::~ProtectBundles()
 
 bool BundleInformation::Protect::ProtectBundles::has_data() const
 {
-    for (std::size_t index=0; index<protect_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protect_bundle.len(); index++)
     {
         if(protect_bundle[index]->has_data())
             return true;
@@ -12649,7 +12785,7 @@ bool BundleInformation::Protect::ProtectBundles::has_data() const
 
 bool BundleInformation::Protect::ProtectBundles::has_operation() const
 {
-    for (std::size_t index=0; index<protect_bundle.size(); index++)
+    for (std::size_t index=0; index<protect_bundle.len(); index++)
     {
         if(protect_bundle[index]->has_operation())
             return true;
@@ -12686,7 +12822,7 @@ std::shared_ptr<Entity> BundleInformation::Protect::ProtectBundles::get_child_by
     {
         auto c = std::make_shared<BundleInformation::Protect::ProtectBundles::ProtectBundle>();
         c->parent = this;
-        protect_bundle.push_back(c);
+        protect_bundle.append(c);
         return c;
     }
 
@@ -12698,7 +12834,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Protect::Prote
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protect_bundle)
+    for (auto c : protect_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12727,12 +12863,12 @@ bool BundleInformation::Protect::ProtectBundles::has_leaf_or_child_of_name(const
 BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     protect_bundle_item(std::make_shared<BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem>())
 {
     protect_bundle_item->parent = this;
 
-    yang_name = "protect-bundle"; yang_parent_name = "protect-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protect-bundle"; yang_parent_name = "protect-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Protect::ProtectBundles::ProtectBundle::~ProtectBundle()
@@ -12741,6 +12877,7 @@ BundleInformation::Protect::ProtectBundles::ProtectBundle::~ProtectBundle()
 
 bool BundleInformation::Protect::ProtectBundles::ProtectBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (protect_bundle_item !=  nullptr && protect_bundle_item->has_data());
 }
@@ -12762,7 +12899,8 @@ std::string BundleInformation::Protect::ProtectBundles::ProtectBundle::get_absol
 std::string BundleInformation::Protect::ProtectBundles::ProtectBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protect-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "protect-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -12838,9 +12976,11 @@ BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::Pr
     minimum_bandwidth{YType::uint32, "minimum-bandwidth"},
     event_type{YType::enumeration, "event-type"},
     time_stamp{YType::uint64, "time-stamp"}
+        ,
+    member_info(this, {})
 {
 
-    yang_name = "protect-bundle-item"; yang_parent_name = "protect-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protect-bundle-item"; yang_parent_name = "protect-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::~ProtectBundleItem()
@@ -12849,7 +12989,8 @@ BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::~P
 
 bool BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::has_data() const
 {
-    for (std::size_t index=0; index<member_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member_info.len(); index++)
     {
         if(member_info[index]->has_data())
             return true;
@@ -12867,7 +13008,7 @@ bool BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleIte
 
 bool BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::has_operation() const
 {
-    for (std::size_t index=0; index<member_info.size(); index++)
+    for (std::size_t index=0; index<member_info.len(); index++)
     {
         if(member_info[index]->has_operation())
             return true;
@@ -12915,7 +13056,7 @@ std::shared_ptr<Entity> BundleInformation::Protect::ProtectBundles::ProtectBundl
     {
         auto c = std::make_shared<BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::MemberInfo>();
         c->parent = this;
-        member_info.push_back(c);
+        member_info.append(c);
         return c;
     }
 
@@ -12927,7 +13068,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Protect::Prote
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member_info)
+    for (auto c : member_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13056,7 +13197,7 @@ BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::Me
     time_stamp{YType::uint64, "time-stamp"}
 {
 
-    yang_name = "member-info"; yang_parent_name = "protect-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-info"; yang_parent_name = "protect-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::MemberInfo::~MemberInfo()
@@ -13065,6 +13206,7 @@ BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::Me
 
 bool BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleItem::MemberInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| underlying_link_id.is_set
 	|| link_order_number.is_set
@@ -13235,12 +13377,12 @@ bool BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBundleIte
 BundleInformation::MlacpBrief::MlacpBrief()
     :
     mlacp_bundle_briefs(std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs>())
-	,mlacp_brief_iccp_groups(std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups>())
+    , mlacp_brief_iccp_groups(std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups>())
 {
     mlacp_bundle_briefs->parent = this;
     mlacp_brief_iccp_groups->parent = this;
 
-    yang_name = "mlacp-brief"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-brief"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBrief::~MlacpBrief()
@@ -13249,6 +13391,7 @@ BundleInformation::MlacpBrief::~MlacpBrief()
 
 bool BundleInformation::MlacpBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return (mlacp_bundle_briefs !=  nullptr && mlacp_bundle_briefs->has_data())
 	|| (mlacp_brief_iccp_groups !=  nullptr && mlacp_brief_iccp_groups->has_data());
 }
@@ -13339,9 +13482,11 @@ bool BundleInformation::MlacpBrief::has_leaf_or_child_of_name(const std::string 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBriefs()
+    :
+    mlacp_bundle_brief(this, {"bundle_interface"})
 {
 
-    yang_name = "mlacp-bundle-briefs"; yang_parent_name = "mlacp-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-bundle-briefs"; yang_parent_name = "mlacp-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::~MlacpBundleBriefs()
@@ -13350,7 +13495,8 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::~MlacpBundleBriefs()
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_bundle_brief.len(); index++)
     {
         if(mlacp_bundle_brief[index]->has_data())
             return true;
@@ -13360,7 +13506,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::has_data() const
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_brief.size(); index++)
+    for (std::size_t index=0; index<mlacp_bundle_brief.len(); index++)
     {
         if(mlacp_bundle_brief[index]->has_operation())
             return true;
@@ -13397,7 +13543,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBundleBriefs::get_ch
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief>();
         c->parent = this;
-        mlacp_bundle_brief.push_back(c);
+        mlacp_bundle_brief.append(c);
         return c;
     }
 
@@ -13409,7 +13555,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_bundle_brief)
+    for (auto c : mlacp_bundle_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13438,12 +13584,12 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::has_leaf_or_child_of_name
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleBrief()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     mlacp_bundle_item_brief(std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief>())
 {
     mlacp_bundle_item_brief->parent = this;
 
-    yang_name = "mlacp-bundle-brief"; yang_parent_name = "mlacp-bundle-briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-bundle-brief"; yang_parent_name = "mlacp-bundle-briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::~MlacpBundleBrief()
@@ -13452,6 +13598,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::~MlacpBundle
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (mlacp_bundle_item_brief !=  nullptr && mlacp_bundle_item_brief->has_data());
 }
@@ -13473,7 +13620,8 @@ std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::
 std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mlacp-bundle-brief" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "mlacp-bundle-brief";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -13539,9 +13687,11 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::has_lea
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpBundleItemBrief()
+    :
+    mlacp_data(this, {})
 {
 
-    yang_name = "mlacp-bundle-item-brief"; yang_parent_name = "mlacp-bundle-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-bundle-item-brief"; yang_parent_name = "mlacp-bundle-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::~MlacpBundleItemBrief()
@@ -13550,7 +13700,8 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_data.len(); index++)
     {
         if(mlacp_data[index]->has_data())
             return true;
@@ -13560,7 +13711,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_data.len(); index++)
     {
         if(mlacp_data[index]->has_operation())
             return true;
@@ -13590,7 +13741,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpB
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData>();
         c->parent = this;
-        mlacp_data.push_back(c);
+        mlacp_data.append(c);
         return c;
     }
 
@@ -13602,7 +13753,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_data)
+    for (auto c : mlacp_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13631,10 +13782,11 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::MlacpData()
     :
     iccp_group_data(std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData>())
+    , bundle_data(this, {})
 {
     iccp_group_data->parent = this;
 
-    yang_name = "mlacp-data"; yang_parent_name = "mlacp-bundle-item-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-data"; yang_parent_name = "mlacp-bundle-item-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::~MlacpData()
@@ -13643,7 +13795,8 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -13653,7 +13806,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -13693,7 +13846,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpB
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -13710,7 +13863,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13741,9 +13894,11 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
     iccp_group_id{YType::uint32, "iccp-group-id"},
     singleton{YType::boolean, "singleton"},
     connect_timer_running{YType::uint64, "connect-timer-running"}
+        ,
+    node_data(this, {})
 {
 
-    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::~IccpGroupData()
@@ -13752,7 +13907,8 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::has_data() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_data())
             return true;
@@ -13764,7 +13920,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::has_operation() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_operation())
             return true;
@@ -13800,7 +13956,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpB
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData>();
         c->parent = this;
-        node_data.push_back(c);
+        node_data.append(c);
         return c;
     }
 
@@ -13812,7 +13968,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_data)
+    for (auto c : node_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13875,12 +14031,12 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
     version_number{YType::uint32, "version-number"},
     node_state{YType::enumeration, "node-state"},
     iccp_group_state{YType::enumeration, "iccp-group-state"}
-    	,
+        ,
     system_id(std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId>())
 {
     system_id->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::~NodeData()
@@ -13889,6 +14045,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::has_data() const
 {
+    if (is_presence_container) return true;
     return mlacp_node_id.is_set
 	|| ldp_id.is_set
 	|| version_number.is_set
@@ -14023,12 +14180,12 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId::SystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId::~SystemId()
@@ -14037,6 +14194,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -14121,7 +14279,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId::SystemMacAddr::~SystemMacAddr()
@@ -14130,6 +14288,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -14198,9 +14357,12 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
     bundle_interface_key{YType::uint16, "bundle-interface-key"},
     media_type{YType::enumeration, "media-type"},
     redundancy_object_id{YType::uint64, "redundancy-object-id"}
+        ,
+    mlacp_bundle_data(this, {})
+    , mlacp_member_data(this, {})
 {
 
-    yang_name = "bundle-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::~BundleData()
@@ -14209,12 +14371,13 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_data())
             return true;
@@ -14226,12 +14389,12 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_operation())
             return true;
@@ -14267,7 +14430,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpB
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData>();
         c->parent = this;
-        mlacp_bundle_data.push_back(c);
+        mlacp_bundle_data.append(c);
         return c;
     }
 
@@ -14275,7 +14438,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpB
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpMemberData>();
         c->parent = this;
-        mlacp_member_data.push_back(c);
+        mlacp_member_data.append(c);
         return c;
     }
 
@@ -14287,7 +14450,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_bundle_data)
+    for (auto c : mlacp_bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14296,7 +14459,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     }
 
     count = 0;
-    for (auto const & c : mlacp_member_data)
+    for (auto c : mlacp_member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14359,12 +14522,12 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
     aggregator_id{YType::uint16, "aggregator-id"},
     bundle_state{YType::enumeration, "bundle-state"},
     port_priority{YType::uint16, "port-priority"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData::~MlacpBundleData()
@@ -14373,6 +14536,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| mlacp_node_id.is_set
 	|| aggregator_id.is_set
@@ -14509,7 +14673,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData::MacAddress::~MacAddress()
@@ -14518,6 +14682,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -14592,7 +14757,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
     member_state{YType::enumeration, "member-state"}
 {
 
-    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpMemberData::~MlacpMemberData()
@@ -14601,6 +14766,7 @@ BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleI
 
 bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpMemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return port_name.is_set
 	|| interface_handle.is_set
 	|| mlacp_node_id.is_set
@@ -14743,9 +14909,11 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroups()
+    :
+    mlacp_brief_iccp_group(this, {"iccp_group"})
 {
 
-    yang_name = "mlacp-brief-iccp-groups"; yang_parent_name = "mlacp-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-brief-iccp-groups"; yang_parent_name = "mlacp-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::~MlacpBriefIccpGroups()
@@ -14754,7 +14922,8 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::~MlacpBriefIccpGroups()
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_brief_iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_brief_iccp_group.len(); index++)
     {
         if(mlacp_brief_iccp_group[index]->has_data())
             return true;
@@ -14764,7 +14933,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::has_data() const
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_brief_iccp_group.size(); index++)
+    for (std::size_t index=0; index<mlacp_brief_iccp_group.len(); index++)
     {
         if(mlacp_brief_iccp_group[index]->has_operation())
             return true;
@@ -14801,7 +14970,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBriefIccpGroups::get
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup>();
         c->parent = this;
-        mlacp_brief_iccp_group.push_back(c);
+        mlacp_brief_iccp_group.append(c);
         return c;
     }
 
@@ -14813,7 +14982,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_brief_iccp_group)
+    for (auto c : mlacp_brief_iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14842,12 +15011,12 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::has_leaf_or_child_of_n
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroup()
     :
     iccp_group{YType::uint32, "iccp-group"}
-    	,
+        ,
     mlacp_brief_iccp_group_item(std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem>())
 {
     mlacp_brief_iccp_group_item->parent = this;
 
-    yang_name = "mlacp-brief-iccp-group"; yang_parent_name = "mlacp-brief-iccp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-brief-iccp-group"; yang_parent_name = "mlacp-brief-iccp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::~MlacpBriefIccpGroup()
@@ -14856,6 +15025,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::~Mlacp
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_group.is_set
 	|| (mlacp_brief_iccp_group_item !=  nullptr && mlacp_brief_iccp_group_item->has_data());
 }
@@ -14877,7 +15047,8 @@ std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpG
 std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mlacp-brief-iccp-group" <<"[iccp-group='" <<iccp_group <<"']";
+    path_buffer << "mlacp-brief-iccp-group";
+    ADD_KEY_TOKEN(iccp_group, "iccp-group");
     return path_buffer.str();
 }
 
@@ -14945,10 +15116,11 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::h
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::MlacpBriefIccpGroupItem()
     :
     iccp_group_data(std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData>())
+    , bundle_data(this, {})
 {
     iccp_group_data->parent = this;
 
-    yang_name = "mlacp-brief-iccp-group-item"; yang_parent_name = "mlacp-brief-iccp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-brief-iccp-group-item"; yang_parent_name = "mlacp-brief-iccp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::~MlacpBriefIccpGroupItem()
@@ -14957,7 +15129,8 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -14967,7 +15140,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -15007,7 +15180,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBriefIccpGroups::Mla
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -15024,7 +15197,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15055,9 +15228,11 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
     iccp_group_id{YType::uint32, "iccp-group-id"},
     singleton{YType::boolean, "singleton"},
     connect_timer_running{YType::uint64, "connect-timer-running"}
+        ,
+    node_data(this, {})
 {
 
-    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-brief-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-brief-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::~IccpGroupData()
@@ -15066,7 +15241,8 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::has_data() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_data())
             return true;
@@ -15078,7 +15254,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::has_operation() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_operation())
             return true;
@@ -15114,7 +15290,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBriefIccpGroups::Mla
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData>();
         c->parent = this;
-        node_data.push_back(c);
+        node_data.append(c);
         return c;
     }
 
@@ -15126,7 +15302,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_data)
+    for (auto c : node_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15189,12 +15365,12 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
     version_number{YType::uint32, "version-number"},
     node_state{YType::enumeration, "node-state"},
     iccp_group_state{YType::enumeration, "iccp-group-state"}
-    	,
+        ,
     system_id(std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId>())
 {
     system_id->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::~NodeData()
@@ -15203,6 +15379,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::has_data() const
 {
+    if (is_presence_container) return true;
     return mlacp_node_id.is_set
 	|| ldp_id.is_set
 	|| version_number.is_set
@@ -15337,12 +15514,12 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId::~SystemId()
@@ -15351,6 +15528,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -15435,7 +15613,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemMacAddr::~SystemMacAddr()
@@ -15444,6 +15622,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -15512,9 +15691,12 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
     bundle_interface_key{YType::uint16, "bundle-interface-key"},
     media_type{YType::enumeration, "media-type"},
     redundancy_object_id{YType::uint64, "redundancy-object-id"}
+        ,
+    mlacp_bundle_data(this, {})
+    , mlacp_member_data(this, {})
 {
 
-    yang_name = "bundle-data"; yang_parent_name = "mlacp-brief-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "mlacp-brief-iccp-group-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::~BundleData()
@@ -15523,12 +15705,13 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_data())
             return true;
@@ -15540,12 +15723,12 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_operation())
             return true;
@@ -15581,7 +15764,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBriefIccpGroups::Mla
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData>();
         c->parent = this;
-        mlacp_bundle_data.push_back(c);
+        mlacp_bundle_data.append(c);
         return c;
     }
 
@@ -15589,7 +15772,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpBrief::MlacpBriefIccpGroups::Mla
     {
         auto c = std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpMemberData>();
         c->parent = this;
-        mlacp_member_data.push_back(c);
+        mlacp_member_data.append(c);
         return c;
     }
 
@@ -15601,7 +15784,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_bundle_data)
+    for (auto c : mlacp_bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15610,7 +15793,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpBrief::Ml
     }
 
     count = 0;
-    for (auto const & c : mlacp_member_data)
+    for (auto c : mlacp_member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15673,12 +15856,12 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
     aggregator_id{YType::uint16, "aggregator-id"},
     bundle_state{YType::enumeration, "bundle-state"},
     port_priority{YType::uint16, "port-priority"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData::~MlacpBundleData()
@@ -15687,6 +15870,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| mlacp_node_id.is_set
 	|| aggregator_id.is_set
@@ -15823,7 +16007,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData::MacAddress::~MacAddress()
@@ -15832,6 +16016,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -15906,7 +16091,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
     member_state{YType::enumeration, "member-state"}
 {
 
-    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpMemberData::~MlacpMemberData()
@@ -15915,6 +16100,7 @@ BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpB
 
 bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpMemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return port_name.is_set
 	|| interface_handle.is_set
 	|| mlacp_node_id.is_set
@@ -16059,12 +16245,12 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 BundleInformation::Mlacp::Mlacp()
     :
     mlacp_bundles(std::make_shared<BundleInformation::Mlacp::MlacpBundles>())
-	,mlacp_iccp_groups(std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups>())
+    , mlacp_iccp_groups(std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups>())
 {
     mlacp_bundles->parent = this;
     mlacp_iccp_groups->parent = this;
 
-    yang_name = "mlacp"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp"; yang_parent_name = "bundle-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Mlacp::~Mlacp()
@@ -16073,6 +16259,7 @@ BundleInformation::Mlacp::~Mlacp()
 
 bool BundleInformation::Mlacp::has_data() const
 {
+    if (is_presence_container) return true;
     return (mlacp_bundles !=  nullptr && mlacp_bundles->has_data())
 	|| (mlacp_iccp_groups !=  nullptr && mlacp_iccp_groups->has_data());
 }
@@ -16163,9 +16350,11 @@ bool BundleInformation::Mlacp::has_leaf_or_child_of_name(const std::string & nam
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundles()
+    :
+    mlacp_bundle(this, {"bundle_interface"})
 {
 
-    yang_name = "mlacp-bundles"; yang_parent_name = "mlacp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-bundles"; yang_parent_name = "mlacp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::~MlacpBundles()
@@ -16174,7 +16363,8 @@ BundleInformation::Mlacp::MlacpBundles::~MlacpBundles()
 
 bool BundleInformation::Mlacp::MlacpBundles::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_bundle.len(); index++)
     {
         if(mlacp_bundle[index]->has_data())
             return true;
@@ -16184,7 +16374,7 @@ bool BundleInformation::Mlacp::MlacpBundles::has_data() const
 
 bool BundleInformation::Mlacp::MlacpBundles::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_bundle.size(); index++)
+    for (std::size_t index=0; index<mlacp_bundle.len(); index++)
     {
         if(mlacp_bundle[index]->has_operation())
             return true;
@@ -16221,7 +16411,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpBundles::get_child_by_nam
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle>();
         c->parent = this;
-        mlacp_bundle.push_back(c);
+        mlacp_bundle.append(c);
         return c;
     }
 
@@ -16233,7 +16423,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpBu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_bundle)
+    for (auto c : mlacp_bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16262,12 +16452,12 @@ bool BundleInformation::Mlacp::MlacpBundles::has_leaf_or_child_of_name(const std
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
-    	,
+        ,
     mlacp_bundle_item(std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem>())
 {
     mlacp_bundle_item->parent = this;
 
-    yang_name = "mlacp-bundle"; yang_parent_name = "mlacp-bundles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-bundle"; yang_parent_name = "mlacp-bundles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::~MlacpBundle()
@@ -16276,6 +16466,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::~MlacpBundle()
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_interface.is_set
 	|| (mlacp_bundle_item !=  nullptr && mlacp_bundle_item->has_data());
 }
@@ -16297,7 +16488,8 @@ std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::get_absolute_pa
 std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mlacp-bundle" <<"[bundle-interface='" <<bundle_interface <<"']";
+    path_buffer << "mlacp-bundle";
+    ADD_KEY_TOKEN(bundle_interface, "bundle-interface");
     return path_buffer.str();
 }
 
@@ -16363,9 +16555,11 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::has_leaf_or_child_of_n
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpBundleItem()
+    :
+    mlacp_data(this, {})
 {
 
-    yang_name = "mlacp-bundle-item"; yang_parent_name = "mlacp-bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-bundle-item"; yang_parent_name = "mlacp-bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::~MlacpBundleItem()
@@ -16374,7 +16568,8 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::~MlacpBund
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_data.len(); index++)
     {
         if(mlacp_data[index]->has_data())
             return true;
@@ -16384,7 +16579,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::has_d
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_data.len(); index++)
     {
         if(mlacp_data[index]->has_operation())
             return true;
@@ -16414,7 +16609,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpBundles::MlacpBundle::Mla
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData>();
         c->parent = this;
-        mlacp_data.push_back(c);
+        mlacp_data.append(c);
         return c;
     }
 
@@ -16426,7 +16621,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpBu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_data)
+    for (auto c : mlacp_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16455,10 +16650,11 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::has_l
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::MlacpData()
     :
     iccp_group_data(std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData>())
+    , bundle_data(this, {})
 {
     iccp_group_data->parent = this;
 
-    yang_name = "mlacp-data"; yang_parent_name = "mlacp-bundle-item"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-data"; yang_parent_name = "mlacp-bundle-item"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::~MlacpData()
@@ -16467,7 +16663,8 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::has_data() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_data())
             return true;
@@ -16477,7 +16674,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_data.size(); index++)
+    for (std::size_t index=0; index<bundle_data.len(); index++)
     {
         if(bundle_data[index]->has_operation())
             return true;
@@ -16517,7 +16714,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpBundles::MlacpBundle::Mla
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData>();
         c->parent = this;
-        bundle_data.push_back(c);
+        bundle_data.append(c);
         return c;
     }
 
@@ -16534,7 +16731,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpBu
     }
 
     count = 0;
-    for (auto const & c : bundle_data)
+    for (auto c : bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16565,9 +16762,11 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
     iccp_group_id{YType::uint32, "iccp-group-id"},
     singleton{YType::boolean, "singleton"},
     connect_timer_running{YType::uint64, "connect-timer-running"}
+        ,
+    node_data(this, {})
 {
 
-    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-group-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::~IccpGroupData()
@@ -16576,7 +16775,8 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::has_data() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_data())
             return true;
@@ -16588,7 +16788,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::has_operation() const
 {
-    for (std::size_t index=0; index<node_data.size(); index++)
+    for (std::size_t index=0; index<node_data.len(); index++)
     {
         if(node_data[index]->has_operation())
             return true;
@@ -16624,7 +16824,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpBundles::MlacpBundle::Mla
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData>();
         c->parent = this;
-        node_data.push_back(c);
+        node_data.append(c);
         return c;
     }
 
@@ -16636,7 +16836,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpBu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_data)
+    for (auto c : node_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16699,12 +16899,12 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
     version_number{YType::uint32, "version-number"},
     node_state{YType::enumeration, "node-state"},
     iccp_group_state{YType::enumeration, "iccp-group-state"}
-    	,
+        ,
     system_id(std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId>())
 {
     system_id->parent = this;
 
-    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-data"; yang_parent_name = "iccp-group-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::~NodeData()
@@ -16713,6 +16913,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::has_data() const
 {
+    if (is_presence_container) return true;
     return mlacp_node_id.is_set
 	|| ldp_id.is_set
 	|| version_number.is_set
@@ -16847,12 +17048,12 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId::SystemId()
     :
     system_prio{YType::uint16, "system-prio"}
-    	,
+        ,
     system_mac_addr(std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId::SystemMacAddr>())
 {
     system_mac_addr->parent = this;
 
-    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-id"; yang_parent_name = "node-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId::~SystemId()
@@ -16861,6 +17062,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_prio.is_set
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_data());
 }
@@ -16945,7 +17147,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "system-mac-addr"; yang_parent_name = "system-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId::SystemMacAddr::~SystemMacAddr()
@@ -16954,6 +17156,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId::SystemMacAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -17022,9 +17225,12 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
     bundle_interface_key{YType::uint16, "bundle-interface-key"},
     media_type{YType::enumeration, "media-type"},
     redundancy_object_id{YType::uint64, "redundancy-object-id"}
+        ,
+    mlacp_bundle_data(this, {})
+    , mlacp_member_data(this, {})
 {
 
-    yang_name = "bundle-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-data"; yang_parent_name = "mlacp-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::~BundleData()
@@ -17033,12 +17239,13 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_data())
             return true;
@@ -17050,12 +17257,12 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_bundle_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_bundle_data.len(); index++)
     {
         if(mlacp_bundle_data[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mlacp_member_data.size(); index++)
+    for (std::size_t index=0; index<mlacp_member_data.len(); index++)
     {
         if(mlacp_member_data[index]->has_operation())
             return true;
@@ -17091,7 +17298,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpBundles::MlacpBundle::Mla
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData>();
         c->parent = this;
-        mlacp_bundle_data.push_back(c);
+        mlacp_bundle_data.append(c);
         return c;
     }
 
@@ -17099,7 +17306,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpBundles::MlacpBundle::Mla
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpMemberData>();
         c->parent = this;
-        mlacp_member_data.push_back(c);
+        mlacp_member_data.append(c);
         return c;
     }
 
@@ -17111,7 +17318,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpBu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_bundle_data)
+    for (auto c : mlacp_bundle_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17120,7 +17327,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpBu
     }
 
     count = 0;
-    for (auto const & c : mlacp_member_data)
+    for (auto c : mlacp_member_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17183,12 +17390,12 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
     aggregator_id{YType::uint16, "aggregator-id"},
     bundle_state{YType::enumeration, "bundle-state"},
     port_priority{YType::uint16, "port-priority"}
-    	,
+        ,
     mac_address(std::make_shared<BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-bundle-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData::~MlacpBundleData()
@@ -17197,6 +17404,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| mlacp_node_id.is_set
 	|| aggregator_id.is_set
@@ -17333,7 +17541,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
     address{YType::str, "address"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "mlacp-bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData::MacAddress::~MacAddress()
@@ -17342,6 +17550,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -17416,7 +17625,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
     member_state{YType::enumeration, "member-state"}
 {
 
-    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlacp-member-data"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpMemberData::~MlacpMemberData()
@@ -17425,6 +17634,7 @@ BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData:
 
 bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpMemberData::has_data() const
 {
+    if (is_presence_container) return true;
     return port_name.is_set
 	|| interface_handle.is_set
 	|| mlacp_node_id.is_set
@@ -17567,9 +17777,11 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroups()
+    :
+    mlacp_iccp_group(this, {"iccp_group"})
 {
 
-    yang_name = "mlacp-iccp-groups"; yang_parent_name = "mlacp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlacp-iccp-groups"; yang_parent_name = "mlacp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BundleInformation::Mlacp::MlacpIccpGroups::~MlacpIccpGroups()
@@ -17578,7 +17790,8 @@ BundleInformation::Mlacp::MlacpIccpGroups::~MlacpIccpGroups()
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::has_data() const
 {
-    for (std::size_t index=0; index<mlacp_iccp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mlacp_iccp_group.len(); index++)
     {
         if(mlacp_iccp_group[index]->has_data())
             return true;
@@ -17588,7 +17801,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::has_data() const
 
 bool BundleInformation::Mlacp::MlacpIccpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<mlacp_iccp_group.size(); index++)
+    for (std::size_t index=0; index<mlacp_iccp_group.len(); index++)
     {
         if(mlacp_iccp_group[index]->has_operation())
             return true;
@@ -17625,7 +17838,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::get_child_by_
     {
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup>();
         c->parent = this;
-        mlacp_iccp_group.push_back(c);
+        mlacp_iccp_group.append(c);
         return c;
     }
 
@@ -17637,7 +17850,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mlacp_iccp_group)
+    for (auto c : mlacp_iccp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;

@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_lc_pwrglide_cfg {
 
 HardwareModulePortMode::HardwareModulePortMode()
+    :
+    config_mode(this, {"id1"})
 {
 
-    yang_name = "hardware-module-port-mode"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-pwrglide-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module-port-mode"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-pwrglide-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModulePortMode::~HardwareModulePortMode()
@@ -23,7 +25,8 @@ HardwareModulePortMode::~HardwareModulePortMode()
 
 bool HardwareModulePortMode::has_data() const
 {
-    for (std::size_t index=0; index<config_mode.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<config_mode.len(); index++)
     {
         if(config_mode[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool HardwareModulePortMode::has_data() const
 
 bool HardwareModulePortMode::has_operation() const
 {
-    for (std::size_t index=0; index<config_mode.size(); index++)
+    for (std::size_t index=0; index<config_mode.len(); index++)
     {
         if(config_mode[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> HardwareModulePortMode::get_child_by_name(const std::str
     {
         auto c = std::make_shared<HardwareModulePortMode::ConfigMode>();
         c->parent = this;
-        config_mode.push_back(c);
+        config_mode.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModulePortMode::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : config_mode)
+    for (auto c : config_mode.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool HardwareModulePortMode::has_leaf_or_child_of_name(const std::string & name)
 HardwareModulePortMode::ConfigMode::ConfigMode()
     :
     id1{YType::str, "id1"}
+        ,
+    node(this, {"id2"})
 {
 
-    yang_name = "config-mode"; yang_parent_name = "hardware-module-port-mode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config-mode"; yang_parent_name = "hardware-module-port-mode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModulePortMode::ConfigMode::~ConfigMode()
@@ -140,7 +145,8 @@ HardwareModulePortMode::ConfigMode::~ConfigMode()
 
 bool HardwareModulePortMode::ConfigMode::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool HardwareModulePortMode::ConfigMode::has_data() const
 
 bool HardwareModulePortMode::ConfigMode::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string HardwareModulePortMode::ConfigMode::get_absolute_path() const
 std::string HardwareModulePortMode::ConfigMode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "config-mode" <<"[id1='" <<id1 <<"']";
+    path_buffer << "config-mode";
+    ADD_KEY_TOKEN(id1, "id1");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> HardwareModulePortMode::ConfigMode::get_child_by_name(co
     {
         auto c = std::make_shared<HardwareModulePortMode::ConfigMode::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModulePortMode::ConfigMod
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -240,12 +247,12 @@ bool HardwareModulePortMode::ConfigMode::has_leaf_or_child_of_name(const std::st
 HardwareModulePortMode::ConfigMode::Node::Node()
     :
     id2{YType::str, "id2"}
-    	,
+        ,
     port_mode(std::make_shared<HardwareModulePortMode::ConfigMode::Node::PortMode>())
 {
     port_mode->parent = this;
 
-    yang_name = "node"; yang_parent_name = "config-mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node"; yang_parent_name = "config-mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModulePortMode::ConfigMode::Node::~Node()
@@ -254,6 +261,7 @@ HardwareModulePortMode::ConfigMode::Node::~Node()
 
 bool HardwareModulePortMode::ConfigMode::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return id2.is_set
 	|| (port_mode !=  nullptr && port_mode->has_data());
 }
@@ -268,7 +276,8 @@ bool HardwareModulePortMode::ConfigMode::Node::has_operation() const
 std::string HardwareModulePortMode::ConfigMode::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[id2='" <<id2 <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(id2, "id2");
     return path_buffer.str();
 }
 
@@ -338,7 +347,7 @@ HardwareModulePortMode::ConfigMode::Node::PortMode::PortMode()
     if_port_mode{YType::str, "if-port-mode"}
 {
 
-    yang_name = "port-mode"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-mode"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModulePortMode::ConfigMode::Node::PortMode::~PortMode()
@@ -347,6 +356,7 @@ HardwareModulePortMode::ConfigMode::Node::PortMode::~PortMode()
 
 bool HardwareModulePortMode::ConfigMode::Node::PortMode::has_data() const
 {
+    if (is_presence_container) return true;
     return if_port_mode.is_set;
 }
 

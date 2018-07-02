@@ -20,7 +20,7 @@ Cdp::Cdp()
     log_adjacency{YType::empty, "log-adjacency"}
 {
 
-    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cdp"; yang_parent_name = "Cisco-IOS-XR-cdp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Cdp::~Cdp()
@@ -29,6 +29,7 @@ Cdp::~Cdp()
 
 bool Cdp::has_data() const
 {
+    if (is_presence_container) return true;
     return timer.is_set
 	|| advertise_v1_only.is_set
 	|| enable.is_set

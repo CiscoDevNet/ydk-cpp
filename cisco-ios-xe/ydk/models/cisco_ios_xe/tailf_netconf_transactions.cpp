@@ -17,7 +17,7 @@ StartTransaction::StartTransaction()
 {
     input->parent = this;
 
-    yang_name = "start-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "start-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 StartTransaction::~StartTransaction()
@@ -26,6 +26,7 @@ StartTransaction::~StartTransaction()
 
 bool StartTransaction::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -120,12 +121,12 @@ bool StartTransaction::has_leaf_or_child_of_name(const std::string & name) const
 StartTransaction::Input::Input()
     :
     with_inactive{YType::empty, "tailf-netconf-inactive:with-inactive"}
-    	,
+        ,
     target(std::make_shared<StartTransaction::Input::Target>())
 {
     target->parent = this;
 
-    yang_name = "input"; yang_parent_name = "start-transaction"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "start-transaction"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StartTransaction::Input::~Input()
@@ -134,6 +135,7 @@ StartTransaction::Input::~Input()
 
 bool StartTransaction::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return with_inactive.is_set
 	|| (target !=  nullptr && target->has_data());
 }
@@ -227,7 +229,7 @@ StartTransaction::Input::Target::Target()
     candidate{YType::empty, "candidate"}
 {
 
-    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StartTransaction::Input::Target::~Target()
@@ -236,6 +238,7 @@ StartTransaction::Input::Target::~Target()
 
 bool StartTransaction::Input::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return startup.is_set
 	|| running.is_set
 	|| candidate.is_set;
@@ -335,7 +338,7 @@ bool StartTransaction::Input::Target::has_leaf_or_child_of_name(const std::strin
 PrepareTransaction::PrepareTransaction()
 {
 
-    yang_name = "prepare-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "prepare-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PrepareTransaction::~PrepareTransaction()
@@ -344,6 +347,7 @@ PrepareTransaction::~PrepareTransaction()
 
 bool PrepareTransaction::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -421,7 +425,7 @@ bool PrepareTransaction::has_leaf_or_child_of_name(const std::string & name) con
 CommitTransaction::CommitTransaction()
 {
 
-    yang_name = "commit-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "commit-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CommitTransaction::~CommitTransaction()
@@ -430,6 +434,7 @@ CommitTransaction::~CommitTransaction()
 
 bool CommitTransaction::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -507,7 +512,7 @@ bool CommitTransaction::has_leaf_or_child_of_name(const std::string & name) cons
 AbortTransaction::AbortTransaction()
 {
 
-    yang_name = "abort-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "abort-transaction"; yang_parent_name = "tailf-netconf-transactions"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AbortTransaction::~AbortTransaction()
@@ -516,6 +521,7 @@ AbortTransaction::~AbortTransaction()
 
 bool AbortTransaction::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

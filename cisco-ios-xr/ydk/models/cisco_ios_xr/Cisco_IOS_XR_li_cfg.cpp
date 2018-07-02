@@ -16,7 +16,7 @@ LawfulIntercept::LawfulIntercept()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "lawful-intercept"; yang_parent_name = "Cisco-IOS-XR-li-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lawful-intercept"; yang_parent_name = "Cisco-IOS-XR-li-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LawfulIntercept::~LawfulIntercept()
@@ -25,6 +25,7 @@ LawfulIntercept::~LawfulIntercept()
 
 bool LawfulIntercept::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 

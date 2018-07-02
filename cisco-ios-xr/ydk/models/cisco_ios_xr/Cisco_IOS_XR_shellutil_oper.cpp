@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_shellutil_oper {
 SystemTime::SystemTime()
     :
     clock_(std::make_shared<SystemTime::Clock>())
-	,uptime(std::make_shared<SystemTime::Uptime>())
+    , uptime(std::make_shared<SystemTime::Uptime>())
 {
     clock_->parent = this;
     uptime->parent = this;
 
-    yang_name = "system-time"; yang_parent_name = "Cisco-IOS-XR-shellutil-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "system-time"; yang_parent_name = "Cisco-IOS-XR-shellutil-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SystemTime::~SystemTime()
@@ -28,6 +28,7 @@ SystemTime::~SystemTime()
 
 bool SystemTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (clock_ !=  nullptr && clock_->has_data())
 	|| (uptime !=  nullptr && uptime->has_data());
 }
@@ -149,7 +150,7 @@ SystemTime::Clock::Clock()
     time_source{YType::enumeration, "time-source"}
 {
 
-    yang_name = "clock"; yang_parent_name = "system-time"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clock"; yang_parent_name = "system-time"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SystemTime::Clock::~Clock()
@@ -158,6 +159,7 @@ SystemTime::Clock::~Clock()
 
 bool SystemTime::Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return year.is_set
 	|| month.is_set
 	|| day.is_set
@@ -351,7 +353,7 @@ SystemTime::Uptime::Uptime()
     uptime{YType::uint32, "uptime"}
 {
 
-    yang_name = "uptime"; yang_parent_name = "system-time"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "uptime"; yang_parent_name = "system-time"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SystemTime::Uptime::~Uptime()
@@ -360,6 +362,7 @@ SystemTime::Uptime::~Uptime()
 
 bool SystemTime::Uptime::has_data() const
 {
+    if (is_presence_container) return true;
     return host_name.is_set
 	|| uptime.is_set;
 }

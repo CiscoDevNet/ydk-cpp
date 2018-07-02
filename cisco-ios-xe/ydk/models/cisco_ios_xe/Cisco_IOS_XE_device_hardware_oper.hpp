@@ -59,8 +59,8 @@ class DeviceHardwareData::DeviceHardware : public ydk::Entity
         class DeviceAlarm; //type: DeviceHardwareData::DeviceHardware::DeviceAlarm
         class DeviceSystemData; //type: DeviceHardwareData::DeviceHardware::DeviceSystemData
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_device_hardware_oper::DeviceHardwareData::DeviceHardware::DeviceInventory> > device_inventory;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_device_hardware_oper::DeviceHardwareData::DeviceHardware::DeviceAlarm> > device_alarm;
+        ydk::YList device_inventory;
+        ydk::YList device_alarm;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_device_hardware_oper::DeviceHardwareData::DeviceHardware::DeviceSystemData> device_system_data; // presence node
         
 }; // DeviceHardwareData::DeviceHardware
@@ -145,6 +145,15 @@ class DeviceHardwareData::DeviceHardware::DeviceSystemData : public ydk::Entity
 
 }; // DeviceHardwareData::DeviceHardware::DeviceSystemData
 
+class AlarmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf alarm_severity_critical;
+        static const ydk::Enum::YLeaf alarm_severity_major;
+        static const ydk::Enum::YLeaf alarm_severity_minor;
+
+};
+
 class HwType : public ydk::Enum
 {
     public:
@@ -160,15 +169,6 @@ class HwType : public ydk::Enum
         static const ydk::Enum::YLeaf hw_type_transceiver;
         static const ydk::Enum::YLeaf hw_type_fantray;
         static const ydk::Enum::YLeaf hw_type_pem;
-
-};
-
-class AlarmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf alarm_severity_critical;
-        static const ydk::Enum::YLeaf alarm_severity_major;
-        static const ydk::Enum::YLeaf alarm_severity_minor;
 
 };
 

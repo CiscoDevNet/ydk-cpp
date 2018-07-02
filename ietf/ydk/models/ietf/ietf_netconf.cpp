@@ -14,12 +14,12 @@ namespace ietf_netconf {
 GetConfig::GetConfig()
     :
     input(std::make_shared<GetConfig::Input>())
-	,output(std::make_shared<GetConfig::Output>())
+    , output(std::make_shared<GetConfig::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "get-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "get-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 GetConfig::~GetConfig()
@@ -28,6 +28,7 @@ GetConfig::~GetConfig()
 
 bool GetConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -139,12 +140,12 @@ GetConfig::Input::Input()
     :
     filter{YType::str, "filter"},
     with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
-    	,
+        ,
     source(std::make_shared<GetConfig::Input::Source>())
 {
     source->parent = this;
 
-    yang_name = "input"; yang_parent_name = "get-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "get-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GetConfig::Input::~Input()
@@ -153,6 +154,7 @@ GetConfig::Input::~Input()
 
 bool GetConfig::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return filter.is_set
 	|| with_defaults.is_set
 	|| (source !=  nullptr && source->has_data());
@@ -259,7 +261,7 @@ GetConfig::Input::Source::Source()
     startup{YType::empty, "startup"}
 {
 
-    yang_name = "source"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GetConfig::Input::Source::~Source()
@@ -268,6 +270,7 @@ GetConfig::Input::Source::~Source()
 
 bool GetConfig::Input::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
@@ -369,7 +372,7 @@ GetConfig::Output::Output()
     data{YType::str, "data"}
 {
 
-    yang_name = "output"; yang_parent_name = "get-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "get-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 GetConfig::Output::~Output()
@@ -378,6 +381,7 @@ GetConfig::Output::~Output()
 
 bool GetConfig::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -454,7 +458,7 @@ EditConfig::EditConfig()
 {
     input->parent = this;
 
-    yang_name = "edit-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "edit-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EditConfig::~EditConfig()
@@ -463,6 +467,7 @@ EditConfig::~EditConfig()
 
 bool EditConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -561,12 +566,12 @@ EditConfig::Input::Input()
     error_option{YType::enumeration, "error-option"},
     config{YType::str, "config"},
     url{YType::str, "url"}
-    	,
+        ,
     target(std::make_shared<EditConfig::Input::Target>())
 {
     target->parent = this;
 
-    yang_name = "input"; yang_parent_name = "edit-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "edit-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EditConfig::Input::~Input()
@@ -575,6 +580,7 @@ EditConfig::Input::~Input()
 
 bool EditConfig::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return default_operation.is_set
 	|| test_option.is_set
 	|| error_option.is_set
@@ -719,7 +725,7 @@ EditConfig::Input::Target::Target()
     running{YType::empty, "running"}
 {
 
-    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EditConfig::Input::Target::~Target()
@@ -728,6 +734,7 @@ EditConfig::Input::Target::~Target()
 
 bool EditConfig::Input::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate.is_set
 	|| running.is_set;
 }
@@ -817,7 +824,7 @@ CopyConfig::CopyConfig()
 {
     input->parent = this;
 
-    yang_name = "copy-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "copy-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CopyConfig::~CopyConfig()
@@ -826,6 +833,7 @@ CopyConfig::~CopyConfig()
 
 bool CopyConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -920,14 +928,14 @@ bool CopyConfig::has_leaf_or_child_of_name(const std::string & name) const
 CopyConfig::Input::Input()
     :
     with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
-    	,
+        ,
     target(std::make_shared<CopyConfig::Input::Target>())
-	,source(std::make_shared<CopyConfig::Input::Source>())
+    , source(std::make_shared<CopyConfig::Input::Source>())
 {
     target->parent = this;
     source->parent = this;
 
-    yang_name = "input"; yang_parent_name = "copy-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "copy-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CopyConfig::Input::~Input()
@@ -936,6 +944,7 @@ CopyConfig::Input::~Input()
 
 bool CopyConfig::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return with_defaults.is_set
 	|| (target !=  nullptr && target->has_data())
 	|| (source !=  nullptr && source->has_data());
@@ -1046,7 +1055,7 @@ CopyConfig::Input::Target::Target()
     url{YType::str, "url"}
 {
 
-    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CopyConfig::Input::Target::~Target()
@@ -1055,6 +1064,7 @@ CopyConfig::Input::Target::~Target()
 
 bool CopyConfig::Input::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set
@@ -1173,7 +1183,7 @@ CopyConfig::Input::Source::Source()
     config{YType::str, "config"}
 {
 
-    yang_name = "source"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CopyConfig::Input::Source::~Source()
@@ -1182,6 +1192,7 @@ CopyConfig::Input::Source::~Source()
 
 bool CopyConfig::Input::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set
@@ -1310,7 +1321,7 @@ DeleteConfig::DeleteConfig()
 {
     input->parent = this;
 
-    yang_name = "delete-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "delete-config"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DeleteConfig::~DeleteConfig()
@@ -1319,6 +1330,7 @@ DeleteConfig::~DeleteConfig()
 
 bool DeleteConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1416,7 +1428,7 @@ DeleteConfig::Input::Input()
 {
     target->parent = this;
 
-    yang_name = "input"; yang_parent_name = "delete-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "delete-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DeleteConfig::Input::~Input()
@@ -1425,6 +1437,7 @@ DeleteConfig::Input::~Input()
 
 bool DeleteConfig::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (target !=  nullptr && target->has_data());
 }
 
@@ -1504,7 +1517,7 @@ DeleteConfig::Input::Target::Target()
     url{YType::str, "url"}
 {
 
-    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DeleteConfig::Input::Target::~Target()
@@ -1513,6 +1526,7 @@ DeleteConfig::Input::Target::~Target()
 
 bool DeleteConfig::Input::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return startup.is_set
 	|| url.is_set;
 }
@@ -1602,7 +1616,7 @@ Lock::Lock()
 {
     input->parent = this;
 
-    yang_name = "lock"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lock"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Lock::~Lock()
@@ -1611,6 +1625,7 @@ Lock::~Lock()
 
 bool Lock::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1708,7 +1723,7 @@ Lock::Input::Input()
 {
     target->parent = this;
 
-    yang_name = "input"; yang_parent_name = "lock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "lock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lock::Input::~Input()
@@ -1717,6 +1732,7 @@ Lock::Input::~Input()
 
 bool Lock::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (target !=  nullptr && target->has_data());
 }
 
@@ -1797,7 +1813,7 @@ Lock::Input::Target::Target()
     startup{YType::empty, "startup"}
 {
 
-    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lock::Input::Target::~Target()
@@ -1806,6 +1822,7 @@ Lock::Input::Target::~Target()
 
 bool Lock::Input::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
@@ -1908,7 +1925,7 @@ Unlock::Unlock()
 {
     input->parent = this;
 
-    yang_name = "unlock"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "unlock"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Unlock::~Unlock()
@@ -1917,6 +1934,7 @@ Unlock::~Unlock()
 
 bool Unlock::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2014,7 +2032,7 @@ Unlock::Input::Input()
 {
     target->parent = this;
 
-    yang_name = "input"; yang_parent_name = "unlock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "unlock"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Unlock::Input::~Input()
@@ -2023,6 +2041,7 @@ Unlock::Input::~Input()
 
 bool Unlock::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (target !=  nullptr && target->has_data());
 }
 
@@ -2103,7 +2122,7 @@ Unlock::Input::Target::Target()
     startup{YType::empty, "startup"}
 {
 
-    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Unlock::Input::Target::~Target()
@@ -2112,6 +2131,7 @@ Unlock::Input::Target::~Target()
 
 bool Unlock::Input::Target::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
@@ -2211,12 +2231,12 @@ bool Unlock::Input::Target::has_leaf_or_child_of_name(const std::string & name) 
 Get::Get()
     :
     input(std::make_shared<Get::Input>())
-	,output(std::make_shared<Get::Output>())
+    , output(std::make_shared<Get::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "get"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "get"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Get::~Get()
@@ -2225,6 +2245,7 @@ Get::~Get()
 
 bool Get::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -2338,7 +2359,7 @@ Get::Input::Input()
     with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
 {
 
-    yang_name = "input"; yang_parent_name = "get"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "get"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Get::Input::~Input()
@@ -2347,6 +2368,7 @@ Get::Input::~Input()
 
 bool Get::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return filter.is_set
 	|| with_defaults.is_set;
 }
@@ -2435,7 +2457,7 @@ Get::Output::Output()
     data{YType::str, "data"}
 {
 
-    yang_name = "output"; yang_parent_name = "get"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "get"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Get::Output::~Output()
@@ -2444,6 +2466,7 @@ Get::Output::~Output()
 
 bool Get::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -2517,7 +2540,7 @@ bool Get::Output::has_leaf_or_child_of_name(const std::string & name) const
 CloseSession::CloseSession()
 {
 
-    yang_name = "close-session"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "close-session"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CloseSession::~CloseSession()
@@ -2526,6 +2549,7 @@ CloseSession::~CloseSession()
 
 bool CloseSession::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2606,7 +2630,7 @@ KillSession::KillSession()
 {
     input->parent = this;
 
-    yang_name = "kill-session"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "kill-session"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 KillSession::~KillSession()
@@ -2615,6 +2639,7 @@ KillSession::~KillSession()
 
 bool KillSession::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2711,7 +2736,7 @@ KillSession::Input::Input()
     session_id{YType::uint32, "session-id"}
 {
 
-    yang_name = "input"; yang_parent_name = "kill-session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "kill-session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 KillSession::Input::~Input()
@@ -2720,6 +2745,7 @@ KillSession::Input::~Input()
 
 bool KillSession::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set;
 }
 
@@ -2796,7 +2822,7 @@ Commit::Commit()
 {
     input->parent = this;
 
-    yang_name = "commit"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "commit"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Commit::~Commit()
@@ -2805,6 +2831,7 @@ Commit::~Commit()
 
 bool Commit::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2904,7 +2931,7 @@ Commit::Input::Input()
     persist_id{YType::str, "persist-id"}
 {
 
-    yang_name = "input"; yang_parent_name = "commit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "commit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Commit::Input::~Input()
@@ -2913,6 +2940,7 @@ Commit::Input::~Input()
 
 bool Commit::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return confirmed.is_set
 	|| confirm_timeout.is_set
 	|| persist.is_set
@@ -3025,7 +3053,7 @@ bool Commit::Input::has_leaf_or_child_of_name(const std::string & name) const
 DiscardChanges::DiscardChanges()
 {
 
-    yang_name = "discard-changes"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "discard-changes"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DiscardChanges::~DiscardChanges()
@@ -3034,6 +3062,7 @@ DiscardChanges::~DiscardChanges()
 
 bool DiscardChanges::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3114,7 +3143,7 @@ CancelCommit::CancelCommit()
 {
     input->parent = this;
 
-    yang_name = "cancel-commit"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cancel-commit"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CancelCommit::~CancelCommit()
@@ -3123,6 +3152,7 @@ CancelCommit::~CancelCommit()
 
 bool CancelCommit::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3219,7 +3249,7 @@ CancelCommit::Input::Input()
     persist_id{YType::str, "persist-id"}
 {
 
-    yang_name = "input"; yang_parent_name = "cancel-commit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "cancel-commit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CancelCommit::Input::~Input()
@@ -3228,6 +3258,7 @@ CancelCommit::Input::~Input()
 
 bool CancelCommit::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return persist_id.is_set;
 }
 
@@ -3304,7 +3335,7 @@ Validate::Validate()
 {
     input->parent = this;
 
-    yang_name = "validate"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "validate"; yang_parent_name = "ietf-netconf"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Validate::~Validate()
@@ -3313,6 +3344,7 @@ Validate::~Validate()
 
 bool Validate::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3410,7 +3442,7 @@ Validate::Input::Input()
 {
     source->parent = this;
 
-    yang_name = "input"; yang_parent_name = "validate"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "validate"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Validate::Input::~Input()
@@ -3419,6 +3451,7 @@ Validate::Input::~Input()
 
 bool Validate::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data());
 }
 
@@ -3501,7 +3534,7 @@ Validate::Input::Source::Source()
     config{YType::str, "config"}
 {
 
-    yang_name = "source"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Validate::Input::Source::~Source()
@@ -3510,6 +3543,7 @@ Validate::Input::Source::~Source()
 
 bool Validate::Input::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set
@@ -3632,6 +3666,9 @@ bool Validate::Input::Source::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
+const Enum::YLeaf ErrorSeverityType::error {0, "error"};
+const Enum::YLeaf ErrorSeverityType::warning {1, "warning"};
+
 const Enum::YLeaf ErrorTagType::in_use {0, "in-use"};
 const Enum::YLeaf ErrorTagType::invalid_value {1, "invalid-value"};
 const Enum::YLeaf ErrorTagType::too_big {2, "too-big"};
@@ -3652,9 +3689,6 @@ const Enum::YLeaf ErrorTagType::operation_not_supported {16, "operation-not-supp
 const Enum::YLeaf ErrorTagType::operation_failed {17, "operation-failed"};
 const Enum::YLeaf ErrorTagType::partial_operation {18, "partial-operation"};
 const Enum::YLeaf ErrorTagType::malformed_message {19, "malformed-message"};
-
-const Enum::YLeaf ErrorSeverityType::error {0, "error"};
-const Enum::YLeaf ErrorSeverityType::warning {1, "warning"};
 
 const Enum::YLeaf EditOperationType::merge {0, "merge"};
 const Enum::YLeaf EditOperationType::replace {1, "replace"};

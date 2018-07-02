@@ -57,7 +57,7 @@ class HardwareModule::Nodes : public ydk::Entity
 
         class Node; //type: HardwareModule::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_drivers_vpa_infra_cfg::HardwareModule::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModule::Nodes
 

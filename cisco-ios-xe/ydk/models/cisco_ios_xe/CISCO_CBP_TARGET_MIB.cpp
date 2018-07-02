@@ -13,13 +13,13 @@ namespace CISCO_CBP_TARGET_MIB {
 
 CISCOCBPTARGETMIB::CISCOCBPTARGETMIB()
     :
-    ccbpttargetattachcfg(std::make_shared<CISCOCBPTARGETMIB::Ccbpttargetattachcfg>())
-	,ccbpttargettable(std::make_shared<CISCOCBPTARGETMIB::Ccbpttargettable>())
+    ccbpttargetattachcfg(std::make_shared<CISCOCBPTARGETMIB::CcbptTargetAttachCfg>())
+    , ccbpttargettable(std::make_shared<CISCOCBPTARGETMIB::CcbptTargetTable>())
 {
     ccbpttargetattachcfg->parent = this;
     ccbpttargettable->parent = this;
 
-    yang_name = "CISCO-CBP-TARGET-MIB"; yang_parent_name = "CISCO-CBP-TARGET-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-CBP-TARGET-MIB"; yang_parent_name = "CISCO-CBP-TARGET-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOCBPTARGETMIB::~CISCOCBPTARGETMIB()
@@ -28,6 +28,7 @@ CISCOCBPTARGETMIB::~CISCOCBPTARGETMIB()
 
 bool CISCOCBPTARGETMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ccbpttargetattachcfg !=  nullptr && ccbpttargetattachcfg->has_data())
 	|| (ccbpttargettable !=  nullptr && ccbpttargettable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOCBPTARGETMIB::get_child_by_name(const std::string &
     {
         if(ccbpttargetattachcfg == nullptr)
         {
-            ccbpttargetattachcfg = std::make_shared<CISCOCBPTARGETMIB::Ccbpttargetattachcfg>();
+            ccbpttargetattachcfg = std::make_shared<CISCOCBPTARGETMIB::CcbptTargetAttachCfg>();
         }
         return ccbpttargetattachcfg;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOCBPTARGETMIB::get_child_by_name(const std::string &
     {
         if(ccbpttargettable == nullptr)
         {
-            ccbpttargettable = std::make_shared<CISCOCBPTARGETMIB::Ccbpttargettable>();
+            ccbpttargettable = std::make_shared<CISCOCBPTARGETMIB::CcbptTargetTable>();
         }
         return ccbpttargettable;
     }
@@ -135,47 +136,48 @@ bool CISCOCBPTARGETMIB::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-CISCOCBPTARGETMIB::Ccbpttargetattachcfg::Ccbpttargetattachcfg()
+CISCOCBPTARGETMIB::CcbptTargetAttachCfg::CcbptTargetAttachCfg()
     :
     ccbptpolicyidnext{YType::uint32, "ccbptPolicyIdNext"},
     ccbpttargettablelastchange{YType::uint32, "ccbptTargetTableLastChange"}
 {
 
-    yang_name = "ccbptTargetAttachCfg"; yang_parent_name = "CISCO-CBP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccbptTargetAttachCfg"; yang_parent_name = "CISCO-CBP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCBPTARGETMIB::Ccbpttargetattachcfg::~Ccbpttargetattachcfg()
+CISCOCBPTARGETMIB::CcbptTargetAttachCfg::~CcbptTargetAttachCfg()
 {
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargetattachcfg::has_data() const
+bool CISCOCBPTARGETMIB::CcbptTargetAttachCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return ccbptpolicyidnext.is_set
 	|| ccbpttargettablelastchange.is_set;
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargetattachcfg::has_operation() const
+bool CISCOCBPTARGETMIB::CcbptTargetAttachCfg::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccbptpolicyidnext.yfilter)
 	|| ydk::is_set(ccbpttargettablelastchange.yfilter);
 }
 
-std::string CISCOCBPTARGETMIB::Ccbpttargetattachcfg::get_absolute_path() const
+std::string CISCOCBPTARGETMIB::CcbptTargetAttachCfg::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CBP-TARGET-MIB:CISCO-CBP-TARGET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCBPTARGETMIB::Ccbpttargetattachcfg::get_segment_path() const
+std::string CISCOCBPTARGETMIB::CcbptTargetAttachCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ccbptTargetAttachCfg";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::Ccbpttargetattachcfg::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::CcbptTargetAttachCfg::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -186,19 +188,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::Ccbpttargetatt
 
 }
 
-std::shared_ptr<Entity> CISCOCBPTARGETMIB::Ccbpttargetattachcfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCBPTARGETMIB::CcbptTargetAttachCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::Ccbpttargetattachcfg::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::CcbptTargetAttachCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCBPTARGETMIB::Ccbpttargetattachcfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCBPTARGETMIB::CcbptTargetAttachCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccbptPolicyIdNext")
     {
@@ -214,7 +216,7 @@ void CISCOCBPTARGETMIB::Ccbpttargetattachcfg::set_value(const std::string & valu
     }
 }
 
-void CISCOCBPTARGETMIB::Ccbpttargetattachcfg::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCBPTARGETMIB::CcbptTargetAttachCfg::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ccbptPolicyIdNext")
     {
@@ -226,26 +228,29 @@ void CISCOCBPTARGETMIB::Ccbpttargetattachcfg::set_filter(const std::string & val
     }
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargetattachcfg::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCBPTARGETMIB::CcbptTargetAttachCfg::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccbptPolicyIdNext" || name == "ccbptTargetTableLastChange")
         return true;
     return false;
 }
 
-CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargettable()
+CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetTable()
+    :
+    ccbpttargetentry(this, {"ccbpttargettype", "ccbpttargetid", "ccbpttargetdir", "ccbptpolicysourcetype", "ccbptpolicyid"})
 {
 
-    yang_name = "ccbptTargetTable"; yang_parent_name = "CISCO-CBP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccbptTargetTable"; yang_parent_name = "CISCO-CBP-TARGET-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCBPTARGETMIB::Ccbpttargettable::~Ccbpttargettable()
+CISCOCBPTARGETMIB::CcbptTargetTable::~CcbptTargetTable()
 {
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargettable::has_data() const
+bool CISCOCBPTARGETMIB::CcbptTargetTable::has_data() const
 {
-    for (std::size_t index=0; index<ccbpttargetentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccbpttargetentry.len(); index++)
     {
         if(ccbpttargetentry[index]->has_data())
             return true;
@@ -253,9 +258,9 @@ bool CISCOCBPTARGETMIB::Ccbpttargettable::has_data() const
     return false;
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargettable::has_operation() const
+bool CISCOCBPTARGETMIB::CcbptTargetTable::has_operation() const
 {
-    for (std::size_t index=0; index<ccbpttargetentry.size(); index++)
+    for (std::size_t index=0; index<ccbpttargetentry.len(); index++)
     {
         if(ccbpttargetentry[index]->has_operation())
             return true;
@@ -263,21 +268,21 @@ bool CISCOCBPTARGETMIB::Ccbpttargettable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCBPTARGETMIB::Ccbpttargettable::get_absolute_path() const
+std::string CISCOCBPTARGETMIB::CcbptTargetTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CBP-TARGET-MIB:CISCO-CBP-TARGET-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCBPTARGETMIB::Ccbpttargettable::get_segment_path() const
+std::string CISCOCBPTARGETMIB::CcbptTargetTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ccbptTargetTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::Ccbpttargettable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::CcbptTargetTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -286,25 +291,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::Ccbpttargettab
 
 }
 
-std::shared_ptr<Entity> CISCOCBPTARGETMIB::Ccbpttargettable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCBPTARGETMIB::CcbptTargetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccbptTargetEntry")
     {
-        auto c = std::make_shared<CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry>();
+        auto c = std::make_shared<CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry>();
         c->parent = this;
-        ccbpttargetentry.push_back(c);
+        ccbpttargetentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::Ccbpttargettable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::CcbptTargetTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccbpttargetentry)
+    for (auto c : ccbpttargetentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -315,22 +320,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::Ccbpttargettab
     return children;
 }
 
-void CISCOCBPTARGETMIB::Ccbpttargettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCBPTARGETMIB::CcbptTargetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCBPTARGETMIB::Ccbpttargettable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCBPTARGETMIB::CcbptTargetTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargettable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCBPTARGETMIB::CcbptTargetTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccbptTargetEntry")
         return true;
     return false;
 }
 
-CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::Ccbpttargetentry()
+CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::CcbptTargetEntry()
     :
     ccbpttargettype{YType::enumeration, "ccbptTargetType"},
     ccbpttargetid{YType::str, "ccbptTargetId"},
@@ -344,15 +349,16 @@ CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::Ccbpttargetentry()
     ccbptpolicyattachtime{YType::uint32, "ccbptPolicyAttachTime"}
 {
 
-    yang_name = "ccbptTargetEntry"; yang_parent_name = "ccbptTargetTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ccbptTargetEntry"; yang_parent_name = "ccbptTargetTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::~Ccbpttargetentry()
+CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::~CcbptTargetEntry()
 {
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_data() const
+bool CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccbpttargettype.is_set
 	|| ccbpttargetid.is_set
 	|| ccbpttargetdir.is_set
@@ -365,7 +371,7 @@ bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_data() const
 	|| ccbptpolicyattachtime.is_set;
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_operation() const
+bool CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccbpttargettype.yfilter)
@@ -380,21 +386,26 @@ bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_operation() cons
 	|| ydk::is_set(ccbptpolicyattachtime.yfilter);
 }
 
-std::string CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::get_absolute_path() const
+std::string CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CBP-TARGET-MIB:CISCO-CBP-TARGET-MIB/ccbptTargetTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::get_segment_path() const
+std::string CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccbptTargetEntry" <<"[ccbptTargetType='" <<ccbpttargettype <<"']" <<"[ccbptTargetId='" <<ccbpttargetid <<"']" <<"[ccbptTargetDir='" <<ccbpttargetdir <<"']" <<"[ccbptPolicySourceType='" <<ccbptpolicysourcetype <<"']" <<"[ccbptPolicyId='" <<ccbptpolicyid <<"']";
+    path_buffer << "ccbptTargetEntry";
+    ADD_KEY_TOKEN(ccbpttargettype, "ccbptTargetType");
+    ADD_KEY_TOKEN(ccbpttargetid, "ccbptTargetId");
+    ADD_KEY_TOKEN(ccbpttargetdir, "ccbptTargetDir");
+    ADD_KEY_TOKEN(ccbptpolicysourcetype, "ccbptPolicySourceType");
+    ADD_KEY_TOKEN(ccbptpolicyid, "ccbptPolicyId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -413,19 +424,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCBPTARGETMIB::Ccbpttargettab
 
 }
 
-std::shared_ptr<Entity> CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccbptTargetType")
     {
@@ -489,7 +500,7 @@ void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_value(const std:
     }
 }
 
-void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ccbptTargetType")
     {
@@ -533,7 +544,7 @@ void CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::set_filter(const std
     }
 }
 
-bool CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCBPTARGETMIB::CcbptTargetTable::CcbptTargetEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ccbptTargetType" || name == "ccbptTargetId" || name == "ccbptTargetDir" || name == "ccbptPolicySourceType" || name == "ccbptPolicyId" || name == "ccbptTargetStatus" || name == "ccbptTargetStorageType" || name == "ccbptPolicyMap" || name == "ccbptPolicyInstance" || name == "ccbptPolicyAttachTime")
         return true;

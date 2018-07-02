@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_31.hpp"
-#include "Cisco_IOS_XE_native_33.hpp"
 #include "Cisco_IOS_XE_native_32.hpp"
+#include "Cisco_IOS_XE_native_33.hpp"
 
 using namespace ydk;
 
@@ -16,7 +16,7 @@ namespace Cisco_IOS_XE_native {
 Native::Interface::Ucse::Encapsulation::Slip::Slip()
 {
 
-    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Encapsulation::Slip::~Slip()
@@ -25,6 +25,7 @@ Native::Interface::Ucse::Encapsulation::Slip::~Slip()
 
 bool Native::Interface::Ucse::Encapsulation::Slip::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -79,7 +80,7 @@ Native::Interface::Ucse::Encapsulation::FrameRelay::FrameRelay()
     ietf{YType::empty, "ietf"}
 {
 
-    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Encapsulation::FrameRelay::~FrameRelay()
@@ -88,6 +89,7 @@ Native::Interface::Ucse::Encapsulation::FrameRelay::~FrameRelay()
 
 bool Native::Interface::Ucse::Encapsulation::FrameRelay::has_data() const
 {
+    if (is_presence_container) return true;
     return ietf.is_set;
 }
 
@@ -156,7 +158,7 @@ Native::Interface::Ucse::FairQueueConf::FairQueueConf()
     fair_queue{YType::boolean, "fair-queue"}
 {
 
-    yang_name = "fair-queue-conf"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue-conf"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::FairQueueConf::~FairQueueConf()
@@ -165,6 +167,7 @@ Native::Interface::Ucse::FairQueueConf::~FairQueueConf()
 
 bool Native::Interface::Ucse::FairQueueConf::has_data() const
 {
+    if (is_presence_container) return true;
     return fair_queue.is_set;
 }
 
@@ -233,7 +236,7 @@ Native::Interface::Ucse::FairQueue::FairQueue()
     incomplete{YType::empty, "incomplete"}
 {
 
-    yang_name = "fair-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::FairQueue::~FairQueue()
@@ -242,6 +245,7 @@ Native::Interface::Ucse::FairQueue::~FairQueue()
 
 bool Native::Interface::Ucse::FairQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete.is_set;
 }
 
@@ -311,7 +315,7 @@ Native::Interface::Ucse::Flowcontrol::Flowcontrol()
     send{YType::enumeration, "send"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Flowcontrol::~Flowcontrol()
@@ -320,6 +324,7 @@ Native::Interface::Ucse::Flowcontrol::~Flowcontrol()
 
 bool Native::Interface::Ucse::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| send.is_set;
 }
@@ -399,7 +404,7 @@ bool Native::Interface::Ucse::Flowcontrol::has_leaf_or_child_of_name(const std::
 Native::Interface::Ucse::Isis::Isis()
 {
 
-    yang_name = "isis"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Isis::~Isis()
@@ -408,6 +413,7 @@ Native::Interface::Ucse::Isis::~Isis()
 
 bool Native::Interface::Ucse::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -462,7 +468,7 @@ Native::Interface::Ucse::KeepaliveSettings::KeepaliveSettings()
     keepalive(nullptr) // presence node
 {
 
-    yang_name = "keepalive-settings"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive-settings"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::KeepaliveSettings::~KeepaliveSettings()
@@ -471,6 +477,7 @@ Native::Interface::Ucse::KeepaliveSettings::~KeepaliveSettings()
 
 bool Native::Interface::Ucse::KeepaliveSettings::has_data() const
 {
+    if (is_presence_container) return true;
     return (keepalive !=  nullptr && keepalive->has_data());
 }
 
@@ -543,7 +550,7 @@ Native::Interface::Ucse::KeepaliveSettings::Keepalive::Keepalive()
     retries{YType::uint8, "retries"}
 {
 
-    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::KeepaliveSettings::Keepalive::~Keepalive()
@@ -552,6 +559,7 @@ Native::Interface::Ucse::KeepaliveSettings::Keepalive::~Keepalive()
 
 bool Native::Interface::Ucse::KeepaliveSettings::Keepalive::has_data() const
 {
+    if (is_presence_container) return true;
     return period.is_set
 	|| retries.is_set;
 }
@@ -631,7 +639,7 @@ bool Native::Interface::Ucse::KeepaliveSettings::Keepalive::has_leaf_or_child_of
 Native::Interface::Ucse::Bfd::Bfd()
 {
 
-    yang_name = "bfd"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Bfd::~Bfd()
@@ -640,6 +648,7 @@ Native::Interface::Ucse::Bfd::~Bfd()
 
 bool Native::Interface::Ucse::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -693,13 +702,13 @@ Native::Interface::Ucse::Bandwidth::Bandwidth()
     :
     qos_reference{YType::uint32, "qos-reference"},
     kilobits{YType::uint32, "kilobits"}
-    	,
+        ,
     receive(std::make_shared<Native::Interface::Ucse::Bandwidth::Receive>())
-	,inherit(nullptr) // presence node
+    , inherit(nullptr) // presence node
 {
     receive->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Bandwidth::~Bandwidth()
@@ -708,6 +717,7 @@ Native::Interface::Ucse::Bandwidth::~Bandwidth()
 
 bool Native::Interface::Ucse::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_reference.is_set
 	|| kilobits.is_set
 	|| (receive !=  nullptr && receive->has_data())
@@ -822,7 +832,7 @@ Native::Interface::Ucse::Bandwidth::Receive::Receive()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Bandwidth::Receive::~Receive()
@@ -831,6 +841,7 @@ Native::Interface::Ucse::Bandwidth::Receive::~Receive()
 
 bool Native::Interface::Ucse::Bandwidth::Receive::has_data() const
 {
+    if (is_presence_container) return true;
     return inherit.is_set
 	|| kilobits.is_set;
 }
@@ -912,7 +923,7 @@ Native::Interface::Ucse::Bandwidth::Inherit::Inherit()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Bandwidth::Inherit::~Inherit()
@@ -921,6 +932,7 @@ Native::Interface::Ucse::Bandwidth::Inherit::~Inherit()
 
 bool Native::Interface::Ucse::Bandwidth::Inherit::has_data() const
 {
+    if (is_presence_container) return true;
     return kilobits.is_set;
 }
 
@@ -990,12 +1002,12 @@ Native::Interface::Ucse::Dampening::Dampening()
     start_reusing_time{YType::uint16, "start-reusing-time"},
     start_supressing_time{YType::uint16, "start-supressing-time"},
     maximum_supressing_time{YType::uint16, "maximum-supressing-time"}
-    	,
+        ,
     restart(std::make_shared<Native::Interface::Ucse::Dampening::Restart>())
 {
     restart->parent = this;
 
-    yang_name = "dampening"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Dampening::~Dampening()
@@ -1004,6 +1016,7 @@ Native::Interface::Ucse::Dampening::~Dampening()
 
 bool Native::Interface::Ucse::Dampening::has_data() const
 {
+    if (is_presence_container) return true;
     return dampening_time.is_set
 	|| start_reusing_time.is_set
 	|| start_supressing_time.is_set
@@ -1128,7 +1141,7 @@ Native::Interface::Ucse::Dampening::Restart::Restart()
     restart_penalty{YType::uint16, "restart-penalty"}
 {
 
-    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Dampening::Restart::~Restart()
@@ -1137,6 +1150,7 @@ Native::Interface::Ucse::Dampening::Restart::~Restart()
 
 bool Native::Interface::Ucse::Dampening::Restart::has_data() const
 {
+    if (is_presence_container) return true;
     return restart.is_set
 	|| restart_penalty.is_set;
 }
@@ -1223,7 +1237,7 @@ Native::Interface::Ucse::Domain::Domain()
     zero_sla{YType::empty, "zero-sla"}
 {
 
-    yang_name = "domain"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Domain::~Domain()
@@ -1232,6 +1246,7 @@ Native::Interface::Ucse::Domain::~Domain()
 
 bool Native::Interface::Ucse::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| path.is_set
 	|| internet_bound.is_set
@@ -1366,7 +1381,7 @@ Native::Interface::Ucse::HoldQueue::HoldQueue()
     queue_length{YType::uint16, "queue-length"}
 {
 
-    yang_name = "hold-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::HoldQueue::~HoldQueue()
@@ -1375,6 +1390,7 @@ Native::Interface::Ucse::HoldQueue::~HoldQueue()
 
 bool Native::Interface::Ucse::HoldQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| queue_length.is_set;
 }
@@ -1389,7 +1405,8 @@ bool Native::Interface::Ucse::HoldQueue::has_operation() const
 std::string Native::Interface::Ucse::HoldQueue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hold-queue" <<"[direction='" <<direction <<"']";
+    path_buffer << "hold-queue";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -1454,7 +1471,7 @@ bool Native::Interface::Ucse::HoldQueue::has_leaf_or_child_of_name(const std::st
 Native::Interface::Ucse::Mpls::Mpls()
 {
 
-    yang_name = "mpls"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Mpls::~Mpls()
@@ -1463,6 +1480,7 @@ Native::Interface::Ucse::Mpls::~Mpls()
 
 bool Native::Interface::Ucse::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1518,7 +1536,7 @@ Native::Interface::Ucse::IpVrf::IpVrf()
 {
     ip->parent = this;
 
-    yang_name = "ip-vrf"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-vrf"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::IpVrf::~IpVrf()
@@ -1527,6 +1545,7 @@ Native::Interface::Ucse::IpVrf::~IpVrf()
 
 bool Native::Interface::Ucse::IpVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -1599,7 +1618,7 @@ Native::Interface::Ucse::IpVrf::Ip::Ip()
 {
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::IpVrf::Ip::~Ip()
@@ -1608,6 +1627,7 @@ Native::Interface::Ucse::IpVrf::Ip::~Ip()
 
 bool Native::Interface::Ucse::IpVrf::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data());
 }
 
@@ -1679,7 +1699,7 @@ Native::Interface::Ucse::IpVrf::Ip::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::IpVrf::Ip::Vrf::~Vrf()
@@ -1688,6 +1708,7 @@ Native::Interface::Ucse::IpVrf::Ip::Vrf::~Vrf()
 
 bool Native::Interface::Ucse::IpVrf::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -1756,7 +1777,7 @@ Native::Interface::Ucse::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Vrf::~Vrf()
@@ -1765,6 +1786,7 @@ Native::Interface::Ucse::Vrf::~Vrf()
 
 bool Native::Interface::Ucse::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -1838,26 +1860,27 @@ Native::Interface::Ucse::Ip::Ip()
     redirects{YType::boolean, "redirects"},
     mtu{YType::uint16, "mtu"},
     mroute_cache{YType::boolean, "mroute-cache"}
-    	,
+        ,
     access_group(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup>())
-	,arp(std::make_shared<Native::Interface::Ucse::Ip::Arp>())
-	,vrf(std::make_shared<Native::Interface::Ucse::Ip::Vrf>())
-	,no_address(std::make_shared<Native::Interface::Ucse::Ip::NoAddress>())
-	,address(std::make_shared<Native::Interface::Ucse::Ip::Address>())
-	,hello_interval(std::make_shared<Native::Interface::Ucse::Ip::HelloInterval>())
-	,authentication(std::make_shared<Native::Interface::Ucse::Ip::Authentication>())
-	,hold_time(std::make_shared<Native::Interface::Ucse::Ip::HoldTime>())
-	,pim(std::make_shared<Native::Interface::Ucse::Ip::Pim>())
-	,policy(std::make_shared<Native::Interface::Ucse::Ip::Policy>())
-	,rip(std::make_shared<Native::Interface::Ucse::Ip::Rip>())
-	,route_cache_conf(std::make_shared<Native::Interface::Ucse::Ip::RouteCacheConf>())
-	,route_cache(nullptr) // presence node
-	,router(std::make_shared<Native::Interface::Ucse::Ip::Router>())
-	,tcp(std::make_shared<Native::Interface::Ucse::Ip::Tcp>())
-	,virtual_reassembly(std::make_shared<Native::Interface::Ucse::Ip::VirtualReassembly>())
-	,dhcp(std::make_shared<Native::Interface::Ucse::Ip::Dhcp>())
-	,summary_address(std::make_shared<Native::Interface::Ucse::Ip::SummaryAddress>())
-	,verify(std::make_shared<Native::Interface::Ucse::Ip::Verify>())
+    , arp(std::make_shared<Native::Interface::Ucse::Ip::Arp>())
+    , vrf(std::make_shared<Native::Interface::Ucse::Ip::Vrf>())
+    , no_address(std::make_shared<Native::Interface::Ucse::Ip::NoAddress>())
+    , address(std::make_shared<Native::Interface::Ucse::Ip::Address>())
+    , hello_interval(std::make_shared<Native::Interface::Ucse::Ip::HelloInterval>())
+    , authentication(std::make_shared<Native::Interface::Ucse::Ip::Authentication>())
+    , hold_time(std::make_shared<Native::Interface::Ucse::Ip::HoldTime>())
+    , helper_address(this, {"address"})
+    , pim(std::make_shared<Native::Interface::Ucse::Ip::Pim>())
+    , policy(std::make_shared<Native::Interface::Ucse::Ip::Policy>())
+    , rip(std::make_shared<Native::Interface::Ucse::Ip::Rip>())
+    , route_cache_conf(std::make_shared<Native::Interface::Ucse::Ip::RouteCacheConf>())
+    , route_cache(nullptr) // presence node
+    , router(std::make_shared<Native::Interface::Ucse::Ip::Router>())
+    , tcp(std::make_shared<Native::Interface::Ucse::Ip::Tcp>())
+    , virtual_reassembly(std::make_shared<Native::Interface::Ucse::Ip::VirtualReassembly>())
+    , dhcp(std::make_shared<Native::Interface::Ucse::Ip::Dhcp>())
+    , summary_address(std::make_shared<Native::Interface::Ucse::Ip::SummaryAddress>())
+    , verify(std::make_shared<Native::Interface::Ucse::Ip::Verify>())
 {
     access_group->parent = this;
     arp->parent = this;
@@ -1878,7 +1901,7 @@ Native::Interface::Ucse::Ip::Ip()
     summary_address->parent = this;
     verify->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::~Ip()
@@ -1887,7 +1910,8 @@ Native::Interface::Ucse::Ip::~Ip()
 
 bool Native::Interface::Ucse::Ip::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -1923,7 +1947,7 @@ bool Native::Interface::Ucse::Ip::has_data() const
 
 bool Native::Interface::Ucse::Ip::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -2060,7 +2084,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Ip::get_child_by_name(const std
     {
         auto c = std::make_shared<Native::Interface::Ucse::Ip::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -2211,7 +2235,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Ip::get_
     }
 
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2375,12 +2399,12 @@ bool Native::Interface::Ucse::Ip::has_leaf_or_child_of_name(const std::string & 
 Native::Interface::Ucse::Ip::AccessGroup::AccessGroup()
     :
     in(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::In>())
-	,out(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::Out>())
+    , out(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::Out>())
 {
     in->parent = this;
     out->parent = this;
 
-    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::AccessGroup::~AccessGroup()
@@ -2389,6 +2413,7 @@ Native::Interface::Ucse::Ip::AccessGroup::~AccessGroup()
 
 bool Native::Interface::Ucse::Ip::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data())
 	|| (out !=  nullptr && out->has_data());
 }
@@ -2474,12 +2499,12 @@ bool Native::Interface::Ucse::Ip::AccessGroup::has_leaf_or_child_of_name(const s
 Native::Interface::Ucse::Ip::AccessGroup::In::In()
     :
     common_acl(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::In::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::In::Acl>())
+    , acl(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::In::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::AccessGroup::In::~In()
@@ -2488,6 +2513,7 @@ Native::Interface::Ucse::Ip::AccessGroup::In::~In()
 
 bool Native::Interface::Ucse::Ip::AccessGroup::In::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -2576,7 +2602,7 @@ Native::Interface::Ucse::Ip::AccessGroup::In::CommonAcl::CommonAcl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::AccessGroup::In::CommonAcl::~CommonAcl()
@@ -2585,6 +2611,7 @@ Native::Interface::Ucse::Ip::AccessGroup::In::CommonAcl::~CommonAcl()
 
 bool Native::Interface::Ucse::Ip::AccessGroup::In::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| in.is_set;
 }
@@ -2667,7 +2694,7 @@ Native::Interface::Ucse::Ip::AccessGroup::In::Acl::Acl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::AccessGroup::In::Acl::~Acl()
@@ -2676,6 +2703,7 @@ Native::Interface::Ucse::Ip::AccessGroup::In::Acl::~Acl()
 
 bool Native::Interface::Ucse::Ip::AccessGroup::In::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set;
 }
@@ -2755,12 +2783,12 @@ bool Native::Interface::Ucse::Ip::AccessGroup::In::Acl::has_leaf_or_child_of_nam
 Native::Interface::Ucse::Ip::AccessGroup::Out::Out()
     :
     common_acl(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::Out::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::Out::Acl>())
+    , acl(std::make_shared<Native::Interface::Ucse::Ip::AccessGroup::Out::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::AccessGroup::Out::~Out()
@@ -2769,6 +2797,7 @@ Native::Interface::Ucse::Ip::AccessGroup::Out::~Out()
 
 bool Native::Interface::Ucse::Ip::AccessGroup::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -2857,7 +2886,7 @@ Native::Interface::Ucse::Ip::AccessGroup::Out::CommonAcl::CommonAcl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::AccessGroup::Out::CommonAcl::~CommonAcl()
@@ -2866,6 +2895,7 @@ Native::Interface::Ucse::Ip::AccessGroup::Out::CommonAcl::~CommonAcl()
 
 bool Native::Interface::Ucse::Ip::AccessGroup::Out::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| out.is_set;
 }
@@ -2948,7 +2978,7 @@ Native::Interface::Ucse::Ip::AccessGroup::Out::Acl::Acl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::AccessGroup::Out::Acl::~Acl()
@@ -2957,6 +2987,7 @@ Native::Interface::Ucse::Ip::AccessGroup::Out::Acl::~Acl()
 
 bool Native::Interface::Ucse::Ip::AccessGroup::Out::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| out.is_set;
 }
@@ -3039,7 +3070,7 @@ Native::Interface::Ucse::Ip::Arp::Arp()
 {
     inspection->parent = this;
 
-    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Arp::~Arp()
@@ -3048,6 +3079,7 @@ Native::Interface::Ucse::Ip::Arp::~Arp()
 
 bool Native::Interface::Ucse::Ip::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return (inspection !=  nullptr && inspection->has_data());
 }
 
@@ -3117,12 +3149,12 @@ bool Native::Interface::Ucse::Ip::Arp::has_leaf_or_child_of_name(const std::stri
 Native::Interface::Ucse::Ip::Arp::Inspection::Inspection()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Interface::Ucse::Ip::Arp::Inspection::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Arp::Inspection::~Inspection()
@@ -3131,6 +3163,7 @@ Native::Interface::Ucse::Ip::Arp::Inspection::~Inspection()
 
 bool Native::Interface::Ucse::Ip::Arp::Inspection::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -3216,7 +3249,7 @@ Native::Interface::Ucse::Ip::Arp::Inspection::Limit::Limit()
     rate{YType::uint32, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Arp::Inspection::Limit::~Limit()
@@ -3225,6 +3258,7 @@ Native::Interface::Ucse::Ip::Arp::Inspection::Limit::~Limit()
 
 bool Native::Interface::Ucse::Ip::Arp::Inspection::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| rate.is_set;
 }
@@ -3305,12 +3339,12 @@ Native::Interface::Ucse::Ip::Vrf::Vrf()
     :
     receive{YType::str, "receive"},
     sitemap{YType::str, "sitemap"}
-    	,
+        ,
     forwarding(std::make_shared<Native::Interface::Ucse::Ip::Vrf::Forwarding>())
 {
     forwarding->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Vrf::~Vrf()
@@ -3319,6 +3353,7 @@ Native::Interface::Ucse::Ip::Vrf::~Vrf()
 
 bool Native::Interface::Ucse::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| sitemap.is_set
 	|| (forwarding !=  nullptr && forwarding->has_data());
@@ -3418,7 +3453,7 @@ Native::Interface::Ucse::Ip::Vrf::Forwarding::Forwarding()
     word{YType::str, "word"}
 {
 
-    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Vrf::Forwarding::~Forwarding()
@@ -3427,6 +3462,7 @@ Native::Interface::Ucse::Ip::Vrf::Forwarding::~Forwarding()
 
 bool Native::Interface::Ucse::Ip::Vrf::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return liin_vrf.is_set
 	|| mgmtvrf.is_set
 	|| word.is_set;
@@ -3521,7 +3557,7 @@ Native::Interface::Ucse::Ip::NoAddress::NoAddress()
     address{YType::boolean, "address"}
 {
 
-    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::NoAddress::~NoAddress()
@@ -3530,6 +3566,7 @@ Native::Interface::Ucse::Ip::NoAddress::~NoAddress()
 
 bool Native::Interface::Ucse::Ip::NoAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -3596,13 +3633,14 @@ bool Native::Interface::Ucse::Ip::NoAddress::has_leaf_or_child_of_name(const std
 Native::Interface::Ucse::Ip::Address::Address()
     :
     negotiated{YType::empty, "negotiated"}
-    	,
+        ,
     primary(std::make_shared<Native::Interface::Ucse::Ip::Address::Primary>())
-	,dhcp(nullptr) // presence node
+    , secondary(this, {"address"})
+    , dhcp(nullptr) // presence node
 {
     primary->parent = this;
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Address::~Address()
@@ -3611,7 +3649,8 @@ Native::Interface::Ucse::Ip::Address::~Address()
 
 bool Native::Interface::Ucse::Ip::Address::has_data() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_data())
             return true;
@@ -3623,7 +3662,7 @@ bool Native::Interface::Ucse::Ip::Address::has_data() const
 
 bool Native::Interface::Ucse::Ip::Address::has_operation() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_operation())
             return true;
@@ -3666,7 +3705,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Ip::Address::get_child_by_name(
     {
         auto c = std::make_shared<Native::Interface::Ucse::Ip::Address::Secondary>();
         c->parent = this;
-        secondary.push_back(c);
+        secondary.append(c);
         return c;
     }
 
@@ -3692,7 +3731,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Ip::Addr
     }
 
     count = 0;
-    for (auto const & c : secondary)
+    for (auto c : secondary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3739,7 +3778,7 @@ Native::Interface::Ucse::Ip::Address::Primary::Primary()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Address::Primary::~Primary()
@@ -3748,6 +3787,7 @@ Native::Interface::Ucse::Ip::Address::Primary::~Primary()
 
 bool Native::Interface::Ucse::Ip::Address::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
@@ -3831,7 +3871,7 @@ Native::Interface::Ucse::Ip::Address::Secondary::Secondary()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Address::Secondary::~Secondary()
@@ -3840,6 +3880,7 @@ Native::Interface::Ucse::Ip::Address::Secondary::~Secondary()
 
 bool Native::Interface::Ucse::Ip::Address::Secondary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set
 	|| secondary.is_set;
@@ -3856,7 +3897,8 @@ bool Native::Interface::Ucse::Ip::Address::Secondary::has_operation() const
 std::string Native::Interface::Ucse::Ip::Address::Secondary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary" <<"[address='" <<address <<"']";
+    path_buffer << "secondary";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3932,12 +3974,12 @@ bool Native::Interface::Ucse::Ip::Address::Secondary::has_leaf_or_child_of_name(
 Native::Interface::Ucse::Ip::Address::Dhcp::Dhcp()
     :
     hostname{YType::str, "hostname"}
-    	,
+        ,
     client_id(std::make_shared<Native::Interface::Ucse::Ip::Address::Dhcp::ClientId>())
 {
     client_id->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ip::Address::Dhcp::~Dhcp()
@@ -3946,6 +3988,7 @@ Native::Interface::Ucse::Ip::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::Ucse::Ip::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| (client_id !=  nullptr && client_id->has_data());
 }
@@ -4039,7 +4082,7 @@ Native::Interface::Ucse::Ip::Address::Dhcp::ClientId::ClientId()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Address::Dhcp::ClientId::~ClientId()
@@ -4048,6 +4091,7 @@ Native::Interface::Ucse::Ip::Address::Dhcp::ClientId::~ClientId()
 
 bool Native::Interface::Ucse::Ip::Address::Dhcp::ClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return fastethernet.is_set
 	|| gigabitethernet.is_set
 	|| fivegigabitethernet.is_set
@@ -4234,7 +4278,7 @@ Native::Interface::Ucse::Ip::HelloInterval::HelloInterval()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::HelloInterval::~HelloInterval()
@@ -4243,6 +4287,7 @@ Native::Interface::Ucse::Ip::HelloInterval::~HelloInterval()
 
 bool Native::Interface::Ucse::Ip::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -4322,12 +4367,12 @@ bool Native::Interface::Ucse::Ip::HelloInterval::has_leaf_or_child_of_name(const
 Native::Interface::Ucse::Ip::Authentication::Authentication()
     :
     key_chain(std::make_shared<Native::Interface::Ucse::Ip::Authentication::KeyChain>())
-	,mode(std::make_shared<Native::Interface::Ucse::Ip::Authentication::Mode>())
+    , mode(std::make_shared<Native::Interface::Ucse::Ip::Authentication::Mode>())
 {
     key_chain->parent = this;
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Authentication::~Authentication()
@@ -4336,6 +4381,7 @@ Native::Interface::Ucse::Ip::Authentication::~Authentication()
 
 bool Native::Interface::Ucse::Ip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (key_chain !=  nullptr && key_chain->has_data())
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -4424,7 +4470,7 @@ Native::Interface::Ucse::Ip::Authentication::KeyChain::KeyChain()
     name{YType::str, "name"}
 {
 
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Authentication::KeyChain::~KeyChain()
@@ -4433,6 +4479,7 @@ Native::Interface::Ucse::Ip::Authentication::KeyChain::~KeyChain()
 
 bool Native::Interface::Ucse::Ip::Authentication::KeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| name.is_set;
 }
@@ -4515,7 +4562,7 @@ Native::Interface::Ucse::Ip::Authentication::Mode::Mode()
     md5{YType::empty, "md5"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Authentication::Mode::~Mode()
@@ -4524,6 +4571,7 @@ Native::Interface::Ucse::Ip::Authentication::Mode::~Mode()
 
 bool Native::Interface::Ucse::Ip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| md5.is_set;
 }
@@ -4606,7 +4654,7 @@ Native::Interface::Ucse::Ip::HoldTime::HoldTime()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::HoldTime::~HoldTime()
@@ -4615,6 +4663,7 @@ Native::Interface::Ucse::Ip::HoldTime::~HoldTime()
 
 bool Native::Interface::Ucse::Ip::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -4698,7 +4747,7 @@ Native::Interface::Ucse::Ip::HelperAddress::HelperAddress()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::HelperAddress::~HelperAddress()
@@ -4707,6 +4756,7 @@ Native::Interface::Ucse::Ip::HelperAddress::~HelperAddress()
 
 bool Native::Interface::Ucse::Ip::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| global.is_set
 	|| vrf.is_set;
@@ -4723,7 +4773,8 @@ bool Native::Interface::Ucse::Ip::HelperAddress::has_operation() const
 std::string Native::Interface::Ucse::Ip::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[address='" <<address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4799,7 +4850,7 @@ bool Native::Interface::Ucse::Ip::HelperAddress::has_leaf_or_child_of_name(const
 Native::Interface::Ucse::Ip::Pim::Pim()
 {
 
-    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Pim::~Pim()
@@ -4808,6 +4859,7 @@ Native::Interface::Ucse::Ip::Pim::~Pim()
 
 bool Native::Interface::Ucse::Ip::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4862,7 +4914,7 @@ Native::Interface::Ucse::Ip::Policy::Policy()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Policy::~Policy()
@@ -4871,6 +4923,7 @@ Native::Interface::Ucse::Ip::Policy::~Policy()
 
 bool Native::Interface::Ucse::Ip::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set;
 }
 
@@ -4940,7 +4993,7 @@ Native::Interface::Ucse::Ip::Rip::Rip()
 {
     authentication->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Rip::~Rip()
@@ -4949,6 +5002,7 @@ Native::Interface::Ucse::Ip::Rip::~Rip()
 
 bool Native::Interface::Ucse::Ip::Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -5018,12 +5072,12 @@ bool Native::Interface::Ucse::Ip::Rip::has_leaf_or_child_of_name(const std::stri
 Native::Interface::Ucse::Ip::Rip::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     mode(std::make_shared<Native::Interface::Ucse::Ip::Rip::Authentication::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Rip::Authentication::~Authentication()
@@ -5032,6 +5086,7 @@ Native::Interface::Ucse::Ip::Rip::Authentication::~Authentication()
 
 bool Native::Interface::Ucse::Ip::Rip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -5117,7 +5172,7 @@ Native::Interface::Ucse::Ip::Rip::Authentication::Mode::Mode()
     text{YType::empty, "text"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Rip::Authentication::Mode::~Mode()
@@ -5126,6 +5181,7 @@ Native::Interface::Ucse::Ip::Rip::Authentication::Mode::~Mode()
 
 bool Native::Interface::Ucse::Ip::Rip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return md5.is_set
 	|| text.is_set;
 }
@@ -5207,7 +5263,7 @@ Native::Interface::Ucse::Ip::RouteCacheConf::RouteCacheConf()
     route_cache{YType::boolean, "route-cache"}
 {
 
-    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::RouteCacheConf::~RouteCacheConf()
@@ -5216,6 +5272,7 @@ Native::Interface::Ucse::Ip::RouteCacheConf::~RouteCacheConf()
 
 bool Native::Interface::Ucse::Ip::RouteCacheConf::has_data() const
 {
+    if (is_presence_container) return true;
     return route_cache.is_set;
 }
 
@@ -5287,7 +5344,7 @@ Native::Interface::Ucse::Ip::RouteCache::RouteCache()
     same_interface{YType::boolean, "same-interface"}
 {
 
-    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ip::RouteCache::~RouteCache()
@@ -5296,6 +5353,7 @@ Native::Interface::Ucse::Ip::RouteCache::~RouteCache()
 
 bool Native::Interface::Ucse::Ip::RouteCache::has_data() const
 {
+    if (is_presence_container) return true;
     return cef.is_set
 	|| flow.is_set
 	|| policy.is_set
@@ -5403,7 +5461,7 @@ Native::Interface::Ucse::Ip::Router::Router()
     isis(nullptr) // presence node
 {
 
-    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Router::~Router()
@@ -5412,6 +5470,7 @@ Native::Interface::Ucse::Ip::Router::~Router()
 
 bool Native::Interface::Ucse::Ip::Router::has_data() const
 {
+    if (is_presence_container) return true;
     return (isis !=  nullptr && isis->has_data());
 }
 
@@ -5483,7 +5542,7 @@ Native::Interface::Ucse::Ip::Router::Isis::Isis()
     tag{YType::str, "tag"}
 {
 
-    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ip::Router::Isis::~Isis()
@@ -5492,6 +5551,7 @@ Native::Interface::Ucse::Ip::Router::Isis::~Isis()
 
 bool Native::Interface::Ucse::Ip::Router::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -5560,7 +5620,7 @@ Native::Interface::Ucse::Ip::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Tcp::~Tcp()
@@ -5569,6 +5629,7 @@ Native::Interface::Ucse::Ip::Tcp::~Tcp()
 
 bool Native::Interface::Ucse::Ip::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -5641,7 +5702,7 @@ Native::Interface::Ucse::Ip::VirtualReassembly::VirtualReassembly()
     in{YType::empty, "in"}
 {
 
-    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::VirtualReassembly::~VirtualReassembly()
@@ -5650,6 +5711,7 @@ Native::Interface::Ucse::Ip::VirtualReassembly::~VirtualReassembly()
 
 bool Native::Interface::Ucse::Ip::VirtualReassembly::has_data() const
 {
+    if (is_presence_container) return true;
     return max_reassemblies.is_set
 	|| max_fragments.is_set
 	|| timeout.is_set
@@ -5768,7 +5830,7 @@ bool Native::Interface::Ucse::Ip::VirtualReassembly::has_leaf_or_child_of_name(c
 Native::Interface::Ucse::Ip::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Dhcp::~Dhcp()
@@ -5777,6 +5839,7 @@ Native::Interface::Ucse::Ip::Dhcp::~Dhcp()
 
 bool Native::Interface::Ucse::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5827,9 +5890,11 @@ bool Native::Interface::Ucse::Ip::Dhcp::has_leaf_or_child_of_name(const std::str
 }
 
 Native::Interface::Ucse::Ip::SummaryAddress::SummaryAddress()
+    :
+    eigrp(this, {"id"})
 {
 
-    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::SummaryAddress::~SummaryAddress()
@@ -5838,7 +5903,8 @@ Native::Interface::Ucse::Ip::SummaryAddress::~SummaryAddress()
 
 bool Native::Interface::Ucse::Ip::SummaryAddress::has_data() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -5848,7 +5914,7 @@ bool Native::Interface::Ucse::Ip::SummaryAddress::has_data() const
 
 bool Native::Interface::Ucse::Ip::SummaryAddress::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -5878,7 +5944,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Ip::SummaryAddress::get_child_b
     {
         auto c = std::make_shared<Native::Interface::Ucse::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -5890,7 +5956,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Ip::Summ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5924,7 +5990,7 @@ Native::Interface::Ucse::Ip::SummaryAddress::Eigrp::Eigrp()
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::SummaryAddress::Eigrp::~Eigrp()
@@ -5933,6 +5999,7 @@ Native::Interface::Ucse::Ip::SummaryAddress::Eigrp::~Eigrp()
 
 bool Native::Interface::Ucse::Ip::SummaryAddress::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| ip.is_set
 	|| mask.is_set
@@ -5951,7 +6018,8 @@ bool Native::Interface::Ucse::Ip::SummaryAddress::Eigrp::has_operation() const
 std::string Native::Interface::Ucse::Ip::SummaryAddress::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[id='" <<id <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -6038,11 +6106,11 @@ bool Native::Interface::Ucse::Ip::SummaryAddress::Eigrp::has_leaf_or_child_of_na
 Native::Interface::Ucse::Ip::Verify::Verify()
     :
     source(nullptr) // presence node
-	,unicast(std::make_shared<Native::Interface::Ucse::Ip::Verify::Unicast>())
+    , unicast(std::make_shared<Native::Interface::Ucse::Ip::Verify::Unicast>())
 {
     unicast->parent = this;
 
-    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Verify::~Verify()
@@ -6051,6 +6119,7 @@ Native::Interface::Ucse::Ip::Verify::~Verify()
 
 bool Native::Interface::Ucse::Ip::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data())
 	|| (unicast !=  nullptr && unicast->has_data());
 }
@@ -6139,7 +6208,7 @@ Native::Interface::Ucse::Ip::Verify::Source::Source()
 {
     vlan->parent = this;
 
-    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ip::Verify::Source::~Source()
@@ -6148,6 +6217,7 @@ Native::Interface::Ucse::Ip::Verify::Source::~Source()
 
 bool Native::Interface::Ucse::Ip::Verify::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -6219,7 +6289,7 @@ Native::Interface::Ucse::Ip::Verify::Source::Vlan::Vlan()
     dhcp_snooping(nullptr) // presence node
 {
 
-    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Verify::Source::Vlan::~Vlan()
@@ -6228,6 +6298,7 @@ Native::Interface::Ucse::Ip::Verify::Source::Vlan::~Vlan()
 
 bool Native::Interface::Ucse::Ip::Verify::Source::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp_snooping !=  nullptr && dhcp_snooping->has_data());
 }
 
@@ -6299,7 +6370,7 @@ Native::Interface::Ucse::Ip::Verify::Source::Vlan::DhcpSnooping::DhcpSnooping()
     port_security{YType::empty, "port-security"}
 {
 
-    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ip::Verify::Source::Vlan::DhcpSnooping::~DhcpSnooping()
@@ -6308,6 +6379,7 @@ Native::Interface::Ucse::Ip::Verify::Source::Vlan::DhcpSnooping::~DhcpSnooping()
 
 bool Native::Interface::Ucse::Ip::Verify::Source::Vlan::DhcpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return port_security.is_set;
 }
 
@@ -6374,11 +6446,11 @@ bool Native::Interface::Ucse::Ip::Verify::Source::Vlan::DhcpSnooping::has_leaf_o
 Native::Interface::Ucse::Ip::Verify::Unicast::Unicast()
     :
     reverse_path(nullptr) // presence node
-	,source(std::make_shared<Native::Interface::Ucse::Ip::Verify::Unicast::Source>())
+    , source(std::make_shared<Native::Interface::Ucse::Ip::Verify::Unicast::Source>())
 {
     source->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Verify::Unicast::~Unicast()
@@ -6387,6 +6459,7 @@ Native::Interface::Ucse::Ip::Verify::Unicast::~Unicast()
 
 bool Native::Interface::Ucse::Ip::Verify::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (reverse_path !=  nullptr && reverse_path->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -6472,7 +6545,7 @@ bool Native::Interface::Ucse::Ip::Verify::Unicast::has_leaf_or_child_of_name(con
 Native::Interface::Ucse::Ip::Verify::Unicast::ReversePath::ReversePath()
 {
 
-    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ip::Verify::Unicast::ReversePath::~ReversePath()
@@ -6481,6 +6554,7 @@ Native::Interface::Ucse::Ip::Verify::Unicast::ReversePath::~ReversePath()
 
 bool Native::Interface::Ucse::Ip::Verify::Unicast::ReversePath::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -6537,7 +6611,7 @@ Native::Interface::Ucse::Ip::Verify::Unicast::Source::Source()
     allow_default{YType::empty, "allow-default"}
 {
 
-    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ip::Verify::Unicast::Source::~Source()
@@ -6546,6 +6620,7 @@ Native::Interface::Ucse::Ip::Verify::Unicast::Source::~Source()
 
 bool Native::Interface::Ucse::Ip::Verify::Unicast::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return reachable_via.is_set
 	|| allow_self_ping.is_set
 	|| allow_default.is_set;
@@ -6641,20 +6716,21 @@ Native::Interface::Ucse::Ipv6::Ipv6()
     enable{YType::empty, "enable"},
     mtu{YType::uint16, "mtu"},
     redirects{YType::boolean, "redirects"}
-    	,
+        ,
     destination_guard(nullptr) // presence node
-	,source_guard(nullptr) // presence node
-	,dhcp(std::make_shared<Native::Interface::Ucse::Ipv6::Dhcp>())
-	,address(std::make_shared<Native::Interface::Ucse::Ipv6::Address>())
-	,nd(std::make_shared<Native::Interface::Ucse::Ipv6::Nd>())
-	,tcp(std::make_shared<Native::Interface::Ucse::Ipv6::Tcp>())
+    , source_guard(nullptr) // presence node
+    , dhcp(std::make_shared<Native::Interface::Ucse::Ipv6::Dhcp>())
+    , address(std::make_shared<Native::Interface::Ucse::Ipv6::Address>())
+    , nd(std::make_shared<Native::Interface::Ucse::Ipv6::Nd>())
+    , tcp(std::make_shared<Native::Interface::Ucse::Ipv6::Tcp>())
+    , traffic_filter(this, {"direction"})
 {
     dhcp->parent = this;
     address->parent = this;
     nd->parent = this;
     tcp->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::~Ipv6()
@@ -6663,7 +6739,8 @@ Native::Interface::Ucse::Ipv6::~Ipv6()
 
 bool Native::Interface::Ucse::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_data())
             return true;
@@ -6682,7 +6759,7 @@ bool Native::Interface::Ucse::Ipv6::has_data() const
 
 bool Native::Interface::Ucse::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_operation())
             return true;
@@ -6780,7 +6857,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Ipv6::get_child_by_name(const s
     {
         auto c = std::make_shared<Native::Interface::Ucse::Ipv6::TrafficFilter>();
         c->parent = this;
-        traffic_filter.push_back(c);
+        traffic_filter.append(c);
         return c;
     }
 
@@ -6822,7 +6899,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Ipv6::ge
     }
 
     count = 0;
-    for (auto const & c : traffic_filter)
+    for (auto c : traffic_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6893,7 +6970,7 @@ Native::Interface::Ucse::Ipv6::DestinationGuard::DestinationGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ipv6::DestinationGuard::~DestinationGuard()
@@ -6902,6 +6979,7 @@ Native::Interface::Ucse::Ipv6::DestinationGuard::~DestinationGuard()
 
 bool Native::Interface::Ucse::Ipv6::DestinationGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -6970,7 +7048,7 @@ Native::Interface::Ucse::Ipv6::SourceGuard::SourceGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ipv6::SourceGuard::~SourceGuard()
@@ -6979,6 +7057,7 @@ Native::Interface::Ucse::Ipv6::SourceGuard::~SourceGuard()
 
 bool Native::Interface::Ucse::Ipv6::SourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -7045,7 +7124,7 @@ bool Native::Interface::Ucse::Ipv6::SourceGuard::has_leaf_or_child_of_name(const
 Native::Interface::Ucse::Ipv6::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::Dhcp::~Dhcp()
@@ -7054,6 +7133,7 @@ Native::Interface::Ucse::Ipv6::Dhcp::~Dhcp()
 
 bool Native::Interface::Ucse::Ipv6::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7106,10 +7186,12 @@ bool Native::Interface::Ucse::Ipv6::Dhcp::has_leaf_or_child_of_name(const std::s
 Native::Interface::Ucse::Ipv6::Address::Address()
     :
     dhcp(nullptr) // presence node
-	,autoconfig(nullptr) // presence node
+    , autoconfig(nullptr) // presence node
+    , prefix_list(this, {"prefix"})
+    , link_local_address(this, {"address"})
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::Address::~Address()
@@ -7118,12 +7200,13 @@ Native::Interface::Ucse::Ipv6::Address::~Address()
 
 bool Native::Interface::Ucse::Ipv6::Address::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_data())
             return true;
@@ -7134,12 +7217,12 @@ bool Native::Interface::Ucse::Ipv6::Address::has_data() const
 
 bool Native::Interface::Ucse::Ipv6::Address::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_operation())
             return true;
@@ -7189,7 +7272,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Ipv6::Address::get_child_by_nam
     {
         auto c = std::make_shared<Native::Interface::Ucse::Ipv6::Address::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -7197,7 +7280,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Ipv6::Address::get_child_by_nam
     {
         auto c = std::make_shared<Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
-        link_local_address.push_back(c);
+        link_local_address.append(c);
         return c;
     }
 
@@ -7219,7 +7302,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Ipv6::Ad
     }
 
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7228,7 +7311,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Ipv6::Ad
     }
 
     count = 0;
-    for (auto const & c : link_local_address)
+    for (auto c : link_local_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7259,7 +7342,7 @@ Native::Interface::Ucse::Ipv6::Address::Dhcp::Dhcp()
     rapid_commit{YType::empty, "rapid-commit"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ipv6::Address::Dhcp::~Dhcp()
@@ -7268,6 +7351,7 @@ Native::Interface::Ucse::Ipv6::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::Ucse::Ipv6::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return rapid_commit.is_set;
 }
 
@@ -7336,7 +7420,7 @@ Native::Interface::Ucse::Ipv6::Address::Autoconfig::Autoconfig()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Ipv6::Address::Autoconfig::~Autoconfig()
@@ -7345,6 +7429,7 @@ Native::Interface::Ucse::Ipv6::Address::Autoconfig::~Autoconfig()
 
 bool Native::Interface::Ucse::Ipv6::Address::Autoconfig::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -7415,7 +7500,7 @@ Native::Interface::Ucse::Ipv6::Address::PrefixList::PrefixList()
     eui_64{YType::empty, "eui-64"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::Address::PrefixList::~PrefixList()
@@ -7424,6 +7509,7 @@ Native::Interface::Ucse::Ipv6::Address::PrefixList::~PrefixList()
 
 bool Native::Interface::Ucse::Ipv6::Address::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| anycast.is_set
 	|| eui_64.is_set;
@@ -7440,7 +7526,8 @@ bool Native::Interface::Ucse::Ipv6::Address::PrefixList::has_operation() const
 std::string Native::Interface::Ucse::Ipv6::Address::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -7519,7 +7606,7 @@ Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress::LinkLocalAddress()
     link_local{YType::empty, "link-local"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress::~LinkLocalAddress()
@@ -7528,6 +7615,7 @@ Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress::~LinkLocalAddress()
 
 bool Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| link_local.is_set;
 }
@@ -7542,7 +7630,8 @@ bool Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress::has_operation() c
 std::string Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-local-address" <<"[address='" <<address <<"']";
+    path_buffer << "link-local-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -7607,7 +7696,7 @@ bool Native::Interface::Ucse::Ipv6::Address::LinkLocalAddress::has_leaf_or_child
 Native::Interface::Ucse::Ipv6::Nd::Nd()
 {
 
-    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::Nd::~Nd()
@@ -7616,6 +7705,7 @@ Native::Interface::Ucse::Ipv6::Nd::~Nd()
 
 bool Native::Interface::Ucse::Ipv6::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7670,7 +7760,7 @@ Native::Interface::Ucse::Ipv6::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::Tcp::~Tcp()
@@ -7679,6 +7769,7 @@ Native::Interface::Ucse::Ipv6::Tcp::~Tcp()
 
 bool Native::Interface::Ucse::Ipv6::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -7748,7 +7839,7 @@ Native::Interface::Ucse::Ipv6::TrafficFilter::TrafficFilter()
     access_list{YType::str, "access-list"}
 {
 
-    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Ipv6::TrafficFilter::~TrafficFilter()
@@ -7757,6 +7848,7 @@ Native::Interface::Ucse::Ipv6::TrafficFilter::~TrafficFilter()
 
 bool Native::Interface::Ucse::Ipv6::TrafficFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| access_list.is_set;
 }
@@ -7771,7 +7863,8 @@ bool Native::Interface::Ucse::Ipv6::TrafficFilter::has_operation() const
 std::string Native::Interface::Ucse::Ipv6::TrafficFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-filter" <<"[direction='" <<direction <<"']";
+    path_buffer << "traffic-filter";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -7839,7 +7932,7 @@ Native::Interface::Ucse::Logging::Logging()
 {
     event->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Logging::~Logging()
@@ -7848,6 +7941,7 @@ Native::Interface::Ucse::Logging::~Logging()
 
 bool Native::Interface::Ucse::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (event !=  nullptr && event->has_data());
 }
 
@@ -7922,12 +8016,12 @@ Native::Interface::Ucse::Logging::Event::Event()
     nfas_status{YType::empty, "nfas-status"},
     power_inline_status{YType::empty, "power-inline-status"},
     status{YType::empty, "status"}
-    	,
+        ,
     spanning_tree(nullptr) // presence node
-	,subif_link_status(nullptr) // presence node
+    , subif_link_status(nullptr) // presence node
 {
 
-    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Logging::Event::~Event()
@@ -7936,6 +8030,7 @@ Native::Interface::Ucse::Logging::Event::~Event()
 
 bool Native::Interface::Ucse::Logging::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| link_status.is_set
 	|| trunk_status.is_set
@@ -8101,7 +8196,7 @@ Native::Interface::Ucse::Logging::Event::SpanningTree::SpanningTree()
     status{YType::empty, "status"}
 {
 
-    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Logging::Event::SpanningTree::~SpanningTree()
@@ -8110,6 +8205,7 @@ Native::Interface::Ucse::Logging::Event::SpanningTree::~SpanningTree()
 
 bool Native::Interface::Ucse::Logging::Event::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -8178,7 +8274,7 @@ Native::Interface::Ucse::Logging::Event::SubifLinkStatus::SubifLinkStatus()
     ignore_bulk{YType::empty, "ignore-bulk"}
 {
 
-    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Logging::Event::SubifLinkStatus::~SubifLinkStatus()
@@ -8187,6 +8283,7 @@ Native::Interface::Ucse::Logging::Event::SubifLinkStatus::~SubifLinkStatus()
 
 bool Native::Interface::Ucse::Logging::Event::SubifLinkStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_bulk.is_set;
 }
 
@@ -8255,7 +8352,7 @@ Native::Interface::Ucse::Mdix::Mdix()
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "mdix"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdix"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Mdix::~Mdix()
@@ -8264,6 +8361,7 @@ Native::Interface::Ucse::Mdix::~Mdix()
 
 bool Native::Interface::Ucse::Mdix::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -8333,7 +8431,7 @@ Native::Interface::Ucse::Mop::Mop()
     sysid{YType::boolean, "sysid"}
 {
 
-    yang_name = "mop"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mop"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Mop::~Mop()
@@ -8342,6 +8440,7 @@ Native::Interface::Ucse::Mop::~Mop()
 
 bool Native::Interface::Ucse::Mop::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| sysid.is_set;
 }
@@ -8424,7 +8523,7 @@ Native::Interface::Ucse::InterfaceQos::InterfaceQos()
 {
     trust->parent = this;
 
-    yang_name = "interface_qos"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface_qos"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::InterfaceQos::~InterfaceQos()
@@ -8433,6 +8532,7 @@ Native::Interface::Ucse::InterfaceQos::~InterfaceQos()
 
 bool Native::Interface::Ucse::InterfaceQos::has_data() const
 {
+    if (is_presence_container) return true;
     return (trust !=  nullptr && trust->has_data());
 }
 
@@ -8504,7 +8604,7 @@ Native::Interface::Ucse::InterfaceQos::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::InterfaceQos::Trust::~Trust()
@@ -8513,6 +8613,7 @@ Native::Interface::Ucse::InterfaceQos::Trust::~Trust()
 
 bool Native::Interface::Ucse::InterfaceQos::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -8581,13 +8682,14 @@ Native::Interface::Ucse::Standby::Standby()
     version{YType::enumeration, "version"},
     bfd{YType::empty, "bfd"},
     mac_refresh{YType::uint8, "mac-refresh"}
-    	,
+        ,
     delay(std::make_shared<Native::Interface::Ucse::Standby::Delay>())
-	,use_bia(nullptr) // presence node
+    , use_bia(nullptr) // presence node
+    , standby_list(this, {"group_number"})
 {
     delay->parent = this;
 
-    yang_name = "standby"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::~Standby()
@@ -8596,7 +8698,8 @@ Native::Interface::Ucse::Standby::~Standby()
 
 bool Native::Interface::Ucse::Standby::has_data() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_data())
             return true;
@@ -8610,7 +8713,7 @@ bool Native::Interface::Ucse::Standby::has_data() const
 
 bool Native::Interface::Ucse::Standby::has_operation() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_operation())
             return true;
@@ -8666,7 +8769,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Standby::get_child_by_name(cons
     {
         auto c = std::make_shared<Native::Interface::Ucse::Standby::StandbyList>();
         c->parent = this;
-        standby_list.push_back(c);
+        standby_list.append(c);
         return c;
     }
 
@@ -8688,7 +8791,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Standby:
     }
 
     count = 0;
-    for (auto const & c : standby_list)
+    for (auto c : standby_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8750,7 +8853,7 @@ Native::Interface::Ucse::Standby::Delay::Delay()
     reload{YType::uint16, "reload"}
 {
 
-    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::Delay::~Delay()
@@ -8759,6 +8862,7 @@ Native::Interface::Ucse::Standby::Delay::~Delay()
 
 bool Native::Interface::Ucse::Standby::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set;
 }
@@ -8841,7 +8945,7 @@ Native::Interface::Ucse::Standby::UseBia::UseBia()
 {
     scope->parent = this;
 
-    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Standby::UseBia::~UseBia()
@@ -8850,6 +8954,7 @@ Native::Interface::Ucse::Standby::UseBia::~UseBia()
 
 bool Native::Interface::Ucse::Standby::UseBia::has_data() const
 {
+    if (is_presence_container) return true;
     return (scope !=  nullptr && scope->has_data());
 }
 
@@ -8921,7 +9026,7 @@ Native::Interface::Ucse::Standby::UseBia::Scope::Scope()
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::UseBia::Scope::~Scope()
@@ -8930,6 +9035,7 @@ Native::Interface::Ucse::Standby::UseBia::Scope::~Scope()
 
 bool Native::Interface::Ucse::Standby::UseBia::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -9001,18 +9107,19 @@ Native::Interface::Ucse::Standby::StandbyList::StandbyList()
     mac_address{YType::str, "mac-address"},
     name{YType::str, "name"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     authentication(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Authentication>())
-	,ip(nullptr) // presence node
-	,preempt(nullptr) // presence node
-	,redirect(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Redirect>())
-	,timers(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Timers>())
+    , ip(nullptr) // presence node
+    , preempt(nullptr) // presence node
+    , redirect(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Redirect>())
+    , timers(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Timers>())
+    , track(this, {"number"})
 {
     authentication->parent = this;
     redirect->parent = this;
     timers->parent = this;
 
-    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::~StandbyList()
@@ -9021,7 +9128,8 @@ Native::Interface::Ucse::Standby::StandbyList::~StandbyList()
 
 bool Native::Interface::Ucse::Standby::StandbyList::has_data() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_data())
             return true;
@@ -9041,7 +9149,7 @@ bool Native::Interface::Ucse::Standby::StandbyList::has_data() const
 
 bool Native::Interface::Ucse::Standby::StandbyList::has_operation() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_operation())
             return true;
@@ -9063,7 +9171,8 @@ bool Native::Interface::Ucse::Standby::StandbyList::has_operation() const
 std::string Native::Interface::Ucse::Standby::StandbyList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "standby-list" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "standby-list";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -9133,7 +9242,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::Standby::StandbyList::get_child
     {
         auto c = std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Track>();
         c->parent = this;
-        track.push_back(c);
+        track.append(c);
         return c;
     }
 
@@ -9170,7 +9279,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::Standby:
     }
 
     count = 0;
-    for (auto const & c : track)
+    for (auto c : track.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9260,12 +9369,12 @@ Native::Interface::Ucse::Standby::StandbyList::Authentication::Authentication()
     :
     word{YType::str, "word"},
     text{YType::str, "text"}
-    	,
+        ,
     md5(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5>())
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Authentication::~Authentication()
@@ -9274,6 +9383,7 @@ Native::Interface::Ucse::Standby::StandbyList::Authentication::~Authentication()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| text.is_set
 	|| (md5 !=  nullptr && md5->has_data());
@@ -9369,12 +9479,12 @@ bool Native::Interface::Ucse::Standby::StandbyList::Authentication::has_leaf_or_
 Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::~Md5()
@@ -9383,6 +9493,7 @@ Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::~Md5()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -9469,7 +9580,7 @@ Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::KeyString::K
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::KeyString::~KeyString()
@@ -9478,6 +9589,7 @@ Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::KeyString::~
 
 bool Native::Interface::Ucse::Standby::StandbyList::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -9573,7 +9685,7 @@ Native::Interface::Ucse::Standby::StandbyList::Ip::Ip()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Ip::~Ip()
@@ -9582,6 +9694,7 @@ Native::Interface::Ucse::Standby::StandbyList::Ip::~Ip()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| secondary.is_set;
 }
@@ -9664,7 +9777,7 @@ Native::Interface::Ucse::Standby::StandbyList::Preempt::Preempt()
 {
     delay->parent = this;
 
-    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Preempt::~Preempt()
@@ -9673,6 +9786,7 @@ Native::Interface::Ucse::Standby::StandbyList::Preempt::~Preempt()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Preempt::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data());
 }
 
@@ -9746,7 +9860,7 @@ Native::Interface::Ucse::Standby::StandbyList::Preempt::Delay::Delay()
     sync{YType::uint16, "sync"}
 {
 
-    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Preempt::Delay::~Delay()
@@ -9755,6 +9869,7 @@ Native::Interface::Ucse::Standby::StandbyList::Preempt::Delay::~Delay()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Preempt::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set
 	|| sync.is_set;
@@ -9847,14 +9962,14 @@ bool Native::Interface::Ucse::Standby::StandbyList::Preempt::Delay::has_leaf_or_
 Native::Interface::Ucse::Standby::StandbyList::Redirect::Redirect()
     :
     unknown{YType::empty, "unknown"}
-    	,
+        ,
     advertisement(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement>())
-	,timers(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Redirect::Timers>())
+    , timers(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Redirect::Timers>())
 {
     advertisement->parent = this;
     timers->parent = this;
 
-    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Redirect::~Redirect()
@@ -9863,6 +9978,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::~Redirect()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Redirect::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown.is_set
 	|| (advertisement !=  nullptr && advertisement->has_data())
 	|| (timers !=  nullptr && timers->has_data());
@@ -9964,7 +10080,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Advertis
 {
     authentication->parent = this;
 
-    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::~Advertisement()
@@ -9973,6 +10089,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::~Adverti
 
 bool Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -10045,7 +10162,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authenti
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::~Authentication()
@@ -10054,6 +10171,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authenti
 
 bool Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (md5 !=  nullptr && md5->has_data());
 }
 
@@ -10123,12 +10241,12 @@ bool Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Aut
 Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::~Md5()
@@ -10137,6 +10255,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authenti
 
 bool Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -10223,7 +10342,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authenti
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::~KeyString()
@@ -10232,6 +10351,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authenti
 
 bool Native::Interface::Ucse::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -10327,7 +10447,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Timers::Timers()
     holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Redirect::Timers::~Timers()
@@ -10336,6 +10456,7 @@ Native::Interface::Ucse::Standby::StandbyList::Redirect::Timers::~Timers()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Redirect::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return advertisement.is_set
 	|| holddown.is_set;
 }
@@ -10415,12 +10536,12 @@ bool Native::Interface::Ucse::Standby::StandbyList::Redirect::Timers::has_leaf_o
 Native::Interface::Ucse::Standby::StandbyList::Timers::Timers()
     :
     hello_interval(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Timers::HelloInterval>())
-	,hold_time(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Timers::HoldTime>())
+    , hold_time(std::make_shared<Native::Interface::Ucse::Standby::StandbyList::Timers::HoldTime>())
 {
     hello_interval->parent = this;
     hold_time->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Timers::~Timers()
@@ -10429,6 +10550,7 @@ Native::Interface::Ucse::Standby::StandbyList::Timers::~Timers()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (hello_interval !=  nullptr && hello_interval->has_data())
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -10517,7 +10639,7 @@ Native::Interface::Ucse::Standby::StandbyList::Timers::HelloInterval::HelloInter
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Timers::HelloInterval::~HelloInterval()
@@ -10526,6 +10648,7 @@ Native::Interface::Ucse::Standby::StandbyList::Timers::HelloInterval::~HelloInte
 
 bool Native::Interface::Ucse::Standby::StandbyList::Timers::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -10608,7 +10731,7 @@ Native::Interface::Ucse::Standby::StandbyList::Timers::HoldTime::HoldTime()
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Timers::HoldTime::~HoldTime()
@@ -10617,6 +10740,7 @@ Native::Interface::Ucse::Standby::StandbyList::Timers::HoldTime::~HoldTime()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Timers::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -10700,7 +10824,7 @@ Native::Interface::Ucse::Standby::StandbyList::Track::Track()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Standby::StandbyList::Track::~Track()
@@ -10709,6 +10833,7 @@ Native::Interface::Ucse::Standby::StandbyList::Track::~Track()
 
 bool Native::Interface::Ucse::Standby::StandbyList::Track::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| decrement.is_set
 	|| shutdown.is_set;
@@ -10725,7 +10850,8 @@ bool Native::Interface::Ucse::Standby::StandbyList::Track::has_operation() const
 std::string Native::Interface::Ucse::Standby::StandbyList::Track::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track" <<"[number='" <<number <<"']";
+    path_buffer << "track";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -10802,12 +10928,12 @@ Native::Interface::Ucse::AccessSession::AccessSession()
     :
     closed{YType::empty, "closed"},
     host_mode{YType::enumeration, "host-mode"}
-    	,
+        ,
     port_control(std::make_shared<Native::Interface::Ucse::AccessSession::PortControl>())
 {
     port_control->parent = this;
 
-    yang_name = "access-session"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-session"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::AccessSession::~AccessSession()
@@ -10816,6 +10942,7 @@ Native::Interface::Ucse::AccessSession::~AccessSession()
 
 bool Native::Interface::Ucse::AccessSession::has_data() const
 {
+    if (is_presence_container) return true;
     return closed.is_set
 	|| host_mode.is_set
 	|| (port_control !=  nullptr && port_control->has_data());
@@ -10913,7 +11040,7 @@ Native::Interface::Ucse::AccessSession::PortControl::PortControl()
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::AccessSession::PortControl::~PortControl()
@@ -10922,6 +11049,7 @@ Native::Interface::Ucse::AccessSession::PortControl::~PortControl()
 
 bool Native::Interface::Ucse::AccessSession::PortControl::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -10988,16 +11116,16 @@ bool Native::Interface::Ucse::AccessSession::PortControl::has_leaf_or_child_of_n
 Native::Interface::Ucse::StormControl::StormControl()
     :
     action(std::make_shared<Native::Interface::Ucse::StormControl::Action>())
-	,broadcast(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Interface::Ucse::StormControl::Multicast>())
-	,unicast(std::make_shared<Native::Interface::Ucse::StormControl::Unicast>())
+    , broadcast(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast>())
+    , multicast(std::make_shared<Native::Interface::Ucse::StormControl::Multicast>())
+    , unicast(std::make_shared<Native::Interface::Ucse::StormControl::Unicast>())
 {
     action->parent = this;
     broadcast->parent = this;
     multicast->parent = this;
     unicast->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::~StormControl()
@@ -11006,6 +11134,7 @@ Native::Interface::Ucse::StormControl::~StormControl()
 
 bool Native::Interface::Ucse::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
@@ -11127,7 +11256,7 @@ Native::Interface::Ucse::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Action::~Action()
@@ -11136,6 +11265,7 @@ Native::Interface::Ucse::StormControl::Action::~Action()
 
 bool Native::Interface::Ucse::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| shutdown.is_set
 	|| trap.is_set;
@@ -11228,12 +11358,12 @@ bool Native::Interface::Ucse::StormControl::Action::has_leaf_or_child_of_name(co
 Native::Interface::Ucse::StormControl::Broadcast::Broadcast()
     :
     include(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Include>())
-	,level(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Level>())
+    , level(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Level>())
 {
     include->parent = this;
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Broadcast::~Broadcast()
@@ -11242,6 +11372,7 @@ Native::Interface::Ucse::StormControl::Broadcast::~Broadcast()
 
 bool Native::Interface::Ucse::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (include !=  nullptr && include->has_data())
 	|| (level !=  nullptr && level->has_data());
 }
@@ -11329,7 +11460,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Include::Include()
     multicast{YType::empty, "multicast"}
 {
 
-    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Broadcast::Include::~Include()
@@ -11338,6 +11469,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Include::~Include()
 
 bool Native::Interface::Ucse::StormControl::Broadcast::Include::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast.is_set;
 }
 
@@ -11404,14 +11536,14 @@ bool Native::Interface::Ucse::StormControl::Broadcast::Include::has_leaf_or_chil
 Native::Interface::Ucse::StormControl::Broadcast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Ucse::StormControl::Broadcast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Broadcast::Level::~Level()
@@ -11420,6 +11552,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Level::~Level()
 
 bool Native::Interface::Ucse::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -11524,7 +11657,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Level::Threshold::Threshold()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Broadcast::Level::Threshold::~Threshold()
@@ -11533,6 +11666,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Level::Threshold::~Threshold()
 
 bool Native::Interface::Ucse::StormControl::Broadcast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -11615,7 +11749,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Broadcast::Level::Bps::~Bps()
@@ -11624,6 +11758,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Level::Bps::~Bps()
 
 bool Native::Interface::Ucse::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -11706,7 +11841,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Broadcast::Level::Pps::~Pps()
@@ -11715,6 +11850,7 @@ Native::Interface::Ucse::StormControl::Broadcast::Level::Pps::~Pps()
 
 bool Native::Interface::Ucse::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -11797,7 +11933,7 @@ Native::Interface::Ucse::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Multicast::~Multicast()
@@ -11806,6 +11942,7 @@ Native::Interface::Ucse::StormControl::Multicast::~Multicast()
 
 bool Native::Interface::Ucse::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -11875,14 +12012,14 @@ bool Native::Interface::Ucse::StormControl::Multicast::has_leaf_or_child_of_name
 Native::Interface::Ucse::StormControl::Multicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Ucse::StormControl::Multicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Ucse::StormControl::Multicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Ucse::StormControl::Multicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Ucse::StormControl::Multicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Ucse::StormControl::Multicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Multicast::Level::~Level()
@@ -11891,6 +12028,7 @@ Native::Interface::Ucse::StormControl::Multicast::Level::~Level()
 
 bool Native::Interface::Ucse::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -11995,7 +12133,7 @@ Native::Interface::Ucse::StormControl::Multicast::Level::Threshold::Threshold()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Multicast::Level::Threshold::~Threshold()
@@ -12004,6 +12142,7 @@ Native::Interface::Ucse::StormControl::Multicast::Level::Threshold::~Threshold()
 
 bool Native::Interface::Ucse::StormControl::Multicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -12086,7 +12225,7 @@ Native::Interface::Ucse::StormControl::Multicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Multicast::Level::Bps::~Bps()
@@ -12095,6 +12234,7 @@ Native::Interface::Ucse::StormControl::Multicast::Level::Bps::~Bps()
 
 bool Native::Interface::Ucse::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -12177,7 +12317,7 @@ Native::Interface::Ucse::StormControl::Multicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Multicast::Level::Pps::~Pps()
@@ -12186,6 +12326,7 @@ Native::Interface::Ucse::StormControl::Multicast::Level::Pps::~Pps()
 
 bool Native::Interface::Ucse::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -12268,7 +12409,7 @@ Native::Interface::Ucse::StormControl::Unicast::Unicast()
 {
     level->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Unicast::~Unicast()
@@ -12277,6 +12418,7 @@ Native::Interface::Ucse::StormControl::Unicast::~Unicast()
 
 bool Native::Interface::Ucse::StormControl::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -12346,14 +12488,14 @@ bool Native::Interface::Ucse::StormControl::Unicast::has_leaf_or_child_of_name(c
 Native::Interface::Ucse::StormControl::Unicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Ucse::StormControl::Unicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Ucse::StormControl::Unicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Ucse::StormControl::Unicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Ucse::StormControl::Unicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Ucse::StormControl::Unicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Unicast::Level::~Level()
@@ -12362,6 +12504,7 @@ Native::Interface::Ucse::StormControl::Unicast::Level::~Level()
 
 bool Native::Interface::Ucse::StormControl::Unicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -12466,7 +12609,7 @@ Native::Interface::Ucse::StormControl::Unicast::Level::Threshold::Threshold()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Unicast::Level::Threshold::~Threshold()
@@ -12475,6 +12618,7 @@ Native::Interface::Ucse::StormControl::Unicast::Level::Threshold::~Threshold()
 
 bool Native::Interface::Ucse::StormControl::Unicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -12557,7 +12701,7 @@ Native::Interface::Ucse::StormControl::Unicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Unicast::Level::Bps::~Bps()
@@ -12566,6 +12710,7 @@ Native::Interface::Ucse::StormControl::Unicast::Level::Bps::~Bps()
 
 bool Native::Interface::Ucse::StormControl::Unicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -12648,7 +12793,7 @@ Native::Interface::Ucse::StormControl::Unicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::StormControl::Unicast::Level::Pps::~Pps()
@@ -12657,6 +12802,7 @@ Native::Interface::Ucse::StormControl::Unicast::Level::Pps::~Pps()
 
 bool Native::Interface::Ucse::StormControl::Unicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -12738,7 +12884,7 @@ Native::Interface::Ucse::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Trust::~Trust()
@@ -12747,6 +12893,7 @@ Native::Interface::Ucse::Trust::~Trust()
 
 bool Native::Interface::Ucse::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -12813,12 +12960,12 @@ bool Native::Interface::Ucse::Trust::has_leaf_or_child_of_name(const std::string
 Native::Interface::Ucse::PriorityQueue::PriorityQueue()
     :
     out{YType::empty, "out"}
-    	,
+        ,
     cos_map(std::make_shared<Native::Interface::Ucse::PriorityQueue::CosMap>())
 {
     cos_map->parent = this;
 
-    yang_name = "priority-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::PriorityQueue::~PriorityQueue()
@@ -12827,6 +12974,7 @@ Native::Interface::Ucse::PriorityQueue::~PriorityQueue()
 
 bool Native::Interface::Ucse::PriorityQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set
 	|| (cos_map !=  nullptr && cos_map->has_data());
 }
@@ -12912,7 +13060,7 @@ Native::Interface::Ucse::PriorityQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::PriorityQueue::CosMap::~CosMap()
@@ -12921,6 +13069,7 @@ Native::Interface::Ucse::PriorityQueue::CosMap::~CosMap()
 
 bool Native::Interface::Ucse::PriorityQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -13006,9 +13155,11 @@ bool Native::Interface::Ucse::PriorityQueue::CosMap::has_leaf_or_child_of_name(c
 }
 
 Native::Interface::Ucse::RcvQueue::RcvQueue()
+    :
+    cos_map(this, {"queue_id", "threshold_id"})
 {
 
-    yang_name = "rcv-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-queue"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::RcvQueue::~RcvQueue()
@@ -13017,7 +13168,8 @@ Native::Interface::Ucse::RcvQueue::~RcvQueue()
 
 bool Native::Interface::Ucse::RcvQueue::has_data() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_data())
             return true;
@@ -13027,7 +13179,7 @@ bool Native::Interface::Ucse::RcvQueue::has_data() const
 
 bool Native::Interface::Ucse::RcvQueue::has_operation() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_operation())
             return true;
@@ -13057,7 +13209,7 @@ std::shared_ptr<Entity> Native::Interface::Ucse::RcvQueue::get_child_by_name(con
     {
         auto c = std::make_shared<Native::Interface::Ucse::RcvQueue::CosMap>();
         c->parent = this;
-        cos_map.push_back(c);
+        cos_map.append(c);
         return c;
     }
 
@@ -13069,7 +13221,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Ucse::RcvQueue
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cos_map)
+    for (auto c : cos_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13102,7 +13254,7 @@ Native::Interface::Ucse::RcvQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::RcvQueue::CosMap::~CosMap()
@@ -13111,6 +13263,7 @@ Native::Interface::Ucse::RcvQueue::CosMap::~CosMap()
 
 bool Native::Interface::Ucse::RcvQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -13136,7 +13289,9 @@ bool Native::Interface::Ucse::RcvQueue::CosMap::has_operation() const
 std::string Native::Interface::Ucse::RcvQueue::CosMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cos-map" <<"[queue-id='" <<queue_id <<"']" <<"[threshold-id='" <<threshold_id <<"']";
+    path_buffer << "cos-map";
+    ADD_KEY_TOKEN(queue_id, "queue-id");
+    ADD_KEY_TOKEN(threshold_id, "threshold-id");
     return path_buffer.str();
 }
 
@@ -13214,7 +13369,7 @@ Native::Interface::Ucse::Peer::Peer()
 {
     default_->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Peer::~Peer()
@@ -13223,6 +13378,7 @@ Native::Interface::Ucse::Peer::~Peer()
 
 bool Native::Interface::Ucse::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -13295,7 +13451,7 @@ Native::Interface::Ucse::Peer::Default::Default()
 {
     ip->parent = this;
 
-    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Peer::Default::~Default()
@@ -13304,6 +13460,7 @@ Native::Interface::Ucse::Peer::Default::~Default()
 
 bool Native::Interface::Ucse::Peer::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -13376,7 +13533,7 @@ Native::Interface::Ucse::Peer::Default::Ip::Ip()
 {
     address->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Peer::Default::Ip::~Ip()
@@ -13385,6 +13542,7 @@ Native::Interface::Ucse::Peer::Default::Ip::~Ip()
 
 bool Native::Interface::Ucse::Peer::Default::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -13454,12 +13612,12 @@ bool Native::Interface::Ucse::Peer::Default::Ip::has_leaf_or_child_of_name(const
 Native::Interface::Ucse::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
-    	,
+        ,
     dhcp_pool(nullptr) // presence node
-	,pool(nullptr) // presence node
+    , pool(nullptr) // presence node
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::Peer::Default::Ip::Address::~Address()
@@ -13468,6 +13626,7 @@ Native::Interface::Ucse::Peer::Default::Ip::Address::~Address()
 
 bool Native::Interface::Ucse::Peer::Default::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
@@ -13568,7 +13727,7 @@ Native::Interface::Ucse::Peer::Default::Ip::Address::DhcpPool::DhcpPool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
@@ -13577,6 +13736,7 @@ Native::Interface::Ucse::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
 
 bool Native::Interface::Ucse::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -13645,7 +13805,7 @@ Native::Interface::Ucse::Peer::Default::Ip::Address::Pool::Pool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Ucse::Peer::Default::Ip::Address::Pool::~Pool()
@@ -13654,6 +13814,7 @@ Native::Interface::Ucse::Peer::Default::Ip::Address::Pool::~Pool()
 
 bool Native::Interface::Ucse::Peer::Default::Ip::Address::Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -13723,7 +13884,7 @@ Native::Interface::Ucse::PmPath::PmPath()
     interface_id{YType::uint8, "interface-id"}
 {
 
-    yang_name = "pm-path"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pm-path"; yang_parent_name = "ucse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Ucse::PmPath::~PmPath()
@@ -13732,6 +13893,7 @@ Native::Interface::Ucse::PmPath::~PmPath()
 
 bool Native::Interface::Ucse::PmPath::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_id.is_set;
 }
@@ -13821,44 +13983,45 @@ Native::Interface::EthernetInternal::EthernetInternal()
     max_reserved_bandwidth{YType::uint8, "max-reserved-bandwidth"},
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"}
-    	,
+        ,
     negotiation(std::make_shared<Native::Interface::EthernetInternal::Negotiation>())
-	,switchport_wrapper(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper>())
-	,switchport_conf(std::make_shared<Native::Interface::EthernetInternal::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::EthernetInternal::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::EthernetInternal::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::EthernetInternal::Arp>())
-	,backup(std::make_shared<Native::Interface::EthernetInternal::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::EthernetInternal::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::EthernetInternal::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::EthernetInternal::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::EthernetInternal::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::EthernetInternal::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::EthernetInternal::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::EthernetInternal::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::EthernetInternal::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::EthernetInternal::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::EthernetInternal::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::EthernetInternal::Dampening>())
-	,domain(std::make_shared<Native::Interface::EthernetInternal::Domain>())
-	,mpls(std::make_shared<Native::Interface::EthernetInternal::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::EthernetInternal::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::EthernetInternal::Vrf>())
-	,ip(std::make_shared<Native::Interface::EthernetInternal::Ip>())
-	,ipv6(std::make_shared<Native::Interface::EthernetInternal::Ipv6>())
-	,logging(std::make_shared<Native::Interface::EthernetInternal::Logging>())
-	,mdix(std::make_shared<Native::Interface::EthernetInternal::Mdix>())
-	,mop(std::make_shared<Native::Interface::EthernetInternal::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::EthernetInternal::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::EthernetInternal::Standby>())
-	,access_session(std::make_shared<Native::Interface::EthernetInternal::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::EthernetInternal::StormControl>())
-	,trust(std::make_shared<Native::Interface::EthernetInternal::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::EthernetInternal::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::EthernetInternal::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::EthernetInternal::Peer>())
-	,pm_path(std::make_shared<Native::Interface::EthernetInternal::PmPath>())
+    , switchport_wrapper(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper>())
+    , switchport_conf(std::make_shared<Native::Interface::EthernetInternal::SwitchportConf>())
+    , switchport(std::make_shared<Native::Interface::EthernetInternal::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::EthernetInternal::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::EthernetInternal::Arp>())
+    , backup(std::make_shared<Native::Interface::EthernetInternal::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::EthernetInternal::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::EthernetInternal::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::EthernetInternal::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::EthernetInternal::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::EthernetInternal::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::EthernetInternal::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::EthernetInternal::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::EthernetInternal::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::EthernetInternal::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::EthernetInternal::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::EthernetInternal::Dampening>())
+    , domain(std::make_shared<Native::Interface::EthernetInternal::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::EthernetInternal::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::EthernetInternal::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::EthernetInternal::Vrf>())
+    , ip(std::make_shared<Native::Interface::EthernetInternal::Ip>())
+    , ipv6(std::make_shared<Native::Interface::EthernetInternal::Ipv6>())
+    , logging(std::make_shared<Native::Interface::EthernetInternal::Logging>())
+    , mdix(std::make_shared<Native::Interface::EthernetInternal::Mdix>())
+    , mop(std::make_shared<Native::Interface::EthernetInternal::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::EthernetInternal::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::EthernetInternal::Standby>())
+    , access_session(std::make_shared<Native::Interface::EthernetInternal::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::EthernetInternal::StormControl>())
+    , trust(std::make_shared<Native::Interface::EthernetInternal::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::EthernetInternal::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::EthernetInternal::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::EthernetInternal::Peer>())
+    , pm_path(std::make_shared<Native::Interface::EthernetInternal::PmPath>())
 {
     negotiation->parent = this;
     switchport_wrapper->parent = this;
@@ -13897,7 +14060,7 @@ Native::Interface::EthernetInternal::EthernetInternal()
     peer->parent = this;
     pm_path->parent = this;
 
-    yang_name = "Ethernet-Internal"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Ethernet-Internal"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::EthernetInternal::~EthernetInternal()
@@ -13906,7 +14069,8 @@ Native::Interface::EthernetInternal::~EthernetInternal()
 
 bool Native::Interface::EthernetInternal::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
@@ -13963,7 +14127,7 @@ bool Native::Interface::EthernetInternal::has_data() const
 
 bool Native::Interface::EthernetInternal::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
@@ -14029,7 +14193,8 @@ std::string Native::Interface::EthernetInternal::get_absolute_path() const
 std::string Native::Interface::EthernetInternal::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Ethernet-Internal" <<"[name='" <<name <<"']";
+    path_buffer << "Ethernet-Internal";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -14140,7 +14305,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::get_child_by_name(c
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::EthernetInternal::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::EthernetInternal::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -14239,7 +14404,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -14504,7 +14669,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14730,7 +14895,7 @@ Native::Interface::EthernetInternal::Negotiation::Negotiation()
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "negotiation"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "negotiation"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Negotiation::~Negotiation()
@@ -14739,6 +14904,7 @@ Native::Interface::EthernetInternal::Negotiation::~Negotiation()
 
 bool Native::Interface::EthernetInternal::Negotiation::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -14808,7 +14974,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::SwitchportWrapper()
 {
     switchport->parent = this;
 
-    yang_name = "switchport-wrapper"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-wrapper"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportWrapper::~SwitchportWrapper()
@@ -14817,6 +14983,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::~SwitchportWrapper()
 
 bool Native::Interface::EthernetInternal::SwitchportWrapper::has_data() const
 {
+    if (is_presence_container) return true;
     return (switchport !=  nullptr && switchport->has_data());
 }
 
@@ -14886,14 +15053,14 @@ bool Native::Interface::EthernetInternal::SwitchportWrapper::has_leaf_or_child_o
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Switchport()
     :
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     access(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Access>())
-	,trunk(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk>())
+    , trunk(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk>())
 {
     access->parent = this;
     trunk->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "switchport-wrapper"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "switchport-wrapper"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::~Switchport()
@@ -14902,6 +15069,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::~Switchport(
 
 bool Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| (access !=  nullptr && access->has_data())
 	|| (trunk !=  nullptr && trunk->has_data());
@@ -15002,7 +15170,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Access::Acce
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Access::~Access()
@@ -15011,6 +15179,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Access::~Acc
 
 bool Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -15077,12 +15246,12 @@ bool Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Access:
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Trunk()
     :
     allowed(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allowed>())
-	,native(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Native_>())
+    , native(std::make_shared<Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Native_>())
 {
     allowed->parent = this;
     native->parent = this;
 
-    yang_name = "trunk"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trunk"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::~Trunk()
@@ -15091,6 +15260,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::~Trun
 
 bool Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::has_data() const
 {
+    if (is_presence_container) return true;
     return (allowed !=  nullptr && allowed->has_data())
 	|| (native !=  nullptr && native->has_data());
 }
@@ -15179,7 +15349,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allow
 {
     vlan->parent = this;
 
-    yang_name = "allowed"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allowed"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allowed::~Allowed()
@@ -15188,6 +15358,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allow
 
 bool Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allowed::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -15264,7 +15435,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allow
     remove{YType::str, "remove"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "allowed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "allowed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allowed::Vlan::~Vlan()
@@ -15273,6 +15444,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allow
 
 bool Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Allowed::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : except.getYLeafs())
     {
         if(leaf.is_set)
@@ -15414,7 +15586,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Nativ
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "native"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "native"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Native_::~Native_()
@@ -15423,6 +15595,7 @@ Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Nativ
 
 bool Native::Interface::EthernetInternal::SwitchportWrapper::Switchport::Trunk::Native_::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -15491,7 +15664,7 @@ Native::Interface::EthernetInternal::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::SwitchportConf::~SwitchportConf()
@@ -15500,6 +15673,7 @@ Native::Interface::EthernetInternal::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::EthernetInternal::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 

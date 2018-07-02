@@ -17,7 +17,7 @@ Ipv6Network::Ipv6Network()
 {
     nodes->parent = this;
 
-    yang_name = "ipv6-network"; yang_parent_name = "Cisco-IOS-XR-ipv6-ma-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-network"; yang_parent_name = "Cisco-IOS-XR-ipv6-ma-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6Network::~Ipv6Network()
@@ -26,6 +26,7 @@ Ipv6Network::~Ipv6Network()
 
 bool Ipv6Network::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ipv6Network::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipv6Network::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ipv6-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ipv6-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Network::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Ipv6Network::Nodes::~Nodes()
 
 bool Ipv6Network::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ipv6Network::Nodes::has_data() const
 
 bool Ipv6Network::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool Ipv6Network::Nodes::has_leaf_or_child_of_name(const std::string & name) con
 Ipv6Network::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     interface_data(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData>())
 {
     interface_data->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Network::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ Ipv6Network::Nodes::Node::~Node()
 
 bool Ipv6Network::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (interface_data !=  nullptr && interface_data->has_data());
 }
@@ -252,7 +257,8 @@ std::string Ipv6Network::Nodes::Node::get_absolute_path() const
 std::string Ipv6Network::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -320,12 +326,12 @@ bool Ipv6Network::Nodes::Node::has_leaf_or_child_of_name(const std::string & nam
 Ipv6Network::Nodes::Node::InterfaceData::InterfaceData()
     :
     vrfs(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs>())
-	,summary(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary>())
+    , summary(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary>())
 {
     vrfs->parent = this;
     summary->parent = this;
 
-    yang_name = "interface-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::~InterfaceData()
@@ -334,6 +340,7 @@ Ipv6Network::Nodes::Node::InterfaceData::~InterfaceData()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (summary !=  nullptr && summary->has_data());
 }
@@ -417,9 +424,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::has_leaf_or_child_of_name(const st
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::~Vrfs()
@@ -428,7 +437,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::~Vrfs()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -438,7 +448,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::has_data() const
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -468,7 +478,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::get_child
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -480,7 +490,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -509,18 +519,18 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::has_leaf_or_child_of_name(co
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     briefs(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs>())
-	,global_details(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails>())
-	,global_briefs(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs>())
-	,details(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details>())
+    , global_details(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails>())
+    , global_briefs(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs>())
+    , details(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details>())
 {
     briefs->parent = this;
     global_details->parent = this;
     global_briefs->parent = this;
     details->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::~Vrf()
@@ -529,6 +539,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::~Vrf()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (briefs !=  nullptr && briefs->has_data())
 	|| (global_details !=  nullptr && global_details->has_data())
@@ -549,7 +560,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_operation() const
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -657,9 +669,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_leaf_or_child_of_na
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Briefs()
+    :
+    brief(this, {"interface_name"})
 {
 
-    yang_name = "briefs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "briefs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::~Briefs()
@@ -668,7 +682,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::~Briefs()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_data() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_data())
             return true;
@@ -678,7 +693,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_data() cons
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_operation() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_operation())
             return true;
@@ -708,7 +723,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief>();
         c->parent = this;
-        brief.push_back(c);
+        brief.append(c);
         return c;
     }
 
@@ -720,7 +735,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief)
+    for (auto c : brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -751,12 +766,13 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Brief()
     interface_name{YType::str, "interface-name"},
     line_state{YType::enumeration, "line-state"},
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress>())
+    , address(this, {})
 {
     link_local_address->parent = this;
 
-    yang_name = "brief"; yang_parent_name = "briefs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "briefs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::~Brief()
@@ -765,7 +781,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::~Brief()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -778,7 +795,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_data
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -793,7 +810,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_oper
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "brief";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -824,7 +842,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -841,7 +859,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -906,7 +924,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddr
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::~LinkLocalAddress()
@@ -915,6 +933,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddr
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -1039,7 +1058,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::Addr
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "address"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::~Address()
@@ -1048,6 +1067,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::~Add
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -1164,9 +1184,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address:
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetails()
+    :
+    global_detail(this, {"interface_name"})
 {
 
-    yang_name = "global-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::~GlobalDetails()
@@ -1175,7 +1197,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::~GlobalDetail
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::has_data() const
 {
-    for (std::size_t index=0; index<global_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_detail.len(); index++)
     {
         if(global_detail[index]->has_data())
             return true;
@@ -1185,7 +1208,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::has_data
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::has_operation() const
 {
-    for (std::size_t index=0; index<global_detail.size(); index++)
+    for (std::size_t index=0; index<global_detail.len(); index++)
     {
         if(global_detail[index]->has_operation())
             return true;
@@ -1215,7 +1238,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail>();
         c->parent = this;
-        global_detail.push_back(c);
+        global_detail.append(c);
         return c;
     }
 
@@ -1227,7 +1250,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_detail)
+    for (auto c : global_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1265,17 +1288,20 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     mlacp_active{YType::boolean, "mlacp-active"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
     flow_tag_dst{YType::boolean, "flow-tag-dst"}
-    	,
+        ,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress>())
-	,access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList>())
-	,multi_access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList>())
-	,rpf(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf>())
-	,bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa>())
-	,utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime>())
-	,idb_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime>())
-	,caps_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime>())
-	,fwd_en_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime>())
-	,fwd_dis_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime>())
+    , access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList>())
+    , multi_access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList>())
+    , rpf(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf>())
+    , bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa>())
+    , utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime>())
+    , idb_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime>())
+    , multicast_group(this, {})
+    , address(this, {})
+    , client_multicast_group(this, {})
 {
     link_local_address->parent = this;
     access_control_list->parent = this;
@@ -1288,7 +1314,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     fwd_en_utime->parent = this;
     fwd_dis_utime->parent = this;
 
-    yang_name = "global-detail"; yang_parent_name = "global-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-detail"; yang_parent_name = "global-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::~GlobalDetail()
@@ -1297,17 +1323,18 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::has_data() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<client_multicast_group.size(); index++)
+    for (std::size_t index=0; index<client_multicast_group.len(); index++)
     {
         if(client_multicast_group[index]->has_data())
             return true;
@@ -1336,17 +1363,17 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::has_operation() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<client_multicast_group.size(); index++)
+    for (std::size_t index=0; index<client_multicast_group.len(); index++)
     {
         if(client_multicast_group[index]->has_operation())
             return true;
@@ -1377,7 +1404,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-detail" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "global-detail";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1496,7 +1524,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup>();
         c->parent = this;
-        multicast_group.push_back(c);
+        multicast_group.append(c);
         return c;
     }
 
@@ -1504,7 +1532,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -1512,7 +1540,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup>();
         c->parent = this;
-        client_multicast_group.push_back(c);
+        client_multicast_group.append(c);
         return c;
     }
 
@@ -1574,7 +1602,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : multicast_group)
+    for (auto c : multicast_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1583,7 +1611,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1592,7 +1620,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : client_multicast_group)
+    for (auto c : client_multicast_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1727,7 +1755,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::~LinkLocalAddress()
@@ -1736,6 +1764,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -1859,7 +1888,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     common_out_bound{YType::str, "common-out-bound"}
 {
 
-    yang_name = "access-control-list"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-control-list"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::~AccessControlList()
@@ -1868,6 +1897,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::has_data() const
 {
+    if (is_presence_container) return true;
     return in_bound.is_set
 	|| out_bound.is_set
 	|| common_in_bound.is_set
@@ -1971,9 +2001,13 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::MultiAccessControlList()
+    :
+    inbound(this, {})
+    , outbound(this, {})
+    , common(this, {})
 {
 
-    yang_name = "multi-access-control-list"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-access-control-list"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::~MultiAccessControlList()
@@ -1982,17 +2016,18 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_data() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_data())
             return true;
@@ -2002,17 +2037,17 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_operation() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_operation())
             return true;
@@ -2042,7 +2077,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound>();
         c->parent = this;
-        inbound.push_back(c);
+        inbound.append(c);
         return c;
     }
 
@@ -2050,7 +2085,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound>();
         c->parent = this;
-        outbound.push_back(c);
+        outbound.append(c);
         return c;
     }
 
@@ -2058,7 +2093,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common>();
         c->parent = this;
-        common.push_back(c);
+        common.append(c);
         return c;
     }
 
@@ -2070,7 +2105,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inbound)
+    for (auto c : inbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2079,7 +2114,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : outbound)
+    for (auto c : outbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2088,7 +2123,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : common)
+    for (auto c : common.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2119,7 +2154,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     entry{YType::str, "entry"}
 {
 
-    yang_name = "inbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::~Inbound()
@@ -2128,6 +2163,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2196,7 +2232,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     entry{YType::str, "entry"}
 {
 
-    yang_name = "outbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::~Outbound()
@@ -2205,6 +2241,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2273,7 +2310,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     entry{YType::str, "entry"}
 {
 
-    yang_name = "common"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::~Common()
@@ -2282,6 +2319,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2353,7 +2391,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     mode{YType::uint32, "mode"}
 {
 
-    yang_name = "rpf"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpf"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::~Rpf()
@@ -2362,6 +2400,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| allow_default_route.is_set
 	|| allow_self_ping.is_set
@@ -2467,12 +2506,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::BgpPa()
     :
     input(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input>())
-	,output(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output>())
+    , output(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "bgp-pa"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-pa"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::~BgpPa()
@@ -2481,6 +2520,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -2570,7 +2610,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::~Input()
@@ -2579,6 +2619,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -2675,7 +2716,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::~Output()
@@ -2684,6 +2725,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -2776,7 +2818,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::Utime()
 {
 
-    yang_name = "utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::~Utime()
@@ -2785,6 +2827,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2837,7 +2880,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::IdbUtime()
 {
 
-    yang_name = "idb-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idb-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::~IdbUtime()
@@ -2846,6 +2889,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2898,7 +2942,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::CapsUtime()
 {
 
-    yang_name = "caps-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "caps-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::~CapsUtime()
@@ -2907,6 +2951,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2959,7 +3004,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::FwdEnUtime()
 {
 
-    yang_name = "fwd-en-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-en-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::~FwdEnUtime()
@@ -2968,6 +3013,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3020,7 +3066,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::FwdDisUtime()
 {
 
-    yang_name = "fwd-dis-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-dis-utime"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::~FwdDisUtime()
@@ -3029,6 +3075,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3083,7 +3130,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     address{YType::str, "address"}
 {
 
-    yang_name = "multicast-group"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-group"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::~MulticastGroup()
@@ -3092,6 +3139,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -3164,7 +3212,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "address"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::~Address()
@@ -3173,6 +3221,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -3293,7 +3342,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     address{YType::str, "address"}
 {
 
-    yang_name = "client-multicast-group"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-multicast-group"; yang_parent_name = "global-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::~ClientMulticastGroup()
@@ -3302,6 +3351,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -3366,9 +3416,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBriefs()
+    :
+    global_brief(this, {"interface_name"})
 {
 
-    yang_name = "global-briefs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-briefs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::~GlobalBriefs()
@@ -3377,7 +3429,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::~GlobalBriefs(
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::has_data() const
 {
-    for (std::size_t index=0; index<global_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_brief.len(); index++)
     {
         if(global_brief[index]->has_data())
             return true;
@@ -3387,7 +3440,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::has_data(
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<global_brief.size(); index++)
+    for (std::size_t index=0; index<global_brief.len(); index++)
     {
         if(global_brief[index]->has_operation())
             return true;
@@ -3417,7 +3470,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief>();
         c->parent = this;
-        global_brief.push_back(c);
+        global_brief.append(c);
         return c;
     }
 
@@ -3429,7 +3482,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_brief)
+    for (auto c : global_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3460,12 +3513,13 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::G
     interface_name{YType::str, "interface-name"},
     line_state{YType::enumeration, "line-state"},
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress>())
+    , address(this, {})
 {
     link_local_address->parent = this;
 
-    yang_name = "global-brief"; yang_parent_name = "global-briefs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-brief"; yang_parent_name = "global-briefs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::~GlobalBrief()
@@ -3474,7 +3528,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::~
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -3487,7 +3542,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -3502,7 +3557,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-brief" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "global-brief";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3533,7 +3589,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Glob
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -3550,7 +3606,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3615,7 +3671,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::L
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "global-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "global-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::~LinkLocalAddress()
@@ -3624,6 +3680,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::L
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -3748,7 +3805,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::A
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "address"; yang_parent_name = "global-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "global-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::~Address()
@@ -3757,6 +3814,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::A
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -3873,9 +3931,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Details()
+    :
+    detail(this, {"interface_name"})
 {
 
-    yang_name = "details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::~Details()
@@ -3884,7 +3944,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::~Details()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -3894,7 +3955,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_data() con
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -3924,7 +3985,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -3936,7 +3997,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3974,17 +4035,20 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     mlacp_active{YType::boolean, "mlacp-active"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
     flow_tag_dst{YType::boolean, "flow-tag-dst"}
-    	,
+        ,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress>())
-	,access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList>())
-	,multi_access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList>())
-	,rpf(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>())
-	,bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>())
-	,utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime>())
-	,idb_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>())
-	,caps_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>())
-	,fwd_en_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>())
-	,fwd_dis_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>())
+    , access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList>())
+    , multi_access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList>())
+    , rpf(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>())
+    , bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>())
+    , utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime>())
+    , idb_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>())
+    , multicast_group(this, {})
+    , address(this, {})
+    , client_multicast_group(this, {})
 {
     link_local_address->parent = this;
     access_control_list->parent = this;
@@ -3997,7 +4061,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     fwd_en_utime->parent = this;
     fwd_dis_utime->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::~Detail()
@@ -4006,17 +4070,18 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::~Detail()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_data() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<client_multicast_group.size(); index++)
+    for (std::size_t index=0; index<client_multicast_group.len(); index++)
     {
         if(client_multicast_group[index]->has_data())
             return true;
@@ -4045,17 +4110,17 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_da
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<client_multicast_group.size(); index++)
+    for (std::size_t index=0; index<client_multicast_group.len(); index++)
     {
         if(client_multicast_group[index]->has_operation())
             return true;
@@ -4086,7 +4151,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4205,7 +4271,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup>();
         c->parent = this;
-        multicast_group.push_back(c);
+        multicast_group.append(c);
         return c;
     }
 
@@ -4213,7 +4279,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -4221,7 +4287,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup>();
         c->parent = this;
-        client_multicast_group.push_back(c);
+        client_multicast_group.append(c);
         return c;
     }
 
@@ -4283,7 +4349,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : multicast_group)
+    for (auto c : multicast_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4292,7 +4358,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4301,7 +4367,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : client_multicast_group)
+    for (auto c : client_multicast_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4436,7 +4502,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAd
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::~LinkLocalAddress()
@@ -4445,6 +4511,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAd
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -4568,7 +4635,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessContr
     common_out_bound{YType::str, "common-out-bound"}
 {
 
-    yang_name = "access-control-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-control-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::~AccessControlList()
@@ -4577,6 +4644,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessContr
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::has_data() const
 {
+    if (is_presence_container) return true;
     return in_bound.is_set
 	|| out_bound.is_set
 	|| common_in_bound.is_set
@@ -4680,9 +4748,13 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Access
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::MultiAccessControlList()
+    :
+    inbound(this, {})
+    , outbound(this, {})
+    , common(this, {})
 {
 
-    yang_name = "multi-access-control-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-access-control-list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::~MultiAccessControlList()
@@ -4691,17 +4763,18 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_data() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_data())
             return true;
@@ -4711,17 +4784,17 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_operation() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_operation())
             return true;
@@ -4751,7 +4824,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound>();
         c->parent = this;
-        inbound.push_back(c);
+        inbound.append(c);
         return c;
     }
 
@@ -4759,7 +4832,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound>();
         c->parent = this;
-        outbound.push_back(c);
+        outbound.append(c);
         return c;
     }
 
@@ -4767,7 +4840,7 @@ std::shared_ptr<Entity> Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common>();
         c->parent = this;
-        common.push_back(c);
+        common.append(c);
         return c;
     }
 
@@ -4779,7 +4852,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inbound)
+    for (auto c : inbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4788,7 +4861,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : outbound)
+    for (auto c : outbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4797,7 +4870,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : common)
+    for (auto c : common.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4828,7 +4901,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
     entry{YType::str, "entry"}
 {
 
-    yang_name = "inbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::~Inbound()
@@ -4837,6 +4910,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4905,7 +4979,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
     entry{YType::str, "entry"}
 {
 
-    yang_name = "outbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outbound"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::~Outbound()
@@ -4914,6 +4988,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4982,7 +5057,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
     entry{YType::str, "entry"}
 {
 
-    yang_name = "common"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "multi-access-control-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::~Common()
@@ -4991,6 +5066,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccess
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -5062,7 +5138,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::Rpf()
     mode{YType::uint32, "mode"}
 {
 
-    yang_name = "rpf"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpf"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::~Rpf()
@@ -5071,6 +5147,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::~Rpf()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| allow_default_route.is_set
 	|| allow_self_ping.is_set
@@ -5176,12 +5253,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::h
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::BgpPa()
     :
     input(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input>())
-	,output(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output>())
+    , output(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "bgp-pa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-pa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::~BgpPa()
@@ -5190,6 +5267,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::~Bgp
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -5279,7 +5357,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Inpu
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::~Input()
@@ -5288,6 +5366,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Inpu
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -5384,7 +5463,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Outp
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::~Output()
@@ -5393,6 +5472,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Outp
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -5485,7 +5565,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::Utime()
 {
 
-    yang_name = "utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::~Utime()
@@ -5494,6 +5574,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::~Uti
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5546,7 +5627,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime:
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::IdbUtime()
 {
 
-    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::~IdbUtime()
@@ -5555,6 +5636,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::~
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5607,7 +5689,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUti
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::CapsUtime()
 {
 
-    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::~CapsUtime()
@@ -5616,6 +5698,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5668,7 +5751,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUt
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::FwdEnUtime()
 {
 
-    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::~FwdEnUtime()
@@ -5677,6 +5760,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5729,7 +5813,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnU
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::FwdDisUtime()
 {
 
-    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::~FwdDisUtime()
@@ -5738,6 +5822,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5792,7 +5877,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGr
     address{YType::str, "address"}
 {
 
-    yang_name = "multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::~MulticastGroup()
@@ -5801,6 +5886,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGr
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -5873,7 +5959,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::Ad
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::~Address()
@@ -5882,6 +5968,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::~A
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| address_state.is_set
@@ -6002,7 +6089,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulti
     address{YType::str, "address"}
 {
 
-    yang_name = "client-multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::~ClientMulticastGroup()
@@ -6011,6 +6098,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulti
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6077,18 +6165,18 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Client
 Ipv6Network::Nodes::Node::InterfaceData::Summary::Summary()
     :
     if_up_down_basecaps_up{YType::uint32, "if-up-down-basecaps-up"}
-    	,
+        ,
     if_up_up(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp>())
-	,if_up_down(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown>())
-	,if_down_down(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown>())
-	,if_shutdown_down(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown>())
+    , if_up_down(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown>())
+    , if_down_down(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown>())
+    , if_shutdown_down(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown>())
 {
     if_up_up->parent = this;
     if_up_down->parent = this;
     if_down_down->parent = this;
     if_shutdown_down->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::~Summary()
@@ -6097,6 +6185,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::~Summary()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return if_up_down_basecaps_up.is_set
 	|| (if_up_up !=  nullptr && if_up_up->has_data())
 	|| (if_up_down !=  nullptr && if_up_down->has_data())
@@ -6231,7 +6320,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::IfUpUp()
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-up-up"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-up-up"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::~IfUpUp()
@@ -6240,6 +6329,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::~IfUpUp()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -6336,7 +6426,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::IfUpDown()
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-up-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-up-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::~IfUpDown()
@@ -6345,6 +6435,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::~IfUpDown()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -6441,7 +6532,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::IfDownDown()
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-down-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-down-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::~IfDownDown()
@@ -6450,6 +6541,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::~IfDownDown()
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -6546,7 +6638,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::IfShutdownDown
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-shutdown-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-shutdown-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::~IfShutdownDown()
@@ -6555,6 +6647,7 @@ Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::~IfShutdownDow
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -6647,16 +6740,16 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_leaf_
 const Enum::YLeaf Ipv6MaOperState::oper_up {1, "oper-up"};
 const Enum::YLeaf Ipv6MaOperState::oper_down {2, "oper-down"};
 
+const Enum::YLeaf Ipv6MaIfLineState::down {1, "down"};
+const Enum::YLeaf Ipv6MaIfLineState::up {2, "up"};
+const Enum::YLeaf Ipv6MaIfLineState::unknown {3, "unknown"};
+const Enum::YLeaf Ipv6MaIfLineState::error {4, "error"};
+
 const Enum::YLeaf Ipv6MaIfAddrState::active {1, "active"};
 const Enum::YLeaf Ipv6MaIfAddrState::deprecated {2, "deprecated"};
 const Enum::YLeaf Ipv6MaIfAddrState::duplicate {3, "duplicate"};
 const Enum::YLeaf Ipv6MaIfAddrState::inaccessible {4, "inaccessible"};
 const Enum::YLeaf Ipv6MaIfAddrState::tentative {5, "tentative"};
-
-const Enum::YLeaf Ipv6MaIfLineState::down {1, "down"};
-const Enum::YLeaf Ipv6MaIfLineState::up {2, "up"};
-const Enum::YLeaf Ipv6MaIfLineState::unknown {3, "unknown"};
-const Enum::YLeaf Ipv6MaIfLineState::error {4, "error"};
 
 
 }

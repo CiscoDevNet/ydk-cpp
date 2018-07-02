@@ -11,16 +11,16 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2rib_oper {
 
-L2Rib::L2Rib()
+L2rib::L2rib()
     :
-    producers_details(std::make_shared<L2Rib::ProducersDetails>())
-	,summary(std::make_shared<L2Rib::Summary>())
-	,producers(std::make_shared<L2Rib::Producers>())
-	,clients(std::make_shared<L2Rib::Clients>())
-	,evis_xr(std::make_shared<L2Rib::EvisXr>())
-	,clients_details(std::make_shared<L2Rib::ClientsDetails>())
-	,evi_child_tables(std::make_shared<L2Rib::EviChildTables>())
-	,evis(std::make_shared<L2Rib::Evis>())
+    producers_details(std::make_shared<L2rib::ProducersDetails>())
+    , summary(std::make_shared<L2rib::Summary>())
+    , producers(std::make_shared<L2rib::Producers>())
+    , clients(std::make_shared<L2rib::Clients>())
+    , evis_xr(std::make_shared<L2rib::EvisXr>())
+    , clients_details(std::make_shared<L2rib::ClientsDetails>())
+    , evi_child_tables(std::make_shared<L2rib::EviChildTables>())
+    , evis(std::make_shared<L2rib::Evis>())
 {
     producers_details->parent = this;
     summary->parent = this;
@@ -31,15 +31,16 @@ L2Rib::L2Rib()
     evi_child_tables->parent = this;
     evis->parent = this;
 
-    yang_name = "l2rib"; yang_parent_name = "Cisco-IOS-XR-l2rib-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "l2rib"; yang_parent_name = "Cisco-IOS-XR-l2rib-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-L2Rib::~L2Rib()
+L2rib::~L2rib()
 {
 }
 
-bool L2Rib::has_data() const
+bool L2rib::has_data() const
 {
+    if (is_presence_container) return true;
     return (producers_details !=  nullptr && producers_details->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (producers !=  nullptr && producers->has_data())
@@ -50,7 +51,7 @@ bool L2Rib::has_data() const
 	|| (evis !=  nullptr && evis->has_data());
 }
 
-bool L2Rib::has_operation() const
+bool L2rib::has_operation() const
 {
     return is_set(yfilter)
 	|| (producers_details !=  nullptr && producers_details->has_operation())
@@ -63,14 +64,14 @@ bool L2Rib::has_operation() const
 	|| (evis !=  nullptr && evis->has_operation());
 }
 
-std::string L2Rib::get_segment_path() const
+std::string L2rib::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -79,13 +80,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producers-details")
     {
         if(producers_details == nullptr)
         {
-            producers_details = std::make_shared<L2Rib::ProducersDetails>();
+            producers_details = std::make_shared<L2rib::ProducersDetails>();
         }
         return producers_details;
     }
@@ -94,7 +95,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     {
         if(summary == nullptr)
         {
-            summary = std::make_shared<L2Rib::Summary>();
+            summary = std::make_shared<L2rib::Summary>();
         }
         return summary;
     }
@@ -103,7 +104,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     {
         if(producers == nullptr)
         {
-            producers = std::make_shared<L2Rib::Producers>();
+            producers = std::make_shared<L2rib::Producers>();
         }
         return producers;
     }
@@ -112,7 +113,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     {
         if(clients == nullptr)
         {
-            clients = std::make_shared<L2Rib::Clients>();
+            clients = std::make_shared<L2rib::Clients>();
         }
         return clients;
     }
@@ -121,7 +122,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     {
         if(evis_xr == nullptr)
         {
-            evis_xr = std::make_shared<L2Rib::EvisXr>();
+            evis_xr = std::make_shared<L2rib::EvisXr>();
         }
         return evis_xr;
     }
@@ -130,7 +131,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     {
         if(clients_details == nullptr)
         {
-            clients_details = std::make_shared<L2Rib::ClientsDetails>();
+            clients_details = std::make_shared<L2rib::ClientsDetails>();
         }
         return clients_details;
     }
@@ -139,7 +140,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     {
         if(evi_child_tables == nullptr)
         {
-            evi_child_tables = std::make_shared<L2Rib::EviChildTables>();
+            evi_child_tables = std::make_shared<L2rib::EviChildTables>();
         }
         return evi_child_tables;
     }
@@ -148,7 +149,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     {
         if(evis == nullptr)
         {
-            evis = std::make_shared<L2Rib::Evis>();
+            evis = std::make_shared<L2rib::Evis>();
         }
         return evis;
     }
@@ -156,7 +157,7 @@ std::shared_ptr<Entity> L2Rib::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -203,59 +204,62 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::get_children() const
     return children;
 }
 
-void L2Rib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> L2Rib::clone_ptr() const
+std::shared_ptr<Entity> L2rib::clone_ptr() const
 {
-    return std::make_shared<L2Rib>();
+    return std::make_shared<L2rib>();
 }
 
-std::string L2Rib::get_bundle_yang_models_location() const
+std::string L2rib::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string L2Rib::get_bundle_name() const
+std::string L2rib::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function L2Rib::get_augment_capabilities_function() const
+augment_capabilities_function L2rib::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> L2Rib::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> L2rib::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool L2Rib::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "producers-details" || name == "summary" || name == "producers" || name == "clients" || name == "evis-xr" || name == "clients-details" || name == "evi-child-tables" || name == "evis")
         return true;
     return false;
 }
 
-L2Rib::ProducersDetails::ProducersDetails()
+L2rib::ProducersDetails::ProducersDetails()
+    :
+    producers_detail(this, {})
 {
 
-    yang_name = "producers-details"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "producers-details"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ProducersDetails::~ProducersDetails()
+L2rib::ProducersDetails::~ProducersDetails()
 {
 }
 
-bool L2Rib::ProducersDetails::has_data() const
+bool L2rib::ProducersDetails::has_data() const
 {
-    for (std::size_t index=0; index<producers_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<producers_detail.len(); index++)
     {
         if(producers_detail[index]->has_data())
             return true;
@@ -263,9 +267,9 @@ bool L2Rib::ProducersDetails::has_data() const
     return false;
 }
 
-bool L2Rib::ProducersDetails::has_operation() const
+bool L2rib::ProducersDetails::has_operation() const
 {
-    for (std::size_t index=0; index<producers_detail.size(); index++)
+    for (std::size_t index=0; index<producers_detail.len(); index++)
     {
         if(producers_detail[index]->has_operation())
             return true;
@@ -273,21 +277,21 @@ bool L2Rib::ProducersDetails::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::ProducersDetails::get_absolute_path() const
+std::string L2rib::ProducersDetails::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ProducersDetails::get_segment_path() const
+std::string L2rib::ProducersDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producers-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -296,25 +300,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::get_name
 
 }
 
-std::shared_ptr<Entity> L2Rib::ProducersDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ProducersDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producers-detail")
     {
-        auto c = std::make_shared<L2Rib::ProducersDetails::ProducersDetail>();
+        auto c = std::make_shared<L2rib::ProducersDetails::ProducersDetail>();
         c->parent = this;
-        producers_detail.push_back(c);
+        producers_detail.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : producers_detail)
+    for (auto c : producers_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -325,42 +329,43 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::get_chil
     return children;
 }
 
-void L2Rib::ProducersDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ProducersDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::ProducersDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ProducersDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::ProducersDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ProducersDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "producers-detail")
         return true;
     return false;
 }
 
-L2Rib::ProducersDetails::ProducersDetail::ProducersDetail()
+L2rib::ProducersDetails::ProducersDetail::ProducersDetail()
     :
     object_id{YType::uint32, "object-id"},
     product_id{YType::uint32, "product-id"},
     last_update_timestamp{YType::uint64, "last-update-timestamp"}
-    	,
-    producer(std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Producer>())
-	,statistics(std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Statistics>())
+        ,
+    producer(std::make_shared<L2rib::ProducersDetails::ProducersDetail::Producer>())
+    , statistics(std::make_shared<L2rib::ProducersDetails::ProducersDetail::Statistics>())
 {
     producer->parent = this;
     statistics->parent = this;
 
-    yang_name = "producers-detail"; yang_parent_name = "producers-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "producers-detail"; yang_parent_name = "producers-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ProducersDetails::ProducersDetail::~ProducersDetail()
+L2rib::ProducersDetails::ProducersDetail::~ProducersDetail()
 {
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::has_data() const
+bool L2rib::ProducersDetails::ProducersDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return object_id.is_set
 	|| product_id.is_set
 	|| last_update_timestamp.is_set
@@ -368,7 +373,7 @@ bool L2Rib::ProducersDetails::ProducersDetail::has_data() const
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::has_operation() const
+bool L2rib::ProducersDetails::ProducersDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(object_id.yfilter)
@@ -378,21 +383,21 @@ bool L2Rib::ProducersDetails::ProducersDetail::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::get_absolute_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/producers-details/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::get_segment_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producers-detail";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::ProducersDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::ProducersDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -404,13 +409,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producer")
     {
         if(producer == nullptr)
         {
-            producer = std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Producer>();
+            producer = std::make_shared<L2rib::ProducersDetails::ProducersDetail::Producer>();
         }
         return producer;
     }
@@ -419,7 +424,7 @@ std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::get_child_by_n
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Statistics>();
+            statistics = std::make_shared<L2rib::ProducersDetails::ProducersDetail::Statistics>();
         }
         return statistics;
     }
@@ -427,7 +432,7 @@ std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::ProducersDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -444,7 +449,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::Producer
     return children;
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ProducersDetails::ProducersDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-id")
     {
@@ -466,7 +471,7 @@ void L2Rib::ProducersDetails::ProducersDetail::set_value(const std::string & val
     }
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ProducersDetails::ProducersDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "object-id")
     {
@@ -482,14 +487,14 @@ void L2Rib::ProducersDetails::ProducersDetail::set_filter(const std::string & va
     }
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ProducersDetails::ProducersDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "producer" || name == "statistics" || name == "object-id" || name == "product-id" || name == "last-update-timestamp")
         return true;
     return false;
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Producer::Producer()
+L2rib::ProducersDetails::ProducersDetail::Producer::Producer()
     :
     client_id{YType::uint32, "client-id"},
     object_type{YType::enumeration, "object-type"},
@@ -500,15 +505,16 @@ L2Rib::ProducersDetails::ProducersDetail::Producer::Producer()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "producer"; yang_parent_name = "producers-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "producer"; yang_parent_name = "producers-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Producer::~Producer()
+L2rib::ProducersDetails::ProducersDetail::Producer::~Producer()
 {
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Producer::has_data() const
+bool L2rib::ProducersDetails::ProducersDetail::Producer::has_data() const
 {
+    if (is_presence_container) return true;
     return client_id.is_set
 	|| object_type.is_set
 	|| producer_id.is_set
@@ -518,7 +524,7 @@ bool L2Rib::ProducersDetails::ProducersDetail::Producer::has_data() const
 	|| state.is_set;
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Producer::has_operation() const
+bool L2rib::ProducersDetails::ProducersDetail::Producer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(client_id.yfilter)
@@ -530,21 +536,21 @@ bool L2Rib::ProducersDetails::ProducersDetail::Producer::has_operation() const
 	|| ydk::is_set(state.yfilter);
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Producer::get_absolute_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Producer::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/producers-details/producers-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Producer::get_segment_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Producer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::ProducersDetail::Producer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::ProducersDetail::Producer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -560,19 +566,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::ProducersDetail::Producer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Producer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Producer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ProducersDetails::ProducersDetail::Producer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-id")
     {
@@ -618,7 +624,7 @@ void L2Rib::ProducersDetails::ProducersDetail::Producer::set_value(const std::st
     }
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Producer::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ProducersDetails::ProducersDetail::Producer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "client-id")
     {
@@ -650,37 +656,38 @@ void L2Rib::ProducersDetails::ProducersDetail::Producer::set_filter(const std::s
     }
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Producer::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ProducersDetails::ProducersDetail::Producer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "client-id" || name == "object-type" || name == "producer-id" || name == "producer-name" || name == "admin-distance" || name == "purge-time" || name == "state")
         return true;
     return false;
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics()
+L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics()
     :
     producer_id{YType::enumeration, "producer-id"},
     producer_name{YType::str, "producer-name"}
-    	,
-    statistics(std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_>())
+        ,
+    statistics(std::make_shared<L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_>())
 {
     statistics->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "producers-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "producers-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Statistics::~Statistics()
+L2rib::ProducersDetails::ProducersDetail::Statistics::~Statistics()
 {
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::has_data() const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return producer_id.is_set
 	|| producer_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::has_operation() const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(producer_id.yfilter)
@@ -688,21 +695,21 @@ bool L2Rib::ProducersDetails::ProducersDetail::Statistics::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Statistics::get_absolute_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Statistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/producers-details/producers-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Statistics::get_segment_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::ProducersDetail::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::ProducersDetail::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -713,13 +720,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_>();
+            statistics = std::make_shared<L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_>();
         }
         return statistics;
     }
@@ -727,7 +734,7 @@ std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::Statistics::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::ProducersDetail::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -739,7 +746,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::Producer
     return children;
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ProducersDetails::ProducersDetail::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-id")
     {
@@ -755,7 +762,7 @@ void L2Rib::ProducersDetails::ProducersDetail::Statistics::set_value(const std::
     }
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ProducersDetails::ProducersDetail::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-id")
     {
@@ -767,30 +774,33 @@ void L2Rib::ProducersDetails::ProducersDetail::Statistics::set_filter(const std:
     }
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "statistics" || name == "producer-id" || name == "producer-name")
         return true;
     return false;
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::Statistics_()
+L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::Statistics_()
     :
     memory_size{YType::uint32, "memory-size"},
     object_count{YType::uint32, "object-count"},
     endof_interval_ts{YType::uint64, "endof-interval-ts"}
+        ,
+    extended_counter(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::~Statistics_()
+L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::~Statistics_()
 {
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_data() const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_data() const
 {
-    for (std::size_t index=0; index<extended_counter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<extended_counter.len(); index++)
     {
         if(extended_counter[index]->has_data())
             return true;
@@ -800,9 +810,9 @@ bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_data
 	|| endof_interval_ts.is_set;
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_operation() const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_operation() const
 {
-    for (std::size_t index=0; index<extended_counter.size(); index++)
+    for (std::size_t index=0; index<extended_counter.len(); index++)
     {
         if(extended_counter[index]->has_operation())
             return true;
@@ -813,21 +823,21 @@ bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_oper
 	|| ydk::is_set(endof_interval_ts.yfilter);
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_absolute_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/producers-details/producers-detail/statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_segment_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -839,25 +849,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-counter")
     {
-        auto c = std::make_shared<L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter>();
+        auto c = std::make_shared<L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter>();
         c->parent = this;
-        extended_counter.push_back(c);
+        extended_counter.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : extended_counter)
+    for (auto c : extended_counter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -868,7 +878,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::Producer
     return children;
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "memory-size")
     {
@@ -890,7 +900,7 @@ void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::set_valu
     }
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "memory-size")
     {
@@ -906,14 +916,14 @@ void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::set_filt
     }
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "extended-counter" || name == "memory-size" || name == "object-count" || name == "endof-interval-ts")
         return true;
     return false;
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::ExtendedCounter()
+L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::ExtendedCounter()
     :
     counter_type{YType::uint8, "counter-type"},
     counter_name{YType::str, "counter-name"},
@@ -923,15 +933,16 @@ L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCount
     l2rb_total_event_count{YType::uint32, "l2rb-total-event-count"}
 {
 
-    yang_name = "extended-counter"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-counter"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::~ExtendedCounter()
+L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::~ExtendedCounter()
 {
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::has_data() const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::has_data() const
 {
+    if (is_presence_container) return true;
     return counter_type.is_set
 	|| counter_name.is_set
 	|| l2rb_first_event_ts.is_set
@@ -940,7 +951,7 @@ bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::Extended
 	|| l2rb_total_event_count.is_set;
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::has_operation() const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(counter_type.yfilter)
@@ -951,21 +962,21 @@ bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::Extended
 	|| ydk::is_set(l2rb_total_event_count.yfilter);
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_absolute_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/producers-details/producers-detail/statistics/statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_segment_path() const
+std::string L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-counter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -980,19 +991,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter-type")
     {
@@ -1032,7 +1043,7 @@ void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::Extended
     }
 }
 
-void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "counter-type")
     {
@@ -1060,29 +1071,32 @@ void L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::Extended
     }
 }
 
-bool L2Rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counter-type" || name == "counter-name" || name == "l2rb-first-event-ts" || name == "l2rb-last-event-ts" || name == "l2rb-interval-event-count" || name == "l2rb-total-event-count")
         return true;
     return false;
 }
 
-L2Rib::Summary::Summary()
+L2rib::Summary::Summary()
     :
     converged_tables_count{YType::uint32, "converged-tables-count"},
     total_memory{YType::uint32, "total-memory"}
+        ,
+    table_summary(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Summary::~Summary()
+L2rib::Summary::~Summary()
 {
 }
 
-bool L2Rib::Summary::has_data() const
+bool L2rib::Summary::has_data() const
 {
-    for (std::size_t index=0; index<table_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<table_summary.len(); index++)
     {
         if(table_summary[index]->has_data())
             return true;
@@ -1091,9 +1105,9 @@ bool L2Rib::Summary::has_data() const
 	|| total_memory.is_set;
 }
 
-bool L2Rib::Summary::has_operation() const
+bool L2rib::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<table_summary.size(); index++)
+    for (std::size_t index=0; index<table_summary.len(); index++)
     {
         if(table_summary[index]->has_operation())
             return true;
@@ -1103,21 +1117,21 @@ bool L2Rib::Summary::has_operation() const
 	|| ydk::is_set(total_memory.yfilter);
 }
 
-std::string L2Rib::Summary::get_absolute_path() const
+std::string L2rib::Summary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Summary::get_segment_path() const
+std::string L2rib::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Summary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1128,25 +1142,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2Rib::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "table-summary")
     {
-        auto c = std::make_shared<L2Rib::Summary::TableSummary>();
+        auto c = std::make_shared<L2rib::Summary::TableSummary>();
         c->parent = this;
-        table_summary.push_back(c);
+        table_summary.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : table_summary)
+    for (auto c : table_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1157,7 +1171,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::get_children() co
     return children;
 }
 
-void L2Rib::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "converged-tables-count")
     {
@@ -1173,7 +1187,7 @@ void L2Rib::Summary::set_value(const std::string & value_path, const std::string
     }
 }
 
-void L2Rib::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Summary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "converged-tables-count")
     {
@@ -1185,30 +1199,33 @@ void L2Rib::Summary::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-bool L2Rib::Summary::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-summary" || name == "converged-tables-count" || name == "total-memory")
         return true;
     return false;
 }
 
-L2Rib::Summary::TableSummary::TableSummary()
+L2rib::Summary::TableSummary::TableSummary()
     :
     object_type{YType::enumeration, "object-type"},
     object_count{YType::uint32, "object-count"},
     table_memory{YType::uint32, "table-memory"}
+        ,
+    producer_stat(this, {})
 {
 
-    yang_name = "table-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "table-summary"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Summary::TableSummary::~TableSummary()
+L2rib::Summary::TableSummary::~TableSummary()
 {
 }
 
-bool L2Rib::Summary::TableSummary::has_data() const
+bool L2rib::Summary::TableSummary::has_data() const
 {
-    for (std::size_t index=0; index<producer_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<producer_stat.len(); index++)
     {
         if(producer_stat[index]->has_data())
             return true;
@@ -1218,9 +1235,9 @@ bool L2Rib::Summary::TableSummary::has_data() const
 	|| table_memory.is_set;
 }
 
-bool L2Rib::Summary::TableSummary::has_operation() const
+bool L2rib::Summary::TableSummary::has_operation() const
 {
-    for (std::size_t index=0; index<producer_stat.size(); index++)
+    for (std::size_t index=0; index<producer_stat.len(); index++)
     {
         if(producer_stat[index]->has_operation())
             return true;
@@ -1231,21 +1248,21 @@ bool L2Rib::Summary::TableSummary::has_operation() const
 	|| ydk::is_set(table_memory.yfilter);
 }
 
-std::string L2Rib::Summary::TableSummary::get_absolute_path() const
+std::string L2rib::Summary::TableSummary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/summary/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Summary::TableSummary::get_segment_path() const
+std::string L2rib::Summary::TableSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "table-summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1257,25 +1274,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::get
 
 }
 
-std::shared_ptr<Entity> L2Rib::Summary::TableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Summary::TableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producer-stat")
     {
-        auto c = std::make_shared<L2Rib::Summary::TableSummary::ProducerStat>();
+        auto c = std::make_shared<L2rib::Summary::TableSummary::ProducerStat>();
         c->parent = this;
-        producer_stat.push_back(c);
+        producer_stat.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::TableSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : producer_stat)
+    for (auto c : producer_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1286,7 +1303,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::TableSummary::get
     return children;
 }
 
-void L2Rib::Summary::TableSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Summary::TableSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-type")
     {
@@ -1308,7 +1325,7 @@ void L2Rib::Summary::TableSummary::set_value(const std::string & value_path, con
     }
 }
 
-void L2Rib::Summary::TableSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Summary::TableSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "object-type")
     {
@@ -1324,37 +1341,38 @@ void L2Rib::Summary::TableSummary::set_filter(const std::string & value_path, YF
     }
 }
 
-bool L2Rib::Summary::TableSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Summary::TableSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "producer-stat" || name == "object-type" || name == "object-count" || name == "table-memory")
         return true;
     return false;
 }
 
-L2Rib::Summary::TableSummary::ProducerStat::ProducerStat()
+L2rib::Summary::TableSummary::ProducerStat::ProducerStat()
     :
     producer_id{YType::enumeration, "producer-id"},
     producer_name{YType::str, "producer-name"}
-    	,
-    statistics(std::make_shared<L2Rib::Summary::TableSummary::ProducerStat::Statistics>())
+        ,
+    statistics(std::make_shared<L2rib::Summary::TableSummary::ProducerStat::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "producer-stat"; yang_parent_name = "table-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "producer-stat"; yang_parent_name = "table-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Summary::TableSummary::ProducerStat::~ProducerStat()
+L2rib::Summary::TableSummary::ProducerStat::~ProducerStat()
 {
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::has_data() const
+bool L2rib::Summary::TableSummary::ProducerStat::has_data() const
 {
+    if (is_presence_container) return true;
     return producer_id.is_set
 	|| producer_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::has_operation() const
+bool L2rib::Summary::TableSummary::ProducerStat::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(producer_id.yfilter)
@@ -1362,21 +1380,21 @@ bool L2Rib::Summary::TableSummary::ProducerStat::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string L2Rib::Summary::TableSummary::ProducerStat::get_absolute_path() const
+std::string L2rib::Summary::TableSummary::ProducerStat::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/summary/table-summary/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Summary::TableSummary::ProducerStat::get_segment_path() const
+std::string L2rib::Summary::TableSummary::ProducerStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producer-stat";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::ProducerStat::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::ProducerStat::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1387,13 +1405,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::Pro
 
 }
 
-std::shared_ptr<Entity> L2Rib::Summary::TableSummary::ProducerStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Summary::TableSummary::ProducerStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2Rib::Summary::TableSummary::ProducerStat::Statistics>();
+            statistics = std::make_shared<L2rib::Summary::TableSummary::ProducerStat::Statistics>();
         }
         return statistics;
     }
@@ -1401,7 +1419,7 @@ std::shared_ptr<Entity> L2Rib::Summary::TableSummary::ProducerStat::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::TableSummary::ProducerStat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::ProducerStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1413,7 +1431,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::TableSummary::Pro
     return children;
 }
 
-void L2Rib::Summary::TableSummary::ProducerStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Summary::TableSummary::ProducerStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-id")
     {
@@ -1429,7 +1447,7 @@ void L2Rib::Summary::TableSummary::ProducerStat::set_value(const std::string & v
     }
 }
 
-void L2Rib::Summary::TableSummary::ProducerStat::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Summary::TableSummary::ProducerStat::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-id")
     {
@@ -1441,30 +1459,33 @@ void L2Rib::Summary::TableSummary::ProducerStat::set_filter(const std::string & 
     }
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Summary::TableSummary::ProducerStat::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "statistics" || name == "producer-id" || name == "producer-name")
         return true;
     return false;
 }
 
-L2Rib::Summary::TableSummary::ProducerStat::Statistics::Statistics()
+L2rib::Summary::TableSummary::ProducerStat::Statistics::Statistics()
     :
     memory_size{YType::uint32, "memory-size"},
     object_count{YType::uint32, "object-count"},
     endof_interval_ts{YType::uint64, "endof-interval-ts"}
+        ,
+    extended_counter(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "producer-stat"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "producer-stat"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Summary::TableSummary::ProducerStat::Statistics::~Statistics()
+L2rib::Summary::TableSummary::ProducerStat::Statistics::~Statistics()
 {
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::has_data() const
+bool L2rib::Summary::TableSummary::ProducerStat::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<extended_counter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<extended_counter.len(); index++)
     {
         if(extended_counter[index]->has_data())
             return true;
@@ -1474,9 +1495,9 @@ bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::has_data() const
 	|| endof_interval_ts.is_set;
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::has_operation() const
+bool L2rib::Summary::TableSummary::ProducerStat::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<extended_counter.size(); index++)
+    for (std::size_t index=0; index<extended_counter.len(); index++)
     {
         if(extended_counter[index]->has_operation())
             return true;
@@ -1487,21 +1508,21 @@ bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::has_operation() con
 	|| ydk::is_set(endof_interval_ts.yfilter);
 }
 
-std::string L2Rib::Summary::TableSummary::ProducerStat::Statistics::get_absolute_path() const
+std::string L2rib::Summary::TableSummary::ProducerStat::Statistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/summary/table-summary/producer-stat/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Summary::TableSummary::ProducerStat::Statistics::get_segment_path() const
+std::string L2rib::Summary::TableSummary::ProducerStat::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::ProducerStat::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::ProducerStat::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1513,25 +1534,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::Pro
 
 }
 
-std::shared_ptr<Entity> L2Rib::Summary::TableSummary::ProducerStat::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Summary::TableSummary::ProducerStat::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-counter")
     {
-        auto c = std::make_shared<L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter>();
+        auto c = std::make_shared<L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter>();
         c->parent = this;
-        extended_counter.push_back(c);
+        extended_counter.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::TableSummary::ProducerStat::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::ProducerStat::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : extended_counter)
+    for (auto c : extended_counter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1542,7 +1563,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::TableSummary::Pro
     return children;
 }
 
-void L2Rib::Summary::TableSummary::ProducerStat::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Summary::TableSummary::ProducerStat::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "memory-size")
     {
@@ -1564,7 +1585,7 @@ void L2Rib::Summary::TableSummary::ProducerStat::Statistics::set_value(const std
     }
 }
 
-void L2Rib::Summary::TableSummary::ProducerStat::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Summary::TableSummary::ProducerStat::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "memory-size")
     {
@@ -1580,14 +1601,14 @@ void L2Rib::Summary::TableSummary::ProducerStat::Statistics::set_filter(const st
     }
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Summary::TableSummary::ProducerStat::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "extended-counter" || name == "memory-size" || name == "object-count" || name == "endof-interval-ts")
         return true;
     return false;
 }
 
-L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::ExtendedCounter()
+L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::ExtendedCounter()
     :
     counter_type{YType::uint8, "counter-type"},
     counter_name{YType::str, "counter-name"},
@@ -1597,15 +1618,16 @@ L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::Extende
     l2rb_total_event_count{YType::uint32, "l2rb-total-event-count"}
 {
 
-    yang_name = "extended-counter"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-counter"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::~ExtendedCounter()
+L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::~ExtendedCounter()
 {
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::has_data() const
+bool L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::has_data() const
 {
+    if (is_presence_container) return true;
     return counter_type.is_set
 	|| counter_name.is_set
 	|| l2rb_first_event_ts.is_set
@@ -1614,7 +1636,7 @@ bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::ha
 	|| l2rb_total_event_count.is_set;
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::has_operation() const
+bool L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(counter_type.yfilter)
@@ -1625,21 +1647,21 @@ bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::ha
 	|| ydk::is_set(l2rb_total_event_count.yfilter);
 }
 
-std::string L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_absolute_path() const
+std::string L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/summary/table-summary/producer-stat/statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_segment_path() const
+std::string L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-counter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1654,19 +1676,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Summary::TableSummary::Pro
 
 }
 
-std::shared_ptr<Entity> L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter-type")
     {
@@ -1706,7 +1728,7 @@ void L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::se
     }
 }
 
-void L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "counter-type")
     {
@@ -1734,26 +1756,29 @@ void L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::se
     }
 }
 
-bool L2Rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counter-type" || name == "counter-name" || name == "l2rb-first-event-ts" || name == "l2rb-last-event-ts" || name == "l2rb-interval-event-count" || name == "l2rb-total-event-count")
         return true;
     return false;
 }
 
-L2Rib::Producers::Producers()
+L2rib::Producers::Producers()
+    :
+    producer(this, {})
 {
 
-    yang_name = "producers"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "producers"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Producers::~Producers()
+L2rib::Producers::~Producers()
 {
 }
 
-bool L2Rib::Producers::has_data() const
+bool L2rib::Producers::has_data() const
 {
-    for (std::size_t index=0; index<producer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<producer.len(); index++)
     {
         if(producer[index]->has_data())
             return true;
@@ -1761,9 +1786,9 @@ bool L2Rib::Producers::has_data() const
     return false;
 }
 
-bool L2Rib::Producers::has_operation() const
+bool L2rib::Producers::has_operation() const
 {
-    for (std::size_t index=0; index<producer.size(); index++)
+    for (std::size_t index=0; index<producer.len(); index++)
     {
         if(producer[index]->has_operation())
             return true;
@@ -1771,21 +1796,21 @@ bool L2Rib::Producers::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::Producers::get_absolute_path() const
+std::string L2rib::Producers::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Producers::get_segment_path() const
+std::string L2rib::Producers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Producers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Producers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1794,25 +1819,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Producers::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L2Rib::Producers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Producers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producer")
     {
-        auto c = std::make_shared<L2Rib::Producers::Producer>();
+        auto c = std::make_shared<L2rib::Producers::Producer>();
         c->parent = this;
-        producer.push_back(c);
+        producer.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Producers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Producers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : producer)
+    for (auto c : producer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1823,22 +1848,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::Producers::get_children() 
     return children;
 }
 
-void L2Rib::Producers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Producers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::Producers::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Producers::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::Producers::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Producers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "producer")
         return true;
     return false;
 }
 
-L2Rib::Producers::Producer::Producer()
+L2rib::Producers::Producer::Producer()
     :
     object_id{YType::uint32, "object-id"},
     product_id{YType::uint32, "product-id"},
@@ -1851,15 +1876,16 @@ L2Rib::Producers::Producer::Producer()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "producer"; yang_parent_name = "producers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "producer"; yang_parent_name = "producers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Producers::Producer::~Producer()
+L2rib::Producers::Producer::~Producer()
 {
 }
 
-bool L2Rib::Producers::Producer::has_data() const
+bool L2rib::Producers::Producer::has_data() const
 {
+    if (is_presence_container) return true;
     return object_id.is_set
 	|| product_id.is_set
 	|| client_id.is_set
@@ -1871,7 +1897,7 @@ bool L2Rib::Producers::Producer::has_data() const
 	|| state.is_set;
 }
 
-bool L2Rib::Producers::Producer::has_operation() const
+bool L2rib::Producers::Producer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(object_id.yfilter)
@@ -1885,21 +1911,21 @@ bool L2Rib::Producers::Producer::has_operation() const
 	|| ydk::is_set(state.yfilter);
 }
 
-std::string L2Rib::Producers::Producer::get_absolute_path() const
+std::string L2rib::Producers::Producer::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/producers/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Producers::Producer::get_segment_path() const
+std::string L2rib::Producers::Producer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Producers::Producer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Producers::Producer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1917,19 +1943,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Producers::Producer::get_n
 
 }
 
-std::shared_ptr<Entity> L2Rib::Producers::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Producers::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Producers::Producer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Producers::Producer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::Producers::Producer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Producers::Producer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-id")
     {
@@ -1987,7 +2013,7 @@ void L2Rib::Producers::Producer::set_value(const std::string & value_path, const
     }
 }
 
-void L2Rib::Producers::Producer::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Producers::Producer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "object-id")
     {
@@ -2027,26 +2053,29 @@ void L2Rib::Producers::Producer::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool L2Rib::Producers::Producer::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Producers::Producer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "object-id" || name == "product-id" || name == "client-id" || name == "object-type" || name == "producer-id" || name == "producer-name" || name == "admin-distance" || name == "purge-time" || name == "state")
         return true;
     return false;
 }
 
-L2Rib::Clients::Clients()
+L2rib::Clients::Clients()
+    :
+    client(this, {"client_id"})
 {
 
-    yang_name = "clients"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clients"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Clients::~Clients()
+L2rib::Clients::~Clients()
 {
 }
 
-bool L2Rib::Clients::has_data() const
+bool L2rib::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -2054,9 +2083,9 @@ bool L2Rib::Clients::has_data() const
     return false;
 }
 
-bool L2Rib::Clients::has_operation() const
+bool L2rib::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -2064,21 +2093,21 @@ bool L2Rib::Clients::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::Clients::get_absolute_path() const
+std::string L2rib::Clients::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Clients::get_segment_path() const
+std::string L2rib::Clients::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clients";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Clients::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Clients::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2087,25 +2116,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Clients::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2Rib::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<L2Rib::Clients::Client>();
+        auto c = std::make_shared<L2rib::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Clients::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Clients::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2116,22 +2145,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::Clients::get_children() co
     return children;
 }
 
-void L2Rib::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::Clients::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Clients::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::Clients::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Clients::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "client")
         return true;
     return false;
 }
 
-L2Rib::Clients::Client::Client()
+L2rib::Clients::Client::Client()
     :
     client_id{YType::uint32, "client-id"},
     client_id_xr{YType::uint32, "client-id-xr"},
@@ -2141,15 +2170,16 @@ L2Rib::Clients::Client::Client()
     proc_suffix{YType::str, "proc-suffix"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Clients::Client::~Client()
+L2rib::Clients::Client::~Client()
 {
 }
 
-bool L2Rib::Clients::Client::has_data() const
+bool L2rib::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return client_id.is_set
 	|| client_id_xr.is_set
 	|| process_id.is_set
@@ -2158,7 +2188,7 @@ bool L2Rib::Clients::Client::has_data() const
 	|| proc_suffix.is_set;
 }
 
-bool L2Rib::Clients::Client::has_operation() const
+bool L2rib::Clients::Client::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(client_id.yfilter)
@@ -2169,21 +2199,22 @@ bool L2Rib::Clients::Client::has_operation() const
 	|| ydk::is_set(proc_suffix.yfilter);
 }
 
-std::string L2Rib::Clients::Client::get_absolute_path() const
+std::string L2rib::Clients::Client::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/clients/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Clients::Client::get_segment_path() const
+std::string L2rib::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-id='" <<client_id <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_id, "client-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Clients::Client::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Clients::Client::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2198,19 +2229,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Clients::Client::get_name_
 
 }
 
-std::shared_ptr<Entity> L2Rib::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Clients::Client::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Clients::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::Clients::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Clients::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-id")
     {
@@ -2250,7 +2281,7 @@ void L2Rib::Clients::Client::set_value(const std::string & value_path, const std
     }
 }
 
-void L2Rib::Clients::Client::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Clients::Client::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "client-id")
     {
@@ -2278,26 +2309,29 @@ void L2Rib::Clients::Client::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-bool L2Rib::Clients::Client::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Clients::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "client-id" || name == "client-id-xr" || name == "process-id" || name == "node-id" || name == "proc-name" || name == "proc-suffix")
         return true;
     return false;
 }
 
-L2Rib::EvisXr::EvisXr()
+L2rib::EvisXr::EvisXr()
+    :
+    evi(this, {"evi"})
 {
 
-    yang_name = "evis-xr"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evis-xr"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EvisXr::~EvisXr()
+L2rib::EvisXr::~EvisXr()
 {
 }
 
-bool L2Rib::EvisXr::has_data() const
+bool L2rib::EvisXr::has_data() const
 {
-    for (std::size_t index=0; index<evi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evi.len(); index++)
     {
         if(evi[index]->has_data())
             return true;
@@ -2305,9 +2339,9 @@ bool L2Rib::EvisXr::has_data() const
     return false;
 }
 
-bool L2Rib::EvisXr::has_operation() const
+bool L2rib::EvisXr::has_operation() const
 {
-    for (std::size_t index=0; index<evi.size(); index++)
+    for (std::size_t index=0; index<evi.len(); index++)
     {
         if(evi[index]->has_operation())
             return true;
@@ -2315,21 +2349,21 @@ bool L2Rib::EvisXr::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::EvisXr::get_absolute_path() const
+std::string L2rib::EvisXr::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EvisXr::get_segment_path() const
+std::string L2rib::EvisXr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evis-xr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EvisXr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EvisXr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2338,25 +2372,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EvisXr::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> L2Rib::EvisXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EvisXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evi")
     {
-        auto c = std::make_shared<L2Rib::EvisXr::Evi>();
+        auto c = std::make_shared<L2rib::EvisXr::Evi>();
         c->parent = this;
-        evi.push_back(c);
+        evi.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EvisXr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EvisXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evi)
+    for (auto c : evi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2367,22 +2401,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EvisXr::get_children() con
     return children;
 }
 
-void L2Rib::EvisXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EvisXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EvisXr::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EvisXr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EvisXr::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EvisXr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "evi")
         return true;
     return false;
 }
 
-L2Rib::EvisXr::Evi::Evi()
+L2rib::EvisXr::Evi::Evi()
     :
     evi{YType::uint32, "evi"},
     l2r_vni{YType::uint32, "l2r-vni"},
@@ -2392,20 +2426,21 @@ L2Rib::EvisXr::Evi::Evi()
     vtep_ip{YType::str, "vtep-ip"},
     l2r_topo_txid{YType::uint32, "l2r-topo-txid"},
     l2r_topo_flags{YType::uint32, "l2r-topo-flags"}
-    	,
-    topology(std::make_shared<L2Rib::EvisXr::Evi::Topology>())
+        ,
+    topology(std::make_shared<L2rib::EvisXr::Evi::Topology>())
 {
     topology->parent = this;
 
-    yang_name = "evi"; yang_parent_name = "evis-xr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evi"; yang_parent_name = "evis-xr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EvisXr::Evi::~Evi()
+L2rib::EvisXr::Evi::~Evi()
 {
 }
 
-bool L2Rib::EvisXr::Evi::has_data() const
+bool L2rib::EvisXr::Evi::has_data() const
 {
+    if (is_presence_container) return true;
     return evi.is_set
 	|| l2r_vni.is_set
 	|| l2r_encap_type.is_set
@@ -2417,7 +2452,7 @@ bool L2Rib::EvisXr::Evi::has_data() const
 	|| (topology !=  nullptr && topology->has_data());
 }
 
-bool L2Rib::EvisXr::Evi::has_operation() const
+bool L2rib::EvisXr::Evi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
@@ -2431,21 +2466,22 @@ bool L2Rib::EvisXr::Evi::has_operation() const
 	|| (topology !=  nullptr && topology->has_operation());
 }
 
-std::string L2Rib::EvisXr::Evi::get_absolute_path() const
+std::string L2rib::EvisXr::Evi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evis-xr/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EvisXr::Evi::get_segment_path() const
+std::string L2rib::EvisXr::Evi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evi" <<"[evi='" <<evi <<"']";
+    path_buffer << "evi";
+    ADD_KEY_TOKEN(evi, "evi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EvisXr::Evi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EvisXr::Evi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2462,13 +2498,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EvisXr::Evi::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> L2Rib::EvisXr::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EvisXr::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topology")
     {
         if(topology == nullptr)
         {
-            topology = std::make_shared<L2Rib::EvisXr::Evi::Topology>();
+            topology = std::make_shared<L2rib::EvisXr::Evi::Topology>();
         }
         return topology;
     }
@@ -2476,7 +2512,7 @@ std::shared_ptr<Entity> L2Rib::EvisXr::Evi::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EvisXr::Evi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EvisXr::Evi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2488,7 +2524,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EvisXr::Evi::get_children(
     return children;
 }
 
-void L2Rib::EvisXr::Evi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EvisXr::Evi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "evi")
     {
@@ -2540,7 +2576,7 @@ void L2Rib::EvisXr::Evi::set_value(const std::string & value_path, const std::st
     }
 }
 
-void L2Rib::EvisXr::Evi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EvisXr::Evi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "evi")
     {
@@ -2576,35 +2612,36 @@ void L2Rib::EvisXr::Evi::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool L2Rib::EvisXr::Evi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EvisXr::Evi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "topology" || name == "evi" || name == "l2r-vni" || name == "l2r-encap-type" || name == "l2r-nve-iod" || name == "l2r-nve-ifhandle" || name == "vtep-ip" || name == "l2r-topo-txid" || name == "l2r-topo-flags")
         return true;
     return false;
 }
 
-L2Rib::EvisXr::Evi::Topology::Topology()
+L2rib::EvisXr::Evi::Topology::Topology()
     :
     topology_id{YType::uint32, "topology-id"},
     topology_name{YType::str, "topology-name"},
     topology_type{YType::uint32, "topology-type"}
 {
 
-    yang_name = "topology"; yang_parent_name = "evi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "topology"; yang_parent_name = "evi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Rib::EvisXr::Evi::Topology::~Topology()
+L2rib::EvisXr::Evi::Topology::~Topology()
 {
 }
 
-bool L2Rib::EvisXr::Evi::Topology::has_data() const
+bool L2rib::EvisXr::Evi::Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| topology_name.is_set
 	|| topology_type.is_set;
 }
 
-bool L2Rib::EvisXr::Evi::Topology::has_operation() const
+bool L2rib::EvisXr::Evi::Topology::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -2612,14 +2649,14 @@ bool L2Rib::EvisXr::Evi::Topology::has_operation() const
 	|| ydk::is_set(topology_type.yfilter);
 }
 
-std::string L2Rib::EvisXr::Evi::Topology::get_segment_path() const
+std::string L2rib::EvisXr::Evi::Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "topology";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EvisXr::Evi::Topology::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EvisXr::Evi::Topology::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2631,19 +2668,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EvisXr::Evi::Topology::get
 
 }
 
-std::shared_ptr<Entity> L2Rib::EvisXr::Evi::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EvisXr::Evi::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EvisXr::Evi::Topology::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EvisXr::Evi::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EvisXr::Evi::Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EvisXr::Evi::Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -2665,7 +2702,7 @@ void L2Rib::EvisXr::Evi::Topology::set_value(const std::string & value_path, con
     }
 }
 
-void L2Rib::EvisXr::Evi::Topology::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EvisXr::Evi::Topology::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -2681,26 +2718,29 @@ void L2Rib::EvisXr::Evi::Topology::set_filter(const std::string & value_path, YF
     }
 }
 
-bool L2Rib::EvisXr::Evi::Topology::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EvisXr::Evi::Topology::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "topology-id" || name == "topology-name" || name == "topology-type")
         return true;
     return false;
 }
 
-L2Rib::ClientsDetails::ClientsDetails()
+L2rib::ClientsDetails::ClientsDetails()
+    :
+    clients_detail(this, {"client_id"})
 {
 
-    yang_name = "clients-details"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clients-details"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ClientsDetails::~ClientsDetails()
+L2rib::ClientsDetails::~ClientsDetails()
 {
 }
 
-bool L2Rib::ClientsDetails::has_data() const
+bool L2rib::ClientsDetails::has_data() const
 {
-    for (std::size_t index=0; index<clients_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clients_detail.len(); index++)
     {
         if(clients_detail[index]->has_data())
             return true;
@@ -2708,9 +2748,9 @@ bool L2Rib::ClientsDetails::has_data() const
     return false;
 }
 
-bool L2Rib::ClientsDetails::has_operation() const
+bool L2rib::ClientsDetails::has_operation() const
 {
-    for (std::size_t index=0; index<clients_detail.size(); index++)
+    for (std::size_t index=0; index<clients_detail.len(); index++)
     {
         if(clients_detail[index]->has_operation())
             return true;
@@ -2718,21 +2758,21 @@ bool L2Rib::ClientsDetails::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::ClientsDetails::get_absolute_path() const
+std::string L2rib::ClientsDetails::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ClientsDetails::get_segment_path() const
+std::string L2rib::ClientsDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clients-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2741,25 +2781,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::get_name_l
 
 }
 
-std::shared_ptr<Entity> L2Rib::ClientsDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ClientsDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clients-detail")
     {
-        auto c = std::make_shared<L2Rib::ClientsDetails::ClientsDetail>();
+        auto c = std::make_shared<L2rib::ClientsDetails::ClientsDetail>();
         c->parent = this;
-        clients_detail.push_back(c);
+        clients_detail.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clients_detail)
+    for (auto c : clients_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2770,43 +2810,45 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::get_childr
     return children;
 }
 
-void L2Rib::ClientsDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ClientsDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::ClientsDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ClientsDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::ClientsDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ClientsDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clients-detail")
         return true;
     return false;
 }
 
-L2Rib::ClientsDetails::ClientsDetail::ClientsDetail()
+L2rib::ClientsDetails::ClientsDetail::ClientsDetail()
     :
     client_id{YType::uint32, "client-id"},
     producer_count{YType::uint8, "producer-count"},
     last_update_timestamp{YType::uint64, "last-update-timestamp"}
-    	,
-    client(std::make_shared<L2Rib::ClientsDetails::ClientsDetail::Client>())
-	,registration_table_statistics(std::make_shared<L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics>())
+        ,
+    client(std::make_shared<L2rib::ClientsDetails::ClientsDetail::Client>())
+    , registration_table_statistics(std::make_shared<L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics>())
+    , producer_array(this, {})
 {
     client->parent = this;
     registration_table_statistics->parent = this;
 
-    yang_name = "clients-detail"; yang_parent_name = "clients-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clients-detail"; yang_parent_name = "clients-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::ClientsDetails::ClientsDetail::~ClientsDetail()
+L2rib::ClientsDetails::ClientsDetail::~ClientsDetail()
 {
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::has_data() const
+bool L2rib::ClientsDetails::ClientsDetail::has_data() const
 {
-    for (std::size_t index=0; index<producer_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<producer_array.len(); index++)
     {
         if(producer_array[index]->has_data())
             return true;
@@ -2818,9 +2860,9 @@ bool L2Rib::ClientsDetails::ClientsDetail::has_data() const
 	|| (registration_table_statistics !=  nullptr && registration_table_statistics->has_data());
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::has_operation() const
+bool L2rib::ClientsDetails::ClientsDetail::has_operation() const
 {
-    for (std::size_t index=0; index<producer_array.size(); index++)
+    for (std::size_t index=0; index<producer_array.len(); index++)
     {
         if(producer_array[index]->has_operation())
             return true;
@@ -2833,21 +2875,22 @@ bool L2Rib::ClientsDetails::ClientsDetail::has_operation() const
 	|| (registration_table_statistics !=  nullptr && registration_table_statistics->has_operation());
 }
 
-std::string L2Rib::ClientsDetails::ClientsDetail::get_absolute_path() const
+std::string L2rib::ClientsDetails::ClientsDetail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/clients-details/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::ClientsDetails::ClientsDetail::get_segment_path() const
+std::string L2rib::ClientsDetails::ClientsDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clients-detail" <<"[client-id='" <<client_id <<"']";
+    path_buffer << "clients-detail";
+    ADD_KEY_TOKEN(client_id, "client-id");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2859,13 +2902,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
         if(client == nullptr)
         {
-            client = std::make_shared<L2Rib::ClientsDetails::ClientsDetail::Client>();
+            client = std::make_shared<L2rib::ClientsDetails::ClientsDetail::Client>();
         }
         return client;
     }
@@ -2874,23 +2917,23 @@ std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::get_child_by_name(
     {
         if(registration_table_statistics == nullptr)
         {
-            registration_table_statistics = std::make_shared<L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics>();
+            registration_table_statistics = std::make_shared<L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics>();
         }
         return registration_table_statistics;
     }
 
     if(child_yang_name == "producer-array")
     {
-        auto c = std::make_shared<L2Rib::ClientsDetails::ClientsDetail::ProducerArray>();
+        auto c = std::make_shared<L2rib::ClientsDetails::ClientsDetail::ProducerArray>();
         c->parent = this;
-        producer_array.push_back(c);
+        producer_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2905,7 +2948,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDet
     }
 
     count = 0;
-    for (auto const & c : producer_array)
+    for (auto c : producer_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2916,7 +2959,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDet
     return children;
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ClientsDetails::ClientsDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-id")
     {
@@ -2938,7 +2981,7 @@ void L2Rib::ClientsDetails::ClientsDetail::set_value(const std::string & value_p
     }
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ClientsDetails::ClientsDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "client-id")
     {
@@ -2954,14 +2997,14 @@ void L2Rib::ClientsDetails::ClientsDetail::set_filter(const std::string & value_
     }
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ClientsDetails::ClientsDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "client" || name == "registration-table-statistics" || name == "producer-array" || name == "client-id" || name == "producer-count" || name == "last-update-timestamp")
         return true;
     return false;
 }
 
-L2Rib::ClientsDetails::ClientsDetail::Client::Client()
+L2rib::ClientsDetails::ClientsDetail::Client::Client()
     :
     client_id_xr{YType::uint32, "client-id-xr"},
     process_id{YType::uint32, "process-id"},
@@ -2970,15 +3013,16 @@ L2Rib::ClientsDetails::ClientsDetail::Client::Client()
     proc_suffix{YType::str, "proc-suffix"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "clients-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Rib::ClientsDetails::ClientsDetail::Client::~Client()
+L2rib::ClientsDetails::ClientsDetail::Client::~Client()
 {
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::Client::has_data() const
+bool L2rib::ClientsDetails::ClientsDetail::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return client_id_xr.is_set
 	|| process_id.is_set
 	|| node_id.is_set
@@ -2986,7 +3030,7 @@ bool L2Rib::ClientsDetails::ClientsDetail::Client::has_data() const
 	|| proc_suffix.is_set;
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::Client::has_operation() const
+bool L2rib::ClientsDetails::ClientsDetail::Client::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(client_id_xr.yfilter)
@@ -2996,14 +3040,14 @@ bool L2Rib::ClientsDetails::ClientsDetail::Client::has_operation() const
 	|| ydk::is_set(proc_suffix.yfilter);
 }
 
-std::string L2Rib::ClientsDetails::ClientsDetail::Client::get_segment_path() const
+std::string L2rib::ClientsDetails::ClientsDetail::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDetail::Client::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDetail::Client::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3017,19 +3061,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDetail::Client::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ClientsDetails::ClientsDetail::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-id-xr")
     {
@@ -3063,7 +3107,7 @@ void L2Rib::ClientsDetails::ClientsDetail::Client::set_value(const std::string &
     }
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::Client::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ClientsDetails::ClientsDetail::Client::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "client-id-xr")
     {
@@ -3087,37 +3131,38 @@ void L2Rib::ClientsDetails::ClientsDetail::Client::set_filter(const std::string 
     }
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::Client::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ClientsDetails::ClientsDetail::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "client-id-xr" || name == "process-id" || name == "node-id" || name == "proc-name" || name == "proc-suffix")
         return true;
     return false;
 }
 
-L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::RegistrationTableStatistics()
+L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::RegistrationTableStatistics()
     :
     producer_id{YType::enumeration, "producer-id"},
     producer_name{YType::str, "producer-name"}
-    	,
-    statistics(std::make_shared<L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics>())
+        ,
+    statistics(std::make_shared<L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "registration-table-statistics"; yang_parent_name = "clients-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "registration-table-statistics"; yang_parent_name = "clients-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::~RegistrationTableStatistics()
+L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::~RegistrationTableStatistics()
 {
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::has_data() const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return producer_id.is_set
 	|| producer_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::has_operation() const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(producer_id.yfilter)
@@ -3125,14 +3170,14 @@ bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::has_oper
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_segment_path() const
+std::string L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "registration-table-statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3143,13 +3188,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics>();
+            statistics = std::make_shared<L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics>();
         }
         return statistics;
     }
@@ -3157,7 +3202,7 @@ std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::RegistrationTableS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3169,7 +3214,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDet
     return children;
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-id")
     {
@@ -3185,7 +3230,7 @@ void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::set_valu
     }
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-id")
     {
@@ -3197,30 +3242,33 @@ void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::set_filt
     }
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "statistics" || name == "producer-id" || name == "producer-name")
         return true;
     return false;
 }
 
-L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::Statistics()
+L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::Statistics()
     :
     memory_size{YType::uint32, "memory-size"},
     object_count{YType::uint32, "object-count"},
     endof_interval_ts{YType::uint64, "endof-interval-ts"}
+        ,
+    extended_counter(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "registration-table-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "registration-table-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::~Statistics()
+L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::~Statistics()
 {
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::has_data() const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<extended_counter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<extended_counter.len(); index++)
     {
         if(extended_counter[index]->has_data())
             return true;
@@ -3230,9 +3278,9 @@ bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
 	|| endof_interval_ts.is_set;
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::has_operation() const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<extended_counter.size(); index++)
+    for (std::size_t index=0; index<extended_counter.len(); index++)
     {
         if(extended_counter[index]->has_operation())
             return true;
@@ -3243,14 +3291,14 @@ bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
 	|| ydk::is_set(endof_interval_ts.yfilter);
 }
 
-std::string L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_segment_path() const
+std::string L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3262,25 +3310,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-counter")
     {
-        auto c = std::make_shared<L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter>();
+        auto c = std::make_shared<L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter>();
         c->parent = this;
-        extended_counter.push_back(c);
+        extended_counter.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : extended_counter)
+    for (auto c : extended_counter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3291,7 +3339,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDet
     return children;
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "memory-size")
     {
@@ -3313,7 +3361,7 @@ void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
     }
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "memory-size")
     {
@@ -3329,14 +3377,14 @@ void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
     }
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "extended-counter" || name == "memory-size" || name == "object-count" || name == "endof-interval-ts")
         return true;
     return false;
 }
 
-L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::ExtendedCounter()
+L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::ExtendedCounter()
     :
     counter_type{YType::uint8, "counter-type"},
     counter_name{YType::str, "counter-name"},
@@ -3346,15 +3394,16 @@ L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::E
     l2rb_total_event_count{YType::uint32, "l2rb-total-event-count"}
 {
 
-    yang_name = "extended-counter"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-counter"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::~ExtendedCounter()
+L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::~ExtendedCounter()
 {
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::has_data() const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::has_data() const
 {
+    if (is_presence_container) return true;
     return counter_type.is_set
 	|| counter_name.is_set
 	|| l2rb_first_event_ts.is_set
@@ -3363,7 +3412,7 @@ bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
 	|| l2rb_total_event_count.is_set;
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::has_operation() const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(counter_type.yfilter)
@@ -3374,14 +3423,14 @@ bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
 	|| ydk::is_set(l2rb_total_event_count.yfilter);
 }
 
-std::string L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_segment_path() const
+std::string L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-counter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3396,19 +3445,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter-type")
     {
@@ -3448,7 +3497,7 @@ void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
     }
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "counter-type")
     {
@@ -3476,14 +3525,14 @@ void L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statisti
     }
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "counter-type" || name == "counter-name" || name == "l2rb-first-event-ts" || name == "l2rb-last-event-ts" || name == "l2rb-interval-event-count" || name == "l2rb-total-event-count")
         return true;
     return false;
 }
 
-L2Rib::ClientsDetails::ClientsDetail::ProducerArray::ProducerArray()
+L2rib::ClientsDetails::ClientsDetail::ProducerArray::ProducerArray()
     :
     object_type{YType::enumeration, "object-type"},
     producer_id{YType::enumeration, "producer-id"},
@@ -3492,15 +3541,16 @@ L2Rib::ClientsDetails::ClientsDetail::ProducerArray::ProducerArray()
     purge_time{YType::uint32, "purge-time"}
 {
 
-    yang_name = "producer-array"; yang_parent_name = "clients-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "producer-array"; yang_parent_name = "clients-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2Rib::ClientsDetails::ClientsDetail::ProducerArray::~ProducerArray()
+L2rib::ClientsDetails::ClientsDetail::ProducerArray::~ProducerArray()
 {
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::ProducerArray::has_data() const
+bool L2rib::ClientsDetails::ClientsDetail::ProducerArray::has_data() const
 {
+    if (is_presence_container) return true;
     return object_type.is_set
 	|| producer_id.is_set
 	|| producer_name.is_set
@@ -3508,7 +3558,7 @@ bool L2Rib::ClientsDetails::ClientsDetail::ProducerArray::has_data() const
 	|| purge_time.is_set;
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::ProducerArray::has_operation() const
+bool L2rib::ClientsDetails::ClientsDetail::ProducerArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(object_type.yfilter)
@@ -3518,14 +3568,14 @@ bool L2Rib::ClientsDetails::ClientsDetail::ProducerArray::has_operation() const
 	|| ydk::is_set(purge_time.yfilter);
 }
 
-std::string L2Rib::ClientsDetails::ClientsDetail::ProducerArray::get_segment_path() const
+std::string L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producer-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDetail::ProducerArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3539,19 +3589,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2Rib::ClientsDetails::ClientsDetail::ProducerArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::ClientsDetails::ClientsDetail::ProducerArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::ProducerArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::ClientsDetails::ClientsDetail::ProducerArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-type")
     {
@@ -3585,7 +3635,7 @@ void L2Rib::ClientsDetails::ClientsDetail::ProducerArray::set_value(const std::s
     }
 }
 
-void L2Rib::ClientsDetails::ClientsDetail::ProducerArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::ClientsDetails::ClientsDetail::ProducerArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "object-type")
     {
@@ -3609,41 +3659,42 @@ void L2Rib::ClientsDetails::ClientsDetail::ProducerArray::set_filter(const std::
     }
 }
 
-bool L2Rib::ClientsDetails::ClientsDetail::ProducerArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::ClientsDetails::ClientsDetail::ProducerArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "object-type" || name == "producer-id" || name == "producer-name" || name == "admin-distance" || name == "purge-time")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::EviChildTables()
+L2rib::EviChildTables::EviChildTables()
     :
-    macip_details(std::make_shared<L2Rib::EviChildTables::MacipDetails>())
-	,mac_ips(std::make_shared<L2Rib::EviChildTables::MacIps>())
-	,macs(std::make_shared<L2Rib::EviChildTables::Macs>())
-	,mac_details(std::make_shared<L2Rib::EviChildTables::MacDetails>())
+    macip_details(std::make_shared<L2rib::EviChildTables::MacipDetails>())
+    , mac_ips(std::make_shared<L2rib::EviChildTables::MacIps>())
+    , macs(std::make_shared<L2rib::EviChildTables::Macs>())
+    , mac_details(std::make_shared<L2rib::EviChildTables::MacDetails>())
 {
     macip_details->parent = this;
     mac_ips->parent = this;
     macs->parent = this;
     mac_details->parent = this;
 
-    yang_name = "evi-child-tables"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evi-child-tables"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::~EviChildTables()
+L2rib::EviChildTables::~EviChildTables()
 {
 }
 
-bool L2Rib::EviChildTables::has_data() const
+bool L2rib::EviChildTables::has_data() const
 {
+    if (is_presence_container) return true;
     return (macip_details !=  nullptr && macip_details->has_data())
 	|| (mac_ips !=  nullptr && mac_ips->has_data())
 	|| (macs !=  nullptr && macs->has_data())
 	|| (mac_details !=  nullptr && mac_details->has_data());
 }
 
-bool L2Rib::EviChildTables::has_operation() const
+bool L2rib::EviChildTables::has_operation() const
 {
     return is_set(yfilter)
 	|| (macip_details !=  nullptr && macip_details->has_operation())
@@ -3652,21 +3703,21 @@ bool L2Rib::EviChildTables::has_operation() const
 	|| (mac_details !=  nullptr && mac_details->has_operation());
 }
 
-std::string L2Rib::EviChildTables::get_absolute_path() const
+std::string L2rib::EviChildTables::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::get_segment_path() const
+std::string L2rib::EviChildTables::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evi-child-tables";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3675,13 +3726,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::get_name_l
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macip-details")
     {
         if(macip_details == nullptr)
         {
-            macip_details = std::make_shared<L2Rib::EviChildTables::MacipDetails>();
+            macip_details = std::make_shared<L2rib::EviChildTables::MacipDetails>();
         }
         return macip_details;
     }
@@ -3690,7 +3741,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::get_child_by_name(const std::stri
     {
         if(mac_ips == nullptr)
         {
-            mac_ips = std::make_shared<L2Rib::EviChildTables::MacIps>();
+            mac_ips = std::make_shared<L2rib::EviChildTables::MacIps>();
         }
         return mac_ips;
     }
@@ -3699,7 +3750,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::get_child_by_name(const std::stri
     {
         if(macs == nullptr)
         {
-            macs = std::make_shared<L2Rib::EviChildTables::Macs>();
+            macs = std::make_shared<L2rib::EviChildTables::Macs>();
         }
         return macs;
     }
@@ -3708,7 +3759,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::get_child_by_name(const std::stri
     {
         if(mac_details == nullptr)
         {
-            mac_details = std::make_shared<L2Rib::EviChildTables::MacDetails>();
+            mac_details = std::make_shared<L2rib::EviChildTables::MacDetails>();
         }
         return mac_details;
     }
@@ -3716,7 +3767,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3743,34 +3794,37 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::get_childr
     return children;
 }
 
-void L2Rib::EviChildTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EviChildTables::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EviChildTables::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macip-details" || name == "mac-ips" || name == "macs" || name == "mac-details")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetails()
+L2rib::EviChildTables::MacipDetails::MacipDetails()
+    :
+    macip_detail(this, {})
 {
 
-    yang_name = "macip-details"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "macip-details"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::~MacipDetails()
+L2rib::EviChildTables::MacipDetails::~MacipDetails()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::has_data() const
+bool L2rib::EviChildTables::MacipDetails::has_data() const
 {
-    for (std::size_t index=0; index<macip_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macip_detail.len(); index++)
     {
         if(macip_detail[index]->has_data())
             return true;
@@ -3778,9 +3832,9 @@ bool L2Rib::EviChildTables::MacipDetails::has_data() const
     return false;
 }
 
-bool L2Rib::EviChildTables::MacipDetails::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::has_operation() const
 {
-    for (std::size_t index=0; index<macip_detail.size(); index++)
+    for (std::size_t index=0; index<macip_detail.len(); index++)
     {
         if(macip_detail[index]->has_operation())
             return true;
@@ -3788,21 +3842,21 @@ bool L2Rib::EviChildTables::MacipDetails::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macip-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3811,25 +3865,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macip-detail")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail>();
         c->parent = this;
-        macip_detail.push_back(c);
+        macip_detail.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macip_detail)
+    for (auto c : macip_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3840,22 +3894,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EviChildTables::MacipDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macip-detail")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacipDetail()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacipDetail()
     :
     evi{YType::uint32, "evi"},
     tag_id{YType::uint32, "tag-id"},
@@ -3867,24 +3921,25 @@ L2Rib::EviChildTables::MacipDetails::MacipDetail::MacipDetail()
     flags{YType::uint32, "flags"},
     soo{YType::uint32, "soo"},
     last_update_timestamp{YType::uint64, "last-update-timestamp"}
-    	,
-    mac_ip_route(std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute>())
-	,rt_tlv(std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv>())
-	,nh_tlv(std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv>())
+        ,
+    mac_ip_route(std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute>())
+    , rt_tlv(std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv>())
+    , nh_tlv(std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv>())
 {
     mac_ip_route->parent = this;
     rt_tlv->parent = this;
     nh_tlv->parent = this;
 
-    yang_name = "macip-detail"; yang_parent_name = "macip-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "macip-detail"; yang_parent_name = "macip-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::~MacipDetail()
+L2rib::EviChildTables::MacipDetails::MacipDetail::~MacipDetail()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return evi.is_set
 	|| tag_id.is_set
 	|| mac_addr.is_set
@@ -3900,7 +3955,7 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::has_data() const
 	|| (nh_tlv !=  nullptr && nh_tlv->has_data());
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
@@ -3918,21 +3973,21 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::has_operation() const
 	|| (nh_tlv !=  nullptr && nh_tlv->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macip-detail";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3951,13 +4006,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-ip-route")
     {
         if(mac_ip_route == nullptr)
         {
-            mac_ip_route = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute>();
+            mac_ip_route = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute>();
         }
         return mac_ip_route;
     }
@@ -3966,7 +4021,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::get_ch
     {
         if(rt_tlv == nullptr)
         {
-            rt_tlv = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv>();
+            rt_tlv = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv>();
         }
         return rt_tlv;
     }
@@ -3975,7 +4030,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::get_ch
     {
         if(nh_tlv == nullptr)
         {
-            nh_tlv = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv>();
+            nh_tlv = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv>();
         }
         return nh_tlv;
     }
@@ -3983,7 +4038,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4005,7 +4060,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "evi")
     {
@@ -4069,7 +4124,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::set_value(const std::stri
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "evi")
     {
@@ -4113,34 +4168,35 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::set_filter(const std::str
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-ip-route" || name == "rt-tlv" || name == "nh-tlv" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "sequence-number" || name == "flags" || name == "soo" || name == "last-update-timestamp")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::MacIpRoute()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::MacIpRoute()
     :
     mac_address{YType::str, "mac-address"},
     ip_address{YType::str, "ip-address"},
     admin_distance{YType::uint8, "admin-distance"},
     producer_id{YType::uint8, "producer-id"},
     topology_id{YType::uint32, "topology-id"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "mac-ip-route"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-ip-route"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::~MacIpRoute()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::~MacIpRoute()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| ip_address.is_set
 	|| admin_distance.is_set
@@ -4149,7 +4205,7 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_data() co
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter)
@@ -4160,21 +4216,21 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_operation
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-ip-route";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4188,13 +4244,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop>();
         }
         return next_hop;
     }
@@ -4202,7 +4258,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4214,7 +4270,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -4248,7 +4304,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::set_value(con
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -4272,37 +4328,38 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::set_filter(co
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "mac-address" || name == "ip-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "mac-ip-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "mac-ip-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::~NextHop()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -4310,21 +4367,21 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::has_
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/mac-ip-route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4335,13 +4392,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_>();
         }
         return next_hop;
     }
@@ -4349,7 +4406,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4361,7 +4418,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -4377,7 +4434,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::set_
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -4389,14 +4446,14 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::set_
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::NextHop_()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::NextHop_()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -4404,20 +4461,21 @@ L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_:
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::~NextHop_()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::~NextHop_()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -4427,7 +4485,7 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -4439,21 +4497,21 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/mac-ip-route/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4468,13 +4526,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled>();
         }
         return labeled;
     }
@@ -4482,7 +4540,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4494,7 +4552,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -4534,7 +4592,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -4562,14 +4620,14 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::Labeled()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -4577,22 +4635,23 @@ L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_:
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::~Labeled()
+L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -4601,21 +4660,21 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/mac-ip-route/next-hop/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4628,19 +4687,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -4668,7 +4727,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -4688,29 +4747,32 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::Next
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::RtTlv()
+L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::RtTlv()
     :
     tlv_type{YType::uint16, "tlv-type"},
     tlv_len{YType::uint16, "tlv-len"}
+        ,
+    tlv_val(this, {})
 {
 
-    yang_name = "rt-tlv"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rt-tlv"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::~RtTlv()
+L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::~RtTlv()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_data() const
 {
-    for (std::size_t index=0; index<tlv_val.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tlv_val.len(); index++)
     {
         if(tlv_val[index]->has_data())
             return true;
@@ -4719,9 +4781,9 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_data() const
 	|| tlv_len.is_set;
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_operation() const
 {
-    for (std::size_t index=0; index<tlv_val.size(); index++)
+    for (std::size_t index=0; index<tlv_val.len(); index++)
     {
         if(tlv_val[index]->has_operation())
             return true;
@@ -4731,21 +4793,21 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_operation() co
 	|| ydk::is_set(tlv_len.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rt-tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4756,25 +4818,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-val")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal>();
         c->parent = this;
-        tlv_val.push_back(c);
+        tlv_val.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tlv_val)
+    for (auto c : tlv_val.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4785,7 +4847,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-type")
     {
@@ -4801,7 +4863,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_value(const st
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tlv-type")
     {
@@ -4813,51 +4875,52 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_filter(const s
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tlv-val" || name == "tlv-type" || name == "tlv-len")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::TlvVal()
+L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::TlvVal()
     :
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "tlv-val"; yang_parent_name = "rt-tlv"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tlv-val"; yang_parent_name = "rt-tlv"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::~TlvVal()
+L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::~TlvVal()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/rt-tlv/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-val";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4867,19 +4930,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -4889,7 +4952,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_value(
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -4897,29 +4960,32 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_filter
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::NhTlv()
+L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::NhTlv()
     :
     tlv_type{YType::uint16, "tlv-type"},
     tlv_len{YType::uint16, "tlv-len"}
+        ,
+    tlv_val(this, {})
 {
 
-    yang_name = "nh-tlv"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nh-tlv"; yang_parent_name = "macip-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::~NhTlv()
+L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::~NhTlv()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_data() const
 {
-    for (std::size_t index=0; index<tlv_val.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tlv_val.len(); index++)
     {
         if(tlv_val[index]->has_data())
             return true;
@@ -4928,9 +4994,9 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_data() const
 	|| tlv_len.is_set;
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_operation() const
 {
-    for (std::size_t index=0; index<tlv_val.size(); index++)
+    for (std::size_t index=0; index<tlv_val.len(); index++)
     {
         if(tlv_val[index]->has_operation())
             return true;
@@ -4940,21 +5006,21 @@ bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_operation() co
 	|| ydk::is_set(tlv_len.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4965,25 +5031,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-val")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal>();
         c->parent = this;
-        tlv_val.push_back(c);
+        tlv_val.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tlv_val)
+    for (auto c : tlv_val.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4994,7 +5060,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetai
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-type")
     {
@@ -5010,7 +5076,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_value(const st
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tlv-type")
     {
@@ -5022,51 +5088,52 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_filter(const s
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tlv-val" || name == "tlv-type" || name == "tlv-len")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::TlvVal()
+L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::TlvVal()
     :
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "tlv-val"; yang_parent_name = "nh-tlv"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tlv-val"; yang_parent_name = "nh-tlv"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::~TlvVal()
+L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::~TlvVal()
 {
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_data() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_operation() const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_absolute_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macip-details/macip-detail/nh-tlv/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_segment_path() const
+std::string L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-val";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5076,19 +5143,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -5098,7 +5165,7 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_value(
     }
 }
 
-void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -5106,26 +5173,29 @@ void L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_filter
     }
 }
 
-bool L2Rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacIps::MacIps()
+L2rib::EviChildTables::MacIps::MacIps()
+    :
+    mac_ip(this, {})
 {
 
-    yang_name = "mac-ips"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-ips"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacIps::~MacIps()
+L2rib::EviChildTables::MacIps::~MacIps()
 {
 }
 
-bool L2Rib::EviChildTables::MacIps::has_data() const
+bool L2rib::EviChildTables::MacIps::has_data() const
 {
-    for (std::size_t index=0; index<mac_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_ip.len(); index++)
     {
         if(mac_ip[index]->has_data())
             return true;
@@ -5133,9 +5203,9 @@ bool L2Rib::EviChildTables::MacIps::has_data() const
     return false;
 }
 
-bool L2Rib::EviChildTables::MacIps::has_operation() const
+bool L2rib::EviChildTables::MacIps::has_operation() const
 {
-    for (std::size_t index=0; index<mac_ip.size(); index++)
+    for (std::size_t index=0; index<mac_ip.len(); index++)
     {
         if(mac_ip[index]->has_operation())
             return true;
@@ -5143,21 +5213,21 @@ bool L2Rib::EviChildTables::MacIps::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacIps::get_absolute_path() const
+std::string L2rib::EviChildTables::MacIps::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacIps::get_segment_path() const
+std::string L2rib::EviChildTables::MacIps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-ips";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5166,25 +5236,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::ge
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-ip")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacIps::MacIp>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacIps::MacIp>();
         c->parent = this;
-        mac_ip.push_back(c);
+        mac_ip.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_ip)
+    for (auto c : mac_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5195,22 +5265,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::ge
     return children;
 }
 
-void L2Rib::EviChildTables::MacIps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacIps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EviChildTables::MacIps::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacIps::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EviChildTables::MacIps::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacIps::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-ip")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::MacIp()
+L2rib::EviChildTables::MacIps::MacIp::MacIp()
     :
     evi{YType::uint32, "evi"},
     tag_id{YType::uint32, "tag-id"},
@@ -5223,20 +5293,21 @@ L2Rib::EviChildTables::MacIps::MacIp::MacIp()
     admin_distance{YType::uint8, "admin-distance"},
     producer_id{YType::uint8, "producer-id"},
     topology_id{YType::uint32, "topology-id"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacIps::MacIp::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacIps::MacIp::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "mac-ip"; yang_parent_name = "mac-ips"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-ip"; yang_parent_name = "mac-ips"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::~MacIp()
+L2rib::EviChildTables::MacIps::MacIp::~MacIp()
 {
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::has_data() const
+bool L2rib::EviChildTables::MacIps::MacIp::has_data() const
 {
+    if (is_presence_container) return true;
     return evi.is_set
 	|| tag_id.is_set
 	|| mac_addr.is_set
@@ -5251,7 +5322,7 @@ bool L2Rib::EviChildTables::MacIps::MacIp::has_data() const
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::has_operation() const
+bool L2rib::EviChildTables::MacIps::MacIp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
@@ -5268,21 +5339,21 @@ bool L2Rib::EviChildTables::MacIps::MacIp::has_operation() const
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::get_absolute_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-ips/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::get_segment_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-ip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::MacIp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::MacIp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5302,13 +5373,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::MacIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacIps::MacIp::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacIps::MacIp::NextHop>();
         }
         return next_hop;
     }
@@ -5316,7 +5387,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::MacIp::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::MacIp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5328,7 +5399,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::Ma
     return children;
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacIps::MacIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "evi")
     {
@@ -5398,7 +5469,7 @@ void L2Rib::EviChildTables::MacIps::MacIp::set_value(const std::string & value_p
     }
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacIps::MacIp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "evi")
     {
@@ -5446,37 +5517,38 @@ void L2Rib::EviChildTables::MacIps::MacIp::set_filter(const std::string & value_
     }
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacIps::MacIp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "mac-address" || name == "ip-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop()
+L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "mac-ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "mac-ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::NextHop::~NextHop()
+L2rib::EviChildTables::MacIps::MacIp::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::has_data() const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::has_operation() const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -5484,21 +5556,21 @@ bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::has_operation() const
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-ips/mac-ip/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::MacIp::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::MacIp::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5509,13 +5581,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::MacIp::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_>();
         }
         return next_hop;
     }
@@ -5523,7 +5595,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::MacIp::NextHop::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::MacIp::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5535,7 +5607,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::Ma
     return children;
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacIps::MacIp::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -5551,7 +5623,7 @@ void L2Rib::EviChildTables::MacIps::MacIp::NextHop::set_value(const std::string 
     }
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacIps::MacIp::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -5563,14 +5635,14 @@ void L2Rib::EviChildTables::MacIps::MacIp::NextHop::set_filter(const std::string
     }
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::NextHop_()
+L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::NextHop_()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -5578,20 +5650,21 @@ L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::NextHop_()
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::~NextHop_()
+L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::~NextHop_()
 {
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_data() const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -5601,7 +5674,7 @@ bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_data() const
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_operation() const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -5613,21 +5686,21 @@ bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_operation() co
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_absolute_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-ips/mac-ip/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_segment_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5642,13 +5715,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled>();
         }
         return labeled;
     }
@@ -5656,7 +5729,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5668,7 +5741,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::Ma
     return children;
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -5708,7 +5781,7 @@ void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::set_value(const st
     }
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -5736,14 +5809,14 @@ void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::set_filter(const s
     }
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::Labeled()
+L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -5751,22 +5824,23 @@ L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::Labeled()
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::~Labeled()
+L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::has_data() const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::has_operation() const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -5775,21 +5849,21 @@ bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::has_opera
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-ips/mac-ip/next-hop/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5802,19 +5876,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -5842,7 +5916,7 @@ void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::set_value
     }
 }
 
-void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -5862,26 +5936,29 @@ void L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::set_filte
     }
 }
 
-bool L2Rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Macs()
+L2rib::EviChildTables::Macs::Macs()
+    :
+    mac(this, {})
 {
 
-    yang_name = "macs"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "macs"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::~Macs()
+L2rib::EviChildTables::Macs::~Macs()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::has_data() const
+bool L2rib::EviChildTables::Macs::has_data() const
 {
-    for (std::size_t index=0; index<mac.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac.len(); index++)
     {
         if(mac[index]->has_data())
             return true;
@@ -5889,9 +5966,9 @@ bool L2Rib::EviChildTables::Macs::has_data() const
     return false;
 }
 
-bool L2Rib::EviChildTables::Macs::has_operation() const
+bool L2rib::EviChildTables::Macs::has_operation() const
 {
-    for (std::size_t index=0; index<mac.size(); index++)
+    for (std::size_t index=0; index<mac.len(); index++)
     {
         if(mac[index]->has_operation())
             return true;
@@ -5899,21 +5976,21 @@ bool L2Rib::EviChildTables::Macs::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5922,25 +5999,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::get_
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::Macs::Mac>();
+        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac>();
         c->parent = this;
-        mac.push_back(c);
+        mac.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac)
+    for (auto c : mac.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5951,22 +6028,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::get_
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EviChildTables::Macs::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EviChildTables::Macs::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Mac()
+L2rib::EviChildTables::Macs::Mac::Mac()
     :
     evi{YType::uint32, "evi"},
     tag_id{YType::uint32, "tag-id"},
@@ -5977,20 +6054,21 @@ L2Rib::EviChildTables::Macs::Mac::Mac()
     admin_distance{YType::uint8, "admin-distance"},
     producer_id{YType::uint8, "producer-id"},
     topology_id{YType::uint32, "topology-id"}
-    	,
-    route(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route>())
+        ,
+    route(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route>())
 {
     route->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "macs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac"; yang_parent_name = "macs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::~Mac()
+L2rib::EviChildTables::Macs::Mac::~Mac()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return evi.is_set
 	|| tag_id.is_set
 	|| mac_addr.is_set
@@ -6003,7 +6081,7 @@ bool L2Rib::EviChildTables::Macs::Mac::has_data() const
 	|| (route !=  nullptr && route->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
@@ -6018,21 +6096,21 @@ bool L2Rib::EviChildTables::Macs::Mac::has_operation() const
 	|| (route !=  nullptr && route->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6050,13 +6128,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
         if(route == nullptr)
         {
-            route = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route>();
+            route = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route>();
         }
         return route;
     }
@@ -6064,7 +6142,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6076,7 +6154,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "evi")
     {
@@ -6134,7 +6212,7 @@ void L2Rib::EviChildTables::Macs::Mac::set_value(const std::string & value_path,
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "evi")
     {
@@ -6174,41 +6252,42 @@ void L2Rib::EviChildTables::Macs::Mac::set_filter(const std::string & value_path
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "admin-dist" || name == "prod-id" || name == "mac-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Route()
+L2rib::EviChildTables::Macs::Mac::Route::Route()
     :
     type{YType::enumeration, "type"}
-    	,
-    regular(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular>())
-	,evpn_esi(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi>())
-	,bmac(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac>())
+        ,
+    regular(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular>())
+    , evpn_esi(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi>())
+    , bmac(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac>())
 {
     regular->parent = this;
     evpn_esi->parent = this;
     bmac->parent = this;
 
-    yang_name = "route"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::~Route()
+L2rib::EviChildTables::Macs::Mac::Route::~Route()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (regular !=  nullptr && regular->has_data())
 	|| (evpn_esi !=  nullptr && evpn_esi->has_data())
 	|| (bmac !=  nullptr && bmac->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -6217,21 +6296,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::has_operation() const
 	|| (bmac !=  nullptr && bmac->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6241,13 +6320,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "regular")
     {
         if(regular == nullptr)
         {
-            regular = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular>();
+            regular = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular>();
         }
         return regular;
     }
@@ -6256,7 +6335,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::get_child_by_na
     {
         if(evpn_esi == nullptr)
         {
-            evpn_esi = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi>();
+            evpn_esi = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi>();
         }
         return evpn_esi;
     }
@@ -6265,7 +6344,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::get_child_by_na
     {
         if(bmac == nullptr)
         {
-            bmac = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac>();
+            bmac = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac>();
         }
         return bmac;
     }
@@ -6273,7 +6352,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6295,7 +6374,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -6305,7 +6384,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::set_value(const std::string & valu
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -6313,52 +6392,53 @@ void L2Rib::EviChildTables::Macs::Mac::Route::set_filter(const std::string & val
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "regular" || name == "evpn-esi" || name == "bmac" || name == "type")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::Regular()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::Regular()
     :
-    next_hop(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop>())
+    next_hop(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "regular"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "regular"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::~Regular()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::~Regular()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::has_data() const
 {
+    if (is_presence_container) return true;
     return (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::has_operation() const
 {
     return is_set(yfilter)
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "regular";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Regular::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Regular::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6367,13 +6447,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop>();
         }
         return next_hop;
     }
@@ -6381,7 +6461,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Regular::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Regular::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6393,45 +6473,46 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "regular"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "regular"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::~NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -6439,21 +6520,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::has_operation() 
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/regular/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6464,13 +6545,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_>();
+            next_hop = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_>();
         }
         return next_hop;
     }
@@ -6478,7 +6559,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6490,7 +6571,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -6506,7 +6587,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::set_value(const 
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -6518,14 +6599,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::set_filter(const
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::NextHop_()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::NextHop_()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -6533,20 +6614,21 @@ L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::NextHop_()
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::~NextHop_()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::~NextHop_()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -6556,7 +6638,7 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_da
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -6568,21 +6650,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_op
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/regular/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6597,13 +6679,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled>();
         }
         return labeled;
     }
@@ -6611,7 +6693,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6623,7 +6705,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -6663,7 +6745,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::set_va
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -6691,14 +6773,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::set_fi
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -6706,22 +6788,23 @@ L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::La
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::~Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -6730,21 +6813,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labele
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/regular/next-hop/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6757,19 +6840,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -6797,7 +6880,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labele
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -6817,40 +6900,41 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labele
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EvpnEsi()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EvpnEsi()
     :
     sequence_number{YType::uint32, "sequence-number"},
     forward_state{YType::boolean, "forward-state"}
-    	,
-    ethernet_segment_id(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId>())
-	,path_list(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList>())
+        ,
+    ethernet_segment_id(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId>())
+    , path_list(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList>())
 {
     ethernet_segment_id->parent = this;
     path_list->parent = this;
 
-    yang_name = "evpn-esi"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-esi"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::~EvpnEsi()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::~EvpnEsi()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| forward_state.is_set
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_data())
 	|| (path_list !=  nullptr && path_list->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequence_number.yfilter)
@@ -6859,21 +6943,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::has_operation() const
 	|| (path_list !=  nullptr && path_list->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evpn-esi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6884,13 +6968,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
         if(ethernet_segment_id == nullptr)
         {
-            ethernet_segment_id = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId>();
+            ethernet_segment_id = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId>();
         }
         return ethernet_segment_id;
     }
@@ -6899,7 +6983,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_ch
     {
         if(path_list == nullptr)
         {
-            path_list = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList>();
+            path_list = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList>();
         }
         return path_list;
     }
@@ -6907,7 +6991,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6924,7 +7008,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sequence-number")
     {
@@ -6940,7 +7024,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::set_value(const std::stri
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sequence-number")
     {
@@ -6952,35 +7036,36 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::set_filter(const std::str
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet-segment-id" || name == "path-list" || name == "sequence-number" || name == "forward-state")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::EthernetSegmentId()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::EthernetSegmentId()
     :
     system_priority{YType::uint16, "system-priority"},
     system_id{YType::str, "system-id"},
     port_key{YType::uint16, "port-key"}
 {
 
-    yang_name = "ethernet-segment-id"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet-segment-id"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::~EthernetSegmentId()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::~EthernetSegmentId()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set
 	|| system_id.is_set
 	|| port_key.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(system_priority.yfilter)
@@ -6988,21 +7073,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::has_op
 	|| ydk::is_set(port_key.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7014,19 +7099,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-priority")
     {
@@ -7048,7 +7133,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::set_va
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "system-priority")
     {
@@ -7064,33 +7149,35 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::set_fi
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "system-priority" || name == "system-id" || name == "port-key")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathList()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathList()
     :
     producer_id{YType::uint8, "producer-id"},
     mac_count{YType::uint32, "mac-count"},
     local_label{YType::uint32, "local-label"}
-    	,
-    path_list_info(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo>())
+        ,
+    path_list_info(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo>())
+    , next_hop_array(this, {})
 {
     path_list_info->parent = this;
 
-    yang_name = "path-list"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::~PathList()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::~PathList()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_data() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_data())
             return true;
@@ -7101,9 +7188,9 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_data() cons
 	|| (path_list_info !=  nullptr && path_list_info->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_operation())
             return true;
@@ -7115,21 +7202,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_operation()
 	|| (path_list_info !=  nullptr && path_list_info->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7141,29 +7228,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
         if(path_list_info == nullptr)
         {
-            path_list_info = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo>();
+            path_list_info = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo>();
         }
         return path_list_info;
     }
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray>();
         c->parent = this;
-        next_hop_array.push_back(c);
+        next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7173,7 +7260,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     }
 
     count = 0;
-    for (auto const & c : next_hop_array)
+    for (auto c : next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7184,7 +7271,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-id")
     {
@@ -7206,7 +7293,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::set_value(const
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-id")
     {
@@ -7222,38 +7309,39 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::set_filter(cons
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-info" || name == "next-hop-array" || name == "producer-id" || name == "mac-count" || name == "local-label")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListInfo()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListInfo()
     :
     type{YType::enumeration, "type"}
-    	,
-    path_list_esi(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>())
-	,path_list_mac(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac>())
+        ,
+    path_list_esi(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>())
+    , path_list_mac(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac>())
 {
     path_list_esi->parent = this;
     path_list_mac->parent = this;
 
-    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::~PathListInfo()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::~PathListInfo()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (path_list_esi !=  nullptr && path_list_esi->has_data())
 	|| (path_list_mac !=  nullptr && path_list_mac->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -7261,21 +7349,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::h
 	|| (path_list_mac !=  nullptr && path_list_mac->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7285,13 +7373,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
         if(path_list_esi == nullptr)
         {
-            path_list_esi = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>();
+            path_list_esi = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>();
         }
         return path_list_esi;
     }
@@ -7300,7 +7388,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     {
         if(path_list_mac == nullptr)
         {
-            path_list_mac = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac>();
+            path_list_mac = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac>();
         }
         return path_list_mac;
     }
@@ -7308,7 +7396,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7325,7 +7413,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -7335,7 +7423,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::s
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -7343,31 +7431,33 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::s
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-esi" || name == "path-list-mac" || name == "type")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::PathListEsi()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::PathListEsi()
     :
     resolved{YType::boolean, "resolved"}
-    	,
-    ethernet_segment_id(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+        ,
+    ethernet_segment_id(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+    , mac_update_next_hop_array(this, {})
 {
     ethernet_segment_id->parent = this;
 
-    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::~PathListEsi()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::~PathListEsi()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_data() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_data())
             return true;
@@ -7376,9 +7466,9 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_operation() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_operation())
             return true;
@@ -7388,21 +7478,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-esi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7412,29 +7502,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
         if(ethernet_segment_id == nullptr)
         {
-            ethernet_segment_id = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
+            ethernet_segment_id = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
         }
         return ethernet_segment_id;
     }
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
         c->parent = this;
-        mac_update_next_hop_array.push_back(c);
+        mac_update_next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7444,7 +7534,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     }
 
     count = 0;
-    for (auto const & c : mac_update_next_hop_array)
+    for (auto c : mac_update_next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7455,7 +7545,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "resolved")
     {
@@ -7465,7 +7555,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "resolved")
     {
@@ -7473,35 +7563,36 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet-segment-id" || name == "mac-update-next-hop-array" || name == "resolved")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
     :
     system_priority{YType::uint16, "system-priority"},
     system_id{YType::str, "system-id"},
     port_key{YType::uint16, "port-key"}
 {
 
-    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set
 	|| system_id.is_set
 	|| port_key.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(system_priority.yfilter)
@@ -7509,21 +7600,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
 	|| ydk::is_set(port_key.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7535,19 +7626,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-priority")
     {
@@ -7569,7 +7660,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "system-priority")
     {
@@ -7585,37 +7676,38 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "system-priority" || name == "system-id" || name == "port-key")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -7623,21 +7715,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7648,13 +7740,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -7662,7 +7754,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7674,7 +7766,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -7690,7 +7782,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -7702,14 +7794,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -7717,20 +7809,21 @@ L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathLi
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -7740,7 +7833,7 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -7752,21 +7845,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7781,13 +7874,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -7795,7 +7888,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7807,7 +7900,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -7847,7 +7940,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -7875,14 +7968,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -7890,22 +7983,23 @@ L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathLi
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -7914,21 +8008,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7941,19 +8035,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -7981,7 +8075,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -8001,51 +8095,52 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::PathListMac()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::PathListMac()
     :
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::~PathListMac()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::~PathListMac()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-mac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8055,19 +8150,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -8077,7 +8172,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -8085,37 +8180,38 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::P
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::~NextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::~NextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -8123,21 +8219,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::h
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8148,13 +8244,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -8162,7 +8258,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8174,7 +8270,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -8190,7 +8286,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::s
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -8202,14 +8298,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::s
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -8217,20 +8313,21 @@ L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHo
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -8240,7 +8337,7 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::N
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -8252,21 +8349,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::N
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8281,13 +8378,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -8295,7 +8392,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8307,7 +8404,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -8347,7 +8444,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::N
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -8375,14 +8472,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::N
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -8390,22 +8487,23 @@ L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHo
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -8414,21 +8512,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::N
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/evpn-esi/path-list/next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8441,19 +8539,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -8481,7 +8579,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::N
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -8501,37 +8599,38 @@ void L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::N
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::Bmac()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::Bmac()
     :
     bmac_address{YType::str, "bmac-address"},
     forward_state{YType::boolean, "forward-state"}
-    	,
-    path_list(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList>())
+        ,
+    path_list(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList>())
 {
     path_list->parent = this;
 
-    yang_name = "bmac"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bmac"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::~Bmac()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::~Bmac()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::has_data() const
 {
+    if (is_presence_container) return true;
     return bmac_address.is_set
 	|| forward_state.is_set
 	|| (path_list !=  nullptr && path_list->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bmac_address.yfilter)
@@ -8539,21 +8638,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::has_operation() const
 	|| (path_list !=  nullptr && path_list->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bmac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8564,13 +8663,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list")
     {
         if(path_list == nullptr)
         {
-            path_list = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList>();
+            path_list = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList>();
         }
         return path_list;
     }
@@ -8578,7 +8677,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8590,7 +8689,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bmac-address")
     {
@@ -8606,7 +8705,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::set_value(const std::string 
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bmac-address")
     {
@@ -8618,33 +8717,35 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::set_filter(const std::string
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list" || name == "bmac-address" || name == "forward-state")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathList()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathList()
     :
     producer_id{YType::uint8, "producer-id"},
     mac_count{YType::uint32, "mac-count"},
     local_label{YType::uint32, "local-label"}
-    	,
-    path_list_info(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo>())
+        ,
+    path_list_info(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo>())
+    , next_hop_array(this, {})
 {
     path_list_info->parent = this;
 
-    yang_name = "path-list"; yang_parent_name = "bmac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list"; yang_parent_name = "bmac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::~PathList()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::~PathList()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_data() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_data())
             return true;
@@ -8655,9 +8756,9 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_data() const
 	|| (path_list_info !=  nullptr && path_list_info->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_operation())
             return true;
@@ -8669,21 +8770,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_operation() co
 	|| (path_list_info !=  nullptr && path_list_info->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8695,29 +8796,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
         if(path_list_info == nullptr)
         {
-            path_list_info = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo>();
+            path_list_info = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo>();
         }
         return path_list_info;
     }
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray>();
         c->parent = this;
-        next_hop_array.push_back(c);
+        next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8727,7 +8828,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     }
 
     count = 0;
-    for (auto const & c : next_hop_array)
+    for (auto c : next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8738,7 +8839,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-id")
     {
@@ -8760,7 +8861,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::set_value(const st
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-id")
     {
@@ -8776,38 +8877,39 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::set_filter(const s
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-info" || name == "next-hop-array" || name == "producer-id" || name == "mac-count" || name == "local-label")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListInfo()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListInfo()
     :
     type{YType::enumeration, "type"}
-    	,
-    path_list_esi(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi>())
-	,path_list_mac(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac>())
+        ,
+    path_list_esi(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi>())
+    , path_list_mac(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac>())
 {
     path_list_esi->parent = this;
     path_list_mac->parent = this;
 
-    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::~PathListInfo()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::~PathListInfo()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (path_list_esi !=  nullptr && path_list_esi->has_data())
 	|| (path_list_mac !=  nullptr && path_list_mac->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -8815,21 +8917,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::has_
 	|| (path_list_mac !=  nullptr && path_list_mac->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8839,13 +8941,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
         if(path_list_esi == nullptr)
         {
-            path_list_esi = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi>();
+            path_list_esi = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi>();
         }
         return path_list_esi;
     }
@@ -8854,7 +8956,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     {
         if(path_list_mac == nullptr)
         {
-            path_list_mac = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac>();
+            path_list_mac = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac>();
         }
         return path_list_mac;
     }
@@ -8862,7 +8964,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8879,7 +8981,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -8889,7 +8991,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::set_
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -8897,31 +8999,33 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::set_
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-esi" || name == "path-list-mac" || name == "type")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::PathListEsi()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::PathListEsi()
     :
     resolved{YType::boolean, "resolved"}
-    	,
-    ethernet_segment_id(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+        ,
+    ethernet_segment_id(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+    , mac_update_next_hop_array(this, {})
 {
     ethernet_segment_id->parent = this;
 
-    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::~PathListEsi()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::~PathListEsi()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::has_data() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_data())
             return true;
@@ -8930,9 +9034,9 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::has_operation() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_operation())
             return true;
@@ -8942,21 +9046,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-esi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8966,29 +9070,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
         if(ethernet_segment_id == nullptr)
         {
-            ethernet_segment_id = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
+            ethernet_segment_id = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
         }
         return ethernet_segment_id;
     }
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
         c->parent = this;
-        mac_update_next_hop_array.push_back(c);
+        mac_update_next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8998,7 +9102,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     }
 
     count = 0;
-    for (auto const & c : mac_update_next_hop_array)
+    for (auto c : mac_update_next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9009,7 +9113,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "resolved")
     {
@@ -9019,7 +9123,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "resolved")
     {
@@ -9027,35 +9131,36 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet-segment-id" || name == "mac-update-next-hop-array" || name == "resolved")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
     :
     system_priority{YType::uint16, "system-priority"},
     system_id{YType::str, "system-id"},
     port_key{YType::uint16, "port-key"}
 {
 
-    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set
 	|| system_id.is_set
 	|| port_key.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(system_priority.yfilter)
@@ -9063,21 +9168,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
 	|| ydk::is_set(port_key.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9089,19 +9194,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-priority")
     {
@@ -9123,7 +9228,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "system-priority")
     {
@@ -9139,37 +9244,38 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "system-priority" || name == "system-id" || name == "port-key")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -9177,21 +9283,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9202,13 +9308,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -9216,7 +9322,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9228,7 +9334,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -9244,7 +9350,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -9256,14 +9362,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -9271,20 +9377,21 @@ L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListE
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -9294,7 +9401,7 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -9306,21 +9413,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9335,13 +9442,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -9349,7 +9456,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9361,7 +9468,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -9401,7 +9508,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -9429,14 +9536,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -9444,22 +9551,23 @@ L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListE
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -9468,21 +9576,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9495,19 +9603,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -9535,7 +9643,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -9555,51 +9663,52 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::PathListMac()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::PathListMac()
     :
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::~PathListMac()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::~PathListMac()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-mac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9609,19 +9718,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -9631,7 +9740,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -9639,37 +9748,38 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::Path
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::~NextHopArray()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::~NextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -9677,21 +9787,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::has_
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9702,13 +9812,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -9716,7 +9826,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9728,7 +9838,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -9744,7 +9854,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::set_
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -9756,14 +9866,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::set_
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -9771,20 +9881,21 @@ L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -9794,7 +9905,7 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -9806,21 +9917,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9835,13 +9946,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -9849,7 +9960,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9861,7 +9972,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac:
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -9901,7 +10012,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -9929,14 +10040,14 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -9944,22 +10055,23 @@ L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -9968,21 +10080,21 @@ bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/macs/mac/route/bmac/path-list/next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9995,19 +10107,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -10035,7 +10147,7 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
     }
 }
 
-void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -10055,26 +10167,29 @@ void L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::Next
     }
 }
 
-bool L2Rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetails()
+L2rib::EviChildTables::MacDetails::MacDetails()
+    :
+    mac_detail(this, {})
 {
 
-    yang_name = "mac-details"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-details"; yang_parent_name = "evi-child-tables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::~MacDetails()
+L2rib::EviChildTables::MacDetails::~MacDetails()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::has_data() const
+bool L2rib::EviChildTables::MacDetails::has_data() const
 {
-    for (std::size_t index=0; index<mac_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_detail.len(); index++)
     {
         if(mac_detail[index]->has_data())
             return true;
@@ -10082,9 +10197,9 @@ bool L2Rib::EviChildTables::MacDetails::has_data() const
     return false;
 }
 
-bool L2Rib::EviChildTables::MacDetails::has_operation() const
+bool L2rib::EviChildTables::MacDetails::has_operation() const
 {
-    for (std::size_t index=0; index<mac_detail.size(); index++)
+    for (std::size_t index=0; index<mac_detail.len(); index++)
     {
         if(mac_detail[index]->has_operation())
             return true;
@@ -10092,21 +10207,21 @@ bool L2Rib::EviChildTables::MacDetails::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10115,25 +10230,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-detail")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail>();
         c->parent = this;
-        mac_detail.push_back(c);
+        mac_detail.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_detail)
+    for (auto c : mac_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10144,22 +10259,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EviChildTables::MacDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-detail")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacDetail()
+L2rib::EviChildTables::MacDetails::MacDetail::MacDetail()
     :
     evi{YType::uint32, "evi"},
     tag_id{YType::uint32, "tag-id"},
@@ -10173,22 +10288,23 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacDetail()
     slot_id{YType::uint32, "slot-id"},
     esi{YType::str, "esi"},
     last_update_timestamp{YType::uint64, "last-update-timestamp"}
-    	,
-    mac_route(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute>())
-	,rt_tlv(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv>())
+        ,
+    mac_route(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute>())
+    , rt_tlv(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::RtTlv>())
 {
     mac_route->parent = this;
     rt_tlv->parent = this;
 
-    yang_name = "mac-detail"; yang_parent_name = "mac-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-detail"; yang_parent_name = "mac-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::~MacDetail()
+L2rib::EviChildTables::MacDetails::MacDetail::~MacDetail()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return evi.is_set
 	|| tag_id.is_set
 	|| mac_addr.is_set
@@ -10205,7 +10321,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::has_data() const
 	|| (rt_tlv !=  nullptr && rt_tlv->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
@@ -10224,21 +10340,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::has_operation() const
 	|| (rt_tlv !=  nullptr && rt_tlv->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-detail";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10259,13 +10375,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-route")
     {
         if(mac_route == nullptr)
         {
-            mac_route = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute>();
+            mac_route = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute>();
         }
         return mac_route;
     }
@@ -10274,7 +10390,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::get_child_
     {
         if(rt_tlv == nullptr)
         {
-            rt_tlv = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv>();
+            rt_tlv = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::RtTlv>();
         }
         return rt_tlv;
     }
@@ -10282,7 +10398,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10299,7 +10415,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "evi")
     {
@@ -10375,7 +10491,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::set_value(const std::string &
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "evi")
     {
@@ -10427,33 +10543,34 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::set_filter(const std::string 
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-route" || name == "rt-tlv" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "admin-dist" || name == "prod-id" || name == "sequence-number" || name == "flags" || name == "baseflags" || name == "soo" || name == "slot-id" || name == "esi" || name == "last-update-timestamp")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::MacRoute()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::MacRoute()
     :
     mac_address{YType::str, "mac-address"},
     admin_distance{YType::uint8, "admin-distance"},
     producer_id{YType::uint8, "producer-id"},
     topology_id{YType::uint32, "topology-id"}
-    	,
-    route(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route>())
+        ,
+    route(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route>())
 {
     route->parent = this;
 
-    yang_name = "mac-route"; yang_parent_name = "mac-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-route"; yang_parent_name = "mac-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::~MacRoute()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::~MacRoute()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| admin_distance.is_set
 	|| producer_id.is_set
@@ -10461,7 +10578,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_data() const
 	|| (route !=  nullptr && route->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter)
@@ -10471,21 +10588,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_operation() con
 	|| (route !=  nullptr && route->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-route";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10498,13 +10615,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
         if(route == nullptr)
         {
-            route = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route>();
+            route = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route>();
         }
         return route;
     }
@@ -10512,7 +10629,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10524,7 +10641,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -10552,7 +10669,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::set_value(const std
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -10572,41 +10689,42 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::set_filter(const st
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route" || name == "mac-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Route()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Route()
     :
     type{YType::enumeration, "type"}
-    	,
-    regular(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular>())
-	,evpn_esi(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi>())
-	,bmac(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac>())
+        ,
+    regular(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular>())
+    , evpn_esi(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi>())
+    , bmac(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac>())
 {
     regular->parent = this;
     evpn_esi->parent = this;
     bmac->parent = this;
 
-    yang_name = "route"; yang_parent_name = "mac-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "mac-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::~Route()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::~Route()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (regular !=  nullptr && regular->has_data())
 	|| (evpn_esi !=  nullptr && evpn_esi->has_data())
 	|| (bmac !=  nullptr && bmac->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -10615,21 +10733,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::has_operatio
 	|| (bmac !=  nullptr && bmac->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10639,13 +10757,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "regular")
     {
         if(regular == nullptr)
         {
-            regular = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular>();
+            regular = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular>();
         }
         return regular;
     }
@@ -10654,7 +10772,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     {
         if(evpn_esi == nullptr)
         {
-            evpn_esi = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi>();
+            evpn_esi = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi>();
         }
         return evpn_esi;
     }
@@ -10663,7 +10781,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     {
         if(bmac == nullptr)
         {
-            bmac = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac>();
+            bmac = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac>();
         }
         return bmac;
     }
@@ -10671,7 +10789,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10693,7 +10811,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -10703,7 +10821,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::set_value(co
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -10711,52 +10829,53 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::set_filter(c
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "regular" || name == "evpn-esi" || name == "bmac" || name == "type")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Regular()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Regular()
     :
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop>())
+    next_hop(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "regular"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "regular"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::~Regular()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::~Regular()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::has_data() const
 {
+    if (is_presence_container) return true;
     return (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::has_operation() const
 {
     return is_set(yfilter)
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "regular";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10765,13 +10884,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop>();
         }
         return next_hop;
     }
@@ -10779,7 +10898,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10791,45 +10910,46 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "regular"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "regular"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::~NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -10837,21 +10957,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/regular/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10862,13 +10982,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_>();
         }
         return next_hop;
     }
@@ -10876,7 +10996,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10888,7 +11008,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -10904,7 +11024,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -10916,14 +11036,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::NextHop_()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::NextHop_()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -10931,20 +11051,21 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop:
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::~NextHop_()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::~NextHop_()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -10954,7 +11075,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -10966,21 +11087,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/regular/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10995,13 +11116,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled>();
         }
         return labeled;
     }
@@ -11009,7 +11130,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11021,7 +11142,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -11061,7 +11182,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -11089,14 +11210,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -11104,22 +11225,23 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop:
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::~Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -11128,21 +11250,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/regular/next-hop/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11155,19 +11277,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -11195,7 +11317,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -11215,40 +11337,41 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::Nex
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EvpnEsi()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EvpnEsi()
     :
     sequence_number{YType::uint32, "sequence-number"},
     forward_state{YType::boolean, "forward-state"}
-    	,
-    ethernet_segment_id(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId>())
-	,path_list(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList>())
+        ,
+    ethernet_segment_id(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId>())
+    , path_list(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList>())
 {
     ethernet_segment_id->parent = this;
     path_list->parent = this;
 
-    yang_name = "evpn-esi"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evpn-esi"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::~EvpnEsi()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::~EvpnEsi()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| forward_state.is_set
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_data())
 	|| (path_list !=  nullptr && path_list->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequence_number.yfilter)
@@ -11257,21 +11380,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::has
 	|| (path_list !=  nullptr && path_list->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evpn-esi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11282,13 +11405,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
         if(ethernet_segment_id == nullptr)
         {
-            ethernet_segment_id = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId>();
+            ethernet_segment_id = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId>();
         }
         return ethernet_segment_id;
     }
@@ -11297,7 +11420,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     {
         if(path_list == nullptr)
         {
-            path_list = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList>();
+            path_list = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList>();
         }
         return path_list;
     }
@@ -11305,7 +11428,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11322,7 +11445,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sequence-number")
     {
@@ -11338,7 +11461,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::set
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sequence-number")
     {
@@ -11350,35 +11473,36 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::set
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet-segment-id" || name == "path-list" || name == "sequence-number" || name == "forward-state")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::EthernetSegmentId()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::EthernetSegmentId()
     :
     system_priority{YType::uint16, "system-priority"},
     system_id{YType::str, "system-id"},
     port_key{YType::uint16, "port-key"}
 {
 
-    yang_name = "ethernet-segment-id"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet-segment-id"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::~EthernetSegmentId()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::~EthernetSegmentId()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set
 	|| system_id.is_set
 	|| port_key.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(system_priority.yfilter)
@@ -11386,21 +11510,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Eth
 	|| ydk::is_set(port_key.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11412,19 +11536,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-priority")
     {
@@ -11446,7 +11570,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Eth
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "system-priority")
     {
@@ -11462,33 +11586,35 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Eth
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "system-priority" || name == "system-id" || name == "port-key")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathList()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathList()
     :
     producer_id{YType::uint8, "producer-id"},
     mac_count{YType::uint32, "mac-count"},
     local_label{YType::uint32, "local-label"}
-    	,
-    path_list_info(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo>())
+        ,
+    path_list_info(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo>())
+    , next_hop_array(this, {})
 {
     path_list_info->parent = this;
 
-    yang_name = "path-list"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list"; yang_parent_name = "evpn-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::~PathList()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::~PathList()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::has_data() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_data())
             return true;
@@ -11499,9 +11625,9 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (path_list_info !=  nullptr && path_list_info->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_operation())
             return true;
@@ -11513,21 +11639,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (path_list_info !=  nullptr && path_list_info->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11539,29 +11665,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
         if(path_list_info == nullptr)
         {
-            path_list_info = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo>();
+            path_list_info = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo>();
         }
         return path_list_info;
     }
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray>();
         c->parent = this;
-        next_hop_array.push_back(c);
+        next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11571,7 +11697,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     }
 
     count = 0;
-    for (auto const & c : next_hop_array)
+    for (auto c : next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11582,7 +11708,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-id")
     {
@@ -11604,7 +11730,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-id")
     {
@@ -11620,38 +11746,39 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-info" || name == "next-hop-array" || name == "producer-id" || name == "mac-count" || name == "local-label")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListInfo()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListInfo()
     :
     type{YType::enumeration, "type"}
-    	,
-    path_list_esi(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>())
-	,path_list_mac(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac>())
+        ,
+    path_list_esi(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>())
+    , path_list_mac(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac>())
 {
     path_list_esi->parent = this;
     path_list_mac->parent = this;
 
-    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::~PathListInfo()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::~PathListInfo()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (path_list_esi !=  nullptr && path_list_esi->has_data())
 	|| (path_list_mac !=  nullptr && path_list_mac->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -11659,21 +11786,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (path_list_mac !=  nullptr && path_list_mac->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11683,13 +11810,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
         if(path_list_esi == nullptr)
         {
-            path_list_esi = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>();
+            path_list_esi = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi>();
         }
         return path_list_esi;
     }
@@ -11698,7 +11825,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     {
         if(path_list_mac == nullptr)
         {
-            path_list_mac = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac>();
+            path_list_mac = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac>();
         }
         return path_list_mac;
     }
@@ -11706,7 +11833,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11723,7 +11850,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -11733,7 +11860,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -11741,31 +11868,33 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-esi" || name == "path-list-mac" || name == "type")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::PathListEsi()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::PathListEsi()
     :
     resolved{YType::boolean, "resolved"}
-    	,
-    ethernet_segment_id(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+        ,
+    ethernet_segment_id(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+    , mac_update_next_hop_array(this, {})
 {
     ethernet_segment_id->parent = this;
 
-    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::~PathListEsi()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::~PathListEsi()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_data() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_data())
             return true;
@@ -11774,9 +11903,9 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_operation() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_operation())
             return true;
@@ -11786,21 +11915,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-esi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11810,29 +11939,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
         if(ethernet_segment_id == nullptr)
         {
-            ethernet_segment_id = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
+            ethernet_segment_id = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
         }
         return ethernet_segment_id;
     }
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
         c->parent = this;
-        mac_update_next_hop_array.push_back(c);
+        mac_update_next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11842,7 +11971,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     }
 
     count = 0;
-    for (auto const & c : mac_update_next_hop_array)
+    for (auto c : mac_update_next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11853,7 +11982,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "resolved")
     {
@@ -11863,7 +11992,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "resolved")
     {
@@ -11871,35 +12000,36 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet-segment-id" || name == "mac-update-next-hop-array" || name == "resolved")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
     :
     system_priority{YType::uint16, "system-priority"},
     system_id{YType::str, "system-id"},
     port_key{YType::uint16, "port-key"}
 {
 
-    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set
 	|| system_id.is_set
 	|| port_key.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(system_priority.yfilter)
@@ -11907,21 +12037,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| ydk::is_set(port_key.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11933,19 +12063,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-priority")
     {
@@ -11967,7 +12097,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "system-priority")
     {
@@ -11983,37 +12113,38 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "system-priority" || name == "system-id" || name == "port-key")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -12021,21 +12152,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12046,13 +12177,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -12060,7 +12191,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12072,7 +12203,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -12088,7 +12219,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -12100,14 +12231,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -12115,20 +12246,21 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -12138,7 +12270,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -12150,21 +12282,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12179,13 +12311,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -12193,7 +12325,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12205,7 +12337,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -12245,7 +12377,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -12273,14 +12405,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -12288,22 +12420,23 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -12312,21 +12445,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12339,19 +12472,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -12379,7 +12512,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -12399,51 +12532,52 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::PathListMac()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::PathListMac()
     :
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::~PathListMac()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::~PathListMac()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-mac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12453,19 +12587,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -12475,7 +12609,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -12483,37 +12617,38 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::~NextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::~NextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -12521,21 +12656,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12546,13 +12681,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -12560,7 +12695,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12572,7 +12707,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -12588,7 +12723,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -12600,14 +12735,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -12615,20 +12750,21 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -12638,7 +12774,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -12650,21 +12786,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12679,13 +12815,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -12693,7 +12829,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12705,7 +12841,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -12745,7 +12881,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -12773,14 +12909,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -12788,22 +12924,23 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -12812,21 +12949,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/evpn-esi/path-list/next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12839,19 +12976,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -12879,7 +13016,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -12899,37 +13036,38 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::Pat
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::Bmac()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::Bmac()
     :
     bmac_address{YType::str, "bmac-address"},
     forward_state{YType::boolean, "forward-state"}
-    	,
-    path_list(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList>())
+        ,
+    path_list(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList>())
 {
     path_list->parent = this;
 
-    yang_name = "bmac"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bmac"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::~Bmac()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::~Bmac()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::has_data() const
 {
+    if (is_presence_container) return true;
     return bmac_address.is_set
 	|| forward_state.is_set
 	|| (path_list !=  nullptr && path_list->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bmac_address.yfilter)
@@ -12937,21 +13075,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::has_op
 	|| (path_list !=  nullptr && path_list->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bmac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12962,13 +13100,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list")
     {
         if(path_list == nullptr)
         {
-            path_list = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList>();
+            path_list = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList>();
         }
         return path_list;
     }
@@ -12976,7 +13114,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12988,7 +13126,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bmac-address")
     {
@@ -13004,7 +13142,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::set_va
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bmac-address")
     {
@@ -13016,33 +13154,35 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::set_fi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list" || name == "bmac-address" || name == "forward-state")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathList()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathList()
     :
     producer_id{YType::uint8, "producer-id"},
     mac_count{YType::uint32, "mac-count"},
     local_label{YType::uint32, "local-label"}
-    	,
-    path_list_info(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo>())
+        ,
+    path_list_info(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo>())
+    , next_hop_array(this, {})
 {
     path_list_info->parent = this;
 
-    yang_name = "path-list"; yang_parent_name = "bmac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list"; yang_parent_name = "bmac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::~PathList()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::~PathList()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::has_data() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_data())
             return true;
@@ -13053,9 +13193,9 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (path_list_info !=  nullptr && path_list_info->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::has_operation() const
 {
-    for (std::size_t index=0; index<next_hop_array.size(); index++)
+    for (std::size_t index=0; index<next_hop_array.len(); index++)
     {
         if(next_hop_array[index]->has_operation())
             return true;
@@ -13067,21 +13207,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (path_list_info !=  nullptr && path_list_info->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13093,29 +13233,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
         if(path_list_info == nullptr)
         {
-            path_list_info = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo>();
+            path_list_info = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo>();
         }
         return path_list_info;
     }
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray>();
         c->parent = this;
-        next_hop_array.push_back(c);
+        next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13125,7 +13265,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     }
 
     count = 0;
-    for (auto const & c : next_hop_array)
+    for (auto c : next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13136,7 +13276,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-id")
     {
@@ -13158,7 +13298,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-id")
     {
@@ -13174,38 +13314,39 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-info" || name == "next-hop-array" || name == "producer-id" || name == "mac-count" || name == "local-label")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListInfo()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListInfo()
     :
     type{YType::enumeration, "type"}
-    	,
-    path_list_esi(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi>())
-	,path_list_mac(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac>())
+        ,
+    path_list_esi(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi>())
+    , path_list_mac(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac>())
 {
     path_list_esi->parent = this;
     path_list_mac->parent = this;
 
-    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-info"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::~PathListInfo()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::~PathListInfo()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (path_list_esi !=  nullptr && path_list_esi->has_data())
 	|| (path_list_mac !=  nullptr && path_list_mac->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -13213,21 +13354,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (path_list_mac !=  nullptr && path_list_mac->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13237,13 +13378,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
         if(path_list_esi == nullptr)
         {
-            path_list_esi = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi>();
+            path_list_esi = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi>();
         }
         return path_list_esi;
     }
@@ -13252,7 +13393,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     {
         if(path_list_mac == nullptr)
         {
-            path_list_mac = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac>();
+            path_list_mac = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac>();
         }
         return path_list_mac;
     }
@@ -13260,7 +13401,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13277,7 +13418,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -13287,7 +13428,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -13295,31 +13436,33 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-list-esi" || name == "path-list-mac" || name == "type")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::PathListEsi()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::PathListEsi()
     :
     resolved{YType::boolean, "resolved"}
-    	,
-    ethernet_segment_id(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+        ,
+    ethernet_segment_id(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>())
+    , mac_update_next_hop_array(this, {})
 {
     ethernet_segment_id->parent = this;
 
-    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-esi"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::~PathListEsi()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::~PathListEsi()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::has_data() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_data())
             return true;
@@ -13328,9 +13471,9 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::has_operation() const
 {
-    for (std::size_t index=0; index<mac_update_next_hop_array.size(); index++)
+    for (std::size_t index=0; index<mac_update_next_hop_array.len(); index++)
     {
         if(mac_update_next_hop_array[index]->has_operation())
             return true;
@@ -13340,21 +13483,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (ethernet_segment_id !=  nullptr && ethernet_segment_id->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-esi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13364,29 +13507,29 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
         if(ethernet_segment_id == nullptr)
         {
-            ethernet_segment_id = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
+            ethernet_segment_id = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId>();
         }
         return ethernet_segment_id;
     }
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
         c->parent = this;
-        mac_update_next_hop_array.push_back(c);
+        mac_update_next_hop_array.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13396,7 +13539,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     }
 
     count = 0;
-    for (auto const & c : mac_update_next_hop_array)
+    for (auto c : mac_update_next_hop_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13407,7 +13550,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "resolved")
     {
@@ -13417,7 +13560,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "resolved")
     {
@@ -13425,35 +13568,36 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet-segment-id" || name == "mac-update-next-hop-array" || name == "resolved")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::EthernetSegmentId()
     :
     system_priority{YType::uint16, "system-priority"},
     system_id{YType::str, "system-id"},
     port_key{YType::uint16, "port-key"}
 {
 
-    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet-segment-id"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::~EthernetSegmentId()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_data() const
 {
+    if (is_presence_container) return true;
     return system_priority.is_set
 	|| system_id.is_set
 	|| port_key.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(system_priority.yfilter)
@@ -13461,21 +13605,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| ydk::is_set(port_key.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13487,19 +13631,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-priority")
     {
@@ -13521,7 +13665,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "system-priority")
     {
@@ -13537,37 +13681,38 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "system-priority" || name == "system-id" || name == "port-key")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::MacUpdateNextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-update-next-hop-array"; yang_parent_name = "path-list-esi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::~MacUpdateNextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -13575,21 +13720,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/path-list-info/path-list-esi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13600,13 +13745,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -13614,7 +13759,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13626,7 +13771,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -13642,7 +13787,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -13654,14 +13799,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -13669,20 +13814,21 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::P
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "mac-update-next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -13692,7 +13838,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -13704,21 +13850,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13733,13 +13879,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -13747,7 +13893,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13759,7 +13905,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -13799,7 +13945,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -13827,14 +13973,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -13842,22 +13988,23 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::P
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -13866,21 +14013,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/path-list-info/path-list-esi/mac-update-next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13893,19 +14040,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -13933,7 +14080,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -13953,51 +14100,52 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::PathListMac()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::PathListMac()
     :
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-list-mac"; yang_parent_name = "path-list-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::~PathListMac()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::~PathListMac()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/path-list-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-list-mac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14007,19 +14155,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -14029,7 +14177,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -14037,37 +14185,38 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHopArray()
     :
     topology_id{YType::uint32, "topology-id"},
     flags{YType::uint16, "flags"}
-    	,
-    next_hop(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop>())
+        ,
+    next_hop(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop-array"; yang_parent_name = "path-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::~NextHopArray()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::~NextHopArray()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::has_data() const
 {
+    if (is_presence_container) return true;
     return topology_id.is_set
 	|| flags.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(topology_id.yfilter)
@@ -14075,21 +14224,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14100,13 +14249,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop>();
+            next_hop = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop>();
         }
         return next_hop;
     }
@@ -14114,7 +14263,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14126,7 +14275,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "topology-id")
     {
@@ -14142,7 +14291,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "topology-id")
     {
@@ -14154,14 +14303,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "topology-id" || name == "flags")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::NextHop()
     :
     type{YType::enumeration, "type"},
     ipv4{YType::str, "ipv4"},
@@ -14169,20 +14318,21 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::N
     mac{YType::str, "mac"},
     interface_handle{YType::str, "interface-handle"},
     xid{YType::uint32, "xid"}
-    	,
-    labeled(std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>())
+        ,
+    labeled(std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>())
 {
     labeled->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "next-hop-array"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::~NextHop()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::~NextHop()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set
@@ -14192,7 +14342,7 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (labeled !=  nullptr && labeled->has_data());
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -14204,21 +14354,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| (labeled !=  nullptr && labeled->has_operation());
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/next-hop-array/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14233,13 +14383,13 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
         if(labeled == nullptr)
         {
-            labeled = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>();
+            labeled = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled>();
         }
         return labeled;
     }
@@ -14247,7 +14397,7 @@ std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14259,7 +14409,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -14299,7 +14449,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -14327,14 +14477,14 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "labeled" || name == "type" || name == "ipv4" || name == "ipv6" || name == "mac" || name == "interface-handle" || name == "xid")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::Labeled()
     :
     address_family{YType::enumeration, "address-family"},
     ip_address{YType::str, "ip-address"},
@@ -14342,22 +14492,23 @@ L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::N
     internal{YType::boolean, "internal"}
 {
 
-    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::~Labeled()
+L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::~Labeled()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| ip_address.is_set
 	|| label.is_set
 	|| internal.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
@@ -14366,21 +14517,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
 	|| ydk::is_set(internal.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/mac-route/route/bmac/path-list/next-hop-array/next-hop/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "labeled";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14393,19 +14544,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
@@ -14433,7 +14584,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address-family")
     {
@@ -14453,29 +14604,32 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathLi
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "ip-address" || name == "label" || name == "internal")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::RtTlv()
+L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::RtTlv()
     :
     tlv_type{YType::uint16, "tlv-type"},
     tlv_len{YType::uint16, "tlv-len"}
+        ,
+    tlv_val(this, {})
 {
 
-    yang_name = "rt-tlv"; yang_parent_name = "mac-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rt-tlv"; yang_parent_name = "mac-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::~RtTlv()
+L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::~RtTlv()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_data() const
 {
-    for (std::size_t index=0; index<tlv_val.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tlv_val.len(); index++)
     {
         if(tlv_val[index]->has_data())
             return true;
@@ -14484,9 +14638,9 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_data() const
 	|| tlv_len.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_operation() const
 {
-    for (std::size_t index=0; index<tlv_val.size(); index++)
+    for (std::size_t index=0; index<tlv_val.len(); index++)
     {
         if(tlv_val[index]->has_operation())
             return true;
@@ -14496,21 +14650,21 @@ bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_operation() const
 	|| ydk::is_set(tlv_len.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rt-tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14521,25 +14675,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-val")
     {
-        auto c = std::make_shared<L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal>();
+        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal>();
         c->parent = this;
-        tlv_val.push_back(c);
+        tlv_val.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tlv_val)
+    for (auto c : tlv_val.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14550,7 +14704,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-type")
     {
@@ -14566,7 +14720,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_value(const std::s
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tlv-type")
     {
@@ -14578,51 +14732,52 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_filter(const std::
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tlv-val" || name == "tlv-type" || name == "tlv-len")
         return true;
     return false;
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::TlvVal()
+L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::TlvVal()
     :
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "tlv-val"; yang_parent_name = "rt-tlv"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tlv-val"; yang_parent_name = "rt-tlv"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::~TlvVal()
+L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::~TlvVal()
 {
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_data() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_operation() const
+bool L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_absolute_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evi-child-tables/mac-details/mac-detail/rt-tlv/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_segment_path() const
+std::string L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-val";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14632,19 +14787,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -14654,7 +14809,7 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_value(cons
     }
 }
 
-void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -14662,26 +14817,29 @@ void L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_filter(con
     }
 }
 
-bool L2Rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2Rib::Evis::Evis()
+L2rib::Evis::Evis()
+    :
+    evi(this, {"evi"})
 {
 
-    yang_name = "evis"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evis"; yang_parent_name = "l2rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Evis::~Evis()
+L2rib::Evis::~Evis()
 {
 }
 
-bool L2Rib::Evis::has_data() const
+bool L2rib::Evis::has_data() const
 {
-    for (std::size_t index=0; index<evi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<evi.len(); index++)
     {
         if(evi[index]->has_data())
             return true;
@@ -14689,9 +14847,9 @@ bool L2Rib::Evis::has_data() const
     return false;
 }
 
-bool L2Rib::Evis::has_operation() const
+bool L2rib::Evis::has_operation() const
 {
-    for (std::size_t index=0; index<evi.size(); index++)
+    for (std::size_t index=0; index<evi.len(); index++)
     {
         if(evi[index]->has_operation())
             return true;
@@ -14699,21 +14857,21 @@ bool L2Rib::Evis::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2Rib::Evis::get_absolute_path() const
+std::string L2rib::Evis::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Evis::get_segment_path() const
+std::string L2rib::Evis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Evis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Evis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14722,25 +14880,25 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Evis::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> L2Rib::Evis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Evis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evi")
     {
-        auto c = std::make_shared<L2Rib::Evis::Evi>();
+        auto c = std::make_shared<L2rib::Evis::Evi>();
         c->parent = this;
-        evi.push_back(c);
+        evi.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Evis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Evis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : evi)
+    for (auto c : evi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14751,22 +14909,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2Rib::Evis::get_children() const
     return children;
 }
 
-void L2Rib::Evis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Evis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2Rib::Evis::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Evis::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2Rib::Evis::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Evis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "evi")
         return true;
     return false;
 }
 
-L2Rib::Evis::Evi::Evi()
+L2rib::Evis::Evi::Evi()
     :
     evi{YType::uint32, "evi"},
     topology_id{YType::uint32, "topology-id"},
@@ -14774,22 +14932,23 @@ L2Rib::Evis::Evi::Evi()
     topology_type{YType::uint32, "topology-type"}
 {
 
-    yang_name = "evi"; yang_parent_name = "evis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evi"; yang_parent_name = "evis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2Rib::Evis::Evi::~Evi()
+L2rib::Evis::Evi::~Evi()
 {
 }
 
-bool L2Rib::Evis::Evi::has_data() const
+bool L2rib::Evis::Evi::has_data() const
 {
+    if (is_presence_container) return true;
     return evi.is_set
 	|| topology_id.is_set
 	|| topology_name.is_set
 	|| topology_type.is_set;
 }
 
-bool L2Rib::Evis::Evi::has_operation() const
+bool L2rib::Evis::Evi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
@@ -14798,21 +14957,22 @@ bool L2Rib::Evis::Evi::has_operation() const
 	|| ydk::is_set(topology_type.yfilter);
 }
 
-std::string L2Rib::Evis::Evi::get_absolute_path() const
+std::string L2rib::Evis::Evi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-l2rib-oper:l2rib/evis/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2Rib::Evis::Evi::get_segment_path() const
+std::string L2rib::Evis::Evi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "evi" <<"[evi='" <<evi <<"']";
+    path_buffer << "evi";
+    ADD_KEY_TOKEN(evi, "evi");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2Rib::Evis::Evi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2rib::Evis::Evi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14825,19 +14985,19 @@ std::vector<std::pair<std::string, LeafData> > L2Rib::Evis::Evi::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L2Rib::Evis::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2rib::Evis::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2Rib::Evis::Evi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2rib::Evis::Evi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2Rib::Evis::Evi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2rib::Evis::Evi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "evi")
     {
@@ -14865,7 +15025,7 @@ void L2Rib::Evis::Evi::set_value(const std::string & value_path, const std::stri
     }
 }
 
-void L2Rib::Evis::Evi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2rib::Evis::Evi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "evi")
     {
@@ -14885,7 +15045,7 @@ void L2Rib::Evis::Evi::set_filter(const std::string & value_path, YFilter yfilte
     }
 }
 
-bool L2Rib::Evis::Evi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2rib::Evis::Evi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "evi" || name == "topology-id" || name == "topology-name" || name == "topology-type")
         return true;
@@ -14896,27 +15056,6 @@ const Enum::YLeaf L2ribMacRoute::l2rib_mac_route_type_invalid {0, "l2rib-mac-rou
 const Enum::YLeaf L2ribMacRoute::l2rib_mac_route_type_regular {1, "l2rib-mac-route-type-regular"};
 const Enum::YLeaf L2ribMacRoute::l2rib_mac_route_type_evpn_esi {2, "l2rib-mac-route-type-evpn-esi"};
 const Enum::YLeaf L2ribMacRoute::l2rib_mac_route_type_bmac {3, "l2rib-mac-route-type-bmac"};
-
-const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv4 {0, "l2rib-address-family-ipv4"};
-const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv6 {1, "l2rib-address-family-ipv6"};
-const Enum::YLeaf L2ribAfi::l2rib_address_family_invalid {2, "l2rib-address-family-invalid"};
-
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_invalid {0, "l2rib-next-hop-invalid"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_ordinal {1, "l2rib-next-hop-interface-ordinal"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_index {2, "l2rib-next-hop-interface-index"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_mac {3, "l2rib-next-hop-mac"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv4 {4, "l2rib-next-hop-ipv4"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv6 {5, "l2rib-next-hop-ipv6"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_overlay {6, "l2rib-next-hop-overlay"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_site_index {7, "l2rib-next-hop-site-index"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_label_ed {8, "l2rib-next-hop-label-ed"};
-const Enum::YLeaf L2ribNextHop::l2rib_next_hop_xid {9, "l2rib-next-hop-xid"};
-
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_initial {0, "l2rib-bag-prod-state-initial"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_staled {1, "l2rib-bag-prod-state-staled"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_re_connected {2, "l2rib-bag-prod-state-re-connected"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_converged {3, "l2rib-bag-prod-state-converged"};
-const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_delete_p_end {4, "l2rib-bag-prod-state-delete-p-end"};
 
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_none {0, "l2rib-bag-prod-none"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_best_route {1, "l2rib-bag-prod-best-route"};
@@ -14932,7 +15071,29 @@ const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_mac_mgr {10, "l2rib-ba
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_vxlan {11, "l2rib-bag-prod-prod-vxlan"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_hmm {12, "l2rib-bag-prod-prod-hmm"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_arp {13, "l2rib-bag-prod-prod-arp"};
+const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_local_proxy {14, "l2rib-bag-prod-prod-local-proxy"};
 const Enum::YLeaf L2ribBagProducerId::l2rib_bag_prod_prod_all {255, "l2rib-bag-prod-prod-all"};
+
+const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv4 {0, "l2rib-address-family-ipv4"};
+const Enum::YLeaf L2ribAfi::l2rib_address_family_ipv6 {1, "l2rib-address-family-ipv6"};
+const Enum::YLeaf L2ribAfi::l2rib_address_family_invalid {2, "l2rib-address-family-invalid"};
+
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_initial {0, "l2rib-bag-prod-state-initial"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_staled {1, "l2rib-bag-prod-state-staled"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_re_connected {2, "l2rib-bag-prod-state-re-connected"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_converged {3, "l2rib-bag-prod-state-converged"};
+const Enum::YLeaf L2ribBagProducerState::l2rib_bag_prod_state_delete_p_end {4, "l2rib-bag-prod-state-delete-p-end"};
+
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_invalid {0, "l2rib-next-hop-invalid"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_ordinal {1, "l2rib-next-hop-interface-ordinal"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_interface_index {2, "l2rib-next-hop-interface-index"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_mac {3, "l2rib-next-hop-mac"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv4 {4, "l2rib-next-hop-ipv4"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_ipv6 {5, "l2rib-next-hop-ipv6"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_overlay {6, "l2rib-next-hop-overlay"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_site_index {7, "l2rib-next-hop-site-index"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_label_ed {8, "l2rib-next-hop-label-ed"};
+const Enum::YLeaf L2ribNextHop::l2rib_next_hop_xid {9, "l2rib-next-hop-xid"};
 
 const Enum::YLeaf L2ribBagObj::l2rib_bag_obj_type_min {0, "l2rib-bag-obj-type-min"};
 const Enum::YLeaf L2ribBagObj::l2rib_bag_obj_type_all {1, "l2rib-bag-obj-type-all"};

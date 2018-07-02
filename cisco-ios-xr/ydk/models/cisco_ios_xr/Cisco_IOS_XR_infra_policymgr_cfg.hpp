@@ -59,7 +59,7 @@ class PolicyManager::ClassMaps : public ydk::Entity
 
         class ClassMap; //type: PolicyManager::ClassMaps::ClassMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap> > class_map;
+        ydk::YList class_map;
         
 }; // PolicyManager::ClassMaps
 
@@ -181,14 +181,14 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
         class DomainNameRegex; //type: PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex
         class Flow; //type: PolicyManager::ClassMaps::ClassMap::Match::Flow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4> > destination_address_ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6> > destination_address_ipv6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4> > source_address_ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6> > source_address_ipv6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::DhcpClientId> > dhcp_client_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::DhcpClientIdRegex> > dhcp_client_id_regex;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::DomainName> > domain_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex> > domain_name_regex;
+        ydk::YList destination_address_ipv4;
+        ydk::YList destination_address_ipv6;
+        ydk::YList source_address_ipv4;
+        ydk::YList source_address_ipv6;
+        ydk::YList dhcp_client_id;
+        ydk::YList dhcp_client_id_regex;
+        ydk::YList domain_name;
+        ydk::YList domain_name_regex;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::Flow> flow;
         
 }; // PolicyManager::ClassMaps::ClassMap::Match
@@ -410,7 +410,7 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf idle_timeout; //type: one of string, uint16
+        ydk::YLeaf idle_timeout; //type: one of uint16, string
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache
 
@@ -497,14 +497,14 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public ydk::Entity
         class DomainNameRegex; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex
         class Flow; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::Flow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4> > destination_address_ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6> > destination_address_ipv6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4> > source_address_ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6> > source_address_ipv6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClientId> > dhcp_client_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::DhcpClientIdRegex> > dhcp_client_id_regex;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName> > domain_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex> > domain_name_regex;
+        ydk::YList destination_address_ipv4;
+        ydk::YList destination_address_ipv6;
+        ydk::YList source_address_ipv4;
+        ydk::YList source_address_ipv6;
+        ydk::YList dhcp_client_id;
+        ydk::YList dhcp_client_id_regex;
+        ydk::YList domain_name;
+        ydk::YList domain_name_regex;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot::Flow> flow;
         
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot
@@ -726,7 +726,7 @@ class PolicyManager::PolicyMaps : public ydk::Entity
 
         class PolicyMap; //type: PolicyManager::PolicyMaps::PolicyMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap> > policy_map;
+        ydk::YList policy_map;
         
 }; // PolicyManager::PolicyMaps
 
@@ -754,8 +754,8 @@ class PolicyManager::PolicyMaps::PolicyMap : public ydk::Entity
         class Event; //type: PolicyManager::PolicyMaps::PolicyMap::Event
         class PolicyMapRule; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event> > event;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule> > policy_map_rule;
+        ydk::YList event;
+        ydk::YList policy_map_rule;
         
 }; // PolicyManager::PolicyMaps::PolicyMap
 
@@ -781,7 +781,7 @@ class PolicyManager::PolicyMaps::PolicyMap::Event : public ydk::Entity
         ydk::YLeaf event_mode_match_first; //type: empty
         class Class; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class> > class_;
+        ydk::YList class_;
         
 }; // PolicyManager::PolicyMaps::PolicyMap::Event
 
@@ -807,7 +807,7 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class : public ydk::Entity
         ydk::YLeaf class_execution_strategy; //type: ExecutionStrategy
         class ActionRule; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class::ActionRule> > action_rule;
+        ydk::YList action_rule;
         
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class
 
@@ -1029,7 +1029,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining> bandwidth_remaining;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit> queue_limit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc> pfc;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect> > random_detect;
+        ydk::YList random_detect;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set> set;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police> police;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy> service_policy;
@@ -1692,7 +1692,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf flow_idle_timeout; //type: one of string, uint16
+        ydk::YLeaf flow_idle_timeout; //type: one of uint16, string
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate
         class FlowRate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate
 
@@ -2224,36 +2224,6 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath :
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath
 
-class ClassMapType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf qos;
-        static const ydk::Enum::YLeaf traffic;
-        static const ydk::Enum::YLeaf control;
-
-};
-
-class PolicyMapType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf qos;
-        static const ydk::Enum::YLeaf pbr;
-        static const ydk::Enum::YLeaf traffic;
-        static const ydk::Enum::YLeaf subscriber_control;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf flow_monitor;
-
-};
-
-class PmapClassMapType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf qos;
-        static const ydk::Enum::YLeaf traffic;
-        static const ydk::Enum::YLeaf subscriber_control;
-
-};
-
 class EventType : public ydk::Enum
 {
     public:
@@ -2276,6 +2246,15 @@ class EventType : public ydk::Enum
 
 };
 
+class ClassMapType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf control;
+
+};
+
 class ExecutionStrategy : public ydk::Enum
 {
     public:
@@ -2295,6 +2274,27 @@ class AuthorizeIdentifier : public ydk::Enum
         static const ydk::Enum::YLeaf source_address_ipv6;
         static const ydk::Enum::YLeaf source_address_mac;
         static const ydk::Enum::YLeaf username;
+
+};
+
+class PmapClassMapType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf subscriber_control;
+
+};
+
+class PolicyMapType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf pbr;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf subscriber_control;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf flow_monitor;
 
 };
 

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_lpts_pa_oper {
 LptsPa::LptsPa()
     :
     entry_xr(std::make_shared<LptsPa::EntryXr>())
-	,entries(std::make_shared<LptsPa::Entries>())
+    , entries(std::make_shared<LptsPa::Entries>())
 {
     entry_xr->parent = this;
     entries->parent = this;
 
-    yang_name = "lpts-pa"; yang_parent_name = "Cisco-IOS-XR-lpts-pa-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lpts-pa"; yang_parent_name = "Cisco-IOS-XR-lpts-pa-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LptsPa::~LptsPa()
@@ -28,6 +28,7 @@ LptsPa::~LptsPa()
 
 bool LptsPa::has_data() const
 {
+    if (is_presence_container) return true;
     return (entry_xr !=  nullptr && entry_xr->has_data())
 	|| (entries !=  nullptr && entries->has_data());
 }
@@ -136,9 +137,11 @@ bool LptsPa::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 LptsPa::EntryXr::EntryXr()
+    :
+    entry(this, {"entry"})
 {
 
-    yang_name = "entry-xr"; yang_parent_name = "lpts-pa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entry-xr"; yang_parent_name = "lpts-pa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsPa::EntryXr::~EntryXr()
@@ -147,7 +150,8 @@ LptsPa::EntryXr::~EntryXr()
 
 bool LptsPa::EntryXr::has_data() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool LptsPa::EntryXr::has_data() const
 
 bool LptsPa::EntryXr::has_operation() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> LptsPa::EntryXr::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<LptsPa::EntryXr::Entry>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -256,14 +260,14 @@ LptsPa::EntryXr::Entry::Entry()
     min_ttl{YType::uint8, "min-ttl"},
     lazy_bindq_delay{YType::uint32, "lazy-bindq-delay"},
     ptq_delay{YType::uint32, "ptq-delay"}
-    	,
+        ,
     ctime(std::make_shared<LptsPa::EntryXr::Entry::Ctime>())
-	,utime(std::make_shared<LptsPa::EntryXr::Entry::Utime>())
+    , utime(std::make_shared<LptsPa::EntryXr::Entry::Utime>())
 {
     ctime->parent = this;
     utime->parent = this;
 
-    yang_name = "entry"; yang_parent_name = "entry-xr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entry"; yang_parent_name = "entry-xr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsPa::EntryXr::Entry::~Entry()
@@ -272,6 +276,7 @@ LptsPa::EntryXr::Entry::~Entry()
 
 bool LptsPa::EntryXr::Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set
 	|| location.is_set
 	|| client_id.is_set
@@ -337,7 +342,8 @@ std::string LptsPa::EntryXr::Entry::get_absolute_path() const
 std::string LptsPa::EntryXr::Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[entry='" <<entry <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(entry, "entry");
     return path_buffer.str();
 }
 
@@ -653,7 +659,7 @@ LptsPa::EntryXr::Entry::Ctime::Ctime()
     tv_nsec{YType::uint32, "tv-nsec"}
 {
 
-    yang_name = "ctime"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ctime"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPa::EntryXr::Entry::Ctime::~Ctime()
@@ -662,6 +668,7 @@ LptsPa::EntryXr::Entry::Ctime::~Ctime()
 
 bool LptsPa::EntryXr::Entry::Ctime::has_data() const
 {
+    if (is_presence_container) return true;
     return tv_sec.is_set
 	|| tv_nsec.is_set;
 }
@@ -744,7 +751,7 @@ LptsPa::EntryXr::Entry::Utime::Utime()
     tv_nsec{YType::uint32, "tv-nsec"}
 {
 
-    yang_name = "utime"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "utime"; yang_parent_name = "entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsPa::EntryXr::Entry::Utime::~Utime()
@@ -753,6 +760,7 @@ LptsPa::EntryXr::Entry::Utime::~Utime()
 
 bool LptsPa::EntryXr::Entry::Utime::has_data() const
 {
+    if (is_presence_container) return true;
     return tv_sec.is_set
 	|| tv_nsec.is_set;
 }
@@ -830,9 +838,11 @@ bool LptsPa::EntryXr::Entry::Utime::has_leaf_or_child_of_name(const std::string 
 }
 
 LptsPa::Entries::Entries()
+    :
+    entry(this, {"entry"})
 {
 
-    yang_name = "entries"; yang_parent_name = "lpts-pa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entries"; yang_parent_name = "lpts-pa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsPa::Entries::~Entries()
@@ -841,7 +851,8 @@ LptsPa::Entries::~Entries()
 
 bool LptsPa::Entries::has_data() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -851,7 +862,7 @@ bool LptsPa::Entries::has_data() const
 
 bool LptsPa::Entries::has_operation() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -888,7 +899,7 @@ std::shared_ptr<Entity> LptsPa::Entries::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<LptsPa::Entries::Entry>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -900,7 +911,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsPa::Entries::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -936,7 +947,7 @@ LptsPa::Entries::Entry::Entry()
     times{YType::str, "times"}
 {
 
-    yang_name = "entry"; yang_parent_name = "entries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entry"; yang_parent_name = "entries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsPa::Entries::Entry::~Entry()
@@ -945,6 +956,7 @@ LptsPa::Entries::Entry::~Entry()
 
 bool LptsPa::Entries::Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set
 	|| flags.is_set
 	|| open_flags.is_set
@@ -974,7 +986,8 @@ std::string LptsPa::Entries::Entry::get_absolute_path() const
 std::string LptsPa::Entries::Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[entry='" <<entry <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(entry, "entry");
     return path_buffer.str();
 }
 

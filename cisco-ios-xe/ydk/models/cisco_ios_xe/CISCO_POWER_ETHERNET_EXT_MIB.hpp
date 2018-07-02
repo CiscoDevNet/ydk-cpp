@@ -31,26 +31,26 @@ class CISCOPOWERETHERNETEXTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpeextmibobjects; //type: CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects
-        class Cpeextpdstatistics; //type: CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics
-        class Cpeextmainpsetable; //type: CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable
-        class Cpeextpdstatstable; //type: CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable
-        class Cpeextpseportlldptable; //type: CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable
+        class CpeExtMIBObjects; //type: CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects
+        class CpeExtPdStatistics; //type: CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics
+        class CpeExtMainPseTable; //type: CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable
+        class CpeExtPdStatsTable; //type: CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable
+        class CpeExtPsePortLldpTable; //type: CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects> cpeextmibobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics> cpeextpdstatistics;
-        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable> cpeextmainpsetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable> cpeextpdstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable> cpeextpseportlldptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects> cpeextmibobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics> cpeextpdstatistics;
+        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable> cpeextmainpsetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable> cpeextpdstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable> cpeextpseportlldptable;
         
 }; // CISCOPOWERETHERNETEXTMIB
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects : public ydk::Entity
 {
     public:
-        Cpeextmibobjects();
-        ~Cpeextmibobjects();
+        CpeExtMIBObjects();
+        ~CpeExtMIBObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -67,14 +67,14 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects : public ydk::Entity
         ydk::YLeaf cpeextpolicingnotifenable; //type: boolean
         ydk::YLeaf cpeextpowerpriorityenable; //type: boolean
 
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextmibobjects
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics : public ydk::Entity
 {
     public:
-        Cpeextpdstatistics();
-        ~Cpeextpdstatistics();
+        CpeExtPdStatistics();
+        ~CpeExtPdStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -89,14 +89,14 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics : public ydk::Entity
 
         ydk::YLeaf cpeextpdstatstotaldevices; //type: uint32
 
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextpdstatistics
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable : public ydk::Entity
 {
     public:
-        Cpeextmainpsetable();
-        ~Cpeextmainpsetable();
+        CpeExtMainPseTable();
+        ~CpeExtMainPseTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -109,18 +109,18 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpeextmainpseentry; //type: CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry
+        class CpeExtMainPseEntry; //type: CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry> > cpeextmainpseentry;
+        ydk::YList cpeextmainpseentry;
         
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry : public ydk::Entity
 {
     public:
-        Cpeextmainpseentry();
-        ~Cpeextmainpseentry();
+        CpeExtMainPseEntry();
+        ~CpeExtMainPseEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -133,7 +133,7 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::pethmainpsegroupindex)
+        //type: int32 (refers to cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::pethmainpsegroupindex)
         ydk::YLeaf pethmainpsegroupindex;
         ydk::YLeaf cpeextmainpseentphyindex; //type: int32
         ydk::YLeaf cpeextmainpsedescr; //type: string
@@ -141,14 +141,14 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry : public 
         ydk::YLeaf cpeextmainpseusedpower; //type: uint32
         ydk::YLeaf cpeextmainpseremainingpower; //type: uint32
 
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextmainpsetable::Cpeextmainpseentry
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable : public ydk::Entity
 {
     public:
-        Cpeextpdstatstable();
-        ~Cpeextpdstatstable();
+        CpeExtPdStatsTable();
+        ~CpeExtPdStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -161,18 +161,18 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpeextpdstatsentry; //type: CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry
+        class CpeExtPdStatsEntry; //type: CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry> > cpeextpdstatsentry;
+        ydk::YList cpeextpdstatsentry;
         
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry : public ydk::Entity
 {
     public:
-        Cpeextpdstatsentry();
-        ~Cpeextpdstatsentry();
+        CpeExtPdStatsEntry();
+        ~CpeExtPdStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -185,18 +185,18 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cpeextpdstatsclass; //type: Cpeextpdstatsclass
+        ydk::YLeaf cpeextpdstatsclass; //type: CpeExtPdStatsClass
         ydk::YLeaf cpeextpdstatsdevicecount; //type: uint32
-        class Cpeextpdstatsclass;
+        class CpeExtPdStatsClass;
 
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable : public ydk::Entity
 {
     public:
-        Cpeextpseportlldptable();
-        ~Cpeextpseportlldptable();
+        CpeExtPsePortLldpTable();
+        ~CpeExtPsePortLldpTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -209,18 +209,18 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpeextpseportlldpentry; //type: CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry
+        class CpeExtPsePortLldpEntry; //type: CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_POWER_ETHERNET_EXT_MIB::CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry> > cpeextpseportlldpentry;
+        ydk::YList cpeextpseportlldpentry;
         
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable
 
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry : public ydk::Entity
+class CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry : public ydk::Entity
 {
     public:
-        Cpeextpseportlldpentry();
-        ~Cpeextpseportlldpentry();
+        CpeExtPsePortLldpEntry();
+        ~CpeExtPsePortLldpEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -233,9 +233,9 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::pethpseportgroupindex)
+        //type: int32 (refers to cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::pethpseportgroupindex)
         ydk::YLeaf pethpseportgroupindex;
-        //type: int32 (refers to cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::pethpseportindex)
+        //type: int32 (refers to cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::pethpseportindex)
         ydk::YLeaf pethpseportindex;
         ydk::YLeaf cpeextpseportlldppwrtype; //type: CpeExtLldpPwrType
         ydk::YLeaf cpeextpseportlldppdpwrtype; //type: CpeExtLldpPwrType
@@ -248,7 +248,7 @@ class CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry :
         ydk::YLeaf cpeextpseportlldppwralloc; //type: uint32
         ydk::YLeaf cpeextpseportlldppdpwralloc; //type: uint32
 
-}; // CISCOPOWERETHERNETEXTMIB::Cpeextpseportlldptable::Cpeextpseportlldpentry
+}; // CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry
 
 class CpeExtLldpPwrType : public ydk::Enum
 {
@@ -282,7 +282,7 @@ class CpeExtPwrPriority : public ydk::Enum
 
 };
 
-class CISCOPOWERETHERNETEXTMIB::Cpeextpdstatstable::Cpeextpdstatsentry::Cpeextpdstatsclass : public ydk::Enum
+class CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf cisco;

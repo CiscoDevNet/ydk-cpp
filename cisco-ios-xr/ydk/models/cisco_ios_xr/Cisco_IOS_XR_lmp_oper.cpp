@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_lmp_oper {
 Lmp::Lmp()
     :
     global_status(std::make_shared<Lmp::GlobalStatus>())
-	,clients(std::make_shared<Lmp::Clients>())
-	,gmpls_uni(std::make_shared<Lmp::GmplsUni>())
-	,component_link_ids(std::make_shared<Lmp::ComponentLinkIds>())
+    , clients(std::make_shared<Lmp::Clients>())
+    , gmpls_uni(std::make_shared<Lmp::GmplsUni>())
+    , component_link_ids(std::make_shared<Lmp::ComponentLinkIds>())
 {
     global_status->parent = this;
     clients->parent = this;
     gmpls_uni->parent = this;
     component_link_ids->parent = this;
 
-    yang_name = "lmp"; yang_parent_name = "Cisco-IOS-XR-lmp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lmp"; yang_parent_name = "Cisco-IOS-XR-lmp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Lmp::~Lmp()
@@ -32,6 +32,7 @@ Lmp::~Lmp()
 
 bool Lmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (global_status !=  nullptr && global_status->has_data())
 	|| (clients !=  nullptr && clients->has_data())
 	|| (gmpls_uni !=  nullptr && gmpls_uni->has_data())
@@ -178,16 +179,16 @@ Lmp::GlobalStatus::GlobalStatus()
     is_ouni_config_exist{YType::boolean, "is-ouni-config-exist"},
     is_gmpls_nni_config_exist{YType::boolean, "is-gmpls-nni-config-exist"},
     is_gmpls_uni_config_exist{YType::boolean, "is-gmpls-uni-config-exist"}
-    	,
+        ,
     local_ouni_lmp_node_id(std::make_shared<Lmp::GlobalStatus::LocalOuniLmpNodeId>())
-	,local_mpls_te_lmp_node_id(std::make_shared<Lmp::GlobalStatus::LocalMplsTeLmpNodeId>())
-	,local_gmpls_uni_lmp_node_id(std::make_shared<Lmp::GlobalStatus::LocalGmplsUniLmpNodeId>())
+    , local_mpls_te_lmp_node_id(std::make_shared<Lmp::GlobalStatus::LocalMplsTeLmpNodeId>())
+    , local_gmpls_uni_lmp_node_id(std::make_shared<Lmp::GlobalStatus::LocalGmplsUniLmpNodeId>())
 {
     local_ouni_lmp_node_id->parent = this;
     local_mpls_te_lmp_node_id->parent = this;
     local_gmpls_uni_lmp_node_id->parent = this;
 
-    yang_name = "global-status"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-status"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GlobalStatus::~GlobalStatus()
@@ -196,6 +197,7 @@ Lmp::GlobalStatus::~GlobalStatus()
 
 bool Lmp::GlobalStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return local_ouni_lmp_node_id_interface.is_set
 	|| local_ouni_lmp_node_id_type.is_set
 	|| is_ouni_config_exist.is_set
@@ -372,7 +374,7 @@ Lmp::GlobalStatus::LocalOuniLmpNodeId::LocalOuniLmpNodeId()
 {
     address->parent = this;
 
-    yang_name = "local-ouni-lmp-node-id"; yang_parent_name = "global-status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-ouni-lmp-node-id"; yang_parent_name = "global-status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GlobalStatus::LocalOuniLmpNodeId::~LocalOuniLmpNodeId()
@@ -381,6 +383,7 @@ Lmp::GlobalStatus::LocalOuniLmpNodeId::~LocalOuniLmpNodeId()
 
 bool Lmp::GlobalStatus::LocalOuniLmpNodeId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -462,7 +465,7 @@ Lmp::GlobalStatus::LocalOuniLmpNodeId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "local-ouni-lmp-node-id"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address"; yang_parent_name = "local-ouni-lmp-node-id"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GlobalStatus::LocalOuniLmpNodeId::Address::~Address()
@@ -471,6 +474,7 @@ Lmp::GlobalStatus::LocalOuniLmpNodeId::Address::~Address()
 
 bool Lmp::GlobalStatus::LocalOuniLmpNodeId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -586,7 +590,7 @@ Lmp::GlobalStatus::LocalMplsTeLmpNodeId::LocalMplsTeLmpNodeId()
 {
     address->parent = this;
 
-    yang_name = "local-mpls-te-lmp-node-id"; yang_parent_name = "global-status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-mpls-te-lmp-node-id"; yang_parent_name = "global-status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GlobalStatus::LocalMplsTeLmpNodeId::~LocalMplsTeLmpNodeId()
@@ -595,6 +599,7 @@ Lmp::GlobalStatus::LocalMplsTeLmpNodeId::~LocalMplsTeLmpNodeId()
 
 bool Lmp::GlobalStatus::LocalMplsTeLmpNodeId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -676,7 +681,7 @@ Lmp::GlobalStatus::LocalMplsTeLmpNodeId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "local-mpls-te-lmp-node-id"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address"; yang_parent_name = "local-mpls-te-lmp-node-id"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GlobalStatus::LocalMplsTeLmpNodeId::Address::~Address()
@@ -685,6 +690,7 @@ Lmp::GlobalStatus::LocalMplsTeLmpNodeId::Address::~Address()
 
 bool Lmp::GlobalStatus::LocalMplsTeLmpNodeId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -800,7 +806,7 @@ Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::LocalGmplsUniLmpNodeId()
 {
     address->parent = this;
 
-    yang_name = "local-gmpls-uni-lmp-node-id"; yang_parent_name = "global-status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-gmpls-uni-lmp-node-id"; yang_parent_name = "global-status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::~LocalGmplsUniLmpNodeId()
@@ -809,6 +815,7 @@ Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::~LocalGmplsUniLmpNodeId()
 
 bool Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -890,7 +897,7 @@ Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "local-gmpls-uni-lmp-node-id"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address"; yang_parent_name = "local-gmpls-uni-lmp-node-id"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::Address::~Address()
@@ -899,6 +906,7 @@ Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::Address::~Address()
 
 bool Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -1009,9 +1017,11 @@ bool Lmp::GlobalStatus::LocalGmplsUniLmpNodeId::Address::has_leaf_or_child_of_na
 }
 
 Lmp::Clients::Clients()
+    :
+    client(this, {"client_name"})
 {
 
-    yang_name = "clients"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clients"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::Clients::~Clients()
@@ -1020,7 +1030,8 @@ Lmp::Clients::~Clients()
 
 bool Lmp::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -1030,7 +1041,7 @@ bool Lmp::Clients::has_data() const
 
 bool Lmp::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -1067,7 +1078,7 @@ std::shared_ptr<Entity> Lmp::Clients::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Lmp::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -1079,7 +1090,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::Clients::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1109,12 +1120,12 @@ Lmp::Clients::Client::Client()
     :
     client_name{YType::str, "client-name"},
     node_name{YType::str, "node-name"}
-    	,
+        ,
     connected_time(std::make_shared<Lmp::Clients::Client::ConnectedTime>())
 {
     connected_time->parent = this;
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::Clients::Client::~Client()
@@ -1123,6 +1134,7 @@ Lmp::Clients::Client::~Client()
 
 bool Lmp::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return client_name.is_set
 	|| node_name.is_set
 	|| (connected_time !=  nullptr && connected_time->has_data());
@@ -1146,7 +1158,8 @@ std::string Lmp::Clients::Client::get_absolute_path() const
 std::string Lmp::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-name='" <<client_name <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_name, "client-name");
     return path_buffer.str();
 }
 
@@ -1227,7 +1240,7 @@ Lmp::Clients::Client::ConnectedTime::ConnectedTime()
     time_connected{YType::uint32, "time-connected"}
 {
 
-    yang_name = "connected-time"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connected-time"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::Clients::Client::ConnectedTime::~ConnectedTime()
@@ -1236,6 +1249,7 @@ Lmp::Clients::Client::ConnectedTime::~ConnectedTime()
 
 bool Lmp::Clients::Client::ConnectedTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_connected.is_set;
 }
 
@@ -1302,12 +1316,12 @@ bool Lmp::Clients::Client::ConnectedTime::has_leaf_or_child_of_name(const std::s
 Lmp::GmplsUni::GmplsUni()
     :
     te_links(std::make_shared<Lmp::GmplsUni::TeLinks>())
-	,neighbors(std::make_shared<Lmp::GmplsUni::Neighbors>())
+    , neighbors(std::make_shared<Lmp::GmplsUni::Neighbors>())
 {
     te_links->parent = this;
     neighbors->parent = this;
 
-    yang_name = "gmpls-uni"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gmpls-uni"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::~GmplsUni()
@@ -1316,6 +1330,7 @@ Lmp::GmplsUni::~GmplsUni()
 
 bool Lmp::GmplsUni::has_data() const
 {
+    if (is_presence_container) return true;
     return (te_links !=  nullptr && te_links->has_data())
 	|| (neighbors !=  nullptr && neighbors->has_data());
 }
@@ -1406,9 +1421,11 @@ bool Lmp::GmplsUni::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Lmp::GmplsUni::TeLinks::TeLinks()
+    :
+    te_link(this, {"controller_name"})
 {
 
-    yang_name = "te-links"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "te-links"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::TeLinks::~TeLinks()
@@ -1417,7 +1434,8 @@ Lmp::GmplsUni::TeLinks::~TeLinks()
 
 bool Lmp::GmplsUni::TeLinks::has_data() const
 {
-    for (std::size_t index=0; index<te_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<te_link.len(); index++)
     {
         if(te_link[index]->has_data())
             return true;
@@ -1427,7 +1445,7 @@ bool Lmp::GmplsUni::TeLinks::has_data() const
 
 bool Lmp::GmplsUni::TeLinks::has_operation() const
 {
-    for (std::size_t index=0; index<te_link.size(); index++)
+    for (std::size_t index=0; index<te_link.len(); index++)
     {
         if(te_link[index]->has_operation())
             return true;
@@ -1464,7 +1482,7 @@ std::shared_ptr<Entity> Lmp::GmplsUni::TeLinks::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Lmp::GmplsUni::TeLinks::TeLink>();
         c->parent = this;
-        te_link.push_back(c);
+        te_link.append(c);
         return c;
     }
 
@@ -1476,7 +1494,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::TeLinks::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : te_link)
+    for (auto c : te_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1526,13 +1544,13 @@ Lmp::GmplsUni::TeLinks::TeLink::TeLink()
     lmp_transmit_msg_id{YType::uint32, "lmp-transmit-msg-id"},
     lmp_receive_msg_id{YType::uint32, "lmp-receive-msg-id"},
     lmp_comp_link_status{YType::enumeration, "lmp-comp-link-status"}
-    	,
+        ,
     local_link_id(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId>())
-	,remote_link_id(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId>())
-	,local_te_link_id(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId>())
-	,remote_te_link_id(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId>())
-	,neighbor_address(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress>())
-	,remote_ipcc_address(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress>())
+    , remote_link_id(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId>())
+    , local_te_link_id(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId>())
+    , remote_te_link_id(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId>())
+    , neighbor_address(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress>())
+    , remote_ipcc_address(std::make_shared<Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress>())
 {
     local_link_id->parent = this;
     remote_link_id->parent = this;
@@ -1541,7 +1559,7 @@ Lmp::GmplsUni::TeLinks::TeLink::TeLink()
     neighbor_address->parent = this;
     remote_ipcc_address->parent = this;
 
-    yang_name = "te-link"; yang_parent_name = "te-links"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "te-link"; yang_parent_name = "te-links"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::~TeLink()
@@ -1550,6 +1568,7 @@ Lmp::GmplsUni::TeLinks::TeLink::~TeLink()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : lmp_comp_link_status.getYLeafs())
     {
         if(leaf.is_set)
@@ -1632,7 +1651,8 @@ std::string Lmp::GmplsUni::TeLinks::TeLink::get_absolute_path() const
 std::string Lmp::GmplsUni::TeLinks::TeLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "te-link" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "te-link";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -2003,7 +2023,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::LocalLinkId()
 {
     address->parent = this;
 
-    yang_name = "local-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::~LocalLinkId()
@@ -2012,6 +2032,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::~LocalLinkId()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2086,7 +2107,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "local-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "local-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::Address::~Address()
@@ -2095,6 +2116,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::LocalLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -2203,7 +2225,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::RemoteLinkId()
 {
     address->parent = this;
 
-    yang_name = "remote-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::~RemoteLinkId()
@@ -2212,6 +2234,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::~RemoteLinkId()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2286,7 +2309,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "remote-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "remote-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::Address::~Address()
@@ -2295,6 +2318,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::RemoteLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -2403,7 +2427,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::LocalTeLinkId()
 {
     address->parent = this;
 
-    yang_name = "local-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::~LocalTeLinkId()
@@ -2412,6 +2436,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::~LocalTeLinkId()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2486,7 +2511,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "local-te-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "local-te-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::Address::~Address()
@@ -2495,6 +2520,7 @@ Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::LocalTeLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -2603,7 +2629,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::RemoteTeLinkId()
 {
     address->parent = this;
 
-    yang_name = "remote-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::~RemoteTeLinkId()
@@ -2612,6 +2638,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::~RemoteTeLinkId()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2686,7 +2713,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "remote-te-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "remote-te-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::Address::~Address()
@@ -2695,6 +2722,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::RemoteTeLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -2803,7 +2831,7 @@ Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::NeighborAddress()
 {
     address->parent = this;
 
-    yang_name = "neighbor-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::~NeighborAddress()
@@ -2812,6 +2840,7 @@ Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::~NeighborAddress()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -2886,7 +2915,7 @@ Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "neighbor-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "neighbor-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::Address::~Address()
@@ -2895,6 +2924,7 @@ Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::Address::~Address()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::NeighborAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -3003,7 +3033,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::RemoteIpccAddress()
 {
     address->parent = this;
 
-    yang_name = "remote-ipcc-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-ipcc-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::~RemoteIpccAddress()
@@ -3012,6 +3042,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::~RemoteIpccAddress()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -3086,7 +3117,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "remote-ipcc-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "remote-ipcc-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::Address::~Address()
@@ -3095,6 +3126,7 @@ Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::Address::~Address()
 
 bool Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -3198,9 +3230,11 @@ bool Lmp::GmplsUni::TeLinks::TeLink::RemoteIpccAddress::Address::has_leaf_or_chi
 }
 
 Lmp::GmplsUni::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor_name"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::Neighbors::~Neighbors()
@@ -3209,7 +3243,8 @@ Lmp::GmplsUni::Neighbors::~Neighbors()
 
 bool Lmp::GmplsUni::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -3219,7 +3254,7 @@ bool Lmp::GmplsUni::Neighbors::has_data() const
 
 bool Lmp::GmplsUni::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -3256,7 +3291,7 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -3268,7 +3303,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3305,12 +3340,14 @@ Lmp::GmplsUni::Neighbors::Neighbor::Neighbor()
     lmp_receive_msg_id{YType::uint32, "lmp-receive-msg-id"},
     lmp_link_sum_transmit_packets{YType::uint32, "lmp-link-sum-transmit-packets"},
     lmp_link_sum_receive_packets{YType::uint32, "lmp-link-sum-receive-packets"}
-    	,
+        ,
     neighbor_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress>())
+    , te_link(this, {})
+    , ipcc(this, {})
 {
     neighbor_address->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::~Neighbor()
@@ -3319,12 +3356,13 @@ Lmp::GmplsUni::Neighbors::Neighbor::~Neighbor()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::has_data() const
 {
-    for (std::size_t index=0; index<te_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<te_link.len(); index++)
     {
         if(te_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipcc.size(); index++)
+    for (std::size_t index=0; index<ipcc.len(); index++)
     {
         if(ipcc[index]->has_data())
             return true;
@@ -3343,12 +3381,12 @@ bool Lmp::GmplsUni::Neighbors::Neighbor::has_data() const
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::has_operation() const
 {
-    for (std::size_t index=0; index<te_link.size(); index++)
+    for (std::size_t index=0; index<te_link.len(); index++)
     {
         if(te_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipcc.size(); index++)
+    for (std::size_t index=0; index<ipcc.len(); index++)
     {
         if(ipcc[index]->has_operation())
             return true;
@@ -3376,7 +3414,8 @@ std::string Lmp::GmplsUni::Neighbors::Neighbor::get_absolute_path() const
 std::string Lmp::GmplsUni::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-name='" <<neighbor_name <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_name, "neighbor-name");
     return path_buffer.str();
 }
 
@@ -3413,7 +3452,7 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::Neighbor::get_child_by_name(co
     {
         auto c = std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink>();
         c->parent = this;
-        te_link.push_back(c);
+        te_link.append(c);
         return c;
     }
 
@@ -3421,7 +3460,7 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::Neighbor::get_child_by_name(co
     {
         auto c = std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::Ipcc>();
         c->parent = this;
-        ipcc.push_back(c);
+        ipcc.append(c);
         return c;
     }
 
@@ -3438,7 +3477,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::Neighbo
     }
 
     count = 0;
-    for (auto const & c : te_link)
+    for (auto c : te_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3447,7 +3486,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::Neighbo
     }
 
     count = 0;
-    for (auto const & c : ipcc)
+    for (auto c : ipcc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3569,7 +3608,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::NeighborAddress()
 {
     address->parent = this;
 
-    yang_name = "neighbor-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::~NeighborAddress()
@@ -3578,6 +3617,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::~NeighborAddress()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -3652,7 +3692,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "neighbor-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "neighbor-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::Address::~Address()
@@ -3661,6 +3701,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -3786,13 +3827,13 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::TeLink()
     lmp_transmit_msg_id{YType::uint32, "lmp-transmit-msg-id"},
     lmp_receive_msg_id{YType::uint32, "lmp-receive-msg-id"},
     lmp_comp_link_status{YType::enumeration, "lmp-comp-link-status"}
-    	,
+        ,
     local_link_id(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId>())
-	,remote_link_id(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId>())
-	,local_te_link_id(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId>())
-	,remote_te_link_id(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId>())
-	,neighbor_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress>())
-	,remote_ipcc_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress>())
+    , remote_link_id(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId>())
+    , local_te_link_id(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId>())
+    , remote_te_link_id(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId>())
+    , neighbor_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress>())
+    , remote_ipcc_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress>())
 {
     local_link_id->parent = this;
     remote_link_id->parent = this;
@@ -3801,7 +3842,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::TeLink()
     neighbor_address->parent = this;
     remote_ipcc_address->parent = this;
 
-    yang_name = "te-link"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "te-link"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::~TeLink()
@@ -3810,6 +3851,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::~TeLink()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : lmp_comp_link_status.getYLeafs())
     {
         if(leaf.is_set)
@@ -4243,7 +4285,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::LocalLinkId()
 {
     address->parent = this;
 
-    yang_name = "local-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::~LocalLinkId()
@@ -4252,6 +4294,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::~LocalLinkId()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -4326,7 +4369,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "local-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "local-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::Address::~Address()
@@ -4335,6 +4378,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -4443,7 +4487,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::RemoteLinkId()
 {
     address->parent = this;
 
-    yang_name = "remote-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::~RemoteLinkId()
@@ -4452,6 +4496,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::~RemoteLinkId()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -4526,7 +4571,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "remote-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "remote-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::Address::~Address()
@@ -4535,6 +4580,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -4643,7 +4689,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::LocalTeLinkId()
 {
     address->parent = this;
 
-    yang_name = "local-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::~LocalTeLinkId()
@@ -4652,6 +4698,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::~LocalTeLinkId()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -4726,7 +4773,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "local-te-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "local-te-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::Address::~Address()
@@ -4735,6 +4782,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::LocalTeLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -4843,7 +4891,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::RemoteTeLinkId()
 {
     address->parent = this;
 
-    yang_name = "remote-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-te-link-id"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::~RemoteTeLinkId()
@@ -4852,6 +4900,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::~RemoteTeLinkId()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -4926,7 +4975,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "remote-te-link-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "remote-te-link-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::Address::~Address()
@@ -4935,6 +4984,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteTeLinkId::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -5043,7 +5093,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::NeighborAddress()
 {
     address->parent = this;
 
-    yang_name = "neighbor-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::~NeighborAddress()
@@ -5052,6 +5102,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::~NeighborAddress()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -5126,7 +5177,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "neighbor-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "neighbor-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::Address::~Address()
@@ -5135,6 +5186,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::NeighborAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -5243,7 +5295,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::RemoteIpccAddress
 {
     address->parent = this;
 
-    yang_name = "remote-ipcc-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-ipcc-address"; yang_parent_name = "te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::~RemoteIpccAddress()
@@ -5252,6 +5304,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::~RemoteIpccAddres
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -5326,7 +5379,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::Address::Address(
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "remote-ipcc-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "remote-ipcc-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::Address::~Address()
@@ -5335,6 +5388,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::Address::~Address
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::TeLink::RemoteIpccAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -5458,14 +5512,14 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Ipcc()
     lmp_receive_msg_id{YType::uint32, "lmp-receive-msg-id"},
     lmp_link_sum_transmit_packets{YType::uint32, "lmp-link-sum-transmit-packets"},
     lmp_link_sum_receive_packets{YType::uint32, "lmp-link-sum-receive-packets"}
-    	,
+        ,
     remote_ipcc_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress>())
-	,source_ip_cc_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress>())
+    , source_ip_cc_address(std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress>())
 {
     remote_ipcc_address->parent = this;
     source_ip_cc_address->parent = this;
 
-    yang_name = "ipcc"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcc"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::~Ipcc()
@@ -5474,6 +5528,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::~Ipcc()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::has_data() const
 {
+    if (is_presence_container) return true;
     return ipcc_id.is_set
 	|| ipc_ctype.is_set
 	|| interface_name.is_set
@@ -5809,7 +5864,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::RemoteIpccAddress()
 {
     address->parent = this;
 
-    yang_name = "remote-ipcc-address"; yang_parent_name = "ipcc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-ipcc-address"; yang_parent_name = "ipcc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::~RemoteIpccAddress()
@@ -5818,6 +5873,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::~RemoteIpccAddress(
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -5892,7 +5948,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "remote-ipcc-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "remote-ipcc-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::Address::~Address()
@@ -5901,6 +5957,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::RemoteIpccAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -6009,7 +6066,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::SourceIpCcAddress()
 {
     address->parent = this;
 
-    yang_name = "source-ip-cc-address"; yang_parent_name = "ipcc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-ip-cc-address"; yang_parent_name = "ipcc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::~SourceIpCcAddress()
@@ -6018,6 +6075,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::~SourceIpCcAddress(
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -6092,7 +6150,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::Address::Address()
     unnumbered_address{YType::uint32, "unnumbered-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "source-ip-cc-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "source-ip-cc-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::Address::~Address()
@@ -6101,6 +6159,7 @@ Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::Address::~Address()
 
 bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set
@@ -6204,9 +6263,11 @@ bool Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::SourceIpCcAddress::Address::has_l
 }
 
 Lmp::ComponentLinkIds::ComponentLinkIds()
+    :
+    component_link_id(this, {"controller_name"})
 {
 
-    yang_name = "component-link-ids"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "component-link-ids"; yang_parent_name = "lmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::ComponentLinkIds::~ComponentLinkIds()
@@ -6215,7 +6276,8 @@ Lmp::ComponentLinkIds::~ComponentLinkIds()
 
 bool Lmp::ComponentLinkIds::has_data() const
 {
-    for (std::size_t index=0; index<component_link_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<component_link_id.len(); index++)
     {
         if(component_link_id[index]->has_data())
             return true;
@@ -6225,7 +6287,7 @@ bool Lmp::ComponentLinkIds::has_data() const
 
 bool Lmp::ComponentLinkIds::has_operation() const
 {
-    for (std::size_t index=0; index<component_link_id.size(); index++)
+    for (std::size_t index=0; index<component_link_id.len(); index++)
     {
         if(component_link_id[index]->has_operation())
             return true;
@@ -6262,7 +6324,7 @@ std::shared_ptr<Entity> Lmp::ComponentLinkIds::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Lmp::ComponentLinkIds::ComponentLinkId>();
         c->parent = this;
-        component_link_id.push_back(c);
+        component_link_id.append(c);
         return c;
     }
 
@@ -6274,7 +6336,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lmp::ComponentLinkIds::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : component_link_id)
+    for (auto c : component_link_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6306,7 +6368,7 @@ Lmp::ComponentLinkIds::ComponentLinkId::ComponentLinkId()
     component_interface_id{YType::uint32, "component-interface-id"}
 {
 
-    yang_name = "component-link-id"; yang_parent_name = "component-link-ids"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "component-link-id"; yang_parent_name = "component-link-ids"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lmp::ComponentLinkIds::ComponentLinkId::~ComponentLinkId()
@@ -6315,6 +6377,7 @@ Lmp::ComponentLinkIds::ComponentLinkId::~ComponentLinkId()
 
 bool Lmp::ComponentLinkIds::ComponentLinkId::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| component_interface_id.is_set;
 }
@@ -6336,7 +6399,8 @@ std::string Lmp::ComponentLinkIds::ComponentLinkId::get_absolute_path() const
 std::string Lmp::ComponentLinkIds::ComponentLinkId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "component-link-id" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "component-link-id";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -6398,18 +6462,11 @@ bool Lmp::ComponentLinkIds::ComponentLinkId::has_leaf_or_child_of_name(const std
     return false;
 }
 
-const Enum::YLeaf OlmipccState::ipcc_state_oir_removed {0, "ipcc-state-oir-removed"};
-const Enum::YLeaf OlmipccState::ipcc_state_admin_down {1, "ipcc-state-admin-down"};
-const Enum::YLeaf OlmipccState::ipcc_state_down {2, "ipcc-state-down"};
-const Enum::YLeaf OlmipccState::ipcc_state_cfg_send {3, "ipcc-state-cfg-send"};
-const Enum::YLeaf OlmipccState::ipcc_state_cfg_rcv {4, "ipcc-state-cfg-rcv"};
-const Enum::YLeaf OlmipccState::ipcc_state_active {5, "ipcc-state-active"};
-const Enum::YLeaf OlmipccState::ipcc_state_up {6, "ipcc-state-up"};
-const Enum::YLeaf OlmipccState::ipcc_state_going_down {7, "ipcc-state-going-down"};
-const Enum::YLeaf OlmipccState::ipcc_state_unknown {8, "ipcc-state-unknown"};
-
-const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_if_id_mismatch {0, "comp-link-lmp-status-if-id-mismatch"};
-const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_switch_cap_mismatch {1, "comp-link-lmp-status-switch-cap-mismatch"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_oir {0, "comp-link-im-state-oir"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_down {1, "comp-link-im-state-down"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_admin_down {2, "comp-link-im-state-admin-down"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_up {3, "comp-link-im-state-up"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_unknown {4, "comp-link-im-state-unknown"};
 
 const Enum::YLeaf OlmLinkEncoding::none {0, "none"};
 const Enum::YLeaf OlmLinkEncoding::packet {1, "packet"};
@@ -6425,25 +6482,6 @@ const Enum::YLeaf OlmLinkEncoding::reserved3 {10, "reserved3"};
 const Enum::YLeaf OlmLinkEncoding::fiber_channel {11, "fiber-channel"};
 const Enum::YLeaf OlmLinkEncoding::lencode_unknown {12, "lencode-unknown"};
 
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_down {0, "te-link-lmp-state-down"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_init {1, "te-link-lmp-state-init"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_up {2, "te-link-lmp-state-up"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_degraded {3, "te-link-lmp-state-degraded"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_unknown {4, "te-link-lmp-state-unknown"};
-
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_down {0, "comp-link-lmp-state-down"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_test {1, "comp-link-lmp-state-test"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_passive_test {2, "comp-link-lmp-state-passive-test"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_free {3, "comp-link-lmp-state-up-free"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_allocated {4, "comp-link-lmp-state-up-allocated"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_unknown {5, "comp-link-lmp-state-unknown"};
-
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_oir {0, "comp-link-im-state-oir"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_down {1, "comp-link-im-state-down"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_admin_down {2, "comp-link-im-state-admin-down"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_up {3, "comp-link-im-state-up"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_unknown {4, "comp-link-im-state-unknown"};
-
 const Enum::YLeaf OlmMuxCap::psc1 {0, "psc1"};
 const Enum::YLeaf OlmMuxCap::psc2 {1, "psc2"};
 const Enum::YLeaf OlmMuxCap::psc3 {2, "psc3"};
@@ -6454,15 +6492,46 @@ const Enum::YLeaf OlmMuxCap::lsc {6, "lsc"};
 const Enum::YLeaf OlmMuxCap::fsc {7, "fsc"};
 const Enum::YLeaf OlmMuxCap::unknown_mux_cap {8, "unknown-mux-cap"};
 
-const Enum::YLeaf Olmipcc::ipcc_type_global_routed {0, "ipcc-type-global-routed"};
-const Enum::YLeaf Olmipcc::ipcc_type_global_if_bound {1, "ipcc-type-global-if-bound"};
-const Enum::YLeaf Olmipcc::ipcc_type_ldcc_sdcc {2, "ipcc-type-ldcc-sdcc"};
-const Enum::YLeaf Olmipcc::ipcc_type_unknown {3, "ipcc-type-unknown"};
+const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_if_id_mismatch {0, "comp-link-lmp-status-if-id-mismatch"};
+const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_switch_cap_mismatch {1, "comp-link-lmp-status-switch-cap-mismatch"};
+
+const Enum::YLeaf OlmAddrTypeId::unknown_address {0, "unknown-address"};
+const Enum::YLeaf OlmAddrTypeId::ipv4 {101, "ipv4"};
+const Enum::YLeaf OlmAddrTypeId::ipv6 {102, "ipv6"};
+const Enum::YLeaf OlmAddrTypeId::unnumbered {103, "unnumbered"};
+
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_down {0, "comp-link-lmp-state-down"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_test {1, "comp-link-lmp-state-test"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_passive_test {2, "comp-link-lmp-state-passive-test"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_free {3, "comp-link-lmp-state-up-free"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_allocated {4, "comp-link-lmp-state-up-allocated"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_unknown {5, "comp-link-lmp-state-unknown"};
 
 const Enum::YLeaf OlmObjectOwner::unknown {0, "unknown"};
 const Enum::YLeaf OlmObjectOwner::ouni {1, "ouni"};
 const Enum::YLeaf OlmObjectOwner::gmpls_nni {2, "gmpls-nni"};
 const Enum::YLeaf OlmObjectOwner::gmpls_uni {3, "gmpls-uni"};
+
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_down {0, "te-link-lmp-state-down"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_init {1, "te-link-lmp-state-init"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_up {2, "te-link-lmp-state-up"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_degraded {3, "te-link-lmp-state-degraded"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_unknown {4, "te-link-lmp-state-unknown"};
+
+const Enum::YLeaf Olmipcc::ipcc_type_global_routed {0, "ipcc-type-global-routed"};
+const Enum::YLeaf Olmipcc::ipcc_type_global_if_bound {1, "ipcc-type-global-if-bound"};
+const Enum::YLeaf Olmipcc::ipcc_type_ldcc_sdcc {2, "ipcc-type-ldcc-sdcc"};
+const Enum::YLeaf Olmipcc::ipcc_type_unknown {3, "ipcc-type-unknown"};
+
+const Enum::YLeaf OlmipccState::ipcc_state_oir_removed {0, "ipcc-state-oir-removed"};
+const Enum::YLeaf OlmipccState::ipcc_state_admin_down {1, "ipcc-state-admin-down"};
+const Enum::YLeaf OlmipccState::ipcc_state_down {2, "ipcc-state-down"};
+const Enum::YLeaf OlmipccState::ipcc_state_cfg_send {3, "ipcc-state-cfg-send"};
+const Enum::YLeaf OlmipccState::ipcc_state_cfg_rcv {4, "ipcc-state-cfg-rcv"};
+const Enum::YLeaf OlmipccState::ipcc_state_active {5, "ipcc-state-active"};
+const Enum::YLeaf OlmipccState::ipcc_state_up {6, "ipcc-state-up"};
+const Enum::YLeaf OlmipccState::ipcc_state_going_down {7, "ipcc-state-going-down"};
+const Enum::YLeaf OlmipccState::ipcc_state_unknown {8, "ipcc-state-unknown"};
 
 const Enum::YLeaf OlmRouterId::not_configured {0, "not-configured"};
 const Enum::YLeaf OlmRouterId::global {1, "global"};
@@ -6470,11 +6539,6 @@ const Enum::YLeaf OlmRouterId::protocol_based_address {2, "protocol-based-addres
 const Enum::YLeaf OlmRouterId::interface {3, "interface"};
 const Enum::YLeaf OlmRouterId::network_element {4, "network-element"};
 const Enum::YLeaf OlmRouterId::unknown_type {5, "unknown-type"};
-
-const Enum::YLeaf OlmAddrTypeId::unknown_address {0, "unknown-address"};
-const Enum::YLeaf OlmAddrTypeId::ipv4 {101, "ipv4"};
-const Enum::YLeaf OlmAddrTypeId::ipv6 {102, "ipv6"};
-const Enum::YLeaf OlmAddrTypeId::unnumbered {103, "unnumbered"};
 
 
 }

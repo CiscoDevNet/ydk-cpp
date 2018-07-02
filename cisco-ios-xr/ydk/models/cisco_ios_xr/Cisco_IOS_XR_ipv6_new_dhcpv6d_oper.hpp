@@ -90,7 +90,7 @@ class Dhcpv6::Nodes : public ydk::Entity
 
         class Node; //type: Dhcpv6::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Dhcpv6::Nodes
 
@@ -175,7 +175,7 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs : public ydk::Entity
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs
 
@@ -668,7 +668,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles : public ydk::Entity
 
         class Profile; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles
 
@@ -717,7 +717,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos : public ydk:
 
         class ThrottleInfo; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo> > throttle_info;
+        ydk::YList throttle_info;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos
 
@@ -797,18 +797,18 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6Dhcpv6DProxyIidReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference
+        class Ipv6Dhcpv6dProxyIidReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference> > ipv6_dhcpv6d_proxy_iid_reference;
+        ydk::YList ipv6_dhcpv6d_proxy_iid_reference;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference : public ydk::Entity
 {
     public:
-        Ipv6Dhcpv6DProxyIidReference();
-        ~Ipv6Dhcpv6DProxyIidReference();
+        Ipv6Dhcpv6dProxyIidReference();
+        ~Ipv6Dhcpv6dProxyIidReference();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -823,7 +823,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
         ydk::YLeaf proxy_iid_interface_name; //type: string
         ydk::YLeaf proxy_interface_id; //type: string
 
-}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference
 
 
 class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : public ydk::Entity
@@ -842,18 +842,18 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6Dhcpv6DProxyVrfReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference
+        class Ipv6Dhcpv6dProxyVrfReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference> > ipv6_dhcpv6d_proxy_vrf_reference;
+        ydk::YList ipv6_dhcpv6d_proxy_vrf_reference;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference : public ydk::Entity
 {
     public:
-        Ipv6Dhcpv6DProxyVrfReference();
-        ~Ipv6Dhcpv6DProxyVrfReference();
+        Ipv6Dhcpv6dProxyVrfReference();
+        ~Ipv6Dhcpv6dProxyVrfReference();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -867,7 +867,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dh
 
         ydk::YLeaf proxy_reference_vrf_name; //type: string
 
-}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference
 
 
 class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences : public ydk::Entity
@@ -886,18 +886,18 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6Dhcpv6DProxyInterfaceReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference
+        class Ipv6Dhcpv6dProxyInterfaceReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference> > ipv6_dhcpv6d_proxy_interface_reference;
+        ydk::YList ipv6_dhcpv6d_proxy_interface_reference;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference : public ydk::Entity
 {
     public:
-        Ipv6Dhcpv6DProxyInterfaceReference();
-        ~Ipv6Dhcpv6DProxyInterfaceReference();
+        Ipv6Dhcpv6dProxyInterfaceReference();
+        ~Ipv6Dhcpv6dProxyInterfaceReference();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -911,7 +911,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::
 
         ydk::YLeaf proxy_reference_interface_name; //type: string
 
-}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference
 
 
 class Dhcpv6::Nodes::Node::Proxy::Interfaces : public ydk::Entity
@@ -932,7 +932,7 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces : public ydk::Entity
 
         class Interface; //type: Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Interfaces
 
@@ -955,13 +955,13 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface : public ydk::Entity
 
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf proxy_vrf_name; //type: string
-        ydk::YLeaf proxy_interface_mode; //type: BagDhcpv6DSubMode
+        ydk::YLeaf proxy_interface_mode; //type: BagDhcpv6dSubMode
         ydk::YLeaf is_proxy_interface_ambiguous; //type: uint32
         ydk::YLeaf proxy_interface_profile_name; //type: string
         ydk::YLeaf proxy_interface_lease_limit_type; //type: LeaseLimit
         ydk::YLeaf proxy_interface_lease_limits; //type: uint32
-        ydk::YLeaf srg_role; //type: BagDhcpv6DIntfSrgRole
-        ydk::YLeaf serg_role; //type: BagDhcpv6DIntfSergRole
+        ydk::YLeaf srg_role; //type: BagDhcpv6dIntfSrgRole
+        ydk::YLeaf serg_role; //type: BagDhcpv6dIntfSergRole
         ydk::YLeaf mac_throttle; //type: boolean
         ydk::YLeaf srg_vrf_name; //type: string
         ydk::YLeaf srgp2p; //type: boolean
@@ -985,18 +985,18 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6Dhcpv6DProxyStat; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat
+        class Ipv6Dhcpv6dProxyStat; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat> > ipv6_dhcpv6d_proxy_stat;
+        ydk::YList ipv6_dhcpv6d_proxy_stat;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Statistics
 
 
-class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat : public ydk::Entity
 {
     public:
-        Ipv6Dhcpv6DProxyStat();
-        ~Ipv6Dhcpv6DProxyStat();
+        Ipv6Dhcpv6dProxyStat();
+        ~Ipv6Dhcpv6dProxyStat();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1009,14 +1009,14 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class Statistics_; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_
+        class Statistics_; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat::Statistics_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat::Statistics_> statistics;
         
-}; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat
+}; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat
 
 
-class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_ : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat::Statistics_ : public ydk::Entity
 {
     public:
         Statistics_();
@@ -1036,7 +1036,7 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_ 
         ydk::YLeaf transmitted_packets; //type: uint64
         ydk::YLeaf dropped_packets; //type: uint64
 
-}; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_
+}; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat::Statistics_
 
 
 class Dhcpv6::Nodes::Node::Proxy::Binding : public ydk::Entity
@@ -1082,7 +1082,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients : public ydk::Entity
 
         class Client; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client> > client;
+        ydk::YList client;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients
 
@@ -1155,18 +1155,18 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class BagDhcpv6DIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
+        class BagDhcpv6dIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo> > bag_dhcpv6d_ia_id_pd_info;
+        ydk::YList bag_dhcpv6d_ia_id_pd_info;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo : public ydk::Entity
 {
     public:
-        BagDhcpv6DIaIdPdInfo();
-        ~BagDhcpv6DIaIdPdInfo();
+        BagDhcpv6dIaIdPdInfo();
+        ~BagDhcpv6dIaIdPdInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1178,19 +1178,19 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ia_type; //type: BagDhcpv6DIaId
+        ydk::YLeaf ia_type; //type: BagDhcpv6dIaId
         ydk::YLeaf ia_id; //type: uint32
         ydk::YLeaf flags; //type: uint32
         ydk::YLeaf total_address; //type: uint16
-        ydk::YLeaf state; //type: BagDhcpv6DFsmState
-        class Addresses; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
+        ydk::YLeaf state; //type: BagDhcpv6dFsmState
+        class Addresses; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses> addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses> addresses;
         
-}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
+}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -1206,18 +1206,18 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class BagDhcpv6DAddrAttrb; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
+        class BagDhcpv6dAddrAttrb; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb> > bag_dhcpv6d_addr_attrb;
+        ydk::YList bag_dhcpv6d_addr_attrb;
         
-}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
+}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb : public ydk::Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb : public ydk::Entity
 {
     public:
-        BagDhcpv6DAddrAttrb();
-        ~BagDhcpv6DAddrAttrb();
+        BagDhcpv6dAddrAttrb();
+        ~BagDhcpv6dAddrAttrb();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1234,7 +1234,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
         ydk::YLeaf lease_time; //type: uint32
         ydk::YLeaf remaining_lease_time; //type: uint32
 
-}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
+}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb
 
 
 class Dhcpv6::Nodes::Node::Proxy::Binding::Summary : public ydk::Entity
@@ -1396,7 +1396,7 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings : public ydk::Entity
 
         class AddrBinding; //type: Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding> > addr_binding;
+        ydk::YList addr_binding;
         
 }; // Dhcpv6::Nodes::Node::Base::AddrBindings
 
@@ -1426,7 +1426,7 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding : public ydk::Entity
         ydk::YLeaf reply_server_ipv6_address; //type: string
         ydk::YLeaf lease_time; //type: uint32
         ydk::YLeaf remaining_lease_time; //type: uint32
-        ydk::YLeaf state; //type: BagDhcpv6DFsmState
+        ydk::YLeaf state; //type: BagDhcpv6dFsmState
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf access_vrf_name; //type: string
         ydk::YLeaf base_binding_tags; //type: uint8
@@ -1602,7 +1602,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients : public ydk::Entity
 
         class Client; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client> > client;
+        ydk::YList client;
         
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients
 
@@ -1677,18 +1677,18 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class BagDhcpv6DIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
+        class BagDhcpv6dIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo> > bag_dhcpv6d_ia_id_pd_info;
+        ydk::YList bag_dhcpv6d_ia_id_pd_info;
         
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo : public ydk::Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo : public ydk::Entity
 {
     public:
-        BagDhcpv6DIaIdPdInfo();
-        ~BagDhcpv6DIaIdPdInfo();
+        BagDhcpv6dIaIdPdInfo();
+        ~BagDhcpv6dIaIdPdInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1700,19 +1700,19 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ia_type; //type: BagDhcpv6DIaId
+        ydk::YLeaf ia_type; //type: BagDhcpv6dIaId
         ydk::YLeaf ia_id; //type: uint32
         ydk::YLeaf flags; //type: uint32
         ydk::YLeaf total_address; //type: uint16
-        ydk::YLeaf state; //type: BagDhcpv6DFsmState
-        class Addresses; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
+        ydk::YLeaf state; //type: BagDhcpv6dFsmState
+        class Addresses; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses> addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses> addresses;
         
-}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
+}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses : public ydk::Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -1728,18 +1728,18 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class BagDhcpv6DAddrAttrb; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
+        class BagDhcpv6dAddrAttrb; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb> > bag_dhcpv6d_addr_attrb;
+        ydk::YList bag_dhcpv6d_addr_attrb;
         
-}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
+}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb : public ydk::Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb : public ydk::Entity
 {
     public:
-        BagDhcpv6DAddrAttrb();
-        ~BagDhcpv6DAddrAttrb();
+        BagDhcpv6dAddrAttrb();
+        ~BagDhcpv6dAddrAttrb();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1756,7 +1756,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
         ydk::YLeaf lease_time; //type: uint32
         ydk::YLeaf remaining_lease_time; //type: uint32
 
-}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
+}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb
 
 
 class Dhcpv6::Nodes::Node::Server::Vrfs : public ydk::Entity
@@ -1777,7 +1777,7 @@ class Dhcpv6::Nodes::Node::Server::Vrfs : public ydk::Entity
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Dhcpv6::Nodes::Node::Server::Vrfs
 
@@ -2270,7 +2270,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles : public ydk::Entity
 
         class Profile; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Dhcpv6::Nodes::Node::Server::Profiles
 
@@ -2318,6 +2318,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf profile_allowed_duid_type; //type: uint16
         ydk::YLeaf domain_name; //type: string
         ydk::YLeaf profile_dns; //type: uint8
         ydk::YLeaf aftr_name; //type: string
@@ -2372,18 +2373,18 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6Dhcpv6DServerInterfaceReference; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference
+        class Ipv6Dhcpv6dServerInterfaceReference; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference> > ipv6_dhcpv6d_server_interface_reference;
+        ydk::YList ipv6_dhcpv6d_server_interface_reference;
         
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference : public ydk::Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference : public ydk::Entity
 {
     public:
-        Ipv6Dhcpv6DServerInterfaceReference();
-        ~Ipv6Dhcpv6DServerInterfaceReference();
+        Ipv6Dhcpv6dServerInterfaceReference();
+        ~Ipv6Dhcpv6dServerInterfaceReference();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2397,7 +2398,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences:
 
         ydk::YLeaf server_reference_interface_name; //type: string
 
-}; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference
+}; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference
 
 
 class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public ydk::Entity
@@ -2418,7 +2419,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public ydk
 
         class ThrottleInfo; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo> > throttle_info;
+        ydk::YList throttle_info;
         
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos
 
@@ -2466,7 +2467,7 @@ class Dhcpv6::Nodes::Node::Server::Interfaces : public ydk::Entity
 
         class Interface; //type: Dhcpv6::Nodes::Node::Server::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Dhcpv6::Nodes::Node::Server::Interfaces
 
@@ -2489,13 +2490,13 @@ class Dhcpv6::Nodes::Node::Server::Interfaces::Interface : public ydk::Entity
 
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf server_vrf_name; //type: string
-        ydk::YLeaf server_interface_mode; //type: BagDhcpv6DSubMode
+        ydk::YLeaf server_interface_mode; //type: BagDhcpv6dSubMode
         ydk::YLeaf is_server_interface_ambiguous; //type: uint32
         ydk::YLeaf server_interface_profile_name; //type: string
         ydk::YLeaf server_interface_lease_limit_type; //type: LeaseLimit
         ydk::YLeaf server_interface_lease_limits; //type: uint32
-        ydk::YLeaf srg_role; //type: BagDhcpv6DIntfSrgRole
-        ydk::YLeaf serg_role; //type: BagDhcpv6DIntfSergRole
+        ydk::YLeaf srg_role; //type: BagDhcpv6dIntfSrgRole
+        ydk::YLeaf serg_role; //type: BagDhcpv6dIntfSergRole
         ydk::YLeaf mac_throttle; //type: boolean
         ydk::YLeaf srg_vrf_name; //type: string
         ydk::YLeaf srgp2p; //type: boolean
@@ -2519,18 +2520,18 @@ class Dhcpv6::Nodes::Node::Server::Statistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6Dhcpv6DServerStat; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat
+        class Ipv6Dhcpv6dServerStat; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat> > ipv6_dhcpv6d_server_stat;
+        ydk::YList ipv6_dhcpv6d_server_stat;
         
 }; // Dhcpv6::Nodes::Node::Server::Statistics
 
 
-class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat : public ydk::Entity
+class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat : public ydk::Entity
 {
     public:
-        Ipv6Dhcpv6DServerStat();
-        ~Ipv6Dhcpv6DServerStat();
+        Ipv6Dhcpv6dServerStat();
+        ~Ipv6Dhcpv6dServerStat();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2543,14 +2544,14 @@ class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class Statistics_; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_
+        class Statistics_; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat::Statistics_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat::Statistics_> statistics;
         
-}; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat
+}; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat
 
 
-class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_ : public ydk::Entity
+class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat::Statistics_ : public ydk::Entity
 {
     public:
         Statistics_();
@@ -2570,7 +2571,7 @@ class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics
         ydk::YLeaf transmitted_packets; //type: uint64
         ydk::YLeaf dropped_packets; //type: uint64
 
-}; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_
+}; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat::Statistics_
 
 
 class Dhcpv6::Nodes::Node::Server::BindingOptions : public ydk::Entity
@@ -2616,7 +2617,7 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions : public ydk::
 
         class MacBindOption; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption> > mac_bind_option;
+        ydk::YList mac_bind_option;
         
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions
 
@@ -2665,7 +2666,7 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions : public ydk:
 
         class DuidBindOption; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption> > duid_bind_option;
+        ydk::YList duid_bind_option;
         
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions
 
@@ -2739,18 +2740,18 @@ class Dhcpv6::Nodes::Node::Relay::Statistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6Dhcpv6DRelayStat; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat
+        class Ipv6Dhcpv6dRelayStat; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat> > ipv6_dhcpv6d_relay_stat;
+        ydk::YList ipv6_dhcpv6d_relay_stat;
         
 }; // Dhcpv6::Nodes::Node::Relay::Statistics
 
 
-class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat : public ydk::Entity
+class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat : public ydk::Entity
 {
     public:
-        Ipv6Dhcpv6DRelayStat();
-        ~Ipv6Dhcpv6DRelayStat();
+        Ipv6Dhcpv6dRelayStat();
+        ~Ipv6Dhcpv6dRelayStat();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2763,14 +2764,14 @@ class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class Statistics_; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_
+        class Statistics_; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat::Statistics_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat::Statistics_> statistics;
         
-}; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat
+}; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat
 
 
-class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_ : public ydk::Entity
+class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat::Statistics_ : public ydk::Entity
 {
     public:
         Statistics_();
@@ -2790,7 +2791,7 @@ class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_ 
         ydk::YLeaf transmitted_packets; //type: uint64
         ydk::YLeaf dropped_packets; //type: uint64
 
-}; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_
+}; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat::Statistics_
 
 
 class Dhcpv6::Nodes::Node::Relay::Binding : public ydk::Entity
@@ -2857,7 +2858,7 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients : public ydk::Entity
 
         class Client; //type: Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client> > client;
+        ydk::YList client;
         
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Clients
 
@@ -2912,7 +2913,7 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs : public ydk::Entity
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs
 
@@ -3386,7 +3387,26 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData : public
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData
 
-class BagDhcpv6DFsmState : public ydk::Enum
+class LeaseLimit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf remote_id;
+
+};
+
+class BagDhcpv6dSubMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf base;
+        static const ydk::Enum::YLeaf server;
+        static const ydk::Enum::YLeaf proxy;
+
+};
+
+class BagDhcpv6dFsmState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf server_initializing;
@@ -3406,49 +3426,12 @@ class BagDhcpv6DFsmState : public ydk::Enum
 
 };
 
-class BagDhcpv6DIaId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf iana;
-        static const ydk::Enum::YLeaf iapd;
-        static const ydk::Enum::YLeaf iata;
-
-};
-
-class BagDhcpv6DIntfSergRole : public ydk::Enum
+class BagDhcpv6dIntfSrgRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
-
-};
-
-class BagDhcpv6DIntfSrgRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class LeaseLimit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf circuit_id;
-        static const ydk::Enum::YLeaf remote_id;
-
-};
-
-class BagDhcpv6DSubMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf base;
-        static const ydk::Enum::YLeaf server;
-        static const ydk::Enum::YLeaf proxy;
 
 };
 
@@ -3460,14 +3443,12 @@ class Dhcpv6IssuVersion : public ydk::Enum
 
 };
 
-class DhcpIssuPhase : public ydk::Enum
+class BagDhcpv6dIaId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf phase_not_started;
-        static const ydk::Enum::YLeaf phase_load;
-        static const ydk::Enum::YLeaf phase_run;
-        static const ydk::Enum::YLeaf phase_completed;
-        static const ydk::Enum::YLeaf phase_aborted;
+        static const ydk::Enum::YLeaf iana;
+        static const ydk::Enum::YLeaf iapd;
+        static const ydk::Enum::YLeaf iata;
 
 };
 
@@ -3476,6 +3457,26 @@ class Dhcpv6IssuRole : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf role_primary;
         static const ydk::Enum::YLeaf role_secondary;
+
+};
+
+class BagDhcpv6dIntfSergRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
+class DhcpIssuPhase : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf phase_not_started;
+        static const ydk::Enum::YLeaf phase_load;
+        static const ydk::Enum::YLeaf phase_run;
+        static const ydk::Enum::YLeaf phase_completed;
+        static const ydk::Enum::YLeaf phase_aborted;
 
 };
 
